@@ -1,0 +1,26 @@
+{
+  "name": "qmongjs",
+  "version": "0.1.0",
+  "description": "javascript module for qmongr",
+  "main": "src/index.js",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-modules ./node_modules/mocha/bin/mocha",
+    "lint": "eslint src/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yte0/qmongjs.git"
+  },
+  "author": "",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/yte0/qmongjs/issues"
+  },
+  "homepage": "https://github.com/yte0/qmongjs#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1"
+  }
+}
