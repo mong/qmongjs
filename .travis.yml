@@ -10,5 +10,5 @@ node_js:
 
 
 after_success:
-  - node_modules/bin/codecov -e TRAVIS_NODE_VERSION -f coverage/*.json
-  - node_modules/bin/codecov -e TRAVIS_NODE_VERSION
+  - ./node_modules/bin/codecov -e TRAVIS_NODE_VERSION -f coverage/*.json
+  - ./node_modules/bin/codecov -e TRAVIS_NODE_VERSION
