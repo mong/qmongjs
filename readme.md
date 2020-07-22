@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/yte0/qmongjs.svg?branch=master)](https://travis-ci.org/yte0/qmongjs)
+
 The goal of qmongjs is collect the javascript used in qmongr in a single module.
 
 ## Installation
