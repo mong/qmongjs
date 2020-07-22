@@ -21,6 +21,7 @@
   "homepage": "https://github.com/yte0/qmongjs#readme",
   "devDependencies": {
     "chai": "^4.2.0",
+    "codecov": "^3.7.2",
     "mocha": "^8.0.1"
   }
 }
