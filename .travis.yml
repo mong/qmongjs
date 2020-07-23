@@ -13,4 +13,4 @@ after_success:
   - nyc npm test
   - nyc report --reporter=text-lcov > coverage.lcov
   - ./node_modules/.bin/codecov
- 
+    
