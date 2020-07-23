@@ -6,7 +6,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "mocha",
+    "test": "nyc --reporter=lcov mocha",
     "coverage": "codecov",
     "lint": "eslint src/*.js"
   },
