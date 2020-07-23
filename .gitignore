@@ -3,3 +3,5 @@ npm-debug.log
 dist/
 .editorconfig
 npm-debug.log
+.nyc_output
+coverage
