@@ -11,19 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yte0/qmongjs.git"
+    "url": "git+https://github.com/mong/qmongjs.git"
   },
   "author": "",
   "license": "GPL-3.0-only",
   "bugs": {
-    "url": "https://github.com/yte0/qmongjs/issues"
+    "url": "https://github.com/mong/qmongjs/issues"
   },
-  "homepage": "https://github.com/yte0/qmongjs#readme",
+  "homepage": "https://github.com/mong/qmongjs#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "codecov": "^3.7.2",
-    "cross-env": "^7.0.2",
-    "mocha": "^8.0.1",
-    "nyc": "^15.1.0"
+    "mocha": "^8.0.1"
   }
 }
