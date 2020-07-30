@@ -1,8 +1,10 @@
 import { add_row } from './add_figure_row.js'
+import { fixed_header } from './fixed_header'
 import {
   clicked_tr as tr_class_name,
   remove_row
 } from './tr_utils.js'
+import { formatPrefix } from 'd3'
 
 let qi_table = document.querySelector('#quality_overview_ui_1-qi_table')
 let current_fig_row = ''
@@ -22,3 +24,5 @@ qi_table.addEventListener('click', function (e) {
     }
   }
 })
+
+fixed_header()
