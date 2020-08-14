@@ -24,7 +24,7 @@
     "chai": "^4.2.0",
     "codecov": "^3.7.2",
     "cross-env": "^7.0.2",
-    "mocha": "^8.0.1",
+    "mocha": "^8.1.1",
     "nyc": "^15.1.0",
     "rollup": "^2.23.0",
     "rollup-plugin-node-resolve": "^5.2.0",
