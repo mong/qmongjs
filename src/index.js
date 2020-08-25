@@ -11,6 +11,7 @@ qi_table.addEventListener('click', function (e) {
       add_row(clicked_tr);
     }else if(clicked_tr.id === tr_figure.previousElementSibling.id) {
       tr_figure.parentNode.removeChild(tr_figure);
+      window.onresize = function(){}
     } else {
       tr_figure.parentNode.removeChild(tr_figure);
       add_row(clicked_tr);

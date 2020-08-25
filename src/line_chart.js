@@ -13,9 +13,11 @@ import { page_colors as colors } from './page_colors'
 import { color_legend_line_chart } from './color_legend_table_line_chart'
 import { labeled_y_axis_linear } from './axis_y_linear_labeled'
 import { labeled_x_axis_time } from './axis_x_time_labeled'
+import { page_colors } from './page_colors.js'
+import { app_config as config } from './app_config.js'
 
 // line chart
-export const responsiv_line_chart = function (container, figure_data, props) {
+export const responsiv_line_chart = function (container, figure_data, props, levels) {
   var { width, height, margin } = props
   const margin_px = {
     top: height * margin.top,
@@ -31,28 +33,21 @@ export const responsiv_line_chart = function (container, figure_data, props) {
   const x_scale = scaleTime()
     .domain([
       min(figure_data, (d) => {
-        return new Date(d.Aar + '')
+        return new Date(d[config.column.year] + '')
       }),
       max(figure_data, (d) => {
-        return new Date(d.Aar + '')
+        return new Date(d[config.column.year] + '')
       })
     ])
     .range([0, inner_width])
-
   let y_scale = scaleLinear().domain([0, 1]).range([inner_height, 0])
 
   const nested = nest()
-    .key((d) => {
-      return d.treatment_unit
-    })
+    .key((d) => d[config.column.treatment_unit])
     .entries(figure_data)
 
   const line_color_scale = scaleOrdinal()
-    .domain(
-      nested.map((d) => {
-        return d.key
-      })
-    )
+    .domain(nested.map((d) => d.key))
     .range(colors.chart_colors)
 
   color_legend_line_chart(
@@ -98,7 +93,7 @@ export const responsiv_line_chart = function (container, figure_data, props) {
   let x_axis_tick_values = [
     ...new Set(
       figure_data.map((d) => {
-        return d.Aar + ''
+        return d[config.column.year] + ''
       })
     )
   ]
@@ -123,13 +118,27 @@ export const responsiv_line_chart = function (container, figure_data, props) {
   )
 
   const lines = line()
-    .x((d) => {
-      return x_scale(new Date(d.Aar + ''))
-    })
-    .y((d) => {
-      return y_scale(d.indicator)
-    })
-  // .curve(  curveMonotoneX)
+    .x((d) => x_scale(new Date(d[config.column.year] + '')))
+    .y((d) => y_scale(d[config.column.variable]))
+
+  let level_visibility_btn = document.querySelector('.dropdown_ul .dd-level').innerHTML
+  let level_visibility = level_visibility_btn.replace(/\s/g, '') === "Skjulmålnivå" ?  "visisble" : "hidden"
+  const level_colors = page_colors.traffic_light_colors
+
+  let level = g.selectAll("rect.level")
+  level = level
+    .data(levels)
+    .enter().append("rect")
+    .merge(level)
+      .attr("class", "level")
+      .attr('x', 0)
+      .attr('y', d => y_scale(d.start))
+      .attr('height',d => inner_height - y_scale((d.start - d.end)))
+      .attr("width", inner_width)
+      .attr('fill', d => level_colors[d.level])
+      .style("opacity","0.2")
+      .style("visibility", level_visibility)
+
 
   let path = g.selectAll('.table-line-chart')
   path = path
@@ -138,46 +147,97 @@ export const responsiv_line_chart = function (container, figure_data, props) {
     .append('path')
     .merge(path)
     .attr('class', (d) => `table-line-chart  ${d.key.replace(/\s/g, '')}`)
-    .attr('d', (d) => {
-      return lines(d.values)
-    })
-    .attr('stroke', (d) => {
-      return line_color_scale(d.key)
-    })
+    .attr('d', (d) => lines(d.values))
+    .attr('stroke', (d) => line_color_scale(d.key))
     .style('stroke-width', 3)
     .style('stroke-linejoin', 'round')
     .style('stroke-linecap', 'round')
     .attr('fill', 'none')
     .style('mix-blend-mode', 'multiply')
 
-  y_scale = scaleLinear()
-    .domain([
-      min(figure_data, (d) => {
-        return d.indicator
-      }),
-      max(figure_data, (d) => {
-        return d.indicator
+  let zoom_btn_text = document.querySelector('.dropdown_ul .dd-zoom').innerHTML
+  if (zoom_btn_text.replace(/\s/g, '') === 'Zoomut' ){
+    let y_min_val =  min(figure_data, (d) => d[config.column.variable]) 
+    let y_max_val =  max(figure_data, (d) => d[config.column.variable])
+    let additional_margin = (y_max_val - y_min_val) * 0.2  
+    y_min_val = Math.floor( (y_min_val - additional_margin) * 100) / 100
+    y_max_val = Math.ceil((y_max_val + additional_margin) * 100) / 100
+    
+    let y_min;
+    let y_max;
+    
+    y_min_val  < 0 ? y_min = 0 : y_min = y_min_val,
+    y_max_val  > 1 ? y_max = 1 : y_max =y_max_val
+
+    y_scale = scaleLinear()
+      .domain([
+      y_min,
+      y_max
+      ])
+      .range([inner_height, 0])
+    
+    let label_format;
+    y_max-y_min < 0.06 ? label_format = ',.1%': ',.0%'  
+    path
+      .data(nested)
+      .enter()
+      .append('path')
+      .merge(path)
+      .transition()
+      .delay(1000)
+      .duration(1000)
+      .attr('d', (d) => lines(d.values))
+    
+    level
+      .data(levels)
+      .enter().append("rect")
+      .merge(level)
+        .transition()
+        .delay(1000)
+        .duration(1000)
+        .attr('y', d => {
+          let start ;
+          if ( y_scale(d.start) > inner_height) {
+            start = y_scale.invert(inner_height)
+          } else if(y_scale(d.start) < 0){
+            start = y_scale.invert(0)
+          } else {
+            start = d.start
+          }
+          return y_scale(start)
+        })
+        .attr('height',d => {
+          let end ;
+          let start ;        
+          if ( y_scale(d.start) > inner_height) {
+            start = y_scale.invert(inner_height)
+          } else if(y_scale(d.start) < 0){
+            start = y_scale.invert(0)
+          } else {
+            start = d.start
+          }
+          
+          if (y_scale(d.end) <= inner_height && y_scale(d.end) >= 0){
+            end = d.end
+          } else if (y_scale(d.end) > inner_height) {
+            end = y_scale.invert(inner_height) 
+          } else if (y_scale(d.end) < 0){
+            end = y_scale.invert(0) 
+          }
+          return y_scale(end) - y_scale(start)
+        })
+    
+    labeled_y_axis_linear(
+      g,
+      Object.assign({}, theme_line_chart, {
+        y_scale,
+        inner_width,
+        inner_height,
+        transition: true,
+        delay_val: 1000,
+        duration_val: 1000,
+        axis_label_format: label_format
       })
-    ])
-    .range([inner_height, 0])
-
-  path
-    .data(nested)
-    .enter()
-    .append('path')
-    .merge(path)
-    .transition()
-    .delay(2000)
-    .duration(3000)
-    .attr('d', (d) => lines(d.values))
-
-  labeled_y_axis_linear(
-    g,
-    Object.assign({}, theme_line_chart, {
-      y_scale,
-      inner_width,
-      inner_height,
-      transition: true
-    })
-  )
+    )
+  }
 }

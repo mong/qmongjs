@@ -7,6 +7,7 @@ import {
 } from './tr_utils.js'
 import {  selectAll } from 'd3'
 
+
 const level_handler = function (){
   const level_button = document.querySelector(".dropdown_container .dd-level")
   if (level_button.innerText === "Vis målnivå") {

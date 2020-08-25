@@ -3,6 +3,8 @@ import { labeled_x_axis_linear } from './axis_x_linear_labeled.js'
 import { theme_table_chart_bar as theme_bar_chart } from './theme_table_chart_bar.js'
 import { theme_table_chart_line as theme_line_chart } from './theme_table_chart_line'
 import { labeled_y_axis_linear } from './axis_y_linear_labeled'
+import { app_config as config } from './app_config.js'
+
 
 
 // function that returns the tr based on a childElement of tr
@@ -22,30 +24,31 @@ export const remove_row = function () {
   let rm_element = document.querySelector('.tr_figure')
   if (rm_element !== null) {
     rm_element.parentNode.removeChild(rm_element)
+    window.onresize = function(){}
   }
 }
 
 export const level_boundary = function (level_obj)  {
-  if (this.MaalRetn === 0) {
+  if (this[config.column.level_direction] === 0) {
     if (level_obj.level === 'high' )  {
-      level_obj.start = this.MaalNivaaGronn
+      level_obj.start = this[config.column.level_green]
       level_obj.end = 0
     } else if (level_obj.level === 'mid') {
-      level_obj.start = this.MaalNivaaGul
-      level_obj.end = this.MaalNivaaGronn
+      level_obj.start = this[config.column.level_yellow]
+      level_obj.end = this[config.column.level_green]
     } else {
       level_obj.start = 1
-      level_obj.end = this.MaalNivaaGul
+      level_obj.end = this[config.column.level_yellow]
     }
-  } else if (this.MaalRetn === 1 ){
+  } else if (this[config.column.level_direction]=== 1 ){
       if ( level_obj.level === 'high' )  {
         level_obj.start = 1
-        level_obj.end = this.MaalNivaaGronn
+        level_obj.end = this[config.column.level_green]
       } else if (level_obj.level === 'mid') { 
-        level_obj.start = this.MaalNivaaGronn
-        level_obj.end = this.MaalNivaaGul
+        level_obj.start = this[config.column.level_green]
+        level_obj.end = this[config.column.level_yellow]
       } else {
-        level_obj.start = this.MaalNivaaGul
+        level_obj.start = this[config.column.level_yellow]
         level_obj.end = 0
       }
   } 
@@ -87,7 +90,7 @@ export const zoom_out_bar = function(){
         .merge(bars)
         .transition()
         .duration(1000)
-        .attr('width', (d) => x_scale(d.indicator))    
+        .attr('width', (d) => x_scale(d[config.column.variable]))    
 }
 
 export const zoom_in_bar = function () {
@@ -96,7 +99,7 @@ export const zoom_in_bar = function () {
   let indicator_bars = document.querySelectorAll("rect.bars")
   let indicator_values = []
   Array.from(indicator_bars).forEach(
-    val => indicator_values.push(val.__data__.indicator)
+    val => indicator_values.push(val.__data__[config.column.variable])
   )  
   let inner_width  = Array.from(level_rects).reduce(
     (acc, c_val) => acc +Number(c_val.getAttribute("width")),
@@ -121,7 +124,7 @@ export const zoom_in_bar = function () {
       .transition()
       .delay(0)
       .duration(1000)
-      .attr('width', (d) => x_scale(d.indicator))
+      .attr('width', (d) => x_scale(d[config.column.variable]))
 
   let level = g.selectAll("rect.level")
   level
@@ -158,16 +161,19 @@ export const zoom_in_bar = function () {
         }
         return x_scale(start) - x_scale(end) 
       })
-
-labeled_x_axis_linear(
-  g,
-  Object.assign({}, theme_bar_chart, {
-    x_scale,
-    inner_width,
-    inner_height,
-    transition: true,
-    duration_val: 1000
-  })
+  let label_format;
+  x_max_val < 0.05 ? label_format = ',.1%': ',.0%'
+ 
+  labeled_x_axis_linear(
+    g,
+    Object.assign({}, theme_bar_chart, {
+      x_scale,
+      inner_width,
+      inner_height,
+      transition: true,
+      duration_val: 1000,
+      axis_label_format: label_format
+    })
 )
 
 }
@@ -190,10 +196,10 @@ export const zoom_out_line = function(){
   const x_scale = scaleTime()
     .domain([
       min(figure_data, (d) => {
-        return new Date(d.Aar + '')
+        return new Date(d[config.column.year] + '')
       }),
       max(figure_data, (d) => {
-        return new Date(d.Aar + '')
+        return new Date(d[config.column.year] + '')
       })
     ])
     .range([0, inner_width])
@@ -219,8 +225,8 @@ export const zoom_out_line = function(){
       .attr('y', d => y_scale(d.start))
       .attr('height',d => inner_height - y_scale((d.start - d.end)))
   const lines = line()
-    .x((d) => x_scale(new Date(d.Aar + '')))
-    .y((d) => y_scale(d.indicator))
+    .x((d) => x_scale(new Date(d[config.column.year] + '')))
+    .y((d) => y_scale(d[config.column.variable]))
 
   let path = g.selectAll('.table-line-chart')
   path 
@@ -244,27 +250,36 @@ export const zoom_in_line = function () {
     fig_path => fig_path.__data__.values
   )
 
-  let y_min_val =  min(figure_data, (d) => d.indicator) 
-  let y_max_val =  max(figure_data, (d) => d.indicator)
+  let y_min_val =  min(figure_data, (d) => d[config.column.variable]) 
+  let y_max_val =  max(figure_data, (d) => d[config.column.variable])
   let additional_margin = (y_max_val - y_min_val) * 0.2  
   y_min_val = Math.floor( (y_min_val - additional_margin) * 100) / 100
   y_max_val = Math.ceil((y_max_val + additional_margin) * 100) / 100
 
+  let y_min;
+  let y_max;
+  
+  y_min_val  < 0 ? y_min = 0 : y_min = y_min_val,
+  y_max_val  > 1 ? y_max = 1 : y_max =y_max_val
+
   let y_scale = scaleLinear()
     .domain([
-     y_min_val  < 0 ? 0 : y_min_val,
-     y_max_val  > 1 ? 1 : y_max_val 
+     y_min,
+     y_max
     ])
     .range([inner_height, 0])
+
+  let label_format;
+  y_max-y_min < 0.06 ? label_format = ',.1%': ',.0%'  
 
   
   const x_scale = scaleTime()
     .domain([
       min(figure_data, (d) => {
-        return new Date(d.Aar + '')
+        return new Date(d[config.column.year] + '')
       }),
       max(figure_data, (d) => {
-        return new Date(d.Aar + '')
+        return new Date(d[config.column.year] + '')
       })
     ])
     .range([0, inner_width])
@@ -277,7 +292,8 @@ export const zoom_in_line = function () {
       inner_height,
       transition: true,
       delay_val: 0,
-      duration_val: 1000
+      duration_val: 1000,
+      axis_label_format: label_format
     })
   )
 
@@ -320,8 +336,8 @@ export const zoom_in_line = function () {
       })
 
   const lines = line()
-    .x((d) => x_scale(new Date(d.Aar + '')))
-    .y((d) => y_scale(d.indicator))
+    .x((d) => x_scale(new Date(d[config.column.year] + '')))
+    .y((d) => y_scale(d[config.column.variable]))
 
   let path = g.selectAll('.table-line-chart')
   path 

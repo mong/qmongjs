@@ -1,10 +1,11 @@
 import { responsiv_bar_chart } from './bar_chart.js'
 import { responsiv_line_chart } from './line_chart.js'
+import { app_config as config } from './app_config.js'
 
 const render_bar_chart = function (figure_container, figure_data, selected_year, levels) {
   responsiv_bar_chart(
     figure_container,
-    figure_data.filter((elem) => selected_year.includes(elem.Aar)),
+    figure_data.filter((elem) => selected_year.includes(elem[config.column.year])),
     {
       width: figure_container.clientWidth,
       height: 0.5 * figure_container.clientWidth,

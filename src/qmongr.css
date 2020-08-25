@@ -5,7 +5,7 @@ body {
   background-color: #EEF6F7;
  }
  
- .treatment_unit {
+ [config.column.treatment_unit] {
    /*margin: 20px auto;
    padding: 10px;
    width: 90%;*/
@@ -14,17 +14,17 @@ body {
    background-color: rgb(126,190,199);
  }
  
- .treatment_unit h3{
+ [config.column.treatment_unit] h3{
    float: right;
  }
  
- .treatment_unit .shiny-input-container {
+ [config.column.treatment_unit] .shiny-input-container {
    border-radius: 5px;
    margin-top:20px;
    float: left;
  }
  
- .treatment_unit .action-button {
+ [config.column.treatment_unit] .action-button {
    border-radius: 5px;
    margin-top: 20px;
    float: right;
@@ -203,7 +203,7 @@ body {
  }
  
  
- tbody .indicator:hover {
+ tbody [config.column.variable]:hover {
    background-color: rgba(126,190,199,0.15);
    cursor: pointer;
  }
