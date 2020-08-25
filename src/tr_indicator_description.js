@@ -1,10 +1,11 @@
+import { app_config as config } from './app_config.js'
 // indicator description
 
 
 export const add_tr_indicator_description =  function(description ) {
-  const description_text = description.BeskrivelseLang === null ? 
-    description.BeskrivelseKort :
-    description.BeskrivelseLang
+  const description_text = description[config.column.indicator_long_description] === null ? 
+    description[config.column.indicator_short_description] :
+    description[config.column.indicator_long_description]
   const desc_title = 'Om kvalitetsindikatoren';
   
   let description_container = document.createElement('div')
@@ -27,11 +28,8 @@ export const add_tr_indicator_description =  function(description ) {
   
   let description_content = document.createElement('p')
   description_content.setAttribute('class', 'description_content')
-    
   description_content.innerText = description_text
-
   description_container.appendChild(description_content)
-  
   
   description_title_cointainer.addEventListener('click', (e) => {
     let desc_title_icon_class = document.querySelector('.description_title_container i').className

@@ -24,7 +24,7 @@ export const page_colors = {
   secondary_color: '#00263D',
   traffic_light_colors: {
     high: '#BFE389',
-    mid: '#F%A623',
+    mid: '#F5A623',
     low: '#F04157'
   }
 }

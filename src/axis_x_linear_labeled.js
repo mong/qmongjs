@@ -24,13 +24,17 @@ export const labeled_x_axis_linear = function (selection, props) {
     x_axis_tick_size = inner_height,
     x_axis_tick_offset = inner_height * 0.05,
     x_axis_domain_line_stroke,
-    x_axis_label_font_family
+    x_axis_label_font_family,
+    transition = false,
+    delay_val = 0,
+    duration_val = 0,
+    axis_label_format = ',.0%'
   } = props
 
   const x_axis = axisBottom(x_scale)
     .tickSize(-x_axis_tick_size)
     .ticks(x_axis_tick_number)
-    .tickFormat(format(',.0%'))
+    .tickFormat(format(axis_label_format))
 
   let x_axis_g = selection.selectAll('.x-axis').data([null])
   x_axis_g = x_axis_g
@@ -39,13 +43,14 @@ export const labeled_x_axis_linear = function (selection, props) {
     .attr('class', 'x-axis')
     .merge(x_axis_g)
     .attr('transform', `translate(0,${inner_height})`)
-  x_axis_g.call(x_axis)
+
+  transition ? x_axis_g.transition().delay(delay_val).duration(duration_val).call(x_axis).nice : x_axis_g.call(x_axis)
 
   x_axis_g
     .selectAll('.tick text')
     .style('font-size', x_axis_tick_font_size)
     .attr('fill', x_axis_tick_font_fill)
-    .attr('y', x_axis_tick_offset)
+    //.attr('y', x_axis_tick_offset)
 
   x_axis_g.selectAll('.tick line').attr('stroke', x_axis_tick_line_stroke)
   x_axis_g.select('.domain').attr('stroke', x_axis_domain_line_stroke)

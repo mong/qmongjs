@@ -25,13 +25,16 @@ export const labeled_y_axis_linear = function (selection, props) {
     y_axis_tick_line_stroke,
     y_axis_tick_size = inner_width,
     y_axis_domain_line_stroke,
-    transition = false
+    transition = false,
+    delay_val = 0,
+    duration_val = 0,
+    axis_label_format = ',.0%'
   } = props
 
   const y_axis = axisRight(y_scale)
     .ticks(y_axis_tick_number)
     .tickSize(y_axis_tick_size)
-    .tickFormat(format(',.0%'))
+    .tickFormat(format(axis_label_format))
   let y_axis_g = selection.selectAll('.y-axis').data([null])
   y_axis_g = y_axis_g
     .enter()
@@ -40,7 +43,7 @@ export const labeled_y_axis_linear = function (selection, props) {
     .merge(y_axis_g)
 
   // prettier-ignore
-  transition ? y_axis_g.transition().delay(2000).duration(2000).call(y_axis).nice : y_axis_g.call(y_axis)
+  transition ? y_axis_g.transition().delay(delay_val).duration(duration_val).call(y_axis).nice : y_axis_g.call(y_axis)
 
   y_axis_g
     .selectAll('.tick text')
