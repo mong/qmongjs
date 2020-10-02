@@ -19,15 +19,13 @@ function TABLE_BODY(props) {
     update_selected_row 
   } = props
   
-  //console.log(data)
- 
   const added_register = [];
  //if no valid treatment unit loop through the national
   if (treatment_unit_name.length < 1) {
     data.agg_data.filtered_by_year = data.agg_data.nation.filtered_by_year
     data.agg_data.filtered_by_unit = data.agg_data.nation.filtered_by_unit
   }
-  //loop registry for registry based following the seq laid out by the med field list
+  //loop registry for registry following the seq laid out by the med field list
   const table_body = med_field.map( function(field) {
     
     let register_block = field.key.map((register) =>{

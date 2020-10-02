@@ -16,24 +16,16 @@ function SELECT_MULTI(props) {
   const customStyles = {
     menu: (provided)=>({
       ...provided,
-      //borderBottom: '1px dotted pink',
-      //width: "50%",
-      zIndex: 50
+      zIndex: 3
     }),
     option: (provided) => ({
       ...provided,
-      //borderBottom: '1px dotted pink',
-      //color: 'black'
     }),
     control:(provided)=>({
       ...provided,
-      //width: "50%"
     })/*,
-   
     singleValue: (provided) => {
-  
       const transition = 'opacity 300ms';
-  
       return { ...provided, transition };
     }*/
   }
@@ -41,7 +33,6 @@ function SELECT_MULTI(props) {
   const handle_input_change =(e)=>{
     const tu = e !== null ? e.map(e=>e.value) : []
     update_tu(tu)
-    
   }
  
   return(

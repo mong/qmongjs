@@ -28,9 +28,6 @@ function TABLE_HEADER(props) {
   let treatment_unit_th = treatment_unit_name.map(
     tu => <th className="selected_unit" style = {style_treatment_units}  key = {tu}> {tu}</th>
   ) 
-  
- 
-
 
   return (
     <thead >

@@ -13,36 +13,23 @@ function SELECT_SINGLE(props) {
   const customStyles = {
     menu: (provided)=>({
       ...provided,
-      //borderBottom: '1px dotted pink',
-      //width: "50%",
-      zIndex: 50
+      zIndex: 3
     }),
     option: (provided) => ({
       ...provided,
-      //borderBottom: '1px dotted pink',
-      //color: 'black'
     }),
     control:(provided)=>({
       ...provided,
-      //width: "50%"
+     
     })/*,
-   
     singleValue: (provided) => {
-  
       const transition = 'opacity 300ms';
-  
       return { ...provided, transition };
     }*/
   }
-
-  const handle_input_change =(e)=>{
-    
-    
+  const handle_input_change =(e)=>{ 
     update_year(e.value)
-
-
   }
-
 
   return(
     <form >  
