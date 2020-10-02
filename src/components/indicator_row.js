@@ -2,7 +2,7 @@ import React from 'react'
 
 import INDICATOR_VALUE from './indicator_value'
 import INDICATOR_DESCRIPTION from './indicator_description'
-//import TR_FIGURE from './tf_figure'
+import TR_FIGURE from './tf_figure'
 
 import app_config from '../app_config'
 
@@ -88,13 +88,13 @@ function INDICATOR_ROW(props) {
     show_level_filter && show_level_filter !== null ?
     "filtered_level":""
   
-  const tr_fig = null/* selected_row === description[data_config.column.id] ?
+  const tr_fig =  selected_row === description[data_config.column.id] ?
    <TR_FIGURE
     colspan = {colspan}
     data ={data}
     figure_class = {med_field_class}
     update_selected_row = {update_selected_row}
-  /> : null*/
+  /> : null
 
   const tr_click_handler = ()=> {
     if (selected_row === description[data_config.column.id] ){
