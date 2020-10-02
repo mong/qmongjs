@@ -1,6 +1,6 @@
 {
   "name": "qmongjs",
-  "version": "0..0",
+  "version": "0.3.0",
   "description": "javascript module for qmongr",
   "private": true,
   "type": "module",
@@ -12,12 +12,10 @@
     "type": "git",
     "url": "git+https://github.com/mong/qmongjs.git"
   },
-  "author": "",
   "license": "GPL-3.0-only",
   "bugs": {
     "url": "https://github.com/mong/qmongjs/issues"
   },
-  "homepage": "https://github.com/mong/qmongjs#readme",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
