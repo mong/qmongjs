@@ -13,11 +13,11 @@ const description = window.description
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  //<React.StrictMode>
     <App 
       data = {{indicator_hf, indicator_rhf , indicator_hosp, indicator_nation, description}}
       />,
-  </React.StrictMode>,
+  //</React.StrictMode>,
   document.getElementById('root')
 );
 
