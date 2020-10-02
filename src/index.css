@@ -1,0 +1,602 @@
+html{
+  font-size: 16px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family:  Arial, Helvetica, sans-serif;
+  background-color: #EEF6F7;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 1.7rem;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+h5 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+h6 {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.fa.fa-fas.fa-circle{
+  color: #bfe398;
+  font-size: 1.3rem;
+  padding: 0.1em;
+}
+.fa.fa-fas.fa-adjust{
+  color:  #F5A623;
+  font-size: 1.3rem;
+  padding: 0.1em;
+}
+.fa.fa-circle-o{
+  color:#F04157;
+  font-size: 1.3rem;
+  padding: 0.1em;
+}
+
+/******* treatment unit and year selection *******/
+
+.app-container{
+  box-sizing: border-box;
+}
+.selection-container{
+  position: sticky; 
+  top: 0;
+  display: flex;
+  background-color:rgb(126,190,199);
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 3;
+  position: -webkit-sticky;
+}
+.treatment-unit-selection {
+  flex: 3; 
+  margin-right: 1rem;
+}
+.year-selection {
+  flex: 1; 
+}
+
+/******* level legend and filter *******/
+
+.table_legend {
+  display: flex;
+  justify-content: space-around;
+  position: sticky;
+  background-color: #EEF6F7;
+  left: 24%;
+  width: 76%;
+  font-size: 1rem;
+  z-index: 2;
+  position: -webkit-sticky;
+}
+.table_legend button{
+  outline: none;
+  border: none;
+  background-color: unset;
+  padding: 0;
+  margin: 0;
+}
+.table_legend button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em 0.4em;
+  border: 2px solid #d2d3d4;
+  border-radius: 2em;
+  margin: 0.7em 0.2em;
+  background-color: #e2f2f5;
+  position: relative;
+  box-shadow: 0 7px 20px 0 rgba(196, 196, 196, 0.2);
+  min-width: 25%;
+  box-sizing: border-box;
+  top: 0;
+  cursor: pointer;
+  transition: 300ms cubic-bezier(0, 0, 0.58, 1);
+}
+.table_legend button:focus, 
+.table_legend button:hover {
+  box-shadow: 0 17px 10px 0 rgba(196, 196, 196, 0.5);
+  top: -7px;
+} 
+.table_legend button:focus {
+  top: -7px;
+}
+.table_legend button:active{
+  box-shadow: none;
+  top: 0;
+}
+.table_legend button.checked{
+  border: 2px solid #00263d;
+  box-shadow: 0 17px 10px 0 rgba(196, 196, 196, 0.2);
+  top: -2px;
+}
+
+/******* main content containers *******/
+
+.content_container{
+    box-sizing: border-box;
+    display: flex
+}
+.main_table_container {
+  box-sizing: border-box;
+  flex: 3;
+  padding: 0 0.7rem;
+}
+.med_field_container {
+  box-sizing: border-box;
+  flex: 1;
+  padding: 0 0.7rem ;
+}
+
+/******* medical field selection  *******/
+
+.med_field_list{
+  padding: 0;
+  margin: 0;
+  position: sticky;
+  z-index: 2;
+  position: -webkit-sticky;
+}
+.med_field_list button{
+  position: relative;
+  border: none;
+  background-color: unset;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: unset;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0; 
+  transition: all 0.3s ease-in-out;
+ }
+
+.med_field_list li {
+  list-style-type: none;
+}
+
+.med_field_title button .med_field_text{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  color: #00263d;
+  margin: auto;
+  height: 40px;
+  background-color: unset;
+  width: 100%;
+}
+.med_field_title  .med_field_nrind{
+  color: #fff;
+  background-color:#00263d;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+  width: 2.2rem;
+  height: 2.2rem;
+}
+.med_field button.med_field_text {
+  font-size: 1rem;
+  color:  #9a9a9a;
+  margin-top: 0.5rem;
+  background-color: unset;
+  width: 100%;
+  transition: all 0.3s ease-in;
+}
+.med_field .med_field_nrind{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00263d;
+  background-color: #efefef;
+  border-radius: 100%;
+  min-width: 2rem;
+  min-height: 2rem;
+  transition: all 0.3s ease-in-out;
+}
+.med_field_list button:focus{
+  outline: none;
+}
+.med_field button:hover,
+.med_field button:focus{
+  color: #00263d;
+}
+.med_field button:hover .med_field_nrind,
+.med_field button:focus .med_field_nrind{
+  color:  #efefef;
+  background-color: #00263d;
+}
+.med_field_list button::after{
+  content: "";
+  position: absolute;
+  width: 80%;
+  bottom: 0;
+  display: block;
+  border-bottom: 4px solid #00263d;
+  transform: scale(0);
+  transition: all 0.3s ease-in-out;
+}
+.med_field_list button:hover::after,
+.med_field_list button:focus::after{
+  opacity: 0.5;         
+  transform: scale(1);
+}
+.med_field_list button:active{
+  opacity: 0.7;
+  transform: scale(0.95);
+}
+.med_field button:active .med_field_nrind{
+  opacity: 0.7;
+}
+.med_field_list button:active::after{
+  opacity: 0.2;         
+  transform: scale(1);
+}
+.med_field_list .checked button.med_field_text {
+  color:  #00263d;
+  
+  transition: all 0.3s ease-in;
+}
+.med_field_list .checked .med_field_nrind{
+  color: #efefef;
+  background-color:  #00263d;
+  opacity: 0.8;
+}
+.med_field_list .checked ::after,
+.med_field_list .checked ::after{
+  opacity: 0.8;         
+  transform: scale(1);
+}
+
+/********* table *********/
+ 
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-spacing: 0;
+  margin-bottom: 50px;
+  line-height: 1.2;
+}
+thead{
+  box-shadow: -1px 2px 2px -1px  #00263d;
+}
+thead th {
+  font-size: 0.9rem;
+  background-color: #00263d;
+  color: white;
+  height: 50px;
+  position:sticky;
+  z-index: 1;
+  position: -webkit-sticky;
+}
+th.quality_indicator{
+  padding-left: 0.5rem;
+}
+tbody tr {
+   box-shadow: 0 4px 5PX -1px #DCDCDC;
+ }
+ .register-row {
+  background: linear-gradient( #7ebec7 5%, #58868c 95%);
+}
+.register-row .reg-name{
+  text-align: left;
+  font-size: 1.1rem;
+  padding: 0 0.5rem;
+  margin:  0.8rem 0;
+}
+.quality_indicator {
+  text-align: left;  
+}
+.quality_indicator_name h1{
+  margin: 0.5rem;
+  font-size: 1.2em;
+  overflow: hidden;
+ }
+.qi_long_description p{
+  margin: 5px 5px 10px 0.5rem;
+  color: #7d8588;
+  font-size: 0.9em;
+}
+.desired_target_level h4{
+  margin: 5px 5px 10px 0.5rem;
+  color: #7ebec7;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.filter_med_field {
+  display: none;
+}
+.filtered_level .summary,
+.filtered_level .level{
+  opacity: 0.2
+}
+.selected_unit .level,
+.selected_unit .summary,
+.nationally .level,
+.nationally .summary{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+ }
+.selected_unit .level h4,
+.nationally .level h4{
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0.5rem;
+ }
+.selected_unit .summary,
+.nationally .summary{
+  font-size: 0.85rem;
+}
+tbody .selected_unit {
+   background-color: rgba(126,190,199,0.05);
+} 
+tbody .indicator:hover {
+   background-color: rgba(126,190,199,0.15);
+   cursor: pointer;
+} 
+table{
+   border-bottom: 1rem solid #00263d;
+   border-radius: 0.5rem;
+}
+ 
+ /******media upto 768*****/
+
+@media All and (max-width: 768px){
+  html{
+    font-size: 13px;
+  }
+  .selection-container{
+    flex-direction: column;
+  }
+  .treatment-unit-selection {
+    flex: 3; 
+    margin-right: 0em;
+  }
+  .table_legend {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    font-size: 1rem;
+  }
+  .main_table_container {
+    padding: 0 0.5rem;
+  }
+  .med_field_container {
+    display: none;
+  }
+   
+}
+
+ /******media  768 - 992*****/
+
+
+@media All and (min-width: 769px) and (max-width: 992px){
+  html{
+    font-size: 14px;
+  }
+  .table_legend{
+    left: 19%;
+    width: 81%;
+    
+  }
+  .main_table_container {
+    flex: 4;
+    padding: 0 0.5rem;
+  }
+  .med_field_container {
+    flex: 1;
+    padding: 0 0.5rem ;
+  }
+  .med_field_list .med_field_nrind{
+    display: none;
+  }
+  .med_field {
+    min-height: 2rem;
+  }
+  .med_field button::after{
+    bottom: -0.6rem;
+  }
+}
+
+
+ 
+ 
+ 
+/*------ tr figure button container----*/
+
+.tr_figure td{
+  text-align: center;
+}
+.tr_figure .tr_buttons_container{
+ text-align: center;
+ display: flex;
+ flex-direction: row-reverse;
+ position: relative;
+}
+
+/*---------tr burger menu ---- */
+
+.table_dd_menu_container {
+ position: relative;
+ display: block;
+ margin: 1em;
+}
+.table_dd_button {
+ background-color: #7EBEC7;
+ margin: 0;
+ padding: 0.5em 0.7em;
+ border: none;
+ cursor: pointer;
+ border-radius: 5px;
+ box-sizing: border-box;
+}
+.table_dd_button i {
+ color: #EEF6F7;
+ font-size: 2rem;
+}
+.dropdown_container{
+ position: absolute;
+ background-color: #E3EBEC;
+ text-align: start;
+ min-width: 8rem;
+
+ right: 0;
+ box-sizing: border-box;
+ overflow: hidden;
+ box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+ transition: max-height .2s ease-in-out;
+ z-index: 1;
+}
+.dropdown_container.inactive{
+  max-height: 0;
+ }
+.dropdown_container ul {
+  margin: 0.757em 0 0.75rem 0;
+  padding: 0;
+ }
+
+.dropdown_container li {
+ margin: 0;
+ padding: 10px;
+ color: #2D3034;
+ cursor: pointer;
+ transition: background-color .2s ease-out;
+}
+.dropdown_container li:hover{
+ background-color: #EEF6F7;
+}
+
+/*------ tr indicator desctiption ----*/
+
+.description_title_container {
+ display:flex;
+ align-items:center;
+ justify-content:flex-start;
+ margin-left: 10%;
+ width:80%;
+ cursor:pointer;
+}
+.description_title_container h4 {
+ margin: 10px;
+}
+.description_content {
+  max-height: 1000px;
+ margin-left:13%;
+ margin-top: 0;
+ width:70%;
+ text-align:justify;
+ overflow:hidden;
+ line-height: 1.5;
+ transition: max-height  0.1s ease-out;
+ 
+}
+.description_content.inactive{
+  max-height: 0px;
+  transition: max-height  0.1s ease-out;
+}
+
+/**********table figure**********/
+
+.tr_figure_button{
+ display: inline-block;
+ position: relative;
+ top: 0;
+ left: 0;
+ border-radius: 25px;
+ margin: 1em;
+ padding: 0;
+ overflow: hidden;
+}
+.figure_button_label{
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  transition: background 600ms ease, color 600ms ease;
+  margin: 0;
+  line-height: 1;
+  font-weight: 100;
+}
+input[type="radio"].figure_button {
+  display: none;
+}
+input[type="radio"].figure_button + label {
+    cursor: pointer;
+    min-width: 65px;
+    color: #2D3034;
+}
+.figure_button_label .fas,
+.figure_button_label .fa{
+  font-size: 1em;
+  line-height: 20px;
+  display: block;
+  padding: 2px;
+}
+input[type="radio"].figure_button + label:hover {
+  background: none;
+  color: #2D3034;
+}
+input[type="radio"].figure_button_left + label {
+  border-radius: 25px 0 0 25px;
+  border-top: 3px solid #7EBEC7;
+  border-bottom:3px solid #7EBEC7;
+  border-left:3px solid #7EBEC7;
+}
+input[type="radio"].figure_button_right + label {
+  border-radius: 0 25px  25px 0;
+  border-top: 3px solid #7EBEC7;
+  border-right: 3px solid #7EBEC7;
+  border-bottom:3px solid #7EBEC7;
+}
+input[type="radio"].figure_button_left + label::after {
+  background: #7EBEC7;
+  content: "";
+  height: 100%;
+  position: absolute;
+  border-radius: 0 25px 25px 0;
+  top: 0;
+  right: -103%;
+  width: 100%;
+  transition: color 300ms, right 300ms cubic-bezier(0.0, 0.54, 0.21, 0.91);;
+  z-index: -1;
+}
+input[type="radio"].figure_button_left:checked + label {
+  cursor: default;
+  color: #EEF6F7;
+  border-radius: 25px 0 0 25px ;
+  transition: color 200ms;
+}
+input[type="radio"].figure_button_left:checked + label::after {
+  right: 3%;
+  border-radius: 25px 0 0 25px;
+  transition: right 200ms cubic-bezier(0.0, 0.54, 0.21, 0.91);
+}
+input[type="radio"].figure_button_right:checked + label {
+ cursor: default;
+ color:  #EEF6F7;
+ border-radius: 0 25px 25px 0;
+ transition: color 200ms;
+}
