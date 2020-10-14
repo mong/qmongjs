@@ -129,7 +129,7 @@ const med_field = [
     ]
   }  
 ]
-const app_text = {
+export const app_text = {
   menus: {
     unit: "Velg behandlingssted",
     year: "År:"
@@ -143,7 +143,12 @@ const app_text = {
     main_column: "Kvalitetsindikator",
     national_column: "Nasjonalt",
     desired_level: "Ønsket målnivå",
+  },
+  tu_list:{
+    header_text: "Velg behandlingsenheter",
+    max_nr_tu: 5
   }
+
 }
 
 const data_config = {

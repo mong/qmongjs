@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import MAIN from './components/main_component';
 import SELECT_MULTI from './components/select_multi'
 import SELECT_SINGLE from './components/select_single'
-
+import  TU_LIST from './components/tu_list'
 import config from './app_config'
 
 import { filter_year_unit} from './data/filter_year_unit'
@@ -85,6 +85,11 @@ function APP(props){
             treatment_unit={treatment_units}
             selected_row = {selected_row} 
             update_selected_row = {update_selected_row}
+          />
+          <TU_LIST
+            tu_names = {data.tu_names}
+            treatment_units = {treatment_units}
+            update_treatment_units = {update_treatment_units}
           />
         </div>
         <div className ="year-selection">

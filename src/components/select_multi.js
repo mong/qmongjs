@@ -1,6 +1,8 @@
 import  React from 'react'
 import Select from 'react-select'
 
+import { app_text } from '../app_config' 
+
 
 function SELECT_MULTI(props) {
   const {
@@ -47,7 +49,7 @@ function SELECT_MULTI(props) {
         isMulti = {true}
         onChange={(e)=>handle_input_change(e)}
         styles={customStyles}
-        menuIsOpen = {treatment_unit.length < 4 ? undefined :false}
+        menuIsOpen = {treatment_unit.length < app_text.tu_list.max_nr_tu ? undefined :false}
       /> 
     </form>
   );
