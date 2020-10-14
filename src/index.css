@@ -600,3 +600,127 @@ input[type="radio"].figure_button_right:checked + label {
  border-radius: 0 25px 25px 0;
  transition: color 200ms;
 }
+
+/************ list of treatment units ***************/
+
+.hospital_list_btn_container{
+  text-align: end;
+}
+.hospital_list_btn{
+  color: #2D3034;
+  font-weight: 500;
+  font-size: 1.2rem;
+  background: none;
+  padding-top: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: scale 200ms ease-in-out;
+}
+.hospital_list_btn:hover,
+.hospital_list_btn:focus{           
+  color: #08418e;
+  text-decoration: underline;  
+}
+.hospital_list_btn:active{           
+  scale: 0.9;
+}
+.tu_list{
+  background: #EEF6F7;
+  overflow-y: scroll;
+  color: #2D3034;
+  position: absolute;
+  width: 95vw;
+  height: 95vh;
+  background-color: #EEF6F7;
+  margin: auto;
+  z-index: 5;
+  text-align: center;
+  top: 2.5vh;
+  left: 2.5vw;
+  box-shadow: 2px 2px 20px 10px #8b9e9f;
+  
+}
+.tu_list h3{
+  margin: 0;
+  padding: 0.7rem; 
+  text-align: start;
+  background: linear-gradient(#7ebec7  5%,  #58868c   95%);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.tu_list_header{
+  text-align: start; 
+  padding-left: 1%;
+}
+.all_tu{
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto
+}
+.tu_list_rhf{
+  flex: 1 1  500px;
+  margin: 5px;
+  box-sizing: border-box;
+  background-color: rgba(126,190,199,0.2) ;
+  border-radius: 0.5rem;
+}
+.tu_list_rhf_content{
+ display: flex;
+ justify-content: flex-start;
+}
+.tu_list_hfs_in_rhf{
+  display: flex;
+  flex-direction: column;
+  flex:2;
+}
+.tu_list_hf{
+  display: flex;
+  margin: 0.7rem 0;
+}
+.tu_list_hospital{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: flex-start;
+}
+.tu_list_hf_btn_constainer{
+  flex: 1; 
+  align-self: start; 
+  text-align: start;
+ }
+ .tu_list_hf button{
+  text-align: start;
+  overflow-wrap: break-word;
+  outline: none;
+}
+.all_tu button{
+  font-size: 1rem;
+  background: none;
+  border:none;
+  margin: 0.1rem;
+  padding: 0.4rem;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+.all_tu button:hover{
+  color: #08418e;
+  text-decoration: underline; 
+}
+.all_tu button:focus{
+  text-decoration: underline; 
+}
+.tu_list_close_btn {
+  outline: none;
+  position: fixed;
+  font-size: 2rem;
+  top: 3vh;
+  right: 3vw; 
+  padding: 5px;
+  border:none;
+  background: none;
+  cursor: pointer;
+  transition: scale 200ms ease-in-out;
+}
+.tu_list_close_btn:hover,
+.tu_list_close_btn:focus{
+  scale: 1.2;
+}

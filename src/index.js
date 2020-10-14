@@ -10,12 +10,13 @@ const indicator_hf = window.indicator_hf
 const indicator_rhf= window.indicator_rhf
 const indicator_nation = window.indicator_nat
 const description = window.description
+const tu_names = window.tu_names
 
 
 ReactDOM.render(
   //<React.StrictMode>
     <App 
-      data = {{indicator_hf, indicator_rhf , indicator_hosp, indicator_nation, description}}
+      data = {{indicator_hf, indicator_rhf , indicator_hosp, indicator_nation,tu_names, description}}
       />,
   //</React.StrictMode>,
   document.getElementById('root')
