@@ -5,6 +5,7 @@ import SELECT_MULTI from './components/select_multi'
 import SELECT_SINGLE from './components/select_single'
 import  TU_LIST from './components/tu_list'
 import config from './app_config'
+import { nest_tu_names} from './data/filter_year_unit'
 
 import { filter_year_unit} from './data/filter_year_unit'
 
@@ -73,7 +74,8 @@ function APP(props){
     } 
   )
   const ind_per_reg = unique_register
-  
+
+  const tu_structure = nest_tu_names( data.tu_names)
   
   return(
     <div className = "app-container">
@@ -87,7 +89,7 @@ function APP(props){
             update_selected_row = {update_selected_row}
           />
           <TU_LIST
-            tu_names = {data.tu_names}
+            tu_structure  = {tu_structure }
             treatment_units = {treatment_units}
             update_treatment_units = {update_treatment_units}
           />

@@ -1,20 +1,19 @@
 import React, {useState} from 'react'
 
 import TU_LIST_HEADER from './tu_list_header'
-import { nest_tu_names} from '../data/filter_year_unit'
 import TU_LIST_BODY from './tu_list_body'
 
 
 const TU_LIST = (props) => {
   const {
-    tu_names,
+    tu_structure,
     treatment_units,
     update_treatment_units 
   } = props
   
   const [tu_list_display, update_tu_list_display] = useState("none")
   
-  const tu_structure = nest_tu_names( tu_names)
+  
 
   const style_tu_list = {display: tu_list_display}
 const tu_str_elm = tu_structure.map(element =>{
