@@ -23,8 +23,8 @@ export const page_colors = {
   primary_color: '#7EBEC7',
   secondary_color: '#00263D',
   traffic_light_colors: {
-    high: '#BFE389',
-    mid: '#F5A623',
-    low: '#F04157'
+    high: '#3baa34',
+    mid: '#fd9c00',
+    low: '#e30713'
   }
 }
