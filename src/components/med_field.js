@@ -1,6 +1,6 @@
-import React , { useRef, useState, useEffect} from 'react';
+import React  from 'react';
 import MED_FIELD_ROW from './med_field_row'
-import useResizeObserver from './utils'
+
 
 
 function MED_FIELD(props) {
@@ -10,15 +10,11 @@ function MED_FIELD(props) {
     update_med_field_filter,
     clicked_med_field,
     update_clicked_med_field,
-    
+    selection_bar_height, 
+    legend_height 
   } = props
-  const med_field_ref = useRef()
-  const dim = useResizeObserver(med_field_ref)
-  const [offset_top, update_offset_top] = useState("")
-  useEffect(()=>{
-    const top = dim ? `${dim.target.offsetTop}px` : ""
-    update_offset_top(top)
-  },[dim, med_field_ref])
+  
+ 
 
   const all_reg = ind_per_reg.map(ind => ind.registry_name)
   const med_field_row = med_field.map(
@@ -54,9 +50,9 @@ function MED_FIELD(props) {
     update_med_field_filter(all_reg)
   }
  
-  const style = {top: offset_top}
+  const style = {top: `${legend_height + selection_bar_height}px`}
   return (
-  <ul ref={med_field_ref} style = {style} className = "med_field_list">
+  <ul  style = {style} className = "med_field_list">
     <li className= {`med_field_title ${checked_class}`} >
       <button onClick = {()=>handle_med_field_click()}>
         <h4 className = "med_field_text">ALLE INDIKATORER

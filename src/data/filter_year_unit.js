@@ -52,13 +52,13 @@ export const filter_register = (data, register )=> {
 
 export const nest_tu_names = (tu_names) => {
   tu_names.sort(function(a,b){
-    return a.hospital > b.hospital;
+    return a.hospital > b.hospital ? 1:-1;
   })
   tu_names.sort(function(a,b){
-    return a.hf_full > b.hf_full;
+    return a.hf_full > b.hf_full ? 1:-1;;
   })
   tu_names.sort(function(a,b){
-    return a.rhf > b.rhf;
+    return a.rhf > b.rhf ? 1:-1;;
   })
   
   const nested_tu_names = tu_names.reduce( (acc, cur) =>{
@@ -85,7 +85,7 @@ export const nest_tu_names = (tu_names) => {
         }
         acc.filter(acc_data=> acc_data.rhf === cur.rhf)[0].hf.push(hf_entry) 
       } else {
-         acc.filter(acc_data=> acc_data.rhf === cur.rhf)[0].hf.filter(hf => hf.hf === cur.hf)[0].hospital.push(cur.hospital)
+         acc.filter(acc_data => acc_data.rhf === cur.rhf)[0].hf.filter(hf => hf.hf === cur.hf)[0].hospital.push(cur.hospital)
       }
     } 
     return(acc)

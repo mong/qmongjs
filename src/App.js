@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 import MAIN from './components/main_component';
+import HEADER from './components/header_main'
 import SELECT_MULTI from './components/select_multi'
 import SELECT_SINGLE from './components/select_single'
 import  TU_LIST from './components/tu_list'
 import config from './app_config'
 import { nest_tu_names} from './data/filter_year_unit'
+import useResizeObserver from './components/utils'
 
 import { filter_year_unit} from './data/filter_year_unit'
 
@@ -21,15 +23,17 @@ function APP(props){
     indicator_hf, indicator_rhf , indicator_hosp, indicator_nation, description
   } = data
 
+  //states
   const [treatment_units, update_treatment_units] = useState([])
   const [selected_year, update_selected_year] = useState(2019)
   const [selected_row, update_selected_row] = useState(null)
-  
+  const [selection_bar_height, update_selection_bar_height] = useState(null)
+  const [legend_height, update_legend_height] = useState(null)
   
   const opts_hosp = [...new Set ( indicator_hosp.map(d=>d.unit_name))].sort().map(opt =>{ return {value :opt , label: opt}; })
   const opts_hf = [...new Set ( indicator_hf.map(d=>d.unit_name))].sort().map(opt =>{ return {value :opt , label: opt}; })
   const opts_rhf = [...new Set ( indicator_rhf.map(d=>d.unit_name))].sort().map(opt =>{ return {value :opt , label: opt}; })
-  const opts_tu = [{label: "RHF", options: opts_rhf},{label: "HF", options: opts_hf},{label:"Sykehus", options:opts_hosp} ]
+  const opts_tu = [{label:"Sykehus", options:opts_hosp},{label: "HF", options: opts_hf},{label: "RHF", options: opts_rhf}]
   let opts_year = [2019,2018,2017,2016]
 
   const input_data = {
@@ -76,47 +80,63 @@ function APP(props){
   const ind_per_reg = unique_register
 
   const tu_structure = nest_tu_names( data.tu_names)
+
+  //height of the selection bar
+  const selection_bar_ref = useRef()
+  const selection_bar_dim = useResizeObserver(selection_bar_ref)
+  useEffect(()=>{
+    const top = selection_bar_dim ? selection_bar_dim.target.offsetHeight : ""
+    
+    update_selection_bar_height(top)
+  },[selection_bar_dim, selection_bar_ref])
+
   
   return(
     <div className = "app-container">
-      <div className = "selection-container">
-        <div className = "treatment-unit-selection">
-          <SELECT_MULTI 
-            opts ={opts_tu}
-            update_tu = {update_treatment_units}
-            treatment_unit={treatment_units}
-            selected_row = {selected_row} 
-            update_selected_row = {update_selected_row}
-          />
-          <TU_LIST
-            tu_structure  = {tu_structure }
-            treatment_units = {treatment_units}
-            update_treatment_units = {update_treatment_units}
-          />
+      <HEADER />
+      <div className="app-body">
+        <div className = "selection-container" ref = {selection_bar_ref}>
+          <div className = "treatment-unit-selection">
+            <SELECT_MULTI 
+              opts ={opts_tu}
+              update_tu = {update_treatment_units}
+              treatment_unit={treatment_units}
+              selected_row = {selected_row} 
+              update_selected_row = {update_selected_row}
+            />
+            <TU_LIST
+              tu_structure  = {tu_structure }
+              treatment_units = {treatment_units}
+              update_treatment_units = {update_treatment_units}
+            />
+          </div>
+          <div className ="year-selection">
+            <SELECT_SINGLE 
+              opts ={opts_year}
+              update_year = {update_selected_year}
+              selected_row = {selected_row} 
+              update_selected_row = {update_selected_row}
+            />
+          </div>
         </div>
-        <div className ="year-selection">
-          <SELECT_SINGLE 
-            opts ={opts_year}
-            update_year = {update_selected_year}
-            selected_row = {selected_row} 
-            update_selected_row = {update_selected_row}
-          />
-        </div>
+        <MAIN
+          update_selected_year = {update_selected_year}
+          update_treatment_units ={update_treatment_units}
+          ind_per_reg = {ind_per_reg}
+          treatment_units ={tu_name}
+          selected_year={selected_year}
+          med_field = {med_field}
+          app_text = {app_text}
+          colspan = {colspan}
+          data = {{agg_data, description}}
+          unique_indicators = {unique_indicators}
+          selected_row = {selected_row} 
+          update_selected_row = {update_selected_row}
+          selection_bar_height = {selection_bar_height} 
+          legend_height = {legend_height}
+          update_legend_height = {update_legend_height}
+        />
       </div>
-      <MAIN
-        update_selected_year = {update_selected_year}
-        update_treatment_units ={update_treatment_units}
-        ind_per_reg = {ind_per_reg}
-        treatment_units ={tu_name}
-        selected_year={selected_year}
-        med_field = {med_field}
-        app_text = {app_text}
-        colspan = {colspan}
-        data = {{agg_data, description}}
-        unique_indicators = {unique_indicators}
-        selected_row = {selected_row} 
-        update_selected_row = {update_selected_row}
-      />
     </div>
   );
 }

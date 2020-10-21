@@ -11,21 +11,31 @@ function SELECT_SINGLE(props) {
   
   let selection_options = opts.map(opt =>{ return {value :opt , label: opt}; })
   const customStyles = {
+    control: (provided, state)=>({
+      ...provided,  
+      width: "100%",
+      backgroundColor: "#00263d",
+      boxShadow:  null,
+      fontSize: "1rem",
+      border: state.isFocused  ? "3px solid #7ebec7" : state.isSelected ? "3px solid #EEF6F7" : "3px solid #EEF6F7",
+      minHeight: "2rem",
+      cursor: "pointer"
+    }), 
+    input: (provided) => ({
+      ...provided,
+      color: "#EEF6F7",
+    }),
+    singleValue:(provided) => ({
+      ...provided,
+      color: "#EEF6F7"
+    }),
     menu: (provided)=>({
       ...provided,
       zIndex: 3
     }),
     option: (provided) => ({
-      ...provided,
-    }),
-    control:(provided)=>({
-      ...provided,
-     
-    })/*,
-    singleValue: (provided) => {
-      const transition = 'opacity 300ms';
-      return { ...provided, transition };
-    }*/
+      ...provided
+    })
   }
   const handle_input_change =(e)=>{ 
     update_year(e.value)
