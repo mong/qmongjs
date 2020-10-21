@@ -110,7 +110,7 @@ h6 {
   font-size: 1rem;
   z-index: 2;
   position: -webkit-sticky;
-  align-self: end;
+  align-self: flex-end;
 }
 .table_legend button{
   outline: none;
@@ -654,7 +654,7 @@ input[type="radio"].figure_button_right:checked + label {
 }
 .tu_list_hf_btn_constainer{
   flex: 1; 
-  align-self: start; 
+  align-self: flex-start; 
   text-align: start;
  }
  .tu_list_hf button{
