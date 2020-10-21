@@ -12,12 +12,19 @@ function INDICATOR_TABLE(props) {
     med_field_filter, 
     show_level_filter,
     selected_row, 
-    update_selected_row
+    update_selected_row,
+    selection_bar_height, 
+    legend_height
   } = props
 
   return (
     <table>
-      <TABLE_HEADER col_nr = {colspan} treatment_unit_name = {treatment_unit_name}/>
+      <TABLE_HEADER
+        col_nr = {colspan}
+        treatment_unit_name = {treatment_unit_name}
+        selection_bar_height = {selection_bar_height} 
+        legend_height = {legend_height}
+        />
       <TABLE_BODY 
         colspan = {colspan}
         data = {data}

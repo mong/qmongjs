@@ -1,4 +1,4 @@
-import React , { useRef, useEffect, useState }from 'react'
+import React , { useRef, useEffect }from 'react'
 import LEGEND_BTN from './legend_btn'
 import useResizeObserver from './utils'
 
@@ -6,15 +6,16 @@ function LEGEND(props) {
   const {
     app_text= {indicators: {high: {text: "Høy måloppnåelse", icon: "fa fa-fas fa-circle" }}},
     update_show_level_filter,
-    show_level_filter
+    show_level_filter,
+    selection_bar_height, 
+    update_legend_height 
   } = props
   const legend_ref = useRef()
   const dim = useResizeObserver(legend_ref)
-  const [offset_top, update_offset_top] = useState("")
   useEffect(()=>{
-    const top = dim ? `${dim.target.previousSibling.offsetHeight}px` : ""
-    update_offset_top(top)
-  },[dim, legend_ref])
+    const top = dim ? dim.target.offsetHeight : ""
+    update_legend_height(top)
+  },[dim, legend_ref, update_legend_height])
 
   const legend_btns = Object.keys(app_text.indicators).map(
     function(level){
@@ -32,7 +33,7 @@ function LEGEND(props) {
   app_text.indicators)
 
 
-  const style = {top: offset_top}
+  const style = {top: `${selection_bar_height}px`}
   
   return (
     <div 

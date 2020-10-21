@@ -8,7 +8,7 @@ function SELECT_MULTI(props) {
   const {
     opts = [],
     select_className = "pick_treatment_unit",
-    placeholder = <div><i className = "fas fa-search"></i> Behandlingsenheter </div>,
+    placeholder = <div><i className = "fas fa-search"></i> Søk etter behandlingsenheter </div>,
     update_tu,
     treatment_unit
   } = props
@@ -16,20 +16,52 @@ function SELECT_MULTI(props) {
   let selection_options = opts//.map(opt =>{ return {value :opt , label: opt}; })
 
   const customStyles = {
+    control: (provided, state)=>({
+      ...provided,
+      width: "100%",
+      backgroundColor: "#00263d",
+      boxShadow: state.isFocused ? null : null,
+      fontSize: "1rem",
+      border: "none",
+      borderRadius: state.isFocused ? 0 : 0,
+      borderBottom: state.isFocused  ? "3px solid #7ebec7" : state.isSelected ? "3px solid #EEF6F7" : "3px solid #EEF6F7"  ,
+      cursor: "text"
+    }), 
+    input: (provided) => ({
+      ...provided,
+      color: "#EEF6F7", 
+      paddingLeft: "1.3rem",
+     
+    }),
+    multiValue: (provided) => ({
+      ...provided,
+      color: "#00263d", 
+      backgroundColor: "#EEF6F7"     
+    }),
+    placeholder: (provided)=>({
+      ...provided,     
+      color: "#EEF6F7",
+      fontSize: "1.2rem"
+    }), 
+    crossIcon: (provided)=>({
+      ...provided,     
+      color: "white"
+    }), 
+    dropdownIndicator: (provided)=>({
+      ...provided,
+      display:"none"
+    }),
+    indicatorSeparator: (provided)=>({
+      ...provided,
+      display:"none"
+    }),
     menu: (provided)=>({
       ...provided,
       zIndex: 3
     }),
     option: (provided) => ({
-      ...provided,
-    }),
-    control:(provided)=>({
-      ...provided,
-    })/*,
-    singleValue: (provided) => {
-      const transition = 'opacity 300ms';
-      return { ...provided, transition };
-    }*/
+      ...provided
+    })
   }
   const value_tu = treatment_unit.map(tu=>{return { value: tu, label: tu }})
   const handle_input_change =(e)=>{
@@ -43,13 +75,14 @@ function SELECT_MULTI(props) {
         className = {select_className}
         options = {selection_options}
         placeholder = {placeholder}
-        closeMenuOnSelect = {false}
+        closeMenuOnSelect = {true}
         value = {value_tu}
+        openMenuOnClick = {false}
         isSearchable
         isMulti = {true}
         onChange={(e)=>handle_input_change(e)}
         styles={customStyles}
-        menuIsOpen = {treatment_unit.length < app_text.tu_list.max_nr_tu ? undefined :false}
+        menuIsOpen = {treatment_unit.length < app_text.tu_list.max_nr_tu   ? undefined :false}
       /> 
     </form>
   );

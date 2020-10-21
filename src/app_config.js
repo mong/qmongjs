@@ -27,12 +27,12 @@ const med_field = [
       "tarmkreft_colon",
       "tarmkreft_rectum"
     ]
-  },
+  }/*,
   {
     react_key: "luft",
     name: "Luftveier",
     key: ["mek_vent"]
-  },
+  }*/,
   {  
     react_key: "diabetes",
     name: "Diabetes",
@@ -92,7 +92,7 @@ const med_field = [
     react_key: "revma",
     name: "Revmatologi",
     key: ["norartritt","norvas"]
-  },
+  }/*,
   {  
     react_key: "onh", 
     name: "Øre-nese-hals",
@@ -107,7 +107,7 @@ const med_field = [
     react_key: "psyk",
     name: "Psykisk helse og rus",
     key: ["kvarus","norspis"]
-  },
+  }*/,
   {  
     react_key: "barn",
     name: "Barn",
@@ -119,7 +119,7 @@ const med_field = [
       "ganespalt",
       "nnk"
     ]
-  },
+  }/*,
   {  
     react_key: "annet",
     name: "Andre",
@@ -127,7 +127,7 @@ const med_field = [
       "smerte",
       "porfyri"
     ]
-  }  
+  }  */
 ]
 export const app_text = {
   menus: {

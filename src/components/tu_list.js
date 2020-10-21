@@ -33,7 +33,7 @@ const tu_str_elm = tu_structure.map(element =>{
          className = "hospital_list_btn"
           onClick = {()=>update_tu_list_display("")}
         >
-          Vis sykehusoversikt
+          Vis alle
         </button>
       </div>
       <div style = { style_tu_list } className = "tu_list">
