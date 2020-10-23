@@ -6,7 +6,14 @@ const HEADER_LOGO_SKDE =() => {
   const style_2 = {fill:"#575756"}
 
   return(
-    <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg"  data-name="Layer 1" width= "100%" height="100px" viewBox="25 0 50 40" >
+    <svg 
+      id="Layer_1"
+      xmlns="http://www.w3.org/2000/svg"
+      data-name="Layer 1" 
+      width= "100%" 
+      height="80px" 
+      viewBox="17 0 50 30" 
+    >
       <title>SKDE_sort</title>
       <path 
         className="cls-1"

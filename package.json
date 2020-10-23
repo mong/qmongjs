@@ -1,6 +1,6 @@
 {
   "name": "qmongjs",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "javascript module for qmongr",
   "private": true,
   "type": "module",

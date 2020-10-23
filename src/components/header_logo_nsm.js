@@ -1,12 +1,9 @@
 import React from 'react';
 
-const HEADER_LOGO_NSM =() => {
-  
+const HEADER_LOGO_NSM =() => {  
   const style_1 = {fill:"#231f20"}
-
-
   return(
-    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width= "100%" viewBox="0 0 300.56 250.98" data-name="Layer 1">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" width= "100%" viewBox="0 0 330 40" data-name="Layer 1">
       <title>NSFMK_logo_SORT_outline_april_2015</title>
       <circle className="cls-3" style = {style_1} cx="16.85" cy="4.38" r="4.38" />
       <circle className="cls-3" style = {style_1} cx="16.85" cy="17" r="4.38" />
