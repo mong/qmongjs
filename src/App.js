@@ -16,12 +16,48 @@ const {med_field, app_text, data_config  }= config
 
 
 function APP(props){
-  const {
-    data 
-  } = props
-  const {
-    indicator_hf, indicator_rhf , indicator_hosp, indicator_nation, description
-  } = data
+  
+  //data as state
+
+  const [indicator_hosp, update_hosp] =  useState(window.indicator_hosp ? window.indicator_hosp : [] ) 
+  const [indicator_hf, update_hf] = useState(window.indicator_hf ? window.indicator_hf : [] ) 
+  const [indicator_rhf, update_rhf]= useState(window.indicator_rhf ? window.indicator_rhf : [] ) 
+  const [indicator_nation, update_nation] =useState(window.indicator_nat ? window.indicator_nat : [] ) 
+  const [description, update_description] = useState(window.description ? window.description : [] ) 
+  const [tu_names, update_tu_names] = useState(window.tu_names ? window.tu_names : [] ) 
+  //update data as it arrives
+  if (typeof(window.Shiny) !== "undefined"){
+    window.Shiny.addCustomMessageHandler("tu_names",
+      function(message) {
+        update_tu_names((message));
+      }
+    );
+    window.Shiny.addCustomMessageHandler("description",
+      function(message) {
+        update_description(message);
+      }
+    );
+    window.Shiny.addCustomMessageHandler("nation",
+      function(message) {
+        update_nation(message);
+      }
+    );
+    window.Shiny.addCustomMessageHandler("hospital",
+      function(message) {
+        update_hosp(message);
+      }
+    );
+    window.Shiny.addCustomMessageHandler("hf",
+      function(message) {
+        update_hf(message);
+      }
+    );
+    window.Shiny.addCustomMessageHandler("rhf",
+      function(message) {
+        update_rhf(message);
+      }
+    );
+  }
 
   //states
   const [treatment_units, update_treatment_units] = useState([])
@@ -79,7 +115,7 @@ function APP(props){
   )
   const ind_per_reg = unique_register
 
-  const tu_structure = nest_tu_names( data.tu_names)
+  const tu_structure = nest_tu_names( tu_names)
 
   //height of the selection bar
   const selection_bar_ref = useRef()
