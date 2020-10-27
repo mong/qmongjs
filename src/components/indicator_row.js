@@ -38,7 +38,6 @@ function INDICATOR_ROW(props) {
     const ind_per_unit =data.agg_data.filtered_by_year.filter(
       data => data[data_config.column.treatment_unit] === tr_unit
     ) 
-    console.log(ind_per_unit[0]["dg"])
     if (ind_per_unit.length < 1){
       return <td
         key = {`${description[data_config.column.id]}_${tr_unit}_${index}_su`}

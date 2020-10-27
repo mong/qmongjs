@@ -20,8 +20,9 @@ function TF_FIGURE (props) {
   if(!data.agg_data.filtered_by_year.some(d => d.unit_name ==="Nasjonalt") ) {
     data.agg_data.filtered_by_year.push(data.agg_data.nation.filtered_by_year[0])
     Array.prototype.push.apply( data.agg_data.filtered_by_unit, data.agg_data.nation.filtered_by_unit)
-   
   }
+
+  
   const [chart_type, update_chart_type] = useState("line")
   const [zoom, update_zoom]=useState("Zoom ut")
   const [show_level, update_show_level]=useState("Vis målnivå")
@@ -42,7 +43,17 @@ function TF_FIGURE (props) {
           svg_container_ref.current.children[0]
         )
       }
-      bar_chart(svg_container_ref.current, svg_props, data.agg_data.filtered_by_year, levels )
+      const filtered_barchart_data = data.agg_data.filtered_by_year.filter(data_by_year=>{
+        if (data_by_year.unit_level !== "nation"){
+          return(  
+            !(data_by_year.denominator < data.description[0]["min_denominator"] || 
+            data_by_year.dg < 0.6 || typeof(data_by_year.dg) === "undefined" )
+          )
+        } else {
+          return true
+        }
+      })
+      bar_chart(svg_container_ref.current, svg_props, filtered_barchart_data, levels )
     } else if (chart_type === "line") {
       const nr_svg_children = svg_container_ref.current.childElementCount
       for(let i = 0; i < nr_svg_children; i++){
@@ -51,7 +62,17 @@ function TF_FIGURE (props) {
         )
       }
       svg_props.margin = {top:0.05, bottom: 0.2, right: 0.15, left: 0.05}
-      line_chart(svg_container_ref.current, svg_props, data.agg_data.filtered_by_unit, levels)
+      const filtered_linechart_data = data.agg_data.filtered_by_unit.filter(data_by_year=>{
+        if (data_by_year.unit_level !== "nation"){
+          return(  
+            !(data_by_year.denominator < data.description[0]["min_denominator"] || 
+            data_by_year.dg < 0.6 || typeof(data_by_year.dg) === "undefined" )
+          )
+        } else {
+          return true
+        }
+      })
+      line_chart(svg_container_ref.current, svg_props, filtered_linechart_data, levels)
     }
   }, [data, chart_type, zoom])
   
