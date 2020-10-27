@@ -154,7 +154,7 @@ export const app_text = {
 const data_config = {
   column: {
     indicator_id: "ind_id",
-    coverage_id: "dg_id",
+    coverage_id: "dg",
     year: "year",
     treatment_unit: "unit_name",
     treatment_unit_level: "unit_level",
