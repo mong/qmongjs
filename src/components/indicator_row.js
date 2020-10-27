@@ -44,7 +44,8 @@ function INDICATOR_ROW(props) {
         className = "selected_unit">
           <NO_DATA/>
       </td>
-    } else if (ind_per_unit[0][data_config.column.coverage_id] < 0.6 || typeof(ind_per_unit[0][data_config.column.coverage_id]) === "undefined") {
+    } else if (ind_per_unit[0][data_config.column.coverage_id] < 0.6){//
+       //|| typeof(ind_per_unit[0][data_config.column.coverage_id]) === "undefined") {
       return <td
         key = {`${description[data_config.column.id]}_${tr_unit}_${index}_su`}
         className = "selected_unit">

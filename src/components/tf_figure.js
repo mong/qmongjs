@@ -47,7 +47,7 @@ function TF_FIGURE (props) {
         if (data_by_year.unit_level !== "nation"){
           return(  
             !(data_by_year.denominator < data.description[0]["min_denominator"] || 
-            data_by_year.dg < 0.6 || typeof(data_by_year.dg) === "undefined" )
+            data_by_year.dg < 0.6 )//|| typeof(data_by_year.dg) === "undefined" )
           )
         } else {
           return true
@@ -66,7 +66,7 @@ function TF_FIGURE (props) {
         if (data_by_year.unit_level !== "nation"){
           return(  
             !(data_by_year.denominator < data.description[0]["min_denominator"] || 
-            data_by_year.dg < 0.6 || typeof(data_by_year.dg) === "undefined" )
+            data_by_year.dg < 0.6 )//|| typeof(data_by_year.dg) === "undefined" )
           )
         } else {
           return true
