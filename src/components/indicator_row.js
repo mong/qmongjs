@@ -5,6 +5,9 @@ import INDICATOR_DESCRIPTION from './indicator_description'
 import TR_FIGURE from './tf_figure'
 
 import app_config from '../app_config'
+import NO_DATA from './no_data'
+import LOW_COV from './low_cov'
+import LOW_N from './low_n'
 
 const { data_config } = app_config
 
@@ -39,8 +42,22 @@ function INDICATOR_ROW(props) {
       return <td
         key = {`${description[data_config.column.id]}_${tr_unit}_${index}_su`}
         className = "selected_unit">
+          <NO_DATA/>
+      </td>
+    } else if (ind_per_unit[0][data_config.column.coverage_id] < 0.6) {
+      return <td
+        key = {`${description[data_config.column.id]}_${tr_unit}_${index}_su`}
+        className = "selected_unit">
+          <LOW_COV/>
+      </td>
+    } else if (ind_per_unit[0][data_config.column.denominator] < description[data_config.column.min_denominator]) {
+      return <td
+        key = {`${description[data_config.column.id]}_${tr_unit}_${index}_su`}
+        className = "selected_unit">
+          <LOW_N/>
       </td>
     } else {
+      console.log()
       
       const indicator_value =
         description[data_config.column.indicator_type] === data_config.indicator_type.andel.db ?
