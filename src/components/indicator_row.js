@@ -38,13 +38,14 @@ function INDICATOR_ROW(props) {
     const ind_per_unit =data.agg_data.filtered_by_year.filter(
       data => data[data_config.column.treatment_unit] === tr_unit
     ) 
+    console.log(ind_per_unit[0]["dg"])
     if (ind_per_unit.length < 1){
       return <td
         key = {`${description[data_config.column.id]}_${tr_unit}_${index}_su`}
         className = "selected_unit">
           <NO_DATA/>
       </td>
-    } else if (ind_per_unit[0][data_config.column.coverage_id] < 0.6) {
+    } else if (ind_per_unit[0][data_config.column.coverage_id] < 0.6 || typeof(ind_per_unit[0][data_config.column.coverage_id]) === "undefined") {
       return <td
         key = {`${description[data_config.column.id]}_${tr_unit}_${index}_su`}
         className = "selected_unit">
@@ -56,9 +57,7 @@ function INDICATOR_ROW(props) {
         className = "selected_unit">
           <LOW_N/>
       </td>
-    } else {
-      console.log()
-      
+    } else {     
       const indicator_value =
         description[data_config.column.indicator_type] === data_config.indicator_type.andel.db ?
         `${Math.round(ind_per_unit[0][data_config.column.variable] * 100)}%` :
