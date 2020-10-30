@@ -27,7 +27,6 @@ function INDICATOR_ROW(props) {
   const indcator_title = description.title
   const indicator_drescription = description.short_description
   const level_direction = description[data_config.column.level_direction] 
-  console.log(level_direction)
   const level_green = description[data_config.column.level_green] === null ? null:
     `${description[data_config.column.level_green] * 100}%`
 
