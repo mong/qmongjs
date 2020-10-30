@@ -26,11 +26,11 @@ function INDICATOR_ROW(props) {
   const description = data.description[0]
   const indcator_title = description.title
   const indicator_drescription = description.short_description
-  const level_direction = description[data_config.column.level_direction] === 0 ?
-    "<" :">"
-  const level_green = description[data_config.column.level_green]
-  const high_achivment_text = level_green !== null ?
-    `Høy måloppnåelse: ${level_direction} ${level_green*100}%` :  ""
+  const level_direction = description[data_config.column.level_direction] 
+  console.log(level_direction)
+  const level_green = description[data_config.column.level_green] === null ? null:
+    `${description[data_config.column.level_green] * 100}%`
+
   const tr_indicator_class = `${description[data_config.column.id]} 
     ${description[data_config.column.registry_short_name]}`
   
@@ -130,7 +130,8 @@ function INDICATOR_ROW(props) {
         <INDICATOR_DESCRIPTION
           title = {indcator_title}
           short_description = {indicator_drescription} 
-          high_achivment_text = {high_achivment_text}
+          level_direction = {level_direction}
+          level_green = {level_green}
         />
         {indicator_val}
         <INDICATOR_VALUE
