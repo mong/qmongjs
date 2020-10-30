@@ -51,17 +51,20 @@ export const filter_register = (data, register )=> {
 }
 
 export const nest_tu_names = (tu_names) => {
-  tu_names.sort(function(a,b){
-    return a.hospital > b.hospital ? 1:-1;
+  const sorted_bu_hosp = tu_names.sort(function(a,b){
+    const val = a.hospital > b.hospital ? 1:-1;
+    return val;
   })
-  tu_names.sort(function(a,b){
-    return a.hf_full > b.hf_full ? 1:-1;;
+  const sorted_bu_hf = sorted_bu_hosp.sort(function(a,b){
+    const val = a.hf > b.hf ? 1:-1;
+    return val;
   })
-  tu_names.sort(function(a,b){
-    return a.rhf > b.rhf ? 1:-1;;
+  const sorted_bu_rhf = sorted_bu_hf.sort(function(a,b){
+    const val = a.rhf > b.rhf ? 1:-1;
+    return val;
   })
   
-  const nested_tu_names = tu_names.reduce( (acc, cur) =>{
+  const nested_tu_names = sorted_bu_rhf.reduce( (acc, cur) =>{
     if(acc.length === 0 || acc.every(tu_entry => tu_entry.rhf !== cur.rhf)) {
       const entry = {
         rhf: cur.rhf,
