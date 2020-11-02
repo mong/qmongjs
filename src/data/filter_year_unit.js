@@ -51,14 +51,23 @@ export const filter_register = (data, register )=> {
 }
 
 export const nest_tu_names = (tu_names) => {
-  tu_names.sort(function(a,b){
-    return a.hospital > b.hospital ? 1:-1;
+  tu_names.sort((a,b)=>{
+    return(
+       a.hospital > b.hospital ? 1:
+      a.hospital < b.hospital ? -1 : 0
+    );
   })
-  tu_names.sort(function(a,b){
-    return a.hf_full > b.hf_full ? 1:-1;;
+  tu_names.sort((a,b)=>{
+    return(
+      a.hf_full > b.hf_full ? 1:
+     a.hf_full < b.hf_full ? -1 : 0
+   );
   })
-  tu_names.sort(function(a,b){
-    return a.rhf > b.rhf ? 1:-1;;
+  tu_names.sort((a,b)=>{
+    return(
+      a.rhf > b.rhf ? 1:
+     a.rhf < b.rhf ? -1 : 0
+   );
   })
   
   const nested_tu_names = tu_names.reduce( (acc, cur) =>{
