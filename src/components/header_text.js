@@ -7,4 +7,5 @@ const HEADER_TEXT = () => {
     </h1>
   )
 }
+
 export default HEADER_TEXT;

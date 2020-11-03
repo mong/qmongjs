@@ -1,5 +1,7 @@
 import React , { useRef, useEffect }from 'react'
+
 import LEGEND_BTN from './legend_btn'
+
 import useResizeObserver from './utils'
 
 function LEGEND(props) {

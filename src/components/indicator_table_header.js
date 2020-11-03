@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 function TABLE_HEADER(props) {
   const {
     col_nr = 2,
@@ -13,7 +11,6 @@ function TABLE_HEADER(props) {
   } = props
 
   const offset_top = `${selection_bar_height + legend_height }px`
-
   const width_desc = col_nr === 2 ? 60 :  col_nr === 3 ? 50 : 40 
   const width_tu = (100 - width_desc) /(col_nr - 1) 
   const style_ind_desc= {width: `${width_desc}%`,top: offset_top }

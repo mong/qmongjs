@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 function INDICATOR_DESCRIPTION(props) {
   const {
     title = "This is the title",

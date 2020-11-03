@@ -4,8 +4,8 @@ import TF_BUTTON from './tf_button'
 import TF_DDMENU from './tf_ddmenu'
 import TF_LONG_DESCRIPTION from './tf_description'
 
-import {bar_chart} from '../charts/barchart'
-import {line_chart} from '../charts/line_chart'
+import { bar_chart } from '../charts/barchart'
+import { line_chart } from '../charts/line_chart'
 import { level_boundary } from '../charts/tr_utils'
 
 function TF_FIGURE (props) {
@@ -24,9 +24,9 @@ function TF_FIGURE (props) {
 
   
   const [chart_type, update_chart_type] = useState("line")
-  const [zoom, update_zoom]=useState("Zoom ut")
-  const [show_level, update_show_level]=useState("Vis målnivå")
-  const [remove_tf, update_remove_tf]=useState(null)
+  const [zoom, update_zoom] = useState("Zoom ut")
+  const [show_level, update_show_level] = useState("Vis målnivå")
+  const [remove_tf, update_remove_tf] = useState(null)
 
   useEffect(() => {
     const svg_props = {}

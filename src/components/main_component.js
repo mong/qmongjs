@@ -20,6 +20,7 @@ export default (props)=>{
       legend_height,
       update_legend_height 
     }=props
+    
   const all_reg = ind_per_reg.map(reg=> reg.registry_name)
   const [show_level_filter, update_show_level_filter] = useState(null)
   const [med_field_filter, update_med_field_filter] = useState(all_reg)

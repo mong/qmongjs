@@ -1,7 +1,6 @@
 import React  from 'react';
+
 import MED_FIELD_ROW from './med_field_row'
-
-
 
 function MED_FIELD(props) {
   const {
@@ -14,8 +13,6 @@ function MED_FIELD(props) {
     legend_height 
   } = props
   
- 
-
   const all_reg = ind_per_reg.map(ind => ind.registry_name)
   const med_field_row = med_field.map(
     med_field => {
@@ -43,8 +40,7 @@ function MED_FIELD(props) {
       return(acc+cur.number_ind)
     },0)
   
-  const checked_class = "all" === clicked_med_field ? "checked" : "" 
-          
+  const checked_class = "all" === clicked_med_field ? "checked" : ""   
   const handle_med_field_click =()=>{
     update_clicked_med_field("all")
     update_med_field_filter(all_reg)

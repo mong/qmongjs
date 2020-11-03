@@ -11,7 +11,6 @@ function LEGEND_BTN(props) {
 
   const level_filter = legend_btn_class[0].toUpperCase() 
   const checked_class = level_filter === show_level_filter ? "checked" : ""
- 
   const handle_level_filter = (current_state, update_state)=>{
     if (current_state===update_state){
       update_show_level_filter(null)
@@ -19,6 +18,7 @@ function LEGEND_BTN(props) {
       update_show_level_filter(update_state)
     }
   }
+
   return (
     <button
       className = {`${legend_btn_class} ${checked_class}`}

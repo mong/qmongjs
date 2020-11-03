@@ -53,7 +53,6 @@ function SELECT_SINGLE(props) {
       /> 
     </form>
   );
-
 }
 
 export default SELECT_SINGLE;

@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 function INDICATOR_VALUE(props) {
   const {
     td_class = "selected_unit",

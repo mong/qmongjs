@@ -1,8 +1,7 @@
-import  React from 'react'
+import React from 'react'
 import Select from 'react-select'
 
 import { app_text } from '../app_config' 
-
 
 function SELECT_MULTI(props) {
   const {
@@ -13,8 +12,7 @@ function SELECT_MULTI(props) {
     treatment_unit
   } = props
   
-  let selection_options = opts//.map(opt =>{ return {value :opt , label: opt}; })
-
+  let selection_options = opts
   const customStyles = {
     control: (provided, state)=>({
       ...provided,
@@ -24,7 +22,7 @@ function SELECT_MULTI(props) {
       fontSize: "1rem",
       border: "none",
       borderRadius: state.isFocused ? 0 : 0,
-      borderBottom: state.isFocused  ? "3px solid #7ebec7" : state.isSelected ? "3px solid #EEF6F7" : "3px solid #EEF6F7"  ,
+      borderBottom: state.isFocused  ? "3px solid #7ebec7" : state.isSelected ? "3px solid #EEF6F7" : "3px solid #EEF6F7" ,
       cursor: "text"
     }), 
     input: (provided) => ({
@@ -86,7 +84,6 @@ function SELECT_MULTI(props) {
       /> 
     </form>
   );
-
 }
 
 export default SELECT_MULTI;

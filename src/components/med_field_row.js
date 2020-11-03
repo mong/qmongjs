@@ -1,6 +1,5 @@
 import React  from 'react';
 
-
 function MED_FIELD_ROW(props) {
   const {
     med_field_name= "Hjerte- og karsykdommer",
@@ -11,11 +10,11 @@ function MED_FIELD_ROW(props) {
   } = props
  
   const class_checked = clicked_med_field === med_field_name.react_key ? "checked" : ""
-  
   const handle_med_field_click =()=>{
     update_clicked_med_field(med_field_name.react_key)
     update_med_field_filter(med_field_name.key)
   }
+
   return (
   <li className = {`med_field ${class_checked} med_field_${med_field_name.react_key}`} >
     <button className = "med_field_text" onClick = {()=> handle_med_field_click() } >
