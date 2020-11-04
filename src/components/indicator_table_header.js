@@ -17,15 +17,34 @@ function TABLE_HEADER(props) {
   const style_treatment_units= {width: `${width_tu}%`, top: offset_top}
   
   let treatment_unit_th = treatment_unit_name.map(
-    tu => <th className="selected_unit" style = {style_treatment_units}  key = {tu}> {tu}</th>
+    tu => (
+      <th 
+        className="selected_unit"
+        style = {style_treatment_units}
+        key = {tu}
+      >
+        {tu}
+      </th>
+    )
   ) 
 
   return (
     <thead >
       <tr >
-        <th key = "kvind_header" className="quality_indicator" style={style_ind_desc}>{indicator_header}</th>
+        <th 
+          key = "kvind_header"
+          className="quality_indicator"
+          style={style_ind_desc}
+        >
+          {indicator_header}
+        </th>
         {treatment_unit_th}
-        <th  className="nationally" style = {style_treatment_units} key = "nat_header">{national}</th>
+        <th
+          className="nationally"
+          style = {style_treatment_units}
+          key = "nat_header"
+        >
+          {national}</th>
       </tr>
     </thead>
   );
