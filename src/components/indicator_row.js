@@ -58,9 +58,11 @@ function INDICATOR_ROW(props) {
       </td>
     } else {     
       const indicator_value =
-        description[data_config.column.indicator_type] === data_config.indicator_type.andel.db ?
-        `${Math.round(ind_per_unit[0][data_config.column.variable] * 100)}%` :
-        `${ind_per_unit[0][data_config.column.variable]}`
+        description[data_config.column.indicator_type] === data_config.indicator_type.andel.db ? 
+          ind_per_unit[0][data_config.column.variable] < 0.1 ?
+            `${Math.round(ind_per_unit[0][data_config.column.variable] *1000 )/10}%` :
+            `${Math.round(ind_per_unit[0][data_config.column.variable] *100 )}%` :
+          `${ind_per_unit[0][data_config.column.variable]}`
       const denominator = ind_per_unit[0][data_config.column.denominator]
       const numerator = Math.round(ind_per_unit[0][data_config.column.variable] * denominator)
 
@@ -87,8 +89,10 @@ function INDICATOR_ROW(props) {
   
   const indicator_value_nation =
     description[data_config.column.indicator_type] === data_config.indicator_type.andel.db ?
-    `${Math.round(data.agg_data.nation.filtered_by_year[0][data_config.column.variable] * 100)}%` :
-    `${data.agg_data.nation.filtered_by_year[0][data_config.column.variable]}`
+      data.agg_data.nation.filtered_by_year[0][data_config.column.variable] < 0.1 ?
+        `${Math.round(data.agg_data.nation.filtered_by_year[0][data_config.column.variable] *1000 )/10}%` :
+        `${Math.round(data.agg_data.nation.filtered_by_year[0][data_config.column.variable]*100 )}%` :
+      `${data.agg_data.nation.filtered_by_year[0][data_config.column.variable]}`
   const denominator_nation = data.agg_data.nation.filtered_by_year[0][data_config.column.denominator]
   const numerator_nation = Math.round(data.agg_data.nation.filtered_by_year[0][data_config.column.variable] * denominator_nation)
 
