@@ -9,7 +9,7 @@ function SELECT_SINGLE(props) {
     update_year
   } = props
   
-  let selection_options = opts.map(opt =>{ return {value :opt , label: opt}; })
+  let selection_options = opts.map(opt =>({value :opt , label: opt}))
   const customStyles = {
     control: (provided, state)=>({
       ...provided,  
@@ -17,7 +17,11 @@ function SELECT_SINGLE(props) {
       backgroundColor: "#00263d",
       boxShadow:  null,
       fontSize: "1rem",
-      border: state.isFocused  ? "3px solid #7ebec7" : state.isSelected ? "3px solid #EEF6F7" : "3px solid #EEF6F7",
+      border: state.isFocused  
+        ? "3px solid #7ebec7" 
+        : state.isSelected 
+        ? "3px solid #EEF6F7" 
+        : "3px solid #EEF6F7",
       minHeight: "2rem",
       cursor: "pointer"
     }), 

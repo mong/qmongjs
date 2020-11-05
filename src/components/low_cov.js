@@ -4,7 +4,7 @@ const LOW_COV = () => {
   const style = { textAlign: "center", opacity:"0.3"}
   return(
     <div style= {style} >
-      lav dg
+      Lav dg
     </div>    
   )
 } 

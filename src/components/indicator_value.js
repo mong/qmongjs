@@ -37,8 +37,7 @@ function INDICATOR_VALUE(props) {
       </td>
     );
   }
-
-
+  
   return (
     <td className = {td_class}>
       <div className="level">

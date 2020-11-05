@@ -6,7 +6,11 @@ import useResizeObserver from './utils'
 
 function LEGEND(props) {
   const {
-    app_text= {indicators: {high: {text: "Høy måloppnåelse", icon: "fa fa-fas fa-circle" }}},
+    app_text = {
+      indicators: {
+        high: {text: "Høy måloppnåelse", icon: "fa fa-fas fa-circle" }
+      }
+    },
     update_show_level_filter,
     show_level_filter,
     selection_bar_height, 
@@ -17,7 +21,7 @@ function LEGEND(props) {
   useEffect(()=>{
     const top = dim ? dim.target.offsetHeight : ""
     update_legend_height(top)
-  },[dim, legend_ref, update_legend_height])
+  }, [dim, legend_ref, update_legend_height])
 
   const legend_btns = Object.keys(app_text.indicators).map(
     function(level){
