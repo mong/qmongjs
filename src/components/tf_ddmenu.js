@@ -18,19 +18,26 @@ const DD_MENU = (props) => {
   const handle_click =  (current_state, states, update_state_function) => {
     const new_state = states.filter(state => state !== current_state)
     update_state_function(new_state[0])
-    
   }
 
   useEffect(()=>{
-    let level_visibility = show_level.replace(/\s/g, '') === "Skjulmålnivå" ?  "visible" : "hidden"
+    let level_visibility = show_level.replace(/\s/g, '') === "Skjulmålnivå" 
+      ?  "visible"
+      : "hidden"
     let level = select(svg_container.current)
     level.selectAll("svg .level").style("visibility", level_visibility)
     }, [svg_container, show_level])
 
   const dorpdown_entries =  [
-    {label : show_level, click : () => handle_click(show_level, level_states, update_show_level), class : "dd-level"},
-    {label : zoom, click : () => handle_click(zoom, zoom_states, update_zoom), class : "dd-zoom"},
-    {label : "Lukk", click : () => update_selected_row(""), class : "dd-close"}
+    {label : show_level,
+     click : () => handle_click(show_level, level_states, update_show_level),
+     class : "dd-level"},
+    {label : zoom, 
+     click : () => handle_click(zoom, zoom_states, update_zoom),
+     class : "dd-zoom"},
+    {label : "Lukk", 
+     click : () => update_selected_row(""), 
+     class : "dd-close"}
   ]
 
   let mouse_leave_dd_cont_timeout;

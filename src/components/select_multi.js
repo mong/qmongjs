@@ -1,20 +1,20 @@
-import  React from 'react'
+import React from 'react'
 import Select from 'react-select'
 
 import { app_text } from '../app_config' 
-
 
 function SELECT_MULTI(props) {
   const {
     opts = [],
     select_className = "pick_treatment_unit",
-    placeholder = <div><i className = "fas fa-search"></i> Søk etter behandlingsenheter </div>,
+    placeholder = <div>
+        <i className = "fas fa-search"></i> Søk etter behandlingsenheter 
+      </div>,
     update_tu,
     treatment_unit
   } = props
   
-  let selection_options = opts//.map(opt =>{ return {value :opt , label: opt}; })
-
+  let selection_options = opts
   const customStyles = {
     control: (provided, state)=>({
       ...provided,
@@ -24,7 +24,11 @@ function SELECT_MULTI(props) {
       fontSize: "1rem",
       border: "none",
       borderRadius: state.isFocused ? 0 : 0,
-      borderBottom: state.isFocused  ? "3px solid #7ebec7" : state.isSelected ? "3px solid #EEF6F7" : "3px solid #EEF6F7"  ,
+      borderBottom: state.isFocused  
+        ? "3px solid #7ebec7" 
+        : state.isSelected 
+        ? "3px solid #EEF6F7" 
+        : "3px solid #EEF6F7" ,
       cursor: "text"
     }), 
     input: (provided) => ({
@@ -63,7 +67,7 @@ function SELECT_MULTI(props) {
       ...provided
     })
   }
-  const value_tu = treatment_unit.map(tu=>{return { value: tu, label: tu }})
+  const value_tu = treatment_unit.map(tu=>({ value: tu, label: tu }))
   const handle_input_change =(e)=>{
     const tu = e !== null ? e.map(e=>e.value) : []
     update_tu(tu)
@@ -82,11 +86,12 @@ function SELECT_MULTI(props) {
         isMulti = {true}
         onChange={(e)=>handle_input_change(e)}
         styles={customStyles}
-        menuIsOpen = {treatment_unit.length < app_text.tu_list.max_nr_tu   ? undefined :false}
+        menuIsOpen = {treatment_unit.length < app_text.tu_list.max_nr_tu   
+          ? undefined 
+          : false }
       /> 
     </form>
   );
-
 }
 
 export default SELECT_MULTI;

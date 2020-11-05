@@ -1,10 +1,8 @@
 import React from 'react'
+
 import INDICATOR_ROW from './indicator_row'
 import REGISTER_NAME from './register_name'
-import app_config from '../app_config'
-
-const { data_config } = app_config
-
+import{ data_config } from '../app_config'
 
 function REGISTER(props) {
   const {
@@ -19,8 +17,9 @@ function REGISTER(props) {
     update_selected_row,
   } = props
 
- 
-  const med_field_class = med_field_filter.includes(register_sname) ? '' : 'filter_med_field' 
+  const med_field_class = med_field_filter.includes(register_sname) 
+    ? '' 
+    : 'filter_med_field' 
   const register_name =  [...new Set ( 
     data.description.map(d=> d[data_config.column.registry_full_name]) 
   )]

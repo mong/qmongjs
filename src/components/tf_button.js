@@ -9,23 +9,21 @@ const TF_BUTTON = (props) => {
    const radio_button_prop =[{
     class_name_inp: 'figure_button figure_button_left',
     type: 'Radio',
+    id: 'table_line',
+    name: 'table_figure_button',
+    value: 'line',
+    icon: 'fas fa-chart-line',
+    label: 'Linje',
+    class_name_label: 'figure_button_label' },
+    { class_name_inp: 'figure_button figure_button_right',
+    type: 'Radio',
     id: 'table_bar',
     name: 'table_figure_button',
     value: 'bar',
     icon: "fas fa-chart-bar",
     label: 'Søyle',
     class_name_label: 'figure_button_label'
-  },
-  {
-    class_name_inp: 'figure_button figure_button_right',
-    type: 'Radio',
-    id: 'table_line',
-    name: 'table_figure_button',
-    value: 'line',
-    icon: 'fas fa-chart-line',
-    label: 'Linje',
-    class_name_label: 'figure_button_label'
-}]
+  }]
 
   const radio_buttons = radio_button_prop.map(rb => {
     return(

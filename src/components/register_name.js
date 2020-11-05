@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function REGISTER_NAME(props) {
   const {
     register_name = "Nasjonalt hoftebruddregister",
