@@ -2,10 +2,8 @@ import React from 'react';
 
 import REGISTER from './register'
 
-import app_config from '../app_config'
+import { med_field } from '../app_config'
 import { filter_register } from '../data/filter_year_unit'
-
-const { med_field } = app_config
 
 function TABLE_BODY(props) {
   const {

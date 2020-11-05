@@ -4,12 +4,12 @@ import INDICATOR_VALUE from './indicator_value'
 import INDICATOR_DESCRIPTION from './indicator_description'
 import TR_FIGURE from './tf_figure'
 
-import app_config from '../app_config'
+import{ data_config } from '../app_config'
 import NO_DATA from './no_data'
 import LOW_COV from './low_cov'
 import LOW_N from './low_n'
 
-const { data_config } = app_config
+
 
 function INDICATOR_ROW(props) {
   const {

@@ -2,9 +2,8 @@ import React from 'react'
 
 import INDICATOR_ROW from './indicator_row'
 import REGISTER_NAME from './register_name'
-import app_config from '../app_config'
+import{ data_config } from '../app_config'
 
-const { data_config } = app_config
 function REGISTER(props) {
   const {
     register_sname = "hjerte",

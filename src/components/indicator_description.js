@@ -1,7 +1,6 @@
 import React from 'react'
 
-import app_config from '../app_config'
-const { data_config } = app_config
+import{ data_config } from '../app_config'
 
 function INDICATOR_DESCRIPTION(props) {
   const {
