@@ -1,5 +1,6 @@
 const description = [{
-  id: "barnediabetes_hba1c_ge_9","dg_id":"dummy_dg",
+  id: "barnediabetes_hba1c_ge_9",
+  dg_id: "dummy_dg",
   include: 1,
   title: "HbA1c ≥ 9,0 %",
   name: "KiE",
