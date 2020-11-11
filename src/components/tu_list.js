@@ -12,12 +12,10 @@ const TU_LIST = (props) => {
   } = props
   
   const [tu_list_display, update_tu_list_display] = useState("none")
-  
-  
-
   const style_tu_list = {display: tu_list_display}
-const tu_str_elm = tu_structure.map(element =>{
-  return(
+  const tu_str_elm = tu_structure.map(element =>{
+  
+    return(
      <TU_LIST_BODY
       key = {`rhf_${element.rhf}`}
       treatment_units = {treatment_units}

@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 const NO_DATA = () => {
   const style = { textAlign: "center", opacity:"0.3"}
   return(

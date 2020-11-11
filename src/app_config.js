@@ -1,4 +1,4 @@
-const med_field = [
+export const med_field = [
   {  
     react_key: "hjerte",
     name: "Hjerte- og karsykdommer",
@@ -158,7 +158,7 @@ export const app_text = {
 
 }
 
-const data_config = {
+export const data_config = {
   column: {
     indicator_id: "ind_id",
     coverage_id: "dg",

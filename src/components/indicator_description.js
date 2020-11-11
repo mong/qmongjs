@@ -1,16 +1,24 @@
 import React from 'react'
 
+import{ data_config } from '../app_config'
 
 function INDICATOR_DESCRIPTION(props) {
   const {
-    title = "This is the title",
-    short_description = "This is the short description of the app",
-    level_direction = 0,
-    level_green = "",
+    description
   } = props
-  const LEVEL_TEXT = level_green === null ? "" :
-    level_direction === 1 ? <h4>ØNSKET MÅLNIVÅ: &#8805; {level_green} </h4> :
-    <h4>ØNSKET MÅLNIVÅ: &#8804; {level_green} </h4>
+
+  const title = description.title
+  const short_description = description.short_description
+  const level_direction = description[data_config.column.level_direction] 
+  const level_green = description[data_config.column.level_green] === null 
+    ? null
+    : `${description[data_config.column.level_green] * 100}%`
+
+  const LEVEL_TEXT = level_green === null 
+    ? "" 
+    : level_direction === 1
+    ? <h4>ØNSKET MÅLNIVÅ: &#8805; {level_green} </h4> 
+    : <h4>ØNSKET MÅLNIVÅ: &#8804; {level_green} </h4>
     
   return (
     <td className = "quality_indicator" >

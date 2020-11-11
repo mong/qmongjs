@@ -8,9 +8,12 @@ const TU_LIST_BODY = (props) => {
     update_treatment_units
   } = props
 
-  const handle_tu_list_click = (selected_unit, treatment_units, update_treatment_units) => {
+  const handle_tu_list_click = (selected_unit,
+    treatment_units,
+    update_treatment_units) => {
 
-    if (treatment_units.length < app_text.tu_list.max_nr_tu && !treatment_units.includes(selected_unit)){
+    if (treatment_units.length < app_text.tu_list.max_nr_tu &&
+       !treatment_units.includes(selected_unit)){
       update_treatment_units([...treatment_units, selected_unit])
     }  else if (treatment_units.includes(selected_unit)){
 
@@ -21,17 +24,20 @@ const TU_LIST_BODY = (props) => {
   }
   const hf_hospital = tu_names.hf.map(element=>{
     const hospital = element.hospital.map(hospital => {
-      const style_hospital =   treatment_units.includes(hospital)  ? {
-        transform: "scale(1.05,1.1)",
-        color: "#08418e"
-      } :{}
+      const style_hospital =   treatment_units.includes(hospital)  
+        ? {transform: "scale(1.05,1.1)",
+           color: "#08418e"}
+        : {}
 
       return(
         <button
           key = {`hospital_${hospital}`}
           className = "tu_list_hospital_btn"
           style = {style_hospital}
-          onClick={()=>handle_tu_list_click(hospital, treatment_units, update_treatment_units)}>
+          onClick={()=>handle_tu_list_click(hospital,
+            treatment_units,
+            update_treatment_units)}
+          >
           {hospital}
         </button>
       );
@@ -41,12 +47,18 @@ const TU_LIST_BODY = (props) => {
       color: "#08418e"
     } :{}
     return(
-      <div key = {`hf_hospital_${element.hf}`}  className = {`tu_list_hf`}>
+      <div
+        key = {`hf_hospital_${element.hf}`} 
+        className = {`tu_list_hf`}
+      >
         <div className = "tu_list_hf_btn_constainer"> 
           <button
             style={style_hf}
             className = "tu_list_hf_btn"
-            onClick={()=>handle_tu_list_click(element.hf, treatment_units, update_treatment_units)}>
+            onClick={()=>handle_tu_list_click(
+              element.hf, treatment_units,
+              update_treatment_units)}
+            >
               {element.hf_full}
             </button> 
         </div>
@@ -58,7 +70,9 @@ const TU_LIST_BODY = (props) => {
   return(
     <>
     <div className = {`tu_list_rhf`} >
-      <h3 className ="tu_list_rhf_header">{tu_names.rhf}</h3>
+      <h3 className ="tu_list_rhf_header">
+        {tu_names.rhf}
+      </h3>
       <div className = {`tu_list_rhf_content`} >
         <div className = {`tu_list_hfs_in_rhf`}>
           {hf_hospital}
