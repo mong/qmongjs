@@ -2,12 +2,16 @@ The goal of qmongjs is collect the javascript used in qmongr in a single module.
 
 ## Installation
 
-You can install the latest version of qmongr from [github](https://github.com/mong/qmongjs).
+You can install the latest version of qmongjs from [github](https://github.com/mong/qmongjs).
 
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Installs all the modules listed as dependencies in package.json.
 
 ### `npm start`
 
@@ -24,7 +28,11 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br />
 
+### `npm test`
+
+Launches the test runner in the interactive watch mode.
+
 ## Ethics
-Please note that the 'qmongr' project is released with a
+Please note that the 'qmongjs' project is released with a
   [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
   By contributing to this project, you agree to abide by its terms.
