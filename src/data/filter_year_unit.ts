@@ -1,22 +1,36 @@
-import { StatisticData } from "../App";
+import { AggData, Description, StatisticData, TreatmentUnit } from "../App";
 import app_config from "../app_config";
 
-const { data_config } = app_config;
+interface NestedTreatmentUnitName {
+  rhf: string;
+  hf: {
+    hf: string;
+    hf_full: string;
+    hospital: string[];
+  }[];
+}
+interface InputParams {
+  selected_unit: string | string[];
+  selected_year: number;
+}
 
-export const filter_year_unit = (data: StatisticData, input_params) => {
+export const filter_year_unit = (
+  data: StatisticData[],
+  input_params: InputParams
+) => {
   const { selected_unit, selected_year } = input_params;
 
   const filtered_by_unit =
     selected_unit !== null
-      ? data.filter((d) =>
-          selected_unit.includes(d[data_config.column.treatment_unit])
+      ? data.filter(
+          (d) => selected_unit.includes(d.unit_name) // [data_config.column.treatment_unit]
         )
       : data;
 
   const filtered_by_year =
     selected_year !== null
       ? filtered_by_unit.filter(
-          (d) => d[data_config.column.year] === selected_year
+          (d) => d.year === selected_year // [data_config.column.year]
         )
       : filtered_by_unit;
 
@@ -26,35 +40,36 @@ export const filter_year_unit = (data: StatisticData, input_params) => {
   };
 };
 
-export const filter_register = (data, register) => {
+export const filter_register = (
+  data: { agg_data: AggData; description: Description[] },
+  register: any
+) => {
   const description = data.description.filter(
-    (desc) =>
+    (desc: any) =>
       desc[app_config.data_config.column.registry_short_name] === register
   );
   const indicator_name = description.map(
-    (desc) => desc[app_config.data_config.column.id]
+    (desc: any) => desc[app_config.data_config.column.id]
   );
-  const agg_data = {};
-  agg_data.filtered_by_unit = data.agg_data.filtered_by_unit.filter((data) =>
-    indicator_name.includes(data[app_config.data_config.column.indicator_id])
+  const agg_data: any = {};
+  agg_data.filtered_by_unit = data.agg_data.filtered_by_unit.filter(
+    (data) => indicator_name.includes(data.ind_id) // [app_config.data_config.column.indicator_id]
   );
-  agg_data.filtered_by_year = data.agg_data.filtered_by_year.filter((data) =>
-    indicator_name.includes(data[app_config.data_config.column.indicator_id])
+  agg_data.filtered_by_year = data.agg_data.filtered_by_year.filter(
+    (data) => indicator_name.includes(data.ind_id) // [app_config.data_config.column.indicator_id]
   );
-  const nation = {};
+  const nation: any = {};
   nation.filtered_by_unit = data.agg_data.nation.filtered_by_unit.filter(
-    (data) =>
-      indicator_name.includes(data[app_config.data_config.column.indicator_id])
+    (data: any) => indicator_name.includes(data.ind_id) // [app_config.data_config.column.indicator_id]
   );
   nation.filtered_by_year = data.agg_data.nation.filtered_by_year.filter(
-    (data) =>
-      indicator_name.includes(data[app_config.data_config.column.indicator_id])
+    (data: any) => indicator_name.includes(data.ind_id) // [app_config.data_config.column.indicator_id]
   );
   agg_data.nation = nation;
   return { agg_data, description };
 };
 
-export const nest_tu_names = (tu_names) => {
+export const nest_tu_names = (tu_names: TreatmentUnit[]) => {
   tu_names.sort((a, b) => {
     return a.hospital > b.hospital ? 1 : a.hospital < b.hospital ? -1 : 0;
   });
@@ -100,7 +115,7 @@ export const nest_tu_names = (tu_names) => {
       }
     }
     return acc;
-  }, []);
+  }, [] as NestedTreatmentUnitName[]);
 
   return nested_tu_names;
 };

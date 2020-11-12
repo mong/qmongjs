@@ -1,9 +1,25 @@
 import React from "react";
-import Select from "react-select";
+import Select, { Styles } from "react-select";
 
 import { app_text } from "../app_config";
 
-function SELECT_MULTI(props) {
+interface OptsTu {
+  label: string;
+  options: {
+    value: string;
+    label: string;
+  }[];
+}
+
+interface Props {
+  opts: OptsTu[];
+  select_className?: string;
+  placeholder?: JSX.Element;
+  update_tu(x: string[]): void;
+  treatment_unit: string[];
+}
+
+function SELECT_MULTI(props: Props) {
   const {
     opts = [],
     select_className = "pick_treatment_unit",
@@ -17,18 +33,19 @@ function SELECT_MULTI(props) {
   } = props;
 
   let selection_options = opts;
-  const customStyles = {
+  const customStyles: Partial<Styles> = {
     control: (provided, state) => ({
       ...provided,
       width: "100%",
       backgroundColor: "#00263d",
-      boxShadow: state.isFocused ? null : null,
+      boxShadow: state.isFocused ? undefined : undefined,
       fontSize: "1rem",
       border: "none",
       borderRadius: state.isFocused ? 0 : 0,
       borderBottom: state.isFocused
         ? "3px solid #7ebec7"
-        : state.isSelected
+        : // @ts-ignore
+        state.isSelected
         ? "3px solid #EEF6F7"
         : "3px solid #EEF6F7",
       cursor: "text",
@@ -48,6 +65,7 @@ function SELECT_MULTI(props) {
       color: "#EEF6F7",
       fontSize: "1.2rem",
     }),
+    // @ts-ignore
     crossIcon: (provided) => ({
       ...provided,
       color: "white",
@@ -69,7 +87,7 @@ function SELECT_MULTI(props) {
     }),
   };
   const value_tu = treatment_unit.map((tu) => ({ value: tu, label: tu }));
-  const handle_input_change = (e) => {
+  const handle_input_change = (e: { value: string }[]) => {
     const tu = e !== null ? e.map((e) => e.value) : [];
     update_tu(tu);
   };
@@ -85,7 +103,7 @@ function SELECT_MULTI(props) {
         openMenuOnClick={false}
         isSearchable
         isMulti={true}
-        onChange={(e) => handle_input_change(e)}
+        onChange={(e: any) => handle_input_change(e)}
         styles={customStyles}
         menuIsOpen={
           treatment_unit.length < app_text.tu_list.max_nr_tu ? undefined : false

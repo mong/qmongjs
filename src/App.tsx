@@ -11,7 +11,7 @@ import { nest_tu_names } from "./data/filter_year_unit";
 import useResizeObserver from "./components/utils";
 import { filter_year_unit } from "./data/filter_year_unit";
 
-const { med_field, app_text, data_config } = config;
+const { med_field, app_text } = config;
 
 export interface StatisticData {
   ind_id: string;
@@ -27,7 +27,7 @@ export interface StatisticData {
   include: number;
 }
 
-interface Description {
+export interface Description {
   id: string;
   dg_id: string;
   include: number;
@@ -45,11 +45,20 @@ interface Description {
   full_name: string;
 }
 
-interface TreatmentUnit {
+export interface TreatmentUnit {
   hospital: string;
   hf: string;
   hf_full: string;
   rhf: string;
+}
+
+export interface AggData {
+  nation: {
+    filtered_by_unit: StatisticData[];
+    filtered_by_year: StatisticData[];
+  };
+  filtered_by_unit: StatisticData[];
+  filtered_by_year: StatisticData[];
 }
 
 function APP() {
@@ -108,10 +117,12 @@ function APP() {
   }
 
   //states
-  const [treatment_units, update_treatment_units] = useState([]);
+  const [treatment_units, update_treatment_units] = useState<string[]>([]);
   const [selected_year, update_selected_year] = useState(2019);
   const [selected_row, update_selected_row] = useState(null);
-  const [selection_bar_height, update_selection_bar_height] = useState(null);
+  const [selection_bar_height, update_selection_bar_height] = useState<
+    number | null
+  >(null);
   const [legend_height, update_legend_height] = useState(null);
 
   const opts_hosp = Array.from(new Set(indicator_hosp.map((d) => d.unit_name)))
@@ -135,7 +146,6 @@ function APP() {
     selected_year: selected_year,
   };
 
-  const agg_data = {};
   const hospital = filter_year_unit(indicator_hosp, input_data);
   const hf = filter_year_unit(indicator_hf, input_data);
   const rhf = filter_year_unit(indicator_rhf, input_data);
@@ -146,54 +156,57 @@ function APP() {
 
   const tu_name_hospital = Array.from(
     new Set(
-      hospital.filtered_by_year.map((d) => d[data_config.column.treatment_unit])
+      hospital.filtered_by_year.map((d) => d.unit_name) // [data_config.column.treatment_unit]
     )
   ).sort();
   const tu_name_hf = Array.from(
     new Set(
-      hf.filtered_by_year.map((d) => d[data_config.column.treatment_unit])
+      hf.filtered_by_year.map((d) => d.unit_name) // [data_config.column.treatment_unit]
     )
   ).sort();
   const tu_name_rhf = Array.from(
     new Set(
-      rhf.filtered_by_year.map((d) => d[data_config.column.treatment_unit])
+      rhf.filtered_by_year.map((d) => d.unit_name) // [data_config.column.treatment_unit]
     )
   ).sort();
   const tu_name = tu_name_hospital.concat(tu_name_hf, tu_name_rhf);
   const colspan = tu_name.length + 2;
-  agg_data.nation = nation;
-  agg_data.filtered_by_unit = hospital.filtered_by_unit.concat(
-    hf.filtered_by_unit,
-    rhf.filtered_by_unit
-  );
-  agg_data.filtered_by_year = hospital.filtered_by_year.concat(
-    hf.filtered_by_year,
-    rhf.filtered_by_year
-  );
+
+  const agg_data: AggData = {
+    nation,
+    filtered_by_unit: hospital.filtered_by_unit.concat(
+      hf.filtered_by_unit,
+      rhf.filtered_by_unit
+    ),
+    filtered_by_year: hospital.filtered_by_year.concat(
+      hf.filtered_by_year,
+      rhf.filtered_by_year
+    ),
+  };
 
   const unique_indicators =
     tu_name.length > 0
-      ? [
-          ...new Set(
+      ? Array.from(
+          new Set(
             agg_data.filtered_by_year.map(
-              (d) => d[data_config.column.indicator_id]
+              (d) => d.ind_id // [data_config.column.indicator_id]
             )
-          ),
-        ]
-      : [
-          ...new Set(
+          )
+        )
+      : Array.from(
+          new Set(
             agg_data.nation.filtered_by_year.map(
-              (d) => d[data_config.column.indicator_id]
+              (d) => d.ind_id // [data_config.column.indicator_id]
             )
-          ),
-        ];
-  const unique_register = [
-    ...new Set(med_field.flatMap((entry) => entry.key)),
-  ].map((registry) => {
+          )
+        );
+  const unique_register = Array.from(
+    new Set(med_field.flatMap((entry) => entry.key))
+  ).map((registry) => {
     const ind = description.filter(
       (description) =>
-        description[data_config.column.registry_short_name] === registry &&
-        unique_indicators.includes(description[data_config.column.id])
+        description.rname === registry && // [data_config.column.registry_short_name]
+        unique_indicators.includes(description.id) // [data_config.column.id]
     );
     return { registry_name: registry, number_ind: ind.length, indicators: ind };
   });
@@ -202,10 +215,13 @@ function APP() {
   const tu_structure = nest_tu_names(tu_names);
 
   //height of the selection bar
-  const selection_bar_ref = useRef();
+  const selection_bar_ref = useRef<HTMLDivElement | null>(null);
   const selection_bar_dim = useResizeObserver(selection_bar_ref);
   useEffect(() => {
-    const top = selection_bar_dim ? selection_bar_dim.target.offsetHeight : "";
+    if (!selection_bar_dim) {
+      return;
+    }
+    const top = (selection_bar_dim.target as HTMLElement).offsetHeight ?? "";
     update_selection_bar_height(top);
   }, [selection_bar_dim, selection_bar_ref]);
 
@@ -219,8 +235,6 @@ function APP() {
               opts={opts_tu}
               update_tu={update_treatment_units}
               treatment_unit={treatment_units}
-              selected_row={selected_row}
-              update_selected_row={update_selected_row}
             />
             <TU_LIST
               tu_structure={tu_structure}
