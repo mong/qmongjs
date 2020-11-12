@@ -23,4 +23,3 @@ npm-debug.log
 dist/
 .editorconfig
 npm-debug.log
-package-lock.json
