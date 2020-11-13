@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Props {
-  chart_type: string;
+  chart_type: "bar" | "line";
   update_chart_type: (value: string) => void;
 }
 
