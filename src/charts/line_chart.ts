@@ -39,6 +39,8 @@ export const line_chart = function ({
   figure_data,
   levels,
 }: LineChartProps) {
+  console.log("debugging::", props);
+  if (!props) return null;
   const { width, height, margin, zoom } = props;
   const margin_px = {
     top: height * margin.top,
@@ -131,12 +133,12 @@ export const line_chart = function ({
   //   return new Date(d);
   // });
 
-  if (x_axis_tick_values.length > 8) {
-    x_axis_tick_values =
-      x_axis_tick_values.length % 2 === 0
-        ? x_axis_tick_values.filter((data, index) => index % 2 !== 0)
-        : x_axis_tick_values.filter((data, index) => index % 2 === 0);
-  }
+  // if (x_axis_tick_values.length > 8) {
+  //   x_axis_tick_values =
+  //     x_axis_tick_values.length % 2 === 0
+  //       ? x_axis_tick_values.filter((data, index) => index % 2 !== 0)
+  //       : x_axis_tick_values.filter((data, index) => index % 2 === 0);
+  // }
 
   labeled_x_axis_time(
     g,
@@ -152,6 +154,7 @@ export const line_chart = function ({
           : x_axis_tick_values,
     })
   );
+  console.log(config.column.variable, "debug");
   const lines = line()
     .x((d) => x_scale(new Date(`${config?.column?.year}`)))
     // @ts-expect-error Fixme
@@ -168,27 +171,34 @@ export const line_chart = function ({
     .data(levels)
     .enter()
     .append("rect")
+    // @ts-expect-error Fixme
     .merge(level)
     .attr("class", "level")
     .attr("x", 0)
+    // @ts-expect-error Fixme
     .attr("y", (d) => y_scale(d.start))
+    // @ts-expect-error Fixme
     .attr("height", (d) => inner_height - y_scale(d.start - d.end))
     .attr("width", inner_width)
+    // @ts-expect-error Fixme
     .attr("fill", (d) => level_colors[d.level])
     .style("opacity", "0.2")
     .style("visibility", level_visibility);
 
   let path = g
     .selectAll(".table-line-chart")
+    // @ts-expect-error Fixme
     .data(group(figure_data, (d) => d[config.column.treatment_unit]));
 
   path.exit().transition().style("opacity", 0).remove();
-
+  // @ts-expect-error Fixme
   path = path
     .enter()
     .append("path")
+    // @ts-expect-error Fixme
     .merge(path)
     .attr("class", (d) => `table-line-chart  ${d[0].replace(/\s/g, "")}`)
+    // @ts-expect-error Fixme
     .attr("d", (d) => lines(d[1]))
     .attr("stroke", (d) => line_color_scale(d[0]))
     .style("stroke-width", 3)
@@ -196,9 +206,11 @@ export const line_chart = function ({
     .style("stroke-linecap", "round")
     .attr("fill", "none")
     .style("mix-blend-mode", "multiply");
-
+  // @ts-expect-error Fixme
   if (zoom.replace(/\s/g, "") === "Zoomut") {
+    // @ts-expect-error Fixme
     let y_min_val = min(figure_data, (d) => d[config.column.variable]);
+    // @ts-expect-error Fixme
     let y_max_val = max(figure_data, (d) => d[config.column.variable]);
     let additional_margin = (y_max_val - y_min_val) * 0.2;
     y_min_val = Math.floor((y_min_val - additional_margin) * 100) / 100;
@@ -215,30 +227,37 @@ export const line_chart = function ({
     let label_format = y_max - y_min < 0.06 ? ",.1%" : ",.0%";
 
     path
+      // @ts-expect-error Fixme
       .data(group(figure_data, (d) => d[config.column.treatment_unit]))
       .enter()
       .append("path")
+      // @ts-expect-error Fixme
       .merge(path)
       .transition()
       .delay(1000)
       .duration(1000)
+      // @ts-expect-error Fixme
       .attr("d", (d) => lines(d[1]));
 
     level
       .data(levels)
       .enter()
       .append("rect")
+      // @ts-expect-error Fixme
       .merge(level)
       .transition()
       .delay(1000)
       .duration(1000)
       .attr("y", (d) => {
         let start;
+        // @ts-expect-error Fixme
         if (y_scale(d.start) > inner_height) {
           start = y_scale.invert(inner_height);
+          // @ts-expect-error Fixme
         } else if (y_scale(d.start) < 0) {
           start = y_scale.invert(0);
         } else {
+          // @ts-expect-error Fixme
           start = d.start;
         }
         return y_scale(start);
@@ -246,18 +265,24 @@ export const line_chart = function ({
       .attr("height", (d) => {
         let end;
         let start;
+        // @ts-expect-error Fixme
         if (y_scale(d.start) > inner_height) {
           start = y_scale.invert(inner_height);
+          // @ts-expect-error Fixme
         } else if (y_scale(d.start) < 0) {
           start = y_scale.invert(0);
         } else {
+          // @ts-expect-error Fixme
           start = d.start;
         }
-
+        // @ts-expect-error Fixme
         if (y_scale(d.end) <= inner_height && y_scale(d.end) >= 0) {
+          // @ts-expect-error Fixme
           end = d.end;
+          // @ts-expect-error Fixme
         } else if (y_scale(d.end) > inner_height) {
           end = y_scale.invert(inner_height);
+          // @ts-expect-error Fixme
         } else if (y_scale(d.end) < 0) {
           end = y_scale.invert(0);
         }
