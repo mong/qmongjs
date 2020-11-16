@@ -16,52 +16,50 @@ import { labeled_y_axis_linear } from "./axis_y_linear_labeled";
 import { labeled_x_axis_time } from "./axis_x_time_labeled";
 import { page_colors } from "./page_colors.js";
 import app_config from "../app_config";
-import { StatisticData } from "../App";
-
+import { AggData, StatisticData } from "../App";
 const config = app_config.data_config;
 
-// line chart
 type LineChartProps = {
-  selector: string;
-  props: {
+  container: any;
+  selector?: string;
+  svg_props: {
     width: number;
     height: number;
     margin: { top: number; bottom: number; right: number; left: number };
-    zoom: number;
+    zoom: string;
   };
-  figure_data: StatisticData[];
-  levels: any;
+  figure_data: AggData[];
+  levels: { level: string }[];
 };
-
+// line chart
 export const line_chart = function ({
-  selector,
-  props,
+  container,
+  svg_props,
   figure_data,
   levels,
 }: LineChartProps) {
-  console.log("debugging::", props);
-  if (!props) return null;
-  const { width, height, margin, zoom } = props;
+  const { width, height, margin } = svg_props;
+  const { zoom } = svg_props;
   const margin_px = {
     top: height * margin.top,
     bottom: height * margin.bottom,
     right: width * margin.right,
     left: width * margin.left,
   };
+
   const inner_width = width - margin_px.left - margin_px.right;
   const inner_height = height - margin_px.top - margin_px.bottom;
 
-  const container = select(selector);
+  container = select(container);
 
   const x_scale = scaleTime()
-    //@ts-expect-error Fixme
     .domain([
       min(figure_data, (d) => {
-        return new Date(d.year);
-      }),
+        return new Date(d.year + "");
+      }) || 0,
       max(figure_data, (d) => {
-        return new Date(d.year);
-      }),
+        return new Date(d.year + "");
+      }) || 0,
     ])
     .range([0, inner_width]);
   let y_scale = scaleLinear().domain([0, 1]).range([inner_height, 0]);
@@ -86,27 +84,21 @@ export const line_chart = function ({
     })
   );
 
-  // let svg = container.selectAll("svg").data([null]);
-  // svg = container.selectAll("svg").data([null])
-  const svg = container
-    .selectAll("svg")
-    .data([null])
+  let svg = container.selectAll("svg").data([null]);
+  svg = svg
     .enter()
     .append("svg")
-    // .merge(svg)
+    .merge(svg)
     .attr("width", width - 20)
     .attr("height", height)
     .style("background-color", colors.background_color);
 
-  // let g = svg.selectAll(".grouped_element").data([null]);
-  // g = g
-  const g = svg
-    .selectAll(".grouped_element")
-    .data([null])
+  let g = svg.selectAll(".grouped_element").data([null]);
+  g = g
     .enter()
     .append("g")
     .attr("class", "grouped_element")
-    // .merge(g)
+    .merge(g)
     .attr(
       "transform",
       "translate(" + margin_px.left + " ," + margin_px.top + ")"
@@ -121,24 +113,22 @@ export const line_chart = function ({
     })
   );
 
-  const x_axis_tick_values = Array.from(
+  let x_axis_tick_values = Array.from(
     new Set(
       figure_data.map((d) => {
         return new Date(d.year);
       })
     )
   );
-
-  // x_axis_tick_values = x_axis_tick_values.map((d) => {
-  //   return new Date(d);
-  // });
-
-  // if (x_axis_tick_values.length > 8) {
-  //   x_axis_tick_values =
-  //     x_axis_tick_values.length % 2 === 0
-  //       ? x_axis_tick_values.filter((data, index) => index % 2 !== 0)
-  //       : x_axis_tick_values.filter((data, index) => index % 2 === 0);
-  // }
+  x_axis_tick_values = x_axis_tick_values.map((d) => {
+    return new Date(d);
+  });
+  if (x_axis_tick_values.length > 8) {
+    x_axis_tick_values =
+      x_axis_tick_values.length % 2 === 0
+        ? x_axis_tick_values.filter((data, index) => index % 2 !== 0)
+        : x_axis_tick_values.filter((data, index) => index % 2 === 0);
+  }
 
   labeled_x_axis_time(
     g,
@@ -146,72 +136,73 @@ export const line_chart = function ({
       x_scale,
       inner_width,
       inner_height,
-      x_axis_tick_values:
-        x_axis_tick_values.length > 8
-          ? x_axis_tick_values.length % 2 === 0
-            ? x_axis_tick_values.filter((data, index) => index % 2 !== 0)
-            : x_axis_tick_values.filter((data, index) => index % 2 === 0)
-          : x_axis_tick_values,
+      x_axis_tick_values,
     })
   );
-  console.log(config.column.variable, "debug");
+
   const lines = line()
-    .x((d) => x_scale(new Date(`${config?.column?.year}`)))
-    // @ts-expect-error Fixme
-    .y((d) => y_scale(d[`${config.column.variable}`]));
-  // @ts-expect-error Fixme
-  let show_level = document.querySelector(".dropdown_ul .dd-level").innerHTML;
+    .x((d) => x_scale(new Date(config.column.year)))
+    .y((d) => y_scale(+config.column.variable));
+
+  let show_level = document?.querySelector(".dropdown_ul .dd-level")?.innerHTML;
   let level_visibility =
-    show_level.replace(/\s/g, "") === "Skjulmålnivå" ? "visible" : "hidden";
-  const level_colors = page_colors.traffic_light_colors;
+    show_level?.replace(/\s/g, "") === "Skjulmålnivå" ? "visible" : "hidden";
+  const level_colors: { high: string; mid: string; low: string } =
+    page_colors.traffic_light_colors;
 
   let level = g.selectAll("rect.level");
-  // @ts-expect-error Fixme
   level = level
     .data(levels)
     .enter()
     .append("rect")
-    // @ts-expect-error Fixme
     .merge(level)
     .attr("class", "level")
     .attr("x", 0)
-    // @ts-expect-error Fixme
-    .attr("y", (d) => y_scale(d.start))
-    // @ts-expect-error Fixme
-    .attr("height", (d) => inner_height - y_scale(d.start - d.end))
+    .attr("y", (d: any) => y_scale(d.start))
+    .attr("height", (d: any) => inner_height - y_scale(d.start - d.end))
     .attr("width", inner_width)
-    // @ts-expect-error Fixme
-    .attr("fill", (d) => level_colors[d.level])
+    .attr(
+      "fill",
+      (d: { level: "high" | "mid" | "low" }) => level_colors[d.level]
+    )
     .style("opacity", "0.2")
     .style("visibility", level_visibility);
 
   let path = g
     .selectAll(".table-line-chart")
-    // @ts-expect-error Fixme
-    .data(group(figure_data, (d) => d[config.column.treatment_unit]));
+    .data(
+      group(
+        figure_data,
+        (d) => d[config.column.treatment_unit as keyof StatisticData]
+      )
+    );
 
   path.exit().transition().style("opacity", 0).remove();
-  // @ts-expect-error Fixme
+
   path = path
     .enter()
     .append("path")
-    // @ts-expect-error Fixme
     .merge(path)
-    .attr("class", (d) => `table-line-chart  ${d[0].replace(/\s/g, "")}`)
-    // @ts-expect-error Fixme
-    .attr("d", (d) => lines(d[1]))
-    .attr("stroke", (d) => line_color_scale(d[0]))
+    .attr("class", (d: any) => `table-line-chart  ${d[0].replace(/\s/g, "")}`)
+    .attr("d", (d: any) => lines(d[1]))
+    .attr("stroke", (d: any) => line_color_scale(d[0]))
     .style("stroke-width", 3)
     .style("stroke-linejoin", "round")
     .style("stroke-linecap", "round")
     .attr("fill", "none")
     .style("mix-blend-mode", "multiply");
-  // @ts-expect-error Fixme
+
   if (zoom.replace(/\s/g, "") === "Zoomut") {
-    // @ts-expect-error Fixme
-    let y_min_val = min(figure_data, (d) => d[config.column.variable]);
-    // @ts-expect-error Fixme
-    let y_max_val = max(figure_data, (d) => d[config.column.variable]);
+    let y_min_val =
+      min(
+        figure_data,
+        (d) => +d[config.column.variable as keyof StatisticData]
+      ) || 0;
+    let y_max_val =
+      max(
+        figure_data,
+        (d) => +d[config.column.variable as keyof StatisticData]
+      ) || 0;
     let additional_margin = (y_max_val - y_min_val) * 0.2;
     y_min_val = Math.floor((y_min_val - additional_margin) * 100) / 100;
     y_max_val = Math.ceil((y_max_val + additional_margin) * 100) / 100;
@@ -227,62 +218,54 @@ export const line_chart = function ({
     let label_format = y_max - y_min < 0.06 ? ",.1%" : ",.0%";
 
     path
-      // @ts-expect-error Fixme
-      .data(group(figure_data, (d) => d[config.column.treatment_unit]))
+      .data(
+        group(
+          figure_data,
+          (d) => d[config.column.treatment_unit as keyof StatisticData]
+        )
+      )
       .enter()
       .append("path")
-      // @ts-expect-error Fixme
       .merge(path)
       .transition()
       .delay(1000)
       .duration(1000)
-      // @ts-expect-error Fixme
-      .attr("d", (d) => lines(d[1]));
+      .attr("d", (d: any) => lines(d[1]));
 
     level
       .data(levels)
       .enter()
       .append("rect")
-      // @ts-expect-error Fixme
       .merge(level)
       .transition()
       .delay(1000)
       .duration(1000)
-      .attr("y", (d) => {
+      .attr("y", (d: any) => {
         let start;
-        // @ts-expect-error Fixme
         if (y_scale(d.start) > inner_height) {
           start = y_scale.invert(inner_height);
-          // @ts-expect-error Fixme
         } else if (y_scale(d.start) < 0) {
           start = y_scale.invert(0);
         } else {
-          // @ts-expect-error Fixme
           start = d.start;
         }
         return y_scale(start);
       })
-      .attr("height", (d) => {
+      .attr("height", (d: any) => {
         let end;
         let start;
-        // @ts-expect-error Fixme
         if (y_scale(d.start) > inner_height) {
           start = y_scale.invert(inner_height);
-          // @ts-expect-error Fixme
         } else if (y_scale(d.start) < 0) {
           start = y_scale.invert(0);
         } else {
-          // @ts-expect-error Fixme
           start = d.start;
         }
-        // @ts-expect-error Fixme
+
         if (y_scale(d.end) <= inner_height && y_scale(d.end) >= 0) {
-          // @ts-expect-error Fixme
           end = d.end;
-          // @ts-expect-error Fixme
         } else if (y_scale(d.end) > inner_height) {
           end = y_scale.invert(inner_height);
-          // @ts-expect-error Fixme
         } else if (y_scale(d.end) < 0) {
           end = y_scale.invert(0);
         }
