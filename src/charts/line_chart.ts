@@ -201,17 +201,16 @@ export const line_chart = function ({
     let y_min_val =
       min(
         figure_data,
-        (d) => +d[config.column.variable as keyof StatisticData]
+        (d) => d[config.column.variable as keyof StatisticData] as number
       ) || 0;
     let y_max_val =
       max(
         figure_data,
-        (d) => +d[config.column.variable as keyof StatisticData]
+        (d) => d[config.column.variable as keyof StatisticData] as number
       ) || 0;
     let additional_margin = (y_max_val - y_min_val) * 0.2;
     y_min_val = Math.floor((y_min_val - additional_margin) * 100) / 100;
     y_max_val = Math.ceil((y_max_val + additional_margin) * 100) / 100;
-
     let y_min;
     let y_max;
 
