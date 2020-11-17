@@ -121,7 +121,7 @@ export const line_chart = function ({
   let x_axis_tick_values = Array.from(
     new Set(
       figure_data.map((d) => {
-        return new Date(d.year);
+        return new Date(d.year + "");
       })
     )
   );
@@ -144,10 +144,12 @@ export const line_chart = function ({
       x_axis_tick_values,
     })
   );
-
+  // Fixme, both d vars are of type StatisticData
   const lines = line()
-    .x((d) => x_scale(new Date(config.column.year)))
-    .y((d) => y_scale(+config.column.variable));
+    .x((d: any) =>
+      x_scale(new Date(d[config.column.year as keyof StatisticData] + ""))
+    )
+    .y((d: any) => y_scale(d[config.column.variable as keyof StatisticData]));
 
   let show_level = document?.querySelector(".dropdown_ul .dd-level")?.innerHTML;
   let level_visibility =
@@ -235,7 +237,6 @@ export const line_chart = function ({
       .delay(1000)
       .duration(1000)
       .attr("d", (d: any) => lines(d[1]));
-
     level
       .data(levels)
       .enter()
