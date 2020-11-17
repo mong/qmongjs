@@ -7,17 +7,16 @@ import TF_LONG_DESCRIPTION from "./tf_description";
 import { bar_chart } from "../charts/barchart";
 import { line_chart } from "../charts/line_chart";
 import { level_boundary } from "../charts/tr_utils";
-import { AggData, StatisticData } from "../App";
+import { AggData, StatisticData, Description } from "../App";
 
 type TfFigureProps = {
   colspan: number;
-  data: any[];
+  data: { agg_data: AggData[]; description: Description[] };
   figure_class: any;
   update_selected_row: any;
 };
 function TF_FIGURE(props: any) {
   const { colspan = 3, data, figure_class, update_selected_row } = props;
-  console.log("DATA::", data);
   const svg_container_ref = useRef<HTMLDivElement>(null);
   if (
     !data.agg_data.filtered_by_year.some(
@@ -47,8 +46,13 @@ function TF_FIGURE(props: any) {
       margin: { top: 0.05, bottom: 0.1, right: 0.15, left: 0.2 },
       zoom: zoom,
     };
-    const levels = [{ level: "high" }, { level: "mid" }, { level: "low" }];
+    let levels = [
+      { level: "high", start: 0, end: 0 },
+      { level: "mid", start: 0, end: 0 },
+      { level: "low", start: 0, end: 0 },
+    ];
     levels.forEach(level_boundary, data.description[0]);
+
     if (chart_type === "bar") {
       const nr_svg_children = svg_container_ref.current.childElementCount;
       for (let i = 0; i < nr_svg_children; i++) {
@@ -82,7 +86,7 @@ function TF_FIGURE(props: any) {
         );
       }
       svg_props.margin = { top: 0.05, bottom: 0.2, right: 0.15, left: 0.05 };
-      const filtered_linechart_data: AggData[] = data.agg_data.filtered_by_unit.filter(
+      const filtered_linechart_data: StatisticData[] = data.agg_data.filtered_by_unit.filter(
         (data_by_year: StatisticData) => {
           if (data_by_year.unit_level !== "nation") {
             return !(
@@ -94,8 +98,9 @@ function TF_FIGURE(props: any) {
           }
         }
       );
+
       line_chart({
-        container: svg_container_ref.current,
+        svg_container: svg_container_ref.current,
         svg_props: svg_props,
         figure_data: filtered_linechart_data,
         levels: levels,

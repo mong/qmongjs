@@ -16,11 +16,11 @@ import { labeled_y_axis_linear } from "./axis_y_linear_labeled";
 import { labeled_x_axis_time } from "./axis_x_time_labeled";
 import { page_colors } from "./page_colors.js";
 import app_config from "../app_config";
-import { AggData, StatisticData } from "../App";
+import { StatisticData } from "../App";
 const config = app_config.data_config;
 
 type LineChartProps = {
-  container: any;
+  svg_container: HTMLDivElement;
   selector?: string;
   svg_props: {
     width: number;
@@ -28,12 +28,16 @@ type LineChartProps = {
     margin: { top: number; bottom: number; right: number; left: number };
     zoom: string;
   };
-  figure_data: AggData[];
-  levels: { level: string }[];
+  figure_data: StatisticData[];
+  levels: {
+    level: string;
+    start: number;
+    end: number;
+  }[];
 };
 // line chart
 export const line_chart = function ({
-  container,
+  svg_container,
   svg_props,
   figure_data,
   levels,
@@ -50,7 +54,7 @@ export const line_chart = function ({
   const inner_width = width - margin_px.left - margin_px.right;
   const inner_height = height - margin_px.top - margin_px.bottom;
 
-  container = select(container);
+  const container = select(svg_container);
 
   const x_scale = scaleTime()
     .domain([
@@ -84,7 +88,8 @@ export const line_chart = function ({
     })
   );
 
-  let svg = container.selectAll("svg").data([null]);
+  // Fixme any / Type 'Selection<BaseType, undefined, HTMLDivElement, unknown>' is not assignable to type 'Selection<SVGSVGElement, undefined, HTMLDivElement, unknown>'.
+  let svg: any = container.selectAll("svg").data([null]);
   svg = svg
     .enter()
     .append("svg")
