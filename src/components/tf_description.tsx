@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 interface Props {
-  description_title: string;
+  description_title?: string;
   description_text: string;
 }
 
