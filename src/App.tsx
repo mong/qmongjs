@@ -13,6 +13,8 @@ import { filter_year_unit } from "./data/filter_year_unit";
 
 const { med_field, app_text } = config;
 
+const isDev = process.env.NODE_ENV === "development";
+
 export interface StatisticData {
   ind_id: string;
   unit_level: string;
@@ -63,23 +65,23 @@ export interface AggData {
 
 function APP() {
   //data as state
-  const [indicator_hosp, update_hosp] = useState<StatisticData[]>(
-    (window as any).indicator_hosp ? (window as any).indicator_hosp : []
+  const [indicator_hosp, update_hosp] = useState<StatisticData[]>(() =>
+    isDev ? require("./data/indicator_hosp.min.json") : []
   );
-  const [indicator_hf, update_hf] = useState<StatisticData[]>(
-    (window as any).indicator_hf ? (window as any).indicator_hf : []
+  const [indicator_hf, update_hf] = useState<StatisticData[]>(() =>
+    isDev ? require("./data/indicator_hf.min.json") : []
   );
-  const [indicator_rhf, update_rhf] = useState<StatisticData[]>(
-    (window as any).indicator_rhf ? (window as any).indicator_rhf : []
+  const [indicator_rhf, update_rhf] = useState<StatisticData[]>(() =>
+    isDev ? require("./data/indicator_rhf.min.json") : []
   );
-  const [indicator_nation, update_nation] = useState<StatisticData[]>(
-    (window as any).indicator_nat ? (window as any).indicator_nat : []
+  const [indicator_nation, update_nation] = useState<StatisticData[]>(() =>
+    isDev ? require("./data/indicator_nat.min.json") : []
   );
-  const [description, update_description] = useState<Description[]>(
-    (window as any).description ? (window as any).description : []
+  const [description, update_description] = useState<Description[]>(() =>
+    isDev ? require("./data/description.min.json") : []
   );
-  const [tu_names, update_tu_names] = useState<TreatmentUnit[]>(
-    (window as any).tu_names ? (window as any).tu_names : []
+  const [tu_names, update_tu_names] = useState<TreatmentUnit[]>(() =>
+    isDev ? require("./data/tu_names.min.json") : []
   );
 
   //update data as it arrives
