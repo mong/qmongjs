@@ -12,7 +12,9 @@
     "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx src",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
     "format": "npm run prettier -- --write",
-    "check-format": "npm run prettier -- --list-different"
+    "check-format": "npm run prettier -- --list-different",
+    "check-types": "tsc --noEmit",
+    "validate": "npm run check-types && npm run check-format && npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
