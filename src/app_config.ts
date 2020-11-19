@@ -61,7 +61,14 @@ export const med_field = [
   {  
     react_key: "tarm",
     name: "Mage og tarm",
-    key: ["gastronet","fedmekir","nra","norgast"]
+    key: [
+      "gastronet",
+      "fedmekir",
+      "nra",
+      "norgast",
+      "tarmkreft_colon",
+      "tarmkreft_rectum"
+    ]
   },
   {  
     react_key: "gyn",
