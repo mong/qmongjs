@@ -4,7 +4,6 @@ The goal of qmongjs is collect the javascript used in qmongr in a single module.
 
 You can install the latest version of qmongjs from [github](https://github.com/mong/qmongjs).
 
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -33,6 +32,7 @@ The build is minified and the filenames include the hashes.<br />
 Launches the test runner in the interactive watch mode.
 
 ## Ethics
+
 Please note that the 'qmongjs' project is released with a
-  [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
-  By contributing to this project, you agree to abide by its terms.
+[Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.

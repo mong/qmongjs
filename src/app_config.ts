@@ -1,5 +1,5 @@
 export const med_field = [
-  {  
+  {
     react_key: "hjerte",
     name: "Hjerte- og karsykdommer",
     key: [
@@ -10,8 +10,8 @@ export const med_field = [
       "hjertestans",
       "hjertesvikt",
       "hjertekirurgi",
-      "norkar"
-    ]
+      "norkar",
+    ],
   },
   {
     react_key: "kreft",
@@ -25,25 +25,25 @@ export const med_field = [
       "melanom",
       "prostata",
       "tarmkreft_colon",
-      "tarmkreft_rectum"
-    ]
-  }/*,
+      "tarmkreft_rectum",
+    ],
+  } /*,
   {
     react_key: "luft",
     name: "Luftveier",
     key: ["mek_vent"]
   }*/,
-  {  
+  {
     react_key: "diabetes",
     name: "Diabetes",
-    key: ["barnediabetes","diabetes_voksne"]
+    key: ["barnediabetes", "diabetes_voksne"],
   },
-  {  
+  {
     react_key: "nerve",
     name: "Nervesystemet",
-    key: ["cp","ms","parkinson","norkog"]
+    key: ["cp", "ms", "parkinson", "norkog"],
   },
-  {  
+  {
     react_key: "muskel",
     name: "Muskel og skjelett",
     key: [
@@ -55,10 +55,10 @@ export const med_field = [
       "nnrr",
       "muskel",
       "nkr_nakke",
-      "nkr_rygg"
-    ]
+      "nkr_rygg",
+    ],
   },
-  {  
+  {
     react_key: "tarm",
     name: "Mage og tarm",
     key: [
@@ -67,39 +67,39 @@ export const med_field = [
       "nra",
       "norgast",
       "tarmkreft_colon",
-      "tarmkreft_rectum"
-    ]
+      "tarmkreft_rectum",
+    ],
   },
-  {  
+  {
     react_key: "gyn",
     name: "Gynekologi",
-    key: ["nger","kvinl_inkontinens"]
+    key: ["nger", "kvinl_inkontinens"],
   },
-  {  
+  {
     react_key: "nyre",
     name: "Nyre",
-    key: ["nyre"]
-  }, 
-  {  
+    key: ["nyre"],
+  },
+  {
     react_key: "intensiv",
     name: "Skade og intensiv",
-    key: ["traume","intensiv","nnk"]
+    key: ["traume", "intensiv", "nnk"],
   },
-  {  
+  {
     react_key: "rehab",
-    name:"Rehabilitering",
-    key: ["nnrr","norscir"]
+    name: "Rehabilitering",
+    key: ["nnrr", "norscir"],
   },
-  {  
+  {
     react_key: "autoimmun",
     name: "Autoimmune sykdommer",
-    key: ["roas","norvas"]
+    key: ["roas", "norvas"],
   },
-  {  
+  {
     react_key: "revma",
     name: "Revmatologi",
-    key: ["norartritt","norvas"]
-  }/*,
+    key: ["norartritt", "norvas"],
+  } /*,
   {  
     react_key: "onh", 
     name: "Øre-nese-hals",
@@ -115,7 +115,7 @@ export const med_field = [
     name: "Psykisk helse og rus",
     key: ["kvarus","norspis"]
   }*/,
-  {  
+  {
     react_key: "barn",
     name: "Barn",
     key: [
@@ -124,9 +124,9 @@ export const med_field = [
       "barnekreft",
       "barnediabetes",
       "ganespalt",
-      "nnk"
-    ]
-  }/*,
+      "nnk",
+    ],
+  } /*,
   {  
     react_key: "annet",
     name: "Andre",
@@ -134,29 +134,28 @@ export const med_field = [
       "smerte",
       "porfyri"
     ]
-  }  */
-]
+  }  */,
+];
 export const app_text = {
   menus: {
     unit: "Velg behandlingssted",
-    year: "År:"
+    year: "År:",
   },
   indicators: {
-    high: {text: "Høy måloppnåelse", icon: "fa fa-fas fa-circle"},
-    moderate:{ text: "Moderat måloppnåelse", icon: "fa fa-fas fa-adjust"},
-    low: {text: "Lav måloppnåelse", icon: "fa fa-circle-o" }
+    high: { text: "Høy måloppnåelse", icon: "fa fa-fas fa-circle" },
+    moderate: { text: "Moderat måloppnåelse", icon: "fa fa-fas fa-adjust" },
+    low: { text: "Lav måloppnåelse", icon: "fa fa-circle-o" },
   },
-  table:{
+  table: {
     main_column: "Kvalitetsindikator",
     national_column: "Nasjonalt",
     desired_level: "Ønsket målnivå",
   },
-  tu_list:{
+  tu_list: {
     header_text: "Velg behandlingsenheter",
-    max_nr_tu: 5
-  }
-
-}
+    max_nr_tu: 5,
+  },
+};
 
 export const data_config = {
   column: {
@@ -179,43 +178,43 @@ export const data_config = {
     indicator_measurement_unit: "measure_unit",
     indicator_short_description: "short_description",
     indicator_long_description: "long_description",
-    level_green: 'level_green',
-    level_yellow: 'level_yellow',
-    level_direction: 'level_direction',
-    min_indicator_value: 'min_value',
-    max_indicator_value: 'max_value',
-    min_denominator: 'min_denominator',
-    id: 'id'
+    level_green: "level_green",
+    level_yellow: "level_yellow",
+    level_direction: "level_direction",
+    min_indicator_value: "min_value",
+    max_indicator_value: "max_value",
+    min_denominator: "min_denominator",
+    id: "id",
   },
   indicator_type: {
     andel: {
-      db: 'andel',
-      full_name: 'Andel'
+      db: "andel",
+      full_name: "Andel",
     },
     median: {
-      db: 'median',
-      full_name: 'Median'
-    }
+      db: "median",
+      full_name: "Median",
+    },
   },
   treatment_unit_level: {
     rhf: "rhf",
     hf: "hf",
     hospital: "hospital",
-    nation: "nation"
+    nation: "nation",
   },
   achieved_level: {
     high: "H",
     mod: "M",
-    low: "L"
+    low: "L",
   },
   level_direction: {
     high: 1,
-    low: 0
+    low: 0,
   },
   desired_level: {
     high: "Høyt",
-    low: "Lavt"
-  }
-}
+    low: "Lavt",
+  },
+};
 
-export default { med_field, app_text, data_config }
+export default { med_field, app_text, data_config };

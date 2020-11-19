@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 
-import LOW_N from '../components/low_n'
+import LOW_N from "../components/low_n";
 
 let container = null;
 beforeEach(() => {

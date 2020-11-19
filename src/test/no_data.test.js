@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 
-import NO_DATA from '../components/no_data'
+import NO_DATA from "../components/no_data";
 
 let container = null;
 beforeEach(() => {
