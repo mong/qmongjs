@@ -125,9 +125,6 @@ export const line_chart = function ({
       })
     )
   );
-  x_axis_tick_values = x_axis_tick_values.map((d) => {
-    return new Date(d);
-  });
   if (x_axis_tick_values.length > 8) {
     x_axis_tick_values =
       x_axis_tick_values.length % 2 === 0
