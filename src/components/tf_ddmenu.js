@@ -69,7 +69,7 @@ const DD_MENU = (props) => {
         className="table_dd_button"
         onClick={() => set_dd_menu_status("")}
       >
-        <i className="fas fa-bars" aria-hidden="true"></i>
+        <i className="fas fa-bars" aria-hidden="true" />
       </button>
       <div
         id="table_dd_container"

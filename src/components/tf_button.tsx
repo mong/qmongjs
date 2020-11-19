@@ -48,9 +48,9 @@ const TF_BUTTON = (props: Props) => {
             }
             update_chart_type(chart_value as typeof chart_type);
           }}
-        ></input>
+        />
         <label className={rb.class_name_label} htmlFor={rb.id}>
-          {rb.label} <i className={rb.icon}></i>
+          {rb.label} <i className={rb.icon} />
         </label>
       </React.Fragment>
     );

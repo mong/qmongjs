@@ -36,7 +36,7 @@ function INDICATOR_VALUE(props) {
         <div className="level">
           <h4>
             {`${indicator_value_share} `}
-            <i className={icon_class}></i>
+            <i className={icon_class} />
           </h4>
         </div>
         <div className="summary">{`${numerator} av ${denominator}`}</div>
@@ -49,7 +49,7 @@ function INDICATOR_VALUE(props) {
       <div className="level">
         <h4>
           {`${indicator_value} `}
-          <i className={icon_class}></i>
+          <i className={icon_class} />
         </h4>
       </div>
       <div className="summary">{`${share_of_total} av ${total}`}</div>
