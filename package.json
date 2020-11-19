@@ -9,7 +9,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "lint": "eslint --ext js,ts,tsx src"
+    "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx src",
+    "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
+    "format": "npm run prettier -- --write",
+    "check-format": "npm run prettier -- --list-different"
   },
   "repository": {
     "type": "git",
@@ -30,13 +33,14 @@
     "@types/react-dom": "^16.9.9",
     "@types/react-select": "^3.0.25",
     "d3": "^6.1.1",
+    "prettier": "^2.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.4",
     "react-select": "^3.1.0",
     "resize-observer-polyfill": "^1.5.1",
-    "typescript": "^4.0.5",
-    "source-map-explorer": "^2.5.0"
+    "source-map-explorer": "^2.5.0",
+    "typescript": "^4.0.5"
   },
   "eslintConfig": {
     "extends": "react-app"
