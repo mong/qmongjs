@@ -9,6 +9,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "npm run test -- --coverage --watchAll=false",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx src",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
