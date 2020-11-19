@@ -125,7 +125,7 @@ function TF_FIGURE(props: any) {
             />
             <TF_BUTTON
               chart_type={chart_type}
-              update_chart_type={() => update_chart_type(chart_type)}
+              update_chart_type={update_chart_type}
             />
           </div>
           <div ref={svg_container_ref} style={{ textAlign: "center" }}></div>

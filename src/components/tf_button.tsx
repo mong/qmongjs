@@ -2,7 +2,7 @@ import React from "react";
 
 interface Props {
   chart_type: "bar" | "line";
-  update_chart_type: (value: string) => void;
+  update_chart_type: (e: "line" | "bar") => void; //Dispatch<SetStateAction<"line" | "bar">>;
 }
 
 const TF_BUTTON = (props: Props) => {
@@ -41,7 +41,13 @@ const TF_BUTTON = (props: Props) => {
           name={rb.name}
           value={rb.value}
           checked={rb.value === chart_type}
-          onChange={(e) => update_chart_type(e.target.value)}
+          onChange={(e) => {
+            const chart_value = e.target.value;
+            if (!["bar", "line"].includes(chart_value)) {
+              throw new Error(`Only "line" and "bar" chart type is supported.`);
+            }
+            update_chart_type(chart_value as typeof chart_type);
+          }}
         ></input>
         <label className={rb.class_name_label} htmlFor={rb.id}>
           {rb.label} <i className={rb.icon}></i>
