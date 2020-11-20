@@ -36,7 +36,6 @@ function INDICATOR_ROW(props: IndicatorRowProps) {
   const tr_indicator_class = `${ind_id}  ${
     description[data_config.column.registry_short_name as keyof Description]
   }`;
-  console.log(props);
   const indicator_val =
     treatment_unit_name.length === 0
       ? null
@@ -101,6 +100,7 @@ function INDICATOR_ROW(props: IndicatorRowProps) {
                 ind_type={ind_type}
                 data={ind_per_unit[0]}
                 td_class={`selected_unit ${level_class}`}
+                filtered={!!level_class}
               />
             );
           }
@@ -130,13 +130,18 @@ function INDICATOR_ROW(props: IndicatorRowProps) {
       update_selected_row(ind_id);
     }
   };
+  const hideRow = indicator_val
+    ?.map((i) => i.props.filtered)
+    .every((e) => e === true || e === undefined);
 
   return (
     <>
       <tr
         onClick={() => tr_click_handler()}
         id={`${tr_indicator_class}`}
-        className={`${tr_indicator_class} ${med_field_class} indicator`}
+        className={`${tr_indicator_class} ${med_field_class} indicator ${
+          hideRow && "hidden"
+        }`}
       >
         <INDICATOR_DESCRIPTION description={description} />
         {indicator_val}

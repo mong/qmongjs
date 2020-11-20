@@ -50,6 +50,9 @@ h6 {
   font-size: 1.21rem;
   padding: 0.1em;
 }
+.hidden {
+  display: none;
+}
 
 /******* treatment unit and year selection *******/
 
