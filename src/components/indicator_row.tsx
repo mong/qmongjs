@@ -8,8 +8,19 @@ import { data_config } from "../app_config";
 import NO_DATA from "./no_data";
 import LOW_COV from "./low_cov";
 import LOW_N from "./low_n";
+import { Description, AggData, StatisticData } from "../App";
 
-function INDICATOR_ROW(props: any) {
+interface IndicatorRowProps {
+  data: { agg_data: AggData; description: Description[] };
+  treatment_unit_name?: string[];
+  med_field_class?: string;
+  show_level_filter?: string;
+  selected_row?: string;
+  update_selected_row: (e: string) => void;
+  colspan: number;
+}
+
+function INDICATOR_ROW(props: IndicatorRowProps) {
   const {
     data,
     treatment_unit_name = [],
@@ -21,18 +32,19 @@ function INDICATOR_ROW(props: any) {
   } = props;
 
   const description = data.description[0];
-  const ind_id = description[data_config.column.id];
+  const ind_id = description[data_config.column.id as keyof Description] + "";
   const tr_indicator_class = `${ind_id}  ${
-    description[data_config.column.registry_short_name]
+    description[data_config.column.registry_short_name as keyof Description]
   }`;
-
+  console.log(props);
   const indicator_val =
     treatment_unit_name.length === 0
       ? null
-      : treatment_unit_name.map((tr_unit: any, index: number) => {
-          console.log(tr_unit);
+      : treatment_unit_name.map((tr_unit: string, index: number) => {
           const ind_per_unit = data.agg_data.filtered_by_year.filter(
-            (data: any) => data[data_config.column.treatment_unit] === tr_unit
+            (data) =>
+              data[data_config.column.treatment_unit as keyof StatisticData] ===
+              tr_unit
           );
           if (ind_per_unit.length < 1) {
             return (
@@ -43,7 +55,11 @@ function INDICATOR_ROW(props: any) {
                 <NO_DATA />
               </td>
             );
-          } else if (ind_per_unit[0][data_config.column.coverage_id] < 0.6) {
+          } else if (
+            ind_per_unit[0][
+              data_config.column.coverage_id as keyof StatisticData
+            ] < 0.6
+          ) {
             //|| typeof(ind_per_unit[0][data_config.column.coverage_id]) === "undefined") {
             return (
               <td
@@ -54,8 +70,10 @@ function INDICATOR_ROW(props: any) {
               </td>
             );
           } else if (
-            ind_per_unit[0][data_config.column.denominator] <
-            description[data_config.column.min_denominator]
+            ind_per_unit[0][
+              data_config.column.denominator as keyof StatisticData
+            ] <
+            description[data_config.column.min_denominator as keyof Description]
           ) {
             return (
               <td
@@ -66,10 +84,14 @@ function INDICATOR_ROW(props: any) {
               </td>
             );
           } else {
-            const ind_type = description[data_config.column.indicator_type];
+            const ind_type =
+              description[
+                data_config.column.indicator_type as keyof Description
+              ];
             const level_class =
-              ind_per_unit[0][data_config.column.achieved_level] !==
-                show_level_filter && show_level_filter !== null
+              ind_per_unit[0][
+                data_config.column.achieved_level as keyof StatisticData
+              ] !== show_level_filter && show_level_filter !== null
                 ? "filtered_level"
                 : "";
 
@@ -86,7 +108,7 @@ function INDICATOR_ROW(props: any) {
 
   const level_class =
     data.agg_data.nation.filtered_by_year[0][
-      data_config.column.achieved_level
+      data_config.column.achieved_level as keyof StatisticData
     ] !== show_level_filter && show_level_filter !== null
       ? "filtered_level"
       : "";
