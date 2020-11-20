@@ -9,7 +9,7 @@ import NO_DATA from "./no_data";
 import LOW_COV from "./low_cov";
 import LOW_N from "./low_n";
 
-function INDICATOR_ROW(props) {
+function INDICATOR_ROW(props: any) {
   const {
     data,
     treatment_unit_name = [],
@@ -29,9 +29,10 @@ function INDICATOR_ROW(props) {
   const indicator_val =
     treatment_unit_name.length === 0
       ? null
-      : treatment_unit_name.map((tr_unit, index) => {
+      : treatment_unit_name.map((tr_unit: any, index: number) => {
+          console.log(tr_unit);
           const ind_per_unit = data.agg_data.filtered_by_year.filter(
-            (data) => data[data_config.column.treatment_unit] === tr_unit
+            (data: any) => data[data_config.column.treatment_unit] === tr_unit
           );
           if (ind_per_unit.length < 1) {
             return (
