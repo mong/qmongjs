@@ -7,14 +7,8 @@ import TF_LONG_DESCRIPTION from "./tf_description";
 import { bar_chart } from "../charts/barchart";
 import { line_chart } from "../charts/line_chart";
 import { level_boundary } from "../charts/tr_utils";
-import { AggData, StatisticData, Description } from "../App";
+import { StatisticData } from "../App";
 
-type TfFigureProps = {
-  colspan: number;
-  data: { agg_data: AggData[]; description: Description[] };
-  figure_class: any;
-  update_selected_row: any;
-};
 function TF_FIGURE(props: any) {
   const { colspan = 3, data, figure_class, update_selected_row } = props;
   const svg_container_ref = useRef<HTMLDivElement>(null);

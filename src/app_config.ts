@@ -217,4 +217,6 @@ export const data_config = {
   },
 };
 
-export default { med_field, app_text, data_config };
+const appConfig = { med_field, app_text, data_config };
+
+export default appConfig;
