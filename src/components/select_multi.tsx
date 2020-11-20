@@ -25,7 +25,7 @@ function SELECT_MULTI(props: Props) {
     select_className = "pick_treatment_unit",
     placeholder = (
       <div>
-        <i className="fas fa-search"></i> Søk etter behandlingsenheter
+        <i className="fas fa-search" /> Søk etter behandlingsenheter
       </div>
     ),
     update_tu,

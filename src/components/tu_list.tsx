@@ -51,7 +51,7 @@ const TU_LIST = (props: Props) => {
           onClick={() => update_tu_list_display("none")}
           className="tu_list_close_btn"
         >
-          <i className="far fa-times-circle"></i>
+          <i className="far fa-times-circle" />
         </button>
       </div>
     </>
