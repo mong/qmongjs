@@ -8,14 +8,20 @@ import { bar_chart } from "../charts/barchart";
 import { line_chart } from "../charts/line_chart";
 import { level_boundary } from "../charts/tr_utils";
 import { StatisticData } from "../App";
+import { GraphData } from "./main_component";
 
-function TF_FIGURE(props: any) {
+interface Props {
+  colspan?: number;
+  data: GraphData;
+  figure_class?: string;
+  update_selected_row(row: string): void;
+}
+
+function TF_FIGURE(props: Props) {
   const { colspan = 3, data, figure_class, update_selected_row } = props;
   const svg_container_ref = useRef<HTMLDivElement>(null);
   if (
-    !data.agg_data.filtered_by_year.some(
-      (d: any) => d.unit_name === "Nasjonalt"
-    )
+    !data.agg_data.filtered_by_year.some((d) => d.unit_name === "Nasjonalt")
   ) {
     data.agg_data.filtered_by_year.push(
       data.agg_data.nation.filtered_by_year[0]

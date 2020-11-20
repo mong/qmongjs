@@ -258,8 +258,6 @@ function APP() {
           </div>
         </div>
         <MAIN
-          update_selected_year={update_selected_year}
-          update_treatment_units={update_treatment_units}
           ind_per_reg={ind_per_reg}
           treatment_units={tu_name}
           selected_year={selected_year}
@@ -267,7 +265,6 @@ function APP() {
           app_text={app_text}
           colspan={colspan}
           data={{ agg_data, description }}
-          unique_indicators={unique_indicators}
           selected_row={selected_row}
           update_selected_row={update_selected_row}
           selection_bar_height={selection_bar_height}
