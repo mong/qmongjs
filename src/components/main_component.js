@@ -4,7 +4,7 @@ import INDICATOR_TABLE from "./indicator_table";
 import LEGEND from "./legend";
 import MED_FIELD from "./med_field";
 
-export default (props) => {
+const Main = (props) => {
   const {
     data,
     med_field,
@@ -71,3 +71,5 @@ export default (props) => {
     </>
   );
 };
+
+export default Main;

@@ -84,36 +84,42 @@ function APP() {
 
   //update data as it arrives
   if (typeof (window as any).Shiny !== "undefined") {
-    (window as any).Shiny.addCustomMessageHandler("tu_names", function (
-      message: any
-    ) {
-      update_tu_names(message);
-    });
-    (window as any).Shiny.addCustomMessageHandler("description", function (
-      message: any
-    ) {
-      update_description(message);
-    });
-    (window as any).Shiny.addCustomMessageHandler("nation", function (
-      message: any
-    ) {
-      update_nation(message);
-    });
-    (window as any).Shiny.addCustomMessageHandler("hospital", function (
-      message: any
-    ) {
-      update_hosp(message);
-    });
-    (window as any).Shiny.addCustomMessageHandler("hf", function (
-      message: any
-    ) {
-      update_hf(message);
-    });
-    (window as any).Shiny.addCustomMessageHandler("rhf", function (
-      message: any
-    ) {
-      update_rhf(message);
-    });
+    (window as any).Shiny.addCustomMessageHandler(
+      "tu_names",
+      function (message: any) {
+        update_tu_names(message);
+      }
+    );
+    (window as any).Shiny.addCustomMessageHandler(
+      "description",
+      function (message: any) {
+        update_description(message);
+      }
+    );
+    (window as any).Shiny.addCustomMessageHandler(
+      "nation",
+      function (message: any) {
+        update_nation(message);
+      }
+    );
+    (window as any).Shiny.addCustomMessageHandler(
+      "hospital",
+      function (message: any) {
+        update_hosp(message);
+      }
+    );
+    (window as any).Shiny.addCustomMessageHandler(
+      "hf",
+      function (message: any) {
+        update_hf(message);
+      }
+    );
+    (window as any).Shiny.addCustomMessageHandler(
+      "rhf",
+      function (message: any) {
+        update_rhf(message);
+      }
+    );
   }
 
   //states
