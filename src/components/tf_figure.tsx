@@ -128,7 +128,7 @@ function TF_FIGURE(props: any) {
               update_chart_type={update_chart_type}
             />
           </div>
-          <div ref={svg_container_ref} style={{ textAlign: "center" }}></div>
+          <div ref={svg_container_ref} style={{ textAlign: "center" }} />
           <TF_LONG_DESCRIPTION
             description_text={data.description[0].long_description}
           />

@@ -30,7 +30,7 @@ const LONG_DESCRIPTION = (props: Props) => {
           className={`fa ${
             content_status === "" ? "fa-angle-up" : "fa-angle-down"
           }`}
-        ></i>
+        />
       </div>
       <p className={`description_content ${content_status}`}>
         {description_text}

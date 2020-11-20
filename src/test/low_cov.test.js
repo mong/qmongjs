@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 
-import LOW_COV from '../components/low_cov'
+import LOW_COV from "../components/low_cov";
 
 let container = null;
 beforeEach(() => {

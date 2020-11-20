@@ -3,3 +3,4 @@ coverage/
 build/
 public/fontawesome/
 package-lock.json
+**/*.min.*
