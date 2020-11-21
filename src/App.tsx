@@ -22,9 +22,9 @@ export interface StatisticData {
   denominator: number;
   var: number;
   level: string;
-  level_direction: number;
-  dg: number;
-  include: number;
+  level_direction: number | null;
+  dg: number | null;
+  include: number | null;
 }
 
 export interface Description {

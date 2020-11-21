@@ -66,7 +66,7 @@ function TF_FIGURE(props: Props) {
             return !(
               data_by_year.denominator <
                 (data.description[0]["min_denominator"] ?? 0) ||
-              data_by_year.dg < 0.6
+              (data_by_year.dg ?? 0) < 0.6
             ); //|| typeof(data_by_year.dg) === "undefined" )
           } else {
             return true;
@@ -93,7 +93,7 @@ function TF_FIGURE(props: Props) {
             return !(
               data_by_year.denominator <
                 (data.description[0]["min_denominator"] ?? 0) ||
-              data_by_year.dg < 0.6
+              (data_by_year.dg ?? 0) < 0.6
             ); //|| typeof(data_by_year.dg) === "undefined" )
           } else {
             return true;
