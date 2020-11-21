@@ -66,7 +66,7 @@ function INDICATOR_ROW(props: Props) {
               </td>
             );
           } else if (
-            ind_per_unit[0].denominator < description.min_denominator //[data_config.column.denominator as keyof StatisticData] [data_config.column.min_denominator as keyof Description]
+            ind_per_unit[0].denominator < (description.min_denominator ?? 0) //[data_config.column.denominator as keyof StatisticData] [data_config.column.min_denominator as keyof Description]
           ) {
             return (
               <td

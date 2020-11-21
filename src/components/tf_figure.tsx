@@ -65,7 +65,8 @@ function TF_FIGURE(props: Props) {
           if (data_by_year.unit_level !== "nation") {
             return !(
               data_by_year.denominator <
-                data.description[0]["min_denominator"] || data_by_year.dg < 0.6
+                (data.description[0]["min_denominator"] ?? 0) ||
+              data_by_year.dg < 0.6
             ); //|| typeof(data_by_year.dg) === "undefined" )
           } else {
             return true;
@@ -91,7 +92,8 @@ function TF_FIGURE(props: Props) {
           if (data_by_year.unit_level !== "nation") {
             return !(
               data_by_year.denominator <
-                data.description[0]["min_denominator"] || data_by_year.dg < 0.6
+                (data.description[0]["min_denominator"] ?? 0) ||
+              data_by_year.dg < 0.6
             ); //|| typeof(data_by_year.dg) === "undefined" )
           } else {
             return true;
@@ -130,7 +132,7 @@ function TF_FIGURE(props: Props) {
           </div>
           <div ref={svg_container_ref} style={{ textAlign: "center" }} />
           <TF_LONG_DESCRIPTION
-            description_text={data.description[0].long_description}
+            description_text={data.description[0].long_description ?? ""}
           />
         </div>
       </td>

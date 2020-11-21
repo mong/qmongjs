@@ -29,19 +29,19 @@ export interface StatisticData {
 
 export interface Description {
   id: string;
-  dg_id: string;
-  include: number;
-  title: string;
-  name: string;
-  type: string;
-  min_denominator: number;
-  level_green: number;
-  level_yellow: number;
+  dg_id: string | null;
+  include: number | null;
+  title: string | null;
+  name: string | null;
+  type: string | null;
+  min_denominator: number | null;
+  level_green: number | null;
+  level_yellow: number | null;
   level_direction: number;
-  short_description: string;
-  long_description: string;
+  short_description: string | null;
+  long_description: string | null;
   registry_id: number;
-  rname: string;
+  rname: string | null;
   full_name: string;
 }
 
