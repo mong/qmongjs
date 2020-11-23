@@ -8,22 +8,23 @@ import { data_config } from "../app_config";
 import NO_DATA from "./no_data";
 import LOW_COV from "./low_cov";
 import LOW_N from "./low_n";
-import { Description, AggData, StatisticData } from "../App";
+import { StatisticData } from "../App";
+import { GraphData } from "./main_component";
 
-export interface IndicatorRowProps {
-  data: { agg_data: AggData; description: Description[] };
+interface Props {
+  data: GraphData;
   treatment_unit_name?: string[];
   med_field_class?: string;
   show_level_filter?: string;
-  selected_row?: string;
-  update_selected_row: (e: string) => void;
-  colspan: number;
+  selected_row: string;
+  colspan?: number;
+  update_selected_row(row: string): void;
 }
 
-function INDICATOR_ROW(props: IndicatorRowProps) {
+function INDICATOR_ROW(props: Props) {
   const {
     data,
-    treatment_unit_name = [""],
+    treatment_unit_name = [],
     med_field_class = "",
     show_level_filter = "",
     selected_row,
@@ -32,18 +33,17 @@ function INDICATOR_ROW(props: IndicatorRowProps) {
   } = props;
 
   const description = data.description[0];
-  const ind_id = description[data_config.column.id as keyof Description] + "";
+  const ind_id = description.id; // [data_config.column.id as keyof Description];
   const tr_indicator_class = `${ind_id}  ${
-    description[data_config.column.registry_short_name as keyof Description]
+    description.rname // [data_config.column.registry_short_name as keyof Description]
   }`;
+
   const indicator_val =
     treatment_unit_name.length === 0
       ? null
-      : treatment_unit_name.map((tr_unit: string, index: number) => {
+      : treatment_unit_name.map((tr_unit, index) => {
           const ind_per_unit = data.agg_data.filtered_by_year.filter(
-            (data) =>
-              data[data_config.column.treatment_unit as keyof StatisticData] ===
-              tr_unit
+            (data) => data.unit_name === tr_unit // [data_config.column.treatment_unit]
           );
           if (ind_per_unit.length < 1) {
             return (
@@ -54,11 +54,8 @@ function INDICATOR_ROW(props: IndicatorRowProps) {
                 <NO_DATA />
               </td>
             );
-          } else if (
-            ind_per_unit[0][
-              data_config.column.coverage_id as keyof StatisticData
-            ] < 0.6
-          ) {
+          } else if ((ind_per_unit[0].dg ?? 0) < 0.6) {
+            // [data_config.column.coverage_id as keyof StatisticData]
             //|| typeof(ind_per_unit[0][data_config.column.coverage_id]) === "undefined") {
             return (
               <td
@@ -69,10 +66,7 @@ function INDICATOR_ROW(props: IndicatorRowProps) {
               </td>
             );
           } else if (
-            ind_per_unit[0][
-              data_config.column.denominator as keyof StatisticData
-            ] <
-            description[data_config.column.min_denominator as keyof Description]
+            ind_per_unit[0].denominator < (description.min_denominator ?? 0) //[data_config.column.denominator as keyof StatisticData] [data_config.column.min_denominator as keyof Description]
           ) {
             return (
               <td
@@ -83,14 +77,10 @@ function INDICATOR_ROW(props: IndicatorRowProps) {
               </td>
             );
           } else {
-            const ind_type =
-              description[
-                data_config.column.indicator_type as keyof Description
-              ];
+            const ind_type = description.type; // [data_config.column.indicator_type as keyof Description];
             const level_class =
-              ind_per_unit[0][
-                data_config.column.achieved_level as keyof StatisticData
-              ] !== show_level_filter && show_level_filter !== null
+              ind_per_unit[0].level !== show_level_filter && // [data_config.column.achieved_level as keyof StatisticData]
+              show_level_filter !== null
                 ? "filtered_level"
                 : "";
 
