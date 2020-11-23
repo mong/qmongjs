@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
-import {select, selectAll} from "d3";
+import { select, selectAll } from "d3";
 
-const DD_MENU = (props) => {
+interface Props {
+  show_level: string;
+  zoom: string;
+  svg_container: React.RefObject<HTMLDivElement>;
+  update_zoom(xoom: string): void;
+  update_show_level(level: string): void;
+  update_selected_row(row: string): void;
+}
+
+const DD_MENU = (props: Props) => {
   const {
     show_level,
     update_show_level,
@@ -15,42 +24,49 @@ const DD_MENU = (props) => {
   const level_states = ["Vis målnivå", "Skjul målnivå"];
   const zoom_states = ["Zoom inn", "Zoom ut"];
 
-  function getDownloadURL(d, callback) {
-    const src = d.current.parentNode.innerHTML;
-    if (!src) return callback(new Error('An error occurred while attempting to load SVG'))
-    
+  function getDownloadURL(
+    svgContainer: React.RefObject<HTMLDivElement>,
+    callback: () => void
+  ) {
+    if (!svgContainer.current) return;
+    console.log("Parent: ", svgContainer.current);
 
-    console.log('Parent: ', src);
-   
+    const src = svgContainer.current.children[0] as SVGSVGElement;
+    console.log("Parent: ", src);
 
-    const image = select('body').append('img')
-      .style('display', 'none')
-      .attr('width', 960)
-      .attr('height', 500)
-      .node();
-    console.log('image: ', image)
+    console.log("Parent: ", src);
 
-    image.onload = function() {
-      console.log('LOADING...')
-      const canvas = select('body').append('canvas')
-        .style('display', 'none')
-        .attr('width', 960)
-        .attr('height', 500)
-        .node();
-  
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(image, 0, 0);
-      const url = canvas.toDataURL('image/png');
-  
-      selectAll([ canvas, image ]).remove();
-  
-      callback(null, url);
-    };
-    image.src = 'data:image/svg+xml,' + encodeURIComponent(src);
+    // const image = select('body').append('img')
+    //   .style('display', 'none')
+    //   .attr('width', 960)
+    //   .attr('height', 500)
+    //   .node();
+    // console.log('image: ', image)
+
+    // image.onload = function() {
+    //   console.log('LOADING...')
+    //   const canvas = select('body').append('canvas')
+    //     .style('display', 'none')
+    //     .attr('width', 960)
+    //     .attr('height', 500)
+    //     .node();
+
+    //   const ctx = canvas.getContext('2d');
+    //   ctx.drawImage(image, 0, 0);
+    //   const url = canvas.toDataURL('image/png');
+
+    //   selectAll([ canvas, image ]).remove();
+
+    //   callback(null, url);
+    // };
+    // image.src = 'data:image/svg+xml,' + encodeURIComponent(src);
   }
-  
 
-  const handle_click = (current_state, states, update_state_function) => {
+  const handle_click = (
+    current_state: string,
+    states: string[],
+    update_state_function: (level: string) => void
+  ) => {
     const new_state = states.filter((state) => state !== current_state);
     update_state_function(new_state[0]);
   };
@@ -74,12 +90,16 @@ const DD_MENU = (props) => {
       class: "dd-zoom",
     },
     { label: "Lukk", click: () => update_selected_row(""), class: "dd-close" },
-    { label: "Last ned", click: () => getDownloadURL(svg_container, () => console.log('error')), class: "dd-download" },
+    {
+      label: "Last ned",
+      click: () => getDownloadURL(svg_container, () => console.log("error")),
+      class: "dd-download",
+    },
   ];
 
-  let mouse_leave_dd_cont_timeout;
+  let mouse_leave_dd_cont_timeout: number;
   const menu_container_mouse_leave = () => {
-    mouse_leave_dd_cont_timeout = setTimeout(function () {
+    mouse_leave_dd_cont_timeout = window.setTimeout(function () {
       set_dd_menu_status("inactive");
     }, 1000);
   };
