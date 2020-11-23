@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { select } from "d3";
 
-const DD_MENU = (props) => {
+interface Props {
+  show_level: string;
+  zoom: string;
+  svg_container: React.RefObject<HTMLDivElement>;
+  update_zoom(xoom: string): void;
+  update_show_level(level: string): void;
+  update_selected_row(row: string): void;
+}
+
+const DD_MENU = (props: Props) => {
   const {
     show_level,
     update_show_level,
@@ -15,7 +24,11 @@ const DD_MENU = (props) => {
   const level_states = ["Vis målnivå", "Skjul målnivå"];
   const zoom_states = ["Zoom inn", "Zoom ut"];
 
-  const handle_click = (current_state, states, update_state_function) => {
+  const handle_click = (
+    current_state: string,
+    states: string[],
+    update_state_function: (level: string) => void
+  ) => {
     const new_state = states.filter((state) => state !== current_state);
     update_state_function(new_state[0]);
   };
@@ -41,9 +54,9 @@ const DD_MENU = (props) => {
     { label: "Lukk", click: () => update_selected_row(""), class: "dd-close" },
   ];
 
-  let mouse_leave_dd_cont_timeout;
+  let mouse_leave_dd_cont_timeout: number;
   const menu_container_mouse_leave = () => {
-    mouse_leave_dd_cont_timeout = setTimeout(function () {
+    mouse_leave_dd_cont_timeout = window.setTimeout(function () {
       set_dd_menu_status("inactive");
     }, 1000);
   };

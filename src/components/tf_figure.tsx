@@ -10,7 +10,7 @@ import { level_boundary } from "../charts/tr_utils";
 import { StatisticData } from "../App";
 import { GraphData } from "./main_component";
 
-interface Props {
+export interface Props {
   colspan?: number;
   data: GraphData;
   figure_class?: string;
@@ -19,7 +19,13 @@ interface Props {
 
 function TF_FIGURE(props: Props) {
   const { colspan = 3, data, figure_class, update_selected_row } = props;
+
+  const [chart_type, update_chart_type] = useState<"line" | "bar">("line");
+  const [zoom, update_zoom] = useState("Zoom ut");
+  const [show_level, update_show_level] = useState("Vis målnivå");
+
   const svg_container_ref = useRef<HTMLDivElement>(null);
+
   if (
     !data.agg_data.filtered_by_year.some((d) => d.unit_name === "Nasjonalt")
   ) {
@@ -31,11 +37,6 @@ function TF_FIGURE(props: Props) {
       data.agg_data.nation.filtered_by_unit
     );
   }
-
-  const [chart_type, update_chart_type] = useState<"line" | "bar">("line");
-  const [zoom, update_zoom] = useState("Zoom ut");
-  const [show_level, update_show_level] = useState("Vis målnivå");
-  const [remove_tf, update_remove_tf] = useState(null);
 
   useEffect(() => {
     if (!svg_container_ref.current) return;
@@ -120,8 +121,6 @@ function TF_FIGURE(props: Props) {
               update_show_level={update_show_level}
               zoom={zoom}
               update_zoom={update_zoom}
-              remove_tf={remove_tf}
-              update_remove_tf={update_remove_tf}
               svg_container={svg_container_ref}
               update_selected_row={update_selected_row}
             />

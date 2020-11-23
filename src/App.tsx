@@ -156,7 +156,7 @@ function APP() {
   const hf = filter_year_unit(indicator_hf, input_data);
   const rhf = filter_year_unit(indicator_rhf, input_data);
   const nation = filter_year_unit(indicator_nation, {
-    selected_unit: "Nasjonalt",
+    selected_unit: ["Nasjonalt"],
     selected_year: selected_year,
   });
 
@@ -229,7 +229,7 @@ function APP() {
     }
     const top = (selection_bar_dim.target as HTMLElement).offsetHeight ?? "";
     update_selection_bar_height(top);
-  }, [selection_bar_dim, selection_bar_ref]);
+  }, [selection_bar_dim]);
 
   return (
     <div className="app-container">

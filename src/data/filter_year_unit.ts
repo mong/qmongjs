@@ -10,7 +10,7 @@ interface NestedTreatmentUnitName {
   }[];
 }
 interface InputParams {
-  selected_unit: string | string[];
+  selected_unit: string[];
   selected_year: number;
 }
 
@@ -20,19 +20,13 @@ export const filter_year_unit = (
 ) => {
   const { selected_unit, selected_year } = input_params;
 
-  const filtered_by_unit =
-    selected_unit !== null
-      ? data.filter(
-          (d) => selected_unit.includes(d.unit_name) // [data_config.column.treatment_unit]
-        )
-      : data;
+  const filtered_by_unit = data.filter(
+    (d) => selected_unit.includes(d.unit_name) // [data_config.column.treatment_unit]
+  );
 
-  const filtered_by_year =
-    selected_year !== null
-      ? filtered_by_unit.filter(
-          (d) => d.year === selected_year // [data_config.column.year]
-        )
-      : filtered_by_unit;
+  const filtered_by_year = filtered_by_unit.filter(
+    (d) => d.year === selected_year // [data_config.column.year]
+  );
 
   return {
     filtered_by_unit,
