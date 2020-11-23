@@ -8,14 +8,26 @@ import { bar_chart } from "../charts/barchart";
 import { line_chart } from "../charts/line_chart";
 import { level_boundary } from "../charts/tr_utils";
 import { StatisticData } from "../App";
+import { GraphData } from "./main_component";
 
-function TF_FIGURE(props: any) {
+export interface Props {
+  colspan?: number;
+  data: GraphData;
+  figure_class?: string;
+  update_selected_row(row: string): void;
+}
+
+function TF_FIGURE(props: Props) {
   const { colspan = 3, data, figure_class, update_selected_row } = props;
+
+  const [chart_type, update_chart_type] = useState<"line" | "bar">("line");
+  const [zoom, update_zoom] = useState("Zoom ut");
+  const [show_level, update_show_level] = useState("Vis målnivå");
+
   const svg_container_ref = useRef<HTMLDivElement>(null);
+
   if (
-    !data.agg_data.filtered_by_year.some(
-      (d: any) => d.unit_name === "Nasjonalt"
-    )
+    !data.agg_data.filtered_by_year.some((d) => d.unit_name === "Nasjonalt")
   ) {
     data.agg_data.filtered_by_year.push(
       data.agg_data.nation.filtered_by_year[0]
@@ -25,11 +37,6 @@ function TF_FIGURE(props: any) {
       data.agg_data.nation.filtered_by_unit
     );
   }
-
-  const [chart_type, update_chart_type] = useState<"line" | "bar">("line");
-  const [zoom, update_zoom] = useState("Zoom ut");
-  const [show_level, update_show_level] = useState("Vis målnivå");
-  const [remove_tf, update_remove_tf] = useState(null);
 
   useEffect(() => {
     if (!svg_container_ref.current) return;
@@ -59,7 +66,8 @@ function TF_FIGURE(props: any) {
           if (data_by_year.unit_level !== "nation") {
             return !(
               data_by_year.denominator <
-                data.description[0]["min_denominator"] || data_by_year.dg < 0.6
+                (data.description[0]["min_denominator"] ?? 0) ||
+              (data_by_year.dg ?? 0) < 0.6
             ); //|| typeof(data_by_year.dg) === "undefined" )
           } else {
             return true;
@@ -85,7 +93,8 @@ function TF_FIGURE(props: any) {
           if (data_by_year.unit_level !== "nation") {
             return !(
               data_by_year.denominator <
-                data.description[0]["min_denominator"] || data_by_year.dg < 0.6
+                (data.description[0]["min_denominator"] ?? 0) ||
+              (data_by_year.dg ?? 0) < 0.6
             ); //|| typeof(data_by_year.dg) === "undefined" )
           } else {
             return true;
@@ -112,8 +121,6 @@ function TF_FIGURE(props: any) {
               update_show_level={update_show_level}
               zoom={zoom}
               update_zoom={update_zoom}
-              remove_tf={remove_tf}
-              update_remove_tf={update_remove_tf}
               svg_container={svg_container_ref}
               update_selected_row={update_selected_row}
             />
@@ -124,7 +131,7 @@ function TF_FIGURE(props: any) {
           </div>
           <div ref={svg_container_ref} style={{ textAlign: "center" }} />
           <TF_LONG_DESCRIPTION
-            description_text={data.description[0].long_description}
+            description_text={data.description[0].long_description ?? ""}
           />
         </div>
       </td>

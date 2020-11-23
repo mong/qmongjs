@@ -1,16 +1,42 @@
 import React, { useState } from "react";
+import { AggData, Description } from "../App";
 
 import INDICATOR_TABLE from "./indicator_table";
 import LEGEND from "./legend";
 import MED_FIELD from "./med_field";
 
-const Main = (props) => {
+export interface GraphData {
+  agg_data: AggData;
+  description: Description[];
+}
+
+export interface IndPerReg {
+  registry_name: string;
+  number_ind: number;
+  indicators: Description[];
+}
+
+interface Props {
+  data: GraphData;
+  med_field: any;
+  app_text: any;
+  ind_per_reg: IndPerReg[];
+  treatment_units: string[];
+  selected_year: number;
+  colspan: number;
+  selected_row: any;
+  update_selected_row(row: any): void;
+  selection_bar_height: number | null;
+  legend_height: any;
+  update_legend_height(height: any): void;
+}
+
+const Main = (props: Props) => {
   const {
     data,
     med_field,
     app_text,
     ind_per_reg,
-    update_ind_per_reg,
     treatment_units,
     selected_year,
     colspan,
@@ -56,7 +82,6 @@ const Main = (props) => {
             data={data}
             treatment_unit_name={treatment_units}
             treatment_year={selected_year}
-            update_ind_per_reg={update_ind_per_reg}
             ind_per_reg={ind_per_reg}
             colspan={colspan}
             med_field_filter={med_field_filter}

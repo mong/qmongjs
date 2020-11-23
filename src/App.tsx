@@ -22,26 +22,26 @@ export interface StatisticData {
   denominator: number;
   var: number;
   level: string;
-  level_direction: number;
-  dg: number;
-  include: number;
+  level_direction: number | null;
+  dg: number | null;
+  include: number | null;
 }
 
 export interface Description {
   id: string;
-  dg_id: string;
-  include: number;
-  title: string;
-  name: string;
-  type: string;
-  min_denominator: number;
-  level_green: number;
-  level_yellow: number;
+  dg_id: string | null;
+  include: number | null;
+  title: string | null;
+  name: string | null;
+  type: string | null;
+  min_denominator: number | null;
+  level_green: number | null;
+  level_yellow: number | null;
   level_direction: number;
-  short_description: string;
-  long_description: string;
+  short_description: string | null;
+  long_description: string | null;
   registry_id: number;
-  rname: string;
+  rname: string | null;
   full_name: string;
 }
 
@@ -156,7 +156,7 @@ function APP() {
   const hf = filter_year_unit(indicator_hf, input_data);
   const rhf = filter_year_unit(indicator_rhf, input_data);
   const nation = filter_year_unit(indicator_nation, {
-    selected_unit: "Nasjonalt",
+    selected_unit: ["Nasjonalt"],
     selected_year: selected_year,
   });
 
@@ -229,7 +229,7 @@ function APP() {
     }
     const top = (selection_bar_dim.target as HTMLElement).offsetHeight ?? "";
     update_selection_bar_height(top);
-  }, [selection_bar_dim, selection_bar_ref]);
+  }, [selection_bar_dim]);
 
   return (
     <div className="app-container">
@@ -258,8 +258,6 @@ function APP() {
           </div>
         </div>
         <MAIN
-          update_selected_year={update_selected_year}
-          update_treatment_units={update_treatment_units}
           ind_per_reg={ind_per_reg}
           treatment_units={tu_name}
           selected_year={selected_year}
@@ -267,7 +265,6 @@ function APP() {
           app_text={app_text}
           colspan={colspan}
           data={{ agg_data, description }}
-          unique_indicators={unique_indicators}
           selected_row={selected_row}
           update_selected_row={update_selected_row}
           selection_bar_height={selection_bar_height}
