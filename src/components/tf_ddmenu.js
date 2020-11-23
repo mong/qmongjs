@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { select } from "d3";
+import {select, selectAll} from "d3";
 
 const DD_MENU = (props) => {
   const {
@@ -14,6 +14,41 @@ const DD_MENU = (props) => {
   const [dd_menu_status, set_dd_menu_status] = useState("inactive");
   const level_states = ["Vis målnivå", "Skjul målnivå"];
   const zoom_states = ["Zoom inn", "Zoom ut"];
+
+  function getDownloadURL(d, callback) {
+    const src = d.current.parentNode.innerHTML;
+    if (!src) return callback(new Error('An error occurred while attempting to load SVG'))
+    
+
+    console.log('Parent: ', src);
+   
+
+    const image = select('body').append('img')
+      .style('display', 'none')
+      .attr('width', 960)
+      .attr('height', 500)
+      .node();
+    console.log('image: ', image)
+
+    image.onload = function() {
+      console.log('LOADING...')
+      const canvas = select('body').append('canvas')
+        .style('display', 'none')
+        .attr('width', 960)
+        .attr('height', 500)
+        .node();
+  
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(image, 0, 0);
+      const url = canvas.toDataURL('image/png');
+  
+      selectAll([ canvas, image ]).remove();
+  
+      callback(null, url);
+    };
+    image.src = 'data:image/svg+xml,' + encodeURIComponent(src);
+  }
+  
 
   const handle_click = (current_state, states, update_state_function) => {
     const new_state = states.filter((state) => state !== current_state);
@@ -39,6 +74,7 @@ const DD_MENU = (props) => {
       class: "dd-zoom",
     },
     { label: "Lukk", click: () => update_selected_row(""), class: "dd-close" },
+    { label: "Last ned", click: () => getDownloadURL(svg_container, () => console.log('error')), class: "dd-download" },
   ];
 
   let mouse_leave_dd_cont_timeout;
