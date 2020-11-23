@@ -1,6 +1,6 @@
 import React from "react";
 
-import REGISTER from "./register";
+import Register from "./register";
 
 import { med_field } from "../app_config";
 import { filter_register } from "../data/filter_year_unit";
@@ -44,7 +44,7 @@ function TABLE_BODY(props: Props) {
 
         if (register_data.agg_data.filtered_by_year.length > 0) {
           return (
-            <REGISTER
+            <Register
               key={`${register}`}
               register_sname={register}
               data={register_data}
