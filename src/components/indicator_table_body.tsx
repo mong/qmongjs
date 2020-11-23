@@ -1,23 +1,11 @@
 import React from "react";
 
-import Register from "./register";
+import Register, { RegisterProps } from "./register";
 
 import { med_field } from "../app_config";
 import { filter_register } from "../data/filter_year_unit";
-import { AggData, Description } from "../App";
 
-interface Props {
-  colspan?: number;
-  data: { agg_data: AggData; description: Description[] };
-  treatment_unit_name: string[];
-  treatment_year: never;
-  med_field_filter: never;
-  show_level_filter: never;
-  selected_row: never;
-  update_selected_row: never;
-}
-
-function TABLE_BODY(props: Props) {
+function TABLE_BODY(props: RegisterProps) {
   const {
     colspan = 4,
     data,

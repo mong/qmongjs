@@ -10,7 +10,7 @@ import LOW_COV from "./low_cov";
 import LOW_N from "./low_n";
 import { Description, AggData, StatisticData } from "../App";
 
-interface IndicatorRowProps {
+export interface IndicatorRowProps {
   data: { agg_data: AggData; description: Description[] };
   treatment_unit_name?: string[];
   med_field_class?: string;
@@ -23,7 +23,7 @@ interface IndicatorRowProps {
 function INDICATOR_ROW(props: IndicatorRowProps) {
   const {
     data,
-    treatment_unit_name = [],
+    treatment_unit_name = [""],
     med_field_class = "",
     show_level_filter = "",
     selected_row,
