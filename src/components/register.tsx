@@ -2,23 +2,23 @@ import React from "react";
 
 import INDICATOR_ROW from "./indicator_row";
 import REGISTER_NAME from "./register_name";
-import { data_config } from "../app_config";
-import { AggData, Description, StatisticData } from "../App";
+import { AggData, Description } from "../App";
+// import { GraphData } from "./main_component";
 
 interface RegisterData {
   agg_data: AggData;
   description: Description[];
 }
 export interface RegisterProps {
-  register_sname: string;
-  colspan?: number;
-  tr_register_name_class?: string;
-  treatment_year: number;
   data: RegisterData;
+  register_sname: string;
+  treatment_year: number;
   treatment_unit_name: string[];
+  tr_register_name_class?: string;
   med_field_filter: string[];
   show_level_filter: string;
-  selected_row?: string;
+  colspan?: number;
+  selected_row: string;
   update_selected_row: (e: string) => void;
 }
 
@@ -34,18 +34,15 @@ const Register = (props: RegisterProps) => {
     selected_row,
     update_selected_row,
   } = props;
-
-  console.log(props);
   const med_field_class = med_field_filter.includes(register_sname)
     ? ""
     : "filter_med_field";
   const register_name = Array.from(
     new Set(data.description.map((d) => d.full_name))
   );
-  const ind_id: any[] = Array.from(
+  const ind_id: string[] = Array.from(
     new Set(data.agg_data.filtered_by_year.map((d) => d.ind_id))
   );
-
   const IndicatorRow = ind_id.map((indicator) => {
     let agg_data: AggData = {
       nation: {

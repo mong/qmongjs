@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { AggData, Description } from "../App";
+import { data_config } from "../app_config";
 
 import INDICATOR_TABLE from "./indicator_table";
+import INDICATOR_VALUE from "./indicator_value";
 import LEGEND from "./legend";
+import LOW_COV from "./low_cov";
+import LOW_N from "./low_n";
 import MED_FIELD from "./med_field";
+import NO_DATA from "./no_data";
 
 export interface GraphData {
   agg_data: AggData;
@@ -31,6 +36,52 @@ interface Props {
   update_legend_height(height: any): void;
 }
 
+export const filterData = (
+  treatment_unit_name: string[],
+  data: GraphData,
+  show_level_filter: string | null
+) => {
+  if (treatment_unit_name.length < 1 || show_level_filter === null) {
+    return { ...data };
+  }
+  console.log(data, treatment_unit_name);
+  const data_filtered = treatment_unit_name
+    .map((tr_unit, index) => {
+      const ind_per_unit = data.agg_data.filtered_by_year.filter(
+        (data) => data.unit_name === tr_unit // [data_config.column.treatment_unit]
+      );
+      const low_cov_filter = ind_per_unit.filter((u) => (u.dg ?? 0) > 0.6);
+      const low_n_filter = low_cov_filter.filter(
+        //Fixme, lookup the correct denominator
+        (u) => u.denominator > (data.description[0].min_denominator ?? 0)
+      );
+      const level_filter = low_n_filter.filter(
+        (u) => u.level === show_level_filter
+      );
+      return level_filter;
+    })
+    .sort((a, b) => b.length - a.length);
+
+  const ind_ids_remaining = data_filtered
+    .map((a) => a.map((u) => u.ind_id))
+    .flat(1)
+    .filter((v, i, a) => a.indexOf(v) === i);
+  return {
+    agg_data: {
+      filtered_by_year: data.agg_data.filtered_by_year.filter((u) =>
+        ind_ids_remaining.includes(u.ind_id)
+      ),
+      filtered_by_unit: data.agg_data.filtered_by_unit.filter((u) =>
+        ind_ids_remaining.includes(u.ind_id)
+      ),
+      nation: data.agg_data.nation,
+    },
+    description: data.description.filter((d) =>
+      ind_ids_remaining.includes(d.id)
+    ),
+  };
+};
+
 const Main = (props: Props) => {
   const {
     data,
@@ -46,11 +97,14 @@ const Main = (props: Props) => {
     legend_height,
     update_legend_height,
   } = props;
-
   const all_reg = ind_per_reg.map((reg) => reg.registry_name);
   const [show_level_filter, update_show_level_filter] = useState(null);
   const [med_field_filter, update_med_field_filter] = useState(all_reg);
   const [clicked_med_field, update_clicked_med_field] = useState("all");
+  // add filter function
+  // console.log("MAINDATA:", treatment_units);
+
+  const filtered_data = filterData(treatment_units, data, show_level_filter);
 
   return (
     <>
@@ -79,7 +133,7 @@ const Main = (props: Props) => {
         </div>
         <div className="main_table_container">
           <INDICATOR_TABLE
-            data={data}
+            data={filtered_data}
             treatment_unit_name={treatment_units}
             treatment_year={selected_year}
             ind_per_reg={ind_per_reg}
