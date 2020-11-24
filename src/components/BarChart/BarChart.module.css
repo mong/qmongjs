@@ -1,0 +1,10 @@
+.wrapper {
+  padding: 0 50px;
+  margin-bottom: 2rem;
+}
+
+.barChart {
+  overflow: visible;
+  width: 100%;
+  display: block;
+}
