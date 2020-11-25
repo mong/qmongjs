@@ -46,8 +46,11 @@ export const filter_indicators = (
       );
       const low_cov_filter = ind_per_unit.filter((u) => (u.dg ?? 0) > 0.6);
       const low_n_filter = low_cov_filter.filter(
-        //Fixme, lookup the correct denominator indexOf...
-        (u) => u.denominator > (data.description[0].min_denominator ?? 0)
+        (u) =>
+          u.denominator >
+          (data.description[
+            data.description.findIndex((d) => d.id === u.ind_id)
+          ].min_denominator ?? 0)
       );
       const level_filter = low_n_filter.filter(
         (u) => u.level === show_level_filter
