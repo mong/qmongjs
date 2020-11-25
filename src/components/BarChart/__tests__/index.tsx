@@ -38,7 +38,6 @@ test("Level widths are correct", async () => {
 
   const props = propsBuilder();
 
-  props.levels.mid = { start: 0.03, end: 0.35 };
   render(<BarChart {...props} />);
 
   const { low, mid, high } = props.levels;
