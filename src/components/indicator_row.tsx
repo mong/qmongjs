@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import INDICATOR_VALUE from "./indicator_value";
 import INDICATOR_DESCRIPTION from "./indicator_description";
