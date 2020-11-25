@@ -188,6 +188,7 @@ exports[`Render with levels @250px 1`] = `
       </g>
       <rect
         class="level"
+        data-testid="level-high"
         fill="#3baa34"
         height="200"
         opacity="0.2"
@@ -198,6 +199,7 @@ exports[`Render with levels @250px 1`] = `
       />
       <rect
         class="level"
+        data-testid="level-mid"
         fill="#fd9c00"
         height="200"
         opacity="0.2"
@@ -208,6 +210,7 @@ exports[`Render with levels @250px 1`] = `
       />
       <rect
         class="level"
+        data-testid="level-low"
         fill="#e30713"
         height="200"
         opacity="0.2"
@@ -445,6 +448,7 @@ exports[`Render with levels @500px 1`] = `
       </g>
       <rect
         class="level"
+        data-testid="level-high"
         fill="#3baa34"
         height="200"
         opacity="0.2"
@@ -455,6 +459,7 @@ exports[`Render with levels @500px 1`] = `
       />
       <rect
         class="level"
+        data-testid="level-mid"
         fill="#fd9c00"
         height="200"
         opacity="0.2"
@@ -465,6 +470,7 @@ exports[`Render with levels @500px 1`] = `
       />
       <rect
         class="level"
+        data-testid="level-low"
         fill="#e30713"
         height="200"
         opacity="0.2"
@@ -702,6 +708,7 @@ exports[`Render without levels @250px 1`] = `
       </g>
       <rect
         class="level"
+        data-testid="level-high"
         fill="#3baa34"
         height="200"
         opacity="0.2"
@@ -712,6 +719,7 @@ exports[`Render without levels @250px 1`] = `
       />
       <rect
         class="level"
+        data-testid="level-mid"
         fill="#fd9c00"
         height="200"
         opacity="0.2"
@@ -722,6 +730,7 @@ exports[`Render without levels @250px 1`] = `
       />
       <rect
         class="level"
+        data-testid="level-low"
         fill="#e30713"
         height="200"
         opacity="0.2"
@@ -959,6 +968,7 @@ exports[`Render without levels @500px 1`] = `
       </g>
       <rect
         class="level"
+        data-testid="level-high"
         fill="#3baa34"
         height="200"
         opacity="0.2"
@@ -969,6 +979,7 @@ exports[`Render without levels @500px 1`] = `
       />
       <rect
         class="level"
+        data-testid="level-mid"
         fill="#fd9c00"
         height="200"
         opacity="0.2"
@@ -979,6 +990,7 @@ exports[`Render without levels @500px 1`] = `
       />
       <rect
         class="level"
+        data-testid="level-low"
         fill="#e30713"
         height="200"
         opacity="0.2"

@@ -95,6 +95,7 @@ function BarChart({ data, displayLevels, levels }: Props) {
       .data(Object.entries(levels))
       .join("rect")
       .attr("class", "level")
+      .attr("data-testid", ([level]) => `level-${level}`)
       .attr("y", 0)
       .attr("x", ([, range]) => xScale(range.start))
       .attr("width", ([, range]) => xScale(range.end - range.start))
