@@ -11,68 +11,58 @@ import LOW_N from "./low_n";
 import { Description, StatisticData } from "../App";
 import { GraphData } from "./main_component";
 
-export const InticatorVal = (
+export const format_indicator_values = (
   treatment_unit_name: string[],
   data: GraphData,
   ind_id: string,
   description: Description,
   show_level_filter: string
 ) => {
-  return treatment_unit_name.length === 0
-    ? null
-    : treatment_unit_name.map((tr_unit, index) => {
-        const ind_per_unit = data.agg_data.filtered_by_year.filter(
-          (data) => data.unit_name === tr_unit // [data_config.column.treatment_unit]
-        );
-        if (ind_per_unit.length < 1) {
-          return (
-            <td
-              key={`${ind_id}_${tr_unit}_${index}_su`}
-              className="selected_unit"
-            >
-              <NO_DATA />
-            </td>
-          );
-        } else if ((ind_per_unit[0].dg ?? 0) < 0.6) {
-          // [data_config.column.coverage_id as keyof StatisticData]
-          //|| typeof(ind_per_unit[0][data_config.column.coverage_id]) === "undefined") {
-          return (
-            <td
-              key={`${ind_id}_${tr_unit}_${index}_su`}
-              className="selected_unit"
-            >
-              <LOW_COV />
-            </td>
-          );
-        } else if (
-          ind_per_unit[0].denominator < (description.min_denominator ?? 0) //[data_config.column.denominator as keyof StatisticData] [data_config.column.min_denominator as keyof Description]
-        ) {
-          return (
-            <td
-              key={`${ind_id}_${tr_unit}_${index}_su`}
-              className="selected_unit"
-            >
-              <LOW_N />
-            </td>
-          );
-        } else {
-          const ind_type = description.type; // [data_config.column.indicator_type as keyof Description];
-          const level_class =
-            ind_per_unit[0].level !== show_level_filter && // [data_config.column.achieved_level as keyof StatisticData]
-            show_level_filter !== null
-              ? "filtered_level"
-              : "";
-          return (
-            <INDICATOR_VALUE
-              key={`${ind_id}_${tr_unit}_${index}_su`}
-              ind_type={ind_type}
-              data={ind_per_unit[0]}
-              td_class={`selected_unit ${level_class}`}
-              filtered={!!level_class}
-            />
-          );
-        }
-      });
+  if (treatment_unit_name.length === 0) return null;
+  return treatment_unit_name.map((tr_unit, index) => {
+    const ind_per_unit = data.agg_data.filtered_by_year.filter(
+      (data) => data.unit_name === tr_unit // [data_config.column.treatment_unit]
+    );
+    if (ind_per_unit.length < 1) {
+      return (
+        <td key={`${ind_id}_${tr_unit}_${index}_su`} className="selected_unit">
+          <NO_DATA />
+        </td>
+      );
+    } else if ((ind_per_unit[0].dg ?? 0) < 0.6) {
+      // [data_config.column.coverage_id as keyof StatisticData]
+      //|| typeof(ind_per_unit[0][data_config.column.coverage_id]) === "undefined") {
+      return (
+        <td key={`${ind_id}_${tr_unit}_${index}_su`} className="selected_unit">
+          <LOW_COV />
+        </td>
+      );
+    } else if (
+      ind_per_unit[0].denominator < (description.min_denominator ?? 0) //[data_config.column.denominator as keyof StatisticData] [data_config.column.min_denominator as keyof Description]
+    ) {
+      return (
+        <td key={`${ind_id}_${tr_unit}_${index}_su`} className="selected_unit">
+          <LOW_N />
+        </td>
+      );
+    } else {
+      const ind_type = description.type; // [data_config.column.indicator_type as keyof Description];
+      const level_class =
+        ind_per_unit[0].level !== show_level_filter && // [data_config.column.achieved_level as keyof StatisticData]
+        show_level_filter !== null
+          ? "filtered_level"
+          : "";
+      return (
+        <INDICATOR_VALUE
+          key={`${ind_id}_${tr_unit}_${index}_su`}
+          ind_type={ind_type}
+          data={ind_per_unit[0]}
+          td_class={`selected_unit ${level_class}`}
+          filtered={!!level_class}
+        />
+      );
+    }
+  });
 };
 
 interface Props {
@@ -100,7 +90,7 @@ function INDICATOR_ROW(props: Props) {
   const tr_indicator_class = `${ind_id}  ${
     description.rname // [data_config.column.registry_short_name as keyof Description]
   }`;
-  const indicator_val = InticatorVal(
+  const indicator_val = format_indicator_values(
     treatment_unit_name,
     data,
     ind_id,
@@ -132,11 +122,6 @@ function INDICATOR_ROW(props: Props) {
       update_selected_row(ind_id);
     }
   };
-  const hideRow = indicator_val
-    ?.map((i) => i.props.filtered)
-    .every((e) => e === true || e === undefined);
-
-  // if (hideRow) return <></>;
   return (
     <>
       <tr
