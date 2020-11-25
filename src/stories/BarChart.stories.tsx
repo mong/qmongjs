@@ -19,9 +19,8 @@ Primary.args = {
     { label: "d", value: 0.1 },
   ],
   levels: {
-    high: { start: 0.9, end: 1 },
-    mid: { start: 0.5, end: 0.9 },
-    low: { start: 0, end: 0.5 },
+    mid: 0.9,
+    low: 0.5,
   },
 };
 

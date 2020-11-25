@@ -15,15 +15,9 @@ export interface DataPoint {
   value: number;
 }
 
-interface Range {
-  start: number;
-  end: number;
-}
-
 export interface Levels {
-  high: Range;
-  mid: Range;
-  low: Range;
+  mid: number;
+  low: number;
 }
 
 export interface Props {
@@ -45,7 +39,7 @@ function levelColor(level: string) {
   }
 }
 
-function BarChart({ data, displayLevels, levels }: Props) {
+function BarChart({ data, displayLevels, levels: { low, mid } }: Props) {
   const svgRef = useRef<SVGSVGElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const entry = useResizeObserver(wrapperRef);
@@ -90,6 +84,11 @@ function BarChart({ data, displayLevels, levels }: Props) {
       .attr("font-size", "18.57px");
 
     // Levels
+    const levels = {
+      high: { start: mid, end: 1 },
+      mid: { start: low, end: mid },
+      low: { start: 0, end: low },
+    };
     svg
       .selectAll(".level")
       .data(Object.entries(levels))
@@ -117,7 +116,7 @@ function BarChart({ data, displayLevels, levels }: Props) {
       .attr("fill", "#00263d")
       .transition()
       .attr("width", (d) => xScale(d.value));
-  }, [data, width, height, levels, displayLevels]);
+  }, [data, width, height, displayLevels, low, mid]);
 
   return (
     <div ref={wrapperRef} className={styles.wrapper}>

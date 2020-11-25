@@ -40,41 +40,35 @@ test("Level widths are correct", async () => {
 
   render(<BarChart {...props} />);
 
-  const { low, mid, high } = props.levels;
+  const { low, mid } = props.levels;
 
   await waitFor(() => {
     // Low
     const lowLevel = screen.getByTestId(`level-low`);
 
     const lowLevelX = lowLevel.getAttribute("x") ?? "";
-    expect(parseFloat(lowLevelX)).toBeCloseTo(low.start * WIDTH);
+    expect(parseFloat(lowLevelX)).toBeCloseTo(0);
 
     const lowLevelWidth = lowLevel.getAttribute("width") ?? "";
-    expect(parseFloat(lowLevelWidth)).toBeCloseTo(
-      low.end * WIDTH - low.start * WIDTH
-    );
+    expect(parseFloat(lowLevelWidth)).toBeCloseTo(low * WIDTH);
 
     // Mid
     const midLevel = screen.getByTestId(`level-mid`);
 
     const midLevelX = midLevel.getAttribute("x") ?? "";
-    expect(parseFloat(midLevelX)).toBeCloseTo(mid.start * WIDTH);
+    expect(parseFloat(midLevelX)).toBeCloseTo(low * WIDTH);
 
     const midLevelWidth = midLevel.getAttribute("width") ?? "";
-    expect(parseFloat(midLevelWidth)).toBeCloseTo(
-      mid.end * WIDTH - mid.start * WIDTH
-    );
+    expect(parseFloat(midLevelWidth)).toBeCloseTo(mid * WIDTH - low * WIDTH);
 
     // High
     const highLevel = screen.getByTestId(`level-high`);
 
     const highLevelX = highLevel.getAttribute("x") ?? "";
-    expect(parseFloat(highLevelX)).toBeCloseTo(high.start * WIDTH);
+    expect(parseFloat(highLevelX)).toBeCloseTo(mid * WIDTH);
 
     const highLevelWidth = highLevel.getAttribute("width") ?? "";
-    expect(parseFloat(highLevelWidth)).toBeCloseTo(
-      high.end * WIDTH - high.start * WIDTH
-    );
+    expect(parseFloat(highLevelWidth)).toBeCloseTo(WIDTH - mid * WIDTH);
   });
 });
 
@@ -96,9 +90,8 @@ test("Render without levels @250px", async () => {
         { label: "d", value: 0.1 },
       ]}
       levels={{
-        high: { start: 0.9, end: 1 },
-        mid: { start: 0.5, end: 0.9 },
-        low: { start: 0, end: 0.5 },
+        mid: 0.9,
+        low: 0.5,
       }}
     />
   );
@@ -129,9 +122,8 @@ test("Render with levels @250px", async () => {
         { label: "d", value: 0.1 },
       ]}
       levels={{
-        high: { start: 0.9, end: 1 },
-        mid: { start: 0.5, end: 0.9 },
-        low: { start: 0, end: 0.5 },
+        mid: 0.9,
+        low: 0.5,
       }}
     />
   );
@@ -162,9 +154,8 @@ test("Render without levels @500px", async () => {
         { label: "d", value: 0.1 },
       ]}
       levels={{
-        high: { start: 0.9, end: 1 },
-        mid: { start: 0.5, end: 0.9 },
-        low: { start: 0, end: 0.5 },
+        mid: 0.9,
+        low: 0.5,
       }}
     />
   );
@@ -195,9 +186,8 @@ test("Render with levels @500px", async () => {
         { label: "d", value: 0.1 },
       ]}
       levels={{
-        high: { start: 0.9, end: 1 },
-        mid: { start: 0.5, end: 0.9 },
-        low: { start: 0, end: 0.5 },
+        mid: 0.9,
+        low: 0.5,
       }}
     />
   );
@@ -232,12 +222,10 @@ const propsBuilder = build<Props>("Props", {
       (f): Levels => {
         const low = f.random.number({ min: 0, max: 100 });
         const mid = f.random.number({ min: low, max: 100 });
-        const high = f.random.number({ min: mid, max: 100 });
 
         return {
-          low: { start: 0, end: low / 100 },
-          mid: { start: low / 100, end: mid / 100 },
-          high: { start: mid / 100, end: high / 100 },
+          low: low / 100,
+          mid: mid / 100,
         };
       }
     ),
