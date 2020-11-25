@@ -26,7 +26,7 @@ export interface Levels {
   low: Range;
 }
 
-interface Props {
+export interface Props {
   displayLevels: boolean;
   data: DataPoint[];
   levels: Levels;
