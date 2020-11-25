@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AggData, Description } from "../App";
+import { AggData, Description, StatisticData } from "../App";
 
 import INDICATOR_TABLE from "./indicator_table";
 import LEGEND from "./legend";
@@ -16,6 +16,88 @@ export interface IndPerReg {
   indicators: Description[];
 }
 
+const apply_filters = ({
+  tr_unit,
+  tr_unit_by_year,
+  description,
+  show_level_filter,
+}: {
+  tr_unit: string;
+  tr_unit_by_year: StatisticData[];
+  description: Description[];
+  show_level_filter: string;
+}): StatisticData[] => {
+  const ind_per_unit = tr_unit_by_year.filter(
+    (data) => data.unit_name === tr_unit // [data_config.column.treatment_unit]
+  );
+  // Fix/investigate: StatisticData does not have a .dg attrib
+  const low_cov_filter = ind_per_unit.filter((u) => (u.dg ?? 0) < 0.6);
+  const low_n_filter = low_cov_filter.filter(
+    (u) =>
+      u.denominator >
+      (description[description.findIndex((d) => d.id === u.ind_id)]
+        .min_denominator ?? 0)
+  );
+  const level_filter = low_n_filter.filter(
+    (u) => u.level === show_level_filter
+  );
+  return level_filter;
+};
+
+const filter_indicators = (
+  treatment_unit_name: string[],
+  data: GraphData,
+  show_level_filter: string | null
+): GraphData => {
+  if (show_level_filter === null) {
+    return data;
+  }
+  const data_filtered = treatment_unit_name
+    .map((tr_unit) =>
+      apply_filters({
+        tr_unit,
+        tr_unit_by_year: data.agg_data.filtered_by_year,
+        description: data.description,
+        show_level_filter,
+      })
+    )
+    .concat([
+      apply_filters({
+        tr_unit: "Nasjonalt",
+        tr_unit_by_year: data.agg_data.nation.filtered_by_year,
+        description: data.description,
+        show_level_filter,
+      }),
+    ])
+    .sort((a, b) => b.length - a.length);
+
+  const ind_ids_remaining = data_filtered
+    .map((a) => a.map((u) => u.ind_id))
+    .flat(1)
+    .filter((v, i, a) => a.indexOf(v) === i);
+  return {
+    agg_data: {
+      filtered_by_year: data.agg_data.filtered_by_year.filter((u) =>
+        ind_ids_remaining.includes(u.ind_id)
+      ),
+      filtered_by_unit: data.agg_data.filtered_by_unit.filter((u) =>
+        ind_ids_remaining.includes(u.ind_id)
+      ),
+      nation: {
+        filtered_by_year: data.agg_data.nation.filtered_by_year.filter((u) =>
+          ind_ids_remaining.includes(u.ind_id)
+        ),
+        filtered_by_unit: data.agg_data.nation.filtered_by_unit.filter((u) =>
+          ind_ids_remaining.includes(u.ind_id)
+        ),
+      },
+    },
+    description: data.description.filter((d) =>
+      ind_ids_remaining.includes(d.id)
+    ),
+  };
+};
+
 interface Props {
   data: GraphData;
   med_field: any;
@@ -30,55 +112,6 @@ interface Props {
   legend_height: any;
   update_legend_height(height: any): void;
 }
-
-export const filter_indicators = (
-  treatment_unit_name: string[],
-  data: GraphData,
-  show_level_filter: string | null
-) => {
-  if (treatment_unit_name.length < 1 || show_level_filter === null) {
-    return data;
-  }
-  const data_filtered_by_tu = treatment_unit_name
-    .map((tr_unit) => {
-      const ind_per_unit = data.agg_data.filtered_by_year.filter(
-        (data) => data.unit_name === tr_unit // [data_config.column.treatment_unit]
-      );
-      const low_cov_filter = ind_per_unit.filter((u) => (u.dg ?? 0) > 0.6);
-      const low_n_filter = low_cov_filter.filter(
-        (u) =>
-          u.denominator >
-          (data.description[
-            data.description.findIndex((d) => d.id === u.ind_id)
-          ].min_denominator ?? 0)
-      );
-      const level_filter = low_n_filter.filter(
-        (u) => u.level === show_level_filter
-      );
-      return level_filter;
-    })
-    .sort((a, b) => b.length - a.length);
-  const ind_ids_remaining = data_filtered_by_tu
-    .map((a) => a.map((u) => u.ind_id))
-    .flat(1)
-    .filter((v, i, a) => a.indexOf(v) === i);
-
-  return {
-    agg_data: {
-      filtered_by_year: data.agg_data.filtered_by_year.filter((u) =>
-        ind_ids_remaining.includes(u.ind_id)
-      ),
-      filtered_by_unit: data.agg_data.filtered_by_unit.filter((u) =>
-        ind_ids_remaining.includes(u.ind_id)
-      ),
-      nation: data.agg_data.nation,
-    },
-    description: data.description.filter((d) =>
-      ind_ids_remaining.includes(d.id)
-    ),
-  };
-};
-
 const Main = (props: Props) => {
   const {
     data,
@@ -103,7 +136,6 @@ const Main = (props: Props) => {
     data,
     show_level_filter
   );
-
   return (
     <>
       <LEGEND

@@ -4,11 +4,10 @@ import INDICATOR_VALUE from "./indicator_value";
 import INDICATOR_DESCRIPTION from "./indicator_description";
 import TR_FIGURE from "./tf_figure";
 
-import { data_config } from "../app_config";
 import NO_DATA from "./no_data";
 import LOW_COV from "./low_cov";
 import LOW_N from "./low_n";
-import { Description, StatisticData } from "../App";
+import { Description } from "../App";
 import { GraphData } from "./main_component";
 
 export const format_indicator_values = (
@@ -30,6 +29,7 @@ export const format_indicator_values = (
         </td>
       );
     } else if ((ind_per_unit[0].dg ?? 0) < 0.6) {
+      // Fix/investigate: StatisticData does not have a .dg attrib
       // [data_config.column.coverage_id as keyof StatisticData]
       //|| typeof(ind_per_unit[0][data_config.column.coverage_id]) === "undefined") {
       return (
@@ -99,9 +99,8 @@ function INDICATOR_ROW(props: Props) {
   );
 
   const level_class =
-    data.agg_data.nation.filtered_by_year[0][
-      data_config.column.achieved_level as keyof StatisticData
-    ] !== show_level_filter && show_level_filter !== null
+    data.agg_data.nation.filtered_by_year[0].level !== show_level_filter &&
+    show_level_filter !== null
       ? "filtered_level"
       : "";
 
