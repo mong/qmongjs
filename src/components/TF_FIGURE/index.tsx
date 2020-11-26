@@ -18,7 +18,7 @@ function TF_FIGURE(props: Props) {
   const { colspan = 3, data, figure_class, update_selected_row } = props;
 
   const [chart_type, update_chart_type] = useState<"line" | "bar">("line");
-  const [zoom, update_zoom] = useState(false);
+  const [zoom, update_zoom] = useState(true);
   const [show_level, update_show_level] = useState(false);
 
   if (

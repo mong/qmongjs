@@ -35,7 +35,7 @@ const DD_MENU = (props: Props) => {
       class: "dd-level",
     },
     {
-      label: zoom ? "Zoom inn" : "Zoom ut",
+      label: zoom ? "Zoom ut" : "Zoom inn",
       click: () => update_zoom((zoom) => !zoom),
       class: "dd-zoom",
     },

@@ -196,7 +196,7 @@ export const line_chart = function ({
     .attr("fill", "none")
     .style("mix-blend-mode", "multiply");
 
-  if (!zoom) {
+  if (zoom) {
     let y_min_val =
       min(
         figure_data,
