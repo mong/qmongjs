@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 interface Props {
-  show_level: string;
+  show_level: boolean;
   zoom: string;
-  update_zoom(xoom: string): void;
-  update_show_level(level: string): void;
+  update_zoom(zoom: string): void;
+  update_show_level: React.Dispatch<React.SetStateAction<boolean>>;
   update_selected_row(row: string): void;
 }
 
@@ -18,7 +18,6 @@ const DD_MENU = (props: Props) => {
   } = props;
 
   const [dd_menu_status, set_dd_menu_status] = useState("inactive");
-  const level_states = ["Vis målnivå", "Skjul målnivå"];
   const zoom_states = ["Zoom inn", "Zoom ut"];
 
   const handle_click = (
@@ -30,10 +29,10 @@ const DD_MENU = (props: Props) => {
     update_state_function(new_state[0]);
   };
 
-  const dorpdown_entries = [
+  const dropdown_entries = [
     {
-      label: show_level,
-      click: () => handle_click(show_level, level_states, update_show_level),
+      label: show_level ? "Skjul målnivå" : "Vis målnivå",
+      click: () => update_show_level((showLevel) => !showLevel),
       class: "dd-level",
     },
     {
@@ -51,7 +50,7 @@ const DD_MENU = (props: Props) => {
     }, 1000);
   };
 
-  const dd_list = dorpdown_entries.map((dd) => {
+  const dd_list = dropdown_entries.map((dd) => {
     return (
       <li key={dd.class}>
         <div className={dd.class} onClick={dd.click}>

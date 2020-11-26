@@ -18,7 +18,7 @@ function TF_FIGURE(props: Props) {
 
   const [chart_type, update_chart_type] = useState<"line" | "bar">("line");
   const [zoom, update_zoom] = useState("Zoom ut");
-  const [show_level, update_show_level] = useState("Vis målnivå");
+  const [show_level, update_show_level] = useState(false);
 
   if (
     !data.agg_data.filtered_by_year.some((d) => d.unit_name === "Nasjonalt")

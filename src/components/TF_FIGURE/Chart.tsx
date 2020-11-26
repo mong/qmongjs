@@ -10,7 +10,7 @@ export interface Props {
   data: GraphData;
   chartType: "bar" | "line";
   zoom: string;
-  showLevel: string;
+  showLevel: boolean;
 }
 
 function Chart(props: Props) {
@@ -21,8 +21,7 @@ function Chart(props: Props) {
     if (!svg_container_ref.current) {
       return;
     }
-    let level_visibility =
-      showLevel.replace(/\s/g, "") === "Skjulmålnivå" ? "visible" : "hidden";
+    let level_visibility = showLevel ? "visible" : "hidden";
     let level = select(svg_container_ref.current);
     level.selectAll("svg .level").style("visibility", level_visibility);
   }, [showLevel]);
