@@ -17,31 +17,31 @@ export interface IndPerReg {
 }
 
 const apply_filters = ({
-  tr_unit,
   tr_unit_by_year,
   description,
   show_level_filter,
+  check_level_only,
 }: {
-  tr_unit: string;
   tr_unit_by_year: StatisticData[];
   description: Description[];
   show_level_filter: string;
+  check_level_only?: boolean;
 }): StatisticData[] => {
-  const ind_per_unit = tr_unit_by_year.filter(
-    (data) => data.unit_name === tr_unit // [data_config.column.treatment_unit]
-  );
-  // Fix/investigate: StatisticData does not have a .dg attrib
-  const low_cov_filter = ind_per_unit.filter((u) => (u.dg ?? 0) < 0.6);
-  const low_n_filter = low_cov_filter.filter(
-    (u) =>
-      u.denominator >
-      (description[description.findIndex((d) => d.id === u.ind_id)]
-        .min_denominator ?? 0)
-  );
-  const level_filter = low_n_filter.filter(
-    (u) => u.level === show_level_filter
-  );
-  return level_filter;
+  const filtered_by_threshold =
+    check_level_only ?? false
+      ? tr_unit_by_year
+      : tr_unit_by_year
+          .filter((u) => {
+            return (u.dg ?? 0) > 0.6;
+          })
+          .filter((u) => {
+            return (
+              u.denominator >
+              (description[description.findIndex((d) => d.id === u.ind_id)]
+                .min_denominator ?? 0)
+            );
+          });
+  return filtered_by_threshold.filter((u) => u.level === show_level_filter);
 };
 
 const filter_indicators = (
@@ -55,7 +55,6 @@ const filter_indicators = (
   const data_filtered = treatment_unit_name
     .map((tr_unit) =>
       apply_filters({
-        tr_unit,
         tr_unit_by_year: data.agg_data.filtered_by_year,
         description: data.description,
         show_level_filter,
@@ -63,18 +62,19 @@ const filter_indicators = (
     )
     .concat([
       apply_filters({
-        tr_unit: "Nasjonalt",
         tr_unit_by_year: data.agg_data.nation.filtered_by_year,
         description: data.description,
         show_level_filter,
+        check_level_only: true,
       }),
     ])
     .sort((a, b) => b.length - a.length);
-
+  console.log("data", data_filtered);
   const ind_ids_remaining = data_filtered
     .map((a) => a.map((u) => u.ind_id))
     .flat(1)
     .filter((v, i, a) => a.indexOf(v) === i);
+
   return {
     agg_data: {
       filtered_by_year: data.agg_data.filtered_by_year.filter((u) =>

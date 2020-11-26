@@ -29,7 +29,6 @@ export const format_indicator_values = (
         </td>
       );
     } else if ((ind_per_unit[0].dg ?? 0) < 0.6) {
-      // Fix/investigate: StatisticData does not have a .dg attrib
       // [data_config.column.coverage_id as keyof StatisticData]
       //|| typeof(ind_per_unit[0][data_config.column.coverage_id]) === "undefined") {
       return (
