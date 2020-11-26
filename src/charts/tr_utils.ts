@@ -2,7 +2,7 @@ import app_config from "../app_config";
 
 const config = app_config.data_config;
 
-export const level_boundary = function (level_obj) {
+export const level_boundary = function (this: any, level_obj: any) {
   if (this[config.column.level_direction] === 0) {
     if (level_obj.level === "high") {
       level_obj.start = this[config.column.level_green];
