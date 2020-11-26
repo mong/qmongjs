@@ -1,6 +1,6 @@
 import { render, waitFor, screen } from "@testing-library/react";
 import React from "react";
-import { build, fake } from "@jackfranklin/test-data-bot";
+import { build, fake, bool } from "@jackfranklin/test-data-bot";
 import BarChart, { Props, DataPoint } from "..";
 import useResizeObserver from "../../utils";
 import { Level } from "../../TF_FIGURE/Chart";
@@ -17,7 +17,7 @@ test("Bar widths are correct", async () => {
 
   const props = propsBuilder();
 
-  render(<BarChart {...props} />);
+  render(<BarChart {...props} zoom={false} />);
 
   await waitFor(() => {
     for (const dataPoint of props.data) {
@@ -39,7 +39,7 @@ test("Level widths are correct", async () => {
 
   const props = propsBuilder();
 
-  render(<BarChart {...props} />);
+  render(<BarChart {...props} zoom={false} />);
 
   await waitFor(() => {
     for (const l of props.levels) {
@@ -78,6 +78,7 @@ test("Render without levels @250px", async () => {
         { level: "mid", start: 0.9, end: 0.5 },
         { level: "low", start: 0.5, end: 0 },
       ]}
+      zoom={false}
     />
   );
 
@@ -111,6 +112,7 @@ test("Render with levels @250px", async () => {
         { level: "mid", start: 0.9, end: 0.5 },
         { level: "low", start: 0.5, end: 0 },
       ]}
+      zoom={false}
     />
   );
 
@@ -144,6 +146,7 @@ test("Render without levels @500px", async () => {
         { level: "mid", start: 0.9, end: 0.5 },
         { level: "low", start: 0.5, end: 0 },
       ]}
+      zoom={false}
     />
   );
 
@@ -177,6 +180,7 @@ test("Render with levels @500px", async () => {
         { level: "mid", start: 0.9, end: 0.5 },
         { level: "low", start: 0.5, end: 0 },
       ]}
+      zoom={false}
     />
   );
 
@@ -210,6 +214,41 @@ test("Render with levels reversed @500px", async () => {
         { level: "mid", start: 0.9, end: 0.5 },
         { level: "low", start: 1, end: 0.9 },
       ]}
+      zoom={false}
+    />
+  );
+
+  await waitFor(() => {
+    const width = screen.getByTestId("bar-a")?.getAttribute("width");
+    expect(width).toBe(`${WIDTH}`);
+  });
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Render zoomed with levels @500px", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+
+  const { container } = render(
+    <BarChart
+      displayLevels={true}
+      data={[
+        { label: "a", value: 1 },
+        { label: "b", value: 0.15 },
+        { label: "c", value: 0.3 },
+        { label: "d", value: 0.1 },
+      ]}
+      levels={[
+        { level: "high", start: 1, end: 0.09 },
+        { level: "mid", start: 0.9, end: 0.5 },
+        { level: "low", start: 0.5, end: 0 },
+      ]}
+      zoom
     />
   );
 
@@ -231,7 +270,7 @@ const dataPointBuilder = build<DataPoint>("DataPoint", {
 
 const propsBuilder = build<Props>("Props", {
   fields: {
-    displayLevels: fake((f) => f.random.boolean()),
+    displayLevels: bool(),
     data: fake((f) =>
       Array.from(
         { length: f.random.number({ min: 1, max: 10 }) },
@@ -248,5 +287,6 @@ const propsBuilder = build<Props>("Props", {
         { level: "low", start: 0, end: low },
       ];
     }),
+    zoom: bool(),
   },
 });

@@ -5,6 +5,7 @@ import {
   scaleBand,
   scaleLinear,
   select,
+  max,
 } from "d3";
 import React, { useEffect, useRef } from "react";
 import { Level } from "../TF_FIGURE/Chart";
@@ -20,6 +21,7 @@ export interface Props {
   displayLevels: boolean;
   data: DataPoint[];
   levels: Level[];
+  zoom?: boolean;
 }
 
 function levelColor(level: string) {
@@ -35,7 +37,7 @@ function levelColor(level: string) {
   }
 }
 
-function BarChart({ data, displayLevels, levels }: Props) {
+function BarChart({ data, displayLevels, levels, zoom = false }: Props) {
   const svgRef = useRef<SVGSVGElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const entry = useResizeObserver(wrapperRef);
@@ -56,7 +58,9 @@ function BarChart({ data, displayLevels, levels }: Props) {
       .range([0, height])
       .padding(0.5);
 
-    const xScale = scaleLinear().domain([0, 1]).range([0, width]);
+    const xScaleDomain = getXScaleDomain(data, zoom);
+
+    const xScale = scaleLinear().domain(xScaleDomain).range([0, width]);
 
     // Y-Axis
     const yAxis = axisLeft(yScale);
@@ -107,7 +111,7 @@ function BarChart({ data, displayLevels, levels }: Props) {
       .attr("fill", "#00263d")
       .transition()
       .attr("width", (d) => xScale(d.value));
-  }, [data, width, height, displayLevels, levels]);
+  }, [data, width, height, displayLevels, levels, zoom]);
 
   return (
     <div ref={wrapperRef} className={styles.wrapper}>
@@ -120,3 +124,15 @@ function BarChart({ data, displayLevels, levels }: Props) {
 }
 
 export default BarChart;
+
+function getXScaleDomain(data: DataPoint[], zoom: boolean): [number, number] {
+  if (!zoom) {
+    return [0, 1];
+  }
+
+  const xMaxVal = max(data, (d) => d.value) ?? 0;
+  const additionalMargin = (0.01 + xMaxVal) * 0.2;
+  const domainWidth = Math.ceil((xMaxVal + additionalMargin) * 100) / 100;
+
+  return [0, Math.min(domainWidth, 1)];
+}
