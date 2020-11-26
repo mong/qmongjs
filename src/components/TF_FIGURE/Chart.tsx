@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { select } from "d3";
 import { bar_chart } from "../../charts/barchart";
 import { line_chart } from "../../charts/line_chart";
-import { level_boundary } from "../../charts/tr_utils";
+import { level_boundary } from "./tr_utils";
 import { StatisticData } from "../../App";
 import { GraphData } from "../main_component";
 
@@ -47,6 +47,7 @@ function Chart(props: Props) {
       { level: "low", start: 0, end: 0 },
     ];
     levels.forEach(level_boundary, data.description[0]);
+    console.log(data.description[0]);
 
     if (chartType === "bar") {
       const nr_svg_children = svg_container_ref.current.childElementCount;

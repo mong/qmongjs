@@ -1,6 +1,6 @@
-import { Level } from "../components/TF_FIGURE/Chart";
+import { Level } from "./Chart";
 
-interface Config {
+export interface Config {
   level_direction: number;
   level_green: number | null;
   level_yellow: number | null;
