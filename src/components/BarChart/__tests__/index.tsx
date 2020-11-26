@@ -72,6 +72,51 @@ test("Level widths are correct", async () => {
   });
 });
 
+test("render levels reversed", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+
+  const props = propsBuilder();
+  props.levels = { low: props.levels.mid, mid: props.levels.low };
+
+  render(<BarChart {...props} />);
+
+  const { low, mid } = props.levels;
+
+  await waitFor(() => {
+    // Low
+    const lowLevel = screen.getByTestId(`level-low`);
+
+    const lowLevelX = lowLevel.getAttribute("x") ?? "";
+    expect(parseFloat(lowLevelX)).toBeCloseTo(low * WIDTH);
+
+    const lowLevelWidth = lowLevel.getAttribute("width") ?? "";
+    expect(parseFloat(lowLevelWidth)).toBeCloseTo(WIDTH - low * WIDTH);
+
+    // Mid
+    const midLevel = screen.getByTestId(`level-mid`);
+
+    const midLevelX = midLevel.getAttribute("x") ?? "";
+    expect(parseFloat(midLevelX)).toBeCloseTo(mid * WIDTH);
+
+    const midLevelWidth = midLevel.getAttribute("width") ?? "";
+    expect(parseFloat(midLevelWidth)).toBeCloseTo(low * WIDTH - mid * WIDTH);
+
+    // High
+    const highLevel = screen.getByTestId(`level-high`);
+
+    const highLevelX = highLevel.getAttribute("x") ?? "";
+    expect(parseFloat(highLevelX)).toBeCloseTo(0);
+
+    const highLevelWidth = highLevel.getAttribute("width") ?? "";
+    expect(parseFloat(highLevelWidth)).toBeCloseTo(mid * WIDTH);
+  });
+});
+
 test("Render without levels @250px", async () => {
   const WIDTH = 250;
   (useResizeObserver as jest.Mock).mockReturnValue({
@@ -230,4 +275,36 @@ const propsBuilder = build<Props>("Props", {
       }
     ),
   },
+});
+
+test("Render with levels reversed", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+
+  const { container } = render(
+    <BarChart
+      displayLevels={true}
+      data={[
+        { label: "a", value: 1 },
+        { label: "b", value: 0.15 },
+        { label: "c", value: 0.3 },
+        { label: "d", value: 0.1 },
+      ]}
+      levels={{
+        mid: 0.5,
+        low: 0.9,
+      }}
+    />
+  );
+
+  await waitFor(() => {
+    const width = screen.getByTestId("bar-a")?.getAttribute("width");
+    expect(width).toBe(`${WIDTH}`);
+  });
+
+  expect(container).toMatchSnapshot();
 });

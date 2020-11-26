@@ -84,11 +84,8 @@ function BarChart({ data, displayLevels, levels: { low, mid } }: Props) {
       .attr("font-size", "18.57px");
 
     // Levels
-    const levels = {
-      high: { start: mid, end: 1 },
-      mid: { start: low, end: mid },
-      low: { start: 0, end: low },
-    };
+    const levels = makeLevels(mid, low);
+
     svg
       .selectAll(".level")
       .data(Object.entries(levels))
@@ -129,3 +126,19 @@ function BarChart({ data, displayLevels, levels: { low, mid } }: Props) {
 }
 
 export default BarChart;
+
+function makeLevels(mid: number, low: number) {
+  if (mid < low) {
+    return {
+      high: { start: 0, end: mid },
+      mid: { start: mid, end: low },
+      low: { start: low, end: 1 },
+    };
+  }
+
+  return {
+    high: { start: mid, end: 1 },
+    mid: { start: low, end: mid },
+    low: { start: 0, end: low },
+  };
+}
