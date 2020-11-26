@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 interface Props {
   show_level: boolean;
-  zoom: string;
-  update_zoom(zoom: string): void;
+  zoom: boolean;
+  update_zoom: React.Dispatch<React.SetStateAction<boolean>>;
   update_show_level: React.Dispatch<React.SetStateAction<boolean>>;
   update_selected_row(row: string): void;
 }
@@ -18,7 +18,6 @@ const DD_MENU = (props: Props) => {
   } = props;
 
   const [dd_menu_status, set_dd_menu_status] = useState("inactive");
-  const zoom_states = ["Zoom inn", "Zoom ut"];
 
   const handle_click = (
     current_state: string,
@@ -36,8 +35,8 @@ const DD_MENU = (props: Props) => {
       class: "dd-level",
     },
     {
-      label: zoom,
-      click: () => handle_click(zoom, zoom_states, update_zoom),
+      label: zoom ? "Zoom inn" : "Zoom ut",
+      click: () => update_zoom((zoom) => !zoom),
       class: "dd-zoom",
     },
     { label: "Lukk", click: () => update_selected_row(""), class: "dd-close" },

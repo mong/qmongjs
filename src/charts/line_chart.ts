@@ -26,7 +26,7 @@ type LineChartProps = {
     width: number;
     height: number;
     margin: { top: number; bottom: number; right: number; left: number };
-    zoom: string;
+    zoom: boolean;
   };
   figure_data: StatisticData[];
   levels: {
@@ -196,7 +196,7 @@ export const line_chart = function ({
     .attr("fill", "none")
     .style("mix-blend-mode", "multiply");
 
-  if (zoom.replace(/\s/g, "") === "Zoomut") {
+  if (!zoom) {
     let y_min_val =
       min(
         figure_data,

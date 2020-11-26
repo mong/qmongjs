@@ -123,7 +123,7 @@ export const bar_chart = function (container, props, figure_data, levels) {
     .duration(delay_value)
     .attr("width", (d) => x_scale(d[config.column.variable]));
 
-  if (zoom.replace(/\s/g, "") === "Zoomut") {
+  if (!zoom) {
     let x_max_val = max(figure_data, (d) => d[config.column.variable]);
     let additional_margin = (0.01 + x_max_val) * 0.2;
     x_max_val = Math.ceil((x_max_val + additional_margin) * 100) / 100;

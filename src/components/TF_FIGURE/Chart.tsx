@@ -14,7 +14,7 @@ export interface Level {
 export interface Props {
   data: GraphData;
   chartType: "bar" | "line";
-  zoom: string;
+  zoom: boolean;
   showLevel: boolean;
   levels: Level[];
 }
