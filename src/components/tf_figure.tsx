@@ -9,6 +9,7 @@ import { line_chart } from "../charts/line_chart";
 import { level_boundary } from "../charts/tr_utils";
 import { StatisticData } from "../App";
 import { GraphData } from "./main_component";
+import { select } from "d3";
 
 export interface Props {
   colspan?: number;
@@ -37,6 +38,16 @@ function TF_FIGURE(props: Props) {
       data.agg_data.nation.filtered_by_unit
     );
   }
+
+  useEffect(() => {
+    if (!svg_container_ref.current) {
+      return;
+    }
+    let level_visibility =
+      show_level.replace(/\s/g, "") === "Skjulmålnivå" ? "visible" : "hidden";
+    let level = select(svg_container_ref.current);
+    level.selectAll("svg .level").style("visibility", level_visibility);
+  }, [show_level]);
 
   useEffect(() => {
     if (!svg_container_ref.current) return;
@@ -121,7 +132,6 @@ function TF_FIGURE(props: Props) {
               update_show_level={update_show_level}
               zoom={zoom}
               update_zoom={update_zoom}
-              svg_container={svg_container_ref}
               update_selected_row={update_selected_row}
             />
             <TF_BUTTON

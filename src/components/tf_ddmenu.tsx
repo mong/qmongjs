@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { select } from "d3";
+import React, { useState } from "react";
 
 interface Props {
   show_level: string;
   zoom: string;
-  svg_container: React.RefObject<HTMLDivElement>;
   update_zoom(xoom: string): void;
   update_show_level(level: string): void;
   update_selected_row(row: string): void;
@@ -16,7 +14,6 @@ const DD_MENU = (props: Props) => {
     update_show_level,
     zoom,
     update_zoom,
-    svg_container,
     update_selected_row,
   } = props;
 
@@ -32,13 +29,6 @@ const DD_MENU = (props: Props) => {
     const new_state = states.filter((state) => state !== current_state);
     update_state_function(new_state[0]);
   };
-
-  useEffect(() => {
-    let level_visibility =
-      show_level.replace(/\s/g, "") === "Skjulmålnivå" ? "visible" : "hidden";
-    let level = select(svg_container.current);
-    level.selectAll("svg .level").style("visibility", level_visibility);
-  }, [svg_container, show_level]);
 
   const dorpdown_entries = [
     {
