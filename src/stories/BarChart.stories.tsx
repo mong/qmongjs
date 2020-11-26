@@ -18,10 +18,11 @@ Primary.args = {
     { label: "c", value: 0.3 },
     { label: "d", value: 0.1 },
   ],
-  levels: {
-    mid: 0.9,
-    low: 0.5,
-  },
+  levels: [
+    { level: "high", start: 1, end: 0.9 },
+    { level: "mid", start: 0.9, end: 0.5 },
+    { level: "low", start: 0.5, end: 0 },
+  ],
 };
 
 export default meta;

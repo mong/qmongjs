@@ -7,6 +7,7 @@ import {
   select,
 } from "d3";
 import React, { useEffect, useRef } from "react";
+import { Level } from "../TF_FIGURE/Chart";
 import useResizeObserver from "../utils";
 import styles from "./BarChart.module.css";
 
@@ -15,15 +16,10 @@ export interface DataPoint {
   value: number;
 }
 
-export interface Levels {
-  mid: number;
-  low: number;
-}
-
 export interface Props {
   displayLevels: boolean;
   data: DataPoint[];
-  levels: Levels;
+  levels: Level[];
 }
 
 function levelColor(level: string) {
@@ -39,7 +35,7 @@ function levelColor(level: string) {
   }
 }
 
-function BarChart({ data, displayLevels, levels: { low, mid } }: Props) {
+function BarChart({ data, displayLevels, levels }: Props) {
   const svgRef = useRef<SVGSVGElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const entry = useResizeObserver(wrapperRef);
@@ -84,19 +80,17 @@ function BarChart({ data, displayLevels, levels: { low, mid } }: Props) {
       .attr("font-size", "18.57px");
 
     // Levels
-    const levels = makeLevels(mid, low);
-
     svg
       .selectAll(".level")
-      .data(Object.entries(levels))
+      .data(levels)
       .join("rect")
       .attr("class", "level")
-      .attr("data-testid", ([level]) => `level-${level}`)
+      .attr("data-testid", ({ level }) => `level-${level}`)
       .attr("y", 0)
-      .attr("x", ([, range]) => xScale(range.start))
-      .attr("width", ([, range]) => xScale(range.end - range.start))
+      .attr("x", ({ end }) => xScale(end))
+      .attr("width", ({ start, end }) => xScale(start - end))
       .attr("height", height)
-      .attr("fill", ([level]) => levelColor(level))
+      .attr("fill", ({ level }) => levelColor(level))
       .attr("opacity", "0.2")
       .attr("visibility", displayLevels ? "visible" : "hidden");
 
@@ -113,7 +107,7 @@ function BarChart({ data, displayLevels, levels: { low, mid } }: Props) {
       .attr("fill", "#00263d")
       .transition()
       .attr("width", (d) => xScale(d.value));
-  }, [data, width, height, displayLevels, low, mid]);
+  }, [data, width, height, displayLevels, levels]);
 
   return (
     <div ref={wrapperRef} className={styles.wrapper}>
@@ -126,19 +120,3 @@ function BarChart({ data, displayLevels, levels: { low, mid } }: Props) {
 }
 
 export default BarChart;
-
-function makeLevels(mid: number, low: number) {
-  if (mid < low) {
-    return {
-      high: { start: 0, end: mid },
-      mid: { start: mid, end: low },
-      low: { start: low, end: 1 },
-    };
-  }
-
-  return {
-    high: { start: mid, end: 1 },
-    mid: { start: low, end: mid },
-    low: { start: 0, end: low },
-  };
-}

@@ -193,8 +193,8 @@ exports[`Render with levels @250px 1`] = `
         height="200"
         opacity="0.2"
         visibility="visible"
-        width="24.999999999999993"
-        x="225"
+        width="227.5"
+        x="22.5"
         y="0"
       />
       <rect
@@ -453,8 +453,8 @@ exports[`Render with levels @500px 1`] = `
         height="200"
         opacity="0.2"
         visibility="visible"
-        width="49.999999999999986"
-        x="450"
+        width="455"
+        x="45"
         y="0"
       />
       <rect
@@ -520,7 +520,7 @@ exports[`Render with levels @500px 1`] = `
 </div>
 `;
 
-exports[`Render with levels reversed 1`] = `
+exports[`Render with levels reversed @500px 1`] = `
 <div>
   <div
     class="wrapper"
@@ -973,8 +973,8 @@ exports[`Render without levels @250px 1`] = `
         height="200"
         opacity="0.2"
         visibility="hidden"
-        width="24.999999999999993"
-        x="225"
+        width="227.5"
+        x="22.5"
         y="0"
       />
       <rect
@@ -1233,8 +1233,8 @@ exports[`Render without levels @500px 1`] = `
         height="200"
         opacity="0.2"
         visibility="hidden"
-        width="49.999999999999986"
-        x="450"
+        width="455"
+        x="45"
         y="0"
       />
       <rect
