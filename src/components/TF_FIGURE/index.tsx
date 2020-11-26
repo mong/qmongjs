@@ -5,6 +5,7 @@ import TF_DDMENU from "../tf_ddmenu";
 import TF_LONG_DESCRIPTION from "../tf_description";
 import { GraphData } from "../main_component";
 import Chart from "./Chart";
+import { level_boundary } from "./tr_utils";
 
 export interface Props {
   colspan?: number;
@@ -32,6 +33,8 @@ function TF_FIGURE(props: Props) {
     );
   }
 
+  let levels = level_boundary(data.description[0]);
+
   return (
     <tr className={figure_class}>
       <td colSpan={colspan}>
@@ -54,6 +57,7 @@ function TF_FIGURE(props: Props) {
             chartType={chart_type}
             zoom={zoom}
             showLevel={show_level}
+            levels={levels}
           />
           <TF_LONG_DESCRIPTION
             description_text={data.description[0].long_description ?? ""}

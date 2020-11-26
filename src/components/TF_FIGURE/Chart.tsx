@@ -2,19 +2,25 @@ import React, { useEffect, useRef } from "react";
 import { select } from "d3";
 import { bar_chart } from "../../charts/barchart";
 import { line_chart } from "../../charts/line_chart";
-import { level_boundary } from "./tr_utils";
 import { StatisticData } from "../../App";
 import { GraphData } from "../main_component";
+
+export interface Level {
+  level: string;
+  start: number;
+  end: number;
+}
 
 export interface Props {
   data: GraphData;
   chartType: "bar" | "line";
   zoom: string;
   showLevel: boolean;
+  levels: Level[];
 }
 
 function Chart(props: Props) {
-  const { data, chartType, zoom, showLevel } = props;
+  const { data, chartType, zoom, showLevel, levels } = props;
   const svg_container_ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -35,7 +41,6 @@ function Chart(props: Props) {
       margin: { top: 0.05, bottom: 0.1, right: 0.15, left: 0.2 },
       zoom: zoom,
     };
-    let levels = level_boundary(data.description[0]);
 
     if (chartType === "bar") {
       const nr_svg_children = svg_container_ref.current.childElementCount;
@@ -92,7 +97,7 @@ function Chart(props: Props) {
         levels: levels,
       });
     }
-  }, [data, chartType, zoom]);
+  }, [data, chartType, zoom, levels]);
 
   return <div ref={svg_container_ref} style={{ textAlign: "center" }} />;
 }
