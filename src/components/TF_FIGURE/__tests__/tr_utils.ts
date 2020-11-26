@@ -1,4 +1,3 @@
-import { Level } from "../Chart";
 import { level_boundary, Config } from "../tr_utils";
 
 test("level_direction 1", () => {
@@ -7,12 +6,8 @@ test("level_direction 1", () => {
     level_green: 0.9,
     level_yellow: 0.8,
   };
-  let levels: Level[] = [
-    { level: "high", start: 0, end: 0 },
-    { level: "mid", start: 0, end: 0 },
-    { level: "low", start: 0, end: 0 },
-  ];
-  levels.forEach(level_boundary, config);
+
+  const levels = level_boundary(config);
 
   expect(levels).toMatchInlineSnapshot(`
     Array [
@@ -41,12 +36,8 @@ test("level_direction 0", () => {
     level_green: 0.75,
     level_yellow: 0.5,
   };
-  let levels: Level[] = [
-    { level: "high", start: 0, end: 0 },
-    { level: "mid", start: 0, end: 0 },
-    { level: "low", start: 0, end: 0 },
-  ];
-  levels.forEach(level_boundary, config);
+
+  const levels = level_boundary(config);
 
   expect(levels).toMatchInlineSnapshot(`
     Array [

@@ -1,33 +1,28 @@
-import { Level } from "./Chart";
-
 export interface Config {
   level_direction: number;
   level_green: number | null;
   level_yellow: number | null;
 }
 
-export const level_boundary = function (this: Config, level_obj: Level) {
-  if (this.level_direction === 0) {
-    if (level_obj.level === "high") {
-      level_obj.start = this.level_green ?? 0;
-      level_obj.end = 0;
-    } else if (level_obj.level === "mid") {
-      level_obj.start = this.level_yellow ?? 0;
-      level_obj.end = this.level_green ?? 0;
-    } else {
-      level_obj.start = 1;
-      level_obj.end = this.level_yellow ?? 0;
-    }
-  } else if (this.level_direction === 1) {
-    if (level_obj.level === "high") {
-      level_obj.start = 1;
-      level_obj.end = this.level_green ?? 0;
-    } else if (level_obj.level === "mid") {
-      level_obj.start = this.level_green ?? 0;
-      level_obj.end = this.level_yellow ?? 0;
-    } else {
-      level_obj.start = this.level_yellow ?? 0;
-      level_obj.end = 0;
-    }
+export function level_boundary(config: Config) {
+  const level_direction = config.level_direction;
+  const level_yellow = config.level_yellow ?? 0;
+  const level_green = config.level_green ?? 0;
+
+  switch (level_direction) {
+    case 0:
+      return [
+        { level: "high", start: level_green, end: 0 },
+        { level: "mid", start: level_yellow, end: level_green },
+        { level: "low", start: 1, end: level_yellow },
+      ];
+    case 1:
+      return [
+        { level: "high", start: 1, end: level_green },
+        { level: "mid", start: level_green, end: level_yellow },
+        { level: "low", start: level_yellow, end: 0 },
+      ];
+    default:
+      throw new Error(`${level_direction} is not a valid direction`);
   }
-};
+}
