@@ -17,20 +17,20 @@ export interface IndPerReg {
 }
 
 const apply_filters = ({
-  tr_unit_by_year,
+  agg_data,
   description,
   show_level_filter,
-  check_level_only,
+  filter_level_only = false,
 }: {
-  tr_unit_by_year: StatisticData[];
+  agg_data: StatisticData[];
   description: Description[];
   show_level_filter: string;
-  check_level_only?: boolean;
+  filter_level_only?: boolean;
 }): StatisticData[] => {
   const filtered_by_threshold =
-    check_level_only ?? false
-      ? tr_unit_by_year
-      : tr_unit_by_year
+    filter_level_only ?? false
+      ? agg_data
+      : agg_data
           .filter((u) => {
             return (u.dg ?? 0) > 0.6;
           })
@@ -41,37 +41,35 @@ const apply_filters = ({
                 .min_denominator ?? 0)
             );
           });
-  return filtered_by_threshold.filter((u) => u.level === show_level_filter);
+  const filter_by_level = filtered_by_threshold.filter(
+    (u) => u.level === show_level_filter
+  );
+  return filter_by_level;
 };
 
-const filter_indicators = (
-  treatment_unit_name: string[],
+const filter_data = (
   data: GraphData,
   show_level_filter: string | null
 ): GraphData => {
   if (show_level_filter === null) {
     return data;
   }
-  const data_filtered = treatment_unit_name
-    .map((tr_unit) =>
-      apply_filters({
-        tr_unit_by_year: data.agg_data.filtered_by_year,
-        description: data.description,
-        show_level_filter,
-      })
-    )
-    .concat([
-      apply_filters({
-        tr_unit_by_year: data.agg_data.nation.filtered_by_year,
-        description: data.description,
-        show_level_filter,
-        check_level_only: true,
-      }),
-    ])
-    .sort((a, b) => b.length - a.length);
-  console.log("data", data_filtered);
+  const data_filtered = [
+    apply_filters({
+      agg_data: data.agg_data.filtered_by_year,
+      description: data.description,
+      show_level_filter,
+    }),
+    apply_filters({
+      agg_data: data.agg_data.nation.filtered_by_year,
+      description: data.description,
+      show_level_filter,
+      filter_level_only: true,
+    }),
+  ].sort((a, b) => b.length - a.length);
+
   const ind_ids_remaining = data_filtered
-    .map((a) => a.map((u) => u.ind_id))
+    .map((a) => Array.isArray(a) && a.map((u) => u.ind_id))
     .flat(1)
     .filter((v, i, a) => a.indexOf(v) === i);
 
@@ -131,11 +129,7 @@ const Main = (props: Props) => {
   const [show_level_filter, update_show_level_filter] = useState(null);
   const [med_field_filter, update_med_field_filter] = useState(all_reg);
   const [clicked_med_field, update_clicked_med_field] = useState("all");
-  const filtered_data = filter_indicators(
-    treatment_units,
-    data,
-    show_level_filter
-  );
+  const filtered_data = filter_data(data, show_level_filter);
   return (
     <>
       <LEGEND
