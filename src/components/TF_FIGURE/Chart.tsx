@@ -1,53 +1,31 @@
-import React, { useEffect, useRef, useState } from "react";
-
-import TF_BUTTON from "./tf_button";
-import TF_DDMENU from "./tf_ddmenu";
-import TF_LONG_DESCRIPTION from "./tf_description";
-
-import { bar_chart } from "../charts/barchart";
-import { line_chart } from "../charts/line_chart";
-import { level_boundary } from "../charts/tr_utils";
-import { StatisticData } from "../App";
-import { GraphData } from "./main_component";
+import React, { useEffect, useRef } from "react";
 import { select } from "d3";
+import { bar_chart } from "../../charts/barchart";
+import { line_chart } from "../../charts/line_chart";
+import { level_boundary } from "../../charts/tr_utils";
+import { StatisticData } from "../../App";
+import { GraphData } from "../main_component";
 
 export interface Props {
-  colspan?: number;
   data: GraphData;
-  figure_class?: string;
-  update_selected_row(row: string): void;
+  chartType: "bar" | "line";
+  zoom: string;
+  showLevel: string;
 }
 
-function TF_FIGURE(props: Props) {
-  const { colspan = 3, data, figure_class, update_selected_row } = props;
-
-  const [chart_type, update_chart_type] = useState<"line" | "bar">("line");
-  const [zoom, update_zoom] = useState("Zoom ut");
-  const [show_level, update_show_level] = useState("Vis målnivå");
-
+function Chart(props: Props) {
+  const { data, chartType, zoom, showLevel } = props;
   const svg_container_ref = useRef<HTMLDivElement>(null);
-
-  if (
-    !data.agg_data.filtered_by_year.some((d) => d.unit_name === "Nasjonalt")
-  ) {
-    data.agg_data.filtered_by_year.push(
-      data.agg_data.nation.filtered_by_year[0]
-    );
-    Array.prototype.push.apply(
-      data.agg_data.filtered_by_unit,
-      data.agg_data.nation.filtered_by_unit
-    );
-  }
 
   useEffect(() => {
     if (!svg_container_ref.current) {
       return;
     }
     let level_visibility =
-      show_level.replace(/\s/g, "") === "Skjulmålnivå" ? "visible" : "hidden";
+      showLevel.replace(/\s/g, "") === "Skjulmålnivå" ? "visible" : "hidden";
     let level = select(svg_container_ref.current);
     level.selectAll("svg .level").style("visibility", level_visibility);
-  }, [show_level]);
+  }, [showLevel]);
 
   useEffect(() => {
     if (!svg_container_ref.current) return;
@@ -65,7 +43,7 @@ function TF_FIGURE(props: Props) {
     ];
     levels.forEach(level_boundary, data.description[0]);
 
-    if (chart_type === "bar") {
+    if (chartType === "bar") {
       const nr_svg_children = svg_container_ref.current.childElementCount;
       for (let i = 0; i < nr_svg_children; i++) {
         svg_container_ref.current.removeChild(
@@ -91,7 +69,7 @@ function TF_FIGURE(props: Props) {
         filtered_barchart_data,
         levels
       );
-    } else if (chart_type === "line") {
+    } else if (chartType === "line") {
       const nr_svg_children = svg_container_ref.current.childElementCount;
       for (let i = 0; i < nr_svg_children; i++) {
         svg_container_ref.current.removeChild(
@@ -120,33 +98,9 @@ function TF_FIGURE(props: Props) {
         levels: levels,
       });
     }
-  }, [data, chart_type, zoom]);
+  }, [data, chartType, zoom]);
 
-  return (
-    <tr className={figure_class}>
-      <td colSpan={colspan}>
-        <div className="tr_figure">
-          <div className="tr_buttons_container">
-            <TF_DDMENU
-              show_level={show_level}
-              update_show_level={update_show_level}
-              zoom={zoom}
-              update_zoom={update_zoom}
-              update_selected_row={update_selected_row}
-            />
-            <TF_BUTTON
-              chart_type={chart_type}
-              update_chart_type={update_chart_type}
-            />
-          </div>
-          <div ref={svg_container_ref} style={{ textAlign: "center" }} />
-          <TF_LONG_DESCRIPTION
-            description_text={data.description[0].long_description ?? ""}
-          />
-        </div>
-      </td>
-    </tr>
-  );
+  return <div ref={svg_container_ref} style={{ textAlign: "center" }} />;
 }
 
-export default TF_FIGURE;
+export default Chart;

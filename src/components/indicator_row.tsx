@@ -2,7 +2,7 @@ import React from "react";
 
 import INDICATOR_VALUE from "./indicator_value";
 import INDICATOR_DESCRIPTION from "./indicator_description";
-import TR_FIGURE from "./tf_figure";
+import TR_FIGURE from "./TF_FIGURE";
 
 import { data_config } from "../app_config";
 import NO_DATA from "./no_data";
