@@ -6,6 +6,12 @@ import { level_boundary } from "../../charts/tr_utils";
 import { StatisticData } from "../../App";
 import { GraphData } from "../main_component";
 
+export interface Level {
+  level: string;
+  start: number;
+  end: number;
+}
+
 export interface Props {
   data: GraphData;
   chartType: "bar" | "line";
@@ -35,7 +41,7 @@ function Chart(props: Props) {
       margin: { top: 0.05, bottom: 0.1, right: 0.15, left: 0.2 },
       zoom: zoom,
     };
-    let levels = [
+    let levels: Level[] = [
       { level: "high", start: 0, end: 0 },
       { level: "mid", start: 0, end: 0 },
       { level: "low", start: 0, end: 0 },
