@@ -19,15 +19,6 @@ const DD_MENU = (props: Props) => {
 
   const [dd_menu_status, set_dd_menu_status] = useState("inactive");
 
-  const handle_click = (
-    current_state: string,
-    states: string[],
-    update_state_function: (level: string) => void
-  ) => {
-    const new_state = states.filter((state) => state !== current_state);
-    update_state_function(new_state[0]);
-  };
-
   const dropdown_entries = [
     {
       label: show_level ? "Skjul målnivå" : "Vis målnivå",
