@@ -14,29 +14,20 @@ interface Props {
 }
 
 export default {
-  title: "Indicators/Value",
+  title: "Indicator/Value",
   component: INDICATOR_VALUE,
-  // argTypes: {
-  //   backgroundColor: { control: "color" },
-  // },
 } as Meta;
 
 const Template: Story<Props> = (args) => <INDICATOR_VALUE {...args} />;
-const data_sample = [
-  {
-    ind_id: "hjerneslag_rapport_3mnd",
-    unit_level: "hospital",
-    unit_name: "Tromsø",
-    orgnr: 974795787,
-    year: 2019,
-    denominator: 369,
-    var: 0.7588,
-    level: "M",
-    level_direction: 1,
-    dg: 0.9111,
-    include: 1,
-  },
-  {
+
+export const Green = Template.bind({});
+Green.args = {
+  td_class: "selected_unit",
+  ind_type: "andel",
+  indicator_value: "65%",
+  share_of_total: 1500,
+  total: 2000,
+  data: {
     ind_id: "hjerneslag_rapport_3mnd",
     unit_level: "hospital",
     unit_name: "St. Olavs",
@@ -49,7 +40,38 @@ const data_sample = [
     dg: 0.9297,
     include: 1,
   },
-  {
+};
+
+export const Yellow = Template.bind({});
+Yellow.args = {
+  td_class: "selected_unit",
+  ind_type: "andel",
+  indicator_value: "65%",
+  share_of_total: 1500,
+  total: 2000,
+  data: {
+    ind_id: "hjerneslag_rapport_3mnd",
+    unit_level: "hospital",
+    unit_name: "Tromsø",
+    orgnr: 974795787,
+    year: 2019,
+    denominator: 369,
+    var: 0.7588,
+    level: "M",
+    level_direction: 1,
+    dg: 0.9111,
+    include: 1,
+  },
+};
+
+export const Red = Template.bind({});
+Red.args = {
+  td_class: "selected_unit",
+  ind_type: "andel",
+  indicator_value: "65%",
+  share_of_total: 1500,
+  total: 2000,
+  data: {
     ind_id: "hjerneslag_rapport_3mnd",
     unit_level: "hospital",
     unit_name: "Narvik",
@@ -62,27 +84,4 @@ const data_sample = [
     dg: 0.8387,
     include: 1,
   },
-  {
-    ind_id: "hjerneslag_rapport_3mnd",
-    unit_level: "hospital",
-    unit_name: "Harstad",
-    orgnr: 974795639,
-    year: 2019,
-    denominator: 99,
-    var: 0.7879,
-    level: "M",
-    level_direction: 1,
-    dg: 0.9167,
-    include: 1,
-  },
-];
-
-export const Primary = Template.bind({});
-Primary.args = {
-  td_class: "selected_unit",
-  ind_type: "andel",
-  indicator_value: "65%",
-  share_of_total: 1500,
-  total: 2000,
-  data: data_sample[0],
 };
