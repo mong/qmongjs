@@ -3,6 +3,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import INDICATOR_VALUE from "../components/indicator_value";
 import { StatisticData } from "../App";
+import "../index.css";
 
 interface Props {
   td_class: string;
@@ -14,7 +15,7 @@ interface Props {
 }
 
 export default {
-  title: "Indicator/Value",
+  title: "Indicator/Values",
   component: INDICATOR_VALUE,
 } as Meta;
 
