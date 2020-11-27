@@ -121,7 +121,7 @@ function BarChart(props: Props) {
       .attr("x", 0)
       .attr("y", (d) => yScale(d.label) ?? 0)
       .attr("height", yScale.bandwidth())
-      .attr("fill", "#7EBEC7")
+      .attr("fill", (d) => barColor(d.label))
       .transition()
       .duration(1000)
       .attr("width", (d) => xScale(d.value));
@@ -157,6 +157,14 @@ function levelColor(level: string) {
     default:
       throw new Error(`${level} is not a valid level`);
   }
+}
+
+function barColor(label: String) {
+  if (label === "Nasjonalt") {
+    return "#00263D";
+  }
+
+  return "#7EBEC7";
 }
 
 function getXScaleDomain(data: DataPoint[], zoom: boolean): [number, number] {
