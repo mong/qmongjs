@@ -49,19 +49,7 @@ function Chart(props: Props) {
           svg_container_ref.current.children[0]
         );
       }
-      const filtered_barchart_data = data.agg_data.filtered_by_year.filter(
-        (data_by_year: StatisticData) => {
-          if (data_by_year.unit_level !== "nation") {
-            return !(
-              data_by_year.denominator <
-                (data.description[0]["min_denominator"] ?? 0) ||
-              (data_by_year.dg ?? 0) < 0.6
-            ); //|| typeof(data_by_year.dg) === "undefined" )
-          } else {
-            return true;
-          }
-        }
-      );
+      const filtered_barchart_data = parseBarChartData(data);
       bar_chart(
         svg_container_ref.current,
         svg_props,
@@ -103,3 +91,19 @@ function Chart(props: Props) {
 }
 
 export default Chart;
+
+export function parseBarChartData(data: GraphData) {
+  return data.agg_data.filtered_by_year.filter(
+    (data_by_year: StatisticData) => {
+      if (data_by_year.unit_level !== "nation") {
+        return !(
+          data_by_year.denominator <
+            (data.description[0]["min_denominator"] ?? 0) ||
+          (data_by_year.dg ?? 0) < 0.6
+        ); //|| typeof(data_by_year.dg) === "undefined" )
+      } else {
+        return true;
+      }
+    }
+  );
+}

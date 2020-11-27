@@ -7,6 +7,24 @@ import { Level } from "../../TF_FIGURE/Chart";
 
 jest.mock("../../utils");
 
+/**
+ * Move all d3 transitions a specified amount of milliseconds forward in time.
+ * @param milliseconds Milliseconds to move transitions forward in time
+ */
+function clockTick(milliseconds: number) {
+  const currentNow = performance.now();
+
+  const now = performance.now;
+  performance.now = () => currentNow + milliseconds;
+  // The new animation frame means d3's timers will check performance.now() again
+  return new Promise((resolve) =>
+    requestAnimationFrame((time) => {
+      performance.now = now;
+      resolve(time);
+    })
+  );
+}
+
 test("Bar widths are correct", async () => {
   const WIDTH = 500;
   (useResizeObserver as jest.Mock).mockReturnValue({
@@ -17,16 +35,22 @@ test("Bar widths are correct", async () => {
 
   const props = propsBuilder();
 
-  render(<BarChart {...props} zoom={false} />);
+  render(
+    <BarChart
+      {...props}
+      zoom={false}
+      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+    />
+  );
 
-  await waitFor(() => {
-    for (const dataPoint of props.data) {
-      const bar = screen.getByTestId(`bar-${dataPoint.label}`);
+  await clockTick(1500);
 
-      const width = bar.getAttribute("width") ?? "";
-      expect(parseFloat(width)).toBeCloseTo(dataPoint.value * WIDTH);
-    }
-  });
+  for (const dataPoint of props.data) {
+    const bar = screen.getByTestId(`bar-${dataPoint.label}`);
+
+    const width = bar.getAttribute("width") ?? "";
+    expect(parseFloat(width)).toBeCloseTo(dataPoint.value * WIDTH);
+  }
 });
 
 test("Level widths are correct", async () => {
@@ -39,21 +63,25 @@ test("Level widths are correct", async () => {
 
   const props = propsBuilder();
 
-  render(<BarChart {...props} zoom={false} />);
+  render(
+    <BarChart
+      {...props}
+      zoom={false}
+      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+    />
+  );
 
-  await waitFor(() => {
-    for (const l of props.levels) {
-      const level = screen.getByTestId(`level-${l.level}`);
+  await clockTick(1500);
 
-      const levelX = level.getAttribute("x") ?? "";
-      expect(parseFloat(levelX)).toBeCloseTo(l.end * WIDTH);
+  for (const l of props.levels) {
+    const level = screen.getByTestId(`level-${l.level}`);
 
-      const levelWidth = level.getAttribute("width") ?? "";
-      expect(parseFloat(levelWidth)).toBeCloseTo(
-        l.start * WIDTH - l.end * WIDTH
-      );
-    }
-  });
+    const levelX = level.getAttribute("x") ?? "";
+    expect(parseFloat(levelX)).toBeCloseTo(l.end * WIDTH);
+
+    const levelWidth = level.getAttribute("width") ?? "";
+    expect(parseFloat(levelWidth)).toBeCloseTo(l.start * WIDTH - l.end * WIDTH);
+  }
 });
 
 test("Render without levels @250px", async () => {
@@ -79,13 +107,11 @@ test("Render without levels @250px", async () => {
         { level: "low", start: 0.5, end: 0 },
       ]}
       zoom={false}
+      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />
   );
 
-  await waitFor(() => {
-    const width = screen.getByTestId("bar-a")?.getAttribute("width");
-    expect(width).toBe(`${WIDTH}`);
-  });
+  await clockTick(1500);
 
   expect(container).toMatchSnapshot();
 });
@@ -113,13 +139,11 @@ test("Render with levels @250px", async () => {
         { level: "low", start: 0.5, end: 0 },
       ]}
       zoom={false}
+      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />
   );
 
-  await waitFor(() => {
-    const width = screen.getByTestId("bar-a")?.getAttribute("width");
-    expect(width).toBe(`${WIDTH}`);
-  });
+  await clockTick(1500);
 
   expect(container).toMatchSnapshot();
 });
@@ -147,13 +171,11 @@ test("Render without levels @500px", async () => {
         { level: "low", start: 0.5, end: 0 },
       ]}
       zoom={false}
+      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />
   );
 
-  await waitFor(() => {
-    const width = screen.getByTestId("bar-a")?.getAttribute("width");
-    expect(width).toBe(`${WIDTH}`);
-  });
+  await clockTick(1500);
 
   expect(container).toMatchSnapshot();
 });
@@ -181,13 +203,11 @@ test("Render with levels @500px", async () => {
         { level: "low", start: 0.5, end: 0 },
       ]}
       zoom={false}
+      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />
   );
 
-  await waitFor(() => {
-    const width = screen.getByTestId("bar-a")?.getAttribute("width");
-    expect(width).toBe(`${WIDTH}`);
-  });
+  await clockTick(1500);
 
   expect(container).toMatchSnapshot();
 });
@@ -215,13 +235,11 @@ test("Render with levels reversed @500px", async () => {
         { level: "low", start: 1, end: 0.9 },
       ]}
       zoom={false}
+      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />
   );
 
-  await waitFor(() => {
-    const width = screen.getByTestId("bar-a")?.getAttribute("width");
-    expect(width).toBe(`${WIDTH}`);
-  });
+  await clockTick(1500);
 
   expect(container).toMatchSnapshot();
 });
@@ -249,13 +267,11 @@ test("Render zoomed with levels @500px", async () => {
         { level: "low", start: 0.5, end: 0 },
       ]}
       zoom
+      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />
   );
 
-  await waitFor(() => {
-    const width = screen.getByTestId("bar-a")?.getAttribute("width");
-    expect(width).toBe(`${WIDTH}`);
-  });
+  await clockTick(1500);
 
   expect(container).toMatchSnapshot();
 });
