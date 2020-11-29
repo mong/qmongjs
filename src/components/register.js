@@ -39,6 +39,9 @@ function REGISTER(props) {
     agg_data.filtered_by_year = data.agg_data.filtered_by_year.filter(
       (d) => d[data_config.column.indicator_id] === indicator
     );
+    agg_data.all_filtered_by_year = data.agg_data.all_filtered_by_year.filter(
+      (d) => d[data_config.column.indicator_id] === indicator
+    );
     agg_data.filtered_by_unit = data.agg_data.filtered_by_unit.filter(
       (d) => d[data_config.column.indicator_id] === indicator
     );

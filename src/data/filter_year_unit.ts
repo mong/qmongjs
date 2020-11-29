@@ -28,9 +28,14 @@ export const filter_year_unit = (
     (d) => d.year === selected_year // [data_config.column.year]
   );
 
+  const all_filtered_by_year = data.filter(
+    (d) => d.year === selected_year // [data_config.column.year]
+  );
+
   return {
     filtered_by_unit,
     filtered_by_year,
+    all_filtered_by_year,
   };
 };
 
@@ -50,6 +55,9 @@ export const filter_register = (
     (data) => indicator_name.includes(data.ind_id) // [app_config.data_config.column.indicator_id]
   );
   agg_data.filtered_by_year = data.agg_data.filtered_by_year.filter(
+    (data) => indicator_name.includes(data.ind_id) // [app_config.data_config.column.indicator_id]
+  );
+  agg_data.all_filtered_by_year = data.agg_data.all_filtered_by_year.filter(
     (data) => indicator_name.includes(data.ind_id) // [app_config.data_config.column.indicator_id]
   );
   const nation: any = {};

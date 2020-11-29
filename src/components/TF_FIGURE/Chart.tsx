@@ -42,7 +42,7 @@ function Chart(props: Props) {
 export default Chart;
 
 export function parseBarChartData(data: GraphData) {
-  return data.agg_data.filtered_by_year.filter(
+  return data.agg_data.all_filtered_by_year.filter(
     (data_by_year: StatisticData) => {
       if (data_by_year.unit_level !== "nation") {
         return !(

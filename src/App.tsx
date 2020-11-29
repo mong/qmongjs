@@ -59,6 +59,7 @@ export interface AggData {
   };
   filtered_by_unit: StatisticData[];
   filtered_by_year: StatisticData[];
+  all_filtered_by_year: StatisticData[];
 }
 
 function APP() {
@@ -180,14 +181,21 @@ function APP() {
 
   const agg_data: AggData = {
     nation,
-    filtered_by_unit: hospital.filtered_by_unit.concat(
-      hf.filtered_by_unit,
-      rhf.filtered_by_unit
-    ),
-    filtered_by_year: hospital.filtered_by_year.concat(
-      hf.filtered_by_year,
-      rhf.filtered_by_year
-    ),
+    filtered_by_unit: [
+      ...hospital.filtered_by_unit,
+      ...hf.filtered_by_unit,
+      ...rhf.filtered_by_unit,
+    ],
+    filtered_by_year: [
+      ...hospital.filtered_by_year,
+      ...hf.filtered_by_year,
+      ...rhf.filtered_by_year,
+    ],
+    all_filtered_by_year: [
+      ...hospital.all_filtered_by_year,
+      ...hf.all_filtered_by_year,
+      ...rhf.all_filtered_by_year,
+    ],
   };
 
   const unique_indicators =

@@ -8,6 +8,7 @@ import {
   max,
 } from "d3";
 import React, { useEffect, useRef } from "react";
+import useDelayInitial from "../../utils/useDelayInitial";
 import { Level } from "../TF_FIGURE/Chart";
 import useResizeObserver from "../utils";
 import styles from "./BarChart.module.css";
@@ -31,11 +32,12 @@ export interface Props {
   margin?: Margin;
 }
 
-const MARGIN = { top: 0.05, bottom: 0.2, right: 0.15, left: 0.2 };
+const MARGIN = { top: 0.05, bottom: 10, right: 0.15, left: 0.2 };
 
 function BarChart(props: Props) {
   const { data, displayLevels, levels, zoom = false, margin = {} } = props;
 
+  const delayedZoom = useDelayInitial(zoom, false);
   const svgRef = useRef<SVGSVGElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const entry = useResizeObserver(wrapperRef);
@@ -44,9 +46,9 @@ function BarChart(props: Props) {
   const width = entry?.contentRect.width ?? 0;
 
   const marginOffsets = {
-    top: (margin.top ?? MARGIN.top) * height,
+    top: margin.top ?? MARGIN.top,
     right: (margin.right ?? MARGIN.right) * width,
-    bottom: (margin.bottom ?? MARGIN.bottom) * height,
+    bottom: margin.bottom ?? MARGIN.bottom,
     left: (margin.left ?? MARGIN.left) * width,
   };
 
@@ -66,9 +68,12 @@ function BarChart(props: Props) {
       .range([0, innerHeight])
       .padding(0.5);
 
-    const xScaleDomain = getXScaleDomain(data, zoom);
+    const xScaleDomain = getXScaleDomain(data, delayedZoom);
 
-    const xScale = scaleLinear().domain(xScaleDomain).range([0, innerWidth]);
+    const xScale = scaleLinear()
+      .domain(xScaleDomain)
+      .range([0, innerWidth])
+      .clamp(true);
 
     // Y-Axis
     const yAxis = axisLeft(yScale);
@@ -98,21 +103,35 @@ function BarChart(props: Props) {
 
     // Levels
     svg
+      .select(".levels")
       .selectAll(".level")
-      .data(levels)
-      .join("rect")
-      .attr("class", "level")
-      .attr("data-testid", ({ level }) => `level-${level}`)
-      .attr("y", 0)
-      .attr("x", ({ end }) => xScale(end))
-      .attr("width", ({ start, end }) => xScale(start - end))
-      .attr("height", innerHeight)
-      .attr("fill", ({ level }) => levelColor(level))
-      .attr("opacity", "0.2")
-      .attr("visibility", displayLevels ? "visible" : "hidden");
+      .data(displayLevels ? levels : [])
+      .join(
+        (enter) =>
+          enter
+            .append("rect")
+            .attr("class", "level")
+            .attr("data-testid", ({ level }) => `level-${level}`)
+            .attr("x", ({ end }) => xScale(end))
+            .attr("y", 0)
+            .attr("width", ({ start, end }) => xScale(start) - xScale(end))
+            .attr("height", innerHeight)
+            .attr("fill", ({ level }) => levelColor(level))
+            .attr("opacity", 0.2),
+        (update) =>
+          update.call((update) =>
+            update
+              .transition()
+              .duration(1000)
+              .attr("x", ({ end }) => xScale(end))
+              .attr("width", ({ start, end }) => xScale(start) - xScale(end))
+          ),
+        (exit) => exit.remove()
+      );
 
     // Bars
     svg
+      .select(".bars")
       .selectAll(".bar")
       .data(data)
       .join("rect")
@@ -125,7 +144,7 @@ function BarChart(props: Props) {
       .transition()
       .duration(1000)
       .attr("width", (d) => xScale(d.value));
-  }, [data, displayLevels, levels, zoom, innerHeight, innerWidth]);
+  }, [data, displayLevels, levels, delayedZoom, innerHeight, innerWidth]);
 
   return (
     <div ref={wrapperRef}>
@@ -138,6 +157,8 @@ function BarChart(props: Props) {
         <g transform={`translate(${marginOffsets.left}, ${marginOffsets.top})`}>
           <g className="x-axis" />
           <g className="y-axis" />
+          <g className="levels" />
+          <g className="bars" />
         </g>
       </svg>
     </div>
