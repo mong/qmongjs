@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 
 import MAIN from "./components/main_component";
 import HEADER from "./components/header_main";
@@ -82,6 +82,39 @@ function APP() {
     (window as any).tu_names ? (window as any).tu_names : []
   );
 
+  const indicatorSorter = useMemo(() => {
+    const descriptionMap: { [key: string]: string } = {};
+    for (const d of description) {
+      descriptionMap[d.id] = d.name ?? "";
+    }
+    return (a: StatisticData, b: StatisticData) => {
+      const aName = descriptionMap[a.ind_id];
+      const bName = descriptionMap[b.ind_id];
+
+      return aName.localeCompare(bName);
+    };
+  }, [description]);
+
+  const sortedIndicatorHospital = useMemo(
+    () => indicator_hosp.sort(indicatorSorter),
+    [indicatorSorter, indicator_hosp]
+  );
+
+  const sortedIndicatorHf = useMemo(() => indicator_hf.sort(indicatorSorter), [
+    indicatorSorter,
+    indicator_hf,
+  ]);
+
+  const sortedIndicatorRhf = useMemo(
+    () => indicator_rhf.sort(indicatorSorter),
+    [indicatorSorter, indicator_rhf]
+  );
+
+  const sortedIndicatorNation = useMemo(
+    () => indicator_nation.sort(indicatorSorter),
+    [indicatorSorter, indicator_nation]
+  );
+
   //update data as it arrives
   if (typeof (window as any).Shiny !== "undefined") {
     (window as any).Shiny.addCustomMessageHandler(
@@ -131,13 +164,17 @@ function APP() {
   >(null);
   const [legend_height, update_legend_height] = useState(null);
 
-  const opts_hosp = Array.from(new Set(indicator_hosp.map((d) => d.unit_name)))
+  const opts_hosp = Array.from(
+    new Set(sortedIndicatorHospital.map((d) => d.unit_name))
+  )
     .sort()
     .map((opt) => ({ value: opt, label: opt }));
-  const opts_hf = Array.from(new Set(indicator_hf.map((d) => d.unit_name)))
+  const opts_hf = Array.from(new Set(sortedIndicatorHf.map((d) => d.unit_name)))
     .sort()
     .map((opt) => ({ value: opt, label: opt }));
-  const opts_rhf = Array.from(new Set(indicator_rhf.map((d) => d.unit_name)))
+  const opts_rhf = Array.from(
+    new Set(sortedIndicatorRhf.map((d) => d.unit_name))
+  )
     .sort()
     .map((opt) => ({ value: opt, label: opt }));
   const opts_tu = [
@@ -152,10 +189,10 @@ function APP() {
     selected_year: selected_year,
   };
 
-  const hospital = filter_year_unit(indicator_hosp, input_data);
-  const hf = filter_year_unit(indicator_hf, input_data);
-  const rhf = filter_year_unit(indicator_rhf, input_data);
-  const nation = filter_year_unit(indicator_nation, {
+  const hospital = filter_year_unit(sortedIndicatorHospital, input_data);
+  const hf = filter_year_unit(sortedIndicatorHf, input_data);
+  const rhf = filter_year_unit(sortedIndicatorRhf, input_data);
+  const nation = filter_year_unit(sortedIndicatorNation, {
     selected_unit: ["Nasjonalt"],
     selected_year: selected_year,
   });
