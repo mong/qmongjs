@@ -14,11 +14,13 @@
     <title>Qmongr</title>
     <script type="text/javascript">
       //<![CDATA[
-      /*@cc_on!@*/ false ||
-        (!!document.documentMode &&
-          alert(
-            "Internett Explorer støtter dessverre ikke dette nettstedet.\nPrøv med en tryggere og mer moderne nettleser som f.eks:\n Chrome, Firefox, Safari, Opera, eller Edge"
-          ));
+      // prettier-ignore
+      const isIE = /*@cc_on!@*/false || !!document.documentMode;
+      if (isIE) {
+        alert(
+          "Internett Explorer støtter dessverre ikke dette nettstedet.\nPrøv med en tryggere og mer moderne nettleser som f.eks:\n Chrome, Firefox, Safari, Opera, eller Edge"
+        );
+      }
       //]]>
     </script>
   </head>
