@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { select } from "d3";
+import { select, selectAll } from "d3";
 
 interface Props {
   show_level: string;
@@ -23,6 +23,50 @@ const DD_MENU = (props: Props) => {
   const [dd_menu_status, set_dd_menu_status] = useState("inactive");
   const level_states = ["Vis målnivå", "Skjul målnivå"];
   const zoom_states = ["Zoom inn", "Zoom ut"];
+  const [downloadHref, setDownloadHref] = useState<string | null>(null);
+
+  function getDownloadURL(
+    svgContainer: React.RefObject<HTMLDivElement>,
+    callback: (a: any, b?: any) => void
+  ) {
+    if (!svgContainer.current) return;
+    let src = svgContainer.current.getElementsByTagName("svg")[0];
+    src.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    src.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+    src.setAttribute("xml:space", "preserve");
+
+    const image = select("body")
+      .append("img")
+      .style("display", "none")
+      .attr("width", 1400)
+      .attr("height", 700)
+      .node();
+
+    if (!image) return;
+
+    image.onerror = function (e) {
+      console.log(e);
+    };
+    image.onload = function () {
+      const canvas = select("body")
+        .append("canvas")
+        .attr("width", 1400)
+        .attr("height", 700)
+        .node()!;
+
+      const ctx = canvas.getContext("2d");
+      ctx!.drawImage(image, 0, 0);
+      const url = canvas.toDataURL("image/png");
+      selectAll([canvas, image]).remove();
+
+      callback(null, url);
+    };
+    image.onerror = function (e) {
+      console.log(e);
+    };
+
+    image.src = "data:image/svg+xml," + encodeURIComponent(src.outerHTML);
+  }
 
   const handle_click = (
     current_state: string,
@@ -52,6 +96,18 @@ const DD_MENU = (props: Props) => {
       class: "dd-zoom",
     },
     { label: "Lukk", click: () => update_selected_row(""), class: "dd-close" },
+    {
+      label: "Last ned graf",
+      click: () =>
+        getDownloadURL(svg_container, (error, url) => {
+          if (error) {
+            console.error(error);
+          } else {
+            setDownloadHref(url);
+          }
+        }),
+      class: "dd-download",
+    },
   ];
 
   let mouse_leave_dd_cont_timeout: number;
@@ -62,6 +118,27 @@ const DD_MENU = (props: Props) => {
   };
 
   const dd_list = dorpdown_entries.map((dd) => {
+    if (dd.class === "dd-download") {
+      return (
+        <li key={dd.class}>
+          {downloadHref ? (
+            <a
+              className={dd.class}
+              href={downloadHref}
+              download="graph.png"
+              onClick={() => setDownloadHref(null)}
+            >
+              {" "}
+              {dd.label}{" "}
+            </a>
+          ) : (
+            <div className={dd.class} onClick={dd.click}>
+              Generere graf for nedlasting
+            </div>
+          )}
+        </li>
+      );
+    }
     return (
       <li key={dd.class}>
         <div className={dd.class} onClick={dd.click}>
