@@ -33,6 +33,7 @@ function Chart(props: Props) {
       return (
         <BarChart
           {...props}
+          highlightedBars={props.selectedTreatmentUnits}
           displayLevels={props.showLevel}
           data={barChartData}
         />

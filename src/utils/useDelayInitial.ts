@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 function useDelayInitial<T>(value: T, delayedValue: T): T {
   const [delayed, setDelayed] = useState(true);
   useEffect(() => {
-    console.log("Yolo");
     const timeout = setTimeout(() => {
       setDelayed(false);
     }, 1000);

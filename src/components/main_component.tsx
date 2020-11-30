@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AggData, Description } from "../App";
+import { AggData, Description, StatisticData } from "../App";
 
 import INDICATOR_TABLE from "./indicator_table";
 import LEGEND from "./legend";
@@ -16,6 +16,89 @@ export interface IndPerReg {
   indicators: Description[];
 }
 
+const apply_filters = ({
+  agg_data,
+  description,
+  show_level_filter,
+  filter_level_only = false,
+}: {
+  agg_data: StatisticData[];
+  description: Description[];
+  show_level_filter: string;
+  filter_level_only?: boolean;
+}): StatisticData[] => {
+  const filtered_by_threshold =
+    filter_level_only ?? false
+      ? agg_data
+      : agg_data
+          .filter((u) => {
+            return (u.dg ?? 0) > 0.6;
+          })
+          .filter((u) => {
+            return (
+              u.denominator >
+              (description[description.findIndex((d) => d.id === u.ind_id)]
+                .min_denominator ?? 0)
+            );
+          });
+  const filter_by_level = filtered_by_threshold.filter(
+    (u) => u.level === show_level_filter
+  );
+  return filter_by_level;
+};
+
+const filter_data = (
+  data: GraphData,
+  show_level_filter: string | null
+): GraphData => {
+  if (show_level_filter === null) {
+    return data;
+  }
+  const data_filtered = [
+    apply_filters({
+      agg_data: data.agg_data.filtered_by_year,
+      description: data.description,
+      show_level_filter,
+    }),
+    apply_filters({
+      agg_data: data.agg_data.nation.filtered_by_year,
+      description: data.description,
+      show_level_filter,
+      filter_level_only: true,
+    }),
+  ].sort((a, b) => b.length - a.length);
+
+  const ind_ids_remaining = data_filtered
+    .map((a) => Array.isArray(a) && a.map((u) => u.ind_id))
+    .flat(1)
+    .filter((v, i, a) => a.indexOf(v) === i);
+
+  return {
+    agg_data: {
+      filtered_by_year: data.agg_data.filtered_by_year.filter((u) =>
+        ind_ids_remaining.includes(u.ind_id)
+      ),
+      filtered_by_unit: data.agg_data.filtered_by_unit.filter((u) =>
+        ind_ids_remaining.includes(u.ind_id)
+      ),
+      all_filtered_by_year: data.agg_data.all_filtered_by_year.filter((u) =>
+        ind_ids_remaining.includes(u.ind_id)
+      ),
+      nation: {
+        filtered_by_year: data.agg_data.nation.filtered_by_year.filter((u) =>
+          ind_ids_remaining.includes(u.ind_id)
+        ),
+        filtered_by_unit: data.agg_data.nation.filtered_by_unit.filter((u) =>
+          ind_ids_remaining.includes(u.ind_id)
+        ),
+      },
+    },
+    description: data.description.filter((d) =>
+      ind_ids_remaining.includes(d.id)
+    ),
+  };
+};
+
 interface Props {
   data: GraphData;
   med_field: any;
@@ -30,7 +113,6 @@ interface Props {
   legend_height: any;
   update_legend_height(height: any): void;
 }
-
 const Main = (props: Props) => {
   const {
     data,
@@ -46,12 +128,11 @@ const Main = (props: Props) => {
     legend_height,
     update_legend_height,
   } = props;
-
   const all_reg = ind_per_reg.map((reg) => reg.registry_name);
   const [show_level_filter, update_show_level_filter] = useState(null);
   const [med_field_filter, update_med_field_filter] = useState(all_reg);
   const [clicked_med_field, update_clicked_med_field] = useState("all");
-
+  const filtered_data = filter_data(data, show_level_filter);
   return (
     <>
       <LEGEND
@@ -79,7 +160,7 @@ const Main = (props: Props) => {
         </div>
         <div className="main_table_container">
           <INDICATOR_TABLE
-            data={data}
+            data={filtered_data}
             treatment_unit_name={treatment_units}
             treatment_year={selected_year}
             ind_per_reg={ind_per_reg}
