@@ -23,7 +23,6 @@ const DD_MENU = (props: Props) => {
   const [dd_menu_status, set_dd_menu_status] = useState("inactive");
   const level_states = ["Vis målnivå", "Skjul målnivå"];
   const zoom_states = ["Zoom inn", "Zoom ut"];
-
   const [downloadHref, setDownloadHref] = useState<string | null>(null);
 
   function getDownloadURL(
@@ -102,7 +101,6 @@ const DD_MENU = (props: Props) => {
       click: () =>
         getDownloadURL(svg_container, (error, url) => {
           if (error) {
-            alert("Error");
             console.error(error);
           } else {
             setDownloadHref(url);
@@ -135,7 +133,7 @@ const DD_MENU = (props: Props) => {
             </a>
           ) : (
             <div className={dd.class} onClick={dd.click}>
-              Generere graf til nedlasting
+              Generere graf for nedlasting
             </div>
           )}
         </li>
