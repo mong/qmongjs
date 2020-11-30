@@ -2,7 +2,7 @@ import React from "react";
 
 import INDICATOR_VALUE from "./indicator_value";
 import INDICATOR_DESCRIPTION from "./indicator_description";
-import TR_FIGURE from "./TF_FIGURE";
+import TF_FIGURE from "./TF_FIGURE";
 
 import { data_config } from "../app_config";
 import NO_DATA from "./no_data";
@@ -102,12 +102,14 @@ function INDICATOR_ROW(props: Props) {
       ? "filtered_level"
       : "";
 
+  console.log(treatment_unit_name);
   const tr_fig =
     selected_row === ind_id ? (
-      <TR_FIGURE
+      <TF_FIGURE
         colspan={colspan}
         data={data}
         figure_class={med_field_class}
+        selectedTreatmentUnits={treatment_unit_name}
         update_selected_row={update_selected_row}
       />
     ) : null;

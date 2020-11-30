@@ -11,11 +11,18 @@ export interface Props {
   colspan?: number;
   data: GraphData;
   figure_class?: string;
+  selectedTreatmentUnits: string[];
   update_selected_row(row: string): void;
 }
 
 function TF_FIGURE(props: Props) {
-  const { colspan = 3, data, figure_class, update_selected_row } = props;
+  const {
+    colspan = 3,
+    data,
+    figure_class,
+    update_selected_row,
+    selectedTreatmentUnits,
+  } = props;
 
   const [chart_type, update_chart_type] = useState<"line" | "bar">("line");
   const [zoom, update_zoom] = useState(true);
@@ -58,6 +65,7 @@ function TF_FIGURE(props: Props) {
             zoom={zoom}
             showLevel={show_level}
             levels={levels}
+            selectedTreatmentUnits={selectedTreatmentUnits}
           />
           <TF_LONG_DESCRIPTION
             description_text={data.description[0].long_description ?? ""}

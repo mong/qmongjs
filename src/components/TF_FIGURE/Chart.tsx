@@ -16,6 +16,7 @@ export interface Props {
   zoom: boolean;
   showLevel: boolean;
   levels: Level[];
+  selectedTreatmentUnits: string[];
 }
 
 function Chart(props: Props) {

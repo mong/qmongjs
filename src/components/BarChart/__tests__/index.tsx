@@ -93,6 +93,56 @@ test("Level widths are correct", async () => {
   }
 });
 
+test("Highlights selected bars", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+
+  const dataPoint1 = dataPointBuilder();
+  const dataPoint2 = dataPointBuilder();
+  const dataPoint3 = dataPointBuilder();
+  const dataPoint4 = dataPointBuilder();
+
+  const props = propsBuilder({
+    overrides: {
+      data: [dataPoint1, dataPoint2, dataPoint3, dataPoint4],
+    },
+  });
+
+  const highlightedBars = [dataPoint2.label, dataPoint4.label];
+
+  render(
+    <BarChart
+      {...props}
+      zoom={false}
+      highlightedBars={highlightedBars}
+      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(screen.getByTestId(`bar-${dataPoint1.label}`)).toHaveAttribute(
+    "fill",
+    "#7EBEC7"
+  );
+  expect(screen.getByTestId(`bar-${dataPoint2.label}`)).toHaveAttribute(
+    "fill",
+    "#00263D"
+  );
+  expect(screen.getByTestId(`bar-${dataPoint3.label}`)).toHaveAttribute(
+    "fill",
+    "#7EBEC7"
+  );
+  expect(screen.getByTestId(`bar-${dataPoint4.label}`)).toHaveAttribute(
+    "fill",
+    "#00263D"
+  );
+});
+
 test("Render without levels @250px", async () => {
   const WIDTH = 250;
   (useResizeObserver as jest.Mock).mockReturnValue({

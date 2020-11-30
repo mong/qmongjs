@@ -28,6 +28,7 @@ export interface Props {
   displayLevels: boolean;
   data: DataPoint[];
   levels: Level[];
+  highlightedBars?: string[];
   zoom?: boolean;
   margin?: Margin;
 }
@@ -35,7 +36,14 @@ export interface Props {
 const MARGIN = { top: 0.05, bottom: 10, right: 0.15, left: 0.2 };
 
 function BarChart(props: Props) {
-  const { data, displayLevels, levels, zoom = false, margin = {} } = props;
+  const {
+    data,
+    displayLevels,
+    levels,
+    zoom = false,
+    margin = {},
+    highlightedBars = [],
+  } = props;
 
   const delayedZoom = useDelayInitial(zoom, false);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -140,11 +148,21 @@ function BarChart(props: Props) {
       .attr("x", 0)
       .attr("y", (d) => yScale(d.label) ?? 0)
       .attr("height", yScale.bandwidth())
-      .attr("fill", (d) => barColor(d.label))
+      .attr("fill", (d) =>
+        highlightedBars.includes(d.label) ? "#00263D" : "#7EBEC7"
+      )
       .transition()
       .duration(1000)
       .attr("width", (d) => xScale(d.value));
-  }, [data, displayLevels, levels, delayedZoom, innerHeight, innerWidth]);
+  }, [
+    data,
+    displayLevels,
+    levels,
+    delayedZoom,
+    innerHeight,
+    innerWidth,
+    highlightedBars,
+  ]);
 
   return (
     <div ref={wrapperRef}>
@@ -178,14 +196,6 @@ function levelColor(level: string) {
     default:
       throw new Error(`${level} is not a valid level`);
   }
-}
-
-function barColor(label: String) {
-  if (label === "Nasjonalt") {
-    return "#00263D";
-  }
-
-  return "#7EBEC7";
 }
 
 function getXScaleDomain(data: DataPoint[], zoom: boolean): [number, number] {
