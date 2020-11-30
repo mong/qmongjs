@@ -8,7 +8,7 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import faker from "faker";
-import BarChart, { Props, DataPoint } from "..";
+import BarChart, { Props, Bar } from "..";
 import useResizeObserver from "../../utils";
 import { Level } from "../../TF_FIGURE/Chart";
 
@@ -41,8 +41,11 @@ test("Bar widths are correct", async () => {
     },
   });
 
+  const bar1 = buildBar({ value: 1 });
+  const bar2 = buildBar({ value: 0.5 });
+
   const props = {
-    ...buildProps(),
+    ...buildProps({ data: [bar1, bar2] }),
     zoom: false,
     margin: { top: 0, right: 0, bottom: 0, left: 0 },
   };
@@ -59,12 +62,12 @@ test("Bar widths are correct", async () => {
   }
 
   // Test bars update if values update
-  props.data[0].value = faker.random.number({ min: 0, max: 100 }) / 100;
-  await rerender(<BarChart {...props} />);
+  const newProps = { ...props, data: [{ ...bar1, value: 0.75 }, bar2] };
+  await rerender(<BarChart {...newProps} />);
 
   await clockTick(1500);
 
-  for (const dataPoint of props.data) {
+  for (const dataPoint of newProps.data) {
     const bar = screen.getByTestId(`bar-${dataPoint.label}`);
 
     const width = bar.getAttribute("width") ?? "";
@@ -104,7 +107,7 @@ test("Level widths are correct", async () => {
   }
 });
 
-test("Highlights selected bars", async () => {
+test("Can set color and opacity for bars", async () => {
   const WIDTH = 500;
   (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
@@ -112,10 +115,12 @@ test("Highlights selected bars", async () => {
     },
   });
 
-  const dataPoint1 = buildDataPoint();
-  const dataPoint2 = buildDataPoint();
-  const dataPoint3 = buildDataPoint();
-  const dataPoint4 = buildDataPoint();
+  const dataPoint1 = buildBar();
+  const dataPoint2 = buildBar({ style: { color: "#00263D" } });
+  const dataPoint3 = buildBar();
+  const dataPoint4 = buildBar({
+    style: { color: "#00263D", opacity: 0.5 },
+  });
 
   const props = buildProps({
     data: [dataPoint1, dataPoint2, dataPoint3, dataPoint4],
@@ -127,7 +132,6 @@ test("Highlights selected bars", async () => {
     <BarChart
       {...props}
       zoom={false}
-      highlightedBars={highlightedBars}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />
   );
@@ -149,6 +153,10 @@ test("Highlights selected bars", async () => {
   expect(screen.getByTestId(`bar-${dataPoint4.label}`)).toHaveAttribute(
     "fill",
     "#00263D"
+  );
+  expect(screen.getByTestId(`bar-${dataPoint4.label}`)).toHaveAttribute(
+    "opacity",
+    "0.5"
   );
 });
 
@@ -345,10 +353,11 @@ test("Render zoomed with levels @500px", async () => {
 });
 
 // Builders
-function buildDataPoint(): DataPoint {
+function buildBar(overrides?: Partial<Bar>): Bar {
   return {
     label: faker.random.uuid(),
     value: faker.random.number(100) / 100,
+    ...overrides,
   };
 }
 
@@ -368,7 +377,7 @@ function buildProps(overrides?: Partial<Props>): Props {
     displayLevels: faker.random.boolean(),
     data: Array.from(
       { length: faker.random.number({ min: 1, max: 10 }) },
-      buildDataPoint
+      buildBar
     ),
     levels: buildLevels(),
     zoom: faker.random.boolean(),

@@ -1,7 +1,7 @@
 import React from "react";
 import { StatisticData } from "../../App";
 import { GraphData } from "../main_component";
-import BarChart, { DataPoint } from "../BarChart";
+import BarChart, { Bar, BarStyle } from "../BarChart";
 import { LineChart } from "./LineChart";
 
 export interface Level {
@@ -24,16 +24,31 @@ function Chart(props: Props) {
     case "line":
       return <LineChart {...props} />;
     case "bar":
-      const barChartData: DataPoint[] = parseBarChartData(props.data).map(
-        (d) => ({
-          label: d.unit_name,
-          value: d.var,
+      const barChartData: Bar[] = parseBarChartData(props.data)
+        .map((d) => {
+          const style: BarStyle = {};
+
+          if (d.unit_name === "Nasjonalt") {
+            style.color = "#00263D";
+          } else {
+            style.color = "#7EBEC7";
+            if (props.selectedTreatmentUnits.length) {
+              style.opacity = props.selectedTreatmentUnits.includes(d.unit_name)
+                ? 1
+                : 0.5;
+            }
+          }
+
+          return {
+            label: d.unit_name,
+            value: d.var,
+            style,
+          };
         })
-      );
+        .sort((a, b) => b.value - a.value);
       return (
         <BarChart
           {...props}
-          highlightedBars={props.selectedTreatmentUnits}
           displayLevels={props.showLevel}
           data={barChartData}
         />

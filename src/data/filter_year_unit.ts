@@ -28,14 +28,9 @@ export const filter_year_unit = (
     (d) => d.year === selected_year // [data_config.column.year]
   );
 
-  const all_filtered_by_year = data.filter(
-    (d) => d.year === selected_year // [data_config.column.year]
-  );
-
   return {
     filtered_by_unit,
     filtered_by_year,
-    all_filtered_by_year,
   };
 };
 

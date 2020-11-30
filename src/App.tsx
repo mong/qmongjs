@@ -192,9 +192,12 @@ function APP() {
       ...rhf.filtered_by_year,
     ],
     all_filtered_by_year: [
-      ...hospital.all_filtered_by_year,
-      ...hf.all_filtered_by_year,
-      ...rhf.all_filtered_by_year,
+      ...indicator_hosp.filter(
+        (d) => d.year === selected_year // [data_config.column.year]
+      ),
+      ...indicator_nation.filter(
+        (d) => d.year === selected_year // [data_config.column.year]
+      ),
     ],
   };
 
