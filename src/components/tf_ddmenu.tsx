@@ -24,42 +24,49 @@ const DD_MENU = (props: Props) => {
   const level_states = ["Vis målnivå", "Skjul målnivå"];
   const zoom_states = ["Zoom inn", "Zoom ut"];
 
+  const [downloadHref, setDownloadHref] = useState<string | null>(null);
+
   function getDownloadURL(
     svgContainer: React.RefObject<HTMLDivElement>,
-    callback: () => void
+    callback: (a: any, b?: any) => void
   ) {
     if (!svgContainer.current) return;
-    console.log("Parent: ", svgContainer.current);
+    let src = svgContainer.current.getElementsByTagName("svg")[0];
+    src.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    src.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+    src.setAttribute("xml:space", "preserve");
 
-    const src = svgContainer.current.children[0] as SVGSVGElement;
-    console.log("Parent: ", src);
+    const image = select("body")
+      .append("img")
+      .style("display", "none")
+      .attr("width", 1400)
+      .attr("height", 700)
+      .node();
 
-    console.log("Parent: ", src);
+    if (!image) return;
 
-    // const image = select('body').append('img')
-    //   .style('display', 'none')
-    //   .attr('width', 960)
-    //   .attr('height', 500)
-    //   .node();
-    // console.log('image: ', image)
+    image.onerror = function (e) {
+      console.log(e);
+    };
+    image.onload = function () {
+      const canvas = select("body")
+        .append("canvas")
+        .attr("width", 1400)
+        .attr("height", 700)
+        .node()!;
 
-    // image.onload = function() {
-    //   console.log('LOADING...')
-    //   const canvas = select('body').append('canvas')
-    //     .style('display', 'none')
-    //     .attr('width', 960)
-    //     .attr('height', 500)
-    //     .node();
+      const ctx = canvas.getContext("2d");
+      ctx!.drawImage(image, 0, 0);
+      const url = canvas.toDataURL("image/png");
+      selectAll([canvas, image]).remove();
 
-    //   const ctx = canvas.getContext('2d');
-    //   ctx.drawImage(image, 0, 0);
-    //   const url = canvas.toDataURL('image/png');
+      callback(null, url);
+    };
+    image.onerror = function (e) {
+      console.log(e);
+    };
 
-    //   selectAll([ canvas, image ]).remove();
-
-    //   callback(null, url);
-    // };
-    // image.src = 'data:image/svg+xml,' + encodeURIComponent(src);
+    image.src = "data:image/svg+xml," + encodeURIComponent(src.outerHTML);
   }
 
   const handle_click = (
@@ -91,8 +98,16 @@ const DD_MENU = (props: Props) => {
     },
     { label: "Lukk", click: () => update_selected_row(""), class: "dd-close" },
     {
-      label: "Last ned",
-      click: () => getDownloadURL(svg_container, () => console.log("error")),
+      label: "Last ned graf",
+      click: () =>
+        getDownloadURL(svg_container, (error, url) => {
+          if (error) {
+            alert("Error");
+            console.error(error);
+          } else {
+            setDownloadHref(url);
+          }
+        }),
       class: "dd-download",
     },
   ];
@@ -105,6 +120,27 @@ const DD_MENU = (props: Props) => {
   };
 
   const dd_list = dorpdown_entries.map((dd) => {
+    if (dd.class === "dd-download") {
+      return (
+        <li key={dd.class}>
+          {downloadHref ? (
+            <a
+              className={dd.class}
+              href={downloadHref}
+              download="graph.png"
+              onClick={() => setDownloadHref(null)}
+            >
+              {" "}
+              {dd.label}{" "}
+            </a>
+          ) : (
+            <div className={dd.class} onClick={dd.click}>
+              Generere graf til nedlasting
+            </div>
+          )}
+        </li>
+      );
+    }
     return (
       <li key={dd.class}>
         <div className={dd.class} onClick={dd.click}>
