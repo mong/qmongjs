@@ -7,7 +7,6 @@
  */
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import { build, fake, bool } from "@jackfranklin/test-data-bot";
 import faker from "faker";
 import BarChart, { Props, DataPoint } from "..";
 import useResizeObserver from "../../utils";
@@ -43,7 +42,7 @@ test("Bar widths are correct", async () => {
   });
 
   const props = {
-    ...propsBuilder(),
+    ...buildProps(),
     zoom: false,
     margin: { top: 0, right: 0, bottom: 0, left: 0 },
   };
@@ -81,7 +80,7 @@ test("Level widths are correct", async () => {
     },
   });
 
-  const props = propsBuilder();
+  const props = buildProps();
 
   render(
     <BarChart
@@ -113,15 +112,13 @@ test("Highlights selected bars", async () => {
     },
   });
 
-  const dataPoint1 = dataPointBuilder();
-  const dataPoint2 = dataPointBuilder();
-  const dataPoint3 = dataPointBuilder();
-  const dataPoint4 = dataPointBuilder();
+  const dataPoint1 = buildDataPoint();
+  const dataPoint2 = buildDataPoint();
+  const dataPoint3 = buildDataPoint();
+  const dataPoint4 = buildDataPoint();
 
-  const props = propsBuilder({
-    overrides: {
-      data: [dataPoint1, dataPoint2, dataPoint3, dataPoint4],
-    },
+  const props = buildProps({
+    data: [dataPoint1, dataPoint2, dataPoint3, dataPoint4],
   });
 
   const highlightedBars = [dataPoint2.label, dataPoint4.label];
@@ -348,32 +345,33 @@ test("Render zoomed with levels @500px", async () => {
 });
 
 // Builders
-const dataPointBuilder = build<DataPoint>("DataPoint", {
-  fields: {
-    label: fake((f) => f.random.uuid()),
-    value: fake((f) => f.random.number(100) / 100),
-  },
-});
+function buildDataPoint(): DataPoint {
+  return {
+    label: faker.random.uuid(),
+    value: faker.random.number(100) / 100,
+  };
+}
 
-const propsBuilder = build<Props>("Props", {
-  fields: {
-    displayLevels: bool(),
-    data: fake((f) =>
-      Array.from(
-        { length: f.random.number({ min: 1, max: 10 }) },
-        dataPointBuilder
-      )
+function buildLevels(): Level[] {
+  const low = faker.random.number({ min: 0, max: 100 }) / 100;
+  const mid = faker.random.number({ min: low * 100, max: 100 }) / 100;
+
+  return [
+    { level: "high", start: mid, end: 1 },
+    { level: "mid", start: low, end: mid },
+    { level: "low", start: 0, end: low },
+  ];
+}
+
+function buildProps(overrides?: Partial<Props>): Props {
+  return {
+    displayLevels: faker.random.boolean(),
+    data: Array.from(
+      { length: faker.random.number({ min: 1, max: 10 }) },
+      buildDataPoint
     ),
-    levels: fake((f): Level[] => {
-      const low = f.random.number({ min: 0, max: 100 }) / 100;
-      const mid = f.random.number({ min: low * 100, max: 100 }) / 100;
-
-      return [
-        { level: "high", start: mid, end: 1 },
-        { level: "mid", start: low, end: mid },
-        { level: "low", start: 0, end: low },
-      ];
-    }),
-    zoom: bool(),
-  },
-});
+    levels: buildLevels(),
+    zoom: faker.random.boolean(),
+    ...overrides,
+  };
+}
