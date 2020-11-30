@@ -8,6 +8,7 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import { build, fake, bool } from "@jackfranklin/test-data-bot";
+import faker from "faker";
 import BarChart, { Props, DataPoint } from "..";
 import useResizeObserver from "../../utils";
 import { Level } from "../../TF_FIGURE/Chart";
@@ -41,15 +42,26 @@ test("Bar widths are correct", async () => {
     },
   });
 
-  const props = propsBuilder();
+  const props = {
+    ...propsBuilder(),
+    zoom: false,
+    margin: { top: 0, right: 0, bottom: 0, left: 0 },
+  };
 
-  render(
-    <BarChart
-      {...props}
-      zoom={false}
-      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-    />
-  );
+  const { rerender } = render(<BarChart {...props} />);
+
+  await clockTick(1500);
+
+  for (const dataPoint of props.data) {
+    const bar = screen.getByTestId(`bar-${dataPoint.label}`);
+
+    const width = bar.getAttribute("width") ?? "";
+    expect(parseFloat(width)).toBeCloseTo(dataPoint.value * WIDTH);
+  }
+
+  // Test bars update if values update
+  props.data[0].value = faker.random.number({ min: 0, max: 100 }) / 100;
+  await rerender(<BarChart {...props} />);
 
   await clockTick(1500);
 
