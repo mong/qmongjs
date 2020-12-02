@@ -126,8 +126,6 @@ test("Can set color and opacity for bars", async () => {
     data: [dataPoint1, dataPoint2, dataPoint3, dataPoint4],
   });
 
-  const highlightedBars = [dataPoint2.label, dataPoint4.label];
-
   render(
     <BarChart
       {...props}
@@ -144,7 +142,7 @@ test("Can set color and opacity for bars", async () => {
   );
   expect(screen.getByTestId(`bar-${dataPoint2.label}`)).toHaveAttribute(
     "fill",
-    "#00263D"
+    dataPoint2.style?.color
   );
   expect(screen.getByTestId(`bar-${dataPoint3.label}`)).toHaveAttribute(
     "fill",
@@ -152,11 +150,11 @@ test("Can set color and opacity for bars", async () => {
   );
   expect(screen.getByTestId(`bar-${dataPoint4.label}`)).toHaveAttribute(
     "fill",
-    "#00263D"
+    dataPoint4.style?.color
   );
   expect(screen.getByTestId(`bar-${dataPoint4.label}`)).toHaveAttribute(
     "opacity",
-    "0.5"
+    `${dataPoint4.style?.opacity}`
   );
 });
 
