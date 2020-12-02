@@ -23,8 +23,8 @@ function TABLE_BODY(props: RegisterProps) {
     data.agg_data.filtered_by_unit = data.agg_data.nation.filtered_by_unit;
   }
   //loop registry for registry following the seq laid out by the med field list
+  const done: string[] = [];
   const table_body = med_field.map(function (field) {
-    const done: string[] = [];
     let register_block = field.key.map((register) => {
       if (!done.includes(register)) {
         done.push(register);
@@ -50,7 +50,7 @@ function TABLE_BODY(props: RegisterProps) {
       return null;
     });
     return register_block;
-  });
+  }, done);
 
   return <tbody>{table_body}</tbody>;
 }
