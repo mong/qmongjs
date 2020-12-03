@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import faker from "faker";
 import LineChart, { DataPoint, Props } from "..";
-import { buildLevels } from "../../../test/builders";
-import { clockTick } from "../../../test/clockTick";
-import useResizeObserver from "../../utils";
+import { buildLevels } from "../../../../test/builders";
+import { clockTick } from "../../../../test/clockTick";
+import useResizeObserver from "../../../utils";
 
-jest.mock("../../utils");
-jest.mock("../../../utils/useDelayInitial");
+jest.mock("../../../utils");
+jest.mock("../../../../utils/useDelayInitial");
 
 beforeEach(() => {
   const WIDTH = 500;

@@ -10,13 +10,13 @@ import {
   select,
 } from "d3";
 import { useEffect, useRef, useState } from "react";
-import { page_colors } from "../../charts/page_colors";
-import { theme_table_chart_line as theme } from "../../charts/theme_table_chart_line";
-import useDelayInitial from "../../utils/useDelayInitial";
-import { Margin } from "../BarChart";
-import { Level } from "../TF_FIGURE/Chart";
-import useResizeObserver from "../utils";
+import { page_colors } from "../../../charts/page_colors";
+import { theme_table_chart_line as theme } from "../../../charts/theme_table_chart_line";
+import useDelayInitial from "../../../utils/useDelayInitial";
+import { Level, Margin } from "../types";
+import useResizeObserver from "../../utils";
 import styles from "./LineChart.module.css";
+import { levelColor } from "../utils";
 
 export interface DataPoint {
   label: string;
@@ -314,18 +314,4 @@ function getYScaleDomain(data: DataPoint[], zoom: boolean): [number, number] {
   const yMax = Math.ceil((maxValue + additionalMargin) * 100) / 100;
 
   return [Math.max(yMin, 0), Math.min(yMax, 1)];
-}
-
-// TODO: Estract this duplication from BarChart
-function levelColor(level: string) {
-  switch (level) {
-    case "high":
-      return "#3baa34";
-    case "mid":
-      return "#fd9c00";
-    case "low":
-      return "#e30713";
-    default:
-      throw new Error(`${level} is not a valid level`);
-  }
 }

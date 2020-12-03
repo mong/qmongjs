@@ -9,12 +9,12 @@ import { render, screen } from "@testing-library/react";
 import React from "react";
 import faker from "faker";
 import BarChart, { Props, Bar } from "..";
-import useResizeObserver from "../../utils";
-import { buildLevels } from "../../../test/builders";
-import { clockTick } from "../../../test/clockTick";
+import useResizeObserver from "../../../utils";
+import { buildLevels } from "../../../../test/builders";
+import { clockTick } from "../../../../test/clockTick";
 
-jest.mock("../../utils");
-jest.mock("../../../utils/useDelayInitial");
+jest.mock("../../../utils");
+jest.mock("../../../../utils/useDelayInitial");
 
 test("Bar widths are correct", async () => {
   const WIDTH = 500;

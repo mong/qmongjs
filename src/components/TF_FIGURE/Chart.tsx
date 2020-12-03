@@ -1,14 +1,9 @@
 import React from "react";
 import { StatisticData } from "../../App";
 import { GraphData } from "../main_component";
-import BarChart, { Bar, BarStyle } from "../BarChart";
-import LineChart, { DataPoint } from "../LineChart";
-
-export interface Level {
-  level: string;
-  start: number;
-  end: number;
-}
+import BarChart, { Bar, BarStyle } from "../Charts/BarChart";
+import LineChart, { DataPoint } from "../Charts/LineChart";
+import { Level } from "../Charts/types";
 
 export interface Props {
   data: GraphData;

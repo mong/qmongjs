@@ -1,5 +1,5 @@
 import faker from "faker";
-import { Level } from "../components/TF_FIGURE/Chart";
+import { Level } from "../components/Charts/types";
 
 export function buildLevels(): Level[] {
   const low = faker.random.number({ min: 0, max: 100 }) / 100;

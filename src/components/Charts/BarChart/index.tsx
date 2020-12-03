@@ -5,20 +5,13 @@ import {
   scaleBand,
   scaleLinear,
   select,
-  max,
 } from "d3";
-import React, { useEffect, useRef } from "react";
-import useDelayInitial from "../../utils/useDelayInitial";
-import { Level } from "../TF_FIGURE/Chart";
-import useResizeObserver from "../utils";
+import { useEffect, useRef } from "react";
+import useDelayInitial from "../../../utils/useDelayInitial";
+import useResizeObserver from "../../utils";
 import styles from "./BarChart.module.css";
-
-export interface Margin {
-  top?: number;
-  bottom?: number;
-  right?: number;
-  left?: number;
-}
+import { levelColor } from "../utils";
+import { Level, Margin } from "../types";
 
 export interface BarStyle {
   opacity?: number;
@@ -179,19 +172,6 @@ function BarChart(props: Props) {
 }
 
 export default BarChart;
-
-function levelColor(level: string) {
-  switch (level) {
-    case "high":
-      return "#3baa34";
-    case "mid":
-      return "#fd9c00";
-    case "low":
-      return "#e30713";
-    default:
-      throw new Error(`${level} is not a valid level`);
-  }
-}
 
 function getXScaleDomain(data: Bar[], zoom: boolean): [number, number] {
   if (!zoom) {
