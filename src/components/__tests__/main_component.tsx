@@ -5,6 +5,8 @@ import MAIN, { GraphData, Props } from "../main_component";
 import { med_field, app_text } from "../../app_config";
 import { AggData } from "../../App";
 
+// test() / it() can't be nested.
+//
 describe("test the filter buttons", () => {
   test("filter buttons", () => {
     const props = buildProps();
