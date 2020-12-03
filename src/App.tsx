@@ -23,7 +23,7 @@ export interface StatisticData {
   var: number;
   level: string;
   level_direction: number | null;
-  dg: number | null;
+  dg?: number;
   include: number | null;
 }
 
@@ -268,6 +268,7 @@ function APP() {
     update_selection_bar_height(top);
   }, [selection_bar_dim]);
 
+  console.log("This:", { agg_data, description });
   return (
     <div className="app-container">
       <HEADER />
