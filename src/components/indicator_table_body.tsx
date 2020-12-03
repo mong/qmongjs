@@ -50,7 +50,7 @@ function TABLE_BODY(props: RegisterProps) {
       return null;
     });
     return register_block;
-  }, done);
+  });
 
   return <tbody>{table_body}</tbody>;
 }
