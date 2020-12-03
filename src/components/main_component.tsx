@@ -96,7 +96,7 @@ const filter_data = (
   };
 };
 
-interface Props {
+export interface Props {
   data: GraphData;
   med_field: any;
   app_text: any;
