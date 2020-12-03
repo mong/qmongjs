@@ -5,8 +5,8 @@ import MAIN, { GraphData, Props } from "../main_component";
 import { med_field, app_text } from "../../app_config";
 import { AggData } from "../../App";
 
-describe("test the filter buttons", () => {
-  test("filter buttons", () => {
+describe("test filter buttons", () => {
+  it("should have 3 filter buttons", () => {
     const props = buildProps();
     render(<MAIN {...props} />);
 
@@ -14,36 +14,53 @@ describe("test the filter buttons", () => {
     expect(screen.getByText(/Moderat måloppnåelse/i)).toBeInTheDocument();
     expect(screen.getByText(/Høy måloppnåelse/i)).toBeInTheDocument();
     expect(screen.getByText(/Lav måloppnåelse/i)).toBeInTheDocument();
+  });
 
-    // it("should have all levels when no filters are active", () => {});
-    // No filter clicked, all achivement levels should be present.
+  it("should have all levels when no filters are active", () => {
+    const props = buildProps();
+    render(<MAIN {...props} />);
     expect(screen.queryAllByLabelText(/Achieved level H/i)).not.toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level M/i)).not.toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level L/i)).not.toHaveLength(0);
+  });
 
-    // it("should only have H levels when H filter is active", () => {});
-    // High clicked, should only show H indicators
+  it("should only have H levels when H filter is clicked", () => {
+    const props = buildProps();
+    render(<MAIN {...props} />);
     userEvent.click(screen.getByText(/Høy måloppnåelse/i));
     expect(screen.queryAllByLabelText(/Achieved level H/i)).not.toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level M/i)).toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level L/i)).toHaveLength(0);
+  });
 
-    // it("should only have M levels when M filter is active", () => {});
-    // Moderate clicked, should only show M indicators
+  it("should only have M levels when M filter is active", () => {
+    const props = buildProps();
+    render(<MAIN {...props} />);
     userEvent.click(screen.getByText(/Moderat måloppnåelse/i));
     expect(screen.queryAllByLabelText(/Achieved level H/i)).toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level M/i)).not.toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level L/i)).toHaveLength(0);
+  });
 
-    // it("should only have L levels when L filter is active", () => {});
-    // Low clicked, should only show L indicators
+  it("should only have L levels when L filter is active", () => {
+    const props = buildProps();
+    render(<MAIN {...props} />);
     userEvent.click(screen.getByText(/Lav måloppnåelse/i));
     expect(screen.queryAllByLabelText(/Achieved level H/i)).toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level M/i)).toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level L/i)).not.toHaveLength(0);
+  });
 
-    // it("should deactivate filter if active filter is clicked")
+  it("should deactivate filter when active filter is clicked", () => {
+    const props = buildProps();
+    render(<MAIN {...props} />);
     userEvent.click(screen.getByText(/Lav måloppnåelse/i));
+    userEvent.click(screen.getByText(/Lav måloppnåelse/i));
+    userEvent.click(screen.getByText(/Moderat måloppnåelse/i));
+    userEvent.click(screen.getByText(/Moderat måloppnåelse/i));
+    userEvent.click(screen.getByText(/Høy måloppnåelse/i));
+    userEvent.click(screen.getByText(/Høy måloppnåelse/i));
+
     expect(screen.queryAllByLabelText(/Achieved level H/i)).not.toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level M/i)).not.toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level L/i)).not.toHaveLength(0);
