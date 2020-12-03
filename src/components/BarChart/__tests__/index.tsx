@@ -10,28 +10,11 @@ import React from "react";
 import faker from "faker";
 import BarChart, { Props, Bar } from "..";
 import useResizeObserver from "../../utils";
-import { Level } from "../../TF_FIGURE/Chart";
+import { buildLevels } from "../../../test/builders";
+import { clockTick } from "../../../test/clockTick";
 
 jest.mock("../../utils");
 jest.mock("../../../utils/useDelayInitial");
-
-/**
- * Move all d3 transitions a specified amount of milliseconds forward in time.
- * @param milliseconds Milliseconds to move transitions forward in time
- */
-function clockTick(milliseconds: number) {
-  const currentNow = performance.now();
-
-  const now = performance.now;
-  performance.now = () => currentNow + milliseconds;
-  // The new animation frame means d3's timers will check performance.now() again
-  return new Promise((resolve) =>
-    requestAnimationFrame((time) => {
-      performance.now = now;
-      resolve(time);
-    })
-  );
-}
 
 test("Bar widths are correct", async () => {
   const WIDTH = 500;
@@ -88,7 +71,7 @@ test("Level widths are correct", async () => {
   render(
     <BarChart
       {...props}
-      displayLevels={true}
+      showLevel={true}
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />
@@ -168,7 +151,7 @@ test("Render without levels @250px", async () => {
 
   const { container } = render(
     <BarChart
-      displayLevels={false}
+      showLevel={false}
       data={[
         { label: "a", value: 1 },
         { label: "b", value: 0.15 },
@@ -200,7 +183,7 @@ test("Render with levels @250px", async () => {
 
   const { container } = render(
     <BarChart
-      displayLevels={true}
+      showLevel={true}
       data={[
         { label: "a", value: 1 },
         { label: "b", value: 0.15 },
@@ -232,7 +215,7 @@ test("Render without levels @500px", async () => {
 
   const { container } = render(
     <BarChart
-      displayLevels={false}
+      showLevel={false}
       data={[
         { label: "a", value: 1 },
         { label: "b", value: 0.15 },
@@ -264,7 +247,7 @@ test("Render with levels @500px", async () => {
 
   const { container } = render(
     <BarChart
-      displayLevels={true}
+      showLevel={true}
       data={[
         { label: "a", value: 1 },
         { label: "b", value: 0.15 },
@@ -296,7 +279,7 @@ test("Render with levels reversed @500px", async () => {
 
   const { container } = render(
     <BarChart
-      displayLevels={true}
+      showLevel={true}
       data={[
         { label: "a", value: 1 },
         { label: "b", value: 0.15 },
@@ -328,7 +311,7 @@ test("Render zoomed with levels @500px", async () => {
 
   const { container } = render(
     <BarChart
-      displayLevels={true}
+      showLevel={true}
       data={[
         { label: "a", value: 0.5 },
         { label: "b", value: 0.15 },
@@ -359,20 +342,9 @@ function buildBar(overrides?: Partial<Bar>): Bar {
   };
 }
 
-function buildLevels(): Level[] {
-  const low = faker.random.number({ min: 0, max: 100 }) / 100;
-  const mid = faker.random.number({ min: low * 100, max: 100 }) / 100;
-
-  return [
-    { level: "high", start: mid, end: 1 },
-    { level: "mid", start: low, end: mid },
-    { level: "low", start: 0, end: low },
-  ];
-}
-
 function buildProps(overrides?: Partial<Props>): Props {
   return {
-    displayLevels: faker.random.boolean(),
+    showLevel: faker.random.boolean(),
     data: Array.from(
       { length: faker.random.number({ min: 1, max: 10 }) },
       buildBar

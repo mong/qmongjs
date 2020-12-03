@@ -31,7 +31,7 @@ export interface Bar {
   style?: BarStyle;
 }
 export interface Props {
-  displayLevels: boolean;
+  showLevel: boolean;
   data: Bar[];
   levels: Level[];
   zoom?: boolean;
@@ -41,7 +41,13 @@ export interface Props {
 const MARGIN = { top: 0.05, bottom: 10, right: 0.15, left: 0.2 };
 
 function BarChart(props: Props) {
-  const { data, displayLevels, levels, zoom = false, margin = {} } = props;
+  const {
+    data,
+    showLevel: displayLevels,
+    levels,
+    zoom = false,
+    margin = {},
+  } = props;
 
   const delayedZoom = useDelayInitial(zoom, false);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -192,9 +198,9 @@ function getXScaleDomain(data: Bar[], zoom: boolean): [number, number] {
     return [0, 1];
   }
 
-  const xMaxVal = max(data, (d) => d.value) ?? 0;
-  const additionalMargin = (0.01 + xMaxVal) * 0.2;
-  const domainWidth = Math.ceil((xMaxVal + additionalMargin) * 100) / 100;
+  const maxVal = Math.max(...data.map((d) => d.value));
+  const additionalMargin = (0.01 + maxVal) * 0.2;
+  const xMax = Math.ceil((maxVal + additionalMargin) * 100) / 100;
 
-  return [0, Math.min(domainWidth, 1)];
+  return [0, Math.min(xMax, 1)];
 }

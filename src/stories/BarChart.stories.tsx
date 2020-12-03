@@ -11,7 +11,7 @@ const Template: Story<Props> = (args) => <BarChart {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  displayLevels: false,
+  showLevel: false,
   data: [
     { label: "a", value: 1 },
     { label: "b", value: 0.15 },
@@ -27,7 +27,7 @@ Primary.args = {
 
 export const Reversed = Template.bind({});
 Reversed.args = {
-  displayLevels: true,
+  showLevel: true,
   data: [
     { label: "a", value: 1 },
     { label: "b", value: 0.15 },
@@ -48,7 +48,7 @@ const TemplateWidth500: Story<Props> = (args) => (
 );
 export const Width500 = TemplateWidth500.bind({});
 Width500.args = {
-  displayLevels: true,
+  showLevel: true,
   data: [
     { label: "a", value: 1 },
     { label: "b", value: 0.15 },
