@@ -82,6 +82,9 @@ const filter_data = (
       filtered_by_unit: data.agg_data.filtered_by_unit.filter((u) =>
         ind_ids_remaining.includes(u.ind_id)
       ),
+      all_filtered_by_year: data.agg_data.all_filtered_by_year.filter((u) =>
+        ind_ids_remaining.includes(u.ind_id)
+      ),
       nation: {
         filtered_by_year: data.agg_data.nation.filtered_by_year.filter((u) =>
           ind_ids_remaining.includes(u.ind_id)

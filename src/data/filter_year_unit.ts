@@ -52,6 +52,9 @@ export const filter_register = (
   agg_data.filtered_by_year = data.agg_data.filtered_by_year.filter(
     (data) => indicator_name.includes(data.ind_id) // [app_config.data_config.column.indicator_id]
   );
+  agg_data.all_filtered_by_year = data.agg_data.all_filtered_by_year.filter(
+    (data) => indicator_name.includes(data.ind_id) // [app_config.data_config.column.indicator_id]
+  );
   const nation: any = {};
   nation.filtered_by_unit = data.agg_data.nation.filtered_by_unit.filter(
     (data: any) => indicator_name.includes(data.ind_id) // [app_config.data_config.column.indicator_id]

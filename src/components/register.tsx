@@ -51,6 +51,7 @@ const Register = (props: RegisterProps) => {
       },
       filtered_by_unit: [],
       filtered_by_year: [],
+      all_filtered_by_year: [],
     };
     agg_data.filtered_by_year = data.agg_data.filtered_by_year.filter(
       (d) => d.ind_id === indicator
@@ -59,6 +60,9 @@ const Register = (props: RegisterProps) => {
       (d) => d.ind_id === indicator
     );
     agg_data.nation.filtered_by_year = data.agg_data.nation.filtered_by_year.filter(
+      (d) => d.ind_id === indicator
+    );
+    agg_data.all_filtered_by_year = data.agg_data.all_filtered_by_year.filter(
       (d) => d.ind_id === indicator
     );
     agg_data.nation.filtered_by_unit = data.agg_data.nation.filtered_by_unit.filter(

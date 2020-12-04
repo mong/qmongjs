@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { select, selectAll } from "d3";
 
 interface Props {
-  show_level: string;
-  zoom: string;
-  svg_container: React.RefObject<HTMLDivElement>;
-  update_zoom(xoom: string): void;
-  update_show_level(level: string): void;
+  svgContainer: React.RefObject<HTMLDivElement>;
+  show_level: boolean;
+  zoom: boolean;
+  update_zoom: React.Dispatch<React.SetStateAction<boolean>>;
+  update_show_level: React.Dispatch<React.SetStateAction<boolean>>;
   update_selected_row(row: string): void;
 }
 
@@ -16,13 +16,11 @@ const DD_MENU = (props: Props) => {
     update_show_level,
     zoom,
     update_zoom,
-    svg_container,
     update_selected_row,
+    svgContainer,
   } = props;
 
   const [dd_menu_status, set_dd_menu_status] = useState("inactive");
-  const level_states = ["Vis målnivå", "Skjul målnivå"];
-  const zoom_states = ["Zoom inn", "Zoom ut"];
   const [downloadHref, setDownloadHref] = useState<string | null>(null);
 
   function getDownloadURL(
@@ -31,6 +29,10 @@ const DD_MENU = (props: Props) => {
   ) {
     if (!svgContainer.current) return;
     let src = svgContainer.current.getElementsByTagName("svg")[0];
+
+    const height = src.height.baseVal.value;
+    const width = src.width.baseVal.value;
+
     src.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     src.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
     src.setAttribute("xml:space", "preserve");
@@ -38,8 +40,8 @@ const DD_MENU = (props: Props) => {
     const image = select("body")
       .append("img")
       .style("display", "none")
-      .attr("width", 1400)
-      .attr("height", 700)
+      .attr("width", width)
+      .attr("height", height)
       .node();
 
     if (!image) return;
@@ -50,8 +52,8 @@ const DD_MENU = (props: Props) => {
     image.onload = function () {
       const canvas = select("body")
         .append("canvas")
-        .attr("width", 1400)
-        .attr("height", 700)
+        .attr("width", width)
+        .attr("height", height)
         .node()!;
 
       const ctx = canvas.getContext("2d");
@@ -68,38 +70,22 @@ const DD_MENU = (props: Props) => {
     image.src = "data:image/svg+xml," + encodeURIComponent(src.outerHTML);
   }
 
-  const handle_click = (
-    current_state: string,
-    states: string[],
-    update_state_function: (level: string) => void
-  ) => {
-    const new_state = states.filter((state) => state !== current_state);
-    update_state_function(new_state[0]);
-  };
-
-  useEffect(() => {
-    let level_visibility =
-      show_level.replace(/\s/g, "") === "Skjulmålnivå" ? "visible" : "hidden";
-    let level = select(svg_container.current);
-    level.selectAll("svg .level").style("visibility", level_visibility);
-  }, [svg_container, show_level]);
-
-  const dorpdown_entries = [
+  const dropdown_entries = [
     {
-      label: show_level,
-      click: () => handle_click(show_level, level_states, update_show_level),
+      label: show_level ? "Skjul målnivå" : "Vis målnivå",
+      click: () => update_show_level((showLevel) => !showLevel),
       class: "dd-level",
     },
     {
-      label: zoom,
-      click: () => handle_click(zoom, zoom_states, update_zoom),
+      label: zoom ? "Zoom ut" : "Zoom inn",
+      click: () => update_zoom((zoom) => !zoom),
       class: "dd-zoom",
     },
     { label: "Lukk", click: () => update_selected_row(""), class: "dd-close" },
     {
       label: "Last ned graf",
       click: () =>
-        getDownloadURL(svg_container, (error, url) => {
+        getDownloadURL(svgContainer, (error, url) => {
           if (error) {
             console.error(error);
           } else {
@@ -117,7 +103,7 @@ const DD_MENU = (props: Props) => {
     }, 1000);
   };
 
-  const dd_list = dorpdown_entries.map((dd) => {
+  const dd_list = dropdown_entries.map((dd) => {
     if (dd.class === "dd-download") {
       return (
         <li key={dd.class}>
