@@ -6,6 +6,7 @@ import LineChart, { DataPoint } from "../Charts/LineChart";
 import { Level } from "../Charts/types";
 
 export interface Props {
+  svgContainerRef: React.RefObject<HTMLDivElement>;
   data: GraphData;
   chartType: "bar" | "line";
   zoom: boolean;

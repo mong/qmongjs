@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { select, selectAll } from "d3";
 
 interface Props {
+  svgContainer: React.RefObject<HTMLDivElement>;
   show_level: boolean;
   zoom: boolean;
   update_zoom: React.Dispatch<React.SetStateAction<boolean>>;
@@ -16,11 +17,10 @@ const DD_MENU = (props: Props) => {
     zoom,
     update_zoom,
     update_selected_row,
+    svgContainer,
   } = props;
 
   const [dd_menu_status, set_dd_menu_status] = useState("inactive");
-  const level_states = ["Vis målnivå", "Skjul målnivå"];
-  const zoom_states = ["Zoom inn", "Zoom ut"];
   const [downloadHref, setDownloadHref] = useState<string | null>(null);
 
   function getDownloadURL(
@@ -81,7 +81,7 @@ const DD_MENU = (props: Props) => {
     {
       label: "Last ned graf",
       click: () =>
-        getDownloadURL(svg_container, (error, url) => {
+        getDownloadURL(svgContainer, (error, url) => {
           if (error) {
             console.error(error);
           } else {
@@ -99,7 +99,7 @@ const DD_MENU = (props: Props) => {
     }, 1000);
   };
 
-  const dd_list = dorpdown_entries.map((dd) => {
+  const dd_list = dropdown_entries.map((dd) => {
     if (dd.class === "dd-download") {
       return (
         <li key={dd.class}>

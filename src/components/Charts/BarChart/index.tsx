@@ -24,6 +24,7 @@ export interface Bar {
   style?: BarStyle;
 }
 export interface Props {
+  svgContainerRef: React.RefObject<HTMLDivElement>;
   showLevel: boolean;
   data: Bar[];
   levels: Level[];
@@ -35,6 +36,7 @@ const MARGIN = { top: 0.05, bottom: 10, right: 0.15, left: 0.2 };
 
 function BarChart(props: Props) {
   const {
+    svgContainerRef: wrapperRef,
     data,
     showLevel: displayLevels,
     levels,
@@ -44,7 +46,6 @@ function BarChart(props: Props) {
 
   const delayedZoom = useDelayInitial(zoom, false);
   const svgRef = useRef<SVGSVGElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
   const entry = useResizeObserver(wrapperRef);
 
   const height = Math.max(data.length * 50, 250);

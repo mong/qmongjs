@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import TF_BUTTON from "../tf_button";
 import TF_DDMENU from "../tf_ddmenu";
@@ -24,6 +24,7 @@ function TF_FIGURE(props: Props) {
     selectedTreatmentUnits,
   } = props;
 
+  const svgContainerRef = useRef<HTMLDivElement>(null);
   const [chart_type, update_chart_type] = useState<"line" | "bar">("line");
   const [zoom, update_zoom] = useState(true);
   const [show_level, update_show_level] = useState(false);
@@ -48,6 +49,7 @@ function TF_FIGURE(props: Props) {
         <div className="tr_figure">
           <div className="tr_buttons_container">
             <TF_DDMENU
+              svgContainer={svgContainerRef}
               show_level={show_level}
               update_show_level={update_show_level}
               zoom={zoom}
@@ -60,6 +62,7 @@ function TF_FIGURE(props: Props) {
             />
           </div>
           <Chart
+            svgContainerRef={svgContainerRef}
             data={data}
             chartType={chart_type}
             zoom={zoom}

@@ -25,6 +25,7 @@ export interface DataPoint {
 }
 
 export interface Props {
+  svgContainerRef: React.RefObject<HTMLDivElement>;
   showLevel: boolean;
   data: DataPoint[];
   levels: Level[];
@@ -36,6 +37,7 @@ const MARGIN = { top: 8, bottom: 34, right: 0.15, left: 0.2 };
 
 const LineChart = (props: Props) => {
   const {
+    svgContainerRef,
     data,
     showLevel: displayLevels,
     levels,
@@ -47,7 +49,6 @@ const LineChart = (props: Props) => {
   const [selectedLegends, setSelectedLegends] = useState<string[]>([]);
   const delayedZoom = useDelayInitial(zoom, false);
   const legendContainerRef = useRef<HTMLUListElement>(null);
-  const svgContainerRef = useRef<HTMLDivElement>(null);
   const entry = useResizeObserver(svgContainerRef);
 
   const width = entry?.contentRect.width ?? 0;
@@ -252,6 +253,7 @@ const LineChart = (props: Props) => {
     innerWidth,
     levels,
     selectedLegends,
+    svgContainerRef,
   ]);
 
   return (

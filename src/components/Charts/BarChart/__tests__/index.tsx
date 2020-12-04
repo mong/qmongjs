@@ -6,7 +6,7 @@
  * Replace the contents with what you copied
  */
 import { render, screen } from "@testing-library/react";
-import React from "react";
+import React, { useRef } from "react";
 import faker from "faker";
 import BarChart, { Props, Bar } from "..";
 import useResizeObserver from "../../../utils";
@@ -33,7 +33,7 @@ test("Bar widths are correct", async () => {
     margin: { top: 0, right: 0, bottom: 0, left: 0 },
   };
 
-  const { rerender } = render(<BarChart {...props} />);
+  const { rerender } = render(<BarChartWithRef {...props} />);
 
   await clockTick(1500);
 
@@ -46,7 +46,7 @@ test("Bar widths are correct", async () => {
 
   // Test bars update if values update
   const newProps = { ...props, data: [{ ...bar1, value: 0.75 }, bar2] };
-  await rerender(<BarChart {...newProps} />);
+  await rerender(<BarChartWithRef {...newProps} />);
 
   await clockTick(1500);
 
@@ -69,7 +69,7 @@ test("Level widths are correct", async () => {
   const props = buildProps();
 
   render(
-    <BarChart
+    <BarChartWithRef
       {...props}
       showLevel={true}
       zoom={false}
@@ -110,7 +110,7 @@ test("Can set color and opacity for bars", async () => {
   });
 
   render(
-    <BarChart
+    <BarChartWithRef
       {...props}
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
@@ -150,7 +150,7 @@ test("Render without levels @250px", async () => {
   });
 
   const { container } = render(
-    <BarChart
+    <BarChartWithRef
       showLevel={false}
       data={[
         { label: "a", value: 1 },
@@ -182,7 +182,7 @@ test("Render with levels @250px", async () => {
   });
 
   const { container } = render(
-    <BarChart
+    <BarChartWithRef
       showLevel={true}
       data={[
         { label: "a", value: 1 },
@@ -214,7 +214,7 @@ test("Render without levels @500px", async () => {
   });
 
   const { container } = render(
-    <BarChart
+    <BarChartWithRef
       showLevel={false}
       data={[
         { label: "a", value: 1 },
@@ -246,7 +246,7 @@ test("Render with levels @500px", async () => {
   });
 
   const { container } = render(
-    <BarChart
+    <BarChartWithRef
       showLevel={true}
       data={[
         { label: "a", value: 1 },
@@ -278,7 +278,7 @@ test("Render with levels reversed @500px", async () => {
   });
 
   const { container } = render(
-    <BarChart
+    <BarChartWithRef
       showLevel={true}
       data={[
         { label: "a", value: 1 },
@@ -310,7 +310,7 @@ test("Render zoomed with levels @500px", async () => {
   });
 
   const { container } = render(
-    <BarChart
+    <BarChartWithRef
       showLevel={true}
       data={[
         { label: "a", value: 0.5 },
@@ -333,6 +333,12 @@ test("Render zoomed with levels @500px", async () => {
   expect(container).toMatchSnapshot();
 });
 
+// Helpers
+function BarChartWithRef(props: Omit<Props, "svgContainerRef">) {
+  const ref = useRef<HTMLDivElement>(null);
+  return <BarChart {...props} svgContainerRef={ref} />;
+}
+
 // Builders
 function buildBar(overrides?: Partial<Bar>): Bar {
   return {
@@ -342,7 +348,9 @@ function buildBar(overrides?: Partial<Bar>): Bar {
   };
 }
 
-function buildProps(overrides?: Partial<Props>): Props {
+function buildProps(
+  overrides?: Partial<Props>
+): Omit<Props, "svgContainerRef"> {
   return {
     showLevel: faker.random.boolean(),
     data: Array.from(

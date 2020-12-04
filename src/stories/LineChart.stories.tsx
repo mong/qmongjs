@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import LineChart, { Props } from "../components/Charts/LineChart";
+
+type MainProps = Omit<Props, "svgContainerRef">;
 
 const meta: Meta = {
   title: "Charts/LineChart",
   component: LineChart,
 };
 
-const Template: Story<Props> = (args) => <LineChart {...args} />;
+const Template: Story<MainProps> = (args) => {
+  const ref = useRef<HTMLDivElement>(null);
+  return <LineChart {...args} svgContainerRef={ref} />;
+};
 
 export const Primary = Template.bind({});
-const props: Props = {
+const props: MainProps = {
   showLevel: false,
   data: [
     { label: "Nasjonalt", year: 2017, value: 0.35 },

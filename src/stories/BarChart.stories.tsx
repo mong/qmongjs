@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import BarChart, { Props } from "../components/Charts/BarChart";
+
+type MainProps = Omit<Props, "svgContainerRef">;
 
 const meta: Meta = {
   title: "Charts/BarChart",
   component: BarChart,
 };
 
-const Template: Story<Props> = (args) => <BarChart {...args} />;
+const Template: Story<MainProps> = (args) => {
+  const ref = useRef<HTMLDivElement>(null);
+  return <BarChart {...args} svgContainerRef={ref} />;
+};
 
 export const Primary = Template.bind({});
 Primary.args = {
@@ -41,11 +46,14 @@ Reversed.args = {
   ],
 };
 
-const TemplateWidth500: Story<Props> = (args) => (
-  <div style={{ width: 500 }}>
-    <BarChart {...args} />
-  </div>
-);
+const TemplateWidth500: Story<MainProps> = (args) => {
+  const ref = useRef<HTMLDivElement>(null);
+  return (
+    <div style={{ width: 500 }}>
+      <BarChart {...args} svgContainerRef={ref} />
+    </div>
+  );
+};
 export const Width500 = TemplateWidth500.bind({});
 Width500.args = {
   showLevel: true,
