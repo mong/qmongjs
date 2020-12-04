@@ -8,7 +8,7 @@ import {
   buildGraphData,
   buildMainProps,
   buildStatisticData,
-} from "../../test/data_builders";
+} from "../test/data_builders";
 
 describe("test filter buttons", () => {
   const iL = buildStatisticData({

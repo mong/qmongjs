@@ -1,6 +1,6 @@
-import { AggData, Description, StatisticData } from "../App";
-import { med_field, app_text } from "../app_config";
-import { GraphData, Props } from "../components/main_component";
+import { AggData, Description, StatisticData } from "../../App";
+import { med_field, app_text } from "../../app_config";
+import { GraphData, Props } from "../main_component";
 
 export function buildMainProps(overrides: Partial<Props>): Props {
   return {
