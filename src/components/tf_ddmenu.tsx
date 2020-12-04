@@ -29,6 +29,10 @@ const DD_MENU = (props: Props) => {
   ) {
     if (!svgContainer.current) return;
     let src = svgContainer.current.getElementsByTagName("svg")[0];
+
+    const height = src.height.baseVal.value;
+    const width = src.width.baseVal.value;
+
     src.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     src.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
     src.setAttribute("xml:space", "preserve");
@@ -36,8 +40,8 @@ const DD_MENU = (props: Props) => {
     const image = select("body")
       .append("img")
       .style("display", "none")
-      .attr("width", 1400)
-      .attr("height", 700)
+      .attr("width", width)
+      .attr("height", height)
       .node();
 
     if (!image) return;
@@ -48,8 +52,8 @@ const DD_MENU = (props: Props) => {
     image.onload = function () {
       const canvas = select("body")
         .append("canvas")
-        .attr("width", 1400)
-        .attr("height", 700)
+        .attr("width", width)
+        .attr("height", height)
         .node()!;
 
       const ctx = canvas.getContext("2d");
