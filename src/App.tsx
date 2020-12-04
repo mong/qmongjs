@@ -23,7 +23,7 @@ export interface StatisticData {
   var: number;
   level: string;
   level_direction: number | null;
-  dg: number | null;
+  dg?: number;
   include: number | null;
 }
 

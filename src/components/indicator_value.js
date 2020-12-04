@@ -20,7 +20,6 @@ function INDICATOR_VALUE(props) {
       : data[data_config.column.achieved_level] === "L"
       ? "fa fa-circle-o"
       : null;
-
   if (ind_type === data_config.indicator_type.andel.db) {
     const denominator = data[data_config.column.denominator];
     const numerator = Math.round(
@@ -33,7 +32,12 @@ function INDICATOR_VALUE(props) {
 
     return (
       <td className={td_class}>
-        <div className="level">
+        <div
+          className="level"
+          aria-label={`Achieved level ${
+            data[data_config.column.achieved_level]
+          }`}
+        >
           <h4>
             {`${indicator_value_share} `}
             <i className={icon_class} />
@@ -46,7 +50,10 @@ function INDICATOR_VALUE(props) {
 
   return (
     <td className={td_class}>
-      <div className="level">
+      <div
+        className="level"
+        aria-label={`Achieved level ${data[data_config.column.achieved_level]}`}
+      >
         <h4>
           {`${indicator_value} `}
           <i className={icon_class} />
