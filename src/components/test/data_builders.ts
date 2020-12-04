@@ -27,6 +27,7 @@ export function buildAggData(overrides: Partial<AggData>): AggData {
       filtered_by_unit: [],
       filtered_by_year: [],
     },
+    all_filtered_by_year: [],
     ...overrides,
   };
 }
