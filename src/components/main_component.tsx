@@ -54,6 +54,7 @@ const filter_data = (
   if (show_level_filter === null) {
     return data;
   }
+
   const data_filtered = [
     apply_filters({
       agg_data: data.agg_data.filtered_by_year,
@@ -70,7 +71,7 @@ const filter_data = (
 
   const ind_ids_remaining = data_filtered
     .map((a) => Array.isArray(a) && a.map((u) => u.ind_id))
-    .flat(1)
+    .reduce((acc: string[], val) => acc.concat(val || []), [])
     .filter((v, i, a) => a.indexOf(v) === i);
 
   return {
