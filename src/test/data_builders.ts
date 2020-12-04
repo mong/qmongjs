@@ -78,5 +78,3 @@ export function buildDescriptionData(
     ...overrides,
   };
 }
-
-test("dummy", () => expect(true).toBeTruthy());
