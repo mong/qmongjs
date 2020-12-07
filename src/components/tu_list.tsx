@@ -13,7 +13,7 @@ interface NestedTreatmentUnitName {
   }[];
 }
 
-interface Props {
+export interface Props {
   tu_structure: NestedTreatmentUnitName[];
   treatment_units: string[];
   update_treatment_units: (arg: string[]) => void;
@@ -59,7 +59,7 @@ const TU_LIST = (props: Props) => {
           Vis alle
         </button>
       </div>
-      <div style={style_tu_list} className="tu_list">
+      <div style={style_tu_list} className="tu_list" test-id="tu_list">
         <TU_LIST_HEADER />
         <div className="all_tu">{tu_str_elm}</div>
         <button
