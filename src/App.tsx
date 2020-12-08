@@ -10,6 +10,7 @@ import config from "./app_config";
 import { nest_tu_names } from "./data/filter_year_unit";
 import useResizeObserver from "./components/utils";
 import { filter_year_unit } from "./data/filter_year_unit";
+import { useQuery } from "react-query";
 
 const { med_field, app_text } = config;
 
@@ -62,26 +63,36 @@ export interface AggData {
   all_filtered_by_year: StatisticData[];
 }
 
-function APP() {
-  //data as state
-  const [indicator_hosp, update_hosp] = useState<StatisticData[]>(
-    (window as any).indicator_hosp ? (window as any).indicator_hosp : []
+interface Data {
+  indicator_hosp: StatisticData[];
+  indicator_hf: StatisticData[];
+  indicator_rhf: StatisticData[];
+  indicator_nat: StatisticData[];
+  description: Description[];
+  tu_names: TreatmentUnit[];
+}
+
+function DataLoader() {
+  const { isLoading, error, data } = useQuery<Data, Error>("repoData", () =>
+    fetch("http://localhost:4000/legacy").then((res) => res.json())
   );
-  const [indicator_hf, update_hf] = useState<StatisticData[]>(
-    (window as any).indicator_hf ? (window as any).indicator_hf : []
-  );
-  const [indicator_rhf, update_rhf] = useState<StatisticData[]>(
-    (window as any).indicator_rhf ? (window as any).indicator_rhf : []
-  );
-  const [indicator_nation, update_nation] = useState<StatisticData[]>(
-    (window as any).indicator_nat ? (window as any).indicator_nat : []
-  );
-  const [description, update_description] = useState<Description[]>(
-    (window as any).description ? (window as any).description : []
-  );
-  const [tu_names, update_tu_names] = useState<TreatmentUnit[]>(
-    (window as any).tu_names ? (window as any).tu_names : []
-  );
+
+  if (isLoading) return <>Loading...</>;
+
+  if (!data || error) return <>An error has occurred: {error?.message}</>;
+
+  return <APP {...data} />;
+}
+
+function APP(props: Data) {
+  const {
+    indicator_hosp,
+    indicator_hf,
+    indicator_rhf,
+    indicator_nat: indicator_nation,
+    description,
+    tu_names,
+  } = props;
 
   const indicatorSorter = useMemo(() => {
     const descriptionMap: { [key: string]: string } = {};
@@ -89,8 +100,8 @@ function APP() {
       descriptionMap[d.id] = d.name ?? "";
     }
     return (a: StatisticData, b: StatisticData) => {
-      const aName = descriptionMap[a.ind_id];
-      const bName = descriptionMap[b.ind_id];
+      const aName = descriptionMap[a.ind_id] ?? "";
+      const bName = descriptionMap[b.ind_id] ?? "";
 
       return aName.localeCompare(bName);
     };
@@ -115,46 +126,6 @@ function APP() {
     () => indicator_nation.sort(indicatorSorter),
     [indicatorSorter, indicator_nation]
   );
-
-  //update data as it arrives
-  if (typeof (window as any).Shiny !== "undefined") {
-    (window as any).Shiny.addCustomMessageHandler(
-      "tu_names",
-      function (message: any) {
-        update_tu_names(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "description",
-      function (message: any) {
-        update_description(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "nation",
-      function (message: any) {
-        update_nation(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "hospital",
-      function (message: any) {
-        update_hosp(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "hf",
-      function (message: any) {
-        update_hf(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "rhf",
-      function (message: any) {
-        update_rhf(message);
-      }
-    );
-  }
 
   //states
   const [treatment_units, update_treatment_units] = useState<string[]>([]);
@@ -254,6 +225,7 @@ function APP() {
             )
           )
         );
+
   const unique_register = Array.from(
     new Set(med_field.flatMap((entry) => entry.key))
   ).map((registry) => {
@@ -324,4 +296,4 @@ function APP() {
   );
 }
 
-export default APP;
+export default DataLoader;
