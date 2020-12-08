@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { select, selectAll } from "d3";
 
+import { Description } from "../App";
+
 interface Props {
   svgContainer: React.RefObject<HTMLDivElement>;
   show_level: boolean;
@@ -8,6 +10,7 @@ interface Props {
   update_zoom: React.Dispatch<React.SetStateAction<boolean>>;
   update_show_level: React.Dispatch<React.SetStateAction<boolean>>;
   update_selected_row(row: string): void;
+  description: Description;
 }
 
 const DD_MENU = (props: Props) => {
@@ -18,6 +21,7 @@ const DD_MENU = (props: Props) => {
     update_zoom,
     update_selected_row,
     svgContainer,
+    description,
   } = props;
 
   const [dd_menu_status, set_dd_menu_status] = useState("inactive");
@@ -57,7 +61,7 @@ const DD_MENU = (props: Props) => {
       const url = canvas.toDataURL("image/png");
       selectAll([canvas, image]).remove();
       const element = document.createElement("a");
-      element.download = "figur.png";
+      element.download = `${description.id}.png`;
       element.href = url;
       element.click();
       element.remove();
