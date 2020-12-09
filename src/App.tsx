@@ -10,6 +10,7 @@ import config from "./app_config";
 import { nest_tu_names } from "./data/filter_year_unit";
 import useResizeObserver from "./components/utils";
 import { filter_year_unit } from "./data/filter_year_unit";
+import { useParams } from "react-router-dom";
 
 const { med_field, app_text } = config;
 
@@ -278,6 +279,31 @@ function APP() {
     const top = (selection_bar_dim.target as HTMLElement).offsetHeight ?? "";
     update_selection_bar_height(top);
   }, [selection_bar_dim]);
+  interface skdeParams {
+    indicator?: string;
+    level?: string;
+    year?: string;
+    tus?: string;
+    graph?: "bar" | "line";
+  }
+  const params = useParams<skdeParams>();
+  //localhost:3000/test//lala:lala:lala/bar
+  // {indicator: "test", level: undefined, year: undefined, tus: undefined, module: undefined}
+
+  // { indicator, level, year, tus, graph }
+  console.log("parameters:", params); //, indicator, level, year, tus, graph);
+  // Tenkte router:
+  // / => .
+  // /:indicator/:?*level/:=sisteår|year/treatment_unit(s):treatment_unit:treatment_unit
+  // => /hjerneslag/*/2018/tromsø:harstad:bergen/linjegraf
+
+  // /:indicator/:?*level<H|M|L>/:=selected_year || opts_year[0]/tu_names.join(':')
+  // /tba/:level?/:year?
+  //const input_data = {
+  //   selected_unit: treatment_units,
+  //   selected_year: selected_year,
+  // };
+  // :indicator?/:level?/:year?/:tus?/:module?
 
   return (
     <div className="app-container">
