@@ -1,3 +1,10 @@
+import {
+  ArrayParam,
+  NumberParam,
+  StringParam,
+  withDefault,
+} from "use-query-params";
+
 export const med_field = [
   {
     react_key: "hjerte",
@@ -215,6 +222,14 @@ export const data_config = {
     high: "Høyt",
     low: "Lavt",
   },
+};
+
+export const mainQueryParamsConfig = {
+  indicator: StringParam, //:GF
+  level: StringParam, //:GF
+  year: NumberParam, // ilag
+  tus: withDefault(ArrayParam, []), // kb
+  graph: StringParam, // kb
 };
 
 const appConfig = { med_field, app_text, data_config };

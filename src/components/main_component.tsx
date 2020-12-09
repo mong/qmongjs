@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useQueryParam } from "use-query-params";
 import { AggData, Description, StatisticData } from "../App";
 
 import INDICATOR_TABLE from "./indicator_table";
@@ -49,9 +50,9 @@ const apply_filters = ({
 
 const filter_data = (
   data: GraphData,
-  show_level_filter: string | null
+  show_level_filter: string | undefined
 ): GraphData => {
-  if (show_level_filter === null) {
+  if (!show_level_filter) {
     return data;
   }
 
@@ -114,6 +115,7 @@ export interface Props {
   legend_height: any;
   update_legend_height(height: any): void;
 }
+
 const Main = (props: Props) => {
   const {
     data,
@@ -130,7 +132,10 @@ const Main = (props: Props) => {
     update_legend_height,
   } = props;
   const all_reg = ind_per_reg.map((reg) => reg.registry_name);
-  const [show_level_filter, update_show_level_filter] = useState(null);
+  const [level_query_param] = useQueryParam<string | undefined>("level");
+  const [show_level_filter, update_show_level_filter] = useState(
+    level_query_param
+  );
   const [med_field_filter, update_med_field_filter] = useState(all_reg);
   const [clicked_med_field, update_clicked_med_field] = useState("all");
   const filtered_data = filter_data(data, show_level_filter);

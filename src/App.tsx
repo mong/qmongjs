@@ -6,19 +6,11 @@ import SELECT_MULTI from "./components/select_multi";
 import SELECT_SINGLE from "./components/select_single";
 import TU_LIST from "./components/tu_list";
 
-import config from "./app_config";
+import config, { mainQueryParamsConfig } from "./app_config";
 import { nest_tu_names } from "./data/filter_year_unit";
 import useResizeObserver from "./components/utils";
 import { filter_year_unit } from "./data/filter_year_unit";
-import { useParams } from "react-router-dom";
-import {
-  ArrayParam,
-  NumberParam,
-  StringParam,
-  useQueryParam,
-  useQueryParams,
-  withDefault,
-} from "use-query-params";
+import { useQueryParams } from "use-query-params";
 
 const { med_field, app_text } = config;
 
@@ -288,38 +280,8 @@ function APP() {
     update_selection_bar_height(top);
   }, [selection_bar_dim]);
 
-  type skdeQueryParams = {
-    indicator?: string;
-    level?: string;
-    year?: string;
-    tus?: string;
-    graph?: "bar" | "line";
-  };
-  // {
-  //   indicator: "",
-  //   level: "",
-  //   year: "z",
-  //   tus: "",
-  //   graph: "",
-  // }
-
-  // const [year, setYear] = useQueryParam("2019", NumberParam);
-  // const [foo, setFoo] = useQueryParam("foo", StringParam);
-  // console.log("paramYear", year);
-  const [queryParams, setQueryParams] = useQueryParams({
-    indicator: StringParam, //:GF
-    level: StringParam, //:GF
-    year: withDefault(NumberParam, opts_year[0]), // ilag
-    tus: withDefault(ArrayParam, []), // kb
-    graph: StringParam, // kb
-  });
-  //localhost:3000/test//lala:lala:lala/bar
-  // {indicator: "test", level: undefined, year: undefined, tus: undefined, module: undefined}
-
-  // { indicator, level, year, tus, graph }
-  // ?indicator=xxx&level=H&year=1900&treatment_units=a:b:c
-  console.log("parameters:", queryParams); //, indicator, level, year, tus, graph);
-
+  const [queryParams] = useQueryParams(mainQueryParamsConfig);
+  console.log("parameters:", queryParams);
   return (
     <div className="app-container">
       <HEADER />
