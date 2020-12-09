@@ -42,13 +42,16 @@
     "@types/react-select": "^3.0.26",
     "d3": "^6.1.1",
     "is-ci-cli": "^2.1.2",
+    "query-string": "^6.13.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1",
     "react-select": "^3.1.1",
     "resize-observer-polyfill": "^1.5.1",
     "source-map-explorer": "^2.5.0",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.2",
+    "use-query-params": "^1.1.9"
   },
   "eslintConfig": {
     "extends": [
@@ -76,6 +79,7 @@
     "@storybook/preset-create-react-app": "^3.1.5",
     "@storybook/react": "^6.1.6",
     "@types/faker": "^5.1.4",
+    "@types/react-router-dom": "^5.1.6",
     "faker": "^5.1.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.2",
