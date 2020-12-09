@@ -12,6 +12,7 @@ import useResizeObserver from "./components/utils";
 import { filter_year_unit } from "./data/filter_year_unit";
 import { useParams } from "react-router-dom";
 import {
+  ArrayParam,
   NumberParam,
   StringParam,
   useQueryParam,
@@ -306,11 +307,11 @@ function APP() {
   // const [foo, setFoo] = useQueryParam("foo", StringParam);
   // console.log("paramYear", year);
   const [queryParams, setQueryParams] = useQueryParams({
-    indicator: StringParam,
-    level: StringParam,
-    year: withDefault(NumberParam, opts_year[0]),
-    tus: StringParam,
-    graph: StringParam,
+    indicator: StringParam, //:GF
+    level: StringParam, //:GF
+    year: withDefault(NumberParam, opts_year[0]), // ilag
+    tus: withDefault(ArrayParam, []), // kb
+    graph: StringParam, // kb
   });
   //localhost:3000/test//lala:lala:lala/bar
   // {indicator: "test", level: undefined, year: undefined, tus: undefined, module: undefined}
