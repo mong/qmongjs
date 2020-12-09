@@ -11,6 +11,13 @@ import { nest_tu_names } from "./data/filter_year_unit";
 import useResizeObserver from "./components/utils";
 import { filter_year_unit } from "./data/filter_year_unit";
 import { useParams } from "react-router-dom";
+import {
+  NumberParam,
+  StringParam,
+  useQueryParam,
+  useQueryParams,
+  withDefault,
+} from "use-query-params";
 
 const { med_field, app_text } = config;
 
@@ -279,31 +286,38 @@ function APP() {
     const top = (selection_bar_dim.target as HTMLElement).offsetHeight ?? "";
     update_selection_bar_height(top);
   }, [selection_bar_dim]);
-  interface skdeParams {
+
+  type skdeQueryParams = {
     indicator?: string;
     level?: string;
     year?: string;
     tus?: string;
     graph?: "bar" | "line";
-  }
-  const params = useParams<skdeParams>();
+  };
+  // {
+  //   indicator: "",
+  //   level: "",
+  //   year: "z",
+  //   tus: "",
+  //   graph: "",
+  // }
+
+  // const [year, setYear] = useQueryParam("2019", NumberParam);
+  // const [foo, setFoo] = useQueryParam("foo", StringParam);
+  // console.log("paramYear", year);
+  const [queryParams, setQueryParams] = useQueryParams({
+    indicator: StringParam,
+    level: StringParam,
+    year: withDefault(NumberParam, opts_year[0]),
+    tus: StringParam,
+    graph: StringParam,
+  });
   //localhost:3000/test//lala:lala:lala/bar
   // {indicator: "test", level: undefined, year: undefined, tus: undefined, module: undefined}
 
   // { indicator, level, year, tus, graph }
-  console.log("parameters:", params); //, indicator, level, year, tus, graph);
-  // Tenkte router:
-  // / => .
-  // /:indicator/:?*level/:=sisteår|year/treatment_unit(s):treatment_unit:treatment_unit
-  // => /hjerneslag/*/2018/tromsø:harstad:bergen/linjegraf
-
-  // /:indicator/:?*level<H|M|L>/:=selected_year || opts_year[0]/tu_names.join(':')
-  // /tba/:level?/:year?
-  //const input_data = {
-  //   selected_unit: treatment_units,
-  //   selected_year: selected_year,
-  // };
-  // :indicator?/:level?/:year?/:tus?/:module?
+  // ?indicator=xxx&level=H&year=1900&treatment_units=a:b:c
+  console.log("parameters:", queryParams); //, indicator, level, year, tus, graph);
 
   return (
     <div className="app-container">
