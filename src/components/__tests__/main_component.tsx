@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
+import { Route, BrowserRouter } from "react-router-dom";
+import { QueryParamProvider } from "use-query-params";
 import MAIN from "../main_component";
 import {
   buildAggData,
@@ -48,23 +50,29 @@ describe("test filter buttons", () => {
   });
 
   const props = buildMainProps({ data: graphData });
-
+  const AppWithRouterAndQueryParams = () => (
+    <BrowserRouter>
+      <QueryParamProvider ReactRouterRoute={Route}>
+        <MAIN {...props} />
+      </QueryParamProvider>
+    </BrowserRouter>
+  );
   it("should have 3 filter buttons", () => {
-    render(<MAIN {...props} />);
+    render(<AppWithRouterAndQueryParams />);
     expect(screen.getByText(/Moderat måloppnåelse/i)).toBeInTheDocument();
     expect(screen.getByText(/Høy måloppnåelse/i)).toBeInTheDocument();
     expect(screen.getByText(/Lav måloppnåelse/i)).toBeInTheDocument();
   });
 
   it("should have all levels when no filters are active", () => {
-    render(<MAIN {...props} />);
+    render(<AppWithRouterAndQueryParams />);
     expect(screen.queryAllByLabelText(/Achieved level H/i)).not.toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level M/i)).not.toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level L/i)).not.toHaveLength(0);
   });
 
   it("should only have H levels when H filter is clicked", () => {
-    render(<MAIN {...props} />);
+    render(<AppWithRouterAndQueryParams />);
     userEvent.click(screen.getByText(/Høy måloppnåelse/i));
     expect(screen.queryAllByLabelText(/Achieved level H/i)).not.toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level M/i)).toHaveLength(0);
@@ -72,7 +80,7 @@ describe("test filter buttons", () => {
   });
 
   it("should only have M levels when M filter is active", () => {
-    render(<MAIN {...props} />);
+    render(<AppWithRouterAndQueryParams />);
     userEvent.click(screen.getByText(/Moderat måloppnåelse/i));
     expect(screen.queryAllByLabelText(/Achieved level H/i)).toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level M/i)).not.toHaveLength(0);
@@ -80,7 +88,7 @@ describe("test filter buttons", () => {
   });
 
   it("should only have L levels when L filter is active", () => {
-    render(<MAIN {...props} />);
+    render(<AppWithRouterAndQueryParams />);
     userEvent.click(screen.getByText(/Lav måloppnåelse/i));
     expect(screen.queryAllByLabelText(/Achieved level H/i)).toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level M/i)).toHaveLength(0);
@@ -88,7 +96,7 @@ describe("test filter buttons", () => {
   });
 
   it("should deactivate filter when active filter is clicked", () => {
-    render(<MAIN {...props} />);
+    render(<AppWithRouterAndQueryParams />);
     userEvent.click(screen.getByText(/Lav måloppnåelse/i));
     userEvent.click(screen.getByText(/Lav måloppnåelse/i));
     userEvent.click(screen.getByText(/Moderat måloppnåelse/i));

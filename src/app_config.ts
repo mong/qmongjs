@@ -225,11 +225,11 @@ export const data_config = {
 };
 
 export const mainQueryParamsConfig = {
-  indicator: StringParam, //:GF
-  level: StringParam, //:GF
-  year: NumberParam, // ilag
-  tus: withDefault(ArrayParam, []), // kb
-  graph: StringParam, // kb
+  indicator: StringParam, // :GF
+  level: StringParam, // :Done.
+  year: NumberParam, // GF+KB
+  tus: withDefault(ArrayParam, []), // GF+KB
+  graph: StringParam, // GF+KB
 };
 
 const appConfig = { med_field, app_text, data_config };
