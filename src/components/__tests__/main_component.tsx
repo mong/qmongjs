@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { parse } from "querystring";
 import React from "react";
-import { Route, BrowserRouter } from "react-router-dom";
+import { Route, BrowserRouter, useHistory } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 import MAIN from "../main_component";
 import {
@@ -11,6 +12,7 @@ import {
   buildMainProps,
   buildStatisticData,
 } from "../test/data_builders";
+import { createMemoryHistory } from "history";
 
 describe("test filter buttons", () => {
   const iL = buildStatisticData({
@@ -50,6 +52,7 @@ describe("test filter buttons", () => {
   });
 
   const props = buildMainProps({ data: graphData });
+
   const AppWithRouterAndQueryParams = () => (
     <BrowserRouter>
       <QueryParamProvider ReactRouterRoute={Route}>
@@ -107,5 +110,25 @@ describe("test filter buttons", () => {
     expect(screen.queryAllByLabelText(/Achieved level H/i)).not.toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level M/i)).not.toHaveLength(0);
     expect(screen.queryAllByLabelText(/Achieved level L/i)).not.toHaveLength(0);
+  });
+
+  it("should set query parameters, when clicked once", () => {
+    render(<AppWithRouterAndQueryParams />);
+    userEvent.click(screen.getByText(/Lav måloppnåelse/i));
+    expect(parse(global.window.location.search.replace("?", ""))).toEqual({
+      level: "L",
+    });
+  });
+
+  it("should clear query parameters, when clicked twice", () => {
+    render(<AppWithRouterAndQueryParams />);
+    userEvent.click(screen.getByText(/Høy måloppnåelse/i));
+    expect(parse(global.window.location.search.replace("?", ""))).toEqual({
+      level: "H",
+    });
+    userEvent.click(screen.getByText(/Høy måloppnåelse/i));
+    expect(parse(global.window.location.search.replace("?", ""))).not.toEqual({
+      level: "H",
+    });
   });
 });
