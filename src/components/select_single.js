@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useQueryParam } from "use-query-params";
 import Select from "react-select";
 
