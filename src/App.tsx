@@ -315,9 +315,9 @@ function APP() {
             <SELECT_SINGLE
               opts={opts_year}
               update_year={update_selected_year}
-              selected_row={selected_row}
-              update_selected_row={update_selected_row}
               selected_year={yearQP}
+              // selected_row={selected_row}
+              // update_selected_row={update_selected_row}
             />
           </div>
         </div>
