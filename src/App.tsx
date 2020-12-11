@@ -156,10 +156,11 @@ function APP() {
       }
     );
   }
+  let opts_year = [2019, 2018, 2017, 2016];
 
   //states
   const [treatment_units, update_treatment_units] = useState<string[]>([]);
-  const [selected_year, update_selected_year] = useState(2019);
+  const [selected_year, update_selected_year] = useState(opts_year[0]);
   const [selected_row, update_selected_row] = useState(null);
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
@@ -184,7 +185,6 @@ function APP() {
     { label: "HF", options: opts_hf },
     { label: "RHF", options: opts_rhf },
   ];
-  let opts_year = [2019, 2018, 2017, 2016];
 
   const input_data = {
     selected_unit: treatment_units,
@@ -280,8 +280,20 @@ function APP() {
     update_selection_bar_height(top);
   }, [selection_bar_dim]);
 
-  const [queryParams] = useQueryParams(mainQueryParamsConfig);
-  console.log("parameters:", queryParams);
+  const [queryParams, setQueryParams] = useQueryParams(mainQueryParamsConfig);
+  const max_year = Math.max.apply(null, opts_year);
+  const min_year = Math.min.apply(null, opts_year);
+  const yearQP = !queryParams.year
+    ? max_year
+    : queryParams.year > max_year
+    ? max_year
+    : queryParams.year < min_year
+    ? min_year
+    : queryParams.year;
+
+  if (!queryParams.year || queryParams.year !== yearQP) {
+    setQueryParams({ ...queryParams, year: yearQP });
+  }
   return (
     <div className="app-container">
       <HEADER />
@@ -305,6 +317,7 @@ function APP() {
               update_year={update_selected_year}
               selected_row={selected_row}
               update_selected_row={update_selected_row}
+              selected_year={yearQP}
             />
           </div>
         </div>

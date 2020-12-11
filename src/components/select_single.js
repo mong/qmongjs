@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useQueryParam } from "use-query-params";
 import Select from "react-select";
 
 function SELECT_SINGLE(props) {
-  const { opts = [], select_className = "pick_year", update_year } = props;
+  const {
+    opts = [],
+    select_className = "pick_year",
+    update_year,
+    selected_year,
+  } = props;
+  const selection_options = opts.map((opt) => ({ value: opt, label: opt }));
+  const selected_option =
+    selection_options[
+      selection_options.findIndex((v) => v.value === parseInt(selected_year)) |
+        0
+    ];
+  const [, setYearQP] = useQueryParam("year");
+  const defaultValue = selected_option;
+  const handle_input_change = (e) => {
+    update_year(e.value);
+    setYearQP(e.value);
+  };
 
-  let selection_options = opts.map((opt) => ({ value: opt, label: opt }));
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
@@ -36,9 +53,6 @@ function SELECT_SINGLE(props) {
       ...provided,
     }),
   };
-  const handle_input_change = (e) => {
-    update_year(e.value);
-  };
 
   return (
     <form>
@@ -46,7 +60,7 @@ function SELECT_SINGLE(props) {
         className={select_className}
         onChange={(e) => handle_input_change(e)}
         options={selection_options}
-        defaultValue={selection_options[0]}
+        defaultValue={defaultValue}
         isSearchable
         styles={customStyles}
       />
