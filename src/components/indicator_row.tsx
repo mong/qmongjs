@@ -48,7 +48,7 @@ export const format_indicator_values = (
       const ind_type = description.type; // [data_config.column.indicator_type as keyof Description];
       const level_class =
         ind_per_unit[0].level !== show_level_filter && // [data_config.column.achieved_level as keyof StatisticData]
-        show_level_filter !== null
+        !!show_level_filter
           ? "filtered_level"
           : "";
       return (
@@ -99,10 +99,9 @@ function INDICATOR_ROW(props: Props) {
 
   const level_class =
     data.agg_data.nation.filtered_by_year[0].level !== show_level_filter &&
-    show_level_filter !== null
+    !!show_level_filter
       ? "filtered_level"
       : "";
-
   const tr_fig =
     selected_row === ind_id ? (
       <TF_FIGURE
