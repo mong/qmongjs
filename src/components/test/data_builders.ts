@@ -16,6 +16,7 @@ export function buildMainProps(overrides: Partial<Props>): Props {
     selection_bar_height: null,
     legend_height: null,
     update_legend_height: (height: any) => {},
+    isLoading: false,
     ...overrides,
   };
 }

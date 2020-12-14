@@ -19,18 +19,16 @@ const connections: { [env: string]: Knex.Config } = {
     },
   },
   production: {
-    client: "postgresql",
+    client: "mysql",
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password",
+      host: process.env.DB_HOST,
+      database: "mong",
+      user: process.env.DB_USR,
+      password: process.env.DB_PWD,
     },
     pool: {
       min: 2,
       max: 10,
-    },
-    migrations: {
-      tableName: "knex_migrations",
     },
   },
 };

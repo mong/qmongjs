@@ -19,7 +19,6 @@
   "license": "ISC",
   "dependencies": {
     "@types/apicache": "^1.2.2",
-    "apicache": "^1.5.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "knex": "^0.21.12",

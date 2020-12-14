@@ -72,19 +72,33 @@ interface Data {
   tu_names: TreatmentUnit[];
 }
 
+const API_HOST = process.env.REACT_APP_API_HOST ?? "http://localhost:4000";
+
 function DataLoader() {
   const { isLoading, error, data } = useQuery<Data, Error>("repoData", () =>
-    fetch("http://localhost:4000/legacy").then((res) => res.json())
+    fetch(`${API_HOST}/legacy`).then((res) => res.json())
   );
 
-  if (isLoading) return <>Loading...</>;
+  if (error) return <>An error has occurred: {error?.message}</>;
 
-  if (!data || error) return <>An error has occurred: {error?.message}</>;
+  const dataOrEmpty: Data = data ?? {
+    description: [],
+    indicator_hf: [],
+    indicator_hosp: [],
+    indicator_nat: [],
+    indicator_rhf: [],
+    tu_names: [],
+  };
 
-  return <APP {...data} />;
+  return <APP data={dataOrEmpty} isLoading={isLoading} />;
 }
 
-function APP(props: Data) {
+interface Props {
+  data: Data;
+  isLoading: boolean;
+}
+
+function APP({ data, isLoading }: Props) {
   const {
     indicator_hosp,
     indicator_hf,
@@ -92,7 +106,7 @@ function APP(props: Data) {
     indicator_nat: indicator_nation,
     description,
     tu_names,
-  } = props;
+  } = data;
 
   const indicatorSorter = useMemo(() => {
     const descriptionMap: { [key: string]: string } = {};
@@ -290,6 +304,7 @@ function APP(props: Data) {
           selection_bar_height={selection_bar_height}
           legend_height={legend_height}
           update_legend_height={update_legend_height}
+          isLoading={isLoading}
         />
       </div>
     </div>
