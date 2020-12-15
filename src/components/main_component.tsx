@@ -109,7 +109,7 @@ export interface Props {
   treatment_units: string[];
   selected_year: number;
   colspan: number;
-  selected_row: any;
+  selected_row: string | null;
   update_selected_row(row: any): void;
   selection_bar_height: number | null;
   legend_height: any;
@@ -137,7 +137,10 @@ const Main = (props: Props) => {
     level_query_param
   );
   const [med_field_filter, update_med_field_filter] = useState(all_reg);
-  const [clicked_med_field, update_clicked_med_field] = useState("all");
+  const [indicator_query_param] = useQueryParam<string>("indicator");
+  const [clicked_med_field, update_clicked_med_field] = useState(
+    indicator_query_param
+  );
   const filtered_data = filter_data(data, show_level_filter);
   return (
     <>

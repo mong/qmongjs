@@ -225,9 +225,10 @@ export const data_config = {
 };
 
 export const mainQueryParamsConfig = {
-  indicator: StringParam, // :GF
-  level: StringParam, // :Done.
-  year: NumberParam, // GF+KB
+  selected_row: StringParam,
+  indicator: withDefault(StringParam, "all"),
+  level: StringParam,
+  year: NumberParam,
   tus: withDefault(ArrayParam, []), // GF+KB
   graph: StringParam, // GF+KB
 };
