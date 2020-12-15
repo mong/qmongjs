@@ -137,10 +137,10 @@ const Main = (props: Props) => {
     level_query_param
   );
   const [med_field_filter, update_med_field_filter] = useState(all_reg);
-  const [indicator_query_param] = useQueryParam<string>("indicator");
-  const [clicked_med_field, update_clicked_med_field] = useState(
-    indicator_query_param
-  );
+  const [
+    indicator_query_param,
+    update_indicator_query_param,
+  ] = useQueryParam<string>("indicator");
   const filtered_data = filter_data(data, show_level_filter);
   return (
     <>
@@ -159,8 +159,8 @@ const Main = (props: Props) => {
             ind_per_reg={ind_per_reg}
             med_field={med_field}
             update_med_field_filter={update_med_field_filter}
-            clicked_med_field={clicked_med_field}
-            update_clicked_med_field={update_clicked_med_field}
+            clicked_med_field={indicator_query_param}
+            update_clicked_med_field={update_indicator_query_param}
             selected_row={selected_row}
             update_selected_row={update_selected_row}
             selection_bar_height={selection_bar_height}

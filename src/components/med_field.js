@@ -1,5 +1,4 @@
 import React from "react";
-
 import MED_FIELD_ROW from "./med_field_row";
 
 function MED_FIELD(props) {
@@ -20,11 +19,10 @@ function MED_FIELD(props) {
       .reduce((acc, cur) => {
         return acc + cur.number_ind;
       }, 0);
-
     return (
       <MED_FIELD_ROW
         key={med_field.react_key}
-        med_field_name={med_field}
+        med_field={med_field}
         nr_indicators={nr_ind}
         update_med_field_filter={update_med_field_filter}
         clicked_med_field={clicked_med_field}
@@ -38,12 +36,12 @@ function MED_FIELD(props) {
   }, 0);
 
   const checked_class = "all" === clicked_med_field ? "checked" : "";
+  const style = { top: `${legend_height + selection_bar_height}px` };
   const handle_med_field_click = () => {
     update_clicked_med_field("all");
     update_med_field_filter(all_reg);
   };
 
-  const style = { top: `${legend_height + selection_bar_height}px` };
   return (
     <ul style={style} className="med_field_list">
       <li className={`med_field_title ${checked_class}`}>
