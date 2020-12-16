@@ -1,5 +1,4 @@
 import {
-  ArrayParam,
   DelimitedArrayParam,
   NumberParam,
   StringParam,

@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { parse } from "querystring";
 import React from "react";
-import { Route, BrowserRouter, useHistory } from "react-router-dom";
+import { Route, BrowserRouter } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 import MAIN from "../main_component";
 import {
@@ -12,7 +12,6 @@ import {
   buildMainProps,
   buildStatisticData,
 } from "../test/data_builders";
-import { createMemoryHistory } from "history";
 
 describe("test filter buttons", () => {
   const iL = buildStatisticData({
