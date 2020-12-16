@@ -1,5 +1,6 @@
 import {
   ArrayParam,
+  DelimitedArrayParam,
   NumberParam,
   StringParam,
   withDefault,
@@ -229,8 +230,8 @@ export const mainQueryParamsConfig = {
   indicator: withDefault(StringParam, "all"),
   level: StringParam,
   year: NumberParam,
-  tus: withDefault(ArrayParam, []), // GF+KB
-  graph: StringParam, // GF+KB
+  treatment_units: withDefault(DelimitedArrayParam, [], false),
+  graph: StringParam,
 };
 
 const appConfig = { med_field, app_text, data_config };

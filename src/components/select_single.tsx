@@ -1,5 +1,4 @@
 import React from "react";
-import { useQueryParam } from "use-query-params";
 import Select from "react-select";
 
 interface Props {
@@ -22,11 +21,9 @@ function SELECT_SINGLE(props: Props) {
     selection_options[
       selection_options.findIndex((v) => v.value === selected_year) | 0
     ];
-  const [, setYearQP] = useQueryParam("year");
   const defaultValue = selected_option;
   const handle_input_change = (e: any) => {
     update_year(e.value);
-    setYearQP(e.value);
   };
 
   const customStyles = {

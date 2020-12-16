@@ -109,7 +109,7 @@ export interface Props {
   treatment_units: string[];
   selected_year: number;
   colspan: number;
-  selected_row: string | null;
+  selected_row?: string | null;
   update_selected_row(row: any): void;
   selection_bar_height: number | null;
   legend_height: any;

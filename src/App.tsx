@@ -157,11 +157,32 @@ function APP() {
     );
   }
   let opts_year = [2019, 2018, 2017, 2016];
-
-  //states
-  const [treatment_units, update_treatment_units] = useState<string[]>([]);
-  const [selected_year, update_selected_year] = useState(opts_year[0]);
-  const [selected_row, update_selected_row] = useState(null);
+  const get_valid_year = (year: number, valid_years: number[]) => {
+    const max_year = Math.max.apply(null, opts_year);
+    const min_year = Math.min.apply(null, opts_year);
+    const validated_year = !queryParams.year
+      ? max_year
+      : queryParams.year > max_year
+      ? max_year
+      : queryParams.year < min_year
+      ? min_year
+      : queryParams.year;
+    return validated_year;
+  };
+  // load query parameters, validate and set in state.
+  const [queryParams, setQueryParams] = useQueryParams(mainQueryParamsConfig);
+  const [treatment_units, update_treatment_units] = useState<string[]>(
+    queryParams.treatment_units
+      ?.filter((x, i, a) => a.indexOf(x) === i)
+      .slice(0, 5) as string[]
+    // Array.from(new Set(queryParams.treatment_units?.slice(0, 5))) as string[]
+  );
+  const [selected_year, update_selected_year] = useState(
+    get_valid_year(queryParams.year || 0, opts_year)
+  );
+  const [selected_row, update_selected_row] = useState(
+    queryParams.selected_row
+  );
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
   >(null);
@@ -186,8 +207,11 @@ function APP() {
     { label: "RHF", options: opts_rhf },
   ];
 
-  const input_data = {
-    selected_unit: treatment_units,
+  const input_data: {
+    selected_unit: string[];
+    selected_year: number;
+  } = {
+    selected_unit: treatment_units as string[],
     selected_year: selected_year,
   };
 
@@ -216,7 +240,6 @@ function APP() {
   ).sort();
   const tu_name = tu_name_hospital.concat(tu_name_hf, tu_name_rhf);
   const colspan = tu_name.length + 2;
-
   const agg_data: AggData = {
     nation,
     filtered_by_unit: [
@@ -266,7 +289,6 @@ function APP() {
     return { registry_name: registry, number_ind: ind.length, indicators: ind };
   });
   const ind_per_reg = unique_register;
-
   const tu_structure = nest_tu_names(tu_names);
 
   //height of the selection bar
@@ -280,20 +302,18 @@ function APP() {
     update_selection_bar_height(top);
   }, [selection_bar_dim]);
 
-  const [queryParams, setQueryParams] = useQueryParams(mainQueryParamsConfig);
-  const max_year = Math.max.apply(null, opts_year);
-  const min_year = Math.min.apply(null, opts_year);
-  const yearQP = !queryParams.year
-    ? max_year
-    : queryParams.year > max_year
-    ? max_year
-    : queryParams.year < min_year
-    ? min_year
-    : queryParams.year;
+  useEffect(() => {
+    if (queryParams.year !== selected_year) {
+      setQueryParams({ year: selected_year });
+    }
+  }, [queryParams.year, selected_year, setQueryParams]);
 
-  if (!queryParams.year || queryParams.year !== yearQP) {
-    setQueryParams({ ...queryParams, year: yearQP });
-  }
+  useEffect(() => {
+    if (queryParams.treatment_units !== treatment_units) {
+      setQueryParams({ treatment_units: treatment_units });
+    }
+  }, [queryParams.treatment_units, treatment_units, setQueryParams]);
+
   return (
     <div className="app-container">
       <HEADER />
@@ -315,7 +335,7 @@ function APP() {
             <SELECT_SINGLE
               opts={opts_year}
               update_year={update_selected_year}
-              selected_year={yearQP}
+              selected_year={selected_year}
               // selected_row={selected_row}
               // update_selected_row={update_selected_row}
             />

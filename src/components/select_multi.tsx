@@ -31,7 +31,6 @@ function SELECT_MULTI(props: Props) {
     update_tu,
     treatment_unit,
   } = props;
-
   let selection_options = opts;
   const customStyles: Partial<Styles> = {
     control: (provided, state) => ({
