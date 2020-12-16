@@ -230,8 +230,8 @@ export const mainQueryParamsConfig = {
   indicator: withDefault(StringParam, "all"),
   level: StringParam,
   year: NumberParam,
-  treatment_units: withDefault(DelimitedArrayParam, [], false),
-  graph: StringParam,
+  tu_names: withDefault(DelimitedArrayParam, [], false),
+  chart_type: withDefault(StringParam, "line"),
 };
 
 const appConfig = { med_field, app_text, data_config };

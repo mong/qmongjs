@@ -83,7 +83,6 @@ function APP() {
   const [tu_names, update_tu_names] = useState<TreatmentUnit[]>(
     (window as any).tu_names ? (window as any).tu_names : []
   );
-
   const indicatorSorter = useMemo(() => {
     const descriptionMap: { [key: string]: string } = {};
     for (const d of description) {
@@ -156,32 +155,35 @@ function APP() {
       }
     );
   }
+
   let opts_year = [2019, 2018, 2017, 2016];
-  const get_valid_year = (year: number, valid_years: number[]) => {
+  const get_valid_year = (year_to_validate: number, valid_years: number[]) => {
     const max_year = Math.max.apply(null, opts_year);
     const min_year = Math.min.apply(null, opts_year);
-    const validated_year = !queryParams.year
+    return year_to_validate > max_year
       ? max_year
-      : queryParams.year > max_year
-      ? max_year
-      : queryParams.year < min_year
+      : year_to_validate < min_year
       ? min_year
-      : queryParams.year;
-    return validated_year;
+      : year_to_validate;
   };
+
   // load query parameters, validate and set in state.
-  const [queryParams, setQueryParams] = useQueryParams(mainQueryParamsConfig);
-  const [treatment_units, update_treatment_units] = useState<string[]>(
-    queryParams.treatment_units
-      ?.filter((x, i, a) => a.indexOf(x) === i)
-      .slice(0, 5) as string[]
-    // Array.from(new Set(queryParams.treatment_units?.slice(0, 5))) as string[]
+  const [query_params, set_query_params] = useQueryParams(
+    mainQueryParamsConfig
   );
+  const [treatment_units, update_treatment_units] = useState<string[]>(
+    query_params.tu_names
+      ?.filter((x, i, a) => {
+        return tu_names.some((tu) => tu.hospital === x) && a.indexOf(x) === i;
+      })
+      .slice(0, 5) as string[]
+  );
+
   const [selected_year, update_selected_year] = useState(
-    get_valid_year(queryParams.year || 0, opts_year)
+    get_valid_year(query_params.year || 0, opts_year)
   );
   const [selected_row, update_selected_row] = useState(
-    queryParams.selected_row
+    query_params.selected_row
   );
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
@@ -303,16 +305,20 @@ function APP() {
   }, [selection_bar_dim]);
 
   useEffect(() => {
-    if (queryParams.year !== selected_year) {
-      setQueryParams({ year: selected_year });
+    if (query_params.year !== selected_year) {
+      set_query_params({ year: selected_year });
     }
-  }, [queryParams.year, selected_year, setQueryParams]);
-
+  }, [query_params.year, selected_year, set_query_params]);
   useEffect(() => {
-    if (queryParams.treatment_units !== treatment_units) {
-      setQueryParams({ treatment_units: treatment_units });
+    if (query_params.tu_names !== treatment_units) {
+      set_query_params({ tu_names: treatment_units });
     }
-  }, [queryParams.treatment_units, treatment_units, setQueryParams]);
+  }, [query_params.tu_names, treatment_units, set_query_params]);
+  useEffect(() => {
+    if (query_params.selected_row !== selected_row) {
+      set_query_params({ selected_row: selected_row });
+    }
+  }, [query_params.selected_row, selected_row, set_query_params]);
 
   return (
     <div className="app-container">

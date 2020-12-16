@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import TF_BUTTON from "../tf_button";
 import TF_DDMENU from "../tf_ddmenu";
@@ -6,6 +6,8 @@ import TF_LONG_DESCRIPTION from "../tf_description";
 import { GraphData } from "../main_component";
 import Chart from "./Chart";
 import { level_boundary } from "./tr_utils";
+import { useQueryParam } from "use-query-params";
+import { mainQueryParamsConfig } from "../../app_config";
 
 export interface Props {
   colspan?: number;
@@ -25,7 +27,13 @@ function TF_FIGURE(props: Props) {
   } = props;
 
   const svgContainerRef = useRef<HTMLDivElement>(null);
-  const [chart_type, update_chart_type] = useState<"line" | "bar">("line");
+  const [chart_type_query_param, set_chart_type_query_param] = useQueryParam(
+    "chart_type",
+    mainQueryParamsConfig.chart_type
+  );
+  const [chart_type, update_chart_type] = useState<"line" | "bar">(
+    chart_type_query_param === "line" ? "line" : "bar"
+  );
   const [zoom, update_zoom] = useState(true);
   const [show_level, update_show_level] = useState(false);
 
@@ -42,6 +50,11 @@ function TF_FIGURE(props: Props) {
   }
 
   let levels = level_boundary(data.description[0]);
+  useEffect(() => {
+    if (chart_type_query_param !== chart_type) {
+      set_chart_type_query_param(chart_type);
+    }
+  }, [chart_type, chart_type_query_param, set_chart_type_query_param]);
 
   return (
     <tr className={figure_class}>
