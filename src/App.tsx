@@ -172,15 +172,14 @@ function APP() {
     mainQueryParamsConfig
   );
   const [treatment_units, update_treatment_units] = useState<string[]>(
-    query_params.tu_names
+    (query_params.tu_names
       ?.filter((x, i, a) => {
         return tu_names.some((tu) => tu.hospital === x) && a.indexOf(x) === i;
       })
-      .slice(0, 5) as string[]
+      .slice(0, 5) as string[]) || []
   );
-
   const [selected_year, update_selected_year] = useState(
-    get_valid_year(query_params.year || 0, opts_year)
+    get_valid_year(query_params.year ?? opts_year[0], opts_year)
   );
   const [selected_row, update_selected_row] = useState(
     query_params.selected_row
@@ -213,7 +212,7 @@ function APP() {
     selected_unit: string[];
     selected_year: number;
   } = {
-    selected_unit: treatment_units as string[],
+    selected_unit: (treatment_units as string[]) || [],
     selected_year: selected_year,
   };
 
@@ -311,12 +310,16 @@ function APP() {
   }, [query_params.year, selected_year, set_query_params]);
   useEffect(() => {
     if (query_params.tu_names !== treatment_units) {
-      set_query_params({ tu_names: treatment_units });
+      set_query_params({
+        tu_names: treatment_units.length > 0 ? treatment_units : undefined,
+      });
     }
   }, [query_params.tu_names, treatment_units, set_query_params]);
   useEffect(() => {
     if (query_params.selected_row !== selected_row) {
-      set_query_params({ selected_row: selected_row });
+      set_query_params({
+        selected_row: selected_row || undefined,
+      });
     }
   }, [query_params.selected_row, selected_row, set_query_params]);
 
