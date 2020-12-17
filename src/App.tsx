@@ -155,18 +155,16 @@ function APP() {
       }
     );
   }
-
   let opts_year = [2019, 2018, 2017, 2016];
-  const get_valid_year = (year_to_validate: number, valid_years: number[]) => {
-    const max_year = Math.max.apply(null, opts_year);
-    const min_year = Math.min.apply(null, opts_year);
-    return year_to_validate > max_year
-      ? max_year
-      : year_to_validate < min_year
-      ? min_year
-      : year_to_validate;
-  };
 
+  const math_clamp = (input: number, min: number, max: number) =>
+    Math.max(min, Math.min(input, max));
+  const get_valid_year = (year_to_validate: number, valid_years: number[]) =>
+    math_clamp(
+      year_to_validate,
+      Math.min(...valid_years),
+      Math.max(...valid_years)
+    );
   // load query parameters, validate and set in state.
   const [query_params, set_query_params] = useQueryParams(
     mainQueryParamsConfig
