@@ -11,6 +11,7 @@ import { nest_tu_names } from "./data/filter_year_unit";
 import useResizeObserver from "./components/utils";
 import { filter_year_unit } from "./data/filter_year_unit";
 import { useQueryParams } from "use-query-params";
+import mathClamp from "./helpers/functions/mathClamp";
 
 const { med_field, app_text } = config;
 
@@ -157,10 +158,8 @@ function APP() {
   }
   let opts_year = [2019, 2018, 2017, 2016];
 
-  const math_clamp = (input: number, min: number, max: number) =>
-    Math.max(min, Math.min(input, max));
   const get_valid_year = (year_to_validate: number, valid_years: number[]) =>
-    math_clamp(
+    mathClamp(
       year_to_validate,
       Math.min(...valid_years),
       Math.max(...valid_years)
