@@ -4,19 +4,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { QueryParamProvider } from "use-query-params";
-import { BrowserRouter, Route } from "react-router-dom";
 
 loadDevTools(() =>
   ReactDOM.render(
     <React.StrictMode>
-      <BrowserRouter>
-        <QueryParamProvider ReactRouterRoute={Route}>
-          <Route
-            path="/:indicator?/:level?/:year?/:tus?/:module?"
-            component={() => <App />}
-          />
-        </QueryParamProvider>
-      </BrowserRouter>
+      <QueryParamProvider>
+        <App />
+      </QueryParamProvider>
     </React.StrictMode>,
     document.getElementById("root")
   )
