@@ -208,11 +208,8 @@ function APP() {
     { label: "RHF", options: opts_rhf },
   ];
 
-  const input_data: {
-    selected_unit: string[];
-    selected_year: number;
-  } = {
-    selected_unit: (treatment_units as string[]) || [],
+  const input_data = {
+    selected_unit: treatment_units,
     selected_year: selected_year,
   };
 
