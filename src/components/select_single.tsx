@@ -1,6 +1,5 @@
 import React from "react";
 import Select from "react-select";
-
 interface Props {
   opts: number[];
   select_className?: string;

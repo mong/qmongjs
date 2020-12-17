@@ -6,11 +6,11 @@ import SELECT_MULTI from "./components/select_multi";
 import SELECT_SINGLE from "./components/select_single";
 import TU_LIST from "./components/tu_list";
 
-import config, { mainQueryParamsConfig } from "./app_config";
+import config, { mainQueryParamsConfig, valid_years } from "./app_config";
 import { nest_tu_names } from "./data/filter_year_unit";
 import useResizeObserver from "./components/utils";
 import { filter_year_unit } from "./data/filter_year_unit";
-import { useQueryParams } from "use-query-params";
+import { useQueryParam, useQueryParams } from "use-query-params";
 import mathClamp from "./helpers/functions/mathClamp";
 
 const { med_field, app_text } = config;
@@ -156,15 +156,15 @@ function APP() {
       }
     );
   }
-  let opts_year = [2019, 2018, 2017, 2016];
 
-  const get_valid_year = (year_to_validate: number, valid_years: number[]) =>
+  const validate_year = (year_to_validate: number, valid_years: number[]) =>
     mathClamp(
       year_to_validate,
       Math.min(...valid_years),
       Math.max(...valid_years)
     );
   // load query parameters, validate and set in state.
+
   const [query_params, set_query_params] = useQueryParams(
     mainQueryParamsConfig
   );
@@ -175,9 +175,13 @@ function APP() {
       })
       .slice(0, 5) as string[]) || []
   );
-  const [selected_year, update_selected_year] = useState(
-    get_valid_year(query_params.year ?? opts_year[0], opts_year)
+  const [selected_year, update_selected_year] = useQueryParam(
+    "year",
+    mainQueryParamsConfig.year
   );
+  const validated_year = validate_year(selected_year, valid_years);
+  if (selected_year !== validated_year) update_selected_year(validated_year);
+
   const [selected_row, update_selected_row] = useState(
     query_params.selected_row
   );
@@ -336,7 +340,7 @@ function APP() {
           </div>
           <div className="year-selection">
             <SELECT_SINGLE
-              opts={opts_year}
+              opts={valid_years}
               update_year={update_selected_year}
               selected_year={selected_year}
               // selected_row={selected_row}

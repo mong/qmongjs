@@ -223,12 +223,12 @@ export const data_config = {
     low: "Lavt",
   },
 };
-
+export const valid_years = [2019, 2018, 2017, 2016];
 export const mainQueryParamsConfig = {
   selected_row: StringParam,
   indicator: withDefault(StringParam, "all"),
   level: StringParam,
-  year: NumberParam,
+  year: withDefault(NumberParam, valid_years[0]),
   tu_names: withDefault(DelimitedArrayParam, [], false),
   chart_type: withDefault(StringParam, "line"),
 };
