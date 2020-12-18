@@ -189,12 +189,11 @@ function APP() {
     treatment_units as string[],
     tu_names
   );
-  if (
-    JSON.stringify(treatment_units) !==
-    JSON.stringify(validated_treatment_units)
-  ) {
-    treatment_units && update_treatment_units(validated_treatment_units);
-  }
+  JSON.stringify(treatment_units) !==
+    JSON.stringify(validated_treatment_units) &&
+    treatment_units &&
+    update_treatment_units(validated_treatment_units);
+
   const [selected_year, update_selected_year] = useQueryParam(
     "year",
     mainQueryParamsConfig.year
@@ -204,9 +203,9 @@ function APP() {
     valid_years
   );
   validated_selected_year !== selected_year &&
+    selected_year &&
     update_selected_year(validated_selected_year);
 
-  const [selected_row, update_selected_row] = ["", (x: string) => alert(x)];
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
   >(null);
@@ -345,8 +344,6 @@ function APP() {
               opts={valid_years}
               update_year={update_selected_year}
               selected_year={validated_selected_year}
-              // selected_row={selected_row}
-              // update_selected_row={update_selected_row}
             />
           </div>
         </div>
@@ -358,8 +355,6 @@ function APP() {
           app_text={app_text}
           colspan={colspan}
           data={{ agg_data, description }}
-          selected_row={selected_row}
-          update_selected_row={update_selected_row}
           selection_bar_height={selection_bar_height}
           legend_height={legend_height}
           update_legend_height={update_legend_height}

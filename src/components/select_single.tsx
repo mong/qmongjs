@@ -5,8 +5,6 @@ interface Props {
   select_className?: string;
   update_year(int: number): void;
   selected_year: number;
-  // selected_row: string | null;
-  // update_selected_row(s: any): void;
 }
 function SELECT_SINGLE(props: Props) {
   const {

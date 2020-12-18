@@ -71,9 +71,7 @@ interface Props {
   treatment_unit_name?: string[];
   med_field_class?: string;
   show_level_filter?: string;
-  selected_row: string;
   colspan?: number;
-  update_selected_row(str: string | undefined): void;
 }
 
 function INDICATOR_ROW(props: Props) {
@@ -84,6 +82,7 @@ function INDICATOR_ROW(props: Props) {
     show_level_filter = "",
     colspan,
   } = props;
+
   const [selected_row, update_selected_row] = useQueryParam(
     "selected_row",
     mainQueryParamsConfig.selected_row
@@ -118,12 +117,12 @@ function INDICATOR_ROW(props: Props) {
     ) : null;
 
   const tr_click_handler = () => {
-    if (selected_row === ind_id) {
-      update_selected_row(undefined);
-    } else {
-      update_selected_row(ind_id);
-    }
+    update_selected_row(
+      selected_row === ind_id ? undefined : ind_id,
+      "replace"
+    );
   };
+
   return (
     <>
       <tr
@@ -134,7 +133,7 @@ function INDICATOR_ROW(props: Props) {
         <INDICATOR_DESCRIPTION description={description} />
         {indicator_val}
         <INDICATOR_VALUE
-          key={``}
+          // key={``}
           data={data.agg_data.nation.filtered_by_year[0]}
           td_class={`nationally ${level_class}`}
         />

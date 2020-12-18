@@ -109,8 +109,6 @@ export interface Props {
   treatment_units: string[];
   selected_year: number;
   colspan: number;
-  selected_row?: string | null;
-  update_selected_row(row: any): void;
   selection_bar_height: number | null;
   legend_height: any;
   update_legend_height(height: any): void;
@@ -125,8 +123,6 @@ const Main = (props: Props) => {
     treatment_units,
     selected_year,
     colspan,
-    selected_row,
-    update_selected_row,
     selection_bar_height,
     legend_height,
     update_legend_height,
@@ -148,8 +144,6 @@ const Main = (props: Props) => {
         app_text={app_text}
         update_show_level_filter={update_show_level_filter}
         show_level_filter={show_level_filter}
-        selected_row={selected_row}
-        update_selected_row={update_selected_row}
         selection_bar_height={selection_bar_height}
         update_legend_height={update_legend_height}
       />
@@ -161,8 +155,6 @@ const Main = (props: Props) => {
             update_med_field_filter={update_med_field_filter}
             clicked_med_field={indicator_query_param}
             update_clicked_med_field={update_indicator_query_param}
-            selected_row={selected_row}
-            update_selected_row={update_selected_row}
             selection_bar_height={selection_bar_height}
             legend_height={legend_height}
           />
@@ -176,8 +168,6 @@ const Main = (props: Props) => {
             colspan={colspan}
             med_field_filter={med_field_filter}
             show_level_filter={show_level_filter}
-            selected_row={selected_row}
-            update_selected_row={update_selected_row}
             selection_bar_height={selection_bar_height}
             legend_height={legend_height}
           />
