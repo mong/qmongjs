@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useQueryParam } from "use-query-params";
 import { AggData, Description, StatisticData } from "../App";
+import { mainQueryParamsConfig } from "../app_config";
 
 import INDICATOR_TABLE from "./indicator_table";
 import LEGEND from "./legend";
@@ -128,15 +129,13 @@ const Main = (props: Props) => {
     update_legend_height,
   } = props;
   const all_reg = ind_per_reg.map((reg) => reg.registry_name);
-  const [level_query_param] = useQueryParam<string | undefined>("level");
-  const [show_level_filter, update_show_level_filter] = useState(
-    level_query_param
-  );
+  const [show_level_filter, update_show_level_filter] = useQueryParam<
+    string | undefined
+  >("level", mainQueryParamsConfig.level);
   const [med_field_filter, update_med_field_filter] = useState(all_reg);
-  const [
-    indicator_query_param,
-    update_indicator_query_param,
-  ] = useQueryParam<string>("indicator");
+  const [clicked_med_field, update_clicked_med_field] = useQueryParam<
+    string | undefined
+  >("indicator", mainQueryParamsConfig.indicator);
   const filtered_data = filter_data(data, show_level_filter);
   return (
     <>
@@ -153,8 +152,8 @@ const Main = (props: Props) => {
             ind_per_reg={ind_per_reg}
             med_field={med_field}
             update_med_field_filter={update_med_field_filter}
-            clicked_med_field={indicator_query_param}
-            update_clicked_med_field={update_indicator_query_param}
+            clicked_med_field={clicked_med_field}
+            update_clicked_med_field={update_clicked_med_field}
             selection_bar_height={selection_bar_height}
             legend_height={legend_height}
           />

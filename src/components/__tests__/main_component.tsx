@@ -2,6 +2,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { parse } from "querystring";
 import React from "react";
+import { Route, BrowserRouter } from "react-router-dom";
+
 import { QueryParamProvider } from "use-query-params";
 import MAIN from "../main_component";
 import {
@@ -52,9 +54,11 @@ describe("test filter buttons", () => {
   const props = buildMainProps({ data: graphData });
 
   const AppWithRouterAndQueryParams = () => (
-    <QueryParamProvider>
-      <MAIN {...props} />
-    </QueryParamProvider>
+    <BrowserRouter>
+      <QueryParamProvider ReactRouterRoute={Route}>
+        <MAIN {...props} />
+      </QueryParamProvider>
+    </BrowserRouter>
   );
   it("should have 3 filter buttons", () => {
     render(<AppWithRouterAndQueryParams />);
