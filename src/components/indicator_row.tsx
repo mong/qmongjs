@@ -9,6 +9,8 @@ import LOW_COV from "./low_cov";
 import LOW_N from "./low_n";
 import { Description } from "../App";
 import { GraphData } from "./main_component";
+import { useQueryParam } from "use-query-params";
+import { mainQueryParamsConfig } from "../app_config";
 
 export const format_indicator_values = (
   treatment_unit_name: string[],
@@ -80,10 +82,12 @@ function INDICATOR_ROW(props: Props) {
     treatment_unit_name = [],
     med_field_class = "",
     show_level_filter = "",
-    selected_row,
-    update_selected_row,
     colspan,
   } = props;
+  const [selected_row, update_selected_row] = useQueryParam(
+    "selected_row",
+    mainQueryParamsConfig.selected_row
+  );
   const description = data.description[0];
   const ind_id = description.id; // [data_config.column.id as keyof Description];
   const tr_indicator_class = `${ind_id}  ${
@@ -115,7 +119,7 @@ function INDICATOR_ROW(props: Props) {
 
   const tr_click_handler = () => {
     if (selected_row === ind_id) {
-      update_selected_row("");
+      update_selected_row(undefined);
     } else {
       update_selected_row(ind_id);
     }

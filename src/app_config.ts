@@ -225,12 +225,12 @@ export const data_config = {
 };
 export const valid_years = [2019, 2018, 2017, 2016];
 export const mainQueryParamsConfig = {
-  selected_row: StringParam,
-  indicator: withDefault(StringParam, "all"),
-  level: StringParam,
-  year: withDefault(NumberParam, valid_years[0]),
-  tu_names: withDefault(DelimitedArrayParam, [], false),
-  chart_type: withDefault(StringParam, "line"),
+  selected_row: withDefault(StringParam, undefined),
+  indicator: withDefault(StringParam, undefined),
+  level: withDefault(StringParam, undefined),
+  year: withDefault(NumberParam, undefined),
+  tu_names: withDefault(DelimitedArrayParam, undefined),
+  chart_type: withDefault(StringParam, undefined),
 };
 
 const appConfig = { med_field, app_text, data_config };

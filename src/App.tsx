@@ -10,7 +10,7 @@ import config, { mainQueryParamsConfig, valid_years } from "./app_config";
 import { nest_tu_names } from "./data/filter_year_unit";
 import useResizeObserver from "./components/utils";
 import { filter_year_unit } from "./data/filter_year_unit";
-import { useQueryParam, useQueryParams } from "use-query-params";
+import { useQueryParam } from "use-query-params";
 import mathClamp from "./helpers/functions/mathClamp";
 
 const { med_field, app_text } = config;
@@ -62,6 +62,30 @@ export interface AggData {
   filtered_by_unit: StatisticData[];
   filtered_by_year: StatisticData[];
   all_filtered_by_year: StatisticData[];
+}
+
+function validate_year(year_to_validate: number, valid_years: number[]) {
+  return mathClamp(
+    year_to_validate,
+    Math.min(...valid_years),
+    Math.max(...valid_years)
+  );
+}
+
+function validate_treatment_units(
+  treatment_units: string[],
+  valid_treatment_units: TreatmentUnit[]
+) {
+  return (
+    (treatment_units
+      ?.filter((x, i, a) => {
+        return (
+          valid_treatment_units.some((tu) => tu.hospital === x) &&
+          a.indexOf(x) === i
+        );
+      })
+      .slice(0, 5) as string[]) || []
+  );
 }
 
 function APP() {
@@ -157,36 +181,32 @@ function APP() {
     );
   }
 
-  const validate_year = (year_to_validate: number, valid_years: number[]) =>
-    mathClamp(
-      year_to_validate,
-      Math.min(...valid_years),
-      Math.max(...valid_years)
-    );
-
-  // load query parameters, validate and set in state.
-  const [query_params, set_query_params] = useQueryParams(
-    mainQueryParamsConfig
+  const [treatment_units, update_treatment_units] = useQueryParam(
+    "tu_names",
+    mainQueryParamsConfig.tu_names
   );
-  const [treatment_units, update_treatment_units] = useState<string[]>(
-    (query_params.tu_names
-      ?.filter((x, i, a) => {
-        return tu_names.some((tu) => tu.hospital === x) && a.indexOf(x) === i;
-      })
-      .slice(0, 5) as string[]) || []
+  const validated_treatment_units = validate_treatment_units(
+    treatment_units as string[],
+    tu_names
   );
+  if (
+    JSON.stringify(treatment_units) !==
+    JSON.stringify(validated_treatment_units)
+  ) {
+    treatment_units && update_treatment_units(validated_treatment_units);
+  }
   const [selected_year, update_selected_year] = useQueryParam(
     "year",
     mainQueryParamsConfig.year
   );
-  const validated_year = validate_year(selected_year, valid_years);
-  if (selected_year !== validated_year) update_selected_year(validated_year);
-
-  const [selected_row, update_selected_row] = useQueryParam(
-    "selected_row",
-    mainQueryParamsConfig.selected_row
+  const validated_selected_year = validate_year(
+    selected_year || valid_years[0],
+    valid_years
   );
+  validated_selected_year !== selected_year &&
+    update_selected_year(validated_selected_year);
 
+  const [selected_row, update_selected_row] = ["", (x: string) => alert(x)];
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
   >(null);
@@ -212,8 +232,8 @@ function APP() {
   ];
 
   const input_data = {
-    selected_unit: treatment_units,
-    selected_year: selected_year,
+    selected_unit: validated_treatment_units,
+    selected_year: validated_selected_year,
   };
 
   const hospital = filter_year_unit(sortedIndicatorHospital, input_data);
@@ -221,7 +241,7 @@ function APP() {
   const rhf = filter_year_unit(sortedIndicatorRhf, input_data);
   const nation = filter_year_unit(sortedIndicatorNation, {
     selected_unit: ["Nasjonalt"],
-    selected_year: selected_year,
+    selected_year: validated_selected_year,
   });
 
   const tu_name_hospital = Array.from(
@@ -255,10 +275,10 @@ function APP() {
     ],
     all_filtered_by_year: [
       ...indicator_hosp.filter(
-        (d) => d.year === selected_year // [data_config.column.year]
+        (d) => d.year === validated_selected_year // [data_config.column.year]
       ),
       ...indicator_nation.filter(
-        (d) => d.year === selected_year // [data_config.column.year]
+        (d) => d.year === validated_selected_year // [data_config.column.year]
       ),
     ],
   };
@@ -303,14 +323,6 @@ function APP() {
     update_selection_bar_height(top);
   }, [selection_bar_dim]);
 
-  useEffect(() => {
-    if (query_params.tu_names !== treatment_units) {
-      set_query_params({
-        tu_names: treatment_units.length > 0 ? treatment_units : undefined,
-      });
-    }
-  }, [query_params.tu_names, treatment_units, set_query_params]);
-
   return (
     <div className="app-container">
       <HEADER />
@@ -320,11 +332,11 @@ function APP() {
             <SELECT_MULTI
               opts={opts_tu}
               update_tu={update_treatment_units}
-              treatment_unit={treatment_units}
+              treatment_unit={validated_treatment_units}
             />
             <TU_LIST
               tu_structure={tu_structure}
-              treatment_units={treatment_units}
+              treatment_units={validated_treatment_units}
               update_treatment_units={update_treatment_units}
             />
           </div>
@@ -332,7 +344,7 @@ function APP() {
             <SELECT_SINGLE
               opts={valid_years}
               update_year={update_selected_year}
-              selected_year={selected_year}
+              selected_year={validated_selected_year}
               // selected_row={selected_row}
               // update_selected_row={update_selected_row}
             />
@@ -341,7 +353,7 @@ function APP() {
         <MAIN
           ind_per_reg={ind_per_reg}
           treatment_units={tu_name}
-          selected_year={selected_year}
+          selected_year={validated_selected_year}
           med_field={med_field}
           app_text={app_text}
           colspan={colspan}
