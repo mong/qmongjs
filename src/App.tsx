@@ -163,8 +163,8 @@ function APP() {
       Math.min(...valid_years),
       Math.max(...valid_years)
     );
-  // load query parameters, validate and set in state.
 
+  // load query parameters, validate and set in state.
   const [query_params, set_query_params] = useQueryParams(
     mainQueryParamsConfig
   );
@@ -182,9 +182,11 @@ function APP() {
   const validated_year = validate_year(selected_year, valid_years);
   if (selected_year !== validated_year) update_selected_year(validated_year);
 
-  const [selected_row, update_selected_row] = useState(
-    query_params.selected_row
+  const [selected_row, update_selected_row] = useQueryParam(
+    "selected_row",
+    mainQueryParamsConfig.selected_row
   );
+
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
   >(null);
@@ -302,24 +304,12 @@ function APP() {
   }, [selection_bar_dim]);
 
   useEffect(() => {
-    if (query_params.year !== selected_year) {
-      set_query_params({ year: selected_year });
-    }
-  }, [query_params.year, selected_year, set_query_params]);
-  useEffect(() => {
     if (query_params.tu_names !== treatment_units) {
       set_query_params({
         tu_names: treatment_units.length > 0 ? treatment_units : undefined,
       });
     }
   }, [query_params.tu_names, treatment_units, set_query_params]);
-  useEffect(() => {
-    if (query_params.selected_row !== selected_row) {
-      set_query_params({
-        selected_row: selected_row || undefined,
-      });
-    }
-  }, [query_params.selected_row, selected_row, set_query_params]);
 
   return (
     <div className="app-container">

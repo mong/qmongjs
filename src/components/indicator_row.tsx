@@ -71,7 +71,7 @@ interface Props {
   show_level_filter?: string;
   selected_row: string;
   colspan?: number;
-  update_selected_row(row: string): void;
+  update_selected_row(str: string | undefined): void;
 }
 
 function INDICATOR_ROW(props: Props) {
