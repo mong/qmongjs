@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import TU_LIST_HEADER from "./tu_list_header";
 import TU_LIST_BODY from "./tu_list_body";
+import useEventListener from "../helpers/hooks/useEventListener";
 
 interface NestedTreatmentUnitName {
   rhf: string;
@@ -12,7 +13,7 @@ interface NestedTreatmentUnitName {
   }[];
 }
 
-interface Props {
+export interface Props {
   tu_structure: NestedTreatmentUnitName[];
   treatment_units: string[];
   update_treatment_units: (arg: string[]) => void;
@@ -20,7 +21,6 @@ interface Props {
 
 const TU_LIST = (props: Props) => {
   const { tu_structure, treatment_units, update_treatment_units } = props;
-
   const [tu_list_display, update_tu_list_display] = useState("none");
   const style_tu_list = { display: tu_list_display };
   const tu_str_elm = tu_structure.map((element) => {
@@ -33,6 +33,21 @@ const TU_LIST = (props: Props) => {
       />
     );
   });
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.defaultPrevented) {
+      return;
+    }
+    switch (event.key) {
+      case "Esc":
+      case "Escape":
+        update_tu_list_display("none");
+        break;
+      default:
+        return;
+    }
+    event.preventDefault();
+  };
+  useEventListener("keydown", handleKeyDown);
 
   return (
     <>
@@ -44,7 +59,7 @@ const TU_LIST = (props: Props) => {
           Vis alle
         </button>
       </div>
-      <div style={style_tu_list} className="tu_list">
+      <div style={style_tu_list} className="tu_list" test-id="tu_list">
         <TU_LIST_HEADER />
         <div className="all_tu">{tu_str_elm}</div>
         <button
