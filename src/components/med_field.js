@@ -34,8 +34,10 @@ function MED_FIELD(props) {
   const tot_nr_ind = ind_per_reg.reduce((acc, cur) => {
     return acc + cur.number_ind;
   }, 0);
-
-  const checked_class = "all" === clicked_med_field ? "checked" : "";
+  const checked_class =
+    "all" === clicked_med_field || clicked_med_field === undefined
+      ? "checked"
+      : "";
   const style = { top: `${legend_height + selection_bar_height}px` };
   const handle_med_field_click = () => {
     update_clicked_med_field("all");
@@ -43,7 +45,7 @@ function MED_FIELD(props) {
   };
 
   return (
-    <ul style={style} className="med_field_list">
+    <ul style={style} className="med_field_list" data-testid="med_field_list">
       <li className={`med_field_title ${checked_class}`}>
         <button onClick={() => handle_med_field_click()}>
           <h4 className="med_field_text">
