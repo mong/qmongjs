@@ -75,7 +75,7 @@
     "@storybook/node-logger": "^6.1.6",
     "@storybook/preset-create-react-app": "^3.1.5",
     "@storybook/react": "^6.1.6",
-    "@types/faker": "^5.1.4",
+    "@types/faker": "^5.1.5",
     "faker": "^5.1.0",
     "husky": "^4.3.6",
     "lint-staged": "^10.5.3",
