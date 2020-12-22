@@ -40,7 +40,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-select": "^3.0.26",
-    "d3": "^6.1.1",
+    "d3": "^6.3.1",
     "is-ci-cli": "^2.1.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
