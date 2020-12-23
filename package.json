@@ -74,7 +74,7 @@
     "@storybook/addon-links": "^6.1.6",
     "@storybook/node-logger": "^6.1.11",
     "@storybook/preset-create-react-app": "^3.1.5",
-    "@storybook/react": "^6.1.6",
+    "@storybook/react": "^6.1.11",
     "@types/faker": "^5.1.5",
     "faker": "^5.1.0",
     "husky": "^4.3.6",
