@@ -31,6 +31,8 @@
     "url": "https://github.com/mong/qmongjs/issues"
   },
   "dependencies": {
+    "@sentry/react": "^5.29.2",
+    "@sentry/tracing": "^5.29.2",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
