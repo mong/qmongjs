@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { med_field } from "../app_config";
 interface Props {
   med_field: typeof med_field[0];
@@ -22,12 +22,6 @@ function MED_FIELD_ROW(props: Props) {
     update_clicked_med_field(med_field.react_key);
     update_med_field_filter(med_field.key);
   };
-
-  useEffect(() => {
-    if (med_field.react_key === clicked_med_field) {
-      update_med_field_filter(med_field.key);
-    }
-  }, [med_field, clicked_med_field, update_med_field_filter]);
 
   return (
     <li
