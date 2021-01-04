@@ -223,7 +223,8 @@ export const data_config = {
     low: "Lavt",
   },
 };
-export const valid_years = [2019, 2018, 2017, 2016];
+export const minYear = 2016;
+export const maxYear = 2019;
 export const mainQueryParamsConfig = {
   selected_row: withDefault(StringParam, undefined),
   indicator: withDefault(StringParam, undefined),

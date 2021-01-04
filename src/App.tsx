@@ -6,7 +6,7 @@ import SELECT_MULTI from "./components/select_multi";
 import SELECT_SINGLE from "./components/select_single";
 import TU_LIST from "./components/tu_list";
 
-import config, { mainQueryParamsConfig, valid_years } from "./app_config";
+import config, { mainQueryParamsConfig, maxYear, minYear } from "./app_config";
 import { nest_tu_names } from "./data/filter_year_unit";
 import useResizeObserver from "./components/utils";
 import { filter_year_unit } from "./data/filter_year_unit";
@@ -53,7 +53,6 @@ export interface TreatmentUnit {
   hf_full: string;
   rhf: string;
 }
-
 export interface AggData {
   nation: {
     filtered_by_unit: StatisticData[];
@@ -62,14 +61,6 @@ export interface AggData {
   filtered_by_unit: StatisticData[];
   filtered_by_year: StatisticData[];
   all_filtered_by_year: StatisticData[];
-}
-
-function validate_year(year_to_validate: number, valid_years: number[]) {
-  return mathClamp(
-    year_to_validate,
-    Math.min(...valid_years),
-    Math.max(...valid_years)
-  );
 }
 
 function validate_treatment_units(
@@ -198,9 +189,10 @@ function APP() {
     "year",
     mainQueryParamsConfig.year
   );
-  const validated_selected_year = validate_year(
-    selected_year || valid_years[0],
-    valid_years
+  const validated_selected_year = mathClamp(
+    selected_year || maxYear,
+    minYear,
+    maxYear
   );
   validated_selected_year !== selected_year &&
     selected_year &&
@@ -322,6 +314,9 @@ function APP() {
     update_selection_bar_height(top);
   }, [selection_bar_dim]);
 
+  const valid_years = Array.from(Array(maxYear - minYear + 1).keys()).map(
+    (v) => minYear + v
+  );
   return (
     <div className="app-container">
       <HEADER />
