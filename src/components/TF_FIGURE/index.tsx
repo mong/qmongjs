@@ -14,7 +14,7 @@ export interface Props {
   data: GraphData;
   figure_class?: string;
   selectedTreatmentUnits: string[];
-  update_selected_row(row: string | undefined): void;
+  update_selected_row(row: string): void;
 }
 
 function TF_FIGURE(props: Props) {
