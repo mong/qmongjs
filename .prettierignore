@@ -4,3 +4,4 @@ build/
 public/fontawesome/
 package-lock.json
 **/*.min.*
+.github/
