@@ -69,12 +69,7 @@ function validate_treatment_units(
 ) {
   return (
     (treatment_units
-      ?.filter((x, i, a) => {
-        return (
-          valid_treatment_units.some((tu) => tu.hospital === x) &&
-          a.indexOf(x) === i
-        );
-      })
+      ?.filter((x) => valid_treatment_units.some((tu) => tu.hospital === x))
       .slice(0, 5) as string[]) || []
   );
 }
