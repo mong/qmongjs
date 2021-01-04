@@ -133,7 +133,6 @@ function INDICATOR_ROW(props: Props) {
         <INDICATOR_DESCRIPTION description={description} />
         {indicator_val}
         <INDICATOR_VALUE
-          // key={``}
           data={data.agg_data.nation.filtered_by_year[0]}
           td_class={`nationally ${level_class}`}
         />
