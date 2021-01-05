@@ -117,10 +117,7 @@ function INDICATOR_ROW(props: Props) {
     ) : null;
 
   const tr_click_handler = () => {
-    update_selected_row(
-      selected_row === ind_id ? undefined : ind_id,
-      "replace"
-    );
+    update_selected_row(selected_row === ind_id ? undefined : ind_id);
   };
 
   return (

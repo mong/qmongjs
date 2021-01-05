@@ -230,7 +230,7 @@ export const mainQueryParamsConfig = {
   indicator: withDefault(StringParam, undefined),
   level: withDefault(StringParam, undefined),
   year: withDefault(NumberParam, undefined),
-  tu_names: withDefault(DelimitedArrayParam, undefined),
+  selected_treatment_units: withDefault(DelimitedArrayParam, undefined),
   chart_type: withDefault(StringParam, undefined),
 };
 

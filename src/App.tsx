@@ -69,7 +69,9 @@ function validate_treatment_units(
 ) {
   return (
     (treatment_units
-      ?.filter((x) => valid_treatment_units.some((tu) => tu.hospital === x))
+      ?.filter((x) =>
+        valid_treatment_units.some((tu) => tu.hospital === x || tu.hf === x)
+      )
       .slice(0, 5) as string[]) || []
   );
 }
@@ -166,20 +168,14 @@ function APP() {
       }
     );
   }
-
   const [treatment_units, update_treatment_units] = useQueryParam(
-    "tu_names",
-    mainQueryParamsConfig.tu_names
+    "selected_treatment_units",
+    mainQueryParamsConfig.selected_treatment_units
   );
   const validated_treatment_units = validate_treatment_units(
     treatment_units as string[],
     tu_names
   );
-  JSON.stringify(treatment_units) !==
-    JSON.stringify(validated_treatment_units) &&
-    treatment_units &&
-    update_treatment_units(validated_treatment_units);
-
   const [selected_year, update_selected_year] = useQueryParam(
     "year",
     mainQueryParamsConfig.year
@@ -189,15 +185,10 @@ function APP() {
     minYear,
     maxYear
   );
-  validated_selected_year !== selected_year &&
-    selected_year &&
-    update_selected_year(validated_selected_year);
-
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
   >(null);
   const [legend_height, update_legend_height] = useState(null);
-
   const opts_hosp = Array.from(
     new Set(sortedIndicatorHospital.map((d) => d.unit_name))
   )
@@ -216,12 +207,10 @@ function APP() {
     { label: "HF", options: opts_hf },
     { label: "RHF", options: opts_rhf },
   ];
-
   const input_data = {
     selected_unit: validated_treatment_units,
     selected_year: validated_selected_year,
   };
-
   const hospital = filter_year_unit(sortedIndicatorHospital, input_data);
   const hf = filter_year_unit(sortedIndicatorHf, input_data);
   const rhf = filter_year_unit(sortedIndicatorRhf, input_data);
@@ -229,7 +218,6 @@ function APP() {
     selected_unit: ["Nasjonalt"],
     selected_year: validated_selected_year,
   });
-
   const tu_name_hospital = Array.from(
     new Set(
       hospital.filtered_by_year.map((d) => d.unit_name) // [data_config.column.treatment_unit]
@@ -268,7 +256,6 @@ function APP() {
       ),
     ],
   };
-
   const unique_indicators =
     tu_name.length > 0
       ? Array.from(
@@ -297,7 +284,9 @@ function APP() {
   });
   const ind_per_reg = unique_register;
   const tu_structure = nest_tu_names(tu_names);
-
+  const valid_years = Array.from(Array(maxYear - minYear + 1).keys()).map(
+    (v) => minYear + v
+  );
   //height of the selection bar
   const selection_bar_ref = useRef<HTMLDivElement | null>(null);
   const selection_bar_dim = useResizeObserver(selection_bar_ref);
@@ -308,10 +297,6 @@ function APP() {
     const top = (selection_bar_dim.target as HTMLElement).offsetHeight ?? "";
     update_selection_bar_height(top);
   }, [selection_bar_dim]);
-
-  const valid_years = Array.from(Array(maxYear - minYear + 1).keys()).map(
-    (v) => minYear + v
-  );
   return (
     <div className="app-container">
       <HEADER />
