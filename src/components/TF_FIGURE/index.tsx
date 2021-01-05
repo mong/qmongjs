@@ -31,9 +31,6 @@ function TF_FIGURE(props: Props) {
     string | undefined
   >("chart_type", mainQueryParamsConfig.chart_type);
   const valid_chart_type = chart_type === "bar" ? "bar" : "line";
-  chart_type !== valid_chart_type &&
-    chart_type &&
-    update_chart_type(valid_chart_type);
   const [zoom, update_zoom] = useState(true);
   const [show_level, update_show_level] = useState(false);
 
