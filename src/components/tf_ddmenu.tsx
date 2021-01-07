@@ -50,14 +50,24 @@ const DD_MENU = (props: Props) => {
       console.log(e);
     };
     image.onload = function () {
+      const titleHight: number = 100;
+      const bottomMargin: number = 50;
       const canvas = select("body")
         .append("canvas")
         .attr("width", width)
-        .attr("height", height)
+        .attr("height", height + titleHight + bottomMargin)
         .node()!;
 
       const ctx = canvas.getContext("2d");
-      ctx!.drawImage(image, 0, 0);
+      ctx!.font = "30px Arial";
+      ctx!.fillText(description.title ?? "", width * 0.05, 50);
+      ctx!.font = "17px Arial";
+      ctx!.fillText(
+        `Kilde: ${description.full_name}`,
+        width * 0.05,
+        titleHight + height + 20
+      );
+      ctx!.drawImage(image, 0, titleHight);
       const url = canvas.toDataURL("image/png");
       selectAll([canvas, image]).remove();
       const element = document.createElement("a");
@@ -65,6 +75,35 @@ const DD_MENU = (props: Props) => {
       element.href = url;
       element.click();
       element.remove();
+
+      /*
+      const margin: number = 200
+      const canvas = select("body")
+        .append("canvas")
+        .attr("width", width)
+        .attr("height", height + margin)
+        .node()!;
+
+      const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
+      ctx.font = "50px Arial";
+      ctx.fillText(description.title ?? "", width * 0.15, 40, width * 0.5);
+      ctx.font = "20px Arial";
+      ctx.fillText(
+        `Kilde: ${description.full_name}`,
+        width * 0.12,
+        height + 160,
+        width * 0.4
+      );
+      ctx!.drawImage(image, width * 0.50, height + 115);
+      ctx!.drawImage(image, 0, 100);
+      const url = canvas.toDataURL("image/png");
+      selectAll([canvas, image]).remove();
+      const link = document.createElement("a");
+      link.download = `${fileName}.png`;
+      link.href = url;
+      link.click();
+      link.remove();
+      */
     };
     image.onerror = function (e) {
       console.log(e);
