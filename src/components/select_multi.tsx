@@ -33,7 +33,7 @@ function SELECT_MULTI(props: Props) {
   } = props;
 
   let selection_options = opts;
-  const customStyles: Styles = {
+  const customStyles = {
     control: (provided: any, state: any) => ({
       ...provided,
       width: "100%",
