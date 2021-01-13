@@ -75,7 +75,7 @@ function BarChart(props: Props) {
       .padding(0.5);
 
     const xScaleDomain = getXScaleDomain(data, delayedZoom);
-
+    console.log(xScaleDomain);
     const xScale = scaleLinear()
       .domain(xScaleDomain)
       .range([0, innerWidth])
@@ -90,10 +90,12 @@ function BarChart(props: Props) {
     yAxisElement.selectAll(".tick text").attr("font-size", "0.9rem");
 
     // X-Axis
+    const xAxisFormat =
+      xScaleDomain[1] - xScaleDomain[0] < 0.06 ? ",.1%" : ",.0%";
     const xAxis = axisBottom(xScale)
       .tickSize(-innerHeight)
       .ticks(6)
-      .tickFormat(format(",.0%"));
+      .tickFormat(format(xAxisFormat));
     const xAxisElement = svg.select<SVGGElement>(".x-axis");
     xAxisElement
       .style("transform", `translateY(${innerHeight}px)`)
