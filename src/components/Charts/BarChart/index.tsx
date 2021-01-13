@@ -75,7 +75,6 @@ function BarChart(props: Props) {
       .padding(0.5);
 
     const xScaleDomain = getXScaleDomain(data, delayedZoom);
-    console.log(xScaleDomain);
     const xScale = scaleLinear()
       .domain(xScaleDomain)
       .range([0, innerWidth])
