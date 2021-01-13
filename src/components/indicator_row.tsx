@@ -28,7 +28,7 @@ export const format_indicator_values = (
           <NO_DATA />
         </td>
       );
-    } else if ((ind_per_unit[0].dg ?? 0) < 0.6) {
+    } else if ((ind_per_unit[0].dg ?? 1) < 0.6) {
       // [data_config.column.coverage_id as keyof StatisticData]
       //|| typeof(ind_per_unit[0][data_config.column.coverage_id]) === "undefined") {
       return (
