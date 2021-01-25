@@ -59,7 +59,7 @@ function parseBarChartData(data: GraphData) {
         return !(
           data_by_year.denominator <
             (data.description[0]["min_denominator"] ?? 0) ||
-          (data_by_year.dg ?? 0) < 0.6
+          (data_by_year.dg ?? 1) < 0.6
         ); //|| typeof(data_by_year.dg) === "undefined" )
       } else {
         return true;
@@ -82,7 +82,7 @@ function parseLineChartData(data: GraphData): StatisticData[] {
         return !(
           data_by_year.denominator <
             (data.description[0]["min_denominator"] ?? 0) ||
-          (data_by_year.dg ?? 0) < 0.6
+          (data_by_year.dg ?? 1) < 0.6
         ); //|| typeof(data_by_year.dg) === "undefined" )
       } else {
         return true;

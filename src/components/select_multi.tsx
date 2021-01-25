@@ -1,5 +1,5 @@
 import React from "react";
-import Select, { Styles } from "react-select";
+import Select from "react-select";
 
 import { app_text } from "../app_config";
 
@@ -33,8 +33,8 @@ function SELECT_MULTI(props: Props) {
   } = props;
 
   let selection_options = opts;
-  const customStyles: Partial<Styles> = {
-    control: (provided, state) => ({
+  const customStyles = {
+    control: (provided: any, state: any) => ({
       ...provided,
       width: "100%",
       backgroundColor: "#00263d",
@@ -50,39 +50,39 @@ function SELECT_MULTI(props: Props) {
         : "3px solid #EEF6F7",
       cursor: "text",
     }),
-    input: (provided) => ({
+    input: (provided: any) => ({
       ...provided,
       color: "#EEF6F7",
       paddingLeft: "1.3rem",
     }),
-    multiValue: (provided) => ({
+    multiValue: (provided: any) => ({
       ...provided,
       color: "#00263d",
       backgroundColor: "#EEF6F7",
     }),
-    placeholder: (provided) => ({
+    placeholder: (provided: any) => ({
       ...provided,
       color: "#EEF6F7",
       fontSize: "1.2rem",
     }),
     // @ts-ignore
-    crossIcon: (provided) => ({
+    crossIcon: (provided: any) => ({
       ...provided,
       color: "white",
     }),
-    dropdownIndicator: (provided) => ({
+    dropdownIndicator: (provided: any) => ({
       ...provided,
       display: "none",
     }),
-    indicatorSeparator: (provided) => ({
+    indicatorSeparator: (provided: any) => ({
       ...provided,
       display: "none",
     }),
-    menu: (provided) => ({
+    menu: (provided: any) => ({
       ...provided,
       zIndex: 3,
     }),
-    option: (provided) => ({
+    option: (provided: any) => ({
       ...provided,
     }),
   };
