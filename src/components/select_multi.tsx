@@ -87,7 +87,7 @@ function SELECT_MULTI(props: Props) {
   };
   const value_tu = treatment_unit.map((tu) => ({ value: tu, label: tu }));
   const handle_input_change = (e: { value: string }[]) => {
-    const tu = e.length > 0 ? e.map((e) => e.value) : undefined;
+    const tu = e?.length > 0 ? e.map((e) => e.value) : undefined;
     update_tu(tu);
   };
 
