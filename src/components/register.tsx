@@ -18,8 +18,6 @@ export interface RegisterProps {
   med_field_filter: string[];
   show_level_filter: string;
   colspan?: number;
-  selected_row: string;
-  update_selected_row: (e: string) => void;
 }
 
 const Register = (props: RegisterProps) => {
@@ -31,8 +29,6 @@ const Register = (props: RegisterProps) => {
     treatment_unit_name,
     med_field_filter,
     show_level_filter,
-    selected_row,
-    update_selected_row,
   } = props;
   const med_field_class = med_field_filter.includes(register_sname)
     ? ""
@@ -78,8 +74,6 @@ const Register = (props: RegisterProps) => {
         med_field_class={med_field_class}
         show_level_filter={show_level_filter}
         colspan={colspan}
-        selected_row={selected_row}
-        update_selected_row={update_selected_row}
       />
     );
   });

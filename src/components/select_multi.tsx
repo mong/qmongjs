@@ -15,7 +15,7 @@ interface Props {
   opts: OptsTu[];
   select_className?: string;
   placeholder?: JSX.Element;
-  update_tu(x: string[]): void;
+  update_tu(x: string[] | undefined): void;
   treatment_unit: string[];
 }
 
@@ -31,7 +31,6 @@ function SELECT_MULTI(props: Props) {
     update_tu,
     treatment_unit,
   } = props;
-
   let selection_options = opts;
   const customStyles = {
     control: (provided: any, state: any) => ({
@@ -88,7 +87,7 @@ function SELECT_MULTI(props: Props) {
   };
   const value_tu = treatment_unit.map((tu) => ({ value: tu, label: tu }));
   const handle_input_change = (e: { value: string }[]) => {
-    const tu = e !== null ? e.map((e) => e.value) : [];
+    const tu = e?.length > 0 ? e.map((e) => e.value) : undefined;
     update_tu(tu);
   };
 

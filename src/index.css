@@ -111,14 +111,13 @@ h6 {
   position: -webkit-sticky;
   align-self: flex-end;
 }
+
 .table_legend button {
   outline: none;
   border: none;
   background-color: unset;
   padding: 0;
   margin: 0;
-}
-.table_legend button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -135,22 +134,18 @@ h6 {
   cursor: pointer;
   transition: 300ms cubic-bezier(0, 0, 0.58, 1);
 }
-.table_legend button:focus,
 .table_legend button:hover {
   box-shadow: 0px 4px 10px 2px rgba(196, 196, 196, 0.5);
   top: -7px;
 }
-.table_legend button:focus {
-  top: -7px;
-}
 .table_legend button:active {
   box-shadow: none;
-  top: 0;
+  top: 0px;
 }
 .table_legend button.checked {
   border: 2px solid #00263d;
   box-shadow: 0px 4px 10px 2px rgba(196, 196, 196, 0.2);
-  top: -2px;
+  top: -7px;
 }
 
 /******* main content containers *******/

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useQueryParam } from "use-query-params";
 import { AggData, Description, StatisticData } from "../App";
+import { mainQueryParamsConfig } from "../app_config";
 
 import INDICATOR_TABLE from "./indicator_table";
 import LEGEND from "./legend";
@@ -49,9 +51,9 @@ const apply_filters = ({
 
 const filter_data = (
   data: GraphData,
-  show_level_filter: string | null
+  show_level_filter: string | undefined
 ): GraphData => {
-  if (show_level_filter === null) {
+  if (!show_level_filter) {
     return data;
   }
 
@@ -108,12 +110,11 @@ export interface Props {
   treatment_units: string[];
   selected_year: number;
   colspan: number;
-  selected_row: any;
-  update_selected_row(row: any): void;
   selection_bar_height: number | null;
   legend_height: any;
   update_legend_height(height: any): void;
 }
+
 const Main = (props: Props) => {
   const {
     data,
@@ -123,16 +124,18 @@ const Main = (props: Props) => {
     treatment_units,
     selected_year,
     colspan,
-    selected_row,
-    update_selected_row,
     selection_bar_height,
     legend_height,
     update_legend_height,
   } = props;
   const all_reg = ind_per_reg.map((reg) => reg.registry_name);
-  const [show_level_filter, update_show_level_filter] = useState(null);
+  const [show_level_filter, update_show_level_filter] = useQueryParam<
+    string | undefined
+  >("level", mainQueryParamsConfig.level);
   const [med_field_filter, update_med_field_filter] = useState(all_reg);
-  const [clicked_med_field, update_clicked_med_field] = useState("all");
+  const [clicked_med_field, update_clicked_med_field] = useQueryParam<
+    string | undefined
+  >("indicator", mainQueryParamsConfig.indicator);
   const filtered_data = filter_data(data, show_level_filter);
   return (
     <>
@@ -140,8 +143,6 @@ const Main = (props: Props) => {
         app_text={app_text}
         update_show_level_filter={update_show_level_filter}
         show_level_filter={show_level_filter}
-        selected_row={selected_row}
-        update_selected_row={update_selected_row}
         selection_bar_height={selection_bar_height}
         update_legend_height={update_legend_height}
       />
@@ -153,8 +154,6 @@ const Main = (props: Props) => {
             update_med_field_filter={update_med_field_filter}
             clicked_med_field={clicked_med_field}
             update_clicked_med_field={update_clicked_med_field}
-            selected_row={selected_row}
-            update_selected_row={update_selected_row}
             selection_bar_height={selection_bar_height}
             legend_height={legend_height}
           />
@@ -168,8 +167,6 @@ const Main = (props: Props) => {
             colspan={colspan}
             med_field_filter={med_field_filter}
             show_level_filter={show_level_filter}
-            selected_row={selected_row}
-            update_selected_row={update_selected_row}
             selection_bar_height={selection_bar_height}
             legend_height={legend_height}
           />

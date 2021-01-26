@@ -11,8 +11,6 @@ function INDICATOR_TABLE(props) {
     colspan,
     med_field_filter,
     show_level_filter,
-    selected_row,
-    update_selected_row,
     selection_bar_height,
     legend_height,
   } = props;
@@ -32,8 +30,6 @@ function INDICATOR_TABLE(props) {
         treatment_year={treatment_year}
         med_field_filter={med_field_filter}
         show_level_filter={show_level_filter}
-        selected_row={selected_row}
-        update_selected_row={update_selected_row}
       />
     </table>
   );
