@@ -1,3 +1,10 @@
+import {
+  DelimitedArrayParam,
+  NumberParam,
+  StringParam,
+  withDefault,
+} from "use-query-params";
+
 export const med_field = [
   {
     react_key: "hjerte",
@@ -215,6 +222,16 @@ export const data_config = {
     high: "Høyt",
     low: "Lavt",
   },
+};
+export const minYear = 2016;
+export const maxYear = 2019;
+export const mainQueryParamsConfig = {
+  selected_row: withDefault(StringParam, undefined),
+  indicator: withDefault(StringParam, undefined),
+  level: withDefault(StringParam, undefined),
+  year: withDefault(NumberParam, undefined),
+  selected_treatment_units: withDefault(DelimitedArrayParam, undefined),
+  chart_type: withDefault(StringParam, undefined),
 };
 
 const appConfig = { med_field, app_text, data_config };

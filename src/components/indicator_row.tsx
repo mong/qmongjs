@@ -9,6 +9,8 @@ import LOW_COV from "./low_cov";
 import LOW_N from "./low_n";
 import { Description } from "../App";
 import { GraphData } from "./main_component";
+import { useQueryParam } from "use-query-params";
+import { mainQueryParamsConfig } from "../app_config";
 
 export const format_indicator_values = (
   treatment_unit_name: string[],
@@ -28,7 +30,7 @@ export const format_indicator_values = (
           <NO_DATA />
         </td>
       );
-    } else if ((ind_per_unit[0].dg ?? 0) < 0.6) {
+    } else if ((ind_per_unit[0].dg ?? 1) < 0.6) {
       // [data_config.column.coverage_id as keyof StatisticData]
       //|| typeof(ind_per_unit[0][data_config.column.coverage_id]) === "undefined") {
       return (
@@ -48,7 +50,7 @@ export const format_indicator_values = (
       const ind_type = description.type; // [data_config.column.indicator_type as keyof Description];
       const level_class =
         ind_per_unit[0].level !== show_level_filter && // [data_config.column.achieved_level as keyof StatisticData]
-        show_level_filter !== null
+        !!show_level_filter
           ? "filtered_level"
           : "";
       return (
@@ -69,9 +71,7 @@ interface Props {
   treatment_unit_name?: string[];
   med_field_class?: string;
   show_level_filter?: string;
-  selected_row: string;
   colspan?: number;
-  update_selected_row(row: string): void;
 }
 
 function INDICATOR_ROW(props: Props) {
@@ -80,10 +80,13 @@ function INDICATOR_ROW(props: Props) {
     treatment_unit_name = [],
     med_field_class = "",
     show_level_filter = "",
-    selected_row,
-    update_selected_row,
     colspan,
   } = props;
+
+  const [selected_row, update_selected_row] = useQueryParam(
+    "selected_row",
+    mainQueryParamsConfig.selected_row
+  );
   const description = data.description[0];
   const ind_id = description.id; // [data_config.column.id as keyof Description];
   const tr_indicator_class = `${ind_id}  ${
@@ -99,10 +102,9 @@ function INDICATOR_ROW(props: Props) {
 
   const level_class =
     data.agg_data.nation.filtered_by_year[0].level !== show_level_filter &&
-    show_level_filter !== null
+    !!show_level_filter
       ? "filtered_level"
       : "";
-
   const tr_fig =
     selected_row === ind_id ? (
       <TF_FIGURE
@@ -115,12 +117,9 @@ function INDICATOR_ROW(props: Props) {
     ) : null;
 
   const tr_click_handler = () => {
-    if (selected_row === ind_id) {
-      update_selected_row("");
-    } else {
-      update_selected_row(ind_id);
-    }
+    update_selected_row(selected_row === ind_id ? undefined : ind_id);
   };
+
   return (
     <>
       <tr
@@ -131,7 +130,6 @@ function INDICATOR_ROW(props: Props) {
         <INDICATOR_DESCRIPTION description={description} />
         {indicator_val}
         <INDICATOR_VALUE
-          key={``}
           data={data.agg_data.nation.filtered_by_year[0]}
           td_class={`nationally ${level_class}`}
         />

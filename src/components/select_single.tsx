@@ -1,12 +1,30 @@
 import React from "react";
 import Select from "react-select";
+interface Props {
+  opts: number[];
+  select_className?: string;
+  update_year(int: number): void;
+  selected_year: number;
+}
+function SELECT_SINGLE(props: Props) {
+  const {
+    opts = [],
+    select_className = "pick_year",
+    update_year,
+    selected_year,
+  } = props;
+  const selection_options = opts.map((opt) => ({ value: opt, label: opt }));
+  const selected_option =
+    selection_options[
+      selection_options.findIndex((v) => v.value === selected_year) | 0
+    ];
+  const defaultValue = selected_option;
+  const handle_input_change = (e: any) => {
+    update_year(e.value);
+  };
 
-function SELECT_SINGLE(props) {
-  const { opts = [], select_className = "pick_year", update_year } = props;
-
-  let selection_options = opts.map((opt) => ({ value: opt, label: opt }));
   const customStyles = {
-    control: (provided, state) => ({
+    control: (provided: any, state: any) => ({
       ...provided,
       width: "100%",
       backgroundColor: "#00263d",
@@ -20,24 +38,21 @@ function SELECT_SINGLE(props) {
       minHeight: "2rem",
       cursor: "pointer",
     }),
-    input: (provided) => ({
+    input: (provided: any) => ({
       ...provided,
       color: "#EEF6F7",
     }),
-    singleValue: (provided) => ({
+    singleValue: (provided: any) => ({
       ...provided,
       color: "#EEF6F7",
     }),
-    menu: (provided) => ({
+    menu: (provided: any) => ({
       ...provided,
       zIndex: 3,
     }),
-    option: (provided) => ({
+    option: (provided: any) => ({
       ...provided,
     }),
-  };
-  const handle_input_change = (e) => {
-    update_year(e.value);
   };
 
   return (
@@ -46,7 +61,7 @@ function SELECT_SINGLE(props) {
         className={select_className}
         onChange={(e) => handle_input_change(e)}
         options={selection_options}
-        defaultValue={selection_options[0]}
+        defaultValue={defaultValue}
         isSearchable
         styles={customStyles}
       />

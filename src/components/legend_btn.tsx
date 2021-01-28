@@ -1,10 +1,9 @@
 import React from "react";
-
 interface Props {
   level: string;
   icon_class: string;
   legend_btn_class: string;
-  update_show_level_filter: (p: string | null) => void | null;
+  update_show_level_filter(p: string | undefined): void;
   show_level_filter: string;
 }
 
@@ -20,11 +19,9 @@ function LEGEND_BTN(props: Props) {
   const level_filter = legend_btn_class[0].toUpperCase();
   const checked_class = level_filter === show_level_filter ? "checked" : "";
   const handle_level_filter = (current_state: string, update_state: string) => {
-    if (current_state === update_state) {
-      update_show_level_filter(null);
-    } else {
-      update_show_level_filter(update_state);
-    }
+    current_state === update_state
+      ? update_show_level_filter(undefined)
+      : update_show_level_filter(update_state);
   };
 
   return (
