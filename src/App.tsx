@@ -6,10 +6,12 @@ import SELECT_MULTI from "./components/select_multi";
 import SELECT_SINGLE from "./components/select_single";
 import TU_LIST from "./components/tu_list";
 
-import config from "./app_config";
+import config, { mainQueryParamsConfig, maxYear, minYear } from "./app_config";
 import { nest_tu_names } from "./data/filter_year_unit";
 import useResizeObserver from "./components/utils";
 import { filter_year_unit } from "./data/filter_year_unit";
+import { useQueryParam } from "use-query-params";
+import mathClamp from "./helpers/functions/mathClamp";
 
 const { med_field, app_text } = config;
 
@@ -51,7 +53,6 @@ export interface TreatmentUnit {
   hf_full: string;
   rhf: string;
 }
-
 export interface AggData {
   nation: {
     filtered_by_unit: StatisticData[];
@@ -60,6 +61,21 @@ export interface AggData {
   filtered_by_unit: StatisticData[];
   filtered_by_year: StatisticData[];
   all_filtered_by_year: StatisticData[];
+}
+
+function validate_treatment_units(
+  treatment_units: string[],
+  valid_treatment_units: TreatmentUnit[]
+) {
+  return (
+    (treatment_units
+      ?.filter((x) =>
+        valid_treatment_units.some(
+          (tu) => [tu.hospital, tu.hf, tu.rhf].indexOf(x) !== -1
+        )
+      )
+      .slice(0, 5) as string[]) || []
+  );
 }
 
 function APP() {
@@ -82,7 +98,6 @@ function APP() {
   const [tu_names, update_tu_names] = useState<TreatmentUnit[]>(
     (window as any).tu_names ? (window as any).tu_names : []
   );
-
   const indicatorSorter = useMemo(() => {
     const descriptionMap: { [key: string]: string } = {};
     for (const d of description) {
@@ -155,16 +170,27 @@ function APP() {
       }
     );
   }
-
-  //states
-  const [treatment_units, update_treatment_units] = useState<string[]>([]);
-  const [selected_year, update_selected_year] = useState(2019);
-  const [selected_row, update_selected_row] = useState(null);
+  const [treatment_units, update_treatment_units] = useQueryParam(
+    "selected_treatment_units",
+    mainQueryParamsConfig.selected_treatment_units
+  );
+  const validated_treatment_units = validate_treatment_units(
+    treatment_units as string[],
+    tu_names
+  );
+  const [selected_year, update_selected_year] = useQueryParam(
+    "year",
+    mainQueryParamsConfig.year
+  );
+  const validated_selected_year = mathClamp(
+    selected_year || maxYear,
+    minYear,
+    maxYear
+  );
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
   >(null);
   const [legend_height, update_legend_height] = useState(null);
-
   const opts_hosp = Array.from(
     new Set(sortedIndicatorHospital.map((d) => d.unit_name))
   )
@@ -183,21 +209,17 @@ function APP() {
     { label: "HF", options: opts_hf },
     { label: "RHF", options: opts_rhf },
   ];
-  let opts_year = [2019, 2018, 2017, 2016];
-
   const input_data = {
-    selected_unit: treatment_units,
-    selected_year: selected_year,
+    selected_unit: validated_treatment_units,
+    selected_year: validated_selected_year,
   };
-
   const hospital = filter_year_unit(sortedIndicatorHospital, input_data);
   const hf = filter_year_unit(sortedIndicatorHf, input_data);
   const rhf = filter_year_unit(sortedIndicatorRhf, input_data);
   const nation = filter_year_unit(sortedIndicatorNation, {
     selected_unit: ["Nasjonalt"],
-    selected_year: selected_year,
+    selected_year: validated_selected_year,
   });
-
   const tu_name_hospital = Array.from(
     new Set(
       hospital.filtered_by_year.map((d) => d.unit_name) // [data_config.column.treatment_unit]
@@ -215,7 +237,6 @@ function APP() {
   ).sort();
   const tu_name = tu_name_hospital.concat(tu_name_hf, tu_name_rhf);
   const colspan = tu_name.length + 2;
-
   const agg_data: AggData = {
     nation,
     filtered_by_unit: [
@@ -230,14 +251,13 @@ function APP() {
     ],
     all_filtered_by_year: [
       ...indicator_hosp.filter(
-        (d) => d.year === selected_year // [data_config.column.year]
+        (d) => d.year === validated_selected_year // [data_config.column.year]
       ),
       ...indicator_nation.filter(
-        (d) => d.year === selected_year // [data_config.column.year]
+        (d) => d.year === validated_selected_year // [data_config.column.year]
       ),
     ],
   };
-
   const unique_indicators =
     tu_name.length > 0
       ? Array.from(
@@ -265,9 +285,10 @@ function APP() {
     return { registry_name: registry, number_ind: ind.length, indicators: ind };
   });
   const ind_per_reg = unique_register;
-
   const tu_structure = nest_tu_names(tu_names);
-
+  const valid_years = Array.from(Array(maxYear - minYear + 1).keys()).map(
+    (v) => minYear + v
+  );
   //height of the selection bar
   const selection_bar_ref = useRef<HTMLDivElement | null>(null);
   const selection_bar_dim = useResizeObserver(selection_bar_ref);
@@ -278,7 +299,6 @@ function APP() {
     const top = (selection_bar_dim.target as HTMLElement).offsetHeight ?? "";
     update_selection_bar_height(top);
   }, [selection_bar_dim]);
-
   return (
     <div className="app-container">
       <HEADER />
@@ -288,33 +308,30 @@ function APP() {
             <SELECT_MULTI
               opts={opts_tu}
               update_tu={update_treatment_units}
-              treatment_unit={treatment_units}
+              treatment_unit={validated_treatment_units}
             />
             <TU_LIST
               tu_structure={tu_structure}
-              treatment_units={treatment_units}
+              treatment_units={validated_treatment_units}
               update_treatment_units={update_treatment_units}
             />
           </div>
           <div className="year-selection">
             <SELECT_SINGLE
-              opts={opts_year}
+              opts={valid_years}
               update_year={update_selected_year}
-              selected_row={selected_row}
-              update_selected_row={update_selected_row}
+              selected_year={validated_selected_year}
             />
           </div>
         </div>
         <MAIN
           ind_per_reg={ind_per_reg}
           treatment_units={tu_name}
-          selected_year={selected_year}
+          selected_year={validated_selected_year}
           med_field={med_field}
           app_text={app_text}
           colspan={colspan}
           data={{ agg_data, description }}
-          selected_row={selected_row}
-          update_selected_row={update_selected_row}
           selection_bar_height={selection_bar_height}
           legend_height={legend_height}
           update_legend_height={update_legend_height}

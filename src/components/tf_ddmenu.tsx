@@ -9,7 +9,7 @@ interface Props {
   zoom: boolean;
   update_zoom: React.Dispatch<React.SetStateAction<boolean>>;
   update_show_level: React.Dispatch<React.SetStateAction<boolean>>;
-  update_selected_row(row: string): void;
+  update_selected_row(row: string | undefined): void;
   description: Description;
 }
 
@@ -99,7 +99,11 @@ const DD_MENU = (props: Props) => {
       click: () => getDownloadURL(svgContainer),
       class: "dd-download",
     },
-    { label: "Lukk", click: () => update_selected_row(""), class: "dd-close" },
+    {
+      label: "Lukk",
+      click: () => update_selected_row(undefined),
+      class: "dd-close",
+    },
   ];
 
   let mouse_leave_dd_cont_timeout: number;
