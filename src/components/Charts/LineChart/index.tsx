@@ -33,7 +33,7 @@ export interface Props {
   margin?: Margin;
 }
 
-const MARGIN = { top: 8, bottom: 34, right: 0.15, left: 0.2 };
+const MARGIN = { top: 8, bottom: 34, right: 0.14, left: 0.05 };
 
 const LineChart = (props: Props) => {
   const {
@@ -270,11 +270,12 @@ const LineChart = (props: Props) => {
           width: "80%",
         }}
       />
-      <div ref={svgContainerRef}>
+      <div ref={svgContainerRef} style={{ width: "90%", margin: "auto" }}>
         <svg
           className={styles.lineChart}
           height={marginOffsets.top + height + marginOffsets.bottom}
-          width={marginOffsets.left + width + marginOffsets.right}
+          width={width}
+          style={{ backgroundColor: "#eef6f7" }}
         >
           <g
             transform={`translate(${marginOffsets.left}, ${marginOffsets.top})`}
