@@ -125,14 +125,7 @@ export const med_field = [
   {
     react_key: "barn",
     name: "Barn",
-    key: [
-      "cp",
-      "hofte_barn",
-      "barnekreft",
-      "barnediabetes",
-      "ganespalt",
-      "nnk",
-    ],
+    key: ["cp", "hofte_barn", "barnekreft", "barnediabetes", "lkg", "nnk"],
   } /*,
   {  
     react_key: "annet",
