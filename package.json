@@ -79,7 +79,7 @@
     "@storybook/addon-links": "^6.1.17",
     "@storybook/node-logger": "^6.1.17",
     "@storybook/preset-create-react-app": "^3.1.5",
-    "@storybook/react": "^6.1.17",
+    "@storybook/react": "^6.1.18",
     "@types/faker": "^5.1.6",
     "@types/react-router-dom": "^5.1.7",
     "faker": "^5.4.0",
