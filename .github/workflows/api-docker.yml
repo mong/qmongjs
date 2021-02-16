@@ -5,9 +5,6 @@ on:
   push:
     branches:
       - api
-  pull_request:
-    branches:
-      - master
 
 jobs:
   push_to_registries:
@@ -45,6 +42,15 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+  speed_up:
+    name: beanstalk
+    runs-on: ubuntu-latest
+    env:
+      REACT_APP_API_HOST: "https://d2mrl4o83i9jyx.cloudfront.net"
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: 'eu-west-1'
+    steps:
       - name: elasticbeanstalk Step 1
         run: aws elasticbeanstalk create-application-version --application-name mong-api --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key="Dockerrun.aws.json" --version-label ${GITHUB_SHA:0:8} --description "Test cli deploy"
       - name: elasticbeanstalk Step 2
