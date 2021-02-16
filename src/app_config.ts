@@ -97,16 +97,16 @@ export const med_field = [
     name: "Rehabilitering",
     key: ["nnrr", "norscir"],
   },
-  {
+/*  {
     react_key: "autoimmun",
     name: "Autoimmune sykdommer",
     key: ["roas", "norvas"],
-  },
-  {
+  },*/
+/*  {
     react_key: "revma",
     name: "Revmatologi",
     key: ["norartritt", "norvas"],
-  } /*,
+  }*/ /*,
   {  
     react_key: "onh", 
     name: "Øre-nese-hals",
@@ -121,7 +121,7 @@ export const med_field = [
     react_key: "psyk",
     name: "Psykisk helse og rus",
     key: ["kvarus","norspis"]
-  }*/,
+  },*/
   {
     react_key: "barn",
     name: "Barn",
