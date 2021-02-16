@@ -18,7 +18,7 @@ export const filter_year_unit = (
   data: StatisticData[],
   input_params: InputParams
 ) => {
-  const { selected_unit, selected_year } = input_params;
+  const { selected_unit = [], selected_year } = input_params;
 
   const filtered_by_unit = data.filter(
     (d) => selected_unit.includes(d.unit_name) // [data_config.column.treatment_unit]

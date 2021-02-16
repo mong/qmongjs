@@ -6,6 +6,8 @@ import TF_LONG_DESCRIPTION from "../tf_description";
 import { GraphData } from "../main_component";
 import Chart from "./Chart";
 import { level_boundary } from "./tr_utils";
+import { useQueryParam } from "use-query-params";
+import { mainQueryParamsConfig } from "../../app_config";
 
 export interface Props {
   colspan?: number;
@@ -25,7 +27,10 @@ function TF_FIGURE(props: Props) {
   } = props;
 
   const svgContainerRef = useRef<HTMLDivElement>(null);
-  const [chart_type, update_chart_type] = useState<"line" | "bar">("line");
+  const [chart_type = "line", update_chart_type] = useQueryParam<
+    string | undefined
+  >("chart_type", mainQueryParamsConfig.chart_type);
+  const valid_chart_type = chart_type === "bar" ? "bar" : "line";
   const [zoom, update_zoom] = useState(true);
   const [show_level, update_show_level] = useState(false);
 
@@ -55,16 +60,17 @@ function TF_FIGURE(props: Props) {
               zoom={zoom}
               update_zoom={update_zoom}
               update_selected_row={update_selected_row}
+              description={data.description[0]}
             />
             <TF_BUTTON
-              chart_type={chart_type}
+              chart_type={valid_chart_type}
               update_chart_type={update_chart_type}
             />
           </div>
           <Chart
             svgContainerRef={svgContainerRef}
             data={data}
-            chartType={chart_type}
+            chartType={valid_chart_type}
             zoom={zoom}
             showLevel={show_level}
             levels={levels}

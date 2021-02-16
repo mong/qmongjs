@@ -13,8 +13,6 @@ function TABLE_BODY(props: RegisterProps) {
     treatment_year,
     med_field_filter,
     show_level_filter,
-    selected_row,
-    update_selected_row,
   } = props;
 
   //if no valid treatment unit loop through the national
@@ -41,8 +39,6 @@ function TABLE_BODY(props: RegisterProps) {
               treatment_year={treatment_year}
               med_field_filter={med_field_filter}
               show_level_filter={show_level_filter}
-              selected_row={selected_row}
-              update_selected_row={update_selected_row}
             />
           );
         }

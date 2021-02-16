@@ -11,8 +11,6 @@ export function buildMainProps(overrides: Partial<Props>): Props {
     app_text,
     colspan: 1,
     data: buildGraphData({}),
-    selected_row: null,
-    update_selected_row: (row: any) => {},
     selection_bar_height: null,
     legend_height: null,
     update_legend_height: (height: any) => {},

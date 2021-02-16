@@ -33,7 +33,7 @@ export interface Props {
   margin?: Margin;
 }
 
-const MARGIN = { top: 8, bottom: 34, right: 0.15, left: 0.2 };
+const MARGIN = { top: 8, bottom: 34, right: 0.14, left: 0.05 };
 
 const LineChart = (props: Props) => {
   const {
@@ -136,10 +136,12 @@ const LineChart = (props: Props) => {
       });
 
     // Y-Axis
+    const yAxisFormat =
+      yScaleDomain[1] - yScaleDomain[0] < 0.06 ? ",.1%" : ",.0%";
     const yAxis = axisRight(yScale)
       .ticks(theme.y_axis_tick_number)
       .tickSize(innerWidth)
-      .tickFormat(format(",.0%"));
+      .tickFormat(format(yAxisFormat));
     const yAxisElement = container.select<SVGGElement>(".y-axis");
     yAxisElement.transition().duration(1000).call(yAxis);
     yAxisElement.select(".domain").remove();
@@ -268,11 +270,12 @@ const LineChart = (props: Props) => {
           width: "80%",
         }}
       />
-      <div ref={svgContainerRef}>
+      <div ref={svgContainerRef} style={{ width: "90%", margin: "auto" }}>
         <svg
           className={styles.lineChart}
           height={marginOffsets.top + height + marginOffsets.bottom}
-          width={marginOffsets.left + width + marginOffsets.right}
+          width={width}
+          style={{ backgroundColor: "#eef6f7" }}
         >
           <g
             transform={`translate(${marginOffsets.left}, ${marginOffsets.top})`}
@@ -311,7 +314,7 @@ function getYScaleDomain(data: DataPoint[], zoom: boolean): [number, number] {
   const maxValue = Math.max(...data.map((d) => d.value));
   const minValue = Math.min(...data.map((d) => d.value));
 
-  const additionalMargin = 0; //(maxValue + minValue) * 0.2;
+  const additionalMargin = (maxValue - minValue) * 0.2;
   const yMin = Math.floor((minValue - additionalMargin) * 100) / 100;
   const yMax = Math.ceil((maxValue + additionalMargin) * 100) / 100;
 

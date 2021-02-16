@@ -32,7 +32,7 @@ export interface Props {
   margin?: Margin;
 }
 
-const MARGIN = { top: 0.05, bottom: 10, right: 0.15, left: 0.2 };
+const MARGIN = { top: 0.05, bottom: 10, right: 0.05, left: 0.25 };
 
 function BarChart(props: Props) {
   const {
@@ -47,8 +47,7 @@ function BarChart(props: Props) {
   const delayedZoom = useDelayInitial(zoom, false);
   const svgRef = useRef<SVGSVGElement>(null);
   const entry = useResizeObserver(wrapperRef);
-
-  const height = Math.max(data.length * 50, 250);
+  const height = Math.max(data.length * 30, 150);
   const width = entry?.contentRect.width ?? 0;
 
   const marginOffsets = {
@@ -72,10 +71,9 @@ function BarChart(props: Props) {
     const yScale = scaleBand()
       .domain(data.map((d) => d.label))
       .range([0, innerHeight])
-      .padding(0.5);
+      .padding(0.3);
 
     const xScaleDomain = getXScaleDomain(data, delayedZoom);
-
     const xScale = scaleLinear()
       .domain(xScaleDomain)
       .range([0, innerWidth])
@@ -87,13 +85,15 @@ function BarChart(props: Props) {
     yAxisElement.call(yAxis);
     yAxisElement.select(".domain").remove();
     yAxisElement.selectAll(".tick line").remove();
-    yAxisElement.selectAll(".tick text").attr("font-size", "0.9rem");
+    yAxisElement.selectAll(".tick text").attr("font-size", "1.2rem");
 
     // X-Axis
+    const xAxisFormat =
+      xScaleDomain[1] - xScaleDomain[0] < 0.06 ? ",.1%" : ",.0%";
     const xAxis = axisBottom(xScale)
       .tickSize(-innerHeight)
       .ticks(6)
-      .tickFormat(format(",.0%"));
+      .tickFormat(format(xAxisFormat));
     const xAxisElement = svg.select<SVGGElement>(".x-axis");
     xAxisElement
       .style("transform", `translateY(${innerHeight}px)`)
@@ -154,12 +154,13 @@ function BarChart(props: Props) {
   }, [data, displayLevels, levels, delayedZoom, innerHeight, innerWidth]);
 
   return (
-    <div ref={wrapperRef}>
+    <div ref={wrapperRef} style={{ width: "90%", margin: "auto" }}>
       <svg
         ref={svgRef}
         className={styles.barChart}
         height={marginOffsets.top + height + marginOffsets.bottom}
-        width={marginOffsets.left + width + marginOffsets.right}
+        width={width}
+        style={{ backgroundColor: "#eef6f7" }}
       >
         <g transform={`translate(${marginOffsets.left}, ${marginOffsets.top})`}>
           <g className="x-axis" />

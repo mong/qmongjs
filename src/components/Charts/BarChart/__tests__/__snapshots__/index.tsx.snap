@@ -2,10 +2,13 @@
 
 exports[`Render with levels @250px 1`] = `
 <div>
-  <div>
+  <div
+    style="width: 90%; margin: auto;"
+  >
     <svg
       class="barChart"
-      height="250"
+      height="150"
+      style="background-color: rgb(238, 246, 247);"
       width="250"
     >
       <g
@@ -16,7 +19,7 @@ exports[`Render with levels @250px 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          style="transform: translateY(250px);"
+          style="transform: translateY(150px);"
           text-anchor="middle"
         >
           <g
@@ -26,7 +29,7 @@ exports[`Render with levels @250px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -44,7 +47,7 @@ exports[`Render with levels @250px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -62,7 +65,7 @@ exports[`Render with levels @250px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -80,7 +83,7 @@ exports[`Render with levels @250px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -98,7 +101,7 @@ exports[`Render with levels @250px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -116,7 +119,7 @@ exports[`Render with levels @250px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -138,12 +141,12 @@ exports[`Render with levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,41.66666666666666)"
+            transform="translate(0,22.674418604651155)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               a
@@ -152,12 +155,12 @@ exports[`Render with levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,97.22222222222221)"
+            transform="translate(0,57.55813953488371)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               b
@@ -166,12 +169,12 @@ exports[`Render with levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,152.77777777777777)"
+            transform="translate(0,92.44186046511626)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               c
@@ -180,12 +183,12 @@ exports[`Render with levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,208.33333333333334)"
+            transform="translate(0,127.32558139534882)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               d
@@ -199,7 +202,7 @@ exports[`Render with levels @250px 1`] = `
             class="level"
             data-testid="level-high"
             fill="#3baa34"
-            height="250"
+            height="150"
             opacity="0.2"
             width="25"
             x="225"
@@ -209,7 +212,7 @@ exports[`Render with levels @250px 1`] = `
             class="level"
             data-testid="level-mid"
             fill="#fd9c00"
-            height="250"
+            height="150"
             opacity="0.2"
             width="100"
             x="125"
@@ -219,7 +222,7 @@ exports[`Render with levels @250px 1`] = `
             class="level"
             data-testid="level-low"
             fill="#e30713"
-            height="250"
+            height="150"
             opacity="0.2"
             width="125"
             x="0"
@@ -233,41 +236,41 @@ exports[`Render with levels @250px 1`] = `
             class="bar"
             data-testid="bar-a"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="250"
             x="0"
-            y="27.77777777777777"
+            y="10.465116279069761"
           />
           <rect
             class="bar"
             data-testid="bar-b"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="37.5"
             x="0"
-            y="83.33333333333333"
+            y="45.34883720930232"
           />
           <rect
             class="bar"
             data-testid="bar-c"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="75"
             x="0"
-            y="138.88888888888889"
+            y="80.23255813953487"
           />
           <rect
             class="bar"
             data-testid="bar-d"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="25"
             x="0"
-            y="194.44444444444446"
+            y="115.11627906976743"
           />
         </g>
       </g>
@@ -278,10 +281,13 @@ exports[`Render with levels @250px 1`] = `
 
 exports[`Render with levels @500px 1`] = `
 <div>
-  <div>
+  <div
+    style="width: 90%; margin: auto;"
+  >
     <svg
       class="barChart"
-      height="250"
+      height="150"
+      style="background-color: rgb(238, 246, 247);"
       width="500"
     >
       <g
@@ -292,7 +298,7 @@ exports[`Render with levels @500px 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          style="transform: translateY(250px);"
+          style="transform: translateY(150px);"
           text-anchor="middle"
         >
           <g
@@ -302,7 +308,7 @@ exports[`Render with levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -320,7 +326,7 @@ exports[`Render with levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -338,7 +344,7 @@ exports[`Render with levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -356,7 +362,7 @@ exports[`Render with levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -374,7 +380,7 @@ exports[`Render with levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -392,7 +398,7 @@ exports[`Render with levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -414,12 +420,12 @@ exports[`Render with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,41.66666666666666)"
+            transform="translate(0,22.674418604651155)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               a
@@ -428,12 +434,12 @@ exports[`Render with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,97.22222222222221)"
+            transform="translate(0,57.55813953488371)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               b
@@ -442,12 +448,12 @@ exports[`Render with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,152.77777777777777)"
+            transform="translate(0,92.44186046511626)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               c
@@ -456,12 +462,12 @@ exports[`Render with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,208.33333333333334)"
+            transform="translate(0,127.32558139534882)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               d
@@ -475,7 +481,7 @@ exports[`Render with levels @500px 1`] = `
             class="level"
             data-testid="level-high"
             fill="#3baa34"
-            height="250"
+            height="150"
             opacity="0.2"
             width="50"
             x="450"
@@ -485,7 +491,7 @@ exports[`Render with levels @500px 1`] = `
             class="level"
             data-testid="level-mid"
             fill="#fd9c00"
-            height="250"
+            height="150"
             opacity="0.2"
             width="200"
             x="250"
@@ -495,7 +501,7 @@ exports[`Render with levels @500px 1`] = `
             class="level"
             data-testid="level-low"
             fill="#e30713"
-            height="250"
+            height="150"
             opacity="0.2"
             width="250"
             x="0"
@@ -509,41 +515,41 @@ exports[`Render with levels @500px 1`] = `
             class="bar"
             data-testid="bar-a"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="500"
             x="0"
-            y="27.77777777777777"
+            y="10.465116279069761"
           />
           <rect
             class="bar"
             data-testid="bar-b"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="75"
             x="0"
-            y="83.33333333333333"
+            y="45.34883720930232"
           />
           <rect
             class="bar"
             data-testid="bar-c"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="150"
             x="0"
-            y="138.88888888888889"
+            y="80.23255813953487"
           />
           <rect
             class="bar"
             data-testid="bar-d"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="50"
             x="0"
-            y="194.44444444444446"
+            y="115.11627906976743"
           />
         </g>
       </g>
@@ -554,10 +560,13 @@ exports[`Render with levels @500px 1`] = `
 
 exports[`Render with levels reversed @500px 1`] = `
 <div>
-  <div>
+  <div
+    style="width: 90%; margin: auto;"
+  >
     <svg
       class="barChart"
-      height="250"
+      height="150"
+      style="background-color: rgb(238, 246, 247);"
       width="500"
     >
       <g
@@ -568,7 +577,7 @@ exports[`Render with levels reversed @500px 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          style="transform: translateY(250px);"
+          style="transform: translateY(150px);"
           text-anchor="middle"
         >
           <g
@@ -578,7 +587,7 @@ exports[`Render with levels reversed @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -596,7 +605,7 @@ exports[`Render with levels reversed @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -614,7 +623,7 @@ exports[`Render with levels reversed @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -632,7 +641,7 @@ exports[`Render with levels reversed @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -650,7 +659,7 @@ exports[`Render with levels reversed @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -668,7 +677,7 @@ exports[`Render with levels reversed @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -690,12 +699,12 @@ exports[`Render with levels reversed @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,41.66666666666666)"
+            transform="translate(0,22.674418604651155)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               a
@@ -704,12 +713,12 @@ exports[`Render with levels reversed @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,97.22222222222221)"
+            transform="translate(0,57.55813953488371)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               b
@@ -718,12 +727,12 @@ exports[`Render with levels reversed @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,152.77777777777777)"
+            transform="translate(0,92.44186046511626)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               c
@@ -732,12 +741,12 @@ exports[`Render with levels reversed @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,208.33333333333334)"
+            transform="translate(0,127.32558139534882)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               d
@@ -751,7 +760,7 @@ exports[`Render with levels reversed @500px 1`] = `
             class="level"
             data-testid="level-high"
             fill="#3baa34"
-            height="250"
+            height="150"
             opacity="0.2"
             width="250"
             x="0"
@@ -761,7 +770,7 @@ exports[`Render with levels reversed @500px 1`] = `
             class="level"
             data-testid="level-mid"
             fill="#fd9c00"
-            height="250"
+            height="150"
             opacity="0.2"
             width="200"
             x="250"
@@ -771,7 +780,7 @@ exports[`Render with levels reversed @500px 1`] = `
             class="level"
             data-testid="level-low"
             fill="#e30713"
-            height="250"
+            height="150"
             opacity="0.2"
             width="50"
             x="450"
@@ -785,41 +794,41 @@ exports[`Render with levels reversed @500px 1`] = `
             class="bar"
             data-testid="bar-a"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="500"
             x="0"
-            y="27.77777777777777"
+            y="10.465116279069761"
           />
           <rect
             class="bar"
             data-testid="bar-b"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="75"
             x="0"
-            y="83.33333333333333"
+            y="45.34883720930232"
           />
           <rect
             class="bar"
             data-testid="bar-c"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="150"
             x="0"
-            y="138.88888888888889"
+            y="80.23255813953487"
           />
           <rect
             class="bar"
             data-testid="bar-d"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="50"
             x="0"
-            y="194.44444444444446"
+            y="115.11627906976743"
           />
         </g>
       </g>
@@ -830,10 +839,13 @@ exports[`Render with levels reversed @500px 1`] = `
 
 exports[`Render without levels @250px 1`] = `
 <div>
-  <div>
+  <div
+    style="width: 90%; margin: auto;"
+  >
     <svg
       class="barChart"
-      height="250"
+      height="150"
+      style="background-color: rgb(238, 246, 247);"
       width="250"
     >
       <g
@@ -844,7 +856,7 @@ exports[`Render without levels @250px 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          style="transform: translateY(250px);"
+          style="transform: translateY(150px);"
           text-anchor="middle"
         >
           <g
@@ -854,7 +866,7 @@ exports[`Render without levels @250px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -872,7 +884,7 @@ exports[`Render without levels @250px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -890,7 +902,7 @@ exports[`Render without levels @250px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -908,7 +920,7 @@ exports[`Render without levels @250px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -926,7 +938,7 @@ exports[`Render without levels @250px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -944,7 +956,7 @@ exports[`Render without levels @250px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -966,12 +978,12 @@ exports[`Render without levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,41.66666666666666)"
+            transform="translate(0,22.674418604651155)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               a
@@ -980,12 +992,12 @@ exports[`Render without levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,97.22222222222221)"
+            transform="translate(0,57.55813953488371)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               b
@@ -994,12 +1006,12 @@ exports[`Render without levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,152.77777777777777)"
+            transform="translate(0,92.44186046511626)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               c
@@ -1008,12 +1020,12 @@ exports[`Render without levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,208.33333333333334)"
+            transform="translate(0,127.32558139534882)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               d
@@ -1030,41 +1042,41 @@ exports[`Render without levels @250px 1`] = `
             class="bar"
             data-testid="bar-a"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="250"
             x="0"
-            y="27.77777777777777"
+            y="10.465116279069761"
           />
           <rect
             class="bar"
             data-testid="bar-b"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="37.5"
             x="0"
-            y="83.33333333333333"
+            y="45.34883720930232"
           />
           <rect
             class="bar"
             data-testid="bar-c"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="75"
             x="0"
-            y="138.88888888888889"
+            y="80.23255813953487"
           />
           <rect
             class="bar"
             data-testid="bar-d"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="25"
             x="0"
-            y="194.44444444444446"
+            y="115.11627906976743"
           />
         </g>
       </g>
@@ -1075,10 +1087,13 @@ exports[`Render without levels @250px 1`] = `
 
 exports[`Render without levels @500px 1`] = `
 <div>
-  <div>
+  <div
+    style="width: 90%; margin: auto;"
+  >
     <svg
       class="barChart"
-      height="250"
+      height="150"
+      style="background-color: rgb(238, 246, 247);"
       width="500"
     >
       <g
@@ -1089,7 +1104,7 @@ exports[`Render without levels @500px 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          style="transform: translateY(250px);"
+          style="transform: translateY(150px);"
           text-anchor="middle"
         >
           <g
@@ -1099,7 +1114,7 @@ exports[`Render without levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -1117,7 +1132,7 @@ exports[`Render without levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -1135,7 +1150,7 @@ exports[`Render without levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -1153,7 +1168,7 @@ exports[`Render without levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -1171,7 +1186,7 @@ exports[`Render without levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -1189,7 +1204,7 @@ exports[`Render without levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -1211,12 +1226,12 @@ exports[`Render without levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,41.66666666666666)"
+            transform="translate(0,22.674418604651155)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               a
@@ -1225,12 +1240,12 @@ exports[`Render without levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,97.22222222222221)"
+            transform="translate(0,57.55813953488371)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               b
@@ -1239,12 +1254,12 @@ exports[`Render without levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,152.77777777777777)"
+            transform="translate(0,92.44186046511626)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               c
@@ -1253,12 +1268,12 @@ exports[`Render without levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,208.33333333333334)"
+            transform="translate(0,127.32558139534882)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               d
@@ -1275,41 +1290,41 @@ exports[`Render without levels @500px 1`] = `
             class="bar"
             data-testid="bar-a"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="500"
             x="0"
-            y="27.77777777777777"
+            y="10.465116279069761"
           />
           <rect
             class="bar"
             data-testid="bar-b"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="75"
             x="0"
-            y="83.33333333333333"
+            y="45.34883720930232"
           />
           <rect
             class="bar"
             data-testid="bar-c"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="150"
             x="0"
-            y="138.88888888888889"
+            y="80.23255813953487"
           />
           <rect
             class="bar"
             data-testid="bar-d"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="50"
             x="0"
-            y="194.44444444444446"
+            y="115.11627906976743"
           />
         </g>
       </g>
@@ -1320,10 +1335,13 @@ exports[`Render without levels @500px 1`] = `
 
 exports[`Render zoomed with levels @500px 1`] = `
 <div>
-  <div>
+  <div
+    style="width: 90%; margin: auto;"
+  >
     <svg
       class="barChart"
-      height="250"
+      height="150"
+      style="background-color: rgb(238, 246, 247);"
       width="500"
     >
       <g
@@ -1334,7 +1352,7 @@ exports[`Render zoomed with levels @500px 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          style="transform: translateY(250px);"
+          style="transform: translateY(150px);"
           text-anchor="middle"
         >
           <g
@@ -1344,7 +1362,7 @@ exports[`Render zoomed with levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -1362,7 +1380,7 @@ exports[`Render zoomed with levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -1380,7 +1398,7 @@ exports[`Render zoomed with levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -1398,7 +1416,7 @@ exports[`Render zoomed with levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -1416,7 +1434,7 @@ exports[`Render zoomed with levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -1434,7 +1452,7 @@ exports[`Render zoomed with levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -1452,7 +1470,7 @@ exports[`Render zoomed with levels @500px 1`] = `
           >
             <line
               stroke="#D2D3D4"
-              y2="-250"
+              y2="-150"
             />
             <text
               dy="0.71em"
@@ -1474,12 +1492,12 @@ exports[`Render zoomed with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,41.66666666666666)"
+            transform="translate(0,22.674418604651155)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               a
@@ -1488,12 +1506,12 @@ exports[`Render zoomed with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,97.22222222222221)"
+            transform="translate(0,57.55813953488371)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               b
@@ -1502,12 +1520,12 @@ exports[`Render zoomed with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,152.77777777777777)"
+            transform="translate(0,92.44186046511626)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               c
@@ -1516,12 +1534,12 @@ exports[`Render zoomed with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,208.33333333333334)"
+            transform="translate(0,127.32558139534882)"
           >
             <text
               dy="0.32em"
               fill="currentColor"
-              font-size="0.9rem"
+              font-size="1.2rem"
               x="-9"
             >
               d
@@ -1535,7 +1553,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             class="level"
             data-testid="level-high"
             fill="#3baa34"
-            height="250"
+            height="150"
             opacity="0.2"
             width="0"
             x="500"
@@ -1545,7 +1563,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             class="level"
             data-testid="level-mid"
             fill="#fd9c00"
-            height="250"
+            height="150"
             opacity="0.2"
             width="90.1639344262295"
             x="409.8360655737705"
@@ -1555,7 +1573,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             class="level"
             data-testid="level-low"
             fill="#e30713"
-            height="250"
+            height="150"
             opacity="0.2"
             width="409.8360655737705"
             x="0"
@@ -1569,41 +1587,41 @@ exports[`Render zoomed with levels @500px 1`] = `
             class="bar"
             data-testid="bar-a"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="409.8360655737705"
             x="0"
-            y="27.77777777777777"
+            y="10.465116279069761"
           />
           <rect
             class="bar"
             data-testid="bar-b"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="122.95081967213115"
             x="0"
-            y="83.33333333333333"
+            y="45.34883720930232"
           />
           <rect
             class="bar"
             data-testid="bar-c"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="245.9016393442623"
             x="0"
-            y="138.88888888888889"
+            y="80.23255813953487"
           />
           <rect
             class="bar"
             data-testid="bar-d"
             fill="#7EBEC7"
-            height="27.77777777777778"
+            height="24.418604651162788"
             opacity="1"
             width="81.9672131147541"
             x="0"
-            y="194.44444444444446"
+            y="115.11627906976743"
           />
         </g>
       </g>

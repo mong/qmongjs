@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { select, selectAll } from "d3";
 
+import { Description } from "../App";
+
 interface Props {
   svgContainer: React.RefObject<HTMLDivElement>;
   show_level: boolean;
   zoom: boolean;
   update_zoom: React.Dispatch<React.SetStateAction<boolean>>;
   update_show_level: React.Dispatch<React.SetStateAction<boolean>>;
-  update_selected_row(row: string): void;
+  update_selected_row(row: string | undefined): void;
+  description: Description;
 }
 
 const DD_MENU = (props: Props) => {
@@ -18,15 +21,12 @@ const DD_MENU = (props: Props) => {
     update_zoom,
     update_selected_row,
     svgContainer,
+    description,
   } = props;
 
   const [dd_menu_status, set_dd_menu_status] = useState("inactive");
-  const [downloadHref, setDownloadHref] = useState<string | null>(null);
 
-  function getDownloadURL(
-    svgContainer: React.RefObject<HTMLDivElement>,
-    callback: (a: any, b?: any) => void
-  ) {
+  function getDownloadURL(svgContainer: React.RefObject<HTMLDivElement>) {
     if (!svgContainer.current) return;
     let src = svgContainer.current.getElementsByTagName("svg")[0];
 
@@ -60,8 +60,11 @@ const DD_MENU = (props: Props) => {
       ctx!.drawImage(image, 0, 0);
       const url = canvas.toDataURL("image/png");
       selectAll([canvas, image]).remove();
-
-      callback(null, url);
+      const element = document.createElement("a");
+      element.download = `${description.id}.png`;
+      element.href = url;
+      element.click();
+      element.remove();
     };
     image.onerror = function (e) {
       console.log(e);
@@ -81,18 +84,15 @@ const DD_MENU = (props: Props) => {
       click: () => update_zoom((zoom) => !zoom),
       class: "dd-zoom",
     },
-    { label: "Lukk", click: () => update_selected_row(""), class: "dd-close" },
     {
-      label: "Last ned graf",
-      click: () =>
-        getDownloadURL(svgContainer, (error, url) => {
-          if (error) {
-            console.error(error);
-          } else {
-            setDownloadHref(url);
-          }
-        }),
+      label: "Last ned figur",
+      click: () => getDownloadURL(svgContainer),
       class: "dd-download",
+    },
+    {
+      label: "Lukk",
+      click: () => update_selected_row(undefined),
+      class: "dd-close",
     },
   ];
 
@@ -104,27 +104,6 @@ const DD_MENU = (props: Props) => {
   };
 
   const dd_list = dropdown_entries.map((dd) => {
-    if (dd.class === "dd-download") {
-      return (
-        <li key={dd.class}>
-          {downloadHref ? (
-            <a
-              className={dd.class}
-              href={downloadHref}
-              download="graph.png"
-              onClick={() => setDownloadHref(null)}
-            >
-              {" "}
-              {dd.label}{" "}
-            </a>
-          ) : (
-            <div className={dd.class} onClick={dd.click}>
-              Generere graf for nedlasting
-            </div>
-          )}
-        </li>
-      );
-    }
     return (
       <li key={dd.class}>
         <div className={dd.class} onClick={dd.click}>

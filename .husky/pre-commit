@@ -1,0 +1,2 @@
+npm run check-types
+npx --no-install lint-staged
