@@ -22,7 +22,7 @@ const connections: { [env: string]: Knex.Config } = {
     client: "mysql",
     connection: {
       host: process.env.DB_HOST,
-      database: "mong",
+      database: process.env.DB_NAME,
       user: process.env.DB_USR,
       password: process.env.DB_PWD,
     },

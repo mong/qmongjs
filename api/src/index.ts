@@ -22,7 +22,7 @@ const cache: RequestHandler = (req, res, next) => {
 };
 
 // Routes
-app.get("/", (_, res) => res.json({ status: "SOK" }));
+app.get("/", (_, res) => res.json({ status: "OK" }));
 app.get("/description", cache, Description.index);
 app.get("/indicator", cache, Indicator.index);
 app.get("/legacy", cache, Legacy.index);
