@@ -4,6 +4,7 @@
   "description": "javascript module for qmongr",
   "private": true,
   "scripts": {
+    "postinstall": "husky install",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "is-ci test:coverage test:base",
