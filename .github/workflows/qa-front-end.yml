@@ -21,8 +21,8 @@ jobs:
       - name: Build package
         run: npm install && npm run build
       - name: sync
-        run: aws s3 sync build s3://skde-resultater.no --delete --cache-control "public, max-age=31536000"
+        run: aws s3 sync build s3://qa.skde-resultater.no --delete --cache-control "public, max-age=31536000"
       - name: manifest
-        run: aws s3 cp build/asset-manifest.json s3://skde-resultater.no/assets-manifest.json --cache-control "public, max-age=1, s-maxage=1"
+        run: aws s3 cp build/asset-manifest.json s3://qa.skde-resultater.no/assets-manifest.json --cache-control "public, max-age=1, s-maxage=1"
       - name: index
-        run: aws s3 cp build/index.html s3://skde-resultater.no/index.html --cache-control "public, max-age=1, s-maxage=1"
+        run: aws s3 cp build/index.html s3://qa.skde-resultater.no/index.html --cache-control "public, max-age=1, s-maxage=1"
