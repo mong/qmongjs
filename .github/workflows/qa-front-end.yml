@@ -4,7 +4,7 @@ on:
     types: [published]
   push:
     branches:
-      - api
+      - master
 
 jobs:
   deploy_to_S3:
