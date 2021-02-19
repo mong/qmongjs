@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  db:
+    image: mariadb
+    restart: "unless-stopped"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: imongr
+      MYSQL_USER: imongr
+      MYSQL_PASSWORD: imongr
+    ports:
+      - 3306:3306
+  cache:
+    image: redis
+    ports:
+      - 6379:6379
