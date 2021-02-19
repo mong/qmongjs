@@ -83,7 +83,7 @@
     "@storybook/node-logger": "^6.1.17",
     "@storybook/preset-create-react-app": "^3.1.6",
     "@storybook/react": "^6.1.18",
-    "@types/faker": "^5.1.6",
+    "@types/faker": "^5.1.7",
     "@types/react-router-dom": "^5.1.7",
     "faker": "^5.4.0",
     "husky": "^5.0.9",
