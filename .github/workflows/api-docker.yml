@@ -1,0 +1,48 @@
+name: Publish Docker image
+on:
+  release:
+    types: [published]
+  push:
+    branches:
+      - master
+
+jobs:
+  push_to_registries:
+    name: Push Docker image to docker hub
+    runs-on: ubuntu-latest
+    env:
+      REACT_APP_API_HOST: "https://d2mrl4o83i9jyx.cloudfront.net"
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: 'eu-west-1'
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Build package
+        run: cd api && npm install && npm run build
+      - name: Prepare
+        id: docker_meta
+        uses: crazy-max/ghaction-docker-meta@v1
+        with:
+          images: hnskde/mong-api
+          tag-match: \d{1,3}.\d{1,3}.\d{1,3}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to DockerHub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./api/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
+      - name: elasticbeanstalk Step 1
+        run: aws elasticbeanstalk create-application-version --application-name mong-api --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key="Dockerrun.aws.json" --version-label ${GITHUB_SHA:0:8} --description "Test cli deploy"
+      - name: elasticbeanstalk Step 2
+        run: aws elasticbeanstalk update-environment --environment-name qa-mong-api --version-label ${GITHUB_SHA:0:8}

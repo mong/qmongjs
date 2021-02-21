@@ -10,6 +10,7 @@ import config, { mainQueryParamsConfig, maxYear, minYear } from "./app_config";
 import { nest_tu_names } from "./data/filter_year_unit";
 import useResizeObserver from "./components/utils";
 import { filter_year_unit } from "./data/filter_year_unit";
+import { useQuery } from "react-query";
 import { useQueryParam } from "use-query-params";
 import mathClamp from "./helpers/functions/mathClamp";
 
@@ -63,6 +64,41 @@ export interface AggData {
   all_filtered_by_year: StatisticData[];
 }
 
+interface Data {
+  indicator_hosp: StatisticData[];
+  indicator_hf: StatisticData[];
+  indicator_rhf: StatisticData[];
+  indicator_nat: StatisticData[];
+  description: Description[];
+  tu_names: TreatmentUnit[];
+}
+
+const API_HOST = process.env.REACT_APP_API_HOST ?? "http://localhost:4000";
+
+function DataLoader() {
+  const { isLoading, error, data } = useQuery<Data, Error>("repoData", () =>
+    fetch(`${API_HOST}/legacy`).then((res) => res.json())
+  );
+
+  if (error) return <>An error has occurred: {error?.message}</>;
+
+  const dataOrEmpty: Data = data ?? {
+    description: [],
+    indicator_hf: [],
+    indicator_hosp: [],
+    indicator_nat: [],
+    indicator_rhf: [],
+    tu_names: [],
+  };
+
+  return <APP data={dataOrEmpty} isLoading={isLoading} />;
+}
+
+interface Props {
+  data: Data;
+  isLoading: boolean;
+}
+
 function validate_treatment_units(
   treatment_units: string[],
   valid_treatment_units: TreatmentUnit[]
@@ -78,34 +114,24 @@ function validate_treatment_units(
   );
 }
 
-function APP() {
-  //data as state
-  const [indicator_hosp, update_hosp] = useState<StatisticData[]>(
-    (window as any).indicator_hosp ? (window as any).indicator_hosp : []
-  );
-  const [indicator_hf, update_hf] = useState<StatisticData[]>(
-    (window as any).indicator_hf ? (window as any).indicator_hf : []
-  );
-  const [indicator_rhf, update_rhf] = useState<StatisticData[]>(
-    (window as any).indicator_rhf ? (window as any).indicator_rhf : []
-  );
-  const [indicator_nation, update_nation] = useState<StatisticData[]>(
-    (window as any).indicator_nat ? (window as any).indicator_nat : []
-  );
-  const [description, update_description] = useState<Description[]>(
-    (window as any).description ? (window as any).description : []
-  );
-  const [tu_names, update_tu_names] = useState<TreatmentUnit[]>(
-    (window as any).tu_names ? (window as any).tu_names : []
-  );
+function APP({ data, isLoading }: Props) {
+  const {
+    indicator_hosp,
+    indicator_hf,
+    indicator_rhf,
+    indicator_nat: indicator_nation,
+    description,
+    tu_names,
+  } = data;
+
   const indicatorSorter = useMemo(() => {
     const descriptionMap: { [key: string]: string } = {};
     for (const d of description) {
       descriptionMap[d.id] = d.name ?? "";
     }
     return (a: StatisticData, b: StatisticData) => {
-      const aName = descriptionMap[a.ind_id];
-      const bName = descriptionMap[b.ind_id];
+      const aName = descriptionMap[a.ind_id] ?? "";
+      const bName = descriptionMap[b.ind_id] ?? "";
 
       return aName.localeCompare(bName);
     };
@@ -131,45 +157,6 @@ function APP() {
     [indicatorSorter, indicator_nation]
   );
 
-  //update data as it arrives
-  if (typeof (window as any).Shiny !== "undefined") {
-    (window as any).Shiny.addCustomMessageHandler(
-      "tu_names",
-      function (message: any) {
-        update_tu_names(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "description",
-      function (message: any) {
-        update_description(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "nation",
-      function (message: any) {
-        update_nation(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "hospital",
-      function (message: any) {
-        update_hosp(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "hf",
-      function (message: any) {
-        update_hf(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "rhf",
-      function (message: any) {
-        update_rhf(message);
-      }
-    );
-  }
   const [treatment_units, update_treatment_units] = useQueryParam(
     "selected_treatment_units",
     mainQueryParamsConfig.selected_treatment_units
@@ -187,6 +174,7 @@ function APP() {
     minYear,
     maxYear
   );
+
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
   >(null);
@@ -274,6 +262,7 @@ function APP() {
             )
           )
         );
+
   const unique_register = Array.from(
     new Set(med_field.flatMap((entry) => entry.key))
   ).map((registry) => {
@@ -335,10 +324,11 @@ function APP() {
           selection_bar_height={selection_bar_height}
           legend_height={legend_height}
           update_legend_height={update_legend_height}
+          isLoading={isLoading}
         />
       </div>
     </div>
   );
 }
 
-export default APP;
+export default DataLoader;
