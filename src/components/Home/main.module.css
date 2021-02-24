@@ -1,0 +1,94 @@
+main {
+  min-height: 100vh;
+}
+
+.headerContainer {
+  color: rgb(68, 23, 23);
+  text-align: center;
+  height: 500px;
+  background-color: rgb(126, 190, 199);
+  background-size: cover;
+  background-position: right 75%;
+}
+
+.headerContent {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-shadow: 0 0 2px rgb(216, 216, 216);
+  line-height: 1.4;
+  width: 45%;
+  margin-left: 10%;
+}
+
+.pageTitle {
+  font-size: 4rem;
+  font-weight: 500;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.headerContainer p {
+  text-align: start;
+}
+
+.homeBodyNav {
+  width: 80%;
+  margin: 2rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+  text-align: center;
+}
+
+.linkWrapper {
+  padding: 2rem;
+  border-radius: 100%;
+  margin: 1rem 0;
+}
+
+.linkWrapper a {
+  text-decoration: none;
+  color: #eef6f7;
+  outline: unset;
+}
+
+.linkWrapper a:hover,
+.linkWrapper a:active {
+  text-decoration: none;
+  color: black;
+}
+
+.linkContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+}
+
+nav i {
+  font-size: 4rem;
+}
+
+section h1 {
+  margin: 50px 0 0 10%;
+}
+
+@media All and (max-width: 651px) {
+  .linkContent {
+    width: 120px;
+    height: 120px;
+  }
+
+  .headerContainer {
+    background-position: left top;
+  }
+
+  .headerContent {
+    width: 60%;
+  }
+}
