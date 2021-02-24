@@ -4,7 +4,7 @@ on:
     types: [published]
   push:
     branches:
-      - master
+      - aws
 
 jobs:
   push_to_registries:
@@ -45,6 +45,6 @@ jobs:
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
       - name: elasticbeanstalk Step 1
-        run: aws elasticbeanstalk create-application-version --application-name mong-api --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key="qa-Dockerrun.aws.json" --version-label ${GITHUB_SHA:0:8} --description "Test cli deploy"
+        run: aws elasticbeanstalk create-application-version --application-name mong-api --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key="Dockerrun.aws.json" --version-label ${GITHUB_SHA:0:8} --description "Test cli deploy"
       - name: elasticbeanstalk Step 2
         run: aws elasticbeanstalk update-environment --environment-name qa-mong-api --version-label ${GITHUB_SHA:0:8}
