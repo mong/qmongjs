@@ -29,6 +29,8 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Build package
+        env:
+          REACT_APP_API_HOST: ${{ env.REACT_APP_API_HOST }}
         run: npm install && npm run build
       - name: sync
         if: github.event_name != 'pull_request'
