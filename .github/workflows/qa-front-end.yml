@@ -24,7 +24,7 @@ jobs:
       - name: Set QA variables
         if: github.event_name == 'push'
         run: |
-          echo 'api="https://d2mrl4o83i9jyx.cloudfront.net"' >> $GITHUB_ENV
+          echo "api='https://d2mrl4o83i9jyx.cloudfront.net'" >> $GITHUB_ENV
           echo "s3_bucket=s3://qa.skde-resultater.no" >> $GITHUB_ENV
       - name: Check out the repo
         uses: actions/checkout@v2
