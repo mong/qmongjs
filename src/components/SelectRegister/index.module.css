@@ -1,0 +1,83 @@
+.registerBtn {
+  background: none;
+  font-size: 1.2rem;
+  border: 2px solid #d2d3d4;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  position: relative;
+  width: 90%;
+  top: 0;
+  transition: 300ms cubic-bezier(0, 0, 0.58, 1);
+  border-radius: 2rem;
+  background-color: #e2f2f5;
+  margin-top: 0.7rem;
+  box-shadow: 0 4px 5px -1px rgba(196, 196, 196, 0.2);
+}
+
+.registerBtn:hover,
+.registerBtn:focus {
+  outline: none;
+  top: -7px;
+  box-shadow: 0px 4px 10px 2px rgba(196, 196, 196, 0.5);
+}
+
+.linkWrapper {
+  position: fixed;
+  overflow-y: scroll;
+  box-shadow: -1px 7px 10px 0 #8b9e9f;
+  background-color: #eef6f7;
+  margin: auto;
+  width: 95%;
+  height: 95vh;
+  top: 2.5vh;
+  left: 2.5%;
+  text-align: center;
+}
+
+.linkWrapper ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  justify-content: space-between;
+  align-items: baseline;
+  background-color: rgba(123, 181, 222, 0.3);
+  width: 90%;
+  margin: 3rem auto;
+}
+
+.linkWrapper li {
+  width: 25%;
+  min-width: 200px;
+  max-width: 300px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 0.5rem;
+}
+
+.linkWrapper a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.3rem;
+  outline: unset;
+}
+
+.linkWrapper li:hover,
+.linkWrpper li:focus {
+  text-decoration: underline;
+}
+
+.select_reg_close {
+  outline: none;
+  position: fixed;
+  font-size: 2rem;
+  top: 3vh;
+  right: 4vw;
+  background: none;
+  cursor: pointer;
+  border: none;
+  transition: scale 200ms ease-in-out;
+}
+.select_reg_close:hover,
+.select_reg_close:focus {
+  scale: 1.2;
+}
