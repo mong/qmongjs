@@ -1,13 +1,6 @@
-import React, { useState, useMemo } from "react";
-//import { useQueryParam } from "use-query-params";
+import React, { useMemo } from "react";
+import { useQuery } from "react-query";
 
-//import config/*, { mainQueryParamsConfig, maxYear, minYear }*/ from "../../app_config";
-/*import { nest_tu_names } from "../../data/filter_year_unit";
-import useResizeObserver from "../../helpers/hooks/useResizeObserver";
-import { filter_year_unit } from "../../data/filter_year_unit";
-import mathClamp from "../../helpers/functions/mathClamp";
-import validateTreatmentUnits from "../../helpers/functions/validateTreatmentUnits";
-*/
 
 import Header from "../Header";
 import Footer from "../Footer";
@@ -63,28 +56,55 @@ export interface AggData {
   filtered_by_year: StatisticData[];
   all_filtered_by_year: StatisticData[];
 }
+interface Data {
+  indicator_hosp: StatisticData[];
+  indicator_hf: StatisticData[];
+  indicator_rhf: StatisticData[];
+  indicator_nat: StatisticData[];
+  description: Description[];
+  tu_names: TreatmentUnit[];
+}
 
-function RegisterPage() {
+const API_HOST = process.env.REACT_APP_API_HOST ?? "https://d2mrl4o83i9jyx.cloudfront.net" // "http://localhost:4000";
+
+function DataLoader() {
+
+  const { isLoading, error, data } = useQuery<Data, Error>("repoData", () =>
+    fetch(`${API_HOST}/legacy`).then((res) => res.json()),
+    { refetchOnWindowFocus: false, cacheTime: 1000 * 60 * 60, staleTime: 1000 * 60 * 60 * 24, notifyOnChangeProps: ['data'] }
+  );
+  if (error) return <>An error has occurred: {error?.message}</>;
+
+  const dataOrEmpty: Data = data ?? {
+    description: [],
+    indicator_hf: [],
+    indicator_hosp: [],
+    indicator_nat: [],
+    indicator_rhf: [],
+    tu_names: [],
+  };
+
+  return <RegisterPage data={dataOrEmpty} isLoading={isLoading} />;
+}
+
+interface Props {
+  data: Data;
+  isLoading: boolean;
+}
+
+
+function RegisterPage({ data, isLoading }: Props) {
+  const {
+    indicator_hosp,
+    indicator_hf,
+    indicator_rhf,
+    indicator_nat: indicator_nation,
+    description,
+    tu_names,
+  } = data;
+
   let { path } = useRouteMatch();
-  //data as state
-  const [indicator_hosp, update_hosp] = useState<StatisticData[]>(
-    (window as any).indicator_hosp ? (window as any).indicator_hosp : []
-  );
-  const [indicator_hf, update_hf] = useState<StatisticData[]>(
-    (window as any).indicator_hf ? (window as any).indicator_hf : []
-  );
-  const [indicator_rhf, update_rhf] = useState<StatisticData[]>(
-    (window as any).indicator_rhf ? (window as any).indicator_rhf : []
-  );
-  const [indicator_nation, update_nation] = useState<StatisticData[]>(
-    (window as any).indicator_nat ? (window as any).indicator_nat : []
-  );
-  const [description, update_description] = useState<Description[]>(
-    (window as any).description ? (window as any).description : []
-  );
-  const [tu_names, update_tu_names] = useState<TreatmentUnit[]>(
-    (window as any).tu_names ? (window as any).tu_names : []
-  );
+
   const indicatorSorter = useMemo(() => {
     const descriptionMap: { [key: string]: string } = {};
     for (const d of description) {
@@ -118,46 +138,6 @@ function RegisterPage() {
     [indicatorSorter, indicator_nation]
   );
 
-  //update data as it arrives
-  if (typeof (window as any).Shiny !== "undefined") {
-    (window as any).Shiny.addCustomMessageHandler(
-      "tu_names",
-      function (message: any) {
-        update_tu_names(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "description",
-      function (message: any) {
-        update_description(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "nation",
-      function (message: any) {
-        update_nation(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "hospital",
-      function (message: any) {
-        update_hosp(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "hf",
-      function (message: any) {
-        update_hf(message);
-      }
-    );
-    (window as any).Shiny.addCustomMessageHandler(
-      "rhf",
-      function (message: any) {
-        update_rhf(message);
-      }
-    );
-  }
-  console.log(path);
 
   return (
     <>
@@ -165,6 +145,7 @@ function RegisterPage() {
       <Switch>
         <Route exact path={path}>
           <MainRegister
+            isLoading={isLoading}
             tu_names={tu_names}
             sortedIndicatorHospital={sortedIndicatorHospital}
             sortedIndicatorHf={sortedIndicatorHf}
@@ -175,6 +156,7 @@ function RegisterPage() {
         </Route>
         <Route exact path={`${path}/:register`}>
           <SelectedRegister
+            isLoading={isLoading}
             tu_names={tu_names}
             sortedIndicatorHospital={sortedIndicatorHospital}
             sortedIndicatorHf={sortedIndicatorHf}
@@ -194,4 +176,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default DataLoader;

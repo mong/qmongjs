@@ -17,10 +17,10 @@ const AppWithRouterAndQueryParams = () => (
 );
 
 describe("test list of med fields and setting of query params", () => {
-  it("should show a list of minimum 14 med fields", () => {
+  it("should show a list of minimum 12 med fields", () => {
     render(<AppWithRouterAndQueryParams />);
     const med_field_list = screen.getByTestId(/med_field_list/);
-    expect(med_field_list.childElementCount).toBeGreaterThanOrEqual(14);
+    expect(med_field_list.childElementCount).toBeGreaterThanOrEqual(12);
   });
 
   it("should by default have the first child selected", () => {

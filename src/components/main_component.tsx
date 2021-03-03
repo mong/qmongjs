@@ -6,6 +6,7 @@ import { mainQueryParamsConfig } from "../app_config";
 import INDICATOR_TABLE from "./indicator_table";
 import SelectRegister from "./SelectRegister";
 import LEGEND from "./legend";
+import Loading from "./Loading.tsx";
 import MED_FIELD from "./med_field";
 
 import { filter_data } from "../helpers/functions";
@@ -32,6 +33,7 @@ export interface Props {
   selection_bar_height: number | null;
   legend_height: any;
   update_legend_height(height: any): void;
+  isLoading: boolean;
 }
 
 const Main = (props: Props) => {
@@ -46,6 +48,7 @@ const Main = (props: Props) => {
     selection_bar_height,
     legend_height,
     update_legend_height,
+    isLoading,
   } = props;
   const all_reg = ind_per_reg.map((reg) => reg.registry_name);
   const [show_level_filter, update_show_level_filter] = useQueryParam<
@@ -108,17 +111,21 @@ const Main = (props: Props) => {
           />
         </div>
         <div className="main_table_container">
-          <INDICATOR_TABLE
-            data={filtered_data}
-            treatment_unit_name={treatment_units}
-            treatment_year={selected_year}
-            ind_per_reg={ind_per_reg}
-            colspan={colspan}
-            med_field_filter={med_field_filter}
-            show_level_filter={show_level_filter}
-            selection_bar_height={selection_bar_height}
-            legend_height={legend_height}
-          />
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <INDICATOR_TABLE
+              data={filtered_data}
+              treatment_unit_name={treatment_units}
+              treatment_year={selected_year}
+              ind_per_reg={ind_per_reg}
+              colspan={colspan}
+              med_field_filter={med_field_filter}
+              show_level_filter={show_level_filter}
+              selection_bar_height={selection_bar_height}
+              legend_height={legend_height}
+            />
+          )}
         </div>
       </div>
     </>

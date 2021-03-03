@@ -8,6 +8,7 @@ import SELECT_SINGLE from "../select_single";
 import TU_LIST from "../tu_list";
 import INDICATOR_TABLE from "../indicator_table";
 import LEGEND from "../legend";
+import Loading from "../Loading.tsx";
 
 import { StatisticData, Description, TreatmentUnit, AggData } from ".";
 import config, {
@@ -32,10 +33,12 @@ interface SelectedRegisterProps {
   sortedIndicatorRhf: StatisticData[];
   sortedIndicatorNation: StatisticData[];
   description: Description[];
+  isLoading: boolean
 }
 
 const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   tu_names,
+  isLoading,
   sortedIndicatorHospital,
   sortedIndicatorHf,
   sortedIndicatorRhf,
@@ -232,7 +235,7 @@ const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   const filtered_data = filter_data(data, show_level_filter);
 
   // returns page not found if the register param is not valid
-  if (regName.sName !== register) {
+  if (!isLoading && regName.sName !== register) {
     return (
       <div style={{ minHeight: "100vh" }}>
         <h1 style={{ margin: "10%" }}>Page Not Found</h1>
@@ -277,16 +280,20 @@ const SelectedRegister: React.FC<SelectedRegisterProps> = ({
 
         <div className="content_container">
           <div className="main_table_container">
-            <INDICATOR_TABLE
-              data={filtered_data}
-              treatment_unit_name={tu_name}
-              treatment_year={validated_selected_year}
-              colspan={colspan}
-              med_field_filter={[register]}
-              show_level_filter={show_level_filter}
-              selection_bar_height={selection_bar_height}
-              legend_height={legend_height}
-            />
+            {isLoading ? (
+              <Loading />
+            ) : (
+                <INDICATOR_TABLE
+                  data={filtered_data}
+                  treatment_unit_name={tu_name}
+                  treatment_year={validated_selected_year}
+                  colspan={colspan}
+                  med_field_filter={[register]}
+                  show_level_filter={show_level_filter}
+                  selection_bar_height={selection_bar_height}
+                  legend_height={legend_height}
+                />
+              )}
           </div>
         </div>
       </div>

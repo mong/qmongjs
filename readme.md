@@ -1,4 +1,4 @@
-The goal of qmongjs is collect the javascript used in qmongr in a single module.
+`qmongjs` is the code behind https://skde-resultater.no/
 
 ## Installation
 

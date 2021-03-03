@@ -1,6 +1,8 @@
 import loadDevTools from "./dev-tools/load";
 import React from "react";
 import ReactDOM from "react-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query-devtools";
 import "./index.css";
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
@@ -15,10 +17,14 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
+const queryClient = new QueryClient();
+
 loadDevTools(() =>
   ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
     </React.StrictMode>,
     document.getElementById("root")
   )

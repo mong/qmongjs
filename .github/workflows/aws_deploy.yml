@@ -1,0 +1,40 @@
+name: Deploy app to AWS
+on:
+  release:
+    types: [published]
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  deploy_to_S3:
+    name: Deploy app to S3
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: 'eu-west-1'
+    steps:
+      - name: Set release variables
+        if: github.event_name == 'release'
+        run: |
+          echo "api=https://dc9yut6ftb9m1.cloudfront.net" >> $GITHUB_ENV
+          echo "s3_bucket=s3://skde-resultater.no" >> $GITHUB_ENV
+      - name: Set QA variables
+        if: github.event_name == 'push'
+        run: |
+          echo "api=https://d2mrl4o83i9jyx.cloudfront.net" >> $GITHUB_ENV
+          echo "s3_bucket=s3://qa.skde-resultater.no" >> $GITHUB_ENV
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Build package
+        env:
+          REACT_APP_API_HOST: ${{ env.api }}
+        run: npm install && npm run build
+      - name: Sync to S3 bucket
+        if: github.event_name != 'pull_request'
+        run: |
+          aws s3 sync build ${{ env.s3_bucket }} --delete --cache-control "public, max-age=31536000"
+          aws s3 cp build/asset-manifest.json ${{ env.s3_bucket }}/asset-manifest.json --cache-control "public, max-age=1, s-maxage=1"
+          aws s3 cp build/index.html ${{ env.s3_bucket }}/index.html --cache-control "public, max-age=1, s-maxage=1"
