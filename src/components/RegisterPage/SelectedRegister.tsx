@@ -141,7 +141,7 @@ const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     selected_unit: validated_treatment_units,
     selected_year: validated_selected_year,
   };
-  console.log(opts_tu);
+
   const hospital = filter_year_unit(regSortedIndicatorHospital, input_data);
   const hf = filter_year_unit(regSortedIndicatorHf, input_data);
   const rhf = filter_year_unit(regSortedIndicatorRhf, input_data);
@@ -169,9 +169,8 @@ const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   ).sort();
 
   const tu_name = tu_name_hospital.concat(tu_name_hf, tu_name_rhf);
-  //console.log(hospital)
-  //const colspan = tu_name.length + 2;
-  const colspan = tu_name.length + 2; //validated_treatment_units ? validated_treatment_units.length + 2 : 2
+
+  const colspan = tu_name.length + 2;
 
   const agg_data: AggData = {
     nation,
