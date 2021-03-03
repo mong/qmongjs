@@ -65,7 +65,7 @@ interface Data {
   tu_names: TreatmentUnit[];
 }
 
-const API_HOST = process.env.REACT_APP_API_HOST ?? "https://d2mrl4o83i9jyx.cloudfront.net" // "http://localhost:4000";
+const API_HOST = process.env.REACT_APP_API_HOST ?? "http://localhost:4000";
 
 function DataLoader() {
 
