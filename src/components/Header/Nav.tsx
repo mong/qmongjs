@@ -16,9 +16,7 @@ const Nav: React.FC<HeaderProps> = () => {
     : {};
   const styleBtn: CSSProperties = menuToggle ? { borderRadius: "100%" } : {};
   const styleNavLinks: CSSProperties = menuToggle ? { display: "flex" } : {};
-  const handleClick = () => {
-    menuToggle ? updateMenuToggle(false) : updateMenuToggle(true);
-  };
+  const handleClick = () => updateMenuToggle(!menuToggle);
 
   return (
     <div className={style.navBar}>
