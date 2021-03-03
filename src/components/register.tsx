@@ -2,7 +2,7 @@ import React from "react";
 
 import INDICATOR_ROW from "./indicator_row";
 import REGISTER_NAME from "./register_name";
-import { AggData, Description } from "../App";
+import { AggData, Description } from "../components/RegisterPage";
 // import { GraphData } from "./main_component";
 
 interface RegisterData {

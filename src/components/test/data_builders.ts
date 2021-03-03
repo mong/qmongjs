@@ -1,4 +1,8 @@
-import { AggData, Description, StatisticData } from "../../App";
+import {
+  AggData,
+  Description,
+  StatisticData,
+} from "../../components/RegisterPage";
 import { med_field, app_text } from "../../app_config";
 import { GraphData, Props } from "../main_component";
 
