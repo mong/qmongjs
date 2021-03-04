@@ -1,7 +1,7 @@
 import loadDevTools from "./dev-tools/load";
 import React from "react";
 import ReactDOM from "react-dom";
-import { QueryCache, ReactQueryCacheProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query-devtools";
 import "./index.css";
 import * as Sentry from "@sentry/react";
@@ -19,12 +19,12 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-const queryCache = new QueryCache();
+const queryClient = new QueryClient();
 
 loadDevTools(() =>
   ReactDOM.render(
     <React.StrictMode>
-      <ReactQueryCacheProvider queryCache={queryCache}>
+      <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <QueryParamProvider ReactRouterRoute={Route}>
             <Route path="/">
@@ -33,7 +33,7 @@ loadDevTools(() =>
           </QueryParamProvider>
         </BrowserRouter>
         <ReactQueryDevtools />
-      </ReactQueryCacheProvider>
+      </QueryClientProvider>
     </React.StrictMode>,
     document.getElementById("root")
   )
