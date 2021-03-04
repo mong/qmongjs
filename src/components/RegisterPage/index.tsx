@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 import { useQuery } from "react-query";
 
-
 import Header from "../Header";
 import Footer from "../Footer";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
@@ -68,10 +67,14 @@ interface Data {
 const API_HOST = process.env.REACT_APP_API_HOST ?? "http://localhost:4000";
 
 function DataLoader() {
-
-  const { isLoading, error, data } = useQuery<Data, Error>("repoData", () =>
-    fetch(`${API_HOST}/legacy`).then((res) => res.json()),
-    { refetchOnWindowFocus: false, cacheTime: 1000 * 60 * 60, staleTime: 1000 * 60 * 60 * 24, notifyOnChangeProps: ['data'] }
+  const { isLoading, error, data } = useQuery<Data, Error>(
+    "repoData",
+    () => fetch(`${API_HOST}/legacy`).then((res) => res.json()),
+    {
+      refetchOnWindowFocus: false,
+      cacheTime: 1000 * 60 * 60,
+      staleTime: 1000 * 60 * 60 * 24,
+    }
   );
   if (error) return <>An error has occurred: {error?.message}</>;
 
@@ -91,7 +94,6 @@ interface Props {
   data: Data;
   isLoading: boolean;
 }
-
 
 function RegisterPage({ data, isLoading }: Props) {
   const {
@@ -137,7 +139,6 @@ function RegisterPage({ data, isLoading }: Props) {
     () => indicator_nation.sort(indicatorSorter),
     [indicatorSorter, indicator_nation]
   );
-
 
   return (
     <>

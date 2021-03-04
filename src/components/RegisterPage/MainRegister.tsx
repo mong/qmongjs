@@ -28,7 +28,7 @@ interface MainRegisterProps {
   sortedIndicatorRhf: StatisticData[];
   sortedIndicatorNation: StatisticData[];
   description: Description[];
-  isLoading: boolean,
+  isLoading: boolean;
 }
 
 const MainRegister: React.FC<MainRegisterProps> = ({
@@ -152,19 +152,19 @@ const MainRegister: React.FC<MainRegisterProps> = ({
   const unique_indicators =
     tu_name.length > 0
       ? Array.from(
-        new Set(
-          agg_data.filtered_by_year.map(
-            (d) => d.ind_id // [data_config.column.indicator_id]
+          new Set(
+            agg_data.filtered_by_year.map(
+              (d) => d.ind_id // [data_config.column.indicator_id]
+            )
           )
         )
-      )
       : Array.from(
-        new Set(
-          agg_data.nation.filtered_by_year.map(
-            (d) => d.ind_id // [data_config.column.indicator_id]
+          new Set(
+            agg_data.nation.filtered_by_year.map(
+              (d) => d.ind_id // [data_config.column.indicator_id]
+            )
           )
-        )
-      );
+        );
 
   const unique_register = Array.from(
     new Set(med_field.flatMap((entry) => entry.key))

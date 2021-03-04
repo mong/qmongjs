@@ -33,7 +33,7 @@ interface SelectedRegisterProps {
   sortedIndicatorRhf: StatisticData[];
   sortedIndicatorNation: StatisticData[];
   description: Description[];
-  isLoading: boolean
+  isLoading: boolean;
 }
 
 const SelectedRegister: React.FC<SelectedRegisterProps> = ({
@@ -283,17 +283,17 @@ const SelectedRegister: React.FC<SelectedRegisterProps> = ({
             {isLoading ? (
               <Loading />
             ) : (
-                <INDICATOR_TABLE
-                  data={filtered_data}
-                  treatment_unit_name={tu_name}
-                  treatment_year={validated_selected_year}
-                  colspan={colspan}
-                  med_field_filter={[register]}
-                  show_level_filter={show_level_filter}
-                  selection_bar_height={selection_bar_height}
-                  legend_height={legend_height}
-                />
-              )}
+              <INDICATOR_TABLE
+                data={filtered_data}
+                treatment_unit_name={tu_name}
+                treatment_year={validated_selected_year}
+                colspan={colspan}
+                med_field_filter={[register]}
+                show_level_filter={show_level_filter}
+                selection_bar_height={selection_bar_height}
+                legend_height={legend_height}
+              />
+            )}
           </div>
         </div>
       </div>
