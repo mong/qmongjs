@@ -32,7 +32,7 @@
     "url": "https://github.com/mong/qmongjs/issues"
   },
   "dependencies": {
-    "@sentry/react": "^6.2.0",
+    "@sentry/react": "^6.2.1",
     "@sentry/tracing": "^6.2.1",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
