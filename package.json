@@ -52,7 +52,7 @@
     "react-query-devtools": "^2.6.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
-    "react-select": "^4.1.0",
+    "react-select": "^4.2.1",
     "resize-observer-polyfill": "^1.5.1",
     "source-map-explorer": "^2.5.2",
     "typescript": "^4.1.5",
