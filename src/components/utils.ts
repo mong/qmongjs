@@ -12,8 +12,8 @@ function useResizeObserver(ref: MutableRefObject<HTMLElement | null>) {
       return;
     }
 
-    const resizeObserver = new ResizeObserver((entries) => {
-      entries.forEach((entry) => {
+    const resizeObserver = new ResizeObserver((entries: any) => {
+      entries.forEach((entry: any) => {
         setDimensions(entry);
       });
     });
