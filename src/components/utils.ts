@@ -12,11 +12,13 @@ function useResizeObserver(ref: MutableRefObject<HTMLElement | null>) {
       return;
     }
 
-    const resizeObserver = new ResizeObserver((entries) => {
-      entries.forEach((entry) => {
-        setDimensions(entry);
-      });
-    });
+    const resizeObserver = new ResizeObserver(
+      (entries: ResizeObserverEntry[]) => {
+        entries.forEach((entry) => {
+          setDimensions(entry);
+        });
+      }
+    );
 
     resizeObserver.observe(observeTarget);
 
