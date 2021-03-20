@@ -1,4 +1,10 @@
-### Changelog
+## Changelog
+
+### [v1.0.1](https://github.com/mong/qmongjs/compare/1.0.0...v1.0.1)
+
+> 16 March 2021
+
+- New title, and favicon [`#284`](https://github.com/mong/qmongjs/pull/284)
 
 ### [v1.0.0](https://github.com/mong/qmongjs/compare/0.7.0...v1.0.0)
 
