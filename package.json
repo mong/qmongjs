@@ -47,7 +47,7 @@
     "is-ci-cli": "^2.2.0",
     "query-string": "^6.14.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react-dom": "^17.0.2",
     "react-query": "^3.12.1",
     "react-query-devtools": "^2.6.3",
     "react-router-dom": "^5.2.0",
