@@ -28,4 +28,4 @@ jobs:
       - name: Code coverage
         run: |
           npm run test:coverage
-          ./node_modules/.bin/codecov
+          ./node_modules/.bin/codecov --disable=gcov
