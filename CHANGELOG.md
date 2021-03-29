@@ -1,13 +1,13 @@
 ## Changelog
 
-### [v1.0.2](https://github.com/mong/qmongjs/compare/1.0.1...v1.0.2)
+### [v1.0.2](https://github.com/mong/qmongjs/compare/v1.0.1...v1.0.2)
 
 > 29 March 2021
 
 - Deploy to skde.org S3 buckets [`#314`](https://github.com/mong/qmongjs/pull/314)
 - Activate codecov and include some readme badges [`#334`](https://github.com/mong/qmongjs/pull/334)
 
-### [v1.0.1](https://github.com/mong/qmongjs/compare/1.0.0...v1.0.1)
+### [v1.0.1](https://github.com/mong/qmongjs/compare/v1.0.0...v1.0.1)
 
 > 16 March 2021
 
