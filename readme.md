@@ -1,4 +1,12 @@
-`qmongjs` is the code behind https://skde-resultater.no/
+[![Version](https://img.shields.io/github/v/release/mong/qmongjs?sort=semver)](https://github.com/mong/qmongjs/releases)
+[![CodeQL](https://github.com/mong/qmongjs/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mong/qmongjs/actions/workflows/codeql-analysis.yml)
+[![Deploy app to AWS](https://github.com/mong/qmongjs/actions/workflows/aws_deploy.yml/badge.svg)](https://github.com/mong/qmongjs/actions/workflows/aws_deploy.yml)
+[![Node.js CI](https://github.com/mong/qmongjs/actions/workflows/node.js.yml/badge.svg)](https://github.com/mong/qmongjs/actions/workflows/node.js.yml)
+[![Codecov test coverage](https://codecov.io/gh/mong/qmongjs/branch/master/graph/badge.svg)](https://codecov.io/gh/mong/qmongjs?branch=master)
+[![GitHub open issues](https://img.shields.io/github/issues/mong/qmongjs.svg)](https://github.com/mong/qmongjs/issues)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+`qmongjs` is the code behind https://skde.org/
 
 ## Installation
 
