@@ -4,7 +4,6 @@ import { AggData, Description } from "../components/RegisterPage";
 import { mainQueryParamsConfig } from "../app_config";
 
 import INDICATOR_TABLE from "./indicator_table";
-import SelectRegister from "./SelectRegister";
 import LEGEND from "./legend";
 import Loading from "./Loading.tsx";
 import MED_FIELD from "./med_field";
@@ -96,10 +95,6 @@ const Main = (props: Props) => {
       />
       <div className="content_container">
         <div className="med_field_container">
-          <SelectRegister
-            regNames={listOfRegisters}
-            selection_bar_height={selection_bar_height}
-          />
           <MED_FIELD
             ind_per_reg={ind_per_reg}
             med_field={med_field}
