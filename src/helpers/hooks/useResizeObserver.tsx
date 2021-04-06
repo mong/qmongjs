@@ -14,11 +14,13 @@ export const useResizeObserver = function (
       return;
     }
 
-    const resizeObserver = new ResizeObserver((entries) => {
-      entries.forEach((entry) => {
-        setDimensions(entry);
-      });
-    });
+    const resizeObserver = new ResizeObserver(
+      (entries: ResizeObserverEntry[]) => {
+        entries.forEach((entry) => {
+          setDimensions(entry);
+        });
+      }
+    );
 
     resizeObserver.observe(observeTarget);
 
