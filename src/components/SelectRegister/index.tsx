@@ -48,7 +48,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
           onClick={() => updateBtnToggle(!btnToggle)}
         >
           Velg register
-      </button>
+        </button>
       </div>
       <div className={style.linkWrapper} style={linkWrapperStyle}>
         <ul>
