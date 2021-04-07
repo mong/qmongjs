@@ -6,7 +6,12 @@ import SELECT_MULTI from "./components/select_multi";
 import SELECT_SINGLE from "./components/select_single";
 import TU_LIST from "./components/tu_list";
 
-import config, { mainQueryParamsConfig, maxYear, minYear } from "./app_config";
+import config, {
+  mainQueryParamsConfig,
+  maxYear,
+  minYear,
+  defaultYear,
+} from "./app_config";
 import { nest_tu_names } from "./data/filter_year_unit";
 import useResizeObserver from "./components/utils";
 import { filter_year_unit } from "./data/filter_year_unit";
@@ -170,7 +175,7 @@ function APP({ data, isLoading }: Props) {
     mainQueryParamsConfig.year
   );
   const validated_selected_year = mathClamp(
-    selected_year || maxYear,
+    selected_year || defaultYear,
     minYear,
     maxYear
   );
