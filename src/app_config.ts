@@ -216,7 +216,8 @@ export const data_config = {
   },
 };
 export const minYear = 2016;
-export const maxYear = 2019;
+export const maxYear = 2020;
+export const defaultYear = 2019;
 export const mainQueryParamsConfig = {
   selected_row: withDefault(StringParam, undefined),
   indicator: withDefault(StringParam, undefined),
