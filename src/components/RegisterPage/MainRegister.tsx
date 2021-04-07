@@ -11,6 +11,7 @@ import config, {
   mainQueryParamsConfig,
   maxYear,
   minYear,
+  defaultYear,
 } from "../../app_config";
 import { nest_tu_names } from "../../data/filter_year_unit";
 import { useResizeObserver } from "../../helpers/hooks";
@@ -65,7 +66,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({
     mainQueryParamsConfig.year
   );
   const validated_selected_year = mathClamp(
-    selected_year || maxYear,
+    selected_year || defaultYear,
     minYear,
     maxYear
   );
