@@ -32,6 +32,7 @@
   top: 2.5vh;
   left: 2.5%;
   text-align: center;
+  z-index: 10;
 }
 
 .linkWrapper ul {
@@ -77,6 +78,7 @@
   border: none;
   transition: scale 200ms ease-in-out;
 }
+
 .select_reg_close:hover,
 .select_reg_close:focus {
   scale: 1.2;
