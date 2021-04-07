@@ -40,14 +40,16 @@ const SelectRegister = (props: selectedRegisterProps) => {
   useEventListener("keydown", handleKeyDown);
 
   return (
-    <div style={{ position: "sticky", top: selection_bar_height!, zIndex: 10 }}>
-      <button
-        className={style.registerBtn}
-        style={btnStyle}
-        onClick={() => updateBtnToggle(!btnToggle)}
-      >
-        Velg register
+    <>
+      <div style={{ position: "sticky", top: selection_bar_height! }}>
+        <button
+          className={style.registerBtn}
+          style={btnStyle}
+          onClick={() => updateBtnToggle(!btnToggle)}
+        >
+          Velg register
       </button>
+      </div>
       <div className={style.linkWrapper} style={linkWrapperStyle}>
         <ul>
           {regNames.map((reg) => (
@@ -65,7 +67,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
           <i className="far fa-times-circle" />
         </button>
       </div>
-    </div>
+    </>
   );
 };
 
