@@ -1,4 +1,9 @@
-import { AggData, Description, StatisticData, TreatmentUnit } from "../App";
+import {
+  AggData,
+  Description,
+  StatisticData,
+  TreatmentUnit,
+} from "../components/RegisterPage";
 import app_config from "../app_config";
 
 interface NestedTreatmentUnitName {

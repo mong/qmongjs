@@ -1,5 +1,18 @@
 ## Changelog
 
+### [v2.0.0](https://github.com/mong/qmongjs/compare/v1.0.2...v2.0.0)
+
+> 8 April 2021
+
+#### Major changes
+
+- New landing page [`#286`](https://github.com/mong/qmongjs/pull/286)
+
+#### New features
+
+- Possible to pick registry [`#286`](https://github.com/mong/qmongjs/pull/286)
+- Activated 2020 data [`#360`](https://github.com/mong/qmongjs/pull/360)
+
 ### [v1.0.2](https://github.com/mong/qmongjs/compare/v1.0.1...v1.0.2)
 
 > 29 March 2021

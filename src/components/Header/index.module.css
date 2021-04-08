@@ -1,0 +1,23 @@
+.header {
+  background-color: #eef6f7;
+}
+
+.headerContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.5rem 7%;
+}
+
+.logo {
+  padding-right: 2rem;
+  width: 100;
+}
+
+.logo_img {
+  max-width: 25rem;
+  height: 100%;
+  width: auto;
+  max-height: 3rem;
+}

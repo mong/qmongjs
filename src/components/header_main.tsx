@@ -1,38 +1,25 @@
 import React from "react";
 
-import HEADER_LOGO_NSM from "./header_logo_nsm";
-import HEADER_LOGO_SKDE from "./header_logo_skde";
 import HEADER_TEXT from "./header_text";
 
-const HEADER = () => {
+interface HEADER_PROPS {
+  dataFrom?: string;
+}
+const HEADER: React.FC<HEADER_PROPS> = (props) => {
+  const { dataFrom = "medisinske kvalitetsregistre" } = props;
   return (
     <div
       style={{
         backgroundImage: "linear-gradient(-270deg, #A2CFD6 0%, #7EBEC7 100%)",
         padding: "1rem 0 0 1rem",
         color: "#2D3034",
-        display: "flex",
-        flexDirection: "column",
+        minHeight: "10rem",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div style={{ width: "230px" }}>
-          <a href="http://skde.no/">
-            {" "}
-            <HEADER_LOGO_SKDE />
-          </a>
-        </div>
-        <div style={{ width: "230px" }}>
-          <a href="https://www.kvalitetsregistre.no/">
-            {" "}
-            <HEADER_LOGO_NSM />
-          </a>
-        </div>
-      </div>
       <div
-        style={{ color: "white", fontSize: "2.8rem", padding: "0 0 10px 17%" }}
+        style={{ color: "white", fontSize: "2.8rem", padding: "0 0 10px 10%" }}
       >
-        <HEADER_TEXT />
+        <HEADER_TEXT dataFrom={dataFrom} />
       </div>
     </div>
   );

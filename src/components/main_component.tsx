@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useQueryParam } from "use-query-params";
-import { AggData, Description, StatisticData } from "../App";
+import { AggData, Description } from "../components/RegisterPage";
 import { mainQueryParamsConfig } from "../app_config";
 
 import INDICATOR_TABLE from "./indicator_table";
+import SelectRegister from "./SelectRegister";
 import LEGEND from "./legend";
 import Loading from "./Loading.tsx";
 import MED_FIELD from "./med_field";
+
+import { filter_data } from "../helpers/functions";
 
 export interface GraphData {
   agg_data: AggData;
@@ -18,90 +21,6 @@ export interface IndPerReg {
   number_ind: number;
   indicators: Description[];
 }
-
-const apply_filters = ({
-  agg_data,
-  description,
-  show_level_filter,
-  filter_level_only = false,
-}: {
-  agg_data: StatisticData[];
-  description: Description[];
-  show_level_filter: string;
-  filter_level_only?: boolean;
-}): StatisticData[] => {
-  const filtered_by_threshold =
-    filter_level_only ?? false
-      ? agg_data
-      : agg_data
-          .filter((u) => {
-            return (u.dg ?? 0) > 0.6;
-          })
-          .filter((u) => {
-            return (
-              u.denominator >
-              (description[description.findIndex((d) => d.id === u.ind_id)]
-                .min_denominator ?? 0)
-            );
-          });
-  const filter_by_level = filtered_by_threshold.filter(
-    (u) => u.level === show_level_filter
-  );
-  return filter_by_level;
-};
-
-const filter_data = (
-  data: GraphData,
-  show_level_filter: string | undefined
-): GraphData => {
-  if (!show_level_filter) {
-    return data;
-  }
-
-  const data_filtered = [
-    apply_filters({
-      agg_data: data.agg_data.filtered_by_year,
-      description: data.description,
-      show_level_filter,
-    }),
-    apply_filters({
-      agg_data: data.agg_data.nation.filtered_by_year,
-      description: data.description,
-      show_level_filter,
-      filter_level_only: true,
-    }),
-  ].sort((a, b) => b.length - a.length);
-
-  const ind_ids_remaining = data_filtered
-    .map((a) => Array.isArray(a) && a.map((u) => u.ind_id))
-    .reduce((acc: string[], val) => acc.concat(val || []), [])
-    .filter((v, i, a) => a.indexOf(v) === i);
-
-  return {
-    agg_data: {
-      filtered_by_year: data.agg_data.filtered_by_year.filter((u) =>
-        ind_ids_remaining.includes(u.ind_id)
-      ),
-      filtered_by_unit: data.agg_data.filtered_by_unit.filter((u) =>
-        ind_ids_remaining.includes(u.ind_id)
-      ),
-      all_filtered_by_year: data.agg_data.all_filtered_by_year.filter((u) =>
-        ind_ids_remaining.includes(u.ind_id)
-      ),
-      nation: {
-        filtered_by_year: data.agg_data.nation.filtered_by_year.filter((u) =>
-          ind_ids_remaining.includes(u.ind_id)
-        ),
-        filtered_by_unit: data.agg_data.nation.filtered_by_unit.filter((u) =>
-          ind_ids_remaining.includes(u.ind_id)
-        ),
-      },
-    },
-    description: data.description.filter((d) =>
-      ind_ids_remaining.includes(d.id)
-    ),
-  };
-};
 
 export interface Props {
   data: GraphData;
@@ -140,6 +59,31 @@ const Main = (props: Props) => {
     string | undefined
   >("indicator", mainQueryParamsConfig.indicator);
   const filtered_data = filter_data(data, show_level_filter);
+
+  //skriv om
+  const registers = Array.from(
+    new Set(
+      data.description.map((d) => {
+        return { registerShortName: d.rname, registerFullName: d.full_name };
+      })
+    )
+  );
+
+  const listOfRegisters = ind_per_reg
+    .filter((reg) => reg.number_ind !== 0)
+    .map((reg) => {
+      return {
+        registerShortName: reg.registry_name,
+        registerFullName: reg.registry_name,
+      };
+    });
+  listOfRegisters.forEach((dl) => {
+    const reg = registers.filter(
+      (d) => d.registerShortName === dl.registerShortName
+    );
+    dl.registerFullName = reg[0].registerFullName;
+  });
+
   return (
     <>
       <LEGEND
@@ -148,9 +92,14 @@ const Main = (props: Props) => {
         show_level_filter={show_level_filter}
         selection_bar_height={selection_bar_height}
         update_legend_height={update_legend_height}
+        width="undefined"
       />
       <div className="content_container">
         <div className="med_field_container">
+          <SelectRegister
+            regNames={listOfRegisters}
+            selection_bar_height={selection_bar_height}
+          />
           <MED_FIELD
             ind_per_reg={ind_per_reg}
             med_field={med_field}
