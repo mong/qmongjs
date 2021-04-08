@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { select, selectAll } from "d3";
 
-import { Description } from "../App";
+import { Description } from "../components/RegisterPage";
 
 interface Props {
   svgContainer: React.RefObject<HTMLDivElement>;

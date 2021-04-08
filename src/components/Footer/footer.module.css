@@ -1,0 +1,9 @@
+.footer {
+  background-color: #22282b;
+  position: relative;
+  padding: 4rem 0;
+}
+
+.footer div {
+  text-align: center;
+}

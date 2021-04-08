@@ -2,7 +2,7 @@ import React from "react";
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from "@storybook/react/types-6-0";
 import INDICATOR_VALUE from "../components/indicator_value";
-import { StatisticData } from "../App";
+import { StatisticData } from "../components/RegisterPage";
 import "../index.css";
 
 interface Props {

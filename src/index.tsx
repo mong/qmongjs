@@ -7,8 +7,6 @@ import "./index.css";
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 import App from "./App";
-import { QueryParamProvider } from "use-query-params";
-import { BrowserRouter, Route } from "react-router-dom";
 
 Sentry.init({
   dsn:
@@ -25,13 +23,7 @@ loadDevTools(() =>
   ReactDOM.render(
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <QueryParamProvider ReactRouterRoute={Route}>
-            <Route path="/">
-              <App />
-            </Route>
-          </QueryParamProvider>
-        </BrowserRouter>
+        <App />
         <ReactQueryDevtools />
       </QueryClientProvider>
     </React.StrictMode>,

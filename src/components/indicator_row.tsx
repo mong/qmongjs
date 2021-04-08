@@ -7,7 +7,7 @@ import TF_FIGURE from "./TF_FIGURE";
 import NO_DATA from "./no_data";
 import LOW_COV from "./low_cov";
 import LOW_N from "./low_n";
-import { Description } from "../App";
+import { Description } from "../components/RegisterPage";
 import { GraphData } from "./main_component";
 import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "../app_config";
