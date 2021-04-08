@@ -1,5 +1,5 @@
 import React from "react";
-import { StatisticData } from "../../App";
+import { StatisticData } from "../../components/RegisterPage";
 import { GraphData } from "../main_component";
 import BarChart, { Bar, BarStyle } from "../Charts/BarChart";
 import LineChart, { DataPoint } from "../Charts/LineChart";

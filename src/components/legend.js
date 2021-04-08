@@ -15,6 +15,7 @@ function LEGEND(props) {
     show_level_filter,
     selection_bar_height,
     update_legend_height,
+    width = "84%",
   } = props;
   const legend_ref = useRef();
   const dim = useResizeObserver(legend_ref);
@@ -36,7 +37,7 @@ function LEGEND(props) {
     );
   }, app_text.indicators);
 
-  const style = { top: `${selection_bar_height}px` };
+  const style = { top: `${selection_bar_height}px`, width };
 
   return (
     <div className="table_legend" ref={legend_ref} style={style}>
