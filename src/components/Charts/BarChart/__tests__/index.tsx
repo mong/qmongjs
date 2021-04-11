@@ -342,8 +342,8 @@ function BarChartWithRef(props: Omit<Props, "svgContainerRef">) {
 // Builders
 function buildBar(overrides?: Partial<Bar>): Bar {
   return {
-    label: faker.random.uuid(),
-    value: faker.random.number(100) / 100,
+    label: faker.datatype.uuid(),
+    value: faker.datatype.number(100) / 100,
     ...overrides,
   };
 }
@@ -352,13 +352,13 @@ function buildProps(
   overrides?: Partial<Props>
 ): Omit<Props, "svgContainerRef"> {
   return {
-    showLevel: faker.random.boolean(),
+    showLevel: faker.datatype.boolean(),
     data: Array.from(
-      { length: faker.random.number({ min: 1, max: 10 }) },
+      { length: faker.datatype.number({ min: 1, max: 10 }) },
       buildBar
     ),
     levels: buildLevels(),
-    zoom: faker.random.boolean(),
+    zoom: faker.datatype.boolean(),
     ...overrides,
   };
 }

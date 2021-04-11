@@ -52,9 +52,9 @@ function LineChartWithRef(props: Omit<Props, "svgContainerRef">) {
 // Builders
 function buildDataPoint(overrides: Partial<DataPoint>): DataPoint {
   return {
-    label: faker.random.uuid(),
-    year: faker.random.number({ min: 2015, max: 2020 }),
-    value: faker.random.number({ min: 0, max: 100 }) / 100,
+    label: faker.datatype.uuid(),
+    year: faker.datatype.number({ min: 2015, max: 2020 }),
+    value: faker.datatype.number({ min: 0, max: 100 }) / 100,
     ...overrides,
   };
 }
@@ -63,7 +63,7 @@ function buildProps(overrides: Partial<Props>): Omit<Props, "svgContainerRef"> {
   return {
     data: [],
     levels: buildLevels(),
-    showLevel: faker.random.boolean(),
+    showLevel: faker.datatype.boolean(),
     ...overrides,
   };
 }
