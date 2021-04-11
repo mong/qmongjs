@@ -36,7 +36,7 @@ jobs:
         if: matrix.node-version == '14.x'
         run: npm run build-doc
       - name: Deploy documentation to github pages
-        if: matrix.node-version == '14.x'
+        if: ${{ matrix.node-version == '14.x' && github.event_name == 'pull_request' }}
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages # The branch the action should deploy to.
