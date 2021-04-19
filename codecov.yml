@@ -1,1 +1,3 @@
 comment: false
+coverage:
+  precision: 1
