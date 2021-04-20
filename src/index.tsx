@@ -2,7 +2,7 @@ import loadDevTools from "./dev-tools/load";
 import React from "react";
 import ReactDOM from "react-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query-devtools";
+import { ReactQueryDevtools } from "react-query/devtools";
 import "./index.css";
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
@@ -24,7 +24,7 @@ loadDevTools(() =>
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
         <App />
-        <ReactQueryDevtools />
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </React.StrictMode>,
     document.getElementById("root")
