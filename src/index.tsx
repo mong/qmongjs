@@ -25,7 +25,7 @@ loadDevTools(() =>
       <QueryClientProvider client={queryClient}>
         <App />
         <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider >
+      </QueryClientProvider>
     </React.StrictMode>,
     document.getElementById("root")
   )
