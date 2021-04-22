@@ -89,6 +89,7 @@
     "eslint": "^7.24.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-jest": "^24.3.5",
+    "eslint-plugin-testing-library": "^4.1.1",
     "faker": "^5.5.3",
     "husky": "^6.0.0",
     "is-ci-cli": "^2.2.0",
