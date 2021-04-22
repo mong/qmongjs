@@ -19,7 +19,7 @@
     "format": "yarn run prettier -- --write",
     "check-format": "yarn run prettier -- --list-different",
     "check-types": "tsc --noEmit",
-    "validate": "yarn run check-types check-format lint test:once build",
+    "validate": "yarn run check-types && yarn run check-format && yarn run lint && yarn run test:once && yarn run build",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "build-doc": "typedoc src/index.tsx src/*/*/index.[jt]s* src/*/*/*/index.[jt]s*"
