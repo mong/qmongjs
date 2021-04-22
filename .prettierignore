@@ -6,3 +6,4 @@ package-lock.json
 **/*.min.*
 .github/
 .yarn/
+.pnp.js
