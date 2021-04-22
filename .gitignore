@@ -29,4 +29,10 @@ npm-debug.log
 /storybook-static
 
 # yarn
-/.yarn
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
