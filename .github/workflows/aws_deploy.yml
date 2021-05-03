@@ -3,7 +3,7 @@ on:
   release:
     types: [published]
   push:
-    branches: [master]
+    branches: [deploy_verify]
   pull_request:
     branches: [master, dependabot_updates]
 
@@ -38,3 +38,14 @@ jobs:
           aws s3 sync build ${{ env.s3_bucket }} --delete --cache-control "public, max-age=31536000"
           aws s3 cp build/asset-manifest.json ${{ env.s3_bucket }}/asset-manifest.json --cache-control "public, max-age=1, s-maxage=1"
           aws s3 cp build/index.html ${{ env.s3_bucket }}/index.html --cache-control "public, max-age=1, s-maxage=1"
+      - name: Build and sync to verify page
+        if: github.event_name == 'push'
+        env:
+          REACT_APP_API_HOST: http://test-mong-api.eu-west-1.elasticbeanstalk.com/
+        run: |
+          npm install && npm run build
+          aws s3 sync build s3://verify.skde.org --delete --cache-control "public, max-age=31536000"
+          aws s3 cp build/asset-manifest.json s3://verify.skde.org/asset-manifest.json --cache-control "public, max-age=1, s-maxage=1"
+          aws s3 cp build/index.html s3://verify.skde.org/index.html --cache-control "public, max-age=1, s-maxage=1"
+        
+
