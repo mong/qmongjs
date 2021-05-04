@@ -85,7 +85,7 @@
     "@storybook/react": "^6.1.21",
     "@types/faker": "^5.5.3",
     "@types/react-router-dom": "^5.1.7",
-    "codecov": "^3.8.1",
+    "codecov": "^3.8.2",
     "faker": "^5.5.3",
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
