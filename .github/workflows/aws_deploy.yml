@@ -39,7 +39,7 @@ jobs:
           aws s3 cp build/asset-manifest.json ${{ env.s3_bucket }}/asset-manifest.json --cache-control "public, max-age=1, s-maxage=1"
           aws s3 cp build/index.html ${{ env.s3_bucket }}/index.html --cache-control "public, max-age=1, s-maxage=1"
       - name: Build and sync to verify page
-        if: github.event_name == 'push'
+        if: github.event_name == 'release'
         env:
           REACT_APP_API_HOST: http://test-mong-api.eu-west-1.elasticbeanstalk.com
         run: |
