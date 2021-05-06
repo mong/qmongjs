@@ -41,7 +41,7 @@ jobs:
       - name: Build and sync to verify page
         if: github.event_name == 'push'
         env:
-          REACT_APP_API_HOST: http://test-mong-api.eu-west-1.elasticbeanstalk.com/
+          REACT_APP_API_HOST: http://test-mong-api.eu-west-1.elasticbeanstalk.com
         run: |
           npm install && npm run build
           aws s3 sync build s3://verify.skde.org
