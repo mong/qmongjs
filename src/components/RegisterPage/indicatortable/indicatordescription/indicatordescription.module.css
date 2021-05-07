@@ -1,0 +1,19 @@
+.quality_indicator {
+  text-align: left;
+}
+.quality_indicator_name h1 {
+  margin: 0.5rem;
+  font-size: 1.2em;
+  overflow: hidden;
+}
+.qi_long_description p {
+  margin: 5px 5px 10px 0.5rem;
+  color: #7d8588;
+  font-size: 0.9em;
+}
+.desired_target_level h4 {
+  margin: 5px 5px 10px 0.5rem;
+  color: #7ebec7;
+  font-size: 1rem;
+  font-weight: 600;
+}
