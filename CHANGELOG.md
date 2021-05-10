@@ -1,5 +1,18 @@
 ## Changelog
 
+### [v2.0.1](https://github.com/mong/qmongjs/compare/v2.0.0...v2.0.1)
+
+> 10 May 2021
+
+#### Minor changes
+
+- Use `react-query/devtools` instead of `react-query-devtools`
+- Github actions changes:
+  - Generate docs and deploy to github pages
+  - Deploy app to new verify page
+  - Dependabot on `qmongr` branch
+- Update dependencies
+
 ### [v2.0.0](https://github.com/mong/qmongjs/compare/v1.0.2...v2.0.0)
 
 > 8 April 2021
