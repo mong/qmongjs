@@ -113,7 +113,7 @@ const fetchMedicalFields = async () => {
 
 export const useMedicalFieldsQuery = () => {
   return useQuery(
-    `registerNames`,
+    `medicalFields`,
     () => fetchMedicalFields()
   )
 }
