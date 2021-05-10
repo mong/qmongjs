@@ -1,27 +1,47 @@
 import {
-  AggData,
   Description,
+  RegisterNames,
   StatisticData,
 } from "../../components/RegisterPage";
 import { med_field, app_text } from "../../app_config";
 import { GraphData, Props } from "../main_component";
+import desc from '../../dev-tools/data/description.min.json';
+import ind from '../../dev-tools/data/indcator_all.min.json';
+import medicalFeild from '../../dev-tools/data/medicalfields.json';
+import unitNames from '../../dev-tools/data/unitnames.json';
+import registerNames from '../../dev-tools/data/registernames.json';
+
+
+
+
+
 
 export function buildMainProps(overrides: Partial<Props>): Props {
   return {
-    ind_per_reg: [],
+    API_HOST: "http://localhost:4000",
     treatment_units: [],
     selected_year: 2019,
     med_field,
     app_text,
     colspan: 1,
-    data: buildGraphData({}),
     selection_bar_height: null,
     legend_height: null,
-    update_legend_height: (height: any) => {},
-    isLoading: false,
+    registerNames: [],
+    update_legend_height: (height: any) => { },
     ...overrides,
   };
 }
+interface AggData {
+  nation: {
+    filtered_by_unit: StatisticData[],
+    filtered_by_year: StatisticData[],
+  },
+  filtered_by_unit: StatisticData[],
+  filtered_by_year: StatisticData[],
+  all_filtered_by_year: StatisticData[],
+}
+
+
 export function buildAggData(overrides: Partial<AggData>): AggData {
   return {
     filtered_by_unit: [],
@@ -45,6 +65,7 @@ export function buildStatisticData(
   overrides: Partial<StatisticData>
 ): StatisticData {
   return {
+    id: 1001,
     ind_id: "hjerneslag_beh_enhet",
     unit_level: "nation",
     unit_name: "faker",
@@ -56,6 +77,7 @@ export function buildStatisticData(
     level_direction: 1,
     dg: 0.8677,
     include: 1,
+    type: "andel",
     ...overrides,
   };
 }
@@ -81,4 +103,67 @@ export function buildDescriptionData(
       "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes",
     ...overrides,
   };
+}
+
+interface MockDescriptionParams {
+  register: string;
+  type: "ind" | "dg";
+}
+
+export const buildDescriptions = ({
+  register,
+  type
+}: MockDescriptionParams): Description[] => {
+
+  return desc.filter(d => d.rname === register && d.include === 1)
+
+}
+
+interface MockIndicatorParams {
+  register: string;
+  year?: number;
+  type?: "ind" | "dg";
+  unitNames?: string[];
+  unitLevel?: string;
+
+}
+
+export const buildIndicators = ({
+  register,
+  type = "ind",
+  year,
+  unitLevel,
+  unitNames
+}: MockIndicatorParams): StatisticData[] => {
+  const registerIndicators = buildDescriptions({ register, type })
+    .map(descData => descData.id)
+
+  let filteredIndicatorData: StatisticData[] = ind.filter(data => registerIndicators.includes(data.ind_id))
+
+  if (year) {
+    filteredIndicatorData = filteredIndicatorData.filter(data => data.year === year)
+  }
+
+  if (unitNames) {
+    filteredIndicatorData = filteredIndicatorData
+      .filter(data => unitNames.includes(data.unit_name))
+  }
+  if (unitLevel) {
+    filteredIndicatorData = filteredIndicatorData
+      .filter(data => data.unit_level === unitLevel)
+  }
+
+  return filteredIndicatorData
+}
+
+export const buildRegisterNames = (): RegisterNames[] => {
+  return registerNames
+}
+
+export const buildMedicalFields = () => {
+  return medicalFeild
+}
+
+export const buildUnitNames = () => {
+  return unitNames
 }
