@@ -88,17 +88,10 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     maxYear
   );
 
-
   const validated_treatment_units = validateTreatmentUnits(
     treatment_units as string[],
     optstu
   );
-  const input_data = {
-    selected_unit: validated_treatment_units,
-    selected_year: validated_selected_year,
-  };
-
-
 
   const colspan = validated_treatment_units.length + 2;
   const valid_years = Array.from(Array(maxYear - minYear + 1).keys()).map(

@@ -21,7 +21,7 @@ import {
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { RegisterNames } from ".";
 import { UnitNameList } from "./unitnamelist";
-const { med_field, app_text } = config;
+const { app_text } = config;
 
 interface MainRegisterProps {
   registerNames: RegisterNames[];
@@ -80,9 +80,6 @@ const MainRegister: React.FC<MainRegisterProps> = ({
     minYear,
     maxYear
   );
-
-
-
 
   const validated_treatment_units = validateTreatmentUnits(
     treatment_units as string[],
