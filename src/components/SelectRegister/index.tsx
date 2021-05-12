@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { Link } from "react-router-dom";
 
 import { useEventListener } from "../../helpers/hooks";
@@ -6,8 +7,8 @@ import { useEventListener } from "../../helpers/hooks";
 import style from "./index.module.css";
 
 interface registerNames {
-  registerShortName?: string;
-  registerFullName?: string;
+  rname?: string;
+  full_name?: string;
   registerField?: string;
 }
 interface selectedRegisterProps {
@@ -17,7 +18,6 @@ interface selectedRegisterProps {
 
 const SelectRegister = (props: selectedRegisterProps) => {
   const { regNames, selection_bar_height } = props;
-
   const [btnToggle, updateBtnToggle] = useState(false);
   const btnStyle = btnToggle ? { border: "2px solid #00263d" } : {};
   const linkWrapperStyle = btnToggle ? {} : { display: "none" };
@@ -52,10 +52,10 @@ const SelectRegister = (props: selectedRegisterProps) => {
       </div>
       <div className={style.linkWrapper} style={linkWrapperStyle}>
         <ul>
-          {regNames.map((reg) => (
-            <li key={reg.registerShortName}>
-              <Link to={`/kvalitetsregistre/${reg.registerShortName}`}>
-                {reg.registerFullName}
+          {regNames.map((reg: registerNames) => (
+            <li key={reg.rname}>
+              <Link to={`/kvalitetsregistre/${reg.rname}`}>
+                {reg.full_name}
               </Link>
             </li>
           ))}
