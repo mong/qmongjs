@@ -18,10 +18,8 @@ import registerNames from '../../dev-tools/data/registernames.json';
 
 export function buildMainProps(overrides: Partial<Props>): Props {
   return {
-    API_HOST: "http://localhost:4000",
     treatment_units: [],
     selected_year: 2019,
-    med_field,
     app_text,
     colspan: 1,
     selection_bar_height: null,
