@@ -1,5 +1,5 @@
-import { useQuery } from 'react-query'
-import { API_HOST } from '../../components/RegisterPage'
+import { useQuery } from 'react-query';
+import { API_HOST } from '../../components/RegisterPage';
 
 interface FetchDescriptionParams {
   registerShortName: string,
@@ -30,9 +30,8 @@ export const useDescriptionQuery = (params: FetchDescriptionParams) => {
 interface FetchIndicatorParams {
   registerShortName: string,
   treatmentYear: number,
-  unitNames?: string[],
+  unitNames: string[],
   unitLevel?: string,
-
 }
 
 const indicatorUrl = (params: FetchIndicatorParams): string => {
@@ -52,7 +51,7 @@ const fetchIndicators = async (params: FetchIndicatorParams) => {
     throw new Error('Network response failed')
   }
 
-  return response.json();
+  return await response.json();
 }
 
 
@@ -73,7 +72,7 @@ const fetchUnitNames = async (registerShortName: string) => {
     throw new Error('Network response failed')
   }
 
-  return response.json();
+  return await response.json();
 }
 
 export const useUnitNamesQuery = (registerShortName: string) => {
@@ -89,7 +88,7 @@ const fetchRegisterNames = async () => {
     throw new Error('Network response failed')
   }
 
-  return response.json();
+  return await response.json();
 }
 
 
@@ -107,7 +106,7 @@ const fetchMedicalFields = async () => {
     throw new Error('Network response failed')
   }
 
-  return response.json();
+  return await response.json();
 }
 
 
@@ -117,8 +116,3 @@ export const useMedicalFieldsQuery = () => {
     () => fetchMedicalFields()
   )
 }
-
-
-
-
-
