@@ -1,5 +1,6 @@
 const national_data = [
   {
+    id: 1001,
     ind_id: "barnediabetes_hba1c_ge_9",
     unit_level: "nation",
     unit_name: "Nasjonalt",
@@ -11,8 +12,10 @@ const national_data = [
     level_direction: 0,
     dg: null,
     include: 1,
+    type: 'andel'
   },
   {
+    id: 1006,
     ind_id: "barnediabetes_hba1c_ge_9",
     unit_level: "nation",
     unit_name: "Nasjonalt",
@@ -24,8 +27,10 @@ const national_data = [
     level_direction: 0,
     dg: null,
     include: 1,
+    type: 'andel'
   },
   {
+    id: 1002,
     ind_id: "barnediabetes_hba1c_ge_9",
     unit_level: "nation",
     unit_name: "Nasjonalt",
@@ -37,8 +42,10 @@ const national_data = [
     level_direction: 0,
     dg: null,
     include: 1,
+    type: 'andel'
   },
   {
+    id: 1003,
     ind_id: "barnediabetes_hba1c_lt_7",
     unit_level: "nation",
     unit_name: "Nasjonalt",
@@ -50,8 +57,10 @@ const national_data = [
     level_direction: 1,
     dg: null,
     include: 1,
+    type: 'andel'
   },
   {
+    id: 1004,
     ind_id: "barnediabetes_hba1c_lt_7",
     unit_level: "nation",
     unit_name: "Nasjonalt",
@@ -63,8 +72,10 @@ const national_data = [
     level_direction: 1,
     dg: null,
     include: 1,
+    type: 'andel'
   },
   {
+    id: 1005,
     ind_id: "barnediabetes_hba1c_lt_7",
     unit_level: "nation",
     unit_name: "Nasjonalt",
@@ -76,6 +87,7 @@ const national_data = [
     level_direction: 1,
     dg: null,
     include: 1,
+    type: 'andel'
   },
 ];
 
