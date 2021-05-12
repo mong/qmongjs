@@ -37,7 +37,7 @@ const formatIndicatorValues = (
       </td>
     );
   } else if (
-    indicator[0].denominator < (description.min_denominator ?? 0)
+    indicator[0].denominator < (description.min_denominator ?? 5)
   ) {
     return (
       <td
