@@ -1,17 +1,23 @@
 import { StatisticData, Description } from '../../components/RegisterPage'
 
 export const filterOrderIndID = (
-  namesLength: number,
+  isFetching: boolean,
+  selectedNames: string[],
   indData: StatisticData[],
   indDescription: Description[],
   level: string,
   tableType: "singleRegister" | "allRegistries"): string[] => {
 
+  const namesLength = Array.from(new Set(
+    indData.map(data => data.unit_name)
+  )).length
+
   const indId: string[] = Array.from(
     new Set(indData
       .filter((d: StatisticData) => {
-        const nation = namesLength === 1 || tableType === "singleRegister"
-          ? false : d.unit_name === "Nasjonalt"
+        const nation = tableType === "singleRegister" || isFetching || selectedNames.length === 1
+          ? false : (namesLength === 1 && isFetching)
+            ? false : d.unit_name === "Nasjonalt"
         if (level === "") {
           return !nation
         }
@@ -23,7 +29,8 @@ export const filterOrderIndID = (
         const lowN = d.denominator < (minDenom ?? 5)
         return !(nation || levelFilter || dg || lowN)
       })
-      .map((d: StatisticData) => d.ind_id))
+      .map((d: StatisticData) => d.ind_id)
+    )
   )
 
   const orderedIndID = indDescription.sort((a, b) => {
