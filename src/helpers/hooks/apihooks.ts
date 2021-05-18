@@ -6,6 +6,7 @@ interface FetchDescriptionParams {
   type?: "ind" | "dg",
 }
 
+
 const descriptionUrl = (params: FetchDescriptionParams): string => {
   return `${API_HOST}/kvalitetsregistre/${params.registerShortName}/descriptions?type=${params.type ?? ""}`
 }
@@ -22,8 +23,13 @@ const fetchDescription = async (params: FetchDescriptionParams) => {
 
 export const useDescriptionQuery = (params: FetchDescriptionParams) => {
   return useQuery(
-    `descriptions${params.registerShortName}`,
-    () => fetchDescription(params)
+    ["descriptions", params.registerShortName],
+    () => fetchDescription(params),
+    {
+      staleTime: 1000 * 60 * 60,
+      refetchOnWindowFocus: false,
+      cacheTime: 1000 * 60 * 60
+    }
   )
 }
 
@@ -57,8 +63,12 @@ const fetchIndicators = async (params: FetchIndicatorParams) => {
 
 export const useIndicatorQuery = (params: FetchIndicatorParams) => {
   return useQuery(
-    `indicatorData${params.registerShortName}`,
-    () => fetchIndicators(params)
+    ["indicatorData", params.registerShortName],
+    () => fetchIndicators(params), {
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    cacheTime: 1000 * 60 * 60
+  }
   )
 }
 
@@ -77,8 +87,12 @@ const fetchUnitNames = async (registerShortName: string) => {
 
 export const useUnitNamesQuery = (registerShortName: string) => {
   return useQuery(
-    `unitNames${registerShortName}`,
-    () => fetchUnitNames(registerShortName)
+    ["unitNames", registerShortName],
+    () => fetchUnitNames(registerShortName), {
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    cacheTime: 1000 * 60 * 60
+  }
   )
 }
 
@@ -95,7 +109,11 @@ const fetchRegisterNames = async () => {
 export const useRegisterNamesQuery = () => {
   return useQuery(
     `registerNames`,
-    () => fetchRegisterNames()
+    () => fetchRegisterNames(), {
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    cacheTime: 1000 * 60 * 60
+  }
   )
 }
 
@@ -113,6 +131,11 @@ const fetchMedicalFields = async () => {
 export const useMedicalFieldsQuery = () => {
   return useQuery(
     `medicalFields`,
-    () => fetchMedicalFields()
+    () => fetchMedicalFields(),
+    {
+      staleTime: 1000 * 60 * 60,
+      refetchOnWindowFocus: false,
+      cacheTime: 1000 * 60 * 60
+    }
   )
 }
