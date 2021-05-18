@@ -79,7 +79,7 @@ const Main = (props: Props) => {
     return null;
   }
   const medicalFields: MediacalFieldObject[] = medicalFieldsQuery.data
-  const selectedMedicalField: string[] = clicked_med_field === "" || clicked_med_field === "all"
+  const selectedMedicalField: string[] = (clicked_med_field ?? "all") === "all"
     ? registerList : medicalFields
       .filter((field: MediacalFieldObject) => field.shortName === clicked_med_field)
       .flatMap((field: MediacalFieldObject) => field.registers)
@@ -116,6 +116,7 @@ const Main = (props: Props) => {
         </div>
         <div className="main_table_container">
           <IndicatorTable
+            tableType="allRegistries"
             optstu={optstu}
             registerNames={orderedRegisterList}
             unitNames={[...treatment_units, "Nasjonalt"]}
@@ -134,15 +135,3 @@ const Main = (props: Props) => {
 };
 
 export default Main;
-
-
-
-/*
-interface configRQ {
-  staletime_ms: number;
-  retry_int: number;
-  cachetime_ms: number;
-  onSuccess: (d: any) => { return d };
-
-}
-*/
