@@ -150,6 +150,8 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
         <div className="content_container">
           <div className="main_table_container">
             <IndicatorTable
+              tableType={"singleRegister"}
+              optstu={optstu}
               registerNames={[{ id: 1, rname: register, full_name: register }]}
               unitNames={[...validated_treatment_units, "Nasjonalt"]}
               treatmentYear={validated_selected_year}

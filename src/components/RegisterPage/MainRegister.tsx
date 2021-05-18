@@ -120,6 +120,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({
         </div>
         {unitNamesQuery.isLoading ? null :
           <MAIN
+            optstu={optstu}
             registerNames={registerNames}
             treatment_units={validated_treatment_units}
             selected_year={validated_selected_year}
