@@ -34,6 +34,7 @@ export interface IndPerReg {
 }
 
 export interface Props {
+  optstu: [];
   registerNames: RegisterNames[];
   app_text: any;
   treatment_units: string[];
@@ -52,6 +53,7 @@ interface MediacalFieldObject {
 
 const Main = (props: Props) => {
   const {
+    optstu,
     registerNames,
     app_text,
     treatment_units,
@@ -72,12 +74,15 @@ const Main = (props: Props) => {
   const medicalFieldsQuery: UseQueryResult<any, unknown> = useMedicalFieldsQuery()
   const registerList = registerNames.map((d: RegisterNames) => d.rname)
 
-  const [med_field_filter, update_med_field_filter] = useState(registerList);
 
   if (medicalFieldsQuery.isLoading) {
     return null;
   }
   const medicalFields: MediacalFieldObject[] = medicalFieldsQuery.data
+  const selectedMedicalField: string[] = clicked_med_field === "" || clicked_med_field === "all"
+    ? registerList : medicalFields
+      .filter((field: MediacalFieldObject) => field.shortName === clicked_med_field)
+      .flatMap((field: MediacalFieldObject) => field.registers)
 
   const orderedRegisterList: RegisterNames[] = Array.from(new Set(medicalFields
     .flatMap((field: MediacalFieldObject) => field.registers)
@@ -103,8 +108,6 @@ const Main = (props: Props) => {
           />
           <MedicalFiedls
             medicalFields={medicalFields}
-            registerList={registerList}
-            update_med_field_filter={update_med_field_filter}
             clicked_med_field={clicked_med_field ?? "all"}
             update_clicked_med_field={update_clicked_med_field}
             selection_bar_height={selection_bar_height ?? 0}
@@ -113,11 +116,12 @@ const Main = (props: Props) => {
         </div>
         <div className="main_table_container">
           <IndicatorTable
+            optstu={optstu}
             registerNames={orderedRegisterList}
             unitNames={[...treatment_units, "Nasjonalt"]}
             treatmentYear={selected_year}
             colspan={colspan}
-            medicalFieldFilter={med_field_filter}
+            medicalFieldFilter={selectedMedicalField}
             showLevelFilter={show_level_filter}
             selection_bar_height={selection_bar_height}
             legend_height={legend_height}
