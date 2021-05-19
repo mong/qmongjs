@@ -80,7 +80,7 @@ export const med_field = [
   {
     react_key: "gyn",
     name: "Gynekologi",
-    key: ["nger", "kvinl_inkontinens"],
+    key: ["nger", "nkir"],
   },
   {
     react_key: "nyre",
