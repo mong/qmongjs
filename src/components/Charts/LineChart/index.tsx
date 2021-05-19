@@ -275,7 +275,7 @@ const LineChart = (props: Props) => {
           className={styles.lineChart}
           height={marginOffsets.top + height + marginOffsets.bottom}
           width={width}
-          style={{ backgroundColor: "#eef6f7" }}
+          style={{ backgroundColor: "white" }}
         >
           <g
             transform={`translate(${marginOffsets.left}, ${marginOffsets.top})`}

@@ -160,7 +160,7 @@ function BarChart(props: Props) {
         className={styles.barChart}
         height={marginOffsets.top + height + marginOffsets.bottom}
         width={width}
-        style={{ backgroundColor: "#eef6f7" }}
+        style={{ backgroundColor: "white" }}
       >
         <g transform={`translate(${marginOffsets.left}, ${marginOffsets.top})`}>
           <g className="x-axis" />
