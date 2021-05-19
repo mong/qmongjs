@@ -66,6 +66,7 @@ const formatIndicatorValues = (
 };
 
 export interface IndicatorRowProps {
+  treatmantYear: number;
   description: Description,
   indicatorData: StatisticData[],
   unitNames?: string[];
@@ -76,6 +77,7 @@ export interface IndicatorRowProps {
 
 export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
   const {
+    treatmantYear,
     description,
     indicatorData,
     unitNames = ["Nasjonalt"],
@@ -111,24 +113,24 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
       ? "filtered_level"
       : "";
 
-  /*
+
   const tr_fig =
     selected_row === ind_id ? (
       <TF_FIGURE
+        treatmentYear={treatmantYear}
         colspan={colspan}
-        data={{ aggdata: indicatorData, description: [description] }}
+        description={[description]}
         figure_class={medicalFieldClass}
         selectedTreatmentUnits={unitNames}
+        indicatorData={indicatorData}
         update_selected_row={update_selected_row}
       />
     ) : null;
 
-    */
-
   const tr_click_handler = () => {
     update_selected_row(selected_row === ind_id ? undefined : ind_id);
   };
-  //must add indicator figure
+
   return (
     <>
       <tr
@@ -138,8 +140,9 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
       >
         <IndicatorDescription description={description} />
         {indPerUnit}
-      </tr>
 
+      </tr>
+      {tr_fig}
     </>
   );
 }

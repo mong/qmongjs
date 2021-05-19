@@ -33,11 +33,12 @@ export const useDescriptionQuery = (params: FetchDescriptionParams) => {
   )
 }
 
-interface FetchIndicatorParams {
-  registerShortName: string,
-  treatmentYear: number,
-  unitNames: string[],
-  unitLevel?: string,
+export interface FetchIndicatorParams {
+  queryKey: string;
+  registerShortName: string;
+  treatmentYear?: number;
+  unitNames?: string[];
+  unitLevel?: string;
 }
 
 const indicatorUrl = (params: FetchIndicatorParams): string => {
@@ -48,7 +49,10 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
   const unitLevelQuery: string = params.unitLevel
     ? `unit_level=${params.unitLevel}&`
     : ""
-  return `${API_HOST}/kvalitetsregistre/${params.registerShortName}/indicators?${unitQuery}${unitLevelQuery}year=${params.treatmentYear}`
+  const yearQuery: string = params.treatmentYear
+    ? `year=${params.treatmentYear}`
+    : ""
+  return `${API_HOST}/kvalitetsregistre/${params.registerShortName}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}`
 }
 
 const fetchIndicators = async (params: FetchIndicatorParams) => {
@@ -63,7 +67,7 @@ const fetchIndicators = async (params: FetchIndicatorParams) => {
 
 export const useIndicatorQuery = (params: FetchIndicatorParams) => {
   return useQuery(
-    ["indicatorData", params.registerShortName],
+    [params.queryKey, params.registerShortName],
     () => fetchIndicators(params), {
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
