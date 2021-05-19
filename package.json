@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@sentry/react": "^6.3.6",
-    "@sentry/tracing": "^6.3.6",
+    "@sentry/tracing": "^6.4.0",
     "d3": "^6.7.0",
     "query-string": "^7.0.0",
     "react": "^17.0.1",
