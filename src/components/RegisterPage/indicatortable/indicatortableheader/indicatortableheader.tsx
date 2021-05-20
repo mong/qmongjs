@@ -1,5 +1,4 @@
 import React from "react";
-import style from "./indicatortableheader.module.css"
 
 export interface IndicatorTableHeaderProps {
   colspan: number;
