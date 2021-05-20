@@ -6,7 +6,6 @@ import { UseQueryResult } from 'react-query'
 
 import SELECT_MULTI from "../select_multi";
 import SELECT_SINGLE from "../select_single";
-import TU_LIST from "../tu_list";
 import LEGEND from "../legend";
 //import Loading from "../Loading.tsx";
 import { IndicatorTable } from './indicatortable'
@@ -26,6 +25,7 @@ import {
   useUnitNamesQuery
 } from "../../helpers/hooks";
 import { Header } from "./header";
+import { UnitNameList } from "./unitnamelist";
 
 
 interface SelectedRegisterProps {
@@ -123,8 +123,8 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
               update_tu={update_treatment_units}
               treatment_unit={validated_treatment_units}
             />
-            <TU_LIST
-              tu_structure={nestedUnitNames}
+            <UnitNameList
+              nestedUnitNames={nestedUnitNames}
               treatment_units={validated_treatment_units}
               update_treatment_units={update_treatment_units}
             />
