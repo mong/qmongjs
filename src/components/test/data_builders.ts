@@ -18,6 +18,7 @@ import registerNames from '../../dev-tools/data/registernames.json';
 
 export function buildMainProps(overrides: Partial<Props>): Props {
   return {
+    optstu: [],
     treatment_units: [],
     selected_year: 2019,
     app_text,
