@@ -1,0 +1,9 @@
+.titleRow {
+  background-color: #dee7ee;
+}
+.title {
+  text-align: left;
+  font-size: 1.1rem;
+  padding: 0 0.5rem;
+  margin: 0.8rem 0;
+}
