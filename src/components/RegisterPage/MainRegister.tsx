@@ -95,7 +95,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({
 
   return (
     <div className="app-container" style={{ minHeight: "100vh" }}>
-      <Header tabNames={["a", "b"]} />
+      <Header tabNames={["Sykehus", "Boområde"]} />
       <div className="app-body">
         <div className="selection-container" ref={selection_bar_ref}>
           <div className="treatment-unit-selection">
