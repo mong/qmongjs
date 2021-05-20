@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 
 import LEGEND_BTN from "./legend_btn";
 
-import useResizeObserver from "./utils";
+import { useResizeObserver } from "../helpers/hooks";
 
 function LEGEND(props) {
   const {
