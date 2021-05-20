@@ -57,9 +57,6 @@ const GetBarChart: React.FC<Props> = (props) => {
     refetch()
   }, [refetch, treatmentYear])
 
-
-
-
   const nasjonaltIndData = [...indicatorData].filter(d => d.unit_name === "Nasjonalt")
   const barChartData = [
     ...barIndDataQuery.data ?? [],
@@ -97,7 +94,6 @@ const GetBarChart: React.FC<Props> = (props) => {
 const GetLineChart: React.FC<Props> = (props) => {
   const {
     description,
-    treatmentYear,
     selectedTreatmentUnits
   } = props
 
