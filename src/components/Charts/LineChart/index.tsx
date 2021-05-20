@@ -14,7 +14,7 @@ import { page_colors } from "../../../charts/page_colors";
 import { theme_table_chart_line as theme } from "../../../charts/theme_table_chart_line";
 import useDelayInitial from "../../../utils/useDelayInitial";
 import { Level, Margin } from "../types";
-import useResizeObserver from "../../utils";
+import useResizeObserver from "../../../helpers/hooks/useResizeObserver";
 import styles from "./LineChart.module.css";
 import { levelColor } from "../utils";
 
@@ -63,7 +63,7 @@ const LineChart = (props: Props) => {
 
   const innerHeight = height - marginOffsets.top - marginOffsets.bottom;
   const innerWidth = width - marginOffsets.left - marginOffsets.right;
-
+  console.log(entry)
   useEffect(() => {
     if (innerWidth === 0) {
       return;

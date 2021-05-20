@@ -8,7 +8,7 @@ import {
 } from "d3";
 import { useEffect, useRef } from "react";
 import useDelayInitial from "../../../utils/useDelayInitial";
-import useResizeObserver from "../../utils";
+import { useResizeObserver } from "../../../helpers/hooks";
 import styles from "./BarChart.module.css";
 import { levelColor } from "../utils";
 import { Level, Margin } from "../types";
@@ -43,6 +43,8 @@ function BarChart(props: Props) {
     zoom = false,
     margin = {},
   } = props;
+
+
 
   const delayedZoom = useDelayInitial(zoom, false);
   const svgRef = useRef<SVGSVGElement>(null);

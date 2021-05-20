@@ -9,11 +9,11 @@ import { render, screen } from "@testing-library/react";
 import React, { useRef } from "react";
 import faker from "faker";
 import BarChart, { Props, Bar } from "..";
-import useResizeObserver from "../../../utils";
+import { useResizeObserver } from "../../../../helpers/hooks";
 import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
 
-jest.mock("../../../utils");
+jest.mock("../../../../helpers/hooks");
 jest.mock("../../../../utils/useDelayInitial");
 
 test("Bar widths are correct", async () => {
@@ -39,20 +39,19 @@ test("Bar widths are correct", async () => {
 
   for (const dataPoint of props.data) {
     const bar = screen.getByTestId(`bar-${dataPoint.label}`);
-
     const width = bar.getAttribute("width") ?? "";
     expect(parseFloat(width)).toBeCloseTo(dataPoint.value * WIDTH);
   }
 
   // Test bars update if values update
   const newProps = { ...props, data: [{ ...bar1, value: 0.75 }, bar2] };
+
   await rerender(<BarChartWithRef {...newProps} />);
 
   await clockTick(1500);
 
   for (const dataPoint of newProps.data) {
     const bar = screen.getByTestId(`bar-${dataPoint.label}`);
-
     const width = bar.getAttribute("width") ?? "";
     expect(parseFloat(width)).toBeCloseTo(dataPoint.value * WIDTH);
   }
@@ -342,8 +341,8 @@ function BarChartWithRef(props: Omit<Props, "svgContainerRef">) {
 // Builders
 function buildBar(overrides?: Partial<Bar>): Bar {
   return {
-    label: faker.random.uuid(),
-    value: faker.random.number(100) / 100,
+    label: faker.datatype.uuid(),
+    value: faker.datatype.number(100) / 100,
     ...overrides,
   };
 }
@@ -352,13 +351,13 @@ function buildProps(
   overrides?: Partial<Props>
 ): Omit<Props, "svgContainerRef"> {
   return {
-    showLevel: faker.random.boolean(),
+    showLevel: faker.datatype.boolean(),
     data: Array.from(
-      { length: faker.random.number({ min: 1, max: 10 }) },
+      { length: faker.datatype.number({ min: 1, max: 10 }) },
       buildBar
     ),
     levels: buildLevels(),
-    zoom: faker.random.boolean(),
+    zoom: faker.datatype.boolean(),
     ...overrides,
   };
 }
