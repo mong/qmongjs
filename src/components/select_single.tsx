@@ -16,7 +16,7 @@ function SELECT_SINGLE(props: Props) {
   const selection_options = opts.map((opt) => ({ value: opt, label: opt }));
   const selected_option =
     selection_options[
-      selection_options.findIndex((v) => v.value === selected_year) | 0
+    selection_options.findIndex((v) => v.value === selected_year) | 0
     ];
   const defaultValue = selected_option;
   const handle_input_change = (e: any) => {
@@ -27,24 +27,24 @@ function SELECT_SINGLE(props: Props) {
     control: (provided: any, state: any) => ({
       ...provided,
       width: "100%",
-      backgroundColor: "#00263d",
+      backgroundColor: "white",
       boxShadow: null,
       fontSize: "1rem",
       border: state.isFocused
         ? "3px solid #7ebec7"
         : state.isSelected
-        ? "3px solid #EEF6F7"
-        : "3px solid #EEF6F7",
+          ? "3px solid #EEF6F7"
+          : "3px solid #EEF6F7",
       minHeight: "2rem",
       cursor: "pointer",
     }),
     input: (provided: any) => ({
       ...provided,
-      color: "#EEF6F7",
+      //color: "#EEF6F7",
     }),
     singleValue: (provided: any) => ({
       ...provided,
-      color: "#EEF6F7",
+      //color: "#EEF6F7",
     }),
     menu: (provided: any) => ({
       ...provided,

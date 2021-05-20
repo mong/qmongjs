@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #eef6f7;
+  background-color: #fff;;
   box-sizing: border-box;
 }
 
@@ -60,7 +60,7 @@ h6 {
   width: 98%;
   max-width: 1500px;
   position: relative;
-  top: -2rem;
+  top: 0rem;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -69,13 +69,13 @@ h6 {
   position: sticky;
   top: 0;
   display: flex;
-  background-color: #00263d;
+  background-color: white;
   justify-content: center;
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
   z-index: 3;
-  box-shadow: 0 4px 5px -1px rgba(0, 38, 61, 0.25);
+ /* box-shadow: 0 4px 5px -1px rgba(0, 38, 61, 0.25);*/
   position: -webkit-sticky;
 }
 .treatment-unit-selection {
@@ -103,7 +103,7 @@ h6 {
   display: flex;
   justify-content: space-around;
   position: sticky;
-  background-color: #eef6f7;
+  background-color: white;
   text-align: end;
   width: 80%;
   font-size: 1rem;
@@ -125,7 +125,7 @@ h6 {
   border: 2px solid #d2d3d4;
   border-radius: 2em;
   margin: 0.7em 0.2em;
-  background-color: #e2f2f5;
+  background-color: #dee7ee;
   position: relative;
   box-shadow: 0 4px 5px -1px rgba(196, 196, 196, 0.2);
   min-width: 25%;
@@ -192,6 +192,7 @@ h6 {
 
 .med_field_list li {
   list-style-type: none;
+  margin-top: 1rem;
 }
 
 .med_field_title button .med_field_text {
@@ -219,7 +220,7 @@ h6 {
 .med_field button.med_field_text {
   font-size: 1rem;
   color: #9a9a9a;
-  margin-top: 0.5rem;
+  
   background-color: unset;
   width: 100%;
   transition: all 0.3s ease-in;
@@ -251,7 +252,7 @@ h6 {
   content: "";
   position: absolute;
   width: 80%;
-  bottom: 0;
+  bottom: -0.2rem;
   display: block;
   border-bottom: 4px solid #00263d;
   transform: scale(0);
@@ -275,7 +276,6 @@ h6 {
 }
 .med_field_list .checked button.med_field_text {
   color: #00263d;
-
   transition: all 0.3s ease-in;
 }
 .med_field_list .checked .med_field_nrind {
@@ -317,7 +317,7 @@ tbody tr {
   box-shadow: 0 4px 5px -1px #dcdcdc;
 }
 .register-row {
-  background: linear-gradient(#7ebec7 5%, #58868c 95%);
+ background-color: #dee7ee;
 }
 .register-row .reg-name {
   text-align: left;
@@ -558,14 +558,14 @@ input[type="radio"].figure_button_right:checked + label {
 /************ list of treatment units ***************/
 
 .hospital_list_btn {
-  color: #eef6f7;
+  color: black;
   font-weight: 500;
   font-size: 1.1rem;
-  background-color: #00263d;
+  background: none;
   height: 2.6rem;
   width: 100%;
   padding: 0.2rem;
-  border: 3px solid #eef6f7;
+  border: none;
   border-radius: 0.2rem;
   cursor: pointer;
   outline: none;
