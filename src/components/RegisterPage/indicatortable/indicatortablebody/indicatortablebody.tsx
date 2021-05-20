@@ -1,5 +1,4 @@
 import React from 'react'
-import style from './indicatortablebosy.module.css'
 
 import TableBlock from "../tableblock/tableblock";
 
@@ -55,7 +54,6 @@ export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (props) => 
           showLevelFilter={showLevelFilter}
           blockTitle={blockTitle ? blockTitle[i] : undefined}
         />
-
       );
     } else {
       return null;
