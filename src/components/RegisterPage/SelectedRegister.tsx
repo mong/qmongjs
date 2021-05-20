@@ -1,14 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useQueryParam } from "use-query-params";
 import { useParams } from "react-router-dom";
-import { UseQueryResult } from 'react-query'
-
+import { UseQueryResult } from "react-query";
 
 import SELECT_MULTI from "../select_multi";
 import SELECT_SINGLE from "../select_single";
 import LEGEND from "../legend";
 //import Loading from "../Loading.tsx";
-import { IndicatorTable } from './indicatortable'
+import { IndicatorTable } from "./indicatortable";
 import { RegisterNames } from ".";
 import config, {
   mainQueryParamsConfig,
@@ -16,47 +15,34 @@ import config, {
   minYear,
   defaultYear,
 } from "../../app_config";
-import {
-  mathClamp,
-  validateTreatmentUnits,
-} from "../../helpers/functions";
-import {
-  useResizeObserver,
-  useUnitNamesQuery
-} from "../../helpers/hooks";
+import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
+import { useResizeObserver, useUnitNamesQuery } from "../../helpers/hooks";
 import { Header } from "./header";
 import { UnitNameList } from "./unitnamelist";
 
-
 interface SelectedRegisterProps {
-  registerNames: RegisterNames[]
+  registerNames: RegisterNames[];
 }
 
 export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
-  registerNames
+  registerNames,
 }) => {
   const { register }: { register: string } = useParams();
 
-  const [
-    nestedUnitNames,
-    updateNestedUnitNames
-  ] = useState<[]>([])
+  const [nestedUnitNames, updateNestedUnitNames] = useState<[]>([]);
 
-  const [
-    optstu,
-    updateOptsTU
-  ] = useState<[]>([])
+  const [optstu, updateOptsTU] = useState<[]>([]);
 
-  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(register)
+  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
+    register
+  );
 
   useEffect(() => {
     if (unitNamesQuery.isSuccess) {
-      updateNestedUnitNames(unitNamesQuery.data.nestedUnitNames)
-      updateOptsTU(unitNamesQuery.data.opts_tu)
+      updateNestedUnitNames(unitNamesQuery.data.nestedUnitNames);
+      updateOptsTU(unitNamesQuery.data.opts_tu);
     }
-  }, [unitNamesQuery])
-
-
+  }, [unitNamesQuery]);
 
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
@@ -101,7 +87,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     string | undefined
   >("level", mainQueryParamsConfig.level);
 
-  const validReg = registerNames.map(d => d.rname)
+  const validReg = registerNames.map((d) => d.rname);
   // returns page not found if the register param is not valid
   if (!validReg.includes(register)) {
     return (
@@ -110,12 +96,15 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
       </div>
     );
   }
-  const registerFullName = registerNames
-    .filter(d => d.rname === register)[0].full_name
+  const registerFullName = registerNames.filter((d) => d.rname === register)[0]
+    .full_name;
 
   return (
     <div className="app-container" style={{ minHeight: "100vh" }}>
-      <Header dataFrom={registerFullName} tabNames={["Sykehus", "Boområde", "datakvalitet"]} />
+      <Header
+        dataFrom={registerFullName}
+        tabNames={["Sykehus", "Boområde", "datakvalitet"]}
+      />
       <div className="app-body">
         <div className="selection-container" ref={selection_bar_ref}>
           <div className="treatment-unit-selection">

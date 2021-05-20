@@ -1,5 +1,5 @@
 import React from "react";
-import style from './tableblocktitle.module.css'
+import style from "./tableblocktitle.module.css";
 
 interface BlockTitleProps {
   title: string;
@@ -18,8 +18,8 @@ export const TableBlockTitle: React.FC<BlockTitleProps> = (props) => {
       <td colSpan={colspan}>
         <h3 className={style.title}>{title}</h3>
       </td>
-    </tr >
+    </tr>
   );
-}
+};
 
 export default TableBlockTitle;

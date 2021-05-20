@@ -1,1 +1,1 @@
-export * from './indicatorvalue'
+export * from "./indicatorvalue";

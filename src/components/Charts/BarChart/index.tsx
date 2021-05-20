@@ -44,8 +44,6 @@ function BarChart(props: Props) {
     margin = {},
   } = props;
 
-
-
   const delayedZoom = useDelayInitial(zoom, false);
   const svgRef = useRef<SVGSVGElement>(null);
   const entry = useResizeObserver(wrapperRef);

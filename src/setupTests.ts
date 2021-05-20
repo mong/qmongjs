@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { act } from "@testing-library/react";
-import { server } from './components/test/testserver'
+import { server } from "./components/test/testserver";
 
 // real times is a good default to start, individual tests can
 // enable fake timers if they need, and if they have, then we should
@@ -18,9 +18,6 @@ afterEach(() => {
   }
 });
 
-
-
-
-beforeAll(() => server.listen())
-afterEach(() => server.resetHandlers())
-afterAll(() => server.close())
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());

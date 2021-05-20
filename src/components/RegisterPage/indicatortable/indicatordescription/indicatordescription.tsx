@@ -1,8 +1,6 @@
 import React from "react";
 import { Description } from "../../";
-import style from './indicatordescription.module.css'
-
-
+import style from "./indicatordescription.module.css";
 
 export interface DescriptionProps {
   description: Description;
@@ -39,6 +37,6 @@ export const IndicatorDescription: React.FC<DescriptionProps> = (props) => {
       <div className={style.desired_target_level}>{LEVEL_TEXT}</div>
     </td>
   );
-}
+};
 
 export default IndicatorDescription;

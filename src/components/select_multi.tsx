@@ -45,8 +45,8 @@ function SELECT_MULTI(props: Props) {
         ? "3px solid #7ebec7"
         : // @ts-ignore
         state.isSelected
-          ? "3px solid #EEF6F7"
-          : "3px solid #EEF6F7",
+        ? "3px solid #EEF6F7"
+        : "3px solid #EEF6F7",
       cursor: "text",
     }),
     input: (provided: any) => ({

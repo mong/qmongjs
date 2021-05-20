@@ -13,14 +13,10 @@ interface Props {
   clicked_med_field: string;
 }
 export const MedicalFieldEntry: React.FC<Props> = (props) => {
-  const {
-    med_field,
-    update_clicked_med_field,
-    clicked_med_field,
-  } = props;
+  const { med_field, update_clicked_med_field, clicked_med_field } = props;
 
-  const class_checked = med_field.shortName === clicked_med_field
-    ? "checked" : "";
+  const class_checked =
+    med_field.shortName === clicked_med_field ? "checked" : "";
 
   const handle_med_field_click = () => {
     update_clicked_med_field(med_field.shortName);
@@ -35,10 +31,9 @@ export const MedicalFieldEntry: React.FC<Props> = (props) => {
         onClick={() => handle_med_field_click()}
       >
         {med_field.name.toUpperCase()}
-
       </button>
     </li>
   );
-}
+};
 
 export default MedicalFieldEntry;

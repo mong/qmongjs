@@ -1,6 +1,6 @@
 import React from "react";
-import { StatisticData } from '../../'
-import style from './indicatorvalue.module.css'
+import { StatisticData } from "../../";
+import style from "./indicatorvalue.module.css";
 
 export interface IndicatorValueProps {
   td_class?: string;
@@ -8,7 +8,7 @@ export interface IndicatorValueProps {
   indicator_value?: "65%";
   share_of_total?: number;
   total?: number;
-  level_class?: "filtered_level" | ""
+  level_class?: "filtered_level" | "";
 }
 
 export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
@@ -18,35 +18,38 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
     indicator_value = "65%",
     share_of_total = 1500,
     total = 2000,
-    level_class = ""
+    level_class = "",
   } = props;
 
-  const filter_level = level_class === "" ? "" : style.filtered_level
+  const filter_level = level_class === "" ? "" : style.filtered_level;
 
   const icon_class =
     indicatorData.level === "H"
       ? "fa fa-fas fa-circle"
       : indicatorData.level === "M"
-        ? "fa fa-fas fa-adjust"
-        : indicatorData.level === "L"
-          ? "fa fa-circle-o"
-          : "undeined";
-  if (indicatorData.type === 'andel') {
+      ? "fa fa-fas fa-adjust"
+      : indicatorData.level === "L"
+      ? "fa fa-circle-o"
+      : "undeined";
+  if (indicatorData.type === "andel") {
     const denominator = indicatorData.denominator;
-    const numerator = Math.round(
-      indicatorData.var * denominator
-    );
+    const numerator = Math.round(indicatorData.var * denominator);
     const indicator_value_share =
       indicatorData.var < 0.1
         ? `${Math.round(indicatorData.var * 1000) / 10}%`
         : `${Math.round(indicatorData.var * 100)}%`;
 
     return (
-      <td className={td_class === "selected_unit" ? `${style.selected_unit} ${filter_level}` : `${style.nationally} ${filter_level}`}>
+      <td
+        className={
+          td_class === "selected_unit"
+            ? `${style.selected_unit} ${filter_level}`
+            : `${style.nationally} ${filter_level}`
+        }
+      >
         <div
           className={style.level}
-          aria-label={`Achieved level ${indicatorData.level
-            }`}
+          aria-label={`Achieved level ${indicatorData.level}`}
         >
           <h4>
             {`${indicator_value_share} `}
@@ -72,6 +75,6 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
       <div className="summary">{`${share_of_total} av ${total}`}</div>
     </td>
   );
-}
+};
 
 export default IndicatorValue;

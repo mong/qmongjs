@@ -23,14 +23,12 @@ it("renders Lav dg", () => {
   expect(container.textContent).toBe("Lav dg");
 });
 
-
 it("renders Lav N", () => {
   act(() => {
     render(<MaskedIndicator text="Lav N" />, container);
   });
   expect(container.textContent).toBe("Lav N");
 });
-
 
 it("renders Ingen data", () => {
   act(() => {

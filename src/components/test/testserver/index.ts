@@ -1,12 +1,8 @@
-import { setupServer } from 'msw/node'
+import { setupServer } from "msw/node";
 
-import { handlers } from './requesthandlers'
+import { handlers } from "./requesthandlers";
 
-export * from './requesthandlers'
-export * from './responseresolvers'
+export * from "./requesthandlers";
+export * from "./responseresolvers";
 
-export const server = setupServer(
-  ...handlers
-);
-
-
+export const server = setupServer(...handlers);

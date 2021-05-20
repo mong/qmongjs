@@ -5,7 +5,6 @@ import { act } from "react-dom/test-utils";
 import { IndicatorValue } from "../";
 import national_data from "../../../../../test/test_data/national_data";
 
-
 let container: any = null;
 beforeEach(() => {
   container = document.createElement("div");
@@ -24,9 +23,7 @@ it("renders", () => {
     data.var < 0.1
       ? `${Math.round(data.var * 1000) / 10}%`
       : `${Math.round(data.var * 100)}%`;
-  const numerator = Math.round(
-    data.var * data.denominator
-  );
+  const numerator = Math.round(data.var * data.denominator);
 
   act(() => {
     render(

@@ -17,11 +17,11 @@ export interface IndicatorTableProps {
     rname: string;
     full_name: string;
     registerField?: string;
-  }[],
-  treatmentYear: number,
-  medicalFieldFilter: string[],
-  showLevelFilter?: string,
-  blockTitle?: string[]
+  }[];
+  treatmentYear: number;
+  medicalFieldFilter: string[];
+  showLevelFilter?: string;
+  blockTitle?: string[];
 }
 
 export const IndicatorTable: React.FC<IndicatorTableProps> = (props) => {
@@ -37,7 +37,7 @@ export const IndicatorTable: React.FC<IndicatorTableProps> = (props) => {
     legend_height,
     registerNames,
     descriptionHeader,
-    blockTitle
+    blockTitle,
   } = props;
 
   return (
@@ -62,6 +62,6 @@ export const IndicatorTable: React.FC<IndicatorTableProps> = (props) => {
       />
     </table>
   );
-}
+};
 
 export default IndicatorTable;

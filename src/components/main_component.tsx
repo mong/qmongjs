@@ -1,25 +1,28 @@
 import React, { useState } from "react";
-import { UseQueryResult } from 'react-query';
+import { UseQueryResult } from "react-query";
 import { useQueryParam } from "use-query-params";
-import { Description, RegisterNames, StatisticData } from "../components/RegisterPage";
+import {
+  Description,
+  RegisterNames,
+  StatisticData,
+} from "../components/RegisterPage";
 import { mainQueryParamsConfig } from "../app_config";
-
 
 import SelectRegister from "./SelectRegister";
 import LEGEND from "./legend";
 //import Loading from "./Loading.tsx";
 import { MedicalFiedls } from "./RegisterPage/medicalfields";
 import { IndicatorTable } from "./RegisterPage/indicatortable";
-import { useMedicalFieldsQuery } from '../helpers/hooks'
+import { useMedicalFieldsQuery } from "../helpers/hooks";
 
 interface AggData {
   nation: {
-    filtered_by_unit: StatisticData[],
-    filtered_by_year: StatisticData[],
-  },
-  filtered_by_unit: StatisticData[],
-  filtered_by_year: StatisticData[],
-  all_filtered_by_year: StatisticData[],
+    filtered_by_unit: StatisticData[];
+    filtered_by_year: StatisticData[];
+  };
+  filtered_by_unit: StatisticData[];
+  filtered_by_year: StatisticData[];
+  all_filtered_by_year: StatisticData[];
 }
 
 export interface GraphData {
@@ -71,24 +74,35 @@ const Main = (props: Props) => {
     string | undefined
   >("indicator", mainQueryParamsConfig.indicator);
 
-  const medicalFieldsQuery: UseQueryResult<any, unknown> = useMedicalFieldsQuery()
-  const registerList = registerNames.map((d: RegisterNames) => d.rname)
-
+  const medicalFieldsQuery: UseQueryResult<
+    any,
+    unknown
+  > = useMedicalFieldsQuery();
+  const registerList = registerNames.map((d: RegisterNames) => d.rname);
 
   if (medicalFieldsQuery.isLoading) {
     return null;
   }
-  const medicalFields: MediacalFieldObject[] = medicalFieldsQuery.data
-  const selectedMedicalField: string[] = (clicked_med_field ?? "all") === "all"
-    ? registerList : medicalFields
-      .filter((field: MediacalFieldObject) => field.shortName === clicked_med_field)
-      .flatMap((field: MediacalFieldObject) => field.registers)
+  const medicalFields: MediacalFieldObject[] = medicalFieldsQuery.data;
+  const selectedMedicalField: string[] =
+    (clicked_med_field ?? "all") === "all"
+      ? registerList
+      : medicalFields
+          .filter(
+            (field: MediacalFieldObject) =>
+              field.shortName === clicked_med_field
+          )
+          .flatMap((field: MediacalFieldObject) => field.registers);
 
-  const orderedRegisterList: RegisterNames[] = Array.from(new Set(medicalFields
-    .flatMap((field: MediacalFieldObject) => field.registers)
-  )).map(reg => {
-    return registerNames.filter(regLit => regLit.rname === reg)[0]
-  }).filter(data => data)
+  const orderedRegisterList: RegisterNames[] = Array.from(
+    new Set(
+      medicalFields.flatMap((field: MediacalFieldObject) => field.registers)
+    )
+  )
+    .map((reg) => {
+      return registerNames.filter((regLit) => regLit.rname === reg)[0];
+    })
+    .filter((data) => data);
 
   return (
     <>
@@ -126,7 +140,9 @@ const Main = (props: Props) => {
             showLevelFilter={show_level_filter}
             selection_bar_height={selection_bar_height}
             legend_height={legend_height}
-            blockTitle={orderedRegisterList.map((d: RegisterNames) => d.full_name)}
+            blockTitle={orderedRegisterList.map(
+              (d: RegisterNames) => d.full_name
+            )}
           />
         </div>
       </div>

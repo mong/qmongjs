@@ -8,7 +8,6 @@ import MainRegister from "./MainRegister";
 import SelectedRegister from "./SelectedRegister";
 import { useRegisterNamesQuery } from "../../helpers/hooks";
 
-
 export interface RegisterNames {
   id: number;
   rname: string;
@@ -29,7 +28,7 @@ export interface StatisticData {
   level_direction: number | null;
   dg: number | null;
   include: number | null;
-  type: 'andel' | string;
+  type: "andel" | string;
 }
 
 export interface Description {
@@ -44,35 +43,35 @@ export interface Description {
   level_yellow: number | null;
   level_direction: number;
   short_description: string | null;
-  long_description: string | null
+  long_description: string | null;
   registry_id: number;
   rname: string | null;
   full_name: string;
 }
 
-export const API_HOST = process.env.REACT_APP_API_HOST ?? "http://localhost:4000";
+export const API_HOST =
+  process.env.REACT_APP_API_HOST ?? "http://localhost:4000";
 
 export const RegisterPage: React.FC = () => {
   let { path } = useRouteMatch();
-  const registryNameQuery: UseQueryResult<any, unknown> = useRegisterNamesQuery()
+  const registryNameQuery: UseQueryResult<
+    any,
+    unknown
+  > = useRegisterNamesQuery();
   if (registryNameQuery.isLoading) {
-    return null
+    return null;
   }
-  const registerNames = registryNameQuery.data
+  const registerNames = registryNameQuery.data;
 
   return (
     <>
       <Header />
       <Switch>
         <Route exact path={path}>
-          <MainRegister
-            registerNames={registerNames ?? []}
-          />
+          <MainRegister registerNames={registerNames ?? []} />
         </Route>
         <Route exact path={`${path}/:register`}>
-          <SelectedRegister
-            registerNames={registerNames ?? []}
-          />
+          <SelectedRegister registerNames={registerNames ?? []} />
         </Route>
         <Route path="/">
           <div style={{ minHeight: "100vh" }}>
@@ -83,6 +82,6 @@ export const RegisterPage: React.FC = () => {
       <Footer />
     </>
   );
-}
+};
 
 export default RegisterPage;

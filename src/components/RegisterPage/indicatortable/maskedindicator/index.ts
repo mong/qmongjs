@@ -1,1 +1,1 @@
-export * from './maskedindicator'
+export * from "./maskedindicator";

@@ -9,7 +9,9 @@ export interface IndicatorTableHeaderProps {
   legend_height: number;
 }
 
-export const IndicatorTableHeader: React.FC<IndicatorTableHeaderProps> = (props) => {
+export const IndicatorTableHeader: React.FC<IndicatorTableHeaderProps> = (
+  props
+) => {
   const {
     colspan = 2,
     descriptionHeader = "Kvalitetsindikator",
@@ -25,9 +27,13 @@ export const IndicatorTableHeader: React.FC<IndicatorTableHeaderProps> = (props)
   const style_treatment_units = { width: `${width_tu}%`, top: offset_top };
 
   let treatment_unit_th = unitNames.map((tu) => (
-    <th className={tu !== "nasjonalt" ? "selected_unit" : "nationally "} style={style_treatment_units} key={tu}>
-      { tu}
-    </th >
+    <th
+      className={tu !== "nasjonalt" ? "selected_unit" : "nationally "}
+      style={style_treatment_units}
+      key={tu}
+    >
+      {tu}
+    </th>
   ));
 
   return (
@@ -41,10 +47,9 @@ export const IndicatorTableHeader: React.FC<IndicatorTableHeaderProps> = (props)
           {descriptionHeader}
         </th>
         {treatment_unit_th}
-
       </tr>
     </thead>
   );
-}
+};
 
 export default IndicatorTableHeader;

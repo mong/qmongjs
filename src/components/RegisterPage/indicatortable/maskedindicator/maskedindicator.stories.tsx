@@ -8,18 +8,20 @@ export default {
   component: MaskedIndicator,
 } as Meta;
 
-const Template: Story<MaskedIndicatorProps> = (args) => <MaskedIndicator {...args} />;
+const Template: Story<MaskedIndicatorProps> = (args) => (
+  <MaskedIndicator {...args} />
+);
 
 export const LowCoverage = Template.bind({});
 LowCoverage.args = {
-  text: "Lav dg"
+  text: "Lav dg",
 };
 
 export const NoData = Template.bind({});
 NoData.args = {
-  text: "Ingen Data"
+  text: "Ingen Data",
 };
 export const LowN = Template.bind({});
 LowN.args = {
-  text: "Lav N"
+  text: "Lav N",
 };

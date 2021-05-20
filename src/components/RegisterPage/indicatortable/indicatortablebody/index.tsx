@@ -1,1 +1,1 @@
-export * from './indicatortablebody'
+export * from "./indicatortablebody";

@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
 
 import TableBlock from "../tableblock/tableblock";
-
 
 interface RegisterName {
   id: number;
@@ -13,16 +12,18 @@ interface RegisterName {
 export interface IndicatorTableBodyProps {
   tableType: "allRegistries" | "singleRegister";
   optstu: [];
-  colspan: number,
-  registerNames: RegisterName[],
-  unitNames: string[],
-  treatmentYear: number,
-  medicalFieldFilter: string[],
-  showLevelFilter: string,
-  blockTitle?: string[]
+  colspan: number;
+  registerNames: RegisterName[];
+  unitNames: string[];
+  treatmentYear: number;
+  medicalFieldFilter: string[];
+  showLevelFilter: string;
+  blockTitle?: string[];
 }
 
-export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (props) => {
+export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (
+  props
+) => {
   const {
     tableType,
     optstu,
@@ -32,9 +33,8 @@ export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (props) => 
     treatmentYear,
     medicalFieldFilter,
     showLevelFilter,
-    blockTitle
+    blockTitle,
   } = props;
-
 
   const done: string[] = [];
   let register_block = registerNames.map((register, i) => {
@@ -58,8 +58,7 @@ export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (props) => 
     } else {
       return null;
     }
-  })
+  });
 
   return <tbody>{register_block}</tbody>;
-}
-
+};

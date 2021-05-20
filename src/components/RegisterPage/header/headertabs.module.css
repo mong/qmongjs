@@ -1,9 +1,9 @@
-.tabsWrapper{
+.tabsWrapper {
   width: 98%;
   margin: auto;
 }
 
-.highlighter{
+.highlighter {
   position: absolute;
   bottom: -3px;
   height: 3px;
@@ -11,7 +11,7 @@
   transition: 100ms ease-in;
 }
 
-.tabsUL{ 
+.tabsUL {
   display: flex;
   justify-content: space-evenly;
   align-items: baseline;
@@ -19,14 +19,13 @@
   padding: 0;
 }
 
-.tabsLI{
+.tabsLI {
   list-style: none;
   transition: 200ms ease-in;
   margin: 0;
 }
 
-
-.tabsBtn{
+.tabsBtn {
   font-size: 1rem;
   border: none;
   background: none;
@@ -44,6 +43,6 @@
   color: #6da7df;
 }
 
-.nsmlogo{
+.nsmlogo {
   max-width: 10px;
 }

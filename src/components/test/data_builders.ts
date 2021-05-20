@@ -5,16 +5,11 @@ import {
 } from "../../components/RegisterPage";
 import { med_field, app_text } from "../../app_config";
 import { GraphData, Props } from "../main_component";
-import desc from '../../dev-tools/data/description.min.json';
-import ind from '../../dev-tools/data/indcator_all.min.json';
-import medicalFeild from '../../dev-tools/data/medicalfields.json';
-import unitNames from '../../dev-tools/data/unitnames.json';
-import registerNames from '../../dev-tools/data/registernames.json';
-
-
-
-
-
+import desc from "../../dev-tools/data/description.min.json";
+import ind from "../../dev-tools/data/indcator_all.min.json";
+import medicalFeild from "../../dev-tools/data/medicalfields.json";
+import unitNames from "../../dev-tools/data/unitnames.json";
+import registerNames from "../../dev-tools/data/registernames.json";
 
 export function buildMainProps(overrides: Partial<Props>): Props {
   return {
@@ -26,20 +21,19 @@ export function buildMainProps(overrides: Partial<Props>): Props {
     selection_bar_height: null,
     legend_height: null,
     registerNames: [],
-    update_legend_height: (height: any) => { },
+    update_legend_height: (height: any) => {},
     ...overrides,
   };
 }
 interface AggData {
   nation: {
-    filtered_by_unit: StatisticData[],
-    filtered_by_year: StatisticData[],
-  },
-  filtered_by_unit: StatisticData[],
-  filtered_by_year: StatisticData[],
-  all_filtered_by_year: StatisticData[],
+    filtered_by_unit: StatisticData[];
+    filtered_by_year: StatisticData[];
+  };
+  filtered_by_unit: StatisticData[];
+  filtered_by_year: StatisticData[];
+  all_filtered_by_year: StatisticData[];
 }
-
 
 export function buildAggData(overrides: Partial<AggData>): AggData {
   return {
@@ -111,12 +105,10 @@ interface MockDescriptionParams {
 
 export const buildDescriptions = ({
   register,
-  type
+  type,
 }: MockDescriptionParams): Description[] => {
-
-  return desc.filter(d => d.rname === register && d.include === 1)
-
-}
+  return desc.filter((d) => d.rname === register && d.include === 1);
+};
 
 interface MockIndicatorParams {
   register: string;
@@ -124,7 +116,6 @@ interface MockIndicatorParams {
   type?: "ind" | "dg";
   unitNames?: string[];
   unitLevel?: string;
-
 }
 
 export const buildIndicators = ({
@@ -132,37 +123,44 @@ export const buildIndicators = ({
   type = "ind",
   year,
   unitLevel,
-  unitNames
+  unitNames,
 }: MockIndicatorParams): StatisticData[] => {
-  const registerIndicators = buildDescriptions({ register, type })
-    .map(descData => descData.id)
+  const registerIndicators = buildDescriptions({ register, type }).map(
+    (descData) => descData.id
+  );
 
-  let filteredIndicatorData: StatisticData[] = ind.filter(data => registerIndicators.includes(data.ind_id))
+  let filteredIndicatorData: StatisticData[] = ind.filter((data) =>
+    registerIndicators.includes(data.ind_id)
+  );
 
   if (year) {
-    filteredIndicatorData = filteredIndicatorData.filter(data => data.year === year)
+    filteredIndicatorData = filteredIndicatorData.filter(
+      (data) => data.year === year
+    );
   }
 
   if (unitNames) {
-    filteredIndicatorData = filteredIndicatorData
-      .filter(data => unitNames.includes(data.unit_name))
+    filteredIndicatorData = filteredIndicatorData.filter((data) =>
+      unitNames.includes(data.unit_name)
+    );
   }
   if (unitLevel) {
-    filteredIndicatorData = filteredIndicatorData
-      .filter(data => data.unit_level === unitLevel)
+    filteredIndicatorData = filteredIndicatorData.filter(
+      (data) => data.unit_level === unitLevel
+    );
   }
 
-  return filteredIndicatorData
-}
+  return filteredIndicatorData;
+};
 
 export const buildRegisterNames = (): RegisterNames[] => {
-  return registerNames
-}
+  return registerNames;
+};
 
 export const buildMedicalFields = () => {
-  return medicalFeild
-}
+  return medicalFeild;
+};
 
 export const buildUnitNames = () => {
-  return unitNames
-}
+  return unitNames;
+};

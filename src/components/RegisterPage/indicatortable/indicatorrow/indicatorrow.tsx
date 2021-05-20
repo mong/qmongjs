@@ -3,11 +3,11 @@ import { useQueryParam } from "use-query-params";
 
 import { IndicatorValue } from "../indicatorvalue";
 import { IndicatorDescription } from "../indicatordescription";
-import { MaskedIndicator } from '../maskedindicator'
+import { MaskedIndicator } from "../maskedindicator";
 import TF_FIGURE from "../../../TF_FIGURE";
-import style from './indicatorrow.module.css'
+import style from "./indicatorrow.module.css";
 
-import { Description, StatisticData } from "../../"
+import { Description, StatisticData } from "../../";
 import { mainQueryParamsConfig } from "../../../../app_config";
 
 const formatIndicatorValues = (
@@ -16,33 +16,39 @@ const formatIndicatorValues = (
   showLevelFilter: string,
   unitName: string
 ) => {
-
   if (!indicator[0]) {
     return (
       <td
         key={`${description.id}_${unitName}__su`}
-        className={`${unitName !== "Nasjonalt" ? style.selected_unit : style.nationally}`}
+        className={`${
+          unitName !== "Nasjonalt" ? style.selected_unit : style.nationally
+        }`}
       >
         <MaskedIndicator text="Ingen Data" />
       </td>
     );
   } else if ((indicator[0].dg ?? 1) < 0.6) {
-
     return (
       <td
         key={`${indicator[0].ind_id}_${indicator[0].unit_name}_${indicator[0].id}_su`}
-        className={`${indicator[0].unit_level !== "nation" ? style.selected_unit : style.nationally}`}
+        className={`${
+          indicator[0].unit_level !== "nation"
+            ? style.selected_unit
+            : style.nationally
+        }`}
       >
         <MaskedIndicator text="Lav dg" />
       </td>
     );
-  } else if (
-    indicator[0].denominator < (description.min_denominator ?? 5)
-  ) {
+  } else if (indicator[0].denominator < (description.min_denominator ?? 5)) {
     return (
       <td
         key={`${indicator[0].ind_id}_${indicator[0].unit_name}_${indicator[0].id}_su`}
-        className={`${indicator[0].unit_level !== "nation" ? style.selected_unit : style.nationally}`}
+        className={`${
+          indicator[0].unit_level !== "nation"
+            ? style.selected_unit
+            : style.nationally
+        }`}
       >
         <MaskedIndicator text="Lav N" />
       </td>
@@ -50,25 +56,26 @@ const formatIndicatorValues = (
   } else {
     const ind_type = description.type;
     const level_class =
-      indicator[0].level !== showLevelFilter &&
-        !!showLevelFilter
+      indicator[0].level !== showLevelFilter && !!showLevelFilter
         ? "filtered_level"
         : "";
     return (
       <IndicatorValue
         key={`${indicator[0].ind_id}_${indicator[0].unit_name}_${indicator[0].id}_su`}
         indicatorData={indicator[0]}
-        td_class={`${indicator[0].unit_level !== "nation" ? "selected_unit" : "nationally"}`}
+        td_class={`${
+          indicator[0].unit_level !== "nation" ? "selected_unit" : "nationally"
+        }`}
         level_class={level_class}
       />
     );
-  };
+  }
 };
 
 export interface IndicatorRowProps {
   treatmantYear: number;
-  description: Description,
-  indicatorData: StatisticData[],
+  description: Description;
+  indicatorData: StatisticData[];
   unitNames?: string[];
   medicalFieldClass?: string;
   showLevelFilter?: string;
@@ -86,33 +93,37 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
     colspan,
   } = props;
 
-
-
   const [selected_row, update_selected_row] = useQueryParam(
     "selected_row",
     mainQueryParamsConfig.selected_row
   );
 
   if (!(description && indicatorData)) {
-    return null
+    return null;
   }
   const ind_id = description.id;
   const tr_indicator_class = `${description.id}  ${description.rname}`;
 
-  const indPerUnit = unitNames.length === 0
-    ? null
-    : unitNames.map(name => {
-      const filteredIndicator = indicatorData.filter(ind => ind.unit_name === name)
-      return formatIndicatorValues(description, filteredIndicator, showLevelFilter, name)
-    })
+  const indPerUnit =
+    unitNames.length === 0
+      ? null
+      : unitNames.map((name) => {
+          const filteredIndicator = indicatorData.filter(
+            (ind) => ind.unit_name === name
+          );
+          return formatIndicatorValues(
+            description,
+            filteredIndicator,
+            showLevelFilter,
+            name
+          );
+        });
 
-  const indNation = indicatorData.filter(d => d.unit_name === "Nasjonalt")[0]
+  const indNation = indicatorData.filter((d) => d.unit_name === "Nasjonalt")[0];
   const level_class =
-    indNation.level !== showLevelFilter &&
-      !!showLevelFilter
+    indNation.level !== showLevelFilter && !!showLevelFilter
       ? "filtered_level"
       : "";
-
 
   const tr_fig =
     selected_row === ind_id ? (
@@ -140,11 +151,10 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
       >
         <IndicatorDescription description={description} />
         {indPerUnit}
-
       </tr>
       {tr_fig}
     </>
   );
-}
+};
 
 export default IndicatorRow;

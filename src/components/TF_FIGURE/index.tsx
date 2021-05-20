@@ -30,7 +30,7 @@ function TF_FIGURE(props: Props) {
     selectedTreatmentUnits,
     indicatorData,
   } = props;
-  const data: [] = []
+  const data: [] = [];
 
   const svgContainerRef = useRef<HTMLDivElement>(null);
   const [chart_type = "line", update_chart_type] = useQueryParam<

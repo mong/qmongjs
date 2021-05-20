@@ -499,29 +499,17 @@
         {
           "hf": "Møre og Romsdal HF",
           "hf_full": "Helse Møre og Romsdal HF",
-          "hospital": [
-            "Kristiansund",
-            "Molde",
-            "Volda",
-            "Ålesund"
-          ]
+          "hospital": ["Kristiansund", "Molde", "Volda", "Ålesund"]
         },
         {
           "hf": "Nord-Trøndelag HF",
           "hf_full": "Helse Nord-Trøndelag HF",
-          "hospital": [
-            "Levanger",
-            "Namsos"
-          ]
+          "hospital": ["Levanger", "Namsos"]
         },
         {
           "hf": "St. Olavs HF",
           "hf_full": "St. Olavs Hospital HF",
-          "hospital": [
-            "Orkdal",
-            "Røros",
-            "St. Olavs"
-          ]
+          "hospital": ["Orkdal", "Røros", "St. Olavs"]
         }
       ]
     },
@@ -531,37 +519,22 @@
         {
           "hf": "Finnmark HF",
           "hf_full": "Finnmarkssykehuset HF",
-          "hospital": [
-            "Hammerfest",
-            "Kirkenes"
-          ]
+          "hospital": ["Hammerfest", "Kirkenes"]
         },
         {
           "hf": "Helgeland HF",
           "hf_full": "Helgelandssykehuset HF",
-          "hospital": [
-            "Mo i Rana",
-            "Mosjøen",
-            "Sandnessjøen"
-          ]
+          "hospital": ["Mo i Rana", "Mosjøen", "Sandnessjøen"]
         },
         {
           "hf": "Nordland HF",
           "hf_full": "Nordlandssykehuset HF",
-          "hospital": [
-            "Bodø",
-            "Lofoten",
-            "Vesterålen"
-          ]
+          "hospital": ["Bodø", "Lofoten", "Vesterålen"]
         },
         {
           "hf": "UNN HF",
           "hf_full": "Universitetssykehuset Nord-Norge HF",
-          "hospital": [
-            "Harstad",
-            "Narvik",
-            "Tromsø"
-          ]
+          "hospital": ["Harstad", "Narvik", "Tromsø"]
         }
       ]
     },
@@ -571,20 +544,12 @@
         {
           "hf": "Akershus HF",
           "hf_full": "Akershus universitetssykehus HF",
-          "hospital": [
-            "Ahus",
-            "Kongsvinger"
-          ]
+          "hospital": ["Ahus", "Kongsvinger"]
         },
         {
           "hf": "OUS HF",
           "hf_full": "Oslo universitetssykehus HF",
-          "hospital": [
-            "Aker",
-            "Radiumhospitalet",
-            "Rikshospitalet",
-            "Ullevål"
-          ]
+          "hospital": ["Aker", "Radiumhospitalet", "Rikshospitalet", "Ullevål"]
         },
         {
           "hf": "Private ideelle sykehus, Sør-Øst",
@@ -598,66 +563,37 @@
         {
           "hf": "Sunnaas HF",
           "hf_full": "Sunnaas sykehus HF",
-          "hospital": [
-            "Sunnaas"
-          ]
+          "hospital": ["Sunnaas"]
         },
         {
           "hf": "Innlandet HF",
           "hf_full": "Sykehuset Innlandet HF",
-          "hospital": [
-            "Elverum",
-            "Gjøvik",
-            "Hamar",
-            "Lillehammer",
-            "Tynset"
-          ]
+          "hospital": ["Elverum", "Gjøvik", "Hamar", "Lillehammer", "Tynset"]
         },
         {
           "hf": "Telemark HF",
           "hf_full": "Sykehuset Telemark HF",
-          "hospital": [
-            "Kragerø",
-            "Notodden",
-            "Porsgrunn",
-            "Skien"
-          ]
+          "hospital": ["Kragerø", "Notodden", "Porsgrunn", "Skien"]
         },
         {
           "hf": "Vestfold HF",
           "hf_full": "Sykehuset i Vestfold HF",
-          "hospital": [
-            "Larvik",
-            "Tønsberg"
-          ]
+          "hospital": ["Larvik", "Tønsberg"]
         },
         {
           "hf": "Østfold HF",
           "hf_full": "Sykehuset Østfold HF",
-          "hospital": [
-            "Askim",
-            "Kalnes",
-            "Moss"
-          ]
+          "hospital": ["Askim", "Kalnes", "Moss"]
         },
         {
           "hf": "Sørlandet HF",
           "hf_full": "Sørlandet sykehus HF",
-          "hospital": [
-            "Arendal",
-            "Flekkefjord",
-            "Kristiansand"
-          ]
+          "hospital": ["Arendal", "Flekkefjord", "Kristiansand"]
         },
         {
           "hf": "Vestre Viken HF",
           "hf_full": "Vestre Viken HF",
-          "hospital": [
-            "Bærum",
-            "Drammen",
-            "Kongsberg",
-            "Ringerike"
-          ]
+          "hospital": ["Bærum", "Drammen", "Kongsberg", "Ringerike"]
         }
       ]
     },
@@ -667,45 +603,27 @@
         {
           "hf": "Bergen HF",
           "hf_full": "Helse Bergen HF",
-          "hospital": [
-            "Haukeland",
-            "Kysthospitalet i Hagevik",
-            "Voss"
-          ]
+          "hospital": ["Haukeland", "Kysthospitalet i Hagevik", "Voss"]
         },
         {
           "hf": "Fonna HF",
           "hf_full": "Helse Fonna HF",
-          "hospital": [
-            "Haugesund",
-            "Odda",
-            "Stord"
-          ]
+          "hospital": ["Haugesund", "Odda", "Stord"]
         },
         {
           "hf": "Førde HF",
           "hf_full": "Helse Førde HF",
-          "hospital": [
-            "Førde",
-            "Lærdal",
-            "Nordfjord"
-          ]
+          "hospital": ["Førde", "Lærdal", "Nordfjord"]
         },
         {
           "hf": "Stavanger HF",
           "hf_full": "Helse Stavanger HF",
-          "hospital": [
-            "Stavanger"
-          ]
+          "hospital": ["Stavanger"]
         },
         {
           "hf": "Private ideelle sykehus, Vest",
           "hf_full": "Private ideelle sykehus",
-          "hospital": [
-            "Betanien",
-            "Haraldsplass",
-            "Haugesund sanitet"
-          ]
+          "hospital": ["Betanien", "Haraldsplass", "Haugesund sanitet"]
         }
       ]
     },

@@ -62,9 +62,9 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
     });
     const style_hf = treatment_units.includes(element.hf)
       ? {
-        transform: "scale(1.05,1.1)",
-        color: "#08418e",
-      }
+          transform: "scale(1.05,1.1)",
+          color: "#08418e",
+        }
       : {};
     return (
       <div key={`hf_hospital_${element.hf}`} className={`tu_list_hf`}>

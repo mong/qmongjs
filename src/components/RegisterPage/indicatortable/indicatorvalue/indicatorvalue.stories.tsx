@@ -5,14 +5,14 @@ import { IndicatorValue, IndicatorValueProps } from "./";
 
 //import "../index.css";
 
-
-
 export default {
   title: "Indicator/Indicator Values",
   component: IndicatorValue,
 } as Meta;
 
-const Template: Story<IndicatorValueProps> = (args) => <IndicatorValue {...args} />;
+const Template: Story<IndicatorValueProps> = (args) => (
+  <IndicatorValue {...args} />
+);
 
 export const GreenLevel = Template.bind({});
 GreenLevel.args = {
@@ -30,7 +30,7 @@ GreenLevel.args = {
     level_direction: 1,
     dg: 0.9297,
     include: 1,
-    type: "andel"
+    type: "andel",
   },
 };
 
@@ -49,7 +49,7 @@ YellowLevel.args = {
     level_direction: 1,
     dg: 0.9111,
     include: 1,
-    type: 'andel'
+    type: "andel",
   },
 };
 
@@ -68,13 +68,13 @@ RedLevel.args = {
     level_direction: 1,
     dg: 0.8387,
     include: 1,
-    type: 'andel'
+    type: "andel",
   },
 };
 
 export const National = Template.bind({});
 National.args = {
-  td_class: 'nationally',
+  td_class: "nationally",
   indicatorData: {
     id: 1003,
     ind_id: "hjerneslag_rapport_3mnd",
@@ -88,7 +88,6 @@ National.args = {
     level_direction: 1,
     dg: 0.8387,
     include: 1,
-    type: 'andel'
+    type: "andel",
   },
 };
-

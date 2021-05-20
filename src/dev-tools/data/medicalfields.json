@@ -31,20 +31,12 @@
   {
     "shortName": "diabetes",
     "name": "Diabetes",
-    "registers": [
-      "barnediabetes",
-      "diabetes_voksne"
-    ]
+    "registers": ["barnediabetes", "diabetes_voksne"]
   },
   {
     "shortName": "nerve",
     "name": "Nervesystemet",
-    "registers": [
-      "cp",
-      "ms",
-      "parkinson",
-      "norkog"
-    ]
+    "registers": ["cp", "ms", "parkinson", "norkog"]
   },
   {
     "shortName": "muskel",
@@ -76,34 +68,22 @@
   {
     "shortName": "gyn",
     "name": "Gynekologi",
-    "registers": [
-      "nger",
-      "kvinl_inkontinens"
-    ]
+    "registers": ["nger", "kvinl_inkontinens"]
   },
   {
     "shortName": "nyre",
     "name": "Nyre",
-    "registers": [
-      "nyre"
-    ]
+    "registers": ["nyre"]
   },
   {
     "shortName": "intensiv",
     "name": "Skade og intensiv",
-    "registers": [
-      "traume",
-      "intensiv",
-      "nnk"
-    ]
+    "registers": ["traume", "intensiv", "nnk"]
   },
   {
     "shortName": "rehab",
     "name": "Rehabilitering",
-    "registers": [
-      "nnrr",
-      "norscir"
-    ]
+    "registers": ["nnrr", "norscir"]
   },
   {
     "shortName": "barn",

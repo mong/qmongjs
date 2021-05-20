@@ -12,7 +12,7 @@ const national_data = [
     level_direction: 0,
     dg: null,
     include: 1,
-    type: 'andel'
+    type: "andel",
   },
   {
     id: 1006,
@@ -27,7 +27,7 @@ const national_data = [
     level_direction: 0,
     dg: null,
     include: 1,
-    type: 'andel'
+    type: "andel",
   },
   {
     id: 1002,
@@ -42,7 +42,7 @@ const national_data = [
     level_direction: 0,
     dg: null,
     include: 1,
-    type: 'andel'
+    type: "andel",
   },
   {
     id: 1003,
@@ -57,7 +57,7 @@ const national_data = [
     level_direction: 1,
     dg: null,
     include: 1,
-    type: 'andel'
+    type: "andel",
   },
   {
     id: 1004,
@@ -72,7 +72,7 @@ const national_data = [
     level_direction: 1,
     dg: null,
     include: 1,
-    type: 'andel'
+    type: "andel",
   },
   {
     id: 1005,
@@ -87,7 +87,7 @@ const national_data = [
     level_direction: 1,
     dg: null,
     include: 1,
-    type: 'andel'
+    type: "andel",
   },
 ];
 

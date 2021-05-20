@@ -1,13 +1,12 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { QueryParamProvider } from 'use-query-params'
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { QueryParamProvider } from "use-query-params";
 
 import { IndicatorRow } from "../";
 import national_data from "../../../../../test/test_data/national_data";
 import description from "../../../../../test/test_data/description";
-
 
 let container: any = null;
 beforeEach(() => {
@@ -27,25 +26,28 @@ it("renders", () => {
     data.var < 0.1
       ? `${Math.round(data.var * 1000) / 10}%`
       : `${Math.round(data.var * 100)}%`;
-  const numerator = Math.round(
-    data.var * data.denominator
-  );
+  const numerator = Math.round(data.var * data.denominator);
 
   act(() => {
     render(
       <Router>
-        <QueryParamProvider ReactRouterRoute={Route} >
+        <QueryParamProvider ReactRouterRoute={Route}>
           <table>
             <tbody>
-              <IndicatorRow description={description[0]} indicatorData={[data]} />
+              <IndicatorRow
+                description={description[0]}
+                indicatorData={[data]}
+              />
             </tbody>
           </table>
         </QueryParamProvider>
-      </Router >,
+      </Router>,
       container
     );
   });
-  expect(container.querySelector("td h1").textContent).toBe(description[0].title);
+  expect(container.querySelector("td h1").textContent).toBe(
+    description[0].title
+  );
   expect(container.querySelector("td div").className).toBe(
     "quality_indicator_name"
   );
@@ -59,4 +61,3 @@ it("renders", () => {
     `${numerator} av ${data.denominator}`
   );
 });
-

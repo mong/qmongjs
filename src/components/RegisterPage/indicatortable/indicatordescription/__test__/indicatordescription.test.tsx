@@ -5,7 +5,6 @@ import { act } from "react-dom/test-utils";
 import { IndicatorDescription } from "../";
 import description from "../../../../../test/test_data/description";
 
-
 let container: any = null;
 beforeEach(() => {
   container = document.createElement("div");

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { UseQueryResult } from 'react-query'
+import { UseQueryResult } from "react-query";
 import { useQueryParam } from "use-query-params";
 
 import MAIN from "../main_component";
@@ -14,10 +14,7 @@ import config, {
   defaultYear,
 } from "../../app_config";
 
-import {
-  useResizeObserver,
-  useUnitNamesQuery
-} from "../../helpers/hooks";
+import { useResizeObserver, useUnitNamesQuery } from "../../helpers/hooks";
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { RegisterNames } from ".";
 import { UnitNameList } from "./unitnamelist";
@@ -27,33 +24,22 @@ interface MainRegisterProps {
   registerNames: RegisterNames[];
 }
 
+const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
+  const [nestedUnitNames, updateNestedUnitNames] = useState<[]>([]);
 
-const MainRegister: React.FC<MainRegisterProps> = ({
-  registerNames
-}) => {
+  const [optstu, updateOptsTU] = useState<[]>([]);
 
-  const [
-    nestedUnitNames,
-    updateNestedUnitNames
-  ] = useState<[]>([])
-
-  const [
-    optstu,
-    updateOptsTU
-  ] = useState<[]>([])
-
-  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery("all")
+  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery("all");
   useEffect(() => {
     if (unitNamesQuery.isSuccess) {
-      updateNestedUnitNames(unitNamesQuery.data.nestedUnitNames)
-      updateOptsTU(unitNamesQuery.data.opts_tu)
+      updateNestedUnitNames(unitNamesQuery.data.nestedUnitNames);
+      updateOptsTU(unitNamesQuery.data.opts_tu);
     }
-  }, [unitNamesQuery])
+  }, [unitNamesQuery]);
 
-
-  const [
-    selection_bar_height, update_selection_bar_height] = useState<
-      number | null>(null);
+  const [selection_bar_height, update_selection_bar_height] = useState<
+    number | null
+  >(null);
   const [legend_height, update_legend_height] = useState(null);
   //height of the selection bar
   const selection_bar_ref = useRef<HTMLDivElement | null>(null);
@@ -92,7 +78,6 @@ const MainRegister: React.FC<MainRegisterProps> = ({
     (v) => minYear + v
   );
 
-
   return (
     <div className="app-container" style={{ minHeight: "100vh" }}>
       <Header tabNames={["Sykehus", "Boområde"]} />
@@ -118,7 +103,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({
             />
           </div>
         </div>
-        {unitNamesQuery.isLoading ? null :
+        {unitNamesQuery.isLoading ? null : (
           <MAIN
             optstu={optstu}
             registerNames={registerNames}
@@ -129,7 +114,8 @@ const MainRegister: React.FC<MainRegisterProps> = ({
             selection_bar_height={selection_bar_height}
             legend_height={legend_height}
             update_legend_height={update_legend_height}
-          />}
+          />
+        )}
       </div>
     </div>
   );
