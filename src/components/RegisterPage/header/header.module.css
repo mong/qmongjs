@@ -1,0 +1,15 @@
+.headerOuterWrapper{
+  position: relative;
+  border-bottom: 3px solid #dee7ee ;
+}
+
+.headerText{
+  width: 98%;
+  font-size: 1rem;
+  margin: 5px  auto;
+}
+
+.headerInnerWrapper{
+  max-width: 1500px;
+  margin:auto;
+}

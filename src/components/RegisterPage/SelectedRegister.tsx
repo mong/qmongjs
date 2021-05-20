@@ -110,11 +110,12 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
       </div>
     );
   }
-
+  const registerFullName = registerNames
+    .filter(d => d.rname === register)[0].full_name
 
   return (
     <div className="app-container" style={{ minHeight: "100vh" }}>
-      <Header tabNames={["a", "b"]} />
+      <Header dataFrom={registerFullName} tabNames={["Sykehus", "Boområde", "datakvalitet"]} />
       <div className="app-body">
         <div className="selection-container" ref={selection_bar_ref}>
           <div className="treatment-unit-selection">
