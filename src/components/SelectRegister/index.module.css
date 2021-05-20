@@ -9,7 +9,7 @@
   top: 0;
   transition: 300ms cubic-bezier(0, 0, 0.58, 1);
   border-radius: 2rem;
-  background-color: #e2f2f5;
+  background-color: #dee7ee;
   margin-top: 0.7rem;
   box-shadow: 0 4px 5px -1px rgba(196, 196, 196, 0.2);
 }
