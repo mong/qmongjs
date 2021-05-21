@@ -118,8 +118,6 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
           );
         });
 
-  const indNation = indicatorData.filter((d) => d.unit_name === "Nasjonalt")[0];
-
   const tr_fig =
     selected_row === ind_id ? (
       <TF_FIGURE

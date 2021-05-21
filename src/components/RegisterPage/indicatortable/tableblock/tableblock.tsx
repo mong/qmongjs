@@ -49,7 +49,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     blockTitle,
   } = props;
 
-  const [treatment_units, update_treatment_units] = useQueryParam(
+  const [treatment_units] = useQueryParam(
     "selected_treatment_units",
     mainQueryParamsConfig.selected_treatment_units
   );
