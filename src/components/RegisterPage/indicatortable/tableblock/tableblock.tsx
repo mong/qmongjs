@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useCallback, memo, useState } from "react";
-import { UseQueryResult, useIsFetching, useQueryClient } from "react-query";
+import React, { useEffect, useMemo, useCallback, memo } from "react";
+import { UseQueryResult, useQueryClient } from "react-query";
 import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "../../../../app_config";
 
