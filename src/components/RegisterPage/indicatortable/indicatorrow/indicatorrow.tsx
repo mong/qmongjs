@@ -54,7 +54,6 @@ const formatIndicatorValues = (
       </td>
     );
   } else {
-    const ind_type = description.type;
     const level_class =
       indicator[0].level !== showLevelFilter && !!showLevelFilter
         ? "filtered_level"
@@ -118,12 +117,6 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
             name
           );
         });
-
-  const indNation = indicatorData.filter((d) => d.unit_name === "Nasjonalt")[0];
-  const level_class =
-    indNation.level !== showLevelFilter && !!showLevelFilter
-      ? "filtered_level"
-      : "";
 
   const tr_fig =
     selected_row === ind_id ? (

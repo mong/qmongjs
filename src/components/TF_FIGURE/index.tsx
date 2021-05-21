@@ -3,7 +3,6 @@ import React, { useRef, useState } from "react";
 import TF_BUTTON from "../tf_button";
 import TF_DDMENU from "../tf_ddmenu";
 import TF_LONG_DESCRIPTION from "../tf_description";
-import { GraphData } from "../main_component";
 import Chart from "./Chart";
 import { level_boundary } from "./tr_utils";
 import { useQueryParam } from "use-query-params";
@@ -30,7 +29,6 @@ function TF_FIGURE(props: Props) {
     selectedTreatmentUnits,
     indicatorData,
   } = props;
-  const data: [] = [];
 
   const svgContainerRef = useRef<HTMLDivElement>(null);
   const [chart_type = "line", update_chart_type] = useQueryParam<

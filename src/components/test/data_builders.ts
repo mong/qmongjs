@@ -3,7 +3,7 @@ import {
   RegisterNames,
   StatisticData,
 } from "../../components/RegisterPage";
-import { med_field, app_text } from "../../app_config";
+import { app_text } from "../../app_config";
 import { GraphData, Props } from "../main_component";
 import desc from "../../dev-tools/data/description.min.json";
 import ind from "../../dev-tools/data/indcator_all.min.json";

@@ -34,7 +34,6 @@ const GetBarChart: React.FC<Props> = (props) => {
   const { description, indicatorData, treatmentYear } = props;
 
   const queryClient = useQueryClient();
-  const unitNameString = props.selectedTreatmentUnits.join();
 
   const registerShortName = description.rname ?? "";
   const barIndDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
