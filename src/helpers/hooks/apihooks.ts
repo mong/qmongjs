@@ -7,9 +7,8 @@ interface FetchDescriptionParams {
 }
 
 const descriptionUrl = (params: FetchDescriptionParams): string => {
-  return `${API_HOST}/kvalitetsregistre/${
-    params.registerShortName
-  }/descriptions?type=${params.type ?? ""}`;
+  return `${API_HOST}/data/${params.registerShortName
+    }/descriptions?type=${params.type ?? ""}`;
 };
 
 const fetchDescription = async (params: FetchDescriptionParams) => {
@@ -43,8 +42,8 @@ export interface FetchIndicatorParams {
 const indicatorUrl = (params: FetchIndicatorParams): string => {
   const unitQuery: string = params.unitNames
     ? params.unitNames.reduce((acc, cur) => {
-        return `${acc}unit_name[]=${cur}&`;
-      }, "")
+      return `${acc}unit_name[]=${cur}&`;
+    }, "")
     : "";
   const unitLevelQuery: string = params.unitLevel
     ? `unit_level=${params.unitLevel}&`
@@ -52,7 +51,7 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
   const yearQuery: string = params.treatmentYear
     ? `year=${params.treatmentYear}`
     : "";
-  return `${API_HOST}/kvalitetsregistre/${params.registerShortName}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}`;
+  return `${API_HOST}/data/${params.registerShortName}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}`;
 };
 
 const fetchIndicators = async (params: FetchIndicatorParams) => {
@@ -77,7 +76,7 @@ export const useIndicatorQuery = (params: FetchIndicatorParams) => {
 };
 
 const unitNamesUrl = (registerShortName: string): string => {
-  return `${API_HOST}/kvalitetsregistre/${registerShortName}/unitnames`;
+  return `${API_HOST}/data/${registerShortName}/unitnames`;
 };
 
 const fetchUnitNames = async (registerShortName: string) => {
@@ -102,7 +101,7 @@ export const useUnitNamesQuery = (registerShortName: string) => {
 };
 
 const fetchRegisterNames = async () => {
-  const response = await fetch(`${API_HOST}/registerinfo/names`);
+  const response = await fetch(`${API_HOST}/info/names`);
   if (!response.ok) {
     throw new Error("Network response failed");
   }
@@ -119,7 +118,7 @@ export const useRegisterNamesQuery = () => {
 };
 
 const fetchMedicalFields = async () => {
-  const response = await fetch(`${API_HOST}/registerinfo/medicalfields`);
+  const response = await fetch(`${API_HOST}/info/medicalfields`);
   if (!response.ok) {
     throw new Error("Network response failed");
   }
