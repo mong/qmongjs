@@ -58,7 +58,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
       ...validateTreatmentUnits(treatment_units as string[], optstu),
       "Nasjonalt",
     ];
-  }, [treatment_units]);
+  }, [treatment_units, optstu]);
   const queryClient = useQueryClient();
 
   const indicatorDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
