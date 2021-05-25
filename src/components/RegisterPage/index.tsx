@@ -50,7 +50,8 @@ export interface Description {
 }
 
 export const API_HOST =
-  process.env.REACT_APP_API_HOST ?? "http://qa-mong-api.eu-west-1.elasticbeanstalk.com"
+  process.env.REACT_APP_API_HOST ??
+  "http://qa-mong-api.eu-west-1.elasticbeanstalk.com";
 
 export const RegisterPage: React.FC = () => {
   let { path } = useRouteMatch();

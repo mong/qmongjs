@@ -1,5 +1,4 @@
-
-import React, { useEffect, useMemo, useCallback, } from "react";
+import React, { useEffect, useMemo, useCallback } from "react";
 
 import { UseQueryResult, useQueryClient } from "react-query";
 import { useQueryParam } from "use-query-params";
@@ -105,7 +104,6 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
       descriptionQuery.data,
       indicatorDataQuery.data,
       showLevelFilter,
-      treatmentYear
     ]
   );
 
