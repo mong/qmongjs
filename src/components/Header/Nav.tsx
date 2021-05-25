@@ -1,5 +1,4 @@
 import React, { useState, CSSProperties } from "react";
-import { NavLink } from "react-router-dom";
 
 import style from "./nav.module.css";
 
@@ -20,14 +19,7 @@ const Nav: React.FC<HeaderProps> = () => {
 
   return (
     <div className={style.navBar}>
-      <div className={style.navLinks} style={styleNavLinks}>
-        <NavLink to="/kvalitetsregistre" activeStyle={{ fontWeight: 600 }}>
-          Kvalitetsregistre
-        </NavLink>
-        <a href="https://helseatlas.no/">Helseatlas</a>
-        <a href="https://helse-nord.no/skde/pasientstrommer">Pasientstrømmer</a>
-        <a href="https://helse-nord.no/skde">Om SKDE</a>
-      </div>
+
       <button
         className={style.hamburgerbtn}
         onClick={() => handleClick()}
