@@ -37,6 +37,7 @@ it("renders", () => {
               <IndicatorRow
                 description={description[0]}
                 indicatorData={[data]}
+                treatmantYear={2019}
               />
             </tbody>
           </table>
