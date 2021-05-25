@@ -103,7 +103,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     <div className="app-container" style={{ minHeight: "100vh" }}>
       <Header
         dataFrom={registerFullName}
-        tabNames={["Sykehus", "Boområde", "datakvalitet"]}
+        tabNames={["Sykehus", "Boområde", "Datakvalitet"]}
       />
       <div className="app-body">
         <div className="selection-container" ref={selection_bar_ref}>

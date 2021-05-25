@@ -1,4 +1,6 @@
+
 import React, { useEffect, useMemo, useCallback, } from "react";
+
 import { UseQueryResult, useQueryClient } from "react-query";
 import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "../../../../app_config";
@@ -49,7 +51,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     blockTitle,
   } = props;
 
-  const [treatment_units, update_treatment_units] = useQueryParam(
+  const [treatment_units] = useQueryParam(
     "selected_treatment_units",
     mainQueryParamsConfig.selected_treatment_units
   );
@@ -58,7 +60,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
       ...validateTreatmentUnits(treatment_units as string[], optstu),
       "Nasjonalt",
     ];
-  }, [treatment_units]);
+  }, [treatment_units, optstu]);
   const queryClient = useQueryClient();
 
   const indicatorDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({

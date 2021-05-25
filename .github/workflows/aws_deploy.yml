@@ -3,7 +3,7 @@ on:
   release:
     types: [published]
   push:
-    branches: [master]
+    branches: [updateApiUse]
   pull_request:
     branches: [master, dependabot_updates]
 
