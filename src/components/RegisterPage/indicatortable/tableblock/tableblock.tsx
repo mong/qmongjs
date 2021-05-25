@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useCallback, memo, useState } from "react";
-import { UseQueryResult, useIsFetching, useQueryClient } from "react-query";
+import React, { useEffect, useMemo, useCallback, } from "react";
+import { UseQueryResult, useQueryClient } from "react-query";
 import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "../../../../app_config";
 
@@ -103,6 +103,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
       descriptionQuery.data,
       indicatorDataQuery.data,
       showLevelFilter,
+      treatmentYear
     ]
   );
 
@@ -133,7 +134,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
         indicatorData={singleIndicatorData}
         description={singleIndicatorDescription[0]}
         key={indicator}
-        unitNames={unitNames}
+        unitNames={props.unitNames}
         medicalFieldClass={medicalFieldClass}
         showLevelFilter={showLevelFilter}
         colspan={colspan}
@@ -156,4 +157,4 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
   );
 };
 
-export default memo(TableBlock);
+export default TableBlock;

@@ -29,7 +29,6 @@ const Template: Story<IndicatorRowProps> = (args) => {
     </Router>
   );
 };
-
 export const Nation = Template.bind({});
 Nation.args = {
   description: {

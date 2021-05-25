@@ -63,7 +63,6 @@ const LineChart = (props: Props) => {
 
   const innerHeight = height - marginOffsets.top - marginOffsets.bottom;
   const innerWidth = width - marginOffsets.left - marginOffsets.right;
-  console.log(entry);
   useEffect(() => {
     if (innerWidth === 0) {
       return;
