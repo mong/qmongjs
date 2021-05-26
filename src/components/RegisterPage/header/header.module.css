@@ -1,6 +1,8 @@
 .headerOuterWrapper {
   position: relative;
+  padding-top: 30px;
   border-bottom: 3px solid #dee7ee;
+  background-color: #dee7ee/* rgba(207, 225, 238,0.5);*/
 }
 
 .headerText {
@@ -12,6 +14,6 @@
 }
 
 .headerInnerWrapper {
-  max-width: min(960px, calc(100% - 64px));
+  max-width: min(1500px, calc(100%));
   margin: auto;
 }
