@@ -143,10 +143,12 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     );
   });
 
+
   return (
     <>
       {blockTitle && uniqueOrderedInd.length !== 0 ? (
         <TableBlockTitle
+          link={registerName.rname}
           title={blockTitle}
           colspan={colspan}
           tr_register_name_class={`${trRegisterNameClass} ${registerName.rname} ${medicalFieldClass}`}
