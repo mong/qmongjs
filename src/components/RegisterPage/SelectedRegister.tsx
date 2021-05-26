@@ -102,6 +102,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   return (
     <div className="app-container" style={{ minHeight: "100vh" }}>
       <Header
+        registerNames={registerNames}
         dataFrom={registerFullName}
         tabNames={["Sykehus", "Boområde", "Datakvalitet"]}
       />

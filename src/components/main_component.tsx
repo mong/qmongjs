@@ -8,7 +8,6 @@ import {
 } from "../components/RegisterPage";
 import { mainQueryParamsConfig } from "../app_config";
 
-import SelectRegister from "./SelectRegister";
 import LEGEND from "./legend";
 //import Loading from "./Loading.tsx";
 import { MedicalFiedls } from "./RegisterPage/medicalfields";
@@ -88,11 +87,11 @@ const Main = (props: Props) => {
     (clicked_med_field ?? "all") === "all"
       ? registerList
       : medicalFields
-          .filter(
-            (field: MediacalFieldObject) =>
-              field.shortName === clicked_med_field
-          )
-          .flatMap((field: MediacalFieldObject) => field.registers);
+        .filter(
+          (field: MediacalFieldObject) =>
+            field.shortName === clicked_med_field
+        )
+        .flatMap((field: MediacalFieldObject) => field.registers);
 
   const orderedRegisterList: RegisterNames[] = Array.from(
     new Set(
@@ -116,10 +115,6 @@ const Main = (props: Props) => {
       />
       <div className="content_container">
         <div className="med_field_container">
-          <SelectRegister
-            regNames={registerNames}
-            selection_bar_height={selection_bar_height}
-          />
           <MedicalFiedls
             medicalFields={medicalFields}
             clicked_med_field={clicked_med_field ?? "all"}
