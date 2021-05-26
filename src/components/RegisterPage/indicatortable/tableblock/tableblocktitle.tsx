@@ -18,13 +18,10 @@ export const TableBlockTitle: React.FC<BlockTitleProps> = (props) => {
   } = props;
   return (
     <tr className={`${style.titleRow} ${tr_register_name_class}`}>
-
       <td colSpan={colspan}>
         <Link to={`/kvalitetsregistre/${link}`}>
-          <h3 className={style.title}>
-            {title}
-          </h3>
-        </Link >
+          <h3 className={style.title}>{title}</h3>
+        </Link>
       </td>
     </tr>
   );

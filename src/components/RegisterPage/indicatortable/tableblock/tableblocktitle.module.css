@@ -3,13 +3,13 @@
 }
 .titleRow a {
   text-decoration: none;
-  color: inherit; 
-  outline: none;  
+  color: inherit;
+  outline: none;
 }
 
 .titleRow a:hover,
 .titleRow a:focus {
- font-weight: 700;
+  font-weight: 700;
 }
 
 .title {

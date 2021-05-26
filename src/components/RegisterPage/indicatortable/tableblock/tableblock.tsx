@@ -143,7 +143,6 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     );
   });
 
-
   return (
     <>
       {blockTitle && uniqueOrderedInd.length !== 0 ? (
