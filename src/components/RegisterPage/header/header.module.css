@@ -7,11 +7,11 @@
   width: 98%;
   margin: 5px auto;
 }
-.headerText h3{
+.headerText h3 {
   font-size: 25px;
 }
 
 .headerInnerWrapper {
-  max-width:  min(960px, calc(100% - 64px));
+  max-width: min(960px, calc(100% - 64px));
   margin: auto;
 }

@@ -19,7 +19,6 @@ const Nav: React.FC<HeaderProps> = () => {
 
   return (
     <div className={style.navBar}>
-
       <button
         className={style.hamburgerbtn}
         onClick={() => handleClick()}

@@ -6,9 +6,8 @@
   background-color: white;
   padding: 32px 0;
   margin: auto;
-  
 }
-.header a{
+.header a {
   text-decoration: none;
   color: black;
   font-size: 14.4px;
@@ -31,5 +30,4 @@
 .logo_img {
   height: 39px;
   width: 96px;
-
 }

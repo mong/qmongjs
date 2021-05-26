@@ -2,12 +2,9 @@ import React from "react";
 import style from "./index.module.css";
 import skdeLogo from "../../img/SKDE_sort.png";
 
-
 type HeaderProps = {};
 
 const Header: React.FC<HeaderProps> = () => {
-
-
   return (
     <div style={{}}>
       <header className={style.header}>
@@ -16,7 +13,7 @@ const Header: React.FC<HeaderProps> = () => {
             <img className={style.logo_img} src={skdeLogo} alt="SKDE logo" />
           </a>
         </div>
-        <div >
+        <div>
           <a href="/#">Kontakt</a>
         </div>
       </header>
