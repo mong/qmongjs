@@ -2,7 +2,7 @@ import React from "react";
 import { NSMLogo } from "./nsmlogo";
 import { HeaderTabs } from "./headertabs";
 import SelectRegister from "../../SelectRegister";
-import { RegisterNames } from "../"
+import { RegisterNames } from "../";
 
 import style from "./header.module.css";
 export interface HeaderProps {
@@ -12,7 +12,11 @@ export interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = (props) => {
-  const { registerNames, tabNames = [], dataFrom = "medisinske kvalitetsregistre" } = props;
+  const {
+    registerNames,
+    tabNames = [],
+    dataFrom = "medisinske kvalitetsregistre",
+  } = props;
 
   return (
     <div className={style.headerOuterWrapper}>
@@ -25,7 +29,10 @@ export const Header: React.FC<HeaderProps> = (props) => {
             </div>
           </div>
           <div className={style.topHeaderRight}>
-            <SelectRegister regNames={registerNames} selection_bar_height={null} />
+            <SelectRegister
+              regNames={registerNames}
+              selection_bar_height={null}
+            />
           </div>
         </div>
         {tabNames.length > 1 ? <HeaderTabs tabNames={tabNames} /> : null}

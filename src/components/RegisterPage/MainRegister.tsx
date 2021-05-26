@@ -80,7 +80,10 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
 
   return (
     <div className="app-container" style={{ minHeight: "100vh" }}>
-      <Header tabNames={["Sykehus", "Boområde", "Datakvalitet"]} registerNames={registerNames} />
+      <Header
+        tabNames={["Sykehus", "Boområde", "Datakvalitet"]}
+        registerNames={registerNames}
+      />
       <div className="app-body">
         <div className="selection-container" ref={selection_bar_ref}>
           <div className="treatment-unit-selection">

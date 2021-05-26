@@ -87,11 +87,11 @@ const Main = (props: Props) => {
     (clicked_med_field ?? "all") === "all"
       ? registerList
       : medicalFields
-        .filter(
-          (field: MediacalFieldObject) =>
-            field.shortName === clicked_med_field
-        )
-        .flatMap((field: MediacalFieldObject) => field.registers);
+          .filter(
+            (field: MediacalFieldObject) =>
+              field.shortName === clicked_med_field
+          )
+          .flatMap((field: MediacalFieldObject) => field.registers);
 
   const orderedRegisterList: RegisterNames[] = Array.from(
     new Set(
