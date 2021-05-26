@@ -2,7 +2,7 @@
   position: relative;
   padding-top: 30px;
   border-bottom: 3px solid #dee7ee;
-  background-color: #dee7ee/* rgba(207, 225, 238,0.5);*/
+  background-color: rgba(222,231,238,0.8);
 }
 
 .headerText {
