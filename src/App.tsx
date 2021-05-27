@@ -7,7 +7,7 @@ import RegisterPage from "./components/RegisterPage";
 
 function APP() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/kvalitetsregistre">
       <QueryParamProvider ReactRouterRoute={Route}>
         <Switch>
           <Route exact path="/">
