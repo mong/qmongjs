@@ -5,7 +5,7 @@ import { render } from "@testing-library/react";
 
 import Header from "../";
 
-it("Footer renders", async () => {
+it("main page header renders", async () => {
   const { container } = render(
     <BrowserRouter>
       <QueryParamProvider ReactRouterRoute={Route}>
