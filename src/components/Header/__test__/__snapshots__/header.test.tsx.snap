@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders 1`] = `
+<div>
+  <div>
+    <header
+      class="header"
+    >
+      <div
+        class="logo"
+      >
+        <a
+          href="https://d13kv0v5vl0wju.cloudfront.net/"
+        >
+          <img
+            alt="SKDE logo"
+            class="logo_img"
+            src="SKDE_sort.png"
+          />
+        </a>
+      </div>
+      <div>
+        <a
+          href="/"
+        >
+          Kontakt
+        </a>
+      </div>
+    </header>
+  </div>
+</div>
+`;
