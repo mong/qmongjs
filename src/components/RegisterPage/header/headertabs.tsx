@@ -73,6 +73,8 @@ const Tab: React.FC<TabProps> = ({
   return (
     <li ref={tabRef} className={style.tabsLI}>
       <button
+        role="tab"
+        aria-selected={tabName === activeTab}
         onClick={() => tabclickHandler()}
         style={clickedStyle}
         className={style.tabsBtn}
