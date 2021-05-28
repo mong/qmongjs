@@ -50,8 +50,7 @@ export interface Description {
 }
 
 export const API_HOST =
-  process.env.REACT_APP_API_HOST ??
-  "https://qa-mong-api.skde.org";
+  process.env.REACT_APP_API_HOST ?? "https://qa-mong-api.skde.org";
 
 export const RegisterPage: React.FC = () => {
   let { path } = useRouteMatch();
