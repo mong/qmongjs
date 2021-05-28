@@ -7,9 +7,8 @@ interface FetchDescriptionParams {
 }
 
 const descriptionUrl = (params: FetchDescriptionParams): string => {
-  return `${API_HOST}/data/${params.registerShortName}/descriptions?type=${
-    params.type ?? ""
-  }`;
+  return `${API_HOST}/data/${params.registerShortName}/descriptions?type=${params.type ?? ""
+    }`;
 };
 
 const fetchDescription = async (params: FetchDescriptionParams) => {
@@ -43,8 +42,8 @@ export interface FetchIndicatorParams {
 const indicatorUrl = (params: FetchIndicatorParams): string => {
   const unitQuery: string = params.unitNames
     ? params.unitNames.reduce((acc, cur) => {
-        return `${acc}unit_name[]=${cur}&`;
-      }, "")
+      return `${acc}unit_name[]=${cur}&`;
+    }, "")
     : "";
   const unitLevelQuery: string = params.unitLevel
     ? `unit_level=${params.unitLevel}&`
@@ -124,7 +123,7 @@ const fetchMedicalFields = async () => {
     throw new Error("Network response failed");
   }
 
-  return await response.json();
+  return response.json();
 };
 
 export const useMedicalFieldsQuery = () => {

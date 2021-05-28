@@ -49,7 +49,7 @@ export const mockIndicators: ResponseResolver<RestRequest, RestContext> = (
 };
 
 export const mockRegisterNames: ResponseResolver<RestRequest, RestContext> = (
-  req,
+  _,
   res,
   ctx
 ) => {
@@ -57,7 +57,7 @@ export const mockRegisterNames: ResponseResolver<RestRequest, RestContext> = (
 };
 
 export const mockMedicalFields: ResponseResolver<RestRequest, RestContext> = (
-  req,
+  _,
   res,
   ctx
 ) => {
@@ -65,7 +65,7 @@ export const mockMedicalFields: ResponseResolver<RestRequest, RestContext> = (
 };
 
 export const mockUnitNames: ResponseResolver<RestRequest, RestContext> = (
-  req,
+  _,
   res,
   ctx
 ) => {
