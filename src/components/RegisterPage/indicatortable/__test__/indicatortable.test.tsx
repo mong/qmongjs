@@ -3,10 +3,9 @@ import { BrowserRouter, Route, Router } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { render, screen, waitFor } from "@testing-library/react";
-import opts from '../../../../dev-tools/data/unitnames.json'
+import opts from "../../../../dev-tools/data/unitnames.json";
 
 import { clockTick } from "../../../../test/clockTick";
-
 
 import { IndicatorTable } from "../";
 
@@ -18,11 +17,11 @@ it("registry table renders correctly for a single registry", async () => {
     optstu: opts.opts_tu,
     unitNames: ["Nasjonalt"],
     registerNames: [
-      { id: 1, rname: "hoftebrudd", full_name: "Nasjonalt hoftebruddregister" }
+      { id: 1, rname: "hoftebrudd", full_name: "Nasjonalt hoftebruddregister" },
     ],
     treatmentYear: 2019,
-    medicalFieldFilter: ["hoftebrudd"]
-  }
+    medicalFieldFilter: ["hoftebrudd"],
+  };
   const queryClient = new QueryClient();
 
   const { container } = render(
@@ -31,13 +30,10 @@ it("registry table renders correctly for a single registry", async () => {
         <QueryParamProvider ReactRouterRoute={Route}>
           <IndicatorTable tableType="singleRegister" {...props} />
         </QueryParamProvider>
-      </BrowserRouter >
+      </BrowserRouter>
     </QueryClientProvider>
   );
 
   await waitFor(() => screen.getAllByRole("heading"));
   expect(container).toMatchSnapshot();
-
 });
-
-
