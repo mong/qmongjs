@@ -1,4 +1,5 @@
 import React from "react";
+import { OptsTu } from "../../../select_multi";
 
 import TableBlock from "../tableblock/tableblock";
 
@@ -11,7 +12,7 @@ interface RegisterName {
 
 export interface IndicatorTableBodyProps {
   tableType: "allRegistries" | "singleRegister";
-  optstu: [];
+  optstu: OptsTu[] | [];
   colspan: number;
   registerNames: RegisterName[];
   unitNames: string[];

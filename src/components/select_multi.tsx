@@ -3,7 +3,7 @@ import Select from "react-select";
 
 import { app_text } from "../app_config";
 
-interface OptsTu {
+export interface OptsTu {
   label: string;
   options: {
     value: string;

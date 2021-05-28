@@ -16,6 +16,7 @@ import {
 import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
 import { Description, StatisticData } from "../../";
+import { OptsTu } from "../../../select_multi";
 
 interface RegisterName {
   id: number;
@@ -26,7 +27,7 @@ interface RegisterName {
 
 export interface TableBlockProps {
   tableType: "allRegistries" | "singleRegister";
-  optstu: [];
+  optstu: OptsTu[] | [];
   registerName: RegisterName;
   blockTitle?: string;
   treatmentYear: number;

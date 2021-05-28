@@ -1,11 +1,12 @@
 import React from "react";
+import { OptsTu } from "../../select_multi";
 
 import { IndicatorTableHeader } from "./indicatortableheader";
 import { IndicatorTableBody } from "./indicatortablebody";
 
 export interface IndicatorTableProps {
   tableType: "allRegistries" | "singleRegister";
-  optstu: [];
+  optstu: OptsTu[] | [];
   colspan: number;
   descriptionHeader?: string;
   unitNames: string[];
