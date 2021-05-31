@@ -2,7 +2,6 @@ import React from "react";
 import { QueryParamProvider } from "use-query-params";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import Home from "./components/Home";
 import RegisterPage from "./components/RegisterPage";
 
 function APP() {
@@ -11,9 +10,6 @@ function APP() {
       <QueryParamProvider ReactRouterRoute={Route}>
         <Switch>
           <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/kvalitetsregistre">
             <RegisterPage />
           </Route>
           <Route path="/">
