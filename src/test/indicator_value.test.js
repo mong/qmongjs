@@ -20,9 +20,10 @@ afterEach(() => {
 
 it("renders", () => {
   const data = national_data[1];
-  const indicator_value_share = `${Math.round(
-    data[data_config.column.variable] * 100
-  )}\u202f%`;
+  const indicator_value_share =
+    data[data_config.column.variable] < 0.1
+      ? `${Math.round(data[data_config.column.variable] * 1000) / 10}\u202f%`
+      : `${Math.round(data[data_config.column.variable] * 100)}\u202f%`;
   const numerator = Math.round(
     data[data_config.column.variable] * data.denominator
   );
