@@ -16,7 +16,11 @@ it("register page header renders correctly", () => {
       full_name: "Nasjonalt kvalitetsregister for barnekreft",
     },
   ];
-  const tabNames = ["Sykehus", "Boområde", "Datakvalitet"];
+  const tabNames = [
+    { value: "sykehus", label: "Sykehus" },
+    { value: "boomraade", label: "Boområde" },
+    { value: "datakvalitet", label: "Datakvalitit" },
+  ];
   const dataFrom = "Norsk hjerneslagregister";
 
   const { container } = render(
@@ -31,16 +35,11 @@ it("register page header renders correctly", () => {
     </BrowserRouter>
   );
 
-  expect(screen.getByText(tabNames[0])).toBeInTheDocument();
+  expect(screen.getByText(tabNames[0].label)).toBeInTheDocument();
   expect(screen.getByText(dataFrom)).toBeInTheDocument();
   expect(screen.getByText(registerNames[0].full_name)).toBeInTheDocument();
-  expect(screen.getByRole("tab", { selected: true })).toHaveTextContent(
-    tabNames[0]
-  );
   expect(container).toMatchSnapshot();
 
-  userEvent.click(screen.getByText(tabNames[1]));
-  expect(screen.getByRole("tab", { selected: true })).toHaveTextContent(
-    tabNames[1]
-  );
+  userEvent.click(screen.getByText(tabNames[1].label));
+  expect(container).toMatchSnapshot();
 });
