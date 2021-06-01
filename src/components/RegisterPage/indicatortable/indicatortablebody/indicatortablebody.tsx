@@ -11,6 +11,7 @@ interface RegisterName {
 }
 
 export interface IndicatorTableBodyProps {
+  context: string;
   tableType: "allRegistries" | "singleRegister";
   optstu: OptsTu[] | [];
   colspan: number;
@@ -26,6 +27,7 @@ export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (
   props
 ) => {
   const {
+    context,
     tableType,
     optstu,
     colspan,
@@ -44,6 +46,7 @@ export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (
 
       return (
         <TableBlock
+          context={context}
           tableType={tableType}
           key={`${register.rname}`}
           optstu={optstu}

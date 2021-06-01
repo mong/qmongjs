@@ -26,6 +26,7 @@ interface RegisterName {
 }
 
 export interface TableBlockProps {
+  context: string;
   tableType: "allRegistries" | "singleRegister";
   optstu: OptsTu[] | [];
   registerName: RegisterName;
@@ -40,6 +41,7 @@ export interface TableBlockProps {
 
 export const TableBlock: React.FC<TableBlockProps> = (props) => {
   const {
+    context,
     tableType,
     optstu,
     registerName,
@@ -50,7 +52,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     showLevelFilter,
     blockTitle,
   } = props;
-
+  console.log(context);
   const [treatment_units] = useQueryParam(
     "selected_treatment_units",
     mainQueryParamsConfig.selected_treatment_units
@@ -68,6 +70,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     registerShortName: registerName.rname,
     unitNames,
     treatmentYear,
+    context,
   });
 
   const descriptionQuery: UseQueryResult<any, unknown> = useDescriptionQuery({
@@ -81,12 +84,16 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
   ])?.isFetching;
 
   const refetch = useCallback(() => {
-    return queryClient.fetchQuery(["indicatorData", registerName.rname]);
-  }, [queryClient, registerName.rname]);
+    return queryClient.fetchQuery([
+      "indicatorData",
+      registerName.rname,
+      context,
+    ]);
+  }, [queryClient, registerName.rname, context]);
 
   useEffect(() => {
     refetch();
-  }, [unitNames, refetch, treatmentYear]);
+  }, [unitNames, refetch, treatmentYear, context]);
 
   const uniqueOrderedInd: string[] = useMemo(
     () =>

@@ -5,6 +5,7 @@ import { IndicatorTableHeader } from "./indicatortableheader";
 import { IndicatorTableBody } from "./indicatortablebody";
 
 export interface IndicatorTableProps {
+  context: string;
   tableType: "allRegistries" | "singleRegister";
   optstu: OptsTu[] | [];
   colspan: number;
@@ -27,6 +28,7 @@ export interface IndicatorTableProps {
 
 export const IndicatorTable: React.FC<IndicatorTableProps> = (props) => {
   const {
+    context,
     tableType,
     optstu,
     unitNames = ["Nasjonalt"],
@@ -51,6 +53,7 @@ export const IndicatorTable: React.FC<IndicatorTableProps> = (props) => {
         descriptionHeader={descriptionHeader}
       />
       <IndicatorTableBody
+        context={context}
         tableType={tableType}
         optstu={optstu}
         colspan={colspan}

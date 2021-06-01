@@ -36,6 +36,7 @@ export interface IndPerReg {
 }
 
 export interface Props {
+  context: string;
   optstu: [];
   registerNames: RegisterNames[];
   app_text: any;
@@ -55,6 +56,7 @@ interface MediacalFieldObject {
 
 const Main = (props: Props) => {
   const {
+    context,
     optstu,
     registerNames,
     app_text,
@@ -125,6 +127,7 @@ const Main = (props: Props) => {
         </div>
         <div className="main_table_container">
           <IndicatorTable
+            context={context}
             tableType="allRegistries"
             optstu={optstu}
             registerNames={orderedRegisterList}
