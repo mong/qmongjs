@@ -10,9 +10,11 @@ import ind from "../../dev-tools/data/indcator_all.min.json";
 import medicalFeild from "../../dev-tools/data/medicalfields.json";
 import unitNames from "../../dev-tools/data/unitnames.json";
 import registerNames from "../../dev-tools/data/registernames.json";
+import { stringify } from "query-string";
 
 export function buildMainProps(overrides: Partial<Props>): Props {
   return {
+    context: "sykehus",
     optstu: [],
     treatment_units: [],
     selected_year: 2019,
