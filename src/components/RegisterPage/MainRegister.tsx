@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { UseQueryResult } from "react-query";
 import { useQueryParam } from "use-query-params";
 
+import { Route, Switch, useRouteMatch, useParams } from "react-router-dom";
+
 import MAIN from "../main_component";
 import { Header } from "./header";
 import SELECT_MULTI from "../select_multi";
@@ -18,6 +20,7 @@ import { useResizeObserver, useUnitNamesQuery } from "../../helpers/hooks";
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { RegisterNames } from ".";
 import { UnitNameList } from "./unitnamelist";
+import { table } from "console";
 const { app_text } = config;
 
 interface MainRegisterProps {
@@ -25,11 +28,29 @@ interface MainRegisterProps {
 }
 
 const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
+  const { tab }: { tab: string } = useParams();
+  const tabNames: { label: string; value: string }[] = [
+    { value: "sykehus", label: "Sykehus" },
+    { value: "boomraade", label: "Boområde" },
+    { value: "datakvalitet", label: "Datakvalitet" },
+  ];
+  const context =
+    tab === "sykehus"
+      ? "caregiver"
+      : tab === "boomraade"
+      ? "recident"
+      : tab === "datakvalitet"
+      ? "coverage"
+      : "";
+
   const [nestedUnitNames, updateNestedUnitNames] = useState<[]>([]);
 
   const [optstu, updateOptsTU] = useState<[]>([]);
 
-  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery("all");
+  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
+    "all",
+    context
+  );
   useEffect(() => {
     if (unitNamesQuery.isSuccess) {
       updateNestedUnitNames(unitNamesQuery.data.nestedUnitNames);
@@ -78,11 +99,20 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
     (v) => minYear + v
   );
 
+  if (!tabNames.some((tabName) => tabName.value === tab)) {
+    return (
+      <div style={{ minHeight: "100vh" }}>
+        <h1 style={{ margin: "10%" }}>Page Not Found</h1>
+      </div>
+    );
+  }
+
   return (
     <div className="app-container" style={{ minHeight: "100vh" }}>
       <Header
-        tabNames={["Sykehus", "Boområde", "Datakvalitet"]}
+        tabNames={tabNames}
         registerNames={registerNames}
+        activeTab={tab}
       />
       <div className="app-body">
         <div className="selection-container" ref={selection_bar_ref}>
@@ -108,6 +138,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
         </div>
         {unitNamesQuery.isLoading ? null : (
           <MAIN
+            context={context}
             optstu={optstu}
             registerNames={registerNames}
             treatment_units={validated_treatment_units}

@@ -28,13 +28,27 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   registerNames,
 }) => {
   const { register }: { register: string } = useParams();
-
+  const { tab }: { tab: string } = useParams();
+  const tabNames: { label: string; value: string }[] = [
+    { value: "sykehus", label: "Sykehus" },
+    { value: "boomraade", label: "Boområde" },
+    { value: "datakvalitet", label: "Datakvalitet" },
+  ];
+  const context =
+    tab === "sykehus"
+      ? "caregiver"
+      : tab === "boomraade"
+      ? "recident"
+      : tab === "datakvalitet"
+      ? "coverage"
+      : "";
   const [nestedUnitNames, updateNestedUnitNames] = useState<[]>([]);
 
   const [optstu, updateOptsTU] = useState<[]>([]);
 
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
-    register
+    register,
+    context
   );
 
   useEffect(() => {
@@ -88,8 +102,11 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   >("level", mainQueryParamsConfig.level);
 
   const validReg = registerNames.map((d) => d.rname);
-  // returns page not found if the register param is not valid
-  if (!validReg.includes(register)) {
+  // returns page not found if the register param or tab param is not valid
+  if (
+    !validReg.includes(register) ||
+    !tabNames.some((tabName) => tabName.value === tab)
+  ) {
     return (
       <div style={{ minHeight: "100vh" }}>
         <h1 style={{ margin: "10%" }}>Page Not Found</h1>
@@ -98,13 +115,13 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   }
   const registerFullName = registerNames.filter((d) => d.rname === register)[0]
     .full_name;
-
   return (
     <div className="app-container" style={{ minHeight: "100vh" }}>
       <Header
         registerNames={registerNames}
         dataFrom={registerFullName}
-        tabNames={["Sykehus", "Boområde", "Datakvalitet"]}
+        tabNames={tabNames}
+        activeTab={tab}
       />
       <div className="app-body">
         <div className="selection-container" ref={selection_bar_ref}>
@@ -141,6 +158,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
         <div className="content_container">
           <div className="main_table_container">
             <IndicatorTable
+              context={context}
               tableType={"singleRegister"}
               optstu={optstu}
               registerNames={[{ id: 1, rname: register, full_name: register }]}
