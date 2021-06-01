@@ -9,6 +9,7 @@ export interface HeaderProps {
   registerNames: RegisterNames[];
   tabNames?: { label: string; value: string }[];
   dataFrom?: string;
+  activeTab: string;
 }
 
 export const Header: React.FC<HeaderProps> = (props) => {
@@ -16,6 +17,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
     registerNames,
     tabNames = [],
     dataFrom = "medisinske kvalitetsregistre",
+    activeTab,
   } = props;
 
   return (
@@ -30,6 +32,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
           </div>
           <div className={style.topHeaderRight}>
             <SelectRegister
+              activeTab={activeTab}
               regNames={registerNames}
               selection_bar_height={null}
             />
