@@ -10,6 +10,7 @@ import { mainQueryParamsConfig } from "../../app_config";
 import { Description, StatisticData } from "../RegisterPage";
 
 export interface Props {
+  context: string;
   treatmentYear: number;
   colspan?: number;
   description: Description[];
@@ -21,6 +22,7 @@ export interface Props {
 
 function TF_FIGURE(props: Props) {
   const {
+    context,
     treatmentYear,
     colspan = 3,
     description,
@@ -61,6 +63,7 @@ function TF_FIGURE(props: Props) {
           </div>
           <Chart
             svgContainerRef={svgContainerRef}
+            context={context}
             description={description[0]}
             chartType={valid_chart_type}
             zoom={zoom}

@@ -139,6 +139,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     );
     return (
       <IndicatorRow
+        context={context}
         indicatorData={singleIndicatorData}
         description={singleIndicatorDescription[0]}
         key={indicator}

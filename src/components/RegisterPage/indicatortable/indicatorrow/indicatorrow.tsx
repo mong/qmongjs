@@ -72,6 +72,7 @@ const formatIndicatorValues = (
 };
 
 export interface IndicatorRowProps {
+  context: string;
   treatmantYear: number;
   description: Description;
   indicatorData: StatisticData[];
@@ -83,6 +84,7 @@ export interface IndicatorRowProps {
 
 export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
   const {
+    context,
     treatmantYear,
     description,
     indicatorData,
@@ -121,6 +123,7 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
   const tr_fig =
     selected_row === ind_id ? (
       <TF_FIGURE
+        context={context}
         treatmentYear={treatmantYear}
         colspan={colspan}
         description={[description]}
