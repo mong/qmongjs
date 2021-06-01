@@ -34,12 +34,12 @@ const Tab: React.FC<TabProps> = ({ tabName }) => {
   const clickedStyle =
     tab === tabName.value
       ? {
-        color: "#6da7df",
-        boxShadow: "-7px 7px 10px -5px #ccc",
-        backgroundColor: "white",
-        borderBottom: "3px solid white",
-        borderRadius: "5px",
-      }
+          color: "#6da7df",
+          boxShadow: "-7px 7px 10px -5px #ccc",
+          backgroundColor: "white",
+          borderBottom: "3px solid white",
+          borderRadius: "5px",
+        }
       : {};
 
   return (
