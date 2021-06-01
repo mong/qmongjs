@@ -52,7 +52,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     showLevelFilter,
     blockTitle,
   } = props;
-  console.log(context);
+
   const [treatment_units] = useQueryParam(
     "selected_treatment_units",
     mainQueryParamsConfig.selected_treatment_units
