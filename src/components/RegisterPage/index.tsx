@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 
 import Header from "../Header";
 import Footer from "../Footer";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import MainRegister from "./MainRegister";
 import SelectedRegister from "./SelectedRegister";
 
@@ -105,8 +105,6 @@ function RegisterPage({ data, isLoading }: Props) {
     tu_names,
   } = data;
 
-  let { path } = useRouteMatch();
-
   const indicatorSorter = useMemo(() => {
     const descriptionMap: { [key: string]: string } = {};
     for (const d of description) {
@@ -144,7 +142,7 @@ function RegisterPage({ data, isLoading }: Props) {
     <>
       <Header />
       <Switch>
-        <Route exact path={path}>
+        <Route exact path="/">
           <MainRegister
             isLoading={isLoading}
             tu_names={tu_names}
@@ -155,7 +153,7 @@ function RegisterPage({ data, isLoading }: Props) {
             description={description}
           />
         </Route>
-        <Route exact path={`${path}/:register`}>
+        <Route exact path={`/r/:register`}>
           <SelectedRegister
             isLoading={isLoading}
             tu_names={tu_names}
@@ -166,7 +164,7 @@ function RegisterPage({ data, isLoading }: Props) {
             description={description}
           />
         </Route>
-        <Route path="/">
+        <Route path="*">
           <div style={{ minHeight: "100vh" }}>
             <h1 style={{ margin: "10%" }}>Page Not Found</h1>
           </div>
