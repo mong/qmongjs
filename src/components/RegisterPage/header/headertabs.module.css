@@ -3,20 +3,13 @@
   margin: auto;
 }
 
-.highlighter {
-  position: absolute;
-  bottom: -3px;
-  height: 3px;
-  background-color: #6da7df;
-  transition: 100ms ease-in;
-}
 
 .tabsUL {
   display: flex;
   justify-content: space-evenly;
   align-items: baseline;
   margin: 0;
-  padding: 0;
+  padding: 2px;
 }
 
 .tabsLI {
@@ -25,7 +18,8 @@
   margin: 0;
 }
 
-.tabsBtn {
+.tabsLink {
+  text-decoration: none;
   font-size: 1rem;
   border: none;
   background: none;
@@ -37,8 +31,8 @@
   color: #333;
 }
 
-.tabsBtn:hover,
-.tabsBtn:focus {
+.tabsLink:hover,
+.tabsLink:focus {
   background-color: #dee7ee;
   color: #6da7df;
 }

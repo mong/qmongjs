@@ -7,7 +7,7 @@ import { RegisterNames } from "../";
 import style from "./header.module.css";
 export interface HeaderProps {
   registerNames: RegisterNames[];
-  tabNames?: string[];
+  tabNames?: { label: string; value: string }[];
   dataFrom?: string;
 }
 

@@ -1,27 +1,16 @@
-import React, { useEffect, useState, useRef, Dispatch } from "react";
-import { useResizeObserver } from "../../../helpers/hooks";
+import React from "react";
+import { Link, useParams } from "react-router-dom";
 
 import style from "./headertabs.module.css";
 
 export interface HeaderTabProps {
-  tabNames: string[];
+  tabNames: { label: string; value: string }[];
 }
 
 export const HeaderTabs: React.FC<HeaderTabProps> = ({ tabNames }) => {
-  const [highlighterWidth, sethighlighterWidth] = useState<number | null>(null);
-  const [highlighterLeft, sethighlighterLeft] = useState<number | null>(null);
-  const [activTab, setActiveTab] = useState(tabNames[0]);
-
-  const tabs = tabNames.map((tab, i) => {
+  const tabs = tabNames.map((tabName, i) => {
     return (
-      <Tab
-        tabName={tab}
-        activeTab={activTab}
-        setActiveTab={setActiveTab}
-        setHighlighterLeft={sethighlighterLeft}
-        setHighlighterWidth={sethighlighterWidth}
-        key={`${tab.replace(/\s/g, "")}${i}`}
-      />
+      <Tab tabName={tabName} key={`${tabName.value.replace(/\s/g, "")}${i}`} />
     );
   });
 
@@ -30,57 +19,43 @@ export const HeaderTabs: React.FC<HeaderTabProps> = ({ tabNames }) => {
       <div className={style.tabsWrapper}>
         <ul className={style.tabsUL}>{tabs}</ul>
       </div>
-      <div
-        style={{ width: `${highlighterWidth}px`, left: `${highlighterLeft}px` }}
-        className={style.highlighter}
-      ></div>
     </div>
   );
 };
 
 interface TabProps {
-  tabName: string;
-  activeTab: string;
-  setActiveTab: Dispatch<string>;
-  setHighlighterWidth: Dispatch<number | null>;
-  setHighlighterLeft: Dispatch<number | null>;
+  tabName: { value: string; label: string };
 }
 
-const Tab: React.FC<TabProps> = ({
-  tabName,
-  activeTab,
-  setActiveTab,
-  setHighlighterLeft,
-  setHighlighterWidth,
-}) => {
-  const tabRef = useRef(null);
-  const tabDim = useResizeObserver(tabRef);
-  useEffect(() => {
-    if (!tabDim) {
-      return;
-    }
-    if (tabName === activeTab) {
-      const width = tabDim.target.getBoundingClientRect().width;
-      const left = tabDim.target.getBoundingClientRect().left;
-      setHighlighterLeft(left);
-      setHighlighterWidth(width);
-    }
-  });
-  const clickedStyle = activeTab === tabName ? { color: "#6da7df" } : {};
+const Tab: React.FC<TabProps> = ({ tabName }) => {
+  const { tab }: { tab: string } = useParams();
+  const { register }: { register: string } = useParams();
 
-  const tabclickHandler = () => setActiveTab(tabName);
+  const clickedStyle =
+    tab === tabName.value
+      ? {
+        color: "#6da7df",
+        boxShadow: "-7px 7px 10px -5px #ccc",
+        backgroundColor: "white",
+        borderBottom: "3px solid white",
+        borderRadius: "5px",
+      }
+      : {};
 
   return (
-    <li ref={tabRef} className={style.tabsLI}>
-      <button
+    <li className={style.tabsLI}>
+      <Link
+        to={(location) => ({
+          ...location,
+          pathname: `/kvalitetsregistre/${register ?? "alle"}/${tabName.value}`,
+        })}
         role="tab"
-        aria-selected={tabName === activeTab}
-        onClick={() => tabclickHandler()}
+        aria-selected={tabName.value === tab}
         style={clickedStyle}
-        className={style.tabsBtn}
+        className={style.tabsLink}
       >
-        {tabName}
-      </button>
+        {tabName.label}
+      </Link>
     </li>
   );
 };
