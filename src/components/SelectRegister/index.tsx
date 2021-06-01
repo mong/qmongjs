@@ -14,10 +14,11 @@ interface registerNames {
 interface selectedRegisterProps {
   regNames: registerNames[];
   selection_bar_height: number | null;
+  activeTab: string;
 }
 
 const SelectRegister = (props: selectedRegisterProps) => {
-  const { regNames, selection_bar_height } = props;
+  const { regNames, selection_bar_height, activeTab } = props;
   const [btnToggle, updateBtnToggle] = useState(false);
   const btnStyle = btnToggle ? { border: "2px solid #00263d" } : {};
   const linkWrapperStyle = btnToggle ? {} : { display: "none" };
@@ -54,7 +55,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
         <ul>
           {regNames.map((reg: registerNames) => (
             <li key={reg.rname}>
-              <Link to={`/kvalitetsregistre/${reg.rname}`}>
+              <Link to={`/kvalitetsregistre/${reg.rname}/${activeTab}`}>
                 {reg.full_name}
               </Link>
             </li>
