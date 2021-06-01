@@ -38,6 +38,7 @@ export interface FetchIndicatorParams {
   treatmentYear?: number;
   unitNames?: string[];
   unitLevel?: string;
+  context?: string;
 }
 
 const indicatorUrl = (params: FetchIndicatorParams): string => {
@@ -49,10 +50,13 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
   const unitLevelQuery: string = params.unitLevel
     ? `unit_level=${params.unitLevel}&`
     : "";
-  const yearQuery: string = params.treatmentYear
-    ? `year=${params.treatmentYear}`
+  const contextQuery: string = params.context
+    ? `context=${params.context}`
     : "";
-  return `${API_HOST}/data/${params.registerShortName}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}`;
+  const yearQuery: string = params.treatmentYear
+    ? `year=${params.treatmentYear}&`
+    : "";
+  return `${API_HOST}/data/${params.registerShortName}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}`;
 };
 
 const fetchIndicators = async (params: FetchIndicatorParams) => {
@@ -66,7 +70,7 @@ const fetchIndicators = async (params: FetchIndicatorParams) => {
 
 export const useIndicatorQuery = (params: FetchIndicatorParams) => {
   return useQuery(
-    [params.queryKey, params.registerShortName],
+    [params.queryKey, params.registerShortName, params.context],
     () => fetchIndicators(params),
     {
       staleTime: 1000 * 60 * 60,
@@ -76,12 +80,12 @@ export const useIndicatorQuery = (params: FetchIndicatorParams) => {
   );
 };
 
-const unitNamesUrl = (registerShortName: string): string => {
-  return `${API_HOST}/data/${registerShortName}/unitnames`;
+const unitNamesUrl = (registerShortName: string, context: string): string => {
+  return `${API_HOST}/data/${registerShortName}/unitnames?context=${context}`;
 };
 
-const fetchUnitNames = async (registerShortName: string) => {
-  const response = await fetch(unitNamesUrl(registerShortName));
+const fetchUnitNames = async (registerShortName: string, context: string) => {
+  const response = await fetch(unitNamesUrl(registerShortName, context));
   if (!response.ok) {
     throw new Error("Network response failed");
   }
@@ -89,10 +93,13 @@ const fetchUnitNames = async (registerShortName: string) => {
   return await response.json();
 };
 
-export const useUnitNamesQuery = (registerShortName: string) => {
+export const useUnitNamesQuery = (
+  registerShortName: string,
+  context: string
+) => {
   return useQuery(
-    ["unitNames", registerShortName],
-    () => fetchUnitNames(registerShortName),
+    ["unitNames", registerShortName, context],
+    () => fetchUnitNames(registerShortName, context),
     {
       staleTime: 1000 * 60 * 60,
       refetchOnWindowFocus: false,
