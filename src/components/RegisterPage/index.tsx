@@ -83,7 +83,7 @@ export const RegisterPage: React.FC = () => {
         </Route>
         <Route path="*">
           <div style={{ minHeight: "100vh" }}>
-            <h1 style={{ margin: "10%" }}>Page Noot Found</h1>
+            <h1 style={{ margin: "10%" }}>Page Not Found</h1>
           </div>
         </Route>
       </Switch>
