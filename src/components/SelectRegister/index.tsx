@@ -18,6 +18,7 @@ interface selectedRegisterProps {
 }
 
 const SelectRegister = (props: selectedRegisterProps) => {
+  const [value, setValue] = useState("")
   const { regNames, selection_bar_height, activeTab } = props;
   const [btnToggle, updateBtnToggle] = useState(false);
   const btnStyle = btnToggle ? { border: "2px solid #00263d" } : {};
@@ -40,6 +41,19 @@ const SelectRegister = (props: selectedRegisterProps) => {
 
   useEventListener("keydown", handleKeyDown);
 
+  const handleInputChange = (e: any) => {
+    setValue(e.target.value)
+  };
+
+  const filteredReg = value.length > 0
+    ? [
+      ...regNames
+        .filter((reg) =>
+        (reg.rname?.toLowerCase().includes(value.toLocaleLowerCase()) ||
+          reg.full_name?.toLowerCase().includes(value.toLocaleLowerCase())))
+    ]
+    : regNames
+
   return (
     <>
       <div style={{ position: "sticky", top: selection_bar_height! }}>
@@ -52,10 +66,22 @@ const SelectRegister = (props: selectedRegisterProps) => {
         </button>
       </div>
       <div className={style.linkWrapper} style={linkWrapperStyle}>
+        <div className={style.searchInputWrapper} >
+          <input
+            onChange={handleInputChange}
+            value={value}
+            className={style.searchInput}
+            type="text"
+            placeholder="Søk etter register"
+          />
+        </div>
         <ul>
-          {regNames.map((reg: registerNames) => (
+          {filteredReg.map((reg: registerNames) => (
             <li key={reg.rname}>
-              <Link to={`/kvalitetsregistre/${reg.rname}/${activeTab}`}>
+              <Link
+                onClick={() => updateBtnToggle(!btnToggle)}
+                to={`/r/${reg.rname}/${activeTab}`}
+              >
                 {reg.full_name}
               </Link>
             </li>
