@@ -18,7 +18,7 @@ interface selectedRegisterProps {
 }
 
 const SelectRegister = (props: selectedRegisterProps) => {
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState("");
   const { regNames, selection_bar_height, activeTab } = props;
   const [btnToggle, updateBtnToggle] = useState(false);
   const btnStyle = btnToggle ? { border: "2px solid #00263d" } : {};
@@ -42,17 +42,19 @@ const SelectRegister = (props: selectedRegisterProps) => {
   useEventListener("keydown", handleKeyDown);
 
   const handleInputChange = (e: any) => {
-    setValue(e.target.value)
+    setValue(e.target.value);
   };
 
-  const filteredReg = value.length > 0
-    ? [
-      ...regNames
-        .filter((reg) =>
-        (reg.rname?.toLowerCase().includes(value.toLocaleLowerCase()) ||
-          reg.full_name?.toLowerCase().includes(value.toLocaleLowerCase())))
-    ]
-    : regNames
+  const filteredReg =
+    value.length > 0
+      ? [
+          ...regNames.filter(
+            (reg) =>
+              reg.rname?.toLowerCase().includes(value.toLocaleLowerCase()) ||
+              reg.full_name?.toLowerCase().includes(value.toLocaleLowerCase())
+          ),
+        ]
+      : regNames;
 
   return (
     <>
@@ -66,7 +68,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
         </button>
       </div>
       <div className={style.linkWrapper} style={linkWrapperStyle}>
-        <div className={style.searchInputWrapper} >
+        <div className={style.searchInputWrapper}>
           <input
             onChange={handleInputChange}
             value={value}
