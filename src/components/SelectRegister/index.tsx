@@ -54,7 +54,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
         <ul>
           {regNames.map((reg) => (
             <li key={reg.registerShortName}>
-              <Link to={`/r/${reg.registerShortName}`}>
+              <Link to={`/${reg.registerShortName}`}>
                 {reg.registerFullName}
               </Link>
             </li>

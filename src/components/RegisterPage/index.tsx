@@ -153,7 +153,7 @@ function RegisterPage({ data, isLoading }: Props) {
             description={description}
           />
         </Route>
-        <Route exact path={`/r/:register`}>
+        <Route exact path={`/:register`}>
           <SelectedRegister
             isLoading={isLoading}
             tu_names={tu_names}
