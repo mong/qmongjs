@@ -41,7 +41,8 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
       ? "recident"
       : tab === "datakvalitet"
       ? "coverage"
-      : "";
+      : "caregiver";
+
   const [nestedUnitNames, updateNestedUnitNames] = useState<[]>([]);
 
   const [optstu, updateOptsTU] = useState<[]>([]);

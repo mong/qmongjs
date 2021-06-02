@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { UseQueryResult } from "react-query";
 import { useQueryParam } from "use-query-params";
 
-import { Route, Switch, useRouteMatch, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import MAIN from "../main_component";
 import { Header } from "./header";
@@ -20,7 +20,7 @@ import { useResizeObserver, useUnitNamesQuery } from "../../helpers/hooks";
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { RegisterNames } from ".";
 import { UnitNameList } from "./unitnamelist";
-import { table } from "console";
+
 const { app_text } = config;
 
 interface MainRegisterProps {
@@ -41,12 +41,11 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
       ? "recident"
       : tab === "datakvalitet"
       ? "coverage"
-      : "";
-
+      : "caregiver";
+  const activeTab = tab;
   const [nestedUnitNames, updateNestedUnitNames] = useState<[]>([]);
 
   const [optstu, updateOptsTU] = useState<[]>([]);
-
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     "all",
     context
@@ -62,6 +61,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
     number | null
   >(null);
   const [legend_height, update_legend_height] = useState(null);
+
   //height of the selection bar
   const selection_bar_ref = useRef<HTMLDivElement | null>(null);
   const selection_bar_dim = useResizeObserver(selection_bar_ref);
@@ -112,7 +112,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
       <Header
         tabNames={tabNames}
         registerNames={registerNames}
-        activeTab={tab}
+        activeTab={activeTab}
       />
       <div className="app-body">
         <div className="selection-container" ref={selection_bar_ref}>

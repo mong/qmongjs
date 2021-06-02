@@ -3,7 +3,7 @@ import { UseQueryResult } from "react-query";
 
 import Header from "../Header";
 import Footer from "../Footer";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import MainRegister from "./MainRegister";
 import SelectedRegister from "./SelectedRegister";
 import { useRegisterNamesQuery } from "../../helpers/hooks";
@@ -50,10 +50,9 @@ export interface Description {
 }
 
 export const API_HOST =
-  process.env.REACT_APP_API_HOST ?? "https://qa-mong-api.skde.org";
+  process.env.REACT_APP_API_HOST ?? "http://localhost:4000"; //"https://qa-mong-api.skde.org";
 
 export const RegisterPage: React.FC = () => {
-  let { path } = useRouteMatch();
   const registryNameQuery: UseQueryResult<
     any,
     unknown
@@ -67,15 +66,24 @@ export const RegisterPage: React.FC = () => {
     <>
       <Header />
       <Switch>
-        <Route exact path={path}>
+        <Route exact path="/alle/:tab">
           <MainRegister registerNames={registerNames ?? []} />
         </Route>
-        <Route exact path={`${path}/:register`}>
+        <Route path="/r/:register/:tab">
           <SelectedRegister registerNames={registerNames ?? []} />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
+          <Redirect to="/alle/sykehus" />
+        </Route>
+        <Route exact path="/alle">
+          <Redirect to="/alle/sykehus" />
+        </Route>
+        <Route path="/r/:register">
+          <Redirect to="r/:register/sykehus" />
+        </Route>
+        <Route path="*">
           <div style={{ minHeight: "100vh" }}>
-            <h1 style={{ margin: "10%" }}>Page Not Found</h1>
+            <h1 style={{ margin: "10%" }}>Page Noot Found</h1>
           </div>
         </Route>
       </Switch>
