@@ -55,21 +55,21 @@ exports[`register page header renders correctly 1`] = `
             <ul>
               <li>
                 <a
-                  href="/kvalitetsregistre/hjerneslag"
+                  href="/kvalitetsregistre/hjerneslag/undefined"
                 >
                   Norsk hjerneslagregister
                 </a>
               </li>
               <li>
                 <a
-                  href="/kvalitetsregistre/norgast"
+                  href="/kvalitetsregistre/norgast/undefined"
                 >
                   Norsk register for gastrokirurgi
                 </a>
               </li>
               <li>
                 <a
-                  href="/kvalitetsregistre/barnekreft"
+                  href="/kvalitetsregistre/barnekreft/undefined"
                 >
                   Nasjonalt kvalitetsregister for barnekreft
                 </a>
@@ -100,7 +100,7 @@ exports[`register page header renders correctly 1`] = `
               <a
                 aria-selected="false"
                 class="tabsLink"
-                href="/kvalitetsregistre/alle/sykehus"
+                href="/alle/sykehus"
                 role="tab"
               >
                 Sykehus
@@ -112,7 +112,7 @@ exports[`register page header renders correctly 1`] = `
               <a
                 aria-selected="false"
                 class="tabsLink"
-                href="/kvalitetsregistre/alle/boomraade"
+                href="/alle/boomraade"
                 role="tab"
               >
                 Boområde
@@ -124,7 +124,7 @@ exports[`register page header renders correctly 1`] = `
               <a
                 aria-selected="false"
                 class="tabsLink"
-                href="/kvalitetsregistre/alle/datakvalitet"
+                href="/alle/datakvalitet"
                 role="tab"
               >
                 Datakvalitit
@@ -193,21 +193,21 @@ exports[`register page header renders correctly 2`] = `
             <ul>
               <li>
                 <a
-                  href="/kvalitetsregistre/hjerneslag"
+                  href="/kvalitetsregistre/hjerneslag/undefined"
                 >
                   Norsk hjerneslagregister
                 </a>
               </li>
               <li>
                 <a
-                  href="/kvalitetsregistre/norgast"
+                  href="/kvalitetsregistre/norgast/undefined"
                 >
                   Norsk register for gastrokirurgi
                 </a>
               </li>
               <li>
                 <a
-                  href="/kvalitetsregistre/barnekreft"
+                  href="/kvalitetsregistre/barnekreft/undefined"
                 >
                   Nasjonalt kvalitetsregister for barnekreft
                 </a>
@@ -238,7 +238,7 @@ exports[`register page header renders correctly 2`] = `
               <a
                 aria-selected="false"
                 class="tabsLink"
-                href="/kvalitetsregistre/alle/sykehus"
+                href="/alle/sykehus"
                 role="tab"
               >
                 Sykehus
@@ -250,7 +250,7 @@ exports[`register page header renders correctly 2`] = `
               <a
                 aria-selected="false"
                 class="tabsLink"
-                href="/kvalitetsregistre/alle/boomraade"
+                href="/alle/boomraade"
                 role="tab"
               >
                 Boområde
@@ -262,7 +262,7 @@ exports[`register page header renders correctly 2`] = `
               <a
                 aria-selected="false"
                 class="tabsLink"
-                href="/kvalitetsregistre/alle/datakvalitet"
+                href="/alle/datakvalitet"
                 role="tab"
               >
                 Datakvalitit
