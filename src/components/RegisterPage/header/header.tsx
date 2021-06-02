@@ -38,7 +38,9 @@ export const Header: React.FC<HeaderProps> = (props) => {
             />
           </div>
         </div>
-        {tabNames.length > 1 ? <HeaderTabs tabNames={tabNames} /> : null}
+        {tabNames.length > 1 ? (
+          <HeaderTabs activeTab={activeTab} tabNames={tabNames} />
+        ) : null}
       </div>
     </div>
   );

@@ -5,12 +5,20 @@ import style from "./headertabs.module.css";
 
 export interface HeaderTabProps {
   tabNames: { label: string; value: string }[];
+  activeTab: string;
 }
 
-export const HeaderTabs: React.FC<HeaderTabProps> = ({ tabNames }) => {
+export const HeaderTabs: React.FC<HeaderTabProps> = ({
+  tabNames,
+  activeTab,
+}) => {
   const tabs = tabNames.map((tabName, i) => {
     return (
-      <Tab tabName={tabName} key={`${tabName.value.replace(/\s/g, "")}${i}`} />
+      <Tab
+        tabName={tabName}
+        activeTab={activeTab}
+        key={`${tabName.value.replace(/\s/g, "")}${i}`}
+      />
     );
   });
 
@@ -25,14 +33,15 @@ export const HeaderTabs: React.FC<HeaderTabProps> = ({ tabNames }) => {
 
 interface TabProps {
   tabName: { value: string; label: string };
+  activeTab: string;
 }
 
-const Tab: React.FC<TabProps> = ({ tabName }) => {
+const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
   const { tab }: { tab: string } = useParams();
-  const { register }: { register: string } = useParams();
+  const { register }: { register: string | undefined } = useParams();
 
   const clickedStyle =
-    tab === tabName.value
+    activeTab === tabName.value
       ? {
           color: "#6da7df",
           boxShadow: "-7px 7px 10px -5px #ccc",
@@ -41,13 +50,14 @@ const Tab: React.FC<TabProps> = ({ tabName }) => {
           borderRadius: "5px",
         }
       : {};
+  const path = register ? `/r/${register}` : "/alle";
 
   return (
     <li className={style.tabsLI}>
       <Link
         to={(location) => ({
           ...location,
-          pathname: `/kvalitetsregistre/${register ?? "alle"}/${tabName.value}`,
+          pathname: `${path}/${tabName.value}`,
         })}
         role="tab"
         aria-selected={tabName.value === tab}
