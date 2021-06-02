@@ -61,7 +61,7 @@ function SELECT_MULTI(props: Props) {
     }),
     placeholder: (provided: any) => ({
       ...provided,
-      // color: "#EEF6F7",
+      color: "black",
       fontSize: "1.2rem",
     }),
     // @ts-ignore

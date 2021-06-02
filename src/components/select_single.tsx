@@ -29,7 +29,7 @@ function SELECT_SINGLE(props: Props) {
       width: "100%",
       backgroundColor: "white",
       boxShadow: null,
-      fontSize: "1rem",
+      fontSize: "1.1rem",
       border: state.isFocused
         ? "3px solid #7ebec7"
         : state.isSelected
@@ -44,7 +44,7 @@ function SELECT_SINGLE(props: Props) {
     }),
     singleValue: (provided: any) => ({
       ...provided,
-      //color: "#EEF6F7",
+      color: "black",
     }),
     menu: (provided: any) => ({
       ...provided,
