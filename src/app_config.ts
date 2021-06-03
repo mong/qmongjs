@@ -96,12 +96,12 @@ export const med_field = [
     react_key: "rehab",
     name: "Rehabilitering",
     key: ["nnrr", "norscir"],
-  } /*,
-  {  
-    react_key: "onh", 
-    name: "Øre-nese-hals",
-    key: ["tonsille"]
   },
+  {
+    react_key: "onh",
+    name: "Øre-nese-hals",
+    key: ["tonsille"],
+  } /*,
   {  
     react_key: "hud",
     name: "Hudsykdommer",
