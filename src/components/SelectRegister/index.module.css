@@ -37,7 +37,7 @@
 }
 
 .searchInput {
-  color: inherit;
+  color: #4c5757;
   font-size: 1.2rem;
   font-weight: 600;
   background-color: inherit;
@@ -54,7 +54,7 @@
 
 .searchInput:focus {
   color: #00263d;
-  background-color: #c1d3df;
+  background-color: rgb(242, 242, 242);
   border-bottom: 3px solid #00263d;
 }
 
@@ -68,7 +68,7 @@
   position: fixed;
   overflow-y: scroll;
   box-shadow: -1px 7px 10px 0 #8b9e9f;
-  background-color: #dee7ee;
+  background-color: rgb(242, 242, 242);
   margin: auto;
   width: 95%;
   height: 95vh;
@@ -94,9 +94,10 @@
   align-self: center;
   padding: 10px;
   margin: 10px;
-  background-color: white;
   border-radius: 0.5rem;
+  background-color: white;
   box-shadow: -2px 2px 5px -3px #8b9e9f;
+  border: 2px solid #b5c3c4;
   transition: 250ms ease-in;
 }
 
@@ -115,6 +116,7 @@
 .linkWrpper li:focus {
   background-color: #00263d;
   color: white;
+  border: 2px solid #495050;
 }
 
 .select_reg_close {
