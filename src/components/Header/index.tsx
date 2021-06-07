@@ -13,9 +13,9 @@ const Header: React.FC<HeaderProps> = () => {
       <header className={style.header}>
         <div className={style.headerContainer}>
           <div className={style.logo}>
-            <Link to="/">
+            <a href="/">
               <img className={style.logo_img} src={skdeLogo} alt="SKDE logo" />
-            </Link>
+            </a>
           </div>
         </div>
       </header>
