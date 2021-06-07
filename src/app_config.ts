@@ -112,16 +112,17 @@ export const med_field = [
     name: "Psykisk helse og rus",
     key: ["kvarus","norspis"]
   },*/,
-  /*  {
+  {
     react_key: "autoimmun",
     name: "Autoimmune sykdommer",
     key: ["roas", "norvas"],
-  },*/
-  /*  {
+  },
+  {
     react_key: "revma",
     name: "Revmatologi",
     key: ["norartritt", "norvas"],
-  }*/ {
+  },
+  {
     react_key: "barn",
     name: "Barn",
     key: ["cp", "hofte_barn", "barnekreft", "barnediabetes", "lkg", "nnk"],
