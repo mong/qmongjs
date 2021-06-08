@@ -116,10 +116,10 @@ function APP() {
     [indicatorSorter, indicator_hosp]
   );
 
-  const sortedIndicatorHf = useMemo(() => indicator_hf.sort(indicatorSorter), [
-    indicatorSorter,
-    indicator_hf,
-  ]);
+  const sortedIndicatorHf = useMemo(
+    () => indicator_hf.sort(indicatorSorter),
+    [indicatorSorter, indicator_hf]
+  );
 
   const sortedIndicatorRhf = useMemo(
     () => indicator_rhf.sort(indicatorSorter),
