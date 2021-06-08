@@ -1,6 +1,7 @@
 {
   "name": "qmongjs",
-  "version": "2.0.2",
+  "homepage": "https://d13kv0v5vl0wju.cloudfront.net/kvalitetsregistre",
+  "version": "2.0.5",
   "description": "The skde.org (to be skde.no) web page",
   "private": true,
   "scripts": {
