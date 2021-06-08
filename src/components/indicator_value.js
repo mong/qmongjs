@@ -27,8 +27,8 @@ function INDICATOR_VALUE(props) {
     );
     const indicator_value_share =
       data[data_config.column.variable] < 0.1
-        ? `${Math.round(data[data_config.column.variable] * 1000) / 10}%`
-        : `${Math.round(data[data_config.column.variable] * 100)}%`;
+        ? `${Math.round(data[data_config.column.variable] * 1000) / 10}\u202f%`
+        : `${Math.round(data[data_config.column.variable] * 100)}\u202f%`;
 
     return (
       <td className={td_class}>
