@@ -1,6 +1,6 @@
 {
   "name": "qmongjs",
-  "version": "2.0.2",
+  "version": "2.0.5",
   "description": "The skde.org (to be skde.no) web page",
   "private": true,
   "scripts": {
