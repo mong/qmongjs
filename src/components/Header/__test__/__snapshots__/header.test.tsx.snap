@@ -10,7 +10,7 @@ exports[`main page header renders 1`] = `
         class="logo"
       >
         <a
-          href="https://d13kv0v5vl0wju.cloudfront.net/"
+          href="/"
         >
           <img
             alt="SKDE logo"

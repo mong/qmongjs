@@ -10,9 +10,9 @@ const Header: React.FC<HeaderProps> = () => {
     <div style={{}}>
       <header className={style.header}>
         <div className={style.logo}>
-          <a href="https://d13kv0v5vl0wju.cloudfront.net/">
+          <Link to="/">
             <img className={style.logo_img} src={skdeLogo} alt="SKDE logo" />
-          </a>
+          </Link>
         </div>
         <div>
           <Link to="#">Kontakt</Link>
