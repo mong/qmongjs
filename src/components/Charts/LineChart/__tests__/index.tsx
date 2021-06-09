@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import faker from "faker";
 import { useRef } from "react";
 import LineChart, { DataPoint, Props } from "..";
