@@ -75,10 +75,8 @@ const Main = (props: Props) => {
     string | undefined
   >("indicator", mainQueryParamsConfig.indicator);
 
-  const medicalFieldsQuery: UseQueryResult<
-    any,
-    unknown
-  > = useMedicalFieldsQuery();
+  const medicalFieldsQuery: UseQueryResult<any, unknown> =
+    useMedicalFieldsQuery();
   const registerList = registerNames.map((d: RegisterNames) => d.rname);
 
   if (medicalFieldsQuery.isLoading) {

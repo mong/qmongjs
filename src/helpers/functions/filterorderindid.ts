@@ -8,8 +8,9 @@ export const filterOrderIndID = (
   level: string,
   tableType: "singleRegister" | "allRegistries"
 ): string[] => {
-  const namesLength = Array.from(new Set(indData.map((data) => data.unit_name)))
-    .length;
+  const namesLength = Array.from(
+    new Set(indData.map((data) => data.unit_name))
+  ).length;
 
   const indId: string[] = Array.from(
     new Set(

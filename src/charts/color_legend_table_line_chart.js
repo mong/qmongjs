@@ -67,8 +67,9 @@ export const color_legend_line_chart = function (selection, props) {
       select(this).style("cursor", "pointer");
     })
     .on("mouseout", function (event, d) {
-      var nr_clicked = select(".tr_figure").selectAll("li.clicked").nodes()
-        .length;
+      var nr_clicked = select(".tr_figure")
+        .selectAll("li.clicked")
+        .nodes().length;
       if (nr_clicked < 1) {
         selectAll("path.table-line-chart:not(.clicked)")
           .transition()
@@ -143,8 +144,9 @@ export const color_legend_line_chart = function (selection, props) {
             .style("opacity", 1);
         }
       } else {
-        nr_clicked = select(".tr_figure").selectAll("li.clicked").nodes()
-          .length;
+        nr_clicked = select(".tr_figure")
+          .selectAll("li.clicked")
+          .nodes().length;
         if (nr_clicked === 0) {
           selected_path_class = select(`svg path.${d.replace(/\s/g, "")}`).attr(
             "class"
