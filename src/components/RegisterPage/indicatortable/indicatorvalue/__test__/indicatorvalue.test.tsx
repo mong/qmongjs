@@ -23,9 +23,7 @@ it("renders", () => {
     data.var < 0.1
       ? `${Math.round(data.var * 1000) / 10}\u202f%`
       : `${Math.round(data.var * 100)}\u202f%`;
-  const numerator = Math.round(
-    data.var * data.denominator
-  );
+  const numerator = Math.round(data.var * data.denominator);
 
   act(() => {
     render(
