@@ -48,12 +48,12 @@ const SelectRegister = (props: selectedRegisterProps) => {
   const filteredReg =
     value.length > 0
       ? [
-          ...regNames.filter(
-            (reg) =>
-              reg.rname?.toLowerCase().includes(value.toLocaleLowerCase()) ||
-              reg.full_name?.toLowerCase().includes(value.toLocaleLowerCase())
-          ),
-        ]
+        ...regNames.filter(
+          (reg) =>
+            reg.rname?.toLowerCase().includes(value.toLocaleLowerCase()) ||
+            reg.full_name?.toLowerCase().includes(value.toLocaleLowerCase())
+        ),
+      ]
       : regNames;
 
   return (

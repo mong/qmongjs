@@ -69,7 +69,7 @@ export const RegisterPage: React.FC = () => {
         <Route exact path="/alle/:tab">
           <MainRegister registerNames={registerNames ?? []} />
         </Route>
-        <Route path="/r/:register/:tab">
+        <Route path="/:register/:tab">
           <SelectedRegister registerNames={registerNames ?? []} />
         </Route>
         <Route exact path="/">
@@ -78,8 +78,8 @@ export const RegisterPage: React.FC = () => {
         <Route exact path="/alle">
           <Redirect to="/alle/sykehus" />
         </Route>
-        <Route path="/r/:register">
-          <Redirect to="r/:register/sykehus" />
+        <Route path="/:register">
+          <Redirect to="/:register/sykehus" />
         </Route>
         <Route path="*">
           <div style={{ minHeight: "100vh" }}>
