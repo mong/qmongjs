@@ -36,8 +36,8 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
     const numerator = Math.round(indicatorData.var * denominator);
     const indicator_value_share =
       indicatorData.var < 0.1
-        ? `${Math.round(indicatorData.var * 1000) / 10}%`
-        : `${Math.round(indicatorData.var * 100)}%`;
+        ? `${Math.round(indicatorData.var * 1000) / 10}\u202f% `
+        : `${Math.round(indicatorData.var * 100)}\u202f% `;
 
     return (
       <td
@@ -52,7 +52,7 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
           aria-label={`Achieved level ${indicatorData.level}`}
         >
           <h4>
-            {`${indicator_value_share} `}
+            {`${indicator_value_share}`}
             <i className={icon_class} />
           </h4>
         </div>

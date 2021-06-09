@@ -37,8 +37,8 @@ it("renders", () => {
       container
     );
   });
-  expect(container.querySelector("td h4").textContent).toBe(
-    `${indicator_value_share} `
+  expect(container.querySelector("td h4").textContent).toContain(
+    `${indicator_value_share}`
   );
   expect(container.querySelector("td .summary").textContent).toBe(
     `${numerator} av ${data.denominator}`

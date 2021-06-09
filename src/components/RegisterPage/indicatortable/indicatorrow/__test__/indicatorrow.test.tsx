@@ -24,8 +24,8 @@ it("renders", () => {
   const data = national_data[1];
   const indicator_value_share =
     data.var < 0.1
-      ? `${Math.round(data.var * 1000) / 10}%`
-      : `${Math.round(data.var * 100)}%`;
+      ? `${Math.round(data.var * 1000) / 10}\u202f%`
+      : `${Math.round(data.var * 100)}\u202f%`;
   const numerator = Math.round(data.var * data.denominator);
 
   act(() => {
@@ -35,6 +35,7 @@ it("renders", () => {
           <table>
             <tbody>
               <IndicatorRow
+                context={"caregiver"}
                 description={description[0]}
                 indicatorData={[data]}
                 treatmantYear={2019}

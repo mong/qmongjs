@@ -27,6 +27,7 @@ it("register page header renders correctly", () => {
     <BrowserRouter>
       <QueryParamProvider ReactRouterRoute={Route}>
         <Header
+          activeTab={"sykehus"}
           registerNames={registerNames}
           tabNames={tabNames}
           dataFrom={dataFrom}

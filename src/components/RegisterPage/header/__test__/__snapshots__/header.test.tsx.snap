@@ -52,24 +52,34 @@ exports[`register page header renders correctly 1`] = `
             class="linkWrapper"
             style="display: none;"
           >
+            <div
+              class="searchInputWrapper"
+            >
+              <input
+                class="searchInput"
+                placeholder="Søk etter register"
+                type="text"
+                value=""
+              />
+            </div>
             <ul>
               <li>
                 <a
-                  href="/kvalitetsregistre/hjerneslag/undefined"
+                  href="/hjerneslag/sykehus"
                 >
                   Norsk hjerneslagregister
                 </a>
               </li>
               <li>
                 <a
-                  href="/kvalitetsregistre/norgast/undefined"
+                  href="/norgast/sykehus"
                 >
                   Norsk register for gastrokirurgi
                 </a>
               </li>
               <li>
                 <a
-                  href="/kvalitetsregistre/barnekreft/undefined"
+                  href="/barnekreft/sykehus"
                 >
                   Nasjonalt kvalitetsregister for barnekreft
                 </a>
@@ -102,6 +112,7 @@ exports[`register page header renders correctly 1`] = `
                 class="tabsLink"
                 href="/alle/sykehus"
                 role="tab"
+                style="color: rgb(109, 167, 223); box-shadow: -7px 7px 10px -5px #ccc; background-color: white; border-bottom: 3px solid white; border-radius: 5px;"
               >
                 Sykehus
               </a>
@@ -190,24 +201,34 @@ exports[`register page header renders correctly 2`] = `
             class="linkWrapper"
             style="display: none;"
           >
+            <div
+              class="searchInputWrapper"
+            >
+              <input
+                class="searchInput"
+                placeholder="Søk etter register"
+                type="text"
+                value=""
+              />
+            </div>
             <ul>
               <li>
                 <a
-                  href="/kvalitetsregistre/hjerneslag/undefined"
+                  href="/hjerneslag/sykehus"
                 >
                   Norsk hjerneslagregister
                 </a>
               </li>
               <li>
                 <a
-                  href="/kvalitetsregistre/norgast/undefined"
+                  href="/norgast/sykehus"
                 >
                   Norsk register for gastrokirurgi
                 </a>
               </li>
               <li>
                 <a
-                  href="/kvalitetsregistre/barnekreft/undefined"
+                  href="/barnekreft/sykehus"
                 >
                   Nasjonalt kvalitetsregister for barnekreft
                 </a>
@@ -240,6 +261,7 @@ exports[`register page header renders correctly 2`] = `
                 class="tabsLink"
                 href="/alle/sykehus"
                 role="tab"
+                style="color: rgb(109, 167, 223); box-shadow: -7px 7px 10px -5px #ccc; background-color: white; border-bottom: 3px solid white; border-radius: 5px;"
               >
                 Sykehus
               </a>
