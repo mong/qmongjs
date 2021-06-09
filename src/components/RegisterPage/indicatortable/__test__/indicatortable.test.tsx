@@ -28,7 +28,11 @@ it("registry table renders correctly for a single registry", async () => {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <QueryParamProvider ReactRouterRoute={Route}>
-          <IndicatorTable tableType="singleRegister" {...props} />
+          <IndicatorTable
+            context={"sykehus"}
+            tableType="singleRegister"
+            {...props}
+          />
         </QueryParamProvider>
       </BrowserRouter>
     </QueryClientProvider>
