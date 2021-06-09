@@ -1,11 +1,9 @@
 import React from "react";
-import { BrowserRouter, Route, Router } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { render, screen, waitFor } from "@testing-library/react";
 import opts from "../../../../dev-tools/data/unitnames.json";
-
-import { clockTick } from "../../../../test/clockTick";
 
 import { IndicatorTable } from "../";
 
