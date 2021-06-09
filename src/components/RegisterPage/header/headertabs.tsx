@@ -43,14 +43,14 @@ const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
   const clickedStyle =
     activeTab === tabName.value
       ? {
-          color: "#6da7df",
-          boxShadow: "-7px 7px 10px -5px #ccc",
-          backgroundColor: "white",
-          borderBottom: "3px solid white",
-          borderRadius: "5px",
-        }
+        color: "#6da7df",
+        boxShadow: "-7px 7px 10px -5px #ccc",
+        backgroundColor: "white",
+        borderBottom: "3px solid white",
+        borderRadius: "5px",
+      }
       : {};
-  const path = register ? `/r/${register}` : "/alle";
+  const path = register ? `/${register}` : "/alle";
 
   return (
     <li className={style.tabsLI}>
