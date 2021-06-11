@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import style from "./index.module.css";
 import skdeLogo from "../../img/SKDE_sort.png";
 
