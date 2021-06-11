@@ -44,13 +44,23 @@ const SelectRegister = (props: selectedRegisterProps) => {
   const filteredReg =
     value.length > 0
       ? [
-          ...regNames.filter(
-            (reg) =>
-              reg.rname?.toLowerCase().includes(value.toLocaleLowerCase()) ||
-              reg.full_name?.toLowerCase().includes(value.toLocaleLowerCase())
-          ),
+          ...regNames
+            .filter(
+              (reg) =>
+                reg.rname?.toLowerCase().includes(value.toLocaleLowerCase()) ||
+                reg.full_name?.toLowerCase().includes(value.toLocaleLowerCase())
+            )
+            .filter(
+              (reg) =>
+                (reg.caregiver_data || reg.dg_data || reg.recident_data) &&
+                reg.rname !== "dummy"
+            ),
         ]
-      : regNames;
+      : regNames.filter(
+          (reg) =>
+            (reg.caregiver_data || reg.dg_data || reg.recident_data) &&
+            reg.rname !== "dummy"
+        );
 
   return (
     <>
