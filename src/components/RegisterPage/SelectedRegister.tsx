@@ -106,7 +106,10 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   // returns page not found if the register param or tab param is not valid
   if (
     !validReg.includes(register) ||
-    !tabNames.some((tabName) => tabName.value === tab)
+    !tabNames.some((tabName) => tabName.value === tab) ||
+    (!registerInfo[0].caregiver_data && tab === "sykehus") ||
+    (!registerInfo[0].recident_data && tab === "boomraade") ||
+    (!registerInfo[0].dg_data && tab === "datakvalitet")
   ) {
     return (
       <div style={{ minHeight: "100vh" }}>
