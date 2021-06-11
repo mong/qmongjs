@@ -15,21 +15,16 @@ import {
 } from "../../../../helpers/functions";
 import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
-import { Description, StatisticData } from "../../";
+import { Description, StatisticData, RegisterNames } from "../../";
 import { OptsTu } from "../../../select_multi";
 
-interface RegisterName {
-  id: number;
-  rname: string;
-  full_name: string;
-  registerField?: string;
-}
+
 
 export interface TableBlockProps {
   context: string;
   tableType: "allRegistries" | "singleRegister";
   optstu: OptsTu[] | [];
-  registerName: RegisterName;
+  registerName: RegisterNames;
   blockTitle?: string;
   treatmentYear: number;
   unitNames: string[];
@@ -152,10 +147,19 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     );
   });
 
+  const tabName = context === "caregiver" && registerName.caregiver_data
+    ? "sykehus"
+    : context === "recident" && registerName.recident_data
+      ? "boomraade"
+      : context === "coverage" && registerName.dg_data
+        ? "datakvalitet"
+        : "sykehus"
+
   return (
     <>
       {blockTitle && uniqueOrderedInd.length !== 0 ? (
         <TableBlockTitle
+          tabName={tabName}
           link={registerName.rname}
           title={blockTitle}
           colspan={colspan}

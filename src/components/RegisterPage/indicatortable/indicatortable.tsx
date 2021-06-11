@@ -3,6 +3,7 @@ import { OptsTu } from "../../select_multi";
 
 import { IndicatorTableHeader } from "./indicatortableheader";
 import { IndicatorTableBody } from "./indicatortablebody";
+import { RegisterNames } from "../."
 
 export interface IndicatorTableProps {
   context: string;
@@ -14,12 +15,7 @@ export interface IndicatorTableProps {
   national?: string;
   selection_bar_height: number | null;
   legend_height: number;
-  registerNames: {
-    id: number;
-    rname: string;
-    full_name: string;
-    registerField?: string;
-  }[];
+  registerNames: RegisterNames[];
   treatmentYear: number;
   medicalFieldFilter: string[];
   showLevelFilter?: string;

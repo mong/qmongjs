@@ -5,14 +5,10 @@ import { Link } from "react-router-dom";
 import { useEventListener } from "../../helpers/hooks";
 
 import style from "./index.module.css";
+import { RegisterNames } from "../RegisterPage"
 
-interface registerNames {
-  rname?: string;
-  full_name?: string;
-  registerField?: string;
-}
 interface selectedRegisterProps {
-  regNames: registerNames[];
+  regNames: RegisterNames[];
   selection_bar_height: number | null;
   activeTab: string;
 }
@@ -48,12 +44,12 @@ const SelectRegister = (props: selectedRegisterProps) => {
   const filteredReg =
     value.length > 0
       ? [
-          ...regNames.filter(
-            (reg) =>
-              reg.rname?.toLowerCase().includes(value.toLocaleLowerCase()) ||
-              reg.full_name?.toLowerCase().includes(value.toLocaleLowerCase())
-          ),
-        ]
+        ...regNames.filter(
+          (reg) =>
+            reg.rname?.toLowerCase().includes(value.toLocaleLowerCase()) ||
+            reg.full_name?.toLowerCase().includes(value.toLocaleLowerCase())
+        ),
+      ]
       : regNames;
 
   return (
@@ -78,16 +74,26 @@ const SelectRegister = (props: selectedRegisterProps) => {
           />
         </div>
         <ul>
-          {filteredReg.map((reg: registerNames) => (
-            <li key={reg.rname}>
-              <Link
-                onClick={() => updateBtnToggle(!btnToggle)}
-                to={`/${reg.rname}/${activeTab}`}
-              >
-                {reg.full_name}
-              </Link>
-            </li>
-          ))}
+          {filteredReg.map((reg: RegisterNames) => {
+            const tabName = activeTab === "sykehus" && reg.caregiver_data
+              ? "sykehus"
+              : activeTab === "boomraade" && reg.recident_data
+                ? "boomraade"
+                : activeTab === "datakvalitet" && reg.dg_data
+                  ? "datakvalitet"
+                  : "sykehus"
+
+            return (
+              <li key={reg.rname}>
+                <Link
+                  onClick={() => updateBtnToggle(!btnToggle)}
+                  to={`/${reg.rname}/${tabName}`}
+                >
+                  {reg.full_name}
+                </Link>
+              </li>
+            )
+          })}
         </ul>
         <button
           onClick={() => updateBtnToggle(!btnToggle)}

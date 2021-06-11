@@ -10,7 +10,7 @@ import ind from "../../dev-tools/data/indcator_all.min.json";
 import medicalFeild from "../../dev-tools/data/medicalfields.json";
 import unitNames from "../../dev-tools/data/unitnames.json";
 import registerNames from "../../dev-tools/data/registernames.json";
-import { stringify } from "query-string";
+
 
 export function buildMainProps(overrides: Partial<Props>): Props {
   return {
@@ -23,7 +23,7 @@ export function buildMainProps(overrides: Partial<Props>): Props {
     selection_bar_height: null,
     legend_height: null,
     registerNames: [],
-    update_legend_height: (height: any) => {},
+    update_legend_height: (height: any) => { },
     ...overrides,
   };
 }
@@ -156,7 +156,16 @@ export const buildIndicators = ({
 };
 
 export const buildRegisterNames = (): RegisterNames[] => {
-  return registerNames;
+  const registryInfo: RegisterNames[] = registerNames.map(reg => {
+    return {
+      ...reg,
+      caregiver_data: 1,
+      recident_data: 1,
+      dg_data: 1,
+    }
+  })
+
+  return (registryInfo);
 };
 
 export const buildMedicalFields = () => {
