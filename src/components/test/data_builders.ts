@@ -11,7 +11,6 @@ import medicalFeild from "../../dev-tools/data/medicalfields.json";
 import unitNames from "../../dev-tools/data/unitnames.json";
 import registerNames from "../../dev-tools/data/registernames.json";
 
-
 export function buildMainProps(overrides: Partial<Props>): Props {
   return {
     context: "sykehus",
@@ -23,7 +22,7 @@ export function buildMainProps(overrides: Partial<Props>): Props {
     selection_bar_height: null,
     legend_height: null,
     registerNames: [],
-    update_legend_height: (height: any) => { },
+    update_legend_height: (height: any) => {},
     ...overrides,
   };
 }
@@ -156,16 +155,16 @@ export const buildIndicators = ({
 };
 
 export const buildRegisterNames = (): RegisterNames[] => {
-  const registryInfo: RegisterNames[] = registerNames.map(reg => {
+  const registryInfo: RegisterNames[] = registerNames.map((reg) => {
     return {
       ...reg,
       caregiver_data: 1,
       recident_data: 1,
       dg_data: 1,
-    }
-  })
+    };
+  });
 
-  return (registryInfo);
+  return registryInfo;
 };
 
 export const buildMedicalFields = () => {

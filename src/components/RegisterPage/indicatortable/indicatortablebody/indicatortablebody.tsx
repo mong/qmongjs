@@ -1,9 +1,8 @@
 import React from "react";
 import { OptsTu } from "../../../select_multi";
-import { RegisterNames } from "../../."
+import { RegisterNames } from "../../.";
 
 import TableBlock from "../tableblock/tableblock";
-
 
 export interface IndicatorTableBodyProps {
   context: string;

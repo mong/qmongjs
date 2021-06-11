@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import style from "./tableblocktitle.module.css";
 
 interface BlockTitleProps {
-  tabName: string
+  tabName: string;
   link?: string;
   title: string;
   colspan: number;

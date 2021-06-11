@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useEventListener } from "../../helpers/hooks";
 
 import style from "./index.module.css";
-import { RegisterNames } from "../RegisterPage"
+import { RegisterNames } from "../RegisterPage";
 
 interface selectedRegisterProps {
   regNames: RegisterNames[];
@@ -44,12 +44,12 @@ const SelectRegister = (props: selectedRegisterProps) => {
   const filteredReg =
     value.length > 0
       ? [
-        ...regNames.filter(
-          (reg) =>
-            reg.rname?.toLowerCase().includes(value.toLocaleLowerCase()) ||
-            reg.full_name?.toLowerCase().includes(value.toLocaleLowerCase())
-        ),
-      ]
+          ...regNames.filter(
+            (reg) =>
+              reg.rname?.toLowerCase().includes(value.toLocaleLowerCase()) ||
+              reg.full_name?.toLowerCase().includes(value.toLocaleLowerCase())
+          ),
+        ]
       : regNames;
 
   return (
@@ -75,13 +75,14 @@ const SelectRegister = (props: selectedRegisterProps) => {
         </div>
         <ul>
           {filteredReg.map((reg: RegisterNames) => {
-            const tabName = activeTab === "sykehus" && reg.caregiver_data
-              ? "sykehus"
-              : activeTab === "boomraade" && reg.recident_data
+            const tabName =
+              activeTab === "sykehus" && reg.caregiver_data
+                ? "sykehus"
+                : activeTab === "boomraade" && reg.recident_data
                 ? "boomraade"
                 : activeTab === "datakvalitet" && reg.dg_data
-                  ? "datakvalitet"
-                  : "sykehus"
+                ? "datakvalitet"
+                : "sykehus";
 
             return (
               <li key={reg.rname}>
@@ -92,7 +93,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
                   {reg.full_name}
                 </Link>
               </li>
-            )
+            );
           })}
         </ul>
         <button

@@ -18,8 +18,6 @@ import { TableBlockTitle } from "./tableblocktitle";
 import { Description, StatisticData, RegisterNames } from "../../";
 import { OptsTu } from "../../../select_multi";
 
-
-
 export interface TableBlockProps {
   context: string;
   tableType: "allRegistries" | "singleRegister";
@@ -147,13 +145,14 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     );
   });
 
-  const tabName = context === "caregiver" && registerName.caregiver_data
-    ? "sykehus"
-    : context === "recident" && registerName.recident_data
+  const tabName =
+    context === "caregiver" && registerName.caregiver_data
+      ? "sykehus"
+      : context === "recident" && registerName.recident_data
       ? "boomraade"
       : context === "coverage" && registerName.dg_data
-        ? "datakvalitet"
-        : "sykehus"
+      ? "datakvalitet"
+      : "sykehus";
 
   return (
     <>

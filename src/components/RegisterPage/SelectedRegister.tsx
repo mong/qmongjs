@@ -38,11 +38,11 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     tab === "sykehus"
       ? "caregiver"
       : tab === "boomraade"
-        ? "recident"
-        : tab === "datakvalitet"
-          ? "coverage"
-          : "caregiver";
-  const registerInfo = registerNames.filter(reg => reg.rname === register)
+      ? "recident"
+      : tab === "datakvalitet"
+      ? "coverage"
+      : "caregiver";
+  const registerInfo = registerNames.filter((reg) => reg.rname === register);
   const [nestedUnitNames, updateNestedUnitNames] = useState<[]>([]);
 
   const [optstu, updateOptsTU] = useState<[]>([]);
@@ -120,19 +120,18 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   const registerFullName = registerNames.filter((d) => d.rname === register)[0]
     .full_name;
 
-  const registerTabs = tabNames.filter(tabs => {
+  const registerTabs = tabNames.filter((tabs) => {
     if (registerInfo[0].caregiver_data && tabs.label === "Sykehus") {
-      return true
+      return true;
     }
     if (registerInfo[0].recident_data && tabs.label === "Boområde") {
-      return true
+      return true;
     }
     if (registerInfo[0].dg_data && tabs.label === "Datakvalitet") {
-      return true
+      return true;
     }
-    return false
-
-  })
+    return false;
+  });
 
   return (
     <div className="app-container" style={{ minHeight: "100vh" }}>

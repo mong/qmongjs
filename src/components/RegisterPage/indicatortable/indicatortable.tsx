@@ -3,7 +3,7 @@ import { OptsTu } from "../../select_multi";
 
 import { IndicatorTableHeader } from "./indicatortableheader";
 import { IndicatorTableBody } from "./indicatortablebody";
-import { RegisterNames } from "../."
+import { RegisterNames } from "../.";
 
 export interface IndicatorTableProps {
   context: string;
