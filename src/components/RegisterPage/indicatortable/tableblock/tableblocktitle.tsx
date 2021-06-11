@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import style from "./tableblocktitle.module.css";
 
 interface BlockTitleProps {
+  tabName: string
   link?: string;
   title: string;
   colspan: number;
@@ -11,6 +12,7 @@ interface BlockTitleProps {
 
 export const TableBlockTitle: React.FC<BlockTitleProps> = (props) => {
   const {
+    tabName,
     link = "",
     title = "Nasjonalt hoftebruddregister",
     colspan = 2,
@@ -19,7 +21,7 @@ export const TableBlockTitle: React.FC<BlockTitleProps> = (props) => {
   return (
     <tr className={`${style.titleRow} ${tr_register_name_class}`}>
       <td colSpan={colspan}>
-        <Link to={`/kvalitetsregistre/${link}`}>
+        <Link to={`/${link}/${tabName}`}>
           <h3 className={style.title}>{title}</h3>
         </Link>
       </td>

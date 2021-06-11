@@ -13,6 +13,9 @@ export interface RegisterNames {
   rname: string;
   full_name: string;
   registerField?: string;
+  caregiver_data: 1 | 0 | null;
+  recident_data: 1 | 0 | null;
+  dg_data: 1 | 0 | null;
 }
 
 export interface StatisticData {
@@ -76,9 +79,7 @@ export const RegisterPage: React.FC = () => {
         <Route exact path="/alle">
           <Redirect to="/alle/sykehus" />
         </Route>
-        <Route path="/:register">
-          <Redirect to="/:register/sykehus" />
-        </Route>
+
         <Route path="*">
           <div style={{ minHeight: "100vh" }}>
             <h1 style={{ margin: "10%" }}>Page Not Found</h1>

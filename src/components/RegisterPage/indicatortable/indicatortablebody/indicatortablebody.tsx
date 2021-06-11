@@ -1,21 +1,16 @@
 import React from "react";
 import { OptsTu } from "../../../select_multi";
+import { RegisterNames } from "../../."
 
 import TableBlock from "../tableblock/tableblock";
 
-interface RegisterName {
-  id: number;
-  rname: string;
-  full_name: string;
-  registerField?: string;
-}
 
 export interface IndicatorTableBodyProps {
   context: string;
   tableType: "allRegistries" | "singleRegister";
   optstu: OptsTu[] | [];
   colspan: number;
-  registerNames: RegisterName[];
+  registerNames: RegisterNames[];
   unitNames: string[];
   treatmentYear: number;
   medicalFieldFilter: string[];
