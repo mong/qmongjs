@@ -5,17 +5,36 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { Header } from "../";
+import { RegisterNames } from "../../.";
 
+const registerInfo: RegisterNames[] = [
+  {
+    id: 1,
+    rname: "hjerneslag",
+    full_name: "Norsk hjerneslagregister",
+    caregiver_data: 1,
+    recident_data: 1,
+    dg_data: 1,
+  },
+  {
+    id: 2,
+    rname: "norgast",
+    full_name: "Norsk register for gastrokirurgi",
+    caregiver_data: 1,
+    recident_data: 1,
+    dg_data: 1,
+  },
+  {
+    id: 3,
+    rname: "barnekreft",
+    full_name: "Nasjonalt kvalitetsregister for barnekreft",
+    caregiver_data: 1,
+    recident_data: 1,
+    dg_data: 1,
+  },
+];
 it("register page header renders correctly", () => {
-  const registerNames = [
-    { id: 1, rname: "hjerneslag", full_name: "Norsk hjerneslagregister" },
-    { id: 2, rname: "norgast", full_name: "Norsk register for gastrokirurgi" },
-    {
-      id: 3,
-      rname: "barnekreft",
-      full_name: "Nasjonalt kvalitetsregister for barnekreft",
-    },
-  ];
+  const registerNames = registerInfo;
   const tabNames = [
     { value: "sykehus", label: "Sykehus" },
     { value: "boomraade", label: "Boområde" },
