@@ -10,7 +10,7 @@ exports[`main page header renders 1`] = `
         class="logo"
       >
         <a
-          href="/"
+          href="http://localhost"
         >
           <img
             alt="SKDE logo"
@@ -21,7 +21,7 @@ exports[`main page header renders 1`] = `
       </div>
       <div>
         <a
-          href="/"
+          href="https://helse-nord.no/om-oss/kontakt-oss"
         >
           Kontakt
         </a>
