@@ -9,7 +9,7 @@ exports[`Render with levels @250px 1`] = `
       class="barChart"
       height="150"
       style="background-color: white;"
-      width="0"
+      width="250"
     >
       <g
         transform="translate(0, 0)"
@@ -43,7 +43,7 @@ exports[`Render with levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(50.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -61,7 +61,7 @@ exports[`Render with levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(100.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -79,7 +79,7 @@ exports[`Render with levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(150.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -97,7 +97,7 @@ exports[`Render with levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(200.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -115,7 +115,7 @@ exports[`Render with levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(250.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -204,8 +204,8 @@ exports[`Render with levels @250px 1`] = `
             fill="#3baa34"
             height="150"
             opacity="0.2"
-            width="0"
-            x="0"
+            width="25"
+            x="225"
             y="0"
           />
           <rect
@@ -214,8 +214,8 @@ exports[`Render with levels @250px 1`] = `
             fill="#fd9c00"
             height="150"
             opacity="0.2"
-            width="0"
-            x="0"
+            width="100"
+            x="125"
             y="0"
           />
           <rect
@@ -224,7 +224,7 @@ exports[`Render with levels @250px 1`] = `
             fill="#e30713"
             height="150"
             opacity="0.2"
-            width="0"
+            width="125"
             x="0"
             y="0"
           />
@@ -238,7 +238,7 @@ exports[`Render with levels @250px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="250"
             x="0"
             y="10.465116279069761"
           />
@@ -248,7 +248,7 @@ exports[`Render with levels @250px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="37.5"
             x="0"
             y="45.34883720930232"
           />
@@ -258,7 +258,7 @@ exports[`Render with levels @250px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="75"
             x="0"
             y="80.23255813953487"
           />
@@ -268,7 +268,7 @@ exports[`Render with levels @250px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="25"
             x="0"
             y="115.11627906976743"
           />
@@ -288,7 +288,7 @@ exports[`Render with levels @500px 1`] = `
       class="barChart"
       height="150"
       style="background-color: white;"
-      width="0"
+      width="500"
     >
       <g
         transform="translate(0, 0)"
@@ -322,7 +322,7 @@ exports[`Render with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(100.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -340,7 +340,7 @@ exports[`Render with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(200.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -358,7 +358,7 @@ exports[`Render with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(300.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -376,7 +376,7 @@ exports[`Render with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(400.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -394,7 +394,7 @@ exports[`Render with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(500.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -483,8 +483,8 @@ exports[`Render with levels @500px 1`] = `
             fill="#3baa34"
             height="150"
             opacity="0.2"
-            width="0"
-            x="0"
+            width="50"
+            x="450"
             y="0"
           />
           <rect
@@ -493,8 +493,8 @@ exports[`Render with levels @500px 1`] = `
             fill="#fd9c00"
             height="150"
             opacity="0.2"
-            width="0"
-            x="0"
+            width="200"
+            x="250"
             y="0"
           />
           <rect
@@ -503,7 +503,7 @@ exports[`Render with levels @500px 1`] = `
             fill="#e30713"
             height="150"
             opacity="0.2"
-            width="0"
+            width="250"
             x="0"
             y="0"
           />
@@ -517,7 +517,7 @@ exports[`Render with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="500"
             x="0"
             y="10.465116279069761"
           />
@@ -527,7 +527,7 @@ exports[`Render with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="75"
             x="0"
             y="45.34883720930232"
           />
@@ -537,7 +537,7 @@ exports[`Render with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="150"
             x="0"
             y="80.23255813953487"
           />
@@ -547,7 +547,7 @@ exports[`Render with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="50"
             x="0"
             y="115.11627906976743"
           />
@@ -567,7 +567,7 @@ exports[`Render with levels reversed @500px 1`] = `
       class="barChart"
       height="150"
       style="background-color: white;"
-      width="0"
+      width="500"
     >
       <g
         transform="translate(0, 0)"
@@ -601,7 +601,7 @@ exports[`Render with levels reversed @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(100.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -619,7 +619,7 @@ exports[`Render with levels reversed @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(200.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -637,7 +637,7 @@ exports[`Render with levels reversed @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(300.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -655,7 +655,7 @@ exports[`Render with levels reversed @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(400.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -673,7 +673,7 @@ exports[`Render with levels reversed @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(500.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -762,7 +762,7 @@ exports[`Render with levels reversed @500px 1`] = `
             fill="#3baa34"
             height="150"
             opacity="0.2"
-            width="0"
+            width="250"
             x="0"
             y="0"
           />
@@ -772,8 +772,8 @@ exports[`Render with levels reversed @500px 1`] = `
             fill="#fd9c00"
             height="150"
             opacity="0.2"
-            width="0"
-            x="0"
+            width="200"
+            x="250"
             y="0"
           />
           <rect
@@ -782,8 +782,8 @@ exports[`Render with levels reversed @500px 1`] = `
             fill="#e30713"
             height="150"
             opacity="0.2"
-            width="0"
-            x="0"
+            width="50"
+            x="450"
             y="0"
           />
         </g>
@@ -796,7 +796,7 @@ exports[`Render with levels reversed @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="500"
             x="0"
             y="10.465116279069761"
           />
@@ -806,7 +806,7 @@ exports[`Render with levels reversed @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="75"
             x="0"
             y="45.34883720930232"
           />
@@ -816,7 +816,7 @@ exports[`Render with levels reversed @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="150"
             x="0"
             y="80.23255813953487"
           />
@@ -826,7 +826,7 @@ exports[`Render with levels reversed @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="50"
             x="0"
             y="115.11627906976743"
           />
@@ -846,7 +846,7 @@ exports[`Render without levels @250px 1`] = `
       class="barChart"
       height="150"
       style="background-color: white;"
-      width="0"
+      width="250"
     >
       <g
         transform="translate(0, 0)"
@@ -880,7 +880,7 @@ exports[`Render without levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(50.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -898,7 +898,7 @@ exports[`Render without levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(100.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -916,7 +916,7 @@ exports[`Render without levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(150.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -934,7 +934,7 @@ exports[`Render without levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(200.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -952,7 +952,7 @@ exports[`Render without levels @250px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(250.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1044,7 +1044,7 @@ exports[`Render without levels @250px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="250"
             x="0"
             y="10.465116279069761"
           />
@@ -1054,7 +1054,7 @@ exports[`Render without levels @250px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="37.5"
             x="0"
             y="45.34883720930232"
           />
@@ -1064,7 +1064,7 @@ exports[`Render without levels @250px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="75"
             x="0"
             y="80.23255813953487"
           />
@@ -1074,7 +1074,7 @@ exports[`Render without levels @250px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="25"
             x="0"
             y="115.11627906976743"
           />
@@ -1094,7 +1094,7 @@ exports[`Render without levels @500px 1`] = `
       class="barChart"
       height="150"
       style="background-color: white;"
-      width="0"
+      width="500"
     >
       <g
         transform="translate(0, 0)"
@@ -1128,7 +1128,7 @@ exports[`Render without levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(100.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1146,7 +1146,7 @@ exports[`Render without levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(200.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1164,7 +1164,7 @@ exports[`Render without levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(300.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1182,7 +1182,7 @@ exports[`Render without levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(400.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1200,7 +1200,7 @@ exports[`Render without levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(500.5,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1292,7 +1292,7 @@ exports[`Render without levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="500"
             x="0"
             y="10.465116279069761"
           />
@@ -1302,7 +1302,7 @@ exports[`Render without levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="75"
             x="0"
             y="45.34883720930232"
           />
@@ -1312,7 +1312,7 @@ exports[`Render without levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="150"
             x="0"
             y="80.23255813953487"
           />
@@ -1322,7 +1322,7 @@ exports[`Render without levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="50"
             x="0"
             y="115.11627906976743"
           />
@@ -1342,7 +1342,7 @@ exports[`Render zoomed with levels @500px 1`] = `
       class="barChart"
       height="150"
       style="background-color: white;"
-      width="0"
+      width="500"
     >
       <g
         transform="translate(0, 0)"
@@ -1376,7 +1376,25 @@ exports[`Render zoomed with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(82.4672131147541,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              10%
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(164.4344262295082,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1394,7 +1412,25 @@ exports[`Render zoomed with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(246.4016393442623,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              30%
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(328.3688524590164,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1412,7 +1448,25 @@ exports[`Render zoomed with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0.5,0)"
+            transform="translate(410.3360655737705,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              50%
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(492.3032786885246,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1425,42 +1479,6 @@ exports[`Render zoomed with levels @500px 1`] = `
               y="3"
             >
               60%
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0.5,0)"
-          >
-            <line
-              stroke="#D2D3D4"
-              y2="-150"
-            />
-            <text
-              dy="0.71em"
-              fill="#828586"
-              font-size="18.57px"
-              y="3"
-            >
-              80%
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0.5,0)"
-          >
-            <line
-              stroke="#D2D3D4"
-              y2="-150"
-            />
-            <text
-              dy="0.71em"
-              fill="#828586"
-              font-size="18.57px"
-              y="3"
-            >
-              100%
             </text>
           </g>
         </g>
@@ -1538,7 +1556,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             height="150"
             opacity="0.2"
             width="0"
-            x="0"
+            x="500"
             y="0"
           />
           <rect
@@ -1547,8 +1565,8 @@ exports[`Render zoomed with levels @500px 1`] = `
             fill="#fd9c00"
             height="150"
             opacity="0.2"
-            width="0"
-            x="0"
+            width="90.1639344262295"
+            x="409.8360655737705"
             y="0"
           />
           <rect
@@ -1557,7 +1575,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             fill="#e30713"
             height="150"
             opacity="0.2"
-            width="0"
+            width="409.8360655737705"
             x="0"
             y="0"
           />
@@ -1571,7 +1589,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="409.8360655737705"
             x="0"
             y="10.465116279069761"
           />
@@ -1581,7 +1599,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="122.95081967213115"
             x="0"
             y="45.34883720930232"
           />
@@ -1591,7 +1609,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="245.9016393442623"
             x="0"
             y="80.23255813953487"
           />
@@ -1601,7 +1619,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="0"
+            width="81.9672131147541"
             x="0"
             y="115.11627906976743"
           />

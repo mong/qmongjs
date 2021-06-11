@@ -1,5 +1,4 @@
 import { rest } from "msw";
-import { API_HOST } from "../../RegisterPage";
 import {
   mockDescription,
   mockIndicators,
@@ -8,6 +7,8 @@ import {
   mockUnitNames,
   mockRest,
 } from "./responseresolvers";
+
+const API_HOST = process.env.REACT_APP_API_HOST ?? "http://localhost:4000";
 
 export const handlers = [
   rest.get(`${API_HOST}/data/:register/indicators`, mockIndicators),

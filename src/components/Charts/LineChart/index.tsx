@@ -14,7 +14,7 @@ import { page_colors } from "../../../charts/page_colors";
 import { theme_table_chart_line as theme } from "../../../charts/theme_table_chart_line";
 import useDelayInitial from "../../../utils/useDelayInitial";
 import { Level, Margin } from "../types";
-import useResizeObserver from "../../../helpers/hooks/useResizeObserver";
+import { useResizeObserver } from "../../../helpers/hooks";
 import styles from "./LineChart.module.css";
 import { levelColor } from "../utils";
 

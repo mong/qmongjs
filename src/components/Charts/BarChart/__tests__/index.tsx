@@ -37,11 +37,11 @@ test("Bar widths are correct", async () => {
 
   await clockTick(1500);
 
-  //for (const dataPoint of props.data) {
-  //const bar = screen.getByTestId(`bar-${dataPoint.label}`);
-  //const width = bar.getAttribute("width") ?? "";
-  //expect(parseFloat(width)).toBeCloseTo(dataPoint.value * WIDTH);
-  //}
+  for (const dataPoint of props.data) {
+    const bar = screen.getByTestId(`bar-${dataPoint.label}`);
+    const width = bar.getAttribute("width") ?? "";
+    expect(parseFloat(width)).toBeCloseTo(dataPoint.value * WIDTH);
+  }
 
   // Test bars update if values update
   const newProps = { ...props, data: [{ ...bar1, value: 0.75 }, bar2] };
@@ -50,11 +50,11 @@ test("Bar widths are correct", async () => {
 
   await clockTick(1500);
 
-  //for (const dataPoint of newProps.data) {
-  //const bar = screen.getByTestId(`bar-${dataPoint.label}`);
-  //const width = bar.getAttribute("width") ?? "";
-  //expect(parseFloat(width)).toBeCloseTo(dataPoint.value * WIDTH);
-  //}
+  for (const dataPoint of newProps.data) {
+    const bar = screen.getByTestId(`bar-${dataPoint.label}`);
+    const width = bar.getAttribute("width") ?? "";
+    expect(parseFloat(width)).toBeCloseTo(dataPoint.value * WIDTH);
+  }
 });
 
 test("Level widths are correct", async () => {
@@ -78,13 +78,13 @@ test("Level widths are correct", async () => {
 
   await clockTick(1500);
 
-  //for (const l of props.levels) {
-  //const level = screen.getByTestId(`level-${l.level}`);
-  //const levelX = level.getAttribute("x") ?? "";
-  //expect(parseFloat(levelX)).toBeCloseTo(l.end * WIDTH);
-  //const levelWidth = level.getAttribute("width") ?? "";
-  //expect(parseFloat(levelWidth)).toBeCloseTo(l.start * WIDTH - l.end * WIDTH);
-  //}
+  for (const l of props.levels) {
+    const level = screen.getByTestId(`level-${l.level}`);
+    const levelX = level.getAttribute("x") ?? "";
+    expect(parseFloat(levelX)).toBeCloseTo(l.end * WIDTH);
+    const levelWidth = level.getAttribute("width") ?? "";
+    expect(parseFloat(levelWidth)).toBeCloseTo(l.start * WIDTH - l.end * WIDTH);
+  }
 });
 
 test("Can set color and opacity for bars", async () => {

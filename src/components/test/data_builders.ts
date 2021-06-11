@@ -1,10 +1,10 @@
-import {
+import type {
   Description,
   RegisterNames,
   StatisticData,
 } from "../../components/RegisterPage";
 import { app_text } from "../../app_config";
-import { GraphData, Props } from "../main_component";
+import type { GraphData, Props } from "../main_component";
 import desc from "../../dev-tools/data/description.min.json";
 import ind from "../../dev-tools/data/indcator_all.min.json";
 import medicalFeild from "../../dev-tools/data/medicalfields.json";
