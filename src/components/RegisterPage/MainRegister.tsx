@@ -43,19 +43,13 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
       ? "coverage"
       : "caregiver";
   const activeTab = tab;
-  const [nestedUnitNames, updateNestedUnitNames] = useState<[]>([]);
-
-  const [optstu, updateOptsTU] = useState<[]>([]);
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     "all",
     context
   );
-  useEffect(() => {
-    if (unitNamesQuery.isSuccess) {
-      updateNestedUnitNames(unitNamesQuery.data.nestedUnitNames);
-      updateOptsTU(unitNamesQuery.data.opts_tu);
-    }
-  }, [unitNamesQuery]);
+  
+  const nestedUnitNames = unitNamesQuery.data?.nestedUnitNames ?? [];
+  const optstu = unitNamesQuery.data?.opts_tu ?? [];
 
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
