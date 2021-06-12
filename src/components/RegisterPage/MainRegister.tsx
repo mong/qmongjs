@@ -47,7 +47,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
     "all",
     context
   );
-  
+
   const nestedUnitNames = unitNamesQuery.data?.nestedUnitNames ?? [];
   const optstu = unitNamesQuery.data?.opts_tu ?? [];
 
