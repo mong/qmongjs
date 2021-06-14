@@ -7,8 +7,9 @@ import LineChart, { DataPoint } from "../Charts/LineChart";
 import { Level } from "../Charts/types";
 import { useIndicatorQuery } from "../../helpers/hooks";
 
+
 export interface Props {
-  context: string;
+  context: { context: string, type: string };
   svgContainerRef: React.RefObject<HTMLDivElement>;
   chartType: "bar" | "line";
   description: Description;
@@ -42,19 +43,21 @@ const GetBarChart: React.FC<Props> = (props) => {
     registerShortName: registerShortName,
     unitLevel: "hospital",
     treatmentYear: treatmentYear,
-    context: props.context,
+    context: props.context.context,
+    type: props.context.type
   });
   const refetch = useCallback(() => {
     return queryClient.fetchQuery([
       "indicatorDataBarChart",
       registerShortName,
-      props.context,
+      props.context.context,
+      props.context.type
     ]);
-  }, [queryClient, registerShortName, props.context]);
+  }, [queryClient, registerShortName, props.context.context, props.context.type]);
 
   useEffect(() => {
     refetch();
-  }, [refetch, treatmentYear, props.context]);
+  }, [refetch, treatmentYear, props.context.context, props.context.type]);
 
   const nasjonaltIndData = [...indicatorData].filter(
     (d) => d.unit_name === "Nasjonalt"
@@ -104,15 +107,17 @@ const GetLineChart: React.FC<Props> = (props) => {
     queryKey: `indicatorDatalineChart`,
     registerShortName: description.rname ?? "",
     unitNames: selectedTreatmentUnits,
-    context: props.context,
+    context: props.context.context,
+    type: props.context.type
   });
   const refetch = useCallback(() => {
     return queryClient.fetchQuery([
       "indicatorDatalineChart",
       registerShortName,
-      props.context,
+      props.context.context,
+      props.context.type
     ]);
-  }, [queryClient, registerShortName, props.context]);
+  }, [queryClient, registerShortName, props.context.context, props.context.type]);
 
   useEffect(() => {
     refetch();

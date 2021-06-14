@@ -7,9 +7,10 @@ interface FetchDescriptionParams {
 }
 
 const descriptionUrl = (params: FetchDescriptionParams): string => {
-  return `${API_HOST}/data/${params.registerShortName}/descriptions?type=${
-    params.type ?? ""
-  }`;
+  const typeQuery: string = params.type
+    ? `?type=${params.type}`
+    : "";
+  return `${API_HOST}/data/${params.registerShortName}/descriptions${typeQuery}`;
 };
 
 const fetchDescription = async (params: FetchDescriptionParams) => {
@@ -39,24 +40,29 @@ export interface FetchIndicatorParams {
   unitNames?: string[];
   unitLevel?: string;
   context?: string;
+  type?: string;
 }
 
 const indicatorUrl = (params: FetchIndicatorParams): string => {
+
   const unitQuery: string = params.unitNames
     ? params.unitNames.reduce((acc, cur) => {
-        return `${acc}unit_name[]=${cur}&`;
-      }, "")
+      return `${acc}unit_name[]=${cur}&`;
+    }, "")
     : "";
   const unitLevelQuery: string = params.unitLevel
     ? `unit_level=${params.unitLevel}&`
     : "";
   const contextQuery: string = params.context
-    ? `context=${params.context}`
+    ? `context=${params.context}&`
     : "";
   const yearQuery: string = params.treatmentYear
     ? `year=${params.treatmentYear}&`
     : "";
-  return `${API_HOST}/data/${params.registerShortName}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}`;
+  const typeQuery: string = params.type
+    ? `type=${params.type}`
+    : "";
+  return `${API_HOST}/data/${params.registerShortName}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${typeQuery}`;
 };
 
 const fetchIndicators = async (params: FetchIndicatorParams) => {
@@ -70,7 +76,7 @@ const fetchIndicators = async (params: FetchIndicatorParams) => {
 
 export const useIndicatorQuery = (params: FetchIndicatorParams) => {
   return useQuery(
-    [params.queryKey, params.registerShortName, params.context],
+    [params.queryKey, params.registerShortName, params.context, params.type],
     () => fetchIndicators(params),
     {
       staleTime: 1000 * 60 * 60,
@@ -80,12 +86,12 @@ export const useIndicatorQuery = (params: FetchIndicatorParams) => {
   );
 };
 
-const unitNamesUrl = (registerShortName: string, context: string): string => {
-  return `${API_HOST}/data/${registerShortName}/unitnames?context=${context}`;
+const unitNamesUrl = (registerShortName: string, context: string, type: string): string => {
+  return `${API_HOST}/data/${registerShortName}/unitnames?context=${context}&type=${type}`;
 };
 
-const fetchUnitNames = async (registerShortName: string, context: string) => {
-  const response = await fetch(unitNamesUrl(registerShortName, context));
+const fetchUnitNames = async (registerShortName: string, context: string, type: string) => {
+  const response = await fetch(unitNamesUrl(registerShortName, context, type));
   if (!response.ok) {
     throw new Error("Network response failed");
   }
@@ -95,11 +101,12 @@ const fetchUnitNames = async (registerShortName: string, context: string) => {
 
 export const useUnitNamesQuery = (
   registerShortName: string,
-  context: string
+  context: string,
+  type: string
 ) => {
   return useQuery(
-    ["unitNames", registerShortName, context],
-    () => fetchUnitNames(registerShortName, context),
+    ["unitNames", registerShortName, context, type],
+    () => fetchUnitNames(registerShortName, context, type),
     {
       staleTime: 1000 * 60 * 60,
       refetchOnWindowFocus: false,

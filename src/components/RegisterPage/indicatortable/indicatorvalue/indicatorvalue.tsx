@@ -27,10 +27,36 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
     indicatorData.level === "H"
       ? "fa fa-fas fa-circle"
       : indicatorData.level === "M"
-      ? "fa fa-fas fa-adjust"
-      : indicatorData.level === "L"
-      ? "fa fa-circle-o"
-      : "undeined";
+        ? "fa fa-fas fa-adjust"
+        : indicatorData.level === "L"
+          ? "fa fa-circle-o"
+          : "undeined";
+  if (indicatorData.type === "dg_andel" || indicatorData.type === "dg") {
+    const indicator_value_share =
+      indicatorData.var < 0.1
+        ? `${Math.round(indicatorData.var * 1000) / 10}\u202f% `
+        : `${Math.round(indicatorData.var * 100)}\u202f% `;
+
+    return (
+      <td
+        className={
+          td_class === "selected_unit"
+            ? `${style.selected_unit} ${filter_level}`
+            : `${style.nationally} ${filter_level}`
+        }
+      >
+        <div
+          className={style.level}
+          aria-label={`Achieved level ${indicatorData.level}`}
+        >
+          <h4>
+            {`${indicator_value_share}`}
+            <i className={icon_class} />
+          </h4>
+        </div>
+      </td>
+    );
+  }
   if (indicatorData.type === "andel") {
     const denominator = indicatorData.denominator;
     const numerator = Math.round(indicatorData.var * denominator);

@@ -45,6 +45,9 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     showLevelFilter,
     blockTitle,
   } = props;
+  const queryContext = context === "coverage"
+    ? { context: "caregiver", type: "dg" }
+    : { context, type: "ind" }
 
   const [treatment_units] = useQueryParam(
     "selected_treatment_units",
@@ -63,12 +66,12 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     registerShortName: registerName.rname,
     unitNames,
     treatmentYear,
-    context,
+    type: queryContext.type,
+    context: queryContext.context
   });
 
   const descriptionQuery: UseQueryResult<any, unknown> = useDescriptionQuery({
     registerShortName: registerName.rname,
-    type: "ind",
   });
 
   const isFetching = queryClient.getQueryState([
@@ -80,13 +83,14 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     return queryClient.fetchQuery([
       "indicatorData",
       registerName.rname,
-      context,
+      queryContext.context,
+      queryContext.type
     ]);
-  }, [queryClient, registerName.rname, context]);
+  }, [queryClient, registerName.rname, queryContext.context, queryContext.type]);
 
   useEffect(() => {
     refetch();
-  }, [unitNames, refetch, treatmentYear, context]);
+  }, [unitNames, refetch, treatmentYear, queryContext.context, queryContext.type]);
 
   const uniqueOrderedInd: string[] = useMemo(
     () =>
@@ -132,7 +136,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     );
     return (
       <IndicatorRow
-        context={context}
+        context={queryContext}
         indicatorData={singleIndicatorData}
         description={singleIndicatorDescription[0]}
         key={indicator}
@@ -149,10 +153,10 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     context === "caregiver" && registerName.caregiver_data
       ? "sykehus"
       : context === "recident" && registerName.recident_data
-      ? "boomraade"
-      : context === "coverage" && registerName.dg_data
-      ? "datakvalitet"
-      : "sykehus";
+        ? "boomraade"
+        : context === "coverage" && registerName.dg_data
+          ? "datakvalitet"
+          : "sykehus";
 
   return (
     <>
