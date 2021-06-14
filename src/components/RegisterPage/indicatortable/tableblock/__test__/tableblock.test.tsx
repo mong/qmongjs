@@ -17,7 +17,7 @@ const props: TableBlockProps = {
     full_name: "Nasjonalt hoftebruddregister",
     caregiver_data: 1,
     recident_data: 1,
-    dg_data: 1
+    dg_data: 1,
   },
   blockTitle: "Nasjonalt hoftebruddregister",
   treatmentYear: 2019,
@@ -61,4 +61,3 @@ it("renders with national data", async () => {
   await waitFor(() => screen.getAllByRole("heading", { level: 4 }));
   expect(container).toMatchSnapshot();
 });
-
