@@ -35,7 +35,7 @@ it("renders", () => {
           <table>
             <tbody>
               <IndicatorRow
-                context={"caregiver"}
+                context={{ context: "caregiver", type: "ind" }}
                 description={description[0]}
                 indicatorData={[data]}
                 treatmantYear={2019}
