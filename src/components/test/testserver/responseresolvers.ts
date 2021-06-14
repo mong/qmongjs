@@ -21,6 +21,13 @@ export const mockDescription: ResponseResolver<RestRequest, RestContext> = (
       ctx.json(buildDescriptions({ register, type }))
     );
   }
+  if (type === "") {
+    return res(
+      ctx.status(200),
+      ctx.json(buildDescriptions({ register }))
+    );
+  }
+
   return res(
     ctx.status(400),
     ctx.json({

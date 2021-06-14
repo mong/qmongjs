@@ -22,7 +22,7 @@ export function buildMainProps(overrides: Partial<Props>): Props {
     selection_bar_height: null,
     legend_height: null,
     registerNames: [],
-    update_legend_height: (height: any) => {},
+    update_legend_height: (height: any) => { },
     ...overrides,
   };
 }
@@ -101,7 +101,7 @@ export function buildDescriptionData(
 
 interface MockDescriptionParams {
   register: string;
-  type: "ind" | "dg";
+  type?: "ind" | "dg";
 }
 
 export const buildDescriptions = ({
