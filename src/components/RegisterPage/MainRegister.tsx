@@ -31,7 +31,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
   const { tab }: { tab: string } = useParams();
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },
-    { value: "boomraade", label: "Boområde" },
+    { value: "boomraade", label: "Opptaksområde" },
     { value: "datakvalitet", label: "Datakvalitet" },
   ];
   const context =
@@ -110,7 +110,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
   const selectionPlaceholder =
     context === "recident" ? (
       <div>
-        <i className="fas fa-search" /> Søk etter boområde
+        <i className="fas fa-search" /> Søk etter opptaksområde
       </div>
     ) : undefined;
 

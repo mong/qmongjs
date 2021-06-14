@@ -126,7 +126,7 @@ exports[`register page header renders correctly 1`] = `
                 href="/alle/boomraade"
                 role="tab"
               >
-                Boområde
+                Opptaksområde
               </a>
             </li>
             <li
@@ -275,7 +275,7 @@ exports[`register page header renders correctly 2`] = `
                 href="/alle/boomraade"
                 role="tab"
               >
-                Boområde
+                Opptaksområde
               </a>
             </li>
             <li
