@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Props | qmongjs</title>
+	<title>FetchIndicatorParams | qmongjs</title>
 	<meta name="description" content="Documentation for qmongjs">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,13 +55,13 @@
 					<a href="../modules.html">qmongjs</a>
 				</li>
 				<li>
-					<a href="../modules/components_charts_linechart.html">components/Charts/LineChart</a>
+					<a href="../modules/helpers_hooks.html">helpers/hooks</a>
 				</li>
 				<li>
-					<a href="components_charts_linechart.props.html">Props</a>
+					<a href="helpers_hooks.fetchindicatorparams.html">FetchIndicatorParams</a>
 				</li>
 			</ul>
-			<h1>Interface Props</h1>
+			<h1>Interface FetchIndicatorParams</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Props</span>
+						<span class="target">FetchIndicatorParams</span>
 					</li>
 				</ul>
 			</section>
@@ -83,12 +83,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components_charts_linechart.props.html#data" class="tsd-kind-icon">data</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components_charts_linechart.props.html#levels" class="tsd-kind-icon">levels</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components_charts_linechart.props.html#margin" class="tsd-kind-icon">margin</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components_charts_linechart.props.html#showlevel" class="tsd-kind-icon">show<wbr>Level</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components_charts_linechart.props.html#svgcontainerref" class="tsd-kind-icon">svg<wbr>Container<wbr>Ref</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components_charts_linechart.props.html#zoom" class="tsd-kind-icon">zoom</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="helpers_hooks.fetchindicatorparams.html#context" class="tsd-kind-icon">context</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="helpers_hooks.fetchindicatorparams.html#querykey" class="tsd-kind-icon">query<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="helpers_hooks.fetchindicatorparams.html#registershortname" class="tsd-kind-icon">register<wbr>Short<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="helpers_hooks.fetchindicatorparams.html#treatmentyear" class="tsd-kind-icon">treatment<wbr>Year</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="helpers_hooks.fetchindicatorparams.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="helpers_hooks.fetchindicatorparams.html#unitlevel" class="tsd-kind-icon">unit<wbr>Level</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="helpers_hooks.fetchindicatorparams.html#unitnames" class="tsd-kind-icon">unit<wbr>Names</a></li>
 							</ul>
 						</section>
 					</div>
@@ -97,62 +98,72 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="data" class="tsd-anchor"></a>
-					<h3>data</h3>
-					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <a href="components_charts_linechart.datapoint.html" class="tsd-signature-type" data-tsd-kind="Interface">DataPoint</a><span class="tsd-signature-symbol">[]</span></div>
+					<a name="context" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> context</h3>
+					<div class="tsd-signature tsd-kind-icon">context<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/629b06b/src/components/Charts/LineChart/index.tsx#L30">components/Charts/LineChart/index.tsx:30</a></li>
+							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/629b06b/src/helpers/hooks/apihooks.ts#L40">helpers/hooks/apihooks.ts:40</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="levels" class="tsd-anchor"></a>
-					<h3>levels</h3>
-					<div class="tsd-signature tsd-kind-icon">levels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Level</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="querykey" class="tsd-anchor"></a>
+					<h3>query<wbr>Key</h3>
+					<div class="tsd-signature tsd-kind-icon">query<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/629b06b/src/components/Charts/LineChart/index.tsx#L31">components/Charts/LineChart/index.tsx:31</a></li>
+							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/629b06b/src/helpers/hooks/apihooks.ts#L35">helpers/hooks/apihooks.ts:35</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="margin" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> margin</h3>
-					<div class="tsd-signature tsd-kind-icon">margin<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Margin</span></div>
+					<a name="registershortname" class="tsd-anchor"></a>
+					<h3>register<wbr>Short<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">register<wbr>Short<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/629b06b/src/components/Charts/LineChart/index.tsx#L33">components/Charts/LineChart/index.tsx:33</a></li>
+							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/629b06b/src/helpers/hooks/apihooks.ts#L36">helpers/hooks/apihooks.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="showlevel" class="tsd-anchor"></a>
-					<h3>show<wbr>Level</h3>
-					<div class="tsd-signature tsd-kind-icon">show<wbr>Level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="treatmentyear" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> treatment<wbr>Year</h3>
+					<div class="tsd-signature tsd-kind-icon">treatment<wbr>Year<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/629b06b/src/components/Charts/LineChart/index.tsx#L29">components/Charts/LineChart/index.tsx:29</a></li>
+							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/629b06b/src/helpers/hooks/apihooks.ts#L37">helpers/hooks/apihooks.ts:37</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="svgcontainerref" class="tsd-anchor"></a>
-					<h3>svg<wbr>Container<wbr>Ref</h3>
-					<div class="tsd-signature tsd-kind-icon">svg<wbr>Container<wbr>Ref<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RefObject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">HTMLDivElement</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="type" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/629b06b/src/components/Charts/LineChart/index.tsx#L28">components/Charts/LineChart/index.tsx:28</a></li>
+							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/629b06b/src/helpers/hooks/apihooks.ts#L41">helpers/hooks/apihooks.ts:41</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="zoom" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> zoom</h3>
-					<div class="tsd-signature tsd-kind-icon">zoom<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="unitlevel" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> unit<wbr>Level</h3>
+					<div class="tsd-signature tsd-kind-icon">unit<wbr>Level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/629b06b/src/components/Charts/LineChart/index.tsx#L32">components/Charts/LineChart/index.tsx:32</a></li>
+							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/629b06b/src/helpers/hooks/apihooks.ts#L39">helpers/hooks/apihooks.ts:39</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="unitnames" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> unit<wbr>Names</h3>
+					<div class="tsd-signature tsd-kind-icon">unit<wbr>Names<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/629b06b/src/helpers/hooks/apihooks.ts#L38">helpers/hooks/apihooks.ts:38</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -167,7 +178,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/components_charts_barchart.html">components/<wbr>Charts/<wbr>Bar<wbr>Chart</a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/components_charts_linechart.html">components/<wbr>Charts/<wbr>Line<wbr>Chart</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -206,7 +217,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/helpers_functions.html">helpers/functions</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="../modules/helpers_hooks.html">helpers/hooks</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -216,38 +227,56 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="components_charts_linechart.datapoint.html" class="tsd-kind-icon">Data<wbr>Point</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="components_charts_linechart.props.html" class="tsd-kind-icon">Props</a>
+						<a href="helpers_hooks.fetchindicatorparams.html" class="tsd-kind-icon">Fetch<wbr>Indicator<wbr>Params</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="components_charts_linechart.props.html#data" class="tsd-kind-icon">data</a>
+								<a href="helpers_hooks.fetchindicatorparams.html#context" class="tsd-kind-icon">context</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="components_charts_linechart.props.html#levels" class="tsd-kind-icon">levels</a>
+								<a href="helpers_hooks.fetchindicatorparams.html#querykey" class="tsd-kind-icon">query<wbr>Key</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="components_charts_linechart.props.html#margin" class="tsd-kind-icon">margin</a>
+								<a href="helpers_hooks.fetchindicatorparams.html#registershortname" class="tsd-kind-icon">register<wbr>Short<wbr>Name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="components_charts_linechart.props.html#showlevel" class="tsd-kind-icon">show<wbr>Level</a>
+								<a href="helpers_hooks.fetchindicatorparams.html#treatmentyear" class="tsd-kind-icon">treatment<wbr>Year</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="components_charts_linechart.props.html#svgcontainerref" class="tsd-kind-icon">svg<wbr>Container<wbr>Ref</a>
+								<a href="helpers_hooks.fetchindicatorparams.html#type" class="tsd-kind-icon">type</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="components_charts_linechart.props.html#zoom" class="tsd-kind-icon">zoom</a>
+								<a href="helpers_hooks.fetchindicatorparams.html#unitlevel" class="tsd-kind-icon">unit<wbr>Level</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="helpers_hooks.fetchindicatorparams.html#unitnames" class="tsd-kind-icon">unit<wbr>Names</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/components_charts_linechart.html#default" class="tsd-kind-icon">default</a>
+						<a href="../modules/helpers_hooks.html#usedescriptionquery" class="tsd-kind-icon">use<wbr>Description<wbr>Query</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/helpers_hooks.html#useeventlistener" class="tsd-kind-icon">use<wbr>Event<wbr>Listener</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/helpers_hooks.html#useindicatorquery" class="tsd-kind-icon">use<wbr>Indicator<wbr>Query</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/helpers_hooks.html#usemedicalfieldsquery" class="tsd-kind-icon">use<wbr>Medical<wbr>Fields<wbr>Query</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/helpers_hooks.html#useregisternamesquery" class="tsd-kind-icon">use<wbr>Register<wbr>Names<wbr>Query</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/helpers_hooks.html#useresizeobserver" class="tsd-kind-icon">use<wbr>Resize<wbr>Observer</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/helpers_hooks.html#useunitnamesquery" class="tsd-kind-icon">use<wbr>Unit<wbr>Names<wbr>Query</a>
 					</li>
 				</ul>
 			</nav>
