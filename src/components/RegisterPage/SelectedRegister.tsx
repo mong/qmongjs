@@ -38,17 +38,18 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     tab === "sykehus"
       ? "caregiver"
       : tab === "boomraade"
-        ? "recident"
-        : tab === "datakvalitet"
-          ? "coverage"
-          : "caregiver";
+      ? "recident"
+      : tab === "datakvalitet"
+      ? "coverage"
+      : "caregiver";
   const registerInfo = registerNames.filter((reg) => reg.rname === register);
   const [nestedUnitNames, updateNestedUnitNames] = useState<[]>([]);
 
   const [optstu, updateOptsTU] = useState<[]>([]);
-  const queryContext = context === "coverage"
-    ? { context: "caregiver", type: "dg" }
-    : { context, type: "ind" }
+  const queryContext =
+    context === "coverage"
+      ? { context: "caregiver", type: "dg" }
+      : { context, type: "ind" };
 
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     register,

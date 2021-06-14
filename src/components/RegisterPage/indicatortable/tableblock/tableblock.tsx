@@ -45,9 +45,10 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     showLevelFilter,
     blockTitle,
   } = props;
-  const queryContext = context === "coverage"
-    ? { context: "caregiver", type: "dg" }
-    : { context, type: "ind" }
+  const queryContext =
+    context === "coverage"
+      ? { context: "caregiver", type: "dg" }
+      : { context, type: "ind" };
 
   const [treatment_units] = useQueryParam(
     "selected_treatment_units",
@@ -67,7 +68,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     unitNames,
     treatmentYear,
     type: queryContext.type,
-    context: queryContext.context
+    context: queryContext.context,
   });
 
   const descriptionQuery: UseQueryResult<any, unknown> = useDescriptionQuery({
@@ -84,13 +85,24 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
       "indicatorData",
       registerName.rname,
       queryContext.context,
-      queryContext.type
+      queryContext.type,
     ]);
-  }, [queryClient, registerName.rname, queryContext.context, queryContext.type]);
+  }, [
+    queryClient,
+    registerName.rname,
+    queryContext.context,
+    queryContext.type,
+  ]);
 
   useEffect(() => {
     refetch();
-  }, [unitNames, refetch, treatmentYear, queryContext.context, queryContext.type]);
+  }, [
+    unitNames,
+    refetch,
+    treatmentYear,
+    queryContext.context,
+    queryContext.type,
+  ]);
 
   const uniqueOrderedInd: string[] = useMemo(
     () =>
@@ -153,10 +165,10 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     context === "caregiver" && registerName.caregiver_data
       ? "sykehus"
       : context === "recident" && registerName.recident_data
-        ? "boomraade"
-        : context === "coverage" && registerName.dg_data
-          ? "datakvalitet"
-          : "sykehus";
+      ? "boomraade"
+      : context === "coverage" && registerName.dg_data
+      ? "datakvalitet"
+      : "sykehus";
 
   return (
     <>

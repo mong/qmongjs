@@ -10,7 +10,7 @@ import { mainQueryParamsConfig } from "../../app_config";
 import { Description, StatisticData } from "../RegisterPage";
 
 export interface Props {
-  context: { context: string, type: string };
+  context: { context: string; type: string };
   treatmentYear: number;
   colspan?: number;
   description: Description[];

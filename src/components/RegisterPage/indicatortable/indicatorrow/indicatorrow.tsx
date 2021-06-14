@@ -16,13 +16,13 @@ const formatIndicatorValues = (
   showLevelFilter: string,
   unitName: string
 ) => {
-
   if (!indicator[0]) {
     return (
       <td
         key={`${description.id}_${unitName}__su`}
-        className={`${unitName !== "Nasjonalt" ? style.selected_unit : style.nationally
-          }`}
+        className={`${
+          unitName !== "Nasjonalt" ? style.selected_unit : style.nationally
+        }`}
       >
         <MaskedIndicator text="Ingen Data" />
       </td>
@@ -36,19 +36,21 @@ const formatIndicatorValues = (
       <IndicatorValue
         key={`${indicator[0].ind_id}_${indicator[0].unit_name}_${indicator[0].id}_su`}
         indicatorData={indicator[0]}
-        td_class={`${indicator[0].unit_level !== "nation" ? "selected_unit" : "nationally"
-          }`}
+        td_class={`${
+          indicator[0].unit_level !== "nation" ? "selected_unit" : "nationally"
+        }`}
         level_class={level_class}
       />
-    )
+    );
   } else if ((indicator[0].dg ?? 1) < 0.6) {
     return (
       <td
         key={`${indicator[0].ind_id}_${indicator[0].unit_name}_${indicator[0].id}_su`}
-        className={`${indicator[0].unit_level !== "nation"
-          ? style.selected_unit
-          : style.nationally
-          }`}
+        className={`${
+          indicator[0].unit_level !== "nation"
+            ? style.selected_unit
+            : style.nationally
+        }`}
       >
         <MaskedIndicator text="Lav dg" />
       </td>
@@ -57,10 +59,11 @@ const formatIndicatorValues = (
     return (
       <td
         key={`${indicator[0].ind_id}_${indicator[0].unit_name}_${indicator[0].id}_su`}
-        className={`${indicator[0].unit_level !== "nation"
-          ? style.selected_unit
-          : style.nationally
-          }`}
+        className={`${
+          indicator[0].unit_level !== "nation"
+            ? style.selected_unit
+            : style.nationally
+        }`}
       >
         <MaskedIndicator text="Lav N" />
       </td>
@@ -74,8 +77,9 @@ const formatIndicatorValues = (
       <IndicatorValue
         key={`${indicator[0].ind_id}_${indicator[0].unit_name}_${indicator[0].id}_su`}
         indicatorData={indicator[0]}
-        td_class={`${indicator[0].unit_level !== "nation" ? "selected_unit" : "nationally"
-          }`}
+        td_class={`${
+          indicator[0].unit_level !== "nation" ? "selected_unit" : "nationally"
+        }`}
         level_class={level_class}
       />
     );
@@ -83,7 +87,7 @@ const formatIndicatorValues = (
 };
 
 export interface IndicatorRowProps {
-  context: { context: string, type: string };
+  context: { context: string; type: string };
   treatmantYear: number;
   description: Description;
   indicatorData: StatisticData[];
@@ -120,16 +124,16 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
     unitNames.length === 0
       ? null
       : unitNames.map((name) => {
-        const filteredIndicator = indicatorData.filter(
-          (ind) => ind.unit_name === name
-        );
-        return formatIndicatorValues(
-          description,
-          filteredIndicator,
-          showLevelFilter,
-          name
-        );
-      });
+          const filteredIndicator = indicatorData.filter(
+            (ind) => ind.unit_name === name
+          );
+          return formatIndicatorValues(
+            description,
+            filteredIndicator,
+            showLevelFilter,
+            name
+          );
+        });
 
   const tr_fig =
     selected_row === ind_id ? (

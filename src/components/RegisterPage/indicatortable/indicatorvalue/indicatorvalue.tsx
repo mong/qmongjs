@@ -27,10 +27,10 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
     indicatorData.level === "H"
       ? "fa fa-fas fa-circle"
       : indicatorData.level === "M"
-        ? "fa fa-fas fa-adjust"
-        : indicatorData.level === "L"
-          ? "fa fa-circle-o"
-          : "undeined";
+      ? "fa fa-fas fa-adjust"
+      : indicatorData.level === "L"
+      ? "fa fa-circle-o"
+      : "undeined";
   if (indicatorData.type === "dg_andel" || indicatorData.type === "dg") {
     const indicator_value_share =
       indicatorData.var < 0.1

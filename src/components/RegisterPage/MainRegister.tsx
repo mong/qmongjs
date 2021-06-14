@@ -38,14 +38,15 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
     tab === "sykehus"
       ? "caregiver"
       : tab === "boomraade"
-        ? "recident"
-        : tab === "datakvalitet"
-          ? "coverage"
-          : "caregiver";
+      ? "recident"
+      : tab === "datakvalitet"
+      ? "coverage"
+      : "caregiver";
   const activeTab = tab;
-  const queryContext = context === "coverage"
-    ? { context: "caregiver", type: "dg" }
-    : { context, type: "ind" }
+  const queryContext =
+    context === "coverage"
+      ? { context: "caregiver", type: "dg" }
+      : { context, type: "ind" };
 
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     "all",

@@ -7,9 +7,8 @@ import LineChart, { DataPoint } from "../Charts/LineChart";
 import { Level } from "../Charts/types";
 import { useIndicatorQuery } from "../../helpers/hooks";
 
-
 export interface Props {
-  context: { context: string, type: string };
+  context: { context: string; type: string };
   svgContainerRef: React.RefObject<HTMLDivElement>;
   chartType: "bar" | "line";
   description: Description;
@@ -44,16 +43,21 @@ const GetBarChart: React.FC<Props> = (props) => {
     unitLevel: "hospital",
     treatmentYear: treatmentYear,
     context: props.context.context,
-    type: props.context.type
+    type: props.context.type,
   });
   const refetch = useCallback(() => {
     return queryClient.fetchQuery([
       "indicatorDataBarChart",
       registerShortName,
       props.context.context,
-      props.context.type
+      props.context.type,
     ]);
-  }, [queryClient, registerShortName, props.context.context, props.context.type]);
+  }, [
+    queryClient,
+    registerShortName,
+    props.context.context,
+    props.context.type,
+  ]);
 
   useEffect(() => {
     refetch();
@@ -108,16 +112,21 @@ const GetLineChart: React.FC<Props> = (props) => {
     registerShortName: description.rname ?? "",
     unitNames: selectedTreatmentUnits,
     context: props.context.context,
-    type: props.context.type
+    type: props.context.type,
   });
   const refetch = useCallback(() => {
     return queryClient.fetchQuery([
       "indicatorDatalineChart",
       registerShortName,
       props.context.context,
-      props.context.type
+      props.context.type,
     ]);
-  }, [queryClient, registerShortName, props.context.context, props.context.type]);
+  }, [
+    queryClient,
+    registerShortName,
+    props.context.context,
+    props.context.type,
+  ]);
 
   useEffect(() => {
     refetch();

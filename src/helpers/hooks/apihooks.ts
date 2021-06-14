@@ -7,9 +7,7 @@ interface FetchDescriptionParams {
 }
 
 const descriptionUrl = (params: FetchDescriptionParams): string => {
-  const typeQuery: string = params.type
-    ? `?type=${params.type}`
-    : "";
+  const typeQuery: string = params.type ? `?type=${params.type}` : "";
   return `${API_HOST}/data/${params.registerShortName}/descriptions${typeQuery}`;
 };
 
@@ -44,11 +42,10 @@ export interface FetchIndicatorParams {
 }
 
 const indicatorUrl = (params: FetchIndicatorParams): string => {
-
   const unitQuery: string = params.unitNames
     ? params.unitNames.reduce((acc, cur) => {
-      return `${acc}unit_name[]=${cur}&`;
-    }, "")
+        return `${acc}unit_name[]=${cur}&`;
+      }, "")
     : "";
   const unitLevelQuery: string = params.unitLevel
     ? `unit_level=${params.unitLevel}&`
@@ -59,9 +56,7 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
   const yearQuery: string = params.treatmentYear
     ? `year=${params.treatmentYear}&`
     : "";
-  const typeQuery: string = params.type
-    ? `type=${params.type}`
-    : "";
+  const typeQuery: string = params.type ? `type=${params.type}` : "";
   return `${API_HOST}/data/${params.registerShortName}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${typeQuery}`;
 };
 
@@ -86,11 +81,19 @@ export const useIndicatorQuery = (params: FetchIndicatorParams) => {
   );
 };
 
-const unitNamesUrl = (registerShortName: string, context: string, type: string): string => {
+const unitNamesUrl = (
+  registerShortName: string,
+  context: string,
+  type: string
+): string => {
   return `${API_HOST}/data/${registerShortName}/unitnames?context=${context}&type=${type}`;
 };
 
-const fetchUnitNames = async (registerShortName: string, context: string, type: string) => {
+const fetchUnitNames = async (
+  registerShortName: string,
+  context: string,
+  type: string
+) => {
   const response = await fetch(unitNamesUrl(registerShortName, context, type));
   if (!response.ok) {
     throw new Error("Network response failed");
