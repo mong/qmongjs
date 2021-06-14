@@ -38,7 +38,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     tab === "sykehus"
       ? "caregiver"
       : tab === "opptaksomraade"
-      ? "recident"
+      ? "resident"
       : tab === "datakvalitet"
       ? "coverage"
       : "caregiver";
@@ -113,7 +113,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     !validReg.includes(register) ||
     !tabNames.some((tabName) => tabName.value === tab) ||
     (!registerInfo[0].caregiver_data && tab === "sykehus") ||
-    (!registerInfo[0].recident_data && tab === "opptaksomraade") ||
+    (!registerInfo[0].resident_data && tab === "opptaksomraade") ||
     (!registerInfo[0].dg_data && tab === "datakvalitet")
   ) {
     return (
@@ -129,7 +129,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     if (registerInfo[0].caregiver_data && tabs.label === "Sykehus") {
       return true;
     }
-    if (registerInfo[0].recident_data && tabs.label === "Opptaksområde") {
+    if (registerInfo[0].resident_data && tabs.label === "Opptaksområde") {
       return true;
     }
     if (registerInfo[0].dg_data && tabs.label === "Datakvalitet") {

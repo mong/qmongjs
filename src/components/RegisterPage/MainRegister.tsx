@@ -38,7 +38,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
     tab === "sykehus"
       ? "caregiver"
       : tab === "opptaksomraade"
-      ? "recident"
+      ? "resident"
       : tab === "datakvalitet"
       ? "coverage"
       : "caregiver";
@@ -108,7 +108,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
   }
 
   const selectionPlaceholder =
-    context === "recident" ? (
+    context === "resident" ? (
       <div>
         <i className="fas fa-search" /> Søk etter opptaksområde
       </div>

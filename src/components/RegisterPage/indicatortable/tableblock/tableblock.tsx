@@ -164,7 +164,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
   const tabName =
     context === "caregiver" && registerName.caregiver_data
       ? "sykehus"
-      : context === "recident" && registerName.recident_data
+      : context === "resident" && registerName.resident_data
       ? "opptaksomraade"
       : context === "coverage" && registerName.dg_data
       ? "datakvalitet"

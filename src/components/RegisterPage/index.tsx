@@ -14,7 +14,7 @@ export interface RegisterNames {
   full_name: string;
   registerField?: string;
   caregiver_data: 1 | 0 | null;
-  recident_data: 1 | 0 | null;
+  resident_data: 1 | 0 | null;
   dg_data: 1 | 0 | null;
 }
 

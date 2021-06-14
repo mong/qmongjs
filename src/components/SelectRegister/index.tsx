@@ -52,13 +52,13 @@ const SelectRegister = (props: selectedRegisterProps) => {
             )
             .filter(
               (reg) =>
-                (reg.caregiver_data || reg.dg_data || reg.recident_data) &&
+                (reg.caregiver_data || reg.dg_data || reg.resident_data) &&
                 reg.rname !== "dummy"
             ),
         ]
       : regNames.filter(
           (reg) =>
-            (reg.caregiver_data || reg.dg_data || reg.recident_data) &&
+            (reg.caregiver_data || reg.dg_data || reg.resident_data) &&
             reg.rname !== "dummy"
         );
 
@@ -88,7 +88,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
             const tabName =
               activeTab === "sykehus" && reg.caregiver_data
                 ? "sykehus"
-                : activeTab === "opptaksomraade" && reg.recident_data
+                : activeTab === "opptaksomraade" && reg.resident_data
                 ? "opptaksomraade"
                 : activeTab === "datakvalitet" && reg.dg_data
                 ? "datakvalitet"

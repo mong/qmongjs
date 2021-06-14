@@ -13,7 +13,7 @@ const registerInfo: RegisterNames[] = [
     rname: "hjerneslag",
     full_name: "Norsk hjerneslagregister",
     caregiver_data: 1,
-    recident_data: 1,
+    resident_data: 1,
     dg_data: 1,
   },
   {
@@ -21,7 +21,7 @@ const registerInfo: RegisterNames[] = [
     rname: "norgast",
     full_name: "Norsk register for gastrokirurgi",
     caregiver_data: 1,
-    recident_data: 1,
+    resident_data: 1,
     dg_data: 1,
   },
   {
@@ -29,7 +29,7 @@ const registerInfo: RegisterNames[] = [
     rname: "barnekreft",
     full_name: "Nasjonalt kvalitetsregister for barnekreft",
     caregiver_data: 1,
-    recident_data: 1,
+    resident_data: 1,
     dg_data: 1,
   },
 ];
