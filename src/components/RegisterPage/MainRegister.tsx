@@ -31,13 +31,13 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
   const { tab }: { tab: string } = useParams();
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },
-    { value: "boomraade", label: "Opptaksområde" },
+    { value: "opptaksomraade", label: "Opptaksområde" },
     { value: "datakvalitet", label: "Datakvalitet" },
   ];
   const context =
     tab === "sykehus"
       ? "caregiver"
-      : tab === "boomraade"
+      : tab === "opptaksomraade"
       ? "recident"
       : tab === "datakvalitet"
       ? "coverage"

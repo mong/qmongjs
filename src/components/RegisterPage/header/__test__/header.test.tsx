@@ -37,7 +37,7 @@ it("register page header renders correctly", () => {
   const registerNames = registerInfo;
   const tabNames = [
     { value: "sykehus", label: "Sykehus" },
-    { value: "boomraade", label: "Opptaksområde" },
+    { value: "opptaksomraade", label: "Opptaksområde" },
     { value: "datakvalitet", label: "Datakvalitit" },
   ];
   const dataFrom = "Norsk hjerneslagregister";
