@@ -22,10 +22,7 @@ export const mockDescription: ResponseResolver<RestRequest, RestContext> = (
     );
   }
   if (type === "") {
-    return res(
-      ctx.status(200),
-      ctx.json(buildDescriptions({ register }))
-    );
+    return res(ctx.status(200), ctx.json(buildDescriptions({ register })));
   }
 
   return res(
