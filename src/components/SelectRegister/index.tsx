@@ -88,8 +88,8 @@ const SelectRegister = (props: selectedRegisterProps) => {
             const tabName =
               activeTab === "sykehus" && reg.caregiver_data
                 ? "sykehus"
-                : activeTab === "boomraade" && reg.recident_data
-                ? "boomraade"
+                : activeTab === "opptaksomraade" && reg.recident_data
+                ? "opptaksomraade"
                 : activeTab === "datakvalitet" && reg.dg_data
                 ? "datakvalitet"
                 : "sykehus";

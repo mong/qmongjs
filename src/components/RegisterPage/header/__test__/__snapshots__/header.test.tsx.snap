@@ -123,7 +123,7 @@ exports[`register page header renders correctly 1`] = `
               <a
                 aria-selected="false"
                 class="tabsLink"
-                href="/alle/boomraade"
+                href="/alle/opptaksomraade"
                 role="tab"
               >
                 Opptaksområde
@@ -272,7 +272,7 @@ exports[`register page header renders correctly 2`] = `
               <a
                 aria-selected="false"
                 class="tabsLink"
-                href="/alle/boomraade"
+                href="/alle/opptaksomraade"
                 role="tab"
               >
                 Opptaksområde

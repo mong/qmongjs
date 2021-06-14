@@ -31,13 +31,13 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   const { tab }: { tab: string } = useParams();
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },
-    { value: "boomraade", label: "Opptaksområde" },
+    { value: "opptaksomraade", label: "Opptaksområde" },
     { value: "datakvalitet", label: "Datakvalitet" },
   ];
   const context =
     tab === "sykehus"
       ? "caregiver"
-      : tab === "boomraade"
+      : tab === "opptaksomraade"
       ? "recident"
       : tab === "datakvalitet"
       ? "coverage"
@@ -113,7 +113,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     !validReg.includes(register) ||
     !tabNames.some((tabName) => tabName.value === tab) ||
     (!registerInfo[0].caregiver_data && tab === "sykehus") ||
-    (!registerInfo[0].recident_data && tab === "boomraade") ||
+    (!registerInfo[0].recident_data && tab === "opptaksomraade") ||
     (!registerInfo[0].dg_data && tab === "datakvalitet")
   ) {
     return (
