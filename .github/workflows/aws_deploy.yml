@@ -3,7 +3,7 @@ on:
   release:
     types: [published]
   push:
-    branches: [updateApiUse]
+    branches: [master, updateApiUse]
   pull_request:
     branches: [master, dependabot_updates]
 
@@ -24,7 +24,7 @@ jobs:
       - name: Set QA variables
         if: github.event_name == 'push'
         run: |
-          echo "api=https://qa-mong-api.skde.org" >> $GITHUB_ENV
+          echo "api=https://verify-mong-api.skde.org" >> $GITHUB_ENV
           echo "s3_bucket=s3://qa.skde.org/kvalitetsregistre" >> $GITHUB_ENV
       - name: Check out the repo
         uses: actions/checkout@v2
