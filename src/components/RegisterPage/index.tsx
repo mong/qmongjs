@@ -1,13 +1,25 @@
-import React, { useMemo } from "react";
-import { useQuery } from "react-query";
+import React from "react";
+import { UseQueryResult } from "react-query";
 
 import Header from "../Header";
 import Footer from "../Footer";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import MainRegister from "./MainRegister";
 import SelectedRegister from "./SelectedRegister";
+import { useRegisterNamesQuery } from "../../helpers/hooks";
+
+export interface RegisterNames {
+  id: number;
+  rname: string;
+  full_name: string;
+  registerField?: string;
+  caregiver_data: 1 | 0 | null;
+  resident_data: 1 | 0 | null;
+  dg_data: 1 | 0 | null;
+}
 
 export interface StatisticData {
+  id: number;
   ind_id: string;
   unit_level: string;
   unit_name: string;
@@ -17,8 +29,9 @@ export interface StatisticData {
   var: number;
   level: string;
   level_direction: number | null;
-  dg?: number;
+  dg: number | null;
   include: number | null;
+  type: "andel" | string;
 }
 
 export interface Description {
@@ -39,131 +52,34 @@ export interface Description {
   full_name: string;
 }
 
-export interface TreatmentUnit {
-  hospital: string;
-  hf: string;
-  hf_full: string;
-  rhf: string;
-}
+export const API_HOST =
+  process.env.REACT_APP_API_HOST ?? "http://localhost:4000"; //"https://qa-mong-api.skde.org";
 
-export interface AggData {
-  nation: {
-    filtered_by_unit: StatisticData[];
-    filtered_by_year: StatisticData[];
-  };
-  filtered_by_unit: StatisticData[];
-  filtered_by_year: StatisticData[];
-  all_filtered_by_year: StatisticData[];
-}
-interface Data {
-  indicator_hosp: StatisticData[];
-  indicator_hf: StatisticData[];
-  indicator_rhf: StatisticData[];
-  indicator_nat: StatisticData[];
-  description: Description[];
-  tu_names: TreatmentUnit[];
-}
-
-const API_HOST = process.env.REACT_APP_API_HOST ?? "http://localhost:4000";
-
-function DataLoader() {
-  const { isLoading, error, data } = useQuery<Data, Error>(
-    "repoData",
-    () => fetch(`${API_HOST}/legacy`).then((res) => res.json()),
-    {
-      refetchOnWindowFocus: false,
-      cacheTime: 1000 * 60 * 60,
-      staleTime: 1000 * 60 * 60 * 24,
-    }
-  );
-  if (error) return <>An error has occurred: {error?.message}</>;
-
-  const dataOrEmpty: Data = data ?? {
-    description: [],
-    indicator_hf: [],
-    indicator_hosp: [],
-    indicator_nat: [],
-    indicator_rhf: [],
-    tu_names: [],
-  };
-
-  return <RegisterPage data={dataOrEmpty} isLoading={isLoading} />;
-}
-
-interface Props {
-  data: Data;
-  isLoading: boolean;
-}
-
-function RegisterPage({ data, isLoading }: Props) {
-  const {
-    indicator_hosp,
-    indicator_hf,
-    indicator_rhf,
-    indicator_nat: indicator_nation,
-    description,
-    tu_names,
-  } = data;
-
-  const indicatorSorter = useMemo(() => {
-    const descriptionMap: { [key: string]: string } = {};
-    for (const d of description) {
-      descriptionMap[d.id] = d.name ?? "";
-    }
-    return (a: StatisticData, b: StatisticData) => {
-      const aName = descriptionMap[a.ind_id];
-      const bName = descriptionMap[b.ind_id];
-
-      return aName.localeCompare(bName);
-    };
-  }, [description]);
-
-  const sortedIndicatorHospital = useMemo(
-    () => indicator_hosp.sort(indicatorSorter),
-    [indicatorSorter, indicator_hosp]
-  );
-
-  const sortedIndicatorHf = useMemo(
-    () => indicator_hf.sort(indicatorSorter),
-    [indicatorSorter, indicator_hf]
-  );
-
-  const sortedIndicatorRhf = useMemo(
-    () => indicator_rhf.sort(indicatorSorter),
-    [indicatorSorter, indicator_rhf]
-  );
-
-  const sortedIndicatorNation = useMemo(
-    () => indicator_nation.sort(indicatorSorter),
-    [indicatorSorter, indicator_nation]
-  );
+export const RegisterPage: React.FC = () => {
+  const registryNameQuery: UseQueryResult<any, unknown> =
+    useRegisterNamesQuery();
+  if (registryNameQuery.isLoading) {
+    return null;
+  }
+  const registerNames = registryNameQuery.data;
 
   return (
     <>
       <Header />
       <Switch>
+        <Route exact path="/alle/:tab">
+          <MainRegister registerNames={registerNames ?? []} />
+        </Route>
+        <Route path="/:register/:tab">
+          <SelectedRegister registerNames={registerNames ?? []} />
+        </Route>
         <Route exact path="/">
-          <MainRegister
-            isLoading={isLoading}
-            tu_names={tu_names}
-            sortedIndicatorHospital={sortedIndicatorHospital}
-            sortedIndicatorHf={sortedIndicatorHf}
-            sortedIndicatorRhf={sortedIndicatorRhf}
-            sortedIndicatorNation={sortedIndicatorNation}
-            description={description}
-          />
+          <Redirect to="/alle/sykehus" />
         </Route>
-        <Route exact path={`/:register`}>
-          <SelectedRegister
-            isLoading={isLoading}
-            tu_names={tu_names}
-            sortedIndicatorHospital={sortedIndicatorHospital}
-            sortedIndicatorHf={sortedIndicatorHf}
-            sortedIndicatorRhf={sortedIndicatorRhf}
-            sortedIndicatorNation={sortedIndicatorNation}
-            description={description}
-          />
+        <Route exact path="/alle">
+          <Redirect to="/alle/sykehus" />
         </Route>
+
         <Route path="*">
           <div style={{ minHeight: "100vh" }}>
             <h1 style={{ margin: "10%" }}>Page Not Found</h1>
@@ -173,6 +89,6 @@ function RegisterPage({ data, isLoading }: Props) {
       <Footer />
     </>
   );
-}
+};
 
-export default DataLoader;
+export default RegisterPage;

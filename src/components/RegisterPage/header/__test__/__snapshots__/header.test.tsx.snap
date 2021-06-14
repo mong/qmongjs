@@ -1,0 +1,299 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`register page header renders correctly 1`] = `
+<div>
+  <div
+    class="headerOuterWrapper"
+  >
+    <div
+      class="headerInnerWrapper"
+    >
+      <div
+        class="topHeader"
+      >
+        <div
+          class="topHeaderLeft"
+        >
+          <div
+            class="nsmlogoWrapper"
+          >
+            <a
+              href="https://www.kvalitetsregistre.no/"
+            >
+              <img
+                alt="kvalitetsregistre.no"
+                class="nsmlogo"
+                src="nsmlogo.svg"
+              />
+            </a>
+          </div>
+          <div
+            class="headerText"
+          >
+            <h3>
+              Resultater fra 
+              Norsk hjerneslagregister
+            </h3>
+          </div>
+        </div>
+        <div
+          class="topHeaderRight"
+        >
+          <div
+            style="position: sticky;"
+          >
+            <button
+              class="registerBtn"
+            >
+              Velg register
+            </button>
+          </div>
+          <div
+            class="linkWrapper"
+            style="display: none;"
+          >
+            <div
+              class="searchInputWrapper"
+            >
+              <input
+                class="searchInput"
+                placeholder="Søk etter register"
+                type="text"
+                value=""
+              />
+            </div>
+            <ul>
+              <li>
+                <a
+                  href="/hjerneslag/sykehus"
+                >
+                  Norsk hjerneslagregister
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/norgast/sykehus"
+                >
+                  Norsk register for gastrokirurgi
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/barnekreft/sykehus"
+                >
+                  Nasjonalt kvalitetsregister for barnekreft
+                </a>
+              </li>
+            </ul>
+            <button
+              class="select_reg_close"
+            >
+              <i
+                class="far fa-times-circle"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tabs"
+      >
+        <div
+          class="tabsWrapper"
+        >
+          <ul
+            class="tabsUL"
+          >
+            <li
+              class="tabsLI"
+            >
+              <a
+                aria-selected="false"
+                class="tabsLink"
+                href="/alle/sykehus"
+                role="tab"
+                style="color: rgb(109, 167, 223); box-shadow: -7px 7px 10px -5px #ccc; background-color: white; border-bottom: 3px solid white; border-radius: 5px;"
+              >
+                Sykehus
+              </a>
+            </li>
+            <li
+              class="tabsLI"
+            >
+              <a
+                aria-selected="false"
+                class="tabsLink"
+                href="/alle/opptaksomraade"
+                role="tab"
+              >
+                Opptaksområde
+              </a>
+            </li>
+            <li
+              class="tabsLI"
+            >
+              <a
+                aria-selected="false"
+                class="tabsLink"
+                href="/alle/datakvalitet"
+                role="tab"
+              >
+                Datakvalitit
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`register page header renders correctly 2`] = `
+<div>
+  <div
+    class="headerOuterWrapper"
+  >
+    <div
+      class="headerInnerWrapper"
+    >
+      <div
+        class="topHeader"
+      >
+        <div
+          class="topHeaderLeft"
+        >
+          <div
+            class="nsmlogoWrapper"
+          >
+            <a
+              href="https://www.kvalitetsregistre.no/"
+            >
+              <img
+                alt="kvalitetsregistre.no"
+                class="nsmlogo"
+                src="nsmlogo.svg"
+              />
+            </a>
+          </div>
+          <div
+            class="headerText"
+          >
+            <h3>
+              Resultater fra 
+              Norsk hjerneslagregister
+            </h3>
+          </div>
+        </div>
+        <div
+          class="topHeaderRight"
+        >
+          <div
+            style="position: sticky;"
+          >
+            <button
+              class="registerBtn"
+            >
+              Velg register
+            </button>
+          </div>
+          <div
+            class="linkWrapper"
+            style="display: none;"
+          >
+            <div
+              class="searchInputWrapper"
+            >
+              <input
+                class="searchInput"
+                placeholder="Søk etter register"
+                type="text"
+                value=""
+              />
+            </div>
+            <ul>
+              <li>
+                <a
+                  href="/hjerneslag/sykehus"
+                >
+                  Norsk hjerneslagregister
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/norgast/sykehus"
+                >
+                  Norsk register for gastrokirurgi
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/barnekreft/sykehus"
+                >
+                  Nasjonalt kvalitetsregister for barnekreft
+                </a>
+              </li>
+            </ul>
+            <button
+              class="select_reg_close"
+            >
+              <i
+                class="far fa-times-circle"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tabs"
+      >
+        <div
+          class="tabsWrapper"
+        >
+          <ul
+            class="tabsUL"
+          >
+            <li
+              class="tabsLI"
+            >
+              <a
+                aria-selected="false"
+                class="tabsLink"
+                href="/alle/sykehus"
+                role="tab"
+                style="color: rgb(109, 167, 223); box-shadow: -7px 7px 10px -5px #ccc; background-color: white; border-bottom: 3px solid white; border-radius: 5px;"
+              >
+                Sykehus
+              </a>
+            </li>
+            <li
+              class="tabsLI"
+            >
+              <a
+                aria-selected="false"
+                class="tabsLink"
+                href="/alle/opptaksomraade"
+                role="tab"
+              >
+                Opptaksområde
+              </a>
+            </li>
+            <li
+              class="tabsLI"
+            >
+              <a
+                aria-selected="false"
+                class="tabsLink"
+                href="/alle/datakvalitet"
+                role="tab"
+              >
+                Datakvalitit
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

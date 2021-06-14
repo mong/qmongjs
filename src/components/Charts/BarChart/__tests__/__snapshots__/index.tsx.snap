@@ -8,7 +8,7 @@ exports[`Render with levels @250px 1`] = `
     <svg
       class="barChart"
       height="150"
-      style="background-color: rgb(238, 246, 247);"
+      style="background-color: white;"
       width="250"
     >
       <g
@@ -287,7 +287,7 @@ exports[`Render with levels @500px 1`] = `
     <svg
       class="barChart"
       height="150"
-      style="background-color: rgb(238, 246, 247);"
+      style="background-color: white;"
       width="500"
     >
       <g
@@ -566,7 +566,7 @@ exports[`Render with levels reversed @500px 1`] = `
     <svg
       class="barChart"
       height="150"
-      style="background-color: rgb(238, 246, 247);"
+      style="background-color: white;"
       width="500"
     >
       <g
@@ -845,7 +845,7 @@ exports[`Render without levels @250px 1`] = `
     <svg
       class="barChart"
       height="150"
-      style="background-color: rgb(238, 246, 247);"
+      style="background-color: white;"
       width="250"
     >
       <g
@@ -1093,7 +1093,7 @@ exports[`Render without levels @500px 1`] = `
     <svg
       class="barChart"
       height="150"
-      style="background-color: rgb(238, 246, 247);"
+      style="background-color: white;"
       width="500"
     >
       <g
@@ -1341,7 +1341,7 @@ exports[`Render zoomed with levels @500px 1`] = `
     <svg
       class="barChart"
       height="150"
-      style="background-color: rgb(238, 246, 247);"
+      style="background-color: white;"
       width="500"
     >
       <g

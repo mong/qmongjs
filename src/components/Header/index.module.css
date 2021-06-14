@@ -1,5 +1,17 @@
 .header {
-  background-color: #eef6f7;
+  display: flex;
+  width: min(960px, calc(100% - 64px));
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 32px 0;
+  margin: auto;
+}
+.header a {
+  text-decoration: none;
+  color: black;
+  font-size: 14.4px;
+  font-family: Arial;
 }
 
 .headerContainer {
@@ -16,8 +28,6 @@
 }
 
 .logo_img {
-  max-width: 25rem;
-  height: 100%;
-  width: auto;
-  max-height: 3rem;
+  height: 39px;
+  width: 96px;
 }

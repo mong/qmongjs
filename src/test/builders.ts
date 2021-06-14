@@ -2,8 +2,8 @@ import faker from "faker";
 import { Level } from "../components/Charts/types";
 
 export function buildLevels(): Level[] {
-  const low = faker.random.number({ min: 0, max: 100 }) / 100;
-  const mid = faker.random.number({ min: low * 100, max: 100 }) / 100;
+  const low = faker.datatype.number({ min: 0, max: 100 }) / 100;
+  const mid = faker.datatype.number({ min: low * 100, max: 100 }) / 100;
 
   return [
     { level: "high", start: mid, end: 1 },

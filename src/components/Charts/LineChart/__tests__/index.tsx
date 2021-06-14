@@ -4,9 +4,9 @@ import { useRef } from "react";
 import LineChart, { DataPoint, Props } from "..";
 import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
-import useResizeObserver from "../../../utils";
+import { useResizeObserver } from "../../../../helpers/hooks";
 
-jest.mock("../../../utils");
+jest.mock("../../../../helpers/hooks");
 jest.mock("../../../../utils/useDelayInitial");
 
 beforeEach(() => {
@@ -46,15 +46,21 @@ test("shows only one legend item per label", async () => {
 // Helpers
 function LineChartWithRef(props: Omit<Props, "svgContainerRef">) {
   const ref = useRef<HTMLDivElement>(null);
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
   return <LineChart {...props} svgContainerRef={ref} />;
 }
 
 // Builders
 function buildDataPoint(overrides: Partial<DataPoint>): DataPoint {
   return {
-    label: faker.random.uuid(),
-    year: faker.random.number({ min: 2015, max: 2020 }),
-    value: faker.random.number({ min: 0, max: 100 }) / 100,
+    label: faker.datatype.uuid(),
+    year: faker.datatype.number({ min: 2015, max: 2020 }),
+    value: faker.datatype.number({ min: 0, max: 100 }) / 100,
     ...overrides,
   };
 }
@@ -63,7 +69,7 @@ function buildProps(overrides: Partial<Props>): Omit<Props, "svgContainerRef"> {
   return {
     data: [],
     levels: buildLevels(),
-    showLevel: faker.random.boolean(),
+    showLevel: faker.datatype.boolean(),
     ...overrides,
   };
 }

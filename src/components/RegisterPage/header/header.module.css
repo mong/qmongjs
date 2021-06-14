@@ -1,0 +1,31 @@
+.headerOuterWrapper {
+  position: relative;
+  padding-top: 30px;
+  border-bottom: 3px solid #dee7ee;
+  background-color: rgba(222, 231, 238, 0.8);
+}
+
+.headerText {
+  width: 98%;
+  margin: 5px auto;
+}
+.headerText h3 {
+  font-size: 25px;
+}
+
+.headerInnerWrapper {
+  max-width: min(1500px, calc(100%));
+  margin: auto;
+}
+.topHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topHeaderLeft {
+  flex: 5;
+}
+.topHeaderLeft {
+  flex: 1;
+}
