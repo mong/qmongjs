@@ -16,7 +16,7 @@ const props: TableBlockProps = {
     rname: "hoftebrudd",
     full_name: "Nasjonalt hoftebruddregister",
     caregiver_data: 1,
-    recident_data: 1,
+    resident_data: 1,
     dg_data: 1,
   },
   blockTitle: "Nasjonalt hoftebruddregister",
