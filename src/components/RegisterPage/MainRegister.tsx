@@ -31,7 +31,6 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
   const { tab }: { tab: string } = useParams();
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },
-    { value: "opptaksomraade", label: "Opptaksområde" },
     { value: "datakvalitet", label: "Datakvalitet" },
   ];
   const context =
@@ -107,13 +106,6 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
     );
   }
 
-  const selectionPlaceholder =
-    context === "resident" ? (
-      <div>
-        <i className="fas fa-search" /> Søk etter opptaksområde
-      </div>
-    ) : undefined;
-
   return (
     <div className="app-container" style={{ minHeight: "100vh" }}>
       <Header
@@ -128,7 +120,6 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
               opts={optstu}
               update_tu={update_treatment_units}
               treatment_unit={validated_treatment_units}
-              placeholder={selectionPlaceholder}
             />
             <UnitNameList
               nestedUnitNames={nestedUnitNames}
