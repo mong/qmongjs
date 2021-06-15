@@ -1,6 +1,6 @@
 {
   "name": "qmongjs",
-  "homepage": "https://www.skde.no/kvalitetsregistre/alle/sykehus",
+  "homepage": "https://www.skde.no/kvalitetsregistre",
   "version": "3.0.1",
   "description": "The skde.org (to be skde.no) web page",
   "private": true,
