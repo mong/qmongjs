@@ -1,7 +1,7 @@
 {
   "name": "qmongjs",
-  "homepage": "https://d13kv0v5vl0wju.cloudfront.net/kvalitetsregistre",
-  "version": "3.0.0",
+  "homepage": "https://www.skde.no/kvalitetsregistre/alle/sykehus",
+  "version": "3.0.1",
   "description": "The skde.org (to be skde.no) web page",
   "private": true,
   "scripts": {
