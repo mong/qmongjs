@@ -6,9 +6,3 @@ updates:
       interval: "daily"
     target-branch: "dependabot_updates"
     open-pull-requests-limit: 20
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    target-branch: "qmongr"
-    open-pull-requests-limit: 20
