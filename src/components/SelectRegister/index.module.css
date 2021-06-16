@@ -1,31 +1,74 @@
 .registerBtn {
   background: none;
-  font-size: 1.2rem;
-  border: 2px solid #d2d3d4;
-  padding: 0.4rem 1rem;
-  cursor: pointer;
   position: relative;
-  width: 90%;
   top: 0;
+  color: #fff;
+  background: #00263d;
+  padding: 0.91rem 1.3rem;
+  margin: 1.5em 0;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-right: 100px;
+  box-shadow: 0 4px 5px -1px rgba(78, 78, 78, 0.2);
   transition: 300ms cubic-bezier(0, 0, 0.58, 1);
-  border-radius: 2rem;
-  background-color: #e2f2f5;
-  margin-top: 0.7rem;
-  box-shadow: 0 4px 5px -1px rgba(196, 196, 196, 0.2);
+  border: 2px solid #000f18;
 }
 
 .registerBtn:hover,
 .registerBtn:focus {
   outline: none;
   top: -7px;
-  box-shadow: 0px 4px 10px 2px rgba(196, 196, 196, 0.5);
+  box-shadow: 0px 4px 10px 2px rgba(88, 88, 88, 0.5);
+}
+
+.searchInputWrapper {
+  color: black;
+  background-color: inherit;
+  width: 85%;
+  max-width: 1500px;
+  height: 30px;
+  border: none;
+  padding: 20px;
+  margin: 30px auto;
+}
+
+.searchInput {
+  color: #4c5757;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color: inherit;
+  width: 50%;
+  height: 100%;
+  border: none;
+  border-bottom: 3px solid #8b9e9f;
+  margin: 10px;
+  padding: 10px;
+  outline: unset;
+  text-align: center;
+  transition: 250ms ease-out;
+}
+
+.searchInput:focus {
+  color: #00263d;
+  background-color: rgb(242, 242, 242);
+  border-bottom: 3px solid #00263d;
+}
+
+.searchInput::placeholder {
+  color: inherit;
+  opacity: 0.9;
+  text-align: center;
 }
 
 .linkWrapper {
   position: fixed;
   overflow-y: scroll;
   box-shadow: -1px 7px 10px 0 #8b9e9f;
-  background-color: #eef6f7;
+  background-color: rgb(242, 242, 242);
   margin: auto;
   width: 95%;
   height: 95vh;
@@ -41,22 +84,29 @@
   list-style-type: none;
   justify-content: space-between;
   align-items: baseline;
-  background-color: rgba(123, 181, 222, 0.3);
   width: 90%;
-  margin: 3rem auto;
+  max-width: 1500px;
+  margin: auto;
 }
 
 .linkWrapper li {
-  width: 25%;
-  min-width: 200px;
-  max-width: 300px;
+  flex: 1 1 250px;
+  align-self: center;
   padding: 10px;
   margin: 10px;
   border-radius: 0.5rem;
+  background-color: white;
+  box-shadow: -2px 2px 5px -3px #8b9e9f;
+  border: 2px solid #b5c3c4;
+  transition: 250ms ease-in;
 }
 
 .linkWrapper a {
-  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  color: inherit;
   text-decoration: none;
   font-size: 1.3rem;
   outline: unset;
@@ -64,7 +114,9 @@
 
 .linkWrapper li:hover,
 .linkWrpper li:focus {
-  text-decoration: underline;
+  background-color: #00263d;
+  color: white;
+  border: 2px solid #495050;
 }
 
 .select_reg_close {

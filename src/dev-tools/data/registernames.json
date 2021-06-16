@@ -1,0 +1,187 @@
+[
+  {
+    "id": 1,
+    "rname": "hjerneslag",
+    "full_name": "Norsk hjerneslagregister"
+  },
+  {
+    "id": 2,
+    "rname": "hjerteinfarkt",
+    "full_name": "Norsk hjerteinfarktregister"
+  },
+  {
+    "id": 3,
+    "rname": "hoftebrudd",
+    "full_name": "Nasjonalt hoftebruddregister"
+  },
+  {
+    "id": 4,
+    "rname": "intensiv",
+    "full_name": "Norsk intensiv- og pandemiregister"
+  },
+  {
+    "id": 5,
+    "rname": "lymfoid",
+    "full_name": "Nasjonalt kvalitetsregister for lymfoide maligniteter"
+  },
+  {
+    "id": 6,
+    "rname": "muskel",
+    "full_name": "Norsk register for arvelige og medfødte nevromuskulære sykdommer"
+  },
+  {
+    "id": 7,
+    "rname": "nger",
+    "full_name": "Norsk gynekologisk endoskopiregister"
+  },
+  {
+    "id": 8,
+    "rname": "nkr_nakke",
+    "full_name": "Nasjonalt kvalitetsregister for ryggkirurgi – Nakkekirurgi"
+  },
+  {
+    "id": 9,
+    "rname": "nnrr",
+    "full_name": "Norsk nakke- og ryggregister"
+  },
+  {
+    "id": 10,
+    "rname": "norgast",
+    "full_name": "Norsk register for gastrokirurgi"
+  },
+  {
+    "id": 11,
+    "rname": "noric",
+    "full_name": "Norsk register for invasiv kardiologi"
+  },
+  {
+    "id": 12,
+    "rname": "norkar",
+    "full_name": "Norsk karkirurgisk register"
+  },
+  {
+    "id": 13,
+    "rname": "norvas",
+    "full_name": "Norsk vaskulittregister & biobank"
+  },
+  {
+    "id": 14,
+    "rname": "nra",
+    "full_name": "Norsk register for analinkontinens"
+  },
+  {
+    "id": 15,
+    "rname": "nkr_rygg",
+    "full_name": "Nasjonalt kvalitetsregister for ryggkirurgi – Ryggkirurgi"
+  },
+  {
+    "id": 16,
+    "rname": "norscir",
+    "full_name": "Norsk ryggmargsskaderegister"
+  },
+  {
+    "id": 17,
+    "rname": "hisreg",
+    "full_name": "Nordisk kvalitetsregister for hidradenitis suppurativa"
+  },
+  {
+    "id": 18,
+    "rname": "tarmkreft_colon",
+    "full_name": "Nasjonalt kvalitetsregister for tykk- og endetarmskreft – Tykktarmskreft"
+  },
+  {
+    "id": 19,
+    "rname": "korsband",
+    "full_name": "Nasjonalt korsbåndregister"
+  },
+  {
+    "id": 20,
+    "rname": "leddprotese",
+    "full_name": "Nasjonalt register for leddproteser"
+  },
+  {
+    "id": 21,
+    "rname": "tarmkreft_rectum",
+    "full_name": "Nasjonalt register for tykk- og endetarmskreft – Endetarmskreft"
+  },
+  {
+    "id": 22,
+    "rname": "traume",
+    "full_name": "Nasjonalt traumeregister"
+  },
+  {
+    "id": 23,
+    "rname": "barnekreft",
+    "full_name": "Nasjonalt kvalitetsregister for barnekreft"
+  },
+  {
+    "id": 24,
+    "rname": "gynkreft",
+    "full_name": "Nasjonalt kvalitetsregister for gynekologisk kreft"
+  },
+  {
+    "id": 25,
+    "rname": "lungekreft",
+    "full_name": "Nasjonalt kvalitetsregister for lungekreft"
+  },
+  {
+    "id": 26,
+    "rname": "hjertesvikt",
+    "full_name": "Norsk hjertesviktregister"
+  },
+  {
+    "id": 27,
+    "rname": "barnediabetes",
+    "full_name": "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes"
+  },
+  {
+    "id": 28,
+    "rname": "ms",
+    "full_name": "Norsk MS-register og biobank"
+  },
+  {
+    "id": 29,
+    "rname": "nyre",
+    "full_name": "Norsk nyreregister"
+  },
+  {
+    "id": 30,
+    "rname": "hjertestans",
+    "full_name": "Norsk hjertestansregister"
+  },
+  {
+    "id": 31,
+    "rname": "norartritt",
+    "full_name": "Norsk kvalitetsregister for artrittsykdommer"
+  },
+  {
+    "id": 32,
+    "rname": "prostata",
+    "full_name": "Nasjonalt kvalitetsregister for prostatakreft"
+  },
+  {
+    "id": 33,
+    "rname": "dummy",
+    "full_name": "Dummy registry"
+  },
+  {
+    "id": 34,
+    "rname": "diabetes_voksne",
+    "full_name": "Norsk diabetesregister for voksne"
+  },
+  {
+    "id": 35,
+    "rname": "lkg",
+    "full_name": "Norsk kvalitetsregister for leppe-kjeve-ganespalte"
+  },
+  {
+    "id": 36,
+    "rname": "cp",
+    "full_name": "Norsk kvalitets- og oppfølgingsregister for cerebral parese"
+  },
+  {
+    "id": 37,
+    "rname": "brystkreft",
+    "full_name": "Nasjonalt kvalitetsregister for brystkreft"
+  }
+]

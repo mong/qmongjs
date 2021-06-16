@@ -3,7 +3,7 @@ import Select from "react-select";
 
 import { app_text } from "../app_config";
 
-interface OptsTu {
+export interface OptsTu {
   label: string;
   options: {
     value: string;
@@ -36,7 +36,7 @@ function SELECT_MULTI(props: Props) {
     control: (provided: any, state: any) => ({
       ...provided,
       width: "100%",
-      backgroundColor: "#00263d",
+      backgroundColor: "white",
       boxShadow: state.isFocused ? undefined : undefined,
       fontSize: "1rem",
       border: "none",
@@ -51,7 +51,7 @@ function SELECT_MULTI(props: Props) {
     }),
     input: (provided: any) => ({
       ...provided,
-      color: "#EEF6F7",
+      //color: "#EEF6F7",
       paddingLeft: "1.3rem",
     }),
     multiValue: (provided: any) => ({
@@ -61,13 +61,13 @@ function SELECT_MULTI(props: Props) {
     }),
     placeholder: (provided: any) => ({
       ...provided,
-      color: "#EEF6F7",
+      color: "black",
       fontSize: "1.2rem",
     }),
     // @ts-ignore
     crossIcon: (provided: any) => ({
       ...provided,
-      color: "white",
+      // color: "white",
     }),
     dropdownIndicator: (provided: any) => ({
       ...provided,

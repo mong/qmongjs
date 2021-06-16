@@ -1,0 +1,25 @@
+.selected_unit .level,
+.selected_unit .summary,
+.nationally .level,
+.nationally .summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.level h4,
+.level h4 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 0.5rem;
+}
+.selected_unit .summary,
+.nationally .summary {
+  font-size: 0.85em;
+}
+.selected_unit {
+  background-color: rgba(126, 190, 199, 0.05);
+}
+
+.filtered_level {
+  opacity: 0.2;
+}

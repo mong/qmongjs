@@ -1,0 +1,669 @@
+{
+  "opts_tu": [
+    {
+      "label": "Sykehus",
+      "options": [
+        {
+          "label": "Aleris Hinna Park",
+          "value": "Aleris Hinna Park"
+        },
+        {
+          "label": "Medi 3 Hobøl",
+          "value": "Medi 3 Hobøl"
+        },
+        {
+          "label": "Tromsø",
+          "value": "Tromsø"
+        },
+        {
+          "label": "Stavanger",
+          "value": "Stavanger"
+        },
+        {
+          "label": "Sandnessjøen",
+          "value": "Sandnessjøen"
+        },
+        {
+          "label": "Ringerike",
+          "value": "Ringerike"
+        },
+        {
+          "label": "Lillehammer",
+          "value": "Lillehammer"
+        },
+        {
+          "label": "Rikshospitalet",
+          "value": "Rikshospitalet"
+        },
+        {
+          "label": "Kysthospitalet i Hagevik",
+          "value": "Kysthospitalet i Hagevik"
+        },
+        {
+          "label": "Aleris Drammen",
+          "value": "Aleris Drammen"
+        },
+        {
+          "label": "Aleris Marken",
+          "value": "Aleris Marken"
+        },
+        {
+          "label": "Ibsensykehuset Porsgrunn",
+          "value": "Ibsensykehuset Porsgrunn"
+        },
+        {
+          "label": "Tønsberg",
+          "value": "Tønsberg"
+        },
+        {
+          "label": "Ålesund",
+          "value": "Ålesund"
+        },
+        {
+          "label": "St. Olavs",
+          "value": "St. Olavs"
+        },
+        {
+          "label": "Oslofjordklinikken Sandnes",
+          "value": "Oslofjordklinikken Sandnes"
+        },
+        {
+          "label": "Sarpsborg Spesialistsenter",
+          "value": "Sarpsborg Spesialistsenter"
+        },
+        {
+          "label": "Sunnaas",
+          "value": "Sunnaas"
+        },
+        {
+          "label": "LHL Gardermoen",
+          "value": "LHL Gardermoen"
+        },
+        {
+          "label": "Betanien",
+          "value": "Betanien"
+        },
+        {
+          "label": "Volvat",
+          "value": "Volvat"
+        },
+        {
+          "label": "NIMI",
+          "value": "NIMI"
+        },
+        {
+          "label": "Aleris Rosenborgklinikken",
+          "value": "Aleris Rosenborgklinikken"
+        },
+        {
+          "label": "Volvat Majorstuen",
+          "value": "Volvat Majorstuen"
+        },
+        {
+          "label": "LHL Feiring",
+          "value": "LHL Feiring"
+        },
+        {
+          "label": "Haugesund sanitet",
+          "value": "Haugesund sanitet"
+        },
+        {
+          "label": "Haukeland",
+          "value": "Haukeland"
+        },
+        {
+          "label": "Martina Hansens hospital",
+          "value": "Martina Hansens hospital"
+        },
+        {
+          "label": "Diakonhjemmet",
+          "value": "Diakonhjemmet"
+        },
+        {
+          "label": "Volvat Fredrikstad",
+          "value": "Volvat Fredrikstad"
+        },
+        {
+          "label": "Lovisenberg",
+          "value": "Lovisenberg"
+        },
+        {
+          "label": "Hammerfest",
+          "value": "Hammerfest"
+        },
+        {
+          "label": "Haraldsplass",
+          "value": "Haraldsplass"
+        },
+        {
+          "label": "Orkdal",
+          "value": "Orkdal"
+        },
+        {
+          "label": "Aleris Bergen",
+          "value": "Aleris Bergen"
+        },
+        {
+          "label": "Skien",
+          "value": "Skien"
+        },
+        {
+          "label": "Aker",
+          "value": "Aker"
+        },
+        {
+          "label": "Ullevål",
+          "value": "Ullevål"
+        },
+        {
+          "label": "Flekkefjord",
+          "value": "Flekkefjord"
+        },
+        {
+          "label": "Kristiansand",
+          "value": "Kristiansand"
+        },
+        {
+          "label": "Drammen",
+          "value": "Drammen"
+        },
+        {
+          "label": "Arendal",
+          "value": "Arendal"
+        },
+        {
+          "label": "Kongsberg",
+          "value": "Kongsberg"
+        },
+        {
+          "label": "Elverum",
+          "value": "Elverum"
+        },
+        {
+          "label": "Kongsvinger",
+          "value": "Kongsvinger"
+        },
+        {
+          "label": "Gjøvik",
+          "value": "Gjøvik"
+        },
+        {
+          "label": "Notodden",
+          "value": "Notodden"
+        },
+        {
+          "label": "Porsgrunn",
+          "value": "Porsgrunn"
+        },
+        {
+          "label": "Larvik",
+          "value": "Larvik"
+        },
+        {
+          "label": "Askim",
+          "value": "Askim"
+        },
+        {
+          "label": "Moss",
+          "value": "Moss"
+        },
+        {
+          "label": "Kalnes",
+          "value": "Kalnes"
+        },
+        {
+          "label": "Bærum",
+          "value": "Bærum"
+        },
+        {
+          "label": "Ahus",
+          "value": "Ahus"
+        },
+        {
+          "label": "Radiumhospitalet",
+          "value": "Radiumhospitalet"
+        },
+        {
+          "label": "Haugesund",
+          "value": "Haugesund"
+        },
+        {
+          "label": "Hamar",
+          "value": "Hamar"
+        },
+        {
+          "label": "Tynset",
+          "value": "Tynset"
+        },
+        {
+          "label": "Stord",
+          "value": "Stord"
+        },
+        {
+          "label": "Odda",
+          "value": "Odda"
+        },
+        {
+          "label": "Voss",
+          "value": "Voss"
+        },
+        {
+          "label": "Førde",
+          "value": "Førde"
+        },
+        {
+          "label": "Lærdal",
+          "value": "Lærdal"
+        },
+        {
+          "label": "Nordfjord",
+          "value": "Nordfjord"
+        },
+        {
+          "label": "Molde",
+          "value": "Molde"
+        },
+        {
+          "label": "Kristiansund",
+          "value": "Kristiansund"
+        },
+        {
+          "label": "Volda",
+          "value": "Volda"
+        },
+        {
+          "label": "Røros",
+          "value": "Røros"
+        },
+        {
+          "label": "Namsos",
+          "value": "Namsos"
+        },
+        {
+          "label": "Levanger",
+          "value": "Levanger"
+        },
+        {
+          "label": "Bodø",
+          "value": "Bodø"
+        },
+        {
+          "label": "Narvik",
+          "value": "Narvik"
+        },
+        {
+          "label": "Mosjøen",
+          "value": "Mosjøen"
+        },
+        {
+          "label": "Mo i Rana",
+          "value": "Mo i Rana"
+        },
+        {
+          "label": "Lofoten",
+          "value": "Lofoten"
+        },
+        {
+          "label": "Vesterålen",
+          "value": "Vesterålen"
+        },
+        {
+          "label": "Harstad",
+          "value": "Harstad"
+        },
+        {
+          "label": "Kirkenes",
+          "value": "Kirkenes"
+        },
+        {
+          "label": "Norsk Diabetessenter",
+          "value": "Norsk Diabetessenter"
+        },
+        {
+          "label": "Aleris Frogner",
+          "value": "Aleris Frogner"
+        },
+        {
+          "label": "Privatsykehuset Haugesund",
+          "value": "Privatsykehuset Haugesund"
+        },
+        {
+          "label": "Aleris Agder",
+          "value": "Aleris Agder"
+        },
+        {
+          "label": "Aleris Colosseum Nobel",
+          "value": "Aleris Colosseum Nobel"
+        },
+        {
+          "label": "Volvat Tromsø",
+          "value": "Volvat Tromsø"
+        },
+        {
+          "label": "Aleris Colosseum Stavanger",
+          "value": "Aleris Colosseum Stavanger"
+        },
+        {
+          "label": "Kragerø",
+          "value": "Kragerø"
+        },
+        {
+          "label": "Volvat Ulriksdalen",
+          "value": "Volvat Ulriksdalen"
+        },
+        {
+          "label": "Oslofjordklinikken Sandvika",
+          "value": "Oslofjordklinikken Sandvika"
+        },
+        {
+          "label": "Aleris Tromsø",
+          "value": "Aleris Tromsø"
+        },
+        {
+          "label": "Idrettens helsesenter",
+          "value": "Idrettens helsesenter"
+        },
+        {
+          "label": "Aleris Bodø",
+          "value": "Aleris Bodø"
+        }
+      ]
+    },
+    {
+      "label": "HF",
+      "options": [
+        {
+          "label": "Private sykehus",
+          "value": "Private sykehus"
+        },
+        {
+          "label": "UNN HF",
+          "value": "UNN HF"
+        },
+        {
+          "label": "Private ideelle sykehus, Sør-Øst",
+          "value": "Private ideelle sykehus, Sør-Øst"
+        },
+        {
+          "label": "Stavanger HF",
+          "value": "Stavanger HF"
+        },
+        {
+          "label": "Helgeland HF",
+          "value": "Helgeland HF"
+        },
+        {
+          "label": "Vestre Viken HF",
+          "value": "Vestre Viken HF"
+        },
+        {
+          "label": "Innlandet HF",
+          "value": "Innlandet HF"
+        },
+        {
+          "label": "OUS HF",
+          "value": "OUS HF"
+        },
+        {
+          "label": "Bergen HF",
+          "value": "Bergen HF"
+        },
+        {
+          "label": "Vestfold HF",
+          "value": "Vestfold HF"
+        },
+        {
+          "label": "Møre og Romsdal HF",
+          "value": "Møre og Romsdal HF"
+        },
+        {
+          "label": "St. Olavs HF",
+          "value": "St. Olavs HF"
+        },
+        {
+          "label": "Sunnaas HF",
+          "value": "Sunnaas HF"
+        },
+        {
+          "label": "Private ideelle sykehus, Vest",
+          "value": "Private ideelle sykehus, Vest"
+        },
+        {
+          "label": "Finnmark HF",
+          "value": "Finnmark HF"
+        },
+        {
+          "label": "Telemark HF",
+          "value": "Telemark HF"
+        },
+        {
+          "label": "Sørlandet HF",
+          "value": "Sørlandet HF"
+        },
+        {
+          "label": "Akershus HF",
+          "value": "Akershus HF"
+        },
+        {
+          "label": "Østfold HF",
+          "value": "Østfold HF"
+        },
+        {
+          "label": "Fonna HF",
+          "value": "Fonna HF"
+        },
+        {
+          "label": "Førde HF",
+          "value": "Førde HF"
+        },
+        {
+          "label": "Nord-Trøndelag HF",
+          "value": "Nord-Trøndelag HF"
+        },
+        {
+          "label": "Nordland HF",
+          "value": "Nordland HF"
+        }
+      ]
+    },
+    {
+      "label": "RHF",
+      "options": [
+        {
+          "label": "Private",
+          "value": "Private"
+        },
+        {
+          "label": "Helse Nord RHF",
+          "value": "Helse Nord RHF"
+        },
+        {
+          "label": "Helse Sør-Øst RHF",
+          "value": "Helse Sør-Øst RHF"
+        },
+        {
+          "label": "Helse Vest RHF",
+          "value": "Helse Vest RHF"
+        },
+        {
+          "label": "Helse Midt-Norge RHF",
+          "value": "Helse Midt-Norge RHF"
+        }
+      ]
+    }
+  ],
+  "nestedUnitNames": [
+    {
+      "rhf": "Helse Midt-Norge RHF",
+      "hf": [
+        {
+          "hf": "Møre og Romsdal HF",
+          "hf_full": "Helse Møre og Romsdal HF",
+          "hospital": ["Kristiansund", "Molde", "Volda", "Ålesund"]
+        },
+        {
+          "hf": "Nord-Trøndelag HF",
+          "hf_full": "Helse Nord-Trøndelag HF",
+          "hospital": ["Levanger", "Namsos"]
+        },
+        {
+          "hf": "St. Olavs HF",
+          "hf_full": "St. Olavs Hospital HF",
+          "hospital": ["Orkdal", "Røros", "St. Olavs"]
+        }
+      ]
+    },
+    {
+      "rhf": "Helse Nord RHF",
+      "hf": [
+        {
+          "hf": "Finnmark HF",
+          "hf_full": "Finnmarkssykehuset HF",
+          "hospital": ["Hammerfest", "Kirkenes"]
+        },
+        {
+          "hf": "Helgeland HF",
+          "hf_full": "Helgelandssykehuset HF",
+          "hospital": ["Mo i Rana", "Mosjøen", "Sandnessjøen"]
+        },
+        {
+          "hf": "Nordland HF",
+          "hf_full": "Nordlandssykehuset HF",
+          "hospital": ["Bodø", "Lofoten", "Vesterålen"]
+        },
+        {
+          "hf": "UNN HF",
+          "hf_full": "Universitetssykehuset Nord-Norge HF",
+          "hospital": ["Harstad", "Narvik", "Tromsø"]
+        }
+      ]
+    },
+    {
+      "rhf": "Helse Sør-Øst RHF",
+      "hf": [
+        {
+          "hf": "Akershus HF",
+          "hf_full": "Akershus universitetssykehus HF",
+          "hospital": ["Ahus", "Kongsvinger"]
+        },
+        {
+          "hf": "OUS HF",
+          "hf_full": "Oslo universitetssykehus HF",
+          "hospital": ["Aker", "Radiumhospitalet", "Rikshospitalet", "Ullevål"]
+        },
+        {
+          "hf": "Private ideelle sykehus, Sør-Øst",
+          "hf_full": "Private ideelle sykehus",
+          "hospital": [
+            "Diakonhjemmet",
+            "Lovisenberg",
+            "Martina Hansens hospital"
+          ]
+        },
+        {
+          "hf": "Sunnaas HF",
+          "hf_full": "Sunnaas sykehus HF",
+          "hospital": ["Sunnaas"]
+        },
+        {
+          "hf": "Innlandet HF",
+          "hf_full": "Sykehuset Innlandet HF",
+          "hospital": ["Elverum", "Gjøvik", "Hamar", "Lillehammer", "Tynset"]
+        },
+        {
+          "hf": "Telemark HF",
+          "hf_full": "Sykehuset Telemark HF",
+          "hospital": ["Kragerø", "Notodden", "Porsgrunn", "Skien"]
+        },
+        {
+          "hf": "Vestfold HF",
+          "hf_full": "Sykehuset i Vestfold HF",
+          "hospital": ["Larvik", "Tønsberg"]
+        },
+        {
+          "hf": "Østfold HF",
+          "hf_full": "Sykehuset Østfold HF",
+          "hospital": ["Askim", "Kalnes", "Moss"]
+        },
+        {
+          "hf": "Sørlandet HF",
+          "hf_full": "Sørlandet sykehus HF",
+          "hospital": ["Arendal", "Flekkefjord", "Kristiansand"]
+        },
+        {
+          "hf": "Vestre Viken HF",
+          "hf_full": "Vestre Viken HF",
+          "hospital": ["Bærum", "Drammen", "Kongsberg", "Ringerike"]
+        }
+      ]
+    },
+    {
+      "rhf": "Helse Vest RHF",
+      "hf": [
+        {
+          "hf": "Bergen HF",
+          "hf_full": "Helse Bergen HF",
+          "hospital": ["Haukeland", "Kysthospitalet i Hagevik", "Voss"]
+        },
+        {
+          "hf": "Fonna HF",
+          "hf_full": "Helse Fonna HF",
+          "hospital": ["Haugesund", "Odda", "Stord"]
+        },
+        {
+          "hf": "Førde HF",
+          "hf_full": "Helse Førde HF",
+          "hospital": ["Førde", "Lærdal", "Nordfjord"]
+        },
+        {
+          "hf": "Stavanger HF",
+          "hf_full": "Helse Stavanger HF",
+          "hospital": ["Stavanger"]
+        },
+        {
+          "hf": "Private ideelle sykehus, Vest",
+          "hf_full": "Private ideelle sykehus",
+          "hospital": ["Betanien", "Haraldsplass", "Haugesund sanitet"]
+        }
+      ]
+    },
+    {
+      "rhf": "Private",
+      "hf": [
+        {
+          "hf": "Private sykehus",
+          "hf_full": "Private sykehus",
+          "hospital": [
+            "Aleris Agder",
+            "Aleris Bergen",
+            "Aleris Bodø",
+            "Aleris Colosseum Nobel",
+            "Aleris Colosseum Stavanger",
+            "Aleris Drammen",
+            "Aleris Frogner",
+            "Aleris Hinna Park",
+            "Aleris Marken",
+            "Aleris Rosenborgklinikken",
+            "Aleris Tromsø",
+            "Ibsensykehuset Porsgrunn",
+            "Idrettens helsesenter",
+            "LHL Feiring",
+            "LHL Gardermoen",
+            "Medi 3 Hobøl",
+            "NIMI",
+            "Norsk Diabetessenter",
+            "Oslofjordklinikken Sandnes",
+            "Oslofjordklinikken Sandvika",
+            "Privatsykehuset Haugesund",
+            "Sarpsborg Spesialistsenter",
+            "Volvat",
+            "Volvat Fredrikstad",
+            "Volvat Majorstuen",
+            "Volvat Tromsø",
+            "Volvat Ulriksdalen"
+          ]
+        }
+      ]
+    }
+  ]
+}

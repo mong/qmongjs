@@ -1,0 +1,21 @@
+.titleRow {
+  background-color: #dee7ee;
+}
+.titleRow a {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+.titleRow a:hover,
+.titleRow a:focus {
+  font-weight: 700;
+}
+
+.title {
+  text-align: left;
+  font-size: 1.1rem;
+  padding: 0 0.5rem;
+  margin: 0.8rem 0;
+  font-weight: inherit;
+}

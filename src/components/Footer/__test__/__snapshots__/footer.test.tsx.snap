@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders 1`] = `
+<div>
+  <footer
+    class="footer"
+  >
+    <div
+      class="footerTop"
+    >
+      <div>
+        <a
+          href="/"
+        >
+          <img
+            alt="skde logo"
+            height="40px"
+            src="SKDE_hvit_lys.png"
+            width="99px"
+          />
+        </a>
+      </div>
+      <div
+        class="skdeContact"
+      >
+        <strong>
+          Telefon:
+        </strong>
+        <a
+          href="tel:77755800"
+        >
+           777 55 800
+        </a>
+        <br />
+        <strong>
+          E-post:
+        </strong>
+        <a
+          href="mailto:postmottak@helse-nord.no"
+        >
+           
+          postmottak@helse-nord.no
+        </a>
+        <br />
+        <strong>
+          Webredaktør:
+        </strong>
+        <a
+          href="mailto:webmaster@skde.no"
+        >
+           webmaster@skde.no
+        </a>
+        <br />
+      </div>
+      <div
+        class="skdePrivacy"
+      >
+        <a
+          href="https://helse-nord.no/skde/kontakt-skde"
+          title="Link til kontakt SKDE"
+        >
+          Kontakt
+        </a>
+        <br />
+        <a
+          href="https://helse-nord.no/om-nettstedet/personvern"
+          title="Link til personvern"
+        >
+          Personvern
+        </a>
+      </div>
+    </div>
+    <div
+      class="footerBottom"
+    >
+      <div>
+        <a
+          href="https://www.helse-nord.no"
+          title="Link til Helse Nord RHF"
+        >
+          <img
+            alt="Helse Nord logo"
+            height="40px"
+            src="hf_nord-white.svg"
+            width="180px"
+          />
+        </a>
+      </div>
+      <div>
+        <a
+          href="https://www.kvalitetsregistre.no"
+          title="Link til kvalitetsregistre"
+        >
+          <img
+            alt="NSM logo"
+            height="40px"
+            src="NSM_logo_hvit.png"
+            width="359px"
+          />
+        </a>
+      </div>
+      <div>
+        <a
+          href="https://www.helesatlas.no"
+          title="Link til helseatlas"
+        >
+          <img
+            alt="Helseatlas logo"
+            height="40px"
+            src="Logo_atlas_hvit.png"
+            width="146px"
+          />
+        </a>
+      </div>
+    </div>
+  </footer>
+</div>
+`;

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`main page header renders 1`] = `
+<div>
+  <div>
+    <header
+      class="header"
+    >
+      <div
+        class="logo"
+      >
+        <a
+          href="http://localhost"
+        >
+          <img
+            alt="SKDE logo"
+            class="logo_img"
+            src="SKDE_sort.png"
+          />
+        </a>
+      </div>
+      <div>
+        <a
+          href="https://helse-nord.no/om-oss/kontakt-oss"
+        >
+          Kontakt
+        </a>
+      </div>
+    </header>
+  </div>
+</div>
+`;
