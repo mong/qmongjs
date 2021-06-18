@@ -42,7 +42,10 @@ const formatIndicatorValues = (
         level_class={level_class}
       />
     );
-  } else if ((indicator[0].dg ?? 1) < 0.6) {
+  } else if (
+    (indicator[0].dg ?? 1) < 0.6 &&
+    indicator[0].unit_name !== "Nasjonalt"
+  ) {
     return (
       <td
         key={`${indicator[0].ind_id}_${indicator[0].unit_name}_${indicator[0].id}_su`}
