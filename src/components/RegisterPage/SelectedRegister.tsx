@@ -9,6 +9,7 @@ import LEGEND from "../legend";
 //import Loading from "../Loading.tsx";
 import { IndicatorTable } from "./indicatortable";
 import { RegisterNames } from ".";
+import { OptsTu } from "../select_multi";
 import config, {
   mainQueryParamsConfig,
   maxYear,
@@ -19,6 +20,7 @@ import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { useResizeObserver, useUnitNamesQuery } from "../../helpers/hooks";
 import { Header } from "./header";
 import { UnitNameList } from "./unitnamelist";
+import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
 
 interface SelectedRegisterProps {
   registerNames: RegisterNames[];
@@ -43,9 +45,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
       ? "coverage"
       : "caregiver";
   const registerInfo = registerNames.filter((reg) => reg.rname === register);
-  const [nestedUnitNames, updateNestedUnitNames] = useState<[]>([]);
 
-  const [optstu, updateOptsTU] = useState<[]>([]);
   const queryContext =
     context === "coverage"
       ? { context: "caregiver", type: "dg" }
@@ -56,13 +56,14 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     queryContext.context,
     queryContext.type
   );
-
-  useEffect(() => {
-    if (unitNamesQuery.isSuccess) {
-      updateNestedUnitNames(unitNamesQuery.data.nestedUnitNames);
-      updateOptsTU(unitNamesQuery.data.opts_tu);
-    }
-  }, [unitNamesQuery]);
+  const nestedUnitNames: NestedTreatmentUnitName[] | [] =
+    unitNamesQuery.data?.nestedUnitNames.filter(
+      (names: NestedTreatmentUnitName) => names.rhf !== "Udefinerte RHF"
+    ) ?? [];
+  const optstu: OptsTu[] | [] =
+    unitNamesQuery.data?.opts_tu.map((opts: OptsTu) =>
+      opts.options.filter((names) => !names.value.includes("Udefinerte"))
+    ) ?? [];
 
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null

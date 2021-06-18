@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 import MAIN from "../main_component";
 import { Header } from "./header";
-import SELECT_MULTI from "../select_multi";
+import SELECT_MULTI, { OptsTu } from "../select_multi";
 import SELECT_SINGLE from "../select_single";
 
 import config, {
@@ -20,6 +20,7 @@ import { useResizeObserver, useUnitNamesQuery } from "../../helpers/hooks";
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { RegisterNames } from ".";
 import { UnitNameList } from "./unitnamelist";
+import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
 
 const { app_text } = config;
 
@@ -53,8 +54,14 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
     queryContext.type
   );
 
-  const nestedUnitNames = unitNamesQuery.data?.nestedUnitNames ?? [];
-  const optstu = unitNamesQuery.data?.opts_tu ?? [];
+  const nestedUnitNames: NestedTreatmentUnitName[] | [] =
+    unitNamesQuery.data?.nestedUnitNames.filter(
+      (names: NestedTreatmentUnitName) => names.rhf !== "Udefinerte RHF"
+    ) ?? [];
+  const optstu: OptsTu[] | [] =
+    unitNamesQuery.data?.opts_tu.map((opts: OptsTu) =>
+      opts.options.filter((names) => !names.value.includes("Udefinerte"))
+    ) ?? [];
 
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
