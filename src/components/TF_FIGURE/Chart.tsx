@@ -74,7 +74,7 @@ const GetBarChart: React.FC<Props> = (props) => {
       (data: StatisticData) =>
         !(
           data.ind_id !== props.description.id ||
-          (data.dg ?? 1) < 0.6 ||
+          ((data.dg ?? 1) < 0.6 && data.unit_name !== "Nasjonalt") ||
           data.denominator < (description.min_denominator ?? 5)
         )
     )
@@ -130,19 +130,15 @@ const GetLineChart: React.FC<Props> = (props) => {
 
   useEffect(() => {
     refetch();
-  }, [unitNameString, refetch, props.context]);
+  }, [unitNameString, refetch, props.context.context, props.context.type]);
 
   const data: DataPoint[] = (lineChartQuery.data ?? [])
     .filter((data: StatisticData) => {
-      if (data.unit_level !== "nation") {
-        return !(
-          data.ind_id !== props.description.id ||
-          (data.dg ?? 1) < 0.6 ||
-          data.denominator < (description.min_denominator ?? 5)
-        );
-      } else {
-        return !(data.ind_id !== props.description.id || (data.dg ?? 1) < 0.6);
-      }
+      return !(
+        data.ind_id !== props.description.id ||
+        ((data.dg ?? 1) < 0.6 && data.unit_name !== "Nasjonalt") ||
+        data.denominator < (description.min_denominator ?? 5)
+      );
     })
     .map((d: StatisticData) => ({
       label: d.unit_name,
