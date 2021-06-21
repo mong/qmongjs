@@ -57,17 +57,8 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     queryContext.type
   );
   const nestedUnitNames: NestedTreatmentUnitName[] | [] =
-    unitNamesQuery.data?.nestedUnitNames.filter(
-      (names: NestedTreatmentUnitName) => names.rhf !== "Udefinerte RHF"
-    ) ?? [];
-  const optstu: OptsTu[] | [] =
-    unitNamesQuery.data?.opts_tu.map((opts: OptsTu) => {
-      const options = opts.options.filter(
-        (names) => !names.value.includes("Udefinerte")
-      );
-      const outOpts = { label: opts.label, options };
-      return outOpts;
-    }) ?? [];
+    unitNamesQuery.data?.nestedUnitNames ?? [];
+  const optstu: OptsTu[] | [] = unitNamesQuery.data?.opts_tu ?? [];
 
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
