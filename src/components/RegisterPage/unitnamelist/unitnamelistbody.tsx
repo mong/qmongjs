@@ -1,7 +1,7 @@
 import React from "react";
 import { app_text } from "../../../app_config";
 
-interface NestedTreatmentUnitName {
+export interface NestedTreatmentUnitName {
   rhf: string;
   hf: {
     hf: string;

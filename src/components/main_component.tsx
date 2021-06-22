@@ -13,6 +13,7 @@ import LEGEND from "./legend";
 import { MedicalFiedls } from "./RegisterPage/medicalfields";
 import { IndicatorTable } from "./RegisterPage/indicatortable";
 import { useMedicalFieldsQuery } from "../helpers/hooks";
+import { OptsTu } from "./select_multi";
 
 interface AggData {
   nation: {
@@ -37,7 +38,7 @@ export interface IndPerReg {
 
 export interface Props {
   context: string;
-  optstu: [];
+  optstu: OptsTu[] | [];
   registerNames: RegisterNames[];
   app_text: any;
   treatment_units: string[];
