@@ -119,7 +119,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
   const placeholder =
     tab === "opptaksomraade" ? (
       <div>
-        <i className="fas fa-search" /> Søk etter opptaksområde
+        <i className="fas fa-search" /> Søk etter opptaksområder
       </div>
     ) : undefined;
 
