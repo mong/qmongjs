@@ -108,6 +108,12 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
     );
   }
 
+  const placeholder =
+    tab === "opptaksomraade" ? (
+      <div>
+        <i className="fas fa-search" /> Søk etter opptaksområde
+      </div>
+    ) : undefined;
   return (
     <div className="app-container" style={{ minHeight: "100vh" }}>
       <Header
@@ -122,6 +128,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
               opts={optstu}
               update_tu={update_treatment_units}
               treatment_unit={validated_treatment_units}
+              placeholder={placeholder}
             />
             <UnitNameList
               nestedUnitNames={nestedUnitNames}
