@@ -94,11 +94,10 @@
   align-self: center;
   padding: 10px;
   margin: 10px;
-  border-radius: 0.5rem;
   background-color: white;
-  box-shadow: -2px 2px 5px -3px #8b9e9f;
   border: 2px solid #b5c3c4;
   transition: 250ms ease-in;
+  max-width: 300px;
 }
 
 .linkWrapper a {
