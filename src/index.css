@@ -401,24 +401,29 @@ table {
   margin: 1em;
 }
 .table_dd_button {
-  background-color: #7ebec7;
+  background-color: white;
   margin: 0;
   padding: 0.5em 0.7em;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   box-sizing: border-box;
+  transition: 0.2s ease-in-out;
 }
+
+.table_dd_button:hover {
+  background-color: #dee7ee;
+}
+
 .table_dd_button i {
-  color: #eef6f7;
+  color: #00263d;
   font-size: 2rem;
 }
 .dropdown_container {
   position: absolute;
-  background-color: #e3ebec;
+  background-color: #dee7ee;
   text-align: start;
   min-width: 8rem;
-
   right: 0;
   box-sizing: border-box;
   overflow: hidden;
@@ -500,7 +505,8 @@ input[type="radio"].figure_button {
 input[type="radio"].figure_button + label {
   cursor: pointer;
   min-width: 65px;
-  color: #2d3034;
+  color: #00263d;
+  transition: font-weight 0.2s ease-in-out;
 }
 .figure_button_label .fas,
 .figure_button_label .fa {
@@ -511,22 +517,22 @@ input[type="radio"].figure_button + label {
 }
 input[type="radio"].figure_button + label:hover {
   background: none;
-  color: #2d3034;
+  color: #00263d;
 }
 input[type="radio"].figure_button_left + label {
   border-radius: 25px 0 0 25px;
-  border-top: 3px solid #7ebec7;
-  border-bottom: 3px solid #7ebec7;
-  border-left: 3px solid #7ebec7;
+  border-top: 3px solid #dee7ee;
+  border-bottom: 3px solid #dee7ee;
+  border-left: 3px solid #dee7ee;
 }
 input[type="radio"].figure_button_right + label {
   border-radius: 0 25px 25px 0;
-  border-top: 3px solid #7ebec7;
-  border-right: 3px solid #7ebec7;
-  border-bottom: 3px solid #7ebec7;
+  border-top: 3px solid #dee7ee;
+  border-right: 3px solid #dee7ee;
+  border-bottom: 3px solid #dee7ee;
 }
 input[type="radio"].figure_button_left + label::after {
-  background: #7ebec7;
+  background: #dee7ee;
   content: "";
   height: 100%;
   position: absolute;
@@ -539,9 +545,9 @@ input[type="radio"].figure_button_left + label::after {
 }
 input[type="radio"].figure_button_left:checked + label {
   cursor: default;
-  color: #eef6f7;
+  color: #00263d;
+  font-weight: 600;
   border-radius: 25px 0 0 25px;
-  transition: color 200ms;
 }
 input[type="radio"].figure_button_left:checked + label::after {
   right: 3%;
@@ -550,9 +556,9 @@ input[type="radio"].figure_button_left:checked + label::after {
 }
 input[type="radio"].figure_button_right:checked + label {
   cursor: default;
-  color: #eef6f7;
+  color: #00263d;
+  font-weight: 600;
   border-radius: 0 25px 25px 0;
-  transition: color 200ms;
 }
 
 /************ list of treatment units ***************/
@@ -574,18 +580,16 @@ input[type="radio"].figure_button_right:checked + label {
 }
 .hospital_list_btn:hover,
 .hospital_list_btn:focus {
-  color: #7ebec7;
-  border: 3px solid #7ebec7;
+  border: 3px solid #dee7ee;
 }
 
 .tu_list {
-  background: #eef6f7;
   overflow-y: scroll;
   color: #2d3034;
   position: fixed;
   width: 95%;
   height: 95vh;
-  background-color: #eef6f7;
+  background-color: #f2f2f2;
   margin: auto;
   z-index: 5;
   text-align: center;
@@ -593,12 +597,13 @@ input[type="radio"].figure_button_right:checked + label {
   left: 2.5%;
   box-shadow: -1px 7px 10px 0 #8b9e9f;
 }
+
 .tu_list h3 {
   margin: 0;
   padding: 0.7rem;
   text-align: start;
-  background: linear-gradient(#7ebec7 5%, #58868c 95%);
-  border-radius: 0.5rem 0.5rem 0 0;
+  background-color: #dee7ee;
+  border-bottom: 2px solid #b5c3c4;
 }
 .tu_list_header {
   text-align: start;
@@ -607,14 +612,16 @@ input[type="radio"].figure_button_right:checked + label {
 .all_tu {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   margin: auto;
 }
 .tu_list_rhf {
   flex: 1 1 350px;
   margin: 5px;
   box-sizing: border-box;
-  background-color: rgba(126, 190, 199, 0.2);
-  border-radius: 0.5rem;
+  background-color: white;
+  border: 2px solid #b5c3c4;
+  max-width: 400px;
 }
 .tu_list_rhf_content {
   display: flex;
