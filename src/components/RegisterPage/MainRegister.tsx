@@ -122,13 +122,6 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
         <i className="fas fa-search" /> Søk etter opptaksområder
       </div>
     ) : undefined;
-
-  const placeholder =
-    tab === "opptaksomraade" ? (
-      <div>
-        <i className="fas fa-search" /> Søk etter opptaksområder
-      </div>
-    ) : undefined;
   return (
     <div className="app-container" style={{ minHeight: "100vh" }}>
       <Header
