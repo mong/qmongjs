@@ -32,6 +32,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
   const { tab }: { tab: string } = useParams();
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },
+    { value: "opptaksomraade", label: "Opptaksområde" },
     { value: "datakvalitet", label: "Datakvalitet" },
   ];
   const context =
@@ -100,14 +101,21 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
     (v) => minYear + v
   );
 
-  if (!tabNames.some((tabName) => tabName.value === tab)) {
+  if (
+    !tabNames.some((tabName) => tabName.value === tab) ||
+    (!registerNames.some((names) => names.caregiver_data) &&
+      tab === "sykehus") ||
+    (!registerNames.some((names) => names.resident_data) &&
+      tab === "opptaksomraade") ||
+    (!registerNames.some((names) => names.caregiver_data) &&
+      tab === "datakvalitet")
+  ) {
     return (
       <div style={{ minHeight: "100vh" }}>
         <h1 style={{ margin: "10%" }}>Page Not Found</h1>
       </div>
     );
   }
-
   const placeholder =
     tab === "opptaksomraade" ? (
       <div>
