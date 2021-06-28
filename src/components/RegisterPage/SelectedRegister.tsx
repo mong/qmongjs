@@ -134,6 +134,13 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     return false;
   });
 
+  const placeholder =
+    tab === "opptaksomraade" ? (
+      <div>
+        <i className="fas fa-search" /> Søk etter opptaksområder
+      </div>
+    ) : undefined;
+
   return (
     <div className="app-container" style={{ minHeight: "100vh" }}>
       <Header
@@ -149,6 +156,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
               opts={optstu}
               update_tu={update_treatment_units}
               treatment_unit={validated_treatment_units}
+              placeholder={placeholder}
             />
             <UnitNameList
               nestedUnitNames={nestedUnitNames}
