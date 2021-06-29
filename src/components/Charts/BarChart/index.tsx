@@ -150,8 +150,32 @@ function BarChart(props: Props) {
       .attr("opacity", (d) => d.style?.opacity ?? 1)
       .transition()
       .duration(1000)
-      .attr("width", (d) => xScale(d.value));
-  }, [data, displayLevels, levels, delayedZoom, innerHeight, innerWidth]);
+      .attr("width", (d) => {
+        return xScale(d.value);
+      });
+
+    // Bar labels
+    const chart = svg
+      .append("g")
+      .attr("transform", `translate(${margin}, ${margin})`);
+    const barGroups = chart.selectAll(".bar").data(data).enter().append("g");
+    barGroups
+      .append("text")
+      .attr("x", (d) => xScale(d.value) + 20)
+      .attr("y", (d) => yScale(d.label)! + yScale.bandwidth() / 2 + 3)
+      .text((d) => Math.round((d.value * 100 * 100) / 100) + "%")
+      .attr("class", "value")
+      .attr("text-anchor", "middle")
+      .attr("font-size", "0.8em");
+  }, [
+    data,
+    displayLevels,
+    levels,
+    delayedZoom,
+    innerHeight,
+    innerWidth,
+    margin,
+  ]);
 
   return (
     <div ref={wrapperRef} style={{ width: "90%", margin: "auto" }}>
