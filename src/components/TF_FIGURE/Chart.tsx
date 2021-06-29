@@ -63,10 +63,11 @@ const GetBarChart: React.FC<Props> = (props) => {
     refetch();
   }, [refetch, treatmentYear, props.context.context, props.context.type]);
 
-  const nasjonaltIndData = [...indicatorData].filter(
-    (d) => d.unit_name === "Nasjonalt"
+  const selectedIndData = [...indicatorData].filter(
+    (d) => d.unit_level !== "hospital"
   );
-  const barChartData = [...(barIndDataQuery.data ?? []), ...nasjonaltIndData];
+
+  const barChartData = [...(barIndDataQuery.data ?? []), ...selectedIndData];
 
   const unitNames = props.selectedTreatmentUnits;
   const data = barChartData
