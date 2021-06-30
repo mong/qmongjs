@@ -43,7 +43,6 @@ function BarChart(props: Props) {
     zoom = false,
     margin = {},
   } = props;
-
   const delayedZoom = useDelayInitial(zoom, false);
   const svgRef = useRef<SVGSVGElement>(null);
   const entry = useResizeObserver(wrapperRef);
@@ -56,7 +55,6 @@ function BarChart(props: Props) {
     bottom: margin.bottom ?? MARGIN.bottom,
     left: (margin.left ?? MARGIN.left) * width,
   };
-
   const innerHeight = height - marginOffsets.top - marginOffsets.bottom;
   const innerWidth = width - marginOffsets.left - marginOffsets.right;
 
@@ -64,7 +62,10 @@ function BarChart(props: Props) {
     if (!svgRef.current) {
       return;
     }
-
+    // Debug data obj is mutating...
+    if (data.length < 2) {
+      return;
+    }
     const svg = select(svgRef.current).selectChild<SVGGElement>();
 
     // Scales
@@ -72,14 +73,16 @@ function BarChart(props: Props) {
       .domain(data.map((d) => d.label))
       .range([0, innerHeight])
       .padding(0.3);
-
     const xScaleDomain = getXScaleDomain(data, delayedZoom);
     const xScale = scaleLinear()
       .domain(xScaleDomain)
       .range([0, innerWidth])
       .clamp(true);
 
-    // Y-Axis
+    // return if all data values are out of range
+    if (data.filter((d) => xScale(d.value)).length === 0) {
+      return;
+    }
     const yAxis = axisLeft(yScale);
     const yAxisElement = svg.select<SVGGElement>(".y-axis");
     yAxisElement.call(yAxis);
@@ -134,13 +137,16 @@ function BarChart(props: Props) {
           ),
         (exit) => exit.remove()
       );
-
-    // Bars
-    svg
+    // BarGroups
+    const barGroups = svg
       .select(".bars")
       .selectAll(".bar")
       .data(data)
-      .join("rect")
+      .enter()
+      .append("g");
+    // BarRects
+    barGroups
+      .append("rect")
       .attr("class", "bar")
       .attr("data-testid", (d) => `bar-${d.label}`)
       .attr("x", 0)
@@ -153,29 +159,21 @@ function BarChart(props: Props) {
       .attr("width", (d) => {
         return xScale(d.value);
       });
-
-    // Bar labels
-    const chart = svg
-      .append("g")
-      .attr("transform", `translate(${margin}, ${margin})`);
-    const barGroups = chart.selectAll(".bar").data(data).enter().append("g");
+    // BarLabels
     barGroups
       .append("text")
-      .attr("x", (d) => xScale(d.value) + 20)
+      .attr("class", "label")
+      .attr("opacity", 0)
+      .attr("x", 0)
       .attr("y", (d) => yScale(d.label)! + yScale.bandwidth() / 2 + 3)
       .text((d) => Math.round((d.value * 100 * 100) / 100) + "%")
-      .attr("class", "value")
+      .transition()
+      .duration(1000)
+      .attr("opacity", 1)
+      .attr("x", (d) => xScale(d.value) + 20)
       .attr("text-anchor", "middle")
-      .attr("font-size", "0.8em");
-  }, [
-    data,
-    displayLevels,
-    levels,
-    delayedZoom,
-    innerHeight,
-    innerWidth,
-    margin,
-  ]);
+      .attr("font-size", "0.7em");
+  }, [data, displayLevels, levels, delayedZoom, innerHeight, innerWidth]);
 
   return (
     <div ref={wrapperRef} style={{ width: "90%", margin: "auto" }}>
@@ -191,6 +189,7 @@ function BarChart(props: Props) {
           <g className="y-axis" />
           <g className="levels" />
           <g className="bars" />
+          <g className="labels" />
         </g>
       </svg>
     </div>
