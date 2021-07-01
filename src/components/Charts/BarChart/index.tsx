@@ -62,7 +62,7 @@ function BarChart(props: Props) {
     if (!svgRef.current) {
       return;
     }
-    // Debug data obj is mutating...
+    // TODO: Temp fix, need to debug why data is mutating...
     if (data.length < 2) {
       return;
     }
@@ -78,10 +78,7 @@ function BarChart(props: Props) {
       .domain(xScaleDomain)
       .range([0, innerWidth])
       .clamp(true);
-    // return if all data values are out of range
-    if (data.filter((d) => xScale(d.value)).length === 0) {
-      return;
-    }
+
     const yAxis = axisLeft(yScale);
     const yAxisElement = svg.select<SVGGElement>(".y-axis");
     yAxisElement.call(yAxis);
