@@ -78,7 +78,6 @@ function BarChart(props: Props) {
       .domain(xScaleDomain)
       .range([0, innerWidth])
       .clamp(true);
-
     // return if all data values are out of range
     if (data.filter((d) => xScale(d.value)).length === 0) {
       return;
@@ -137,16 +136,12 @@ function BarChart(props: Props) {
           ),
         (exit) => exit.remove()
       );
-    // BarGroups
-    const barGroups = svg
+
+    svg
       .select(".bars")
       .selectAll(".bar")
       .data(data)
-      .enter()
-      .append("g");
-    // BarRects
-    barGroups
-      .append("rect")
+      .join("rect")
       .attr("class", "bar")
       .attr("data-testid", (d) => `bar-${d.label}`)
       .attr("x", 0)
@@ -156,23 +151,38 @@ function BarChart(props: Props) {
       .attr("opacity", (d) => d.style?.opacity ?? 1)
       .transition()
       .duration(1000)
-      .attr("width", (d) => {
-        return xScale(d.value);
-      });
-    // BarLabels
-    barGroups
-      .append("text")
-      .attr("class", "label")
-      .attr("opacity", 0)
-      .attr("x", 0)
-      .attr("y", (d) => yScale(d.label)! + yScale.bandwidth() / 2 + 3)
-      .text((d) => Math.round((d.value * 100 * 100) / 100) + "%")
-      .transition()
-      .duration(1000)
-      .attr("opacity", 1)
-      .attr("x", (d) => xScale(d.value) + 20)
-      .attr("text-anchor", "middle")
-      .attr("font-size", "0.7em");
+      .attr("width", (d) => xScale(d.value));
+
+    svg
+      .select(".labels")
+      .selectAll(".label")
+      .data(data)
+      .join(
+        (enter) =>
+          enter
+            .append("text")
+            .attr("class", "label")
+            .attr("data-testid", (d) => `bar-label-${d.label}`)
+            .attr("opacity", 0.3)
+            .attr("x", 0)
+            .attr("y", (d) => yScale(d.label)! + yScale.bandwidth() / 2 + 3)
+            .text((d) => Math.round((d.value * 100 * 100) / 100) + "%")
+            .attr("text-anchor", "middle")
+            .attr("font-size", "0.7em"),
+
+        (update) =>
+          update.call((update) =>
+            update
+              .transition()
+              .duration(1000)
+              .attr("opacity", 0.9)
+              .attr("fill", (d) => (d.value > 0.95 ? "white" : "black"))
+              .attr("x", (d) =>
+                d.value > 0.95 ? xScale(d.value) - 18 : xScale(d.value) + 16
+              )
+          ),
+        (exit) => exit.remove()
+      );
   }, [data, displayLevels, levels, delayedZoom, innerHeight, innerWidth]);
 
   return (
