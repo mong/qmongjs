@@ -62,6 +62,7 @@ function SELECT_SINGLE(props: Props) {
         onChange={(e) => handle_input_change(e)}
         options={selection_options}
         defaultValue={defaultValue}
+        value={selected_option}
         isSearchable
         styles={customStyles}
       />
