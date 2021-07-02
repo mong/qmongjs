@@ -1,7 +1,7 @@
 {
   "name": "qmongjs",
   "homepage": "https://www.skde.no/kvalitetsregistre",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "The skde.org (to be skde.no) web page",
   "private": true,
   "scripts": {
