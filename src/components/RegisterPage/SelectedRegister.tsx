@@ -17,7 +17,11 @@ import config, {
   defaultYear,
 } from "../../app_config";
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
-import { useResizeObserver, useUnitNamesQuery } from "../../helpers/hooks";
+import {
+  useResizeObserver,
+  useUnitNamesQuery,
+  useSelectionYearsQuery,
+} from "../../helpers/hooks";
 import { Header } from "./header";
 import { UnitNameList } from "./unitnamelist";
 import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
@@ -60,6 +64,13 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     unitNamesQuery.data?.nestedUnitNames ?? [];
   const optstu: OptsTu[] | [] = unitNamesQuery.data?.opts_tu ?? [];
 
+  const selectionYearQuery: UseQueryResult<any, unknown> =
+    useSelectionYearsQuery(register, queryContext.context, queryContext.type);
+
+  const valid_years =
+    selectionYearQuery.data ??
+    Array.from(Array(maxYear - minYear + 1).keys()).map((v) => minYear + v);
+
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
   >(null);
@@ -84,10 +95,12 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     "year",
     mainQueryParamsConfig.year
   );
+  const min = valid_years.length === 0 ? minYear : Math.min(...valid_years);
+  const max = valid_years.length === 0 ? maxYear : Math.max(...valid_years);
   const validated_selected_year = mathClamp(
     selected_year || defaultYear,
-    minYear,
-    maxYear
+    min,
+    max
   );
 
   const validated_treatment_units = validateTreatmentUnits(
@@ -96,9 +109,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   );
 
   const colspan = validated_treatment_units.length + 2;
-  const valid_years = Array.from(Array(maxYear - minYear + 1).keys()).map(
-    (v) => minYear + v
-  );
+
   const [show_level_filter, update_show_level_filter] = useQueryParam<
     string | undefined
   >("level", mainQueryParamsConfig.level);
@@ -166,7 +177,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
           </div>
           <div className="year-selection">
             <SELECT_SINGLE
-              opts={valid_years}
+              opts={valid_years.sort()}
               update_year={update_selected_year}
               selected_year={validated_selected_year}
             />
