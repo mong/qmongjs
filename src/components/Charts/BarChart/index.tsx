@@ -62,12 +62,7 @@ function BarChart(props: Props) {
     if (!svgRef.current) {
       return;
     }
-    // TODO: Temp fix, need to debug why data is mutating...
-    if (data.length < 2) {
-      return;
-    }
     const svg = select(svgRef.current).selectChild<SVGGElement>();
-
     // Scales
     const yScale = scaleBand()
       .domain(data.map((d) => d.label))
@@ -202,7 +197,6 @@ function BarChart(props: Props) {
     </div>
   );
 }
-
 export default BarChart;
 
 function getXScaleDomain(data: Bar[], zoom: boolean): [number, number] {
