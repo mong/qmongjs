@@ -128,6 +128,9 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     return null;
   }
 
+  if (descriptionQuery.isError || indicatorDataQuery.isError) {
+    return null;
+  }
   if (
     descriptionQuery.data.length === 0 ||
     indicatorDataQuery.data.length === 0

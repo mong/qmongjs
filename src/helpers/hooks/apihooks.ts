@@ -14,7 +14,7 @@ const descriptionUrl = (params: FetchDescriptionParams): string => {
 const fetchDescription = async (params: FetchDescriptionParams) => {
   const response = await fetch(descriptionUrl(params));
   if (!response.ok) {
-    throw new Error("Network response failed");
+    throw new Error(response.statusText);
   }
   return response.json();
 };
@@ -63,7 +63,7 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
 const fetchIndicators = async (params: FetchIndicatorParams) => {
   const response = await fetch(indicatorUrl(params));
   if (!response.ok) {
-    throw new Error("Network response failed");
+    throw new Error(response.statusText);
   }
 
   return await response.json();
@@ -73,6 +73,45 @@ export const useIndicatorQuery = (params: FetchIndicatorParams) => {
   return useQuery<BarChartData[], Error>(
     [params.queryKey, params.registerShortName, params.context, params.type],
     () => fetchIndicators(params),
+    {
+      staleTime: 1000 * 60 * 60,
+      refetchOnWindowFocus: false,
+      cacheTime: 1000 * 60 * 60,
+    }
+  );
+};
+
+const selectionYearsUrl = (
+  registerShortName: string,
+  context: string,
+  type: string
+): string => {
+  return `${API_HOST}/data/${registerShortName}/years?context=${context}&type=${type}`;
+};
+
+const fetchSelectionYears = async (
+  registerShortName: string,
+  context: string,
+  type: string
+) => {
+  const response = await fetch(
+    selectionYearsUrl(registerShortName, context, type)
+  );
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
+};
+
+export const useSelectionYearsQuery = (
+  registerShortName: string,
+  context: string,
+  type: string
+) => {
+  return useQuery(
+    ["selectionYears", registerShortName, context, type],
+    () => fetchSelectionYears(registerShortName, context, type),
     {
       staleTime: 1000 * 60 * 60,
       refetchOnWindowFocus: false,
@@ -96,7 +135,7 @@ const fetchUnitNames = async (
 ) => {
   const response = await fetch(unitNamesUrl(registerShortName, context, type));
   if (!response.ok) {
-    throw new Error("Network response failed");
+    throw new Error(response.statusText);
   }
 
   return await response.json();
@@ -121,7 +160,7 @@ export const useUnitNamesQuery = (
 const fetchRegisterNames = async () => {
   const response = await fetch(`${API_HOST}/info/names`);
   if (!response.ok) {
-    throw new Error("Network response failed");
+    throw new Error(response.statusText);
   }
 
   return await response.json();
@@ -138,7 +177,7 @@ export const useRegisterNamesQuery = () => {
 const fetchMedicalFields = async () => {
   const response = await fetch(`${API_HOST}/info/medicalfields`);
   if (!response.ok) {
-    throw new Error("Network response failed");
+    throw new Error(response.statusText);
   }
 
   return response.json();
