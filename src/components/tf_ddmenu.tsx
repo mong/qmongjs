@@ -11,6 +11,8 @@ interface Props {
   update_show_level: React.Dispatch<React.SetStateAction<boolean>>;
   update_selected_row(row: string | undefined): void;
   description: Description;
+  chartType: string;
+  treatmentYear: number;
 }
 
 const DD_MENU = (props: Props) => {
@@ -22,6 +24,8 @@ const DD_MENU = (props: Props) => {
     update_selected_row,
     svgContainer,
     description,
+    chartType,
+    treatmentYear,
   } = props;
 
   const [dd_menu_status, set_dd_menu_status] = useState("inactive");
@@ -37,12 +41,11 @@ const DD_MENU = (props: Props) => {
     src.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
     src.setAttribute("xml:space", "preserve");
 
-    const image = select("body")
-      .append("img")
-      .style("display", "none")
-      .attr("width", width)
-      .attr("height", height)
-      .node();
+    const image = new Image();
+    image.width = width;
+    image.height = height;
+
+    image.src = "data:image/svg+xml," + encodeURIComponent(src.outerHTML);
 
     if (!image) return;
 
@@ -50,18 +53,42 @@ const DD_MENU = (props: Props) => {
       console.log(e);
     };
     image.onload = function () {
+      const canvasWidth = width + 50;
+      const canvasHeight = height + 100;
+      const figTitle =
+        chartType === "line"
+          ? description.title ?? ""
+          : `${description.title ?? ""} ( ${treatmentYear ?? ""} )`;
       const canvas = select("body")
         .append("canvas")
-        .attr("width", width)
-        .attr("height", height)
+        .attr("width", canvasWidth)
+        .attr("height", canvasHeight)
         .node()!;
 
       const ctx = canvas.getContext("2d");
-      ctx!.drawImage(image, 0, 0);
+      ctx!.fillStyle = "#fafafa";
+      ctx!.fillRect(0, 0, canvasWidth, canvasHeight);
+      ctx!.fillStyle = "black";
+      ctx!.font = "20px Arial";
+      ctx!.textAlign = "center";
+      ctx!.textBaseline = "middle";
+      ctx!.fillText(figTitle, canvasWidth / 2, 25);
+      ctx!.font = "12px Arial";
+      ctx!.textAlign = "start";
+      ctx!.fillText(`Kilde: ${description.full_name}`, 25, 75 + height);
+
+      ctx!.imageSmoothingEnabled = false;
+
+      ctx!.drawImage(image, 50 / 2, 50);
+
       const url = canvas.toDataURL("image/png");
+
       selectAll([canvas, image]).remove();
+
       const element = document.createElement("a");
-      element.download = `${description.id}.png`;
+      element.download = `${description.id}_${
+        chartType === "bar" ? treatmentYear : ""
+      }.png`;
       element.href = url;
       element.click();
       element.remove();
@@ -69,8 +96,6 @@ const DD_MENU = (props: Props) => {
     image.onerror = function (e) {
       console.log(e);
     };
-
-    image.src = "data:image/svg+xml," + encodeURIComponent(src.outerHTML);
   }
 
   const dropdown_entries = [
