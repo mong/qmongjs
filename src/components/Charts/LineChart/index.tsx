@@ -9,7 +9,7 @@ import {
   scaleTime,
   select,
 } from "d3";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { page_colors } from "../../../charts/page_colors";
 import { theme_table_chart_line as theme } from "../../../charts/theme_table_chart_line";
 import useDelayInitial from "../../../utils/useDelayInitial";
@@ -17,6 +17,7 @@ import { Level, Margin } from "../types";
 import { useResizeObserver } from "../../../helpers/hooks";
 import styles from "./LineChart.module.css";
 import { levelColor } from "../utils";
+import { Legend } from "./legend";
 
 export interface DataPoint {
   label: string;
@@ -47,8 +48,9 @@ const LineChart = (props: Props) => {
 
   const [hoveredLegend, setHoveredLegend] = useState<string | null>(null);
   const [selectedLegends, setSelectedLegends] = useState<string[]>([]);
+  const [legendHeight, setLegendHeight] = useState<number>(0);
   const delayedZoom = useDelayInitial(zoom, false);
-  const legendContainerRef = useRef<HTMLUListElement>(null);
+
   const entry = useResizeObserver(svgContainerRef);
 
   const width = entry?.contentRect.width ?? 0;
@@ -63,6 +65,11 @@ const LineChart = (props: Props) => {
 
   const innerHeight = height - marginOffsets.top - marginOffsets.bottom;
   const innerWidth = width - marginOffsets.left - marginOffsets.right;
+  const pathLabels = Array.from(new Set(data.map((d) => d.label)));
+  const lineColorScale = scaleOrdinal<string>()
+    .domain(pathLabels)
+    .range(page_colors.chart_colors);
+
   useEffect(() => {
     if (innerWidth === 0) {
       return;
@@ -71,11 +78,6 @@ const LineChart = (props: Props) => {
     const container = select(svgContainerRef.current);
 
     // Scales
-    const pathLabels = Array.from(new Set(data.map((d) => d.label)));
-    const lineColorScale = scaleOrdinal<string>()
-      .domain(pathLabels)
-      .range(page_colors.chart_colors);
-
     const minYear = Math.min(...data.map((d) => d.year));
     const maxYear = Math.max(...data.map((d) => d.year));
     const xScale = scaleTime()
@@ -96,43 +98,6 @@ const LineChart = (props: Props) => {
         new Set([...selectedLegends, hoveredLegend])
       );
     }
-
-    select(legendContainerRef.current)
-      .selectAll(".legend-item")
-      .data(pathLabels)
-      .join("li")
-      .attr("class", "legend-item")
-      .text((d) => d)
-      .style("margin", "5px")
-      .style("display", "flex")
-      .style("font-size", `${7 + innerWidth * 0.01}px`)
-      .style("font-family", theme.legend_text_font_family)
-      .style("fill", theme.legend_text_fill)
-      .style("padding", "5px")
-      .style("border-bottom", (d) => `3px solid ${lineColorScale(d)}`)
-      .style("cursor", "pointer")
-      .style("opacity", (d) => {
-        if (selectedLegends.length === 0) {
-          return 1;
-        }
-        return selectedLegends.includes(d) ? 1 : 0.4;
-      })
-      .on("click", (_e, d) => {
-        setHoveredLegend((current) => (current === d ? null : current));
-        setSelectedLegends((selected) => {
-          if (selected.includes(d)) {
-            return selected.filter((s) => s !== d);
-          }
-
-          return [...selected, d];
-        });
-      })
-      .on("mouseover", (_e, d) => {
-        setHoveredLegend(d);
-      })
-      .on("mouseout", (_e, d) => {
-        setHoveredLegend((current) => (current === d ? null : current));
-      });
 
     // Y-Axis
     const yAxisFormat =
@@ -201,6 +166,7 @@ const LineChart = (props: Props) => {
               .transition()
               .duration(1000)
               .attr("y", (d) => yScale(d.start))
+              .attr("width", innerWidth)
               .attr(
                 "height",
                 ({ start, end }) =>
@@ -255,29 +221,37 @@ const LineChart = (props: Props) => {
     levels,
     selectedLegends,
     svgContainerRef,
+    lineColorScale,
+    pathLabels,
   ]);
 
   return (
     <div>
-      <ul
-        ref={legendContainerRef}
-        style={{
-          display: "flex",
-          justifyContent: "flex-start",
-          flexWrap: "wrap",
-          marginLeft: "5%",
-          width: "80%",
-        }}
-      />
       <div ref={svgContainerRef} style={{ width: "90%", margin: "auto" }}>
         <svg
           className={styles.lineChart}
-          height={marginOffsets.top + height + marginOffsets.bottom}
-          width={width}
+          height={
+            marginOffsets.top + height + marginOffsets.bottom + legendHeight
+          }
+          width={marginOffsets.left + innerWidth + marginOffsets.right}
           style={{ backgroundColor: "white" }}
         >
+          <Legend
+            offsetLeft={marginOffsets.left}
+            offsetTop={marginOffsets.top}
+            legendHeight={legendHeight}
+            legendWidth={innerWidth}
+            setLegendHeight={setLegendHeight}
+            lineColorScale={lineColorScale}
+            legendLabels={pathLabels}
+            setHoveredLegend={setHoveredLegend}
+            selectedLegends={selectedLegends}
+            setSelectedLegends={setSelectedLegends}
+          />
           <g
-            transform={`translate(${marginOffsets.left}, ${marginOffsets.top})`}
+            transform={`translate(${marginOffsets.left}, ${
+              marginOffsets.top + legendHeight
+            })`}
           >
             <g className="x-axis" transform={`translate(0, ${innerHeight})`} />
             <g className="y-axis">
