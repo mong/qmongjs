@@ -58,7 +58,7 @@ const DD_MENU = (props: Props) => {
       const figTitle =
         chartType === "line"
           ? description.title ?? ""
-          : `${description.title ?? ""} ( ${treatmentYear ?? ""} )`;
+          : `${description.title ?? ""} (${treatmentYear ?? ""})`;
       const canvas = select("body")
         .append("canvas")
         .attr("width", canvasWidth)
