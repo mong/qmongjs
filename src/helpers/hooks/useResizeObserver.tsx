@@ -2,7 +2,7 @@ import { MutableRefObject, useEffect, useState } from "react";
 import ResizeObserver from "resize-observer-polyfill";
 
 export const useResizeObserver = function (
-  ref: MutableRefObject<HTMLElement | null>
+  ref: MutableRefObject<Element | null>
 ) {
   const [dimensions, setDimensions] = useState<ResizeObserverEntry | null>(
     null
