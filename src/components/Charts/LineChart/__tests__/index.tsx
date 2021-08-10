@@ -7,6 +7,7 @@ import { clockTick } from "../../../../test/clockTick";
 import {
   useResizeObserver,
   useLegendItemPosition,
+  useTextWidth,
 } from "../../../../helpers/hooks";
 
 jest.mock("../../../../helpers/hooks");
@@ -20,6 +21,7 @@ beforeEach(() => {
     },
   });
   (useLegendItemPosition as jest.Mock).mockReturnValue({ x: 0, y: 0 });
+  (useTextWidth as jest.Mock).mockReturnValue(15);
 });
 
 test("shows legend", async () => {

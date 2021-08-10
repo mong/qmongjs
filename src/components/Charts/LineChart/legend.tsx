@@ -1,15 +1,10 @@
-import React, {
-  Dispatch,
-  useRef,
-  useState,
-  SetStateAction,
-  useEffect,
-} from "react";
+import React, { Dispatch, useRef, SetStateAction, useEffect } from "react";
 import { ScaleOrdinal } from "d3";
 import style from "./legend.module.css";
 import {
   useResizeObserver,
   useLegendItemPosition,
+  useTextWidth,
 } from "../../../helpers/hooks";
 
 interface LegendProps {
@@ -92,17 +87,10 @@ const LegendItem: React.FC<LegendItemProps> = ({
 }) => {
   const legendRef = useRef<SVGGElement | null>(null);
   const textRef = useRef<SVGTextElement | null>(null);
-  const [textWidth, setTextWidth] = useState(0);
+  const textWidth = useTextWidth(textRef.current, label, color, legendWidth);
 
   const vMargin = 30;
   const hMargin = 10;
-
-  useEffect(() => {
-    if (textRef.current) {
-      const w = textRef.current.getComputedTextLength();
-      setTextWidth(w);
-    }
-  }, [setTextWidth, label, color, legendWidth]);
 
   const { x, y } = useLegendItemPosition(
     legendRef.current,

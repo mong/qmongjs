@@ -1,6 +1,6 @@
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 
-export const useElementDimensions = (element: Element | null | undefined) => {
+export const elementDimensions = (element: Element | null | undefined) => {
   if (element) {
     const { top, bottom, right, left, width, height } =
       element.getBoundingClientRect();
@@ -21,9 +21,9 @@ export const useLegendItemPosition = function (
     x: 0,
     y: vMargin / 2,
   });
-  const previousElemDim = useElementDimensions(element?.previousElementSibling);
-  const parentElementDim = useElementDimensions(element?.parentElement);
-  const currentElementDim = useElementDimensions(element);
+  const previousElemDim = elementDimensions(element?.previousElementSibling);
+  const parentElementDim = elementDimensions(element?.parentElement);
+  const currentElementDim = elementDimensions(element);
 
   const newLegendWidth =
     previousElemDim.right -
@@ -31,7 +31,7 @@ export const useLegendItemPosition = function (
     hMargin +
     currentElementDim.width;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!element) {
       setPosition({ x: 0, y: vMargin / 2 });
     } else if (!element.previousElementSibling) {
@@ -73,4 +73,19 @@ export const useLegendItemPosition = function (
   return position;
 };
 
-export default useLegendItemPosition;
+export const useTextWidth = (
+  element: SVGTextElement | null,
+  label: string,
+  color: string,
+  legendWidth: number
+) => {
+  const [textWidth, setTextWidth] = useState(0);
+  useEffect(() => {
+    if (element) {
+      const w = element.getComputedTextLength();
+      setTextWidth(w);
+    }
+  }, [element, setTextWidth, label, color, legendWidth]);
+
+  return textWidth;
+};
