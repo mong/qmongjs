@@ -1,10 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import faker from "faker";
-import { useRef } from "react";
+import { createRef } from "react";
 import LineChart, { DataPoint, Props } from "..";
 import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
-import { useResizeObserver } from "../../../../helpers/hooks";
+import {
+  useResizeObserver,
+  useLegendItemPosition,
+  useTextWidth,
+} from "../../../../helpers/hooks";
 
 jest.mock("../../../../helpers/hooks");
 jest.mock("../../../../utils/useDelayInitial");
@@ -16,6 +20,8 @@ beforeEach(() => {
       width: WIDTH,
     },
   });
+  (useLegendItemPosition as jest.Mock).mockReturnValue({ x: 0, y: 0 });
+  (useTextWidth as jest.Mock).mockReturnValue(15);
 });
 
 test("shows legend", async () => {
@@ -45,13 +51,15 @@ test("shows only one legend item per label", async () => {
 
 // Helpers
 function LineChartWithRef(props: Omit<Props, "svgContainerRef">) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = createRef<HTMLDivElement>();
   const WIDTH = 500;
   (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
   });
+  (useLegendItemPosition as jest.Mock).mockReturnValue({ x: 0, y: 0 });
+
   return <LineChart {...props} svgContainerRef={ref} />;
 }
 
