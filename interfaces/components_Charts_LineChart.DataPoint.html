@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BarStyle | qmongjs</title>
+	<title>DataPoint | qmongjs</title>
 	<meta name="description" content="Documentation for qmongjs">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,13 +55,13 @@
 					<a href="../modules.html">qmongjs</a>
 				</li>
 				<li>
-					<a href="../modules/components_charts_barchart.html">components/Charts/BarChart</a>
+					<a href="../modules/components_Charts_LineChart.html">components/Charts/LineChart</a>
 				</li>
 				<li>
-					<a href="components_charts_barchart.barstyle.html">BarStyle</a>
+					<a href="components_Charts_LineChart.DataPoint.html">DataPoint</a>
 				</li>
 			</ul>
-			<h1>Interface BarStyle</h1>
+			<h1>Interface DataPoint</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">BarStyle</span>
+						<span class="target">DataPoint</span>
 					</li>
 				</ul>
 			</section>
@@ -83,8 +83,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components_charts_barchart.barstyle.html#color" class="tsd-kind-icon">color</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components_charts_barchart.barstyle.html#opacity" class="tsd-kind-icon">opacity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components_Charts_LineChart.DataPoint.html#label" class="tsd-kind-icon">label</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components_Charts_LineChart.DataPoint.html#value" class="tsd-kind-icon">value</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components_Charts_LineChart.DataPoint.html#year" class="tsd-kind-icon">year</a></li>
 							</ul>
 						</section>
 					</div>
@@ -93,22 +94,32 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="color" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> color</h3>
-					<div class="tsd-signature tsd-kind-icon">color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="label" class="tsd-anchor"></a>
+					<h3>label</h3>
+					<div class="tsd-signature tsd-kind-icon">label<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/e2a04a5/src/components/Charts/BarChart/index.tsx#L18">components/Charts/BarChart/index.tsx:18</a></li>
+							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/6b6a658/src/components/Charts/LineChart/index.tsx#L23">components/Charts/LineChart/index.tsx:23</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="opacity" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> opacity</h3>
-					<div class="tsd-signature tsd-kind-icon">opacity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="value" class="tsd-anchor"></a>
+					<h3>value</h3>
+					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/e2a04a5/src/components/Charts/BarChart/index.tsx#L17">components/Charts/BarChart/index.tsx:17</a></li>
+							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/6b6a658/src/components/Charts/LineChart/index.tsx#L25">components/Charts/LineChart/index.tsx:25</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="year" class="tsd-anchor"></a>
+					<h3>year</h3>
+					<div class="tsd-signature tsd-kind-icon">year<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mong/qmongjs/blob/6b6a658/src/components/Charts/LineChart/index.tsx#L24">components/Charts/LineChart/index.tsx:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -120,41 +131,41 @@
 					<li class=" ">
 						<a href="../modules.html">Modules</a>
 					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/components_Charts_BarChart.html">components/<wbr>Charts/<wbr>Bar<wbr>Chart</a>
+					</li>
 					<li class="current tsd-kind-module">
-						<a href="../modules/components_charts_barchart.html">components/<wbr>Charts/<wbr>Bar<wbr>Chart</a>
+						<a href="../modules/components_Charts_LineChart.html">components/<wbr>Charts/<wbr>Line<wbr>Chart</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/components_charts_linechart.html">components/<wbr>Charts/<wbr>Line<wbr>Chart</a>
+						<a href="../modules/components_Footer.html">components/<wbr>Footer</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/components_footer.html">components/<wbr>Footer</a>
+						<a href="../modules/components_Header.html">components/<wbr>Header</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/components_header.html">components/<wbr>Header</a>
+						<a href="../modules/components_Loading_tsx.html">components/<wbr>Loading.tsx</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/components_loading_tsx.html">components/<wbr>Loading.tsx</a>
+						<a href="../modules/components_RegisterPage.html">components/<wbr>Register<wbr>Page</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/components_registerpage.html">components/<wbr>Register<wbr>Page</a>
+						<a href="../modules/components_RegisterPage_header.html">components/<wbr>Register<wbr>Page/header</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/components_registerpage_header.html">components/<wbr>Register<wbr>Page/header</a>
+						<a href="../modules/components_RegisterPage_indicatortable.html">components/<wbr>Register<wbr>Page/indicatortable</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/components_registerpage_indicatortable.html">components/<wbr>Register<wbr>Page/indicatortable</a>
+						<a href="../modules/components_RegisterPage_medicalfields.html">components/<wbr>Register<wbr>Page/medicalfields</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/components_registerpage_medicalfields.html">components/<wbr>Register<wbr>Page/medicalfields</a>
+						<a href="../modules/components_RegisterPage_unitnamelist.html">components/<wbr>Register<wbr>Page/unitnamelist</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/components_registerpage_unitnamelist.html">components/<wbr>Register<wbr>Page/unitnamelist</a>
+						<a href="../modules/components_SelectRegister.html">components/<wbr>Select<wbr>Register</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/components_selectregister.html">components/<wbr>Select<wbr>Register</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/components_tf_figure.html">components/TF_<wbr>FIGURE</a>
+						<a href="../modules/components_TF_FIGURE.html">components/TF_<wbr>FIGURE</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/components_test_testserver.html">components/test/testserver</a>
@@ -165,36 +176,33 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/helpers_hooks.html">helpers/hooks</a>
 					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/index.html">index</a>
-					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="components_charts_barchart.bar.html" class="tsd-kind-icon">Bar</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="components_charts_barchart.barstyle.html" class="tsd-kind-icon">Bar<wbr>Style</a>
+						<a href="components_Charts_LineChart.DataPoint.html" class="tsd-kind-icon">Data<wbr>Point</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="components_charts_barchart.barstyle.html#color" class="tsd-kind-icon">color</a>
+								<a href="components_Charts_LineChart.DataPoint.html#label" class="tsd-kind-icon">label</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="components_charts_barchart.barstyle.html#opacity" class="tsd-kind-icon">opacity</a>
+								<a href="components_Charts_LineChart.DataPoint.html#value" class="tsd-kind-icon">value</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="components_Charts_LineChart.DataPoint.html#year" class="tsd-kind-icon">year</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="components_charts_barchart.props.html" class="tsd-kind-icon">Props</a>
+						<a href="components_Charts_LineChart.Props.html" class="tsd-kind-icon">Props</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/components_charts_barchart.html#default" class="tsd-kind-icon">default</a>
+						<a href="../modules/components_Charts_LineChart.html#default" class="tsd-kind-icon">default</a>
 					</li>
 				</ul>
 			</nav>
