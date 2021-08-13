@@ -9755,7 +9755,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^7.11.0":
+"eslint@npm:^7.11.0, eslint@npm:^7.32.0":
   version: 7.32.0
   resolution: "eslint@npm:7.32.0"
   dependencies:
@@ -16973,6 +16973,7 @@ fsevents@^1.2.7:
     babel-loader: 8.1.0
     codecov: ^3.8.3
     d3: ^6.7.0
+    eslint: ^7.32.0
     faker: ^5.5.3
     husky: ^7.0.1
     is-ci-cli: ^2.2.0
