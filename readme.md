@@ -6,7 +6,7 @@
 [![GitHub open issues](https://img.shields.io/github/issues/mong/qmongjs.svg)](https://github.com/mong/qmongjs/issues)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-`qmongjs` is the code behind https://skde.org/
+`qmongjs` is the code behind [www.skde.no/kvalitetsregistre](https://www.skde.no/kvalitetsregistre/alle/sykehus).
 
 ## Installation
 
