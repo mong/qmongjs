@@ -2885,7 +2885,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-essentials@npm:^6.3.5":
+"@storybook/addon-essentials@npm:^6.3.7":
   version: 6.3.7
   resolution: "@storybook/addon-essentials@npm:6.3.7"
   dependencies:
@@ -2929,7 +2929,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-links@npm:^6.3.6":
+"@storybook/addon-links@npm:^6.3.7":
   version: 6.3.7
   resolution: "@storybook/addon-links@npm:6.3.7"
   dependencies:
@@ -3662,7 +3662,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/node-logger@npm:6.3.7, @storybook/node-logger@npm:^6.3.6":
+"@storybook/node-logger@npm:6.3.7, @storybook/node-logger@npm:^6.3.7":
   version: 6.3.7
   resolution: "@storybook/node-logger@npm:6.3.7"
   dependencies:
@@ -3722,7 +3722,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react@npm:^6.3.6":
+"@storybook/react@npm:^6.3.7":
   version: 6.3.7
   resolution: "@storybook/react@npm:6.3.7"
   dependencies:
@@ -4611,23 +4611,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:*":
+"@types/jest@npm:*, @types/jest@npm:^27.0.1":
   version: 27.0.1
   resolution: "@types/jest@npm:27.0.1"
   dependencies:
     jest-diff: ^27.0.0
     pretty-format: ^27.0.0
   checksum: 972aaae341b83eb608970c93295282f1f9edc056dc8123635456cbaced822702673118d60279c7b889300e7c9a0726c3674d701115915e2e1967db09542389c2
-  languageName: node
-  linkType: hard
-
-"@types/jest@npm:^26.0.23":
-  version: 26.0.24
-  resolution: "@types/jest@npm:26.0.24"
-  dependencies:
-    jest-diff: ^26.0.0
-    pretty-format: ^26.0.0
-  checksum: ae39675412f08d884926254e9b12bfd2b5a4e4d204c94d3148cb942174a474930d0c60540133c968f22241d4712b7940c96cbc883096eb326a4d5b206fb78bd0
   languageName: node
   linkType: hard
 
@@ -4689,7 +4679,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.4.13":
+"@types/node@npm:*, @types/node@npm:^16.6.1":
   version: 16.6.1
   resolution: "@types/node@npm:16.6.1"
   checksum: c13aa0da0c2bf9070e521d1b537ba38f64b213dd1b8aeec66c279fc21f8c0ccaf380364f6dc2ec8f84440c4cd1460b67dfe47de2cafcb6eaf4b648817cb27dc4
@@ -4842,7 +4832,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^17.0.16":
+"@types/react@npm:*":
   version: 17.0.17
   resolution: "@types/react@npm:17.0.17"
   dependencies:
@@ -4850,6 +4840,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 3f2ae9ab6f7d5c7b480cd5962fe996f0682173036a8437cfde0122bc8594e0e1482864b766dbf611daef40ed65a9fc73ec9510e12511d68c064f309f25219f67
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^17.0.17":
+  version: 17.0.18
+  resolution: "@types/react@npm:17.0.18"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 0b3d5fe0466b57c5539169671e29c4bdad2e2cf5b3eea25d443845d0153b2ddfbe0ef6d017f2f0a7ae49732d6fd14db189f9578ba0629790b896abe3a3ee44f3
   languageName: node
   linkType: hard
 
@@ -12808,7 +12809,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jest-diff@npm:^26.0.0, jest-diff@npm:^26.6.2":
+"jest-diff@npm:^26.6.2":
   version: 26.6.2
   resolution: "jest-diff@npm:26.6.2"
   dependencies:
@@ -16662,7 +16663,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^26.0.0, pretty-format@npm:^26.6.0, pretty-format@npm:^26.6.2":
+"pretty-format@npm:^26.6.0, pretty-format@npm:^26.6.2":
   version: 26.6.2
   resolution: "pretty-format@npm:26.6.2"
   dependencies:
@@ -16916,20 +16917,20 @@ fsevents@^1.2.7:
     "@sentry/react": ^6.11.0
     "@sentry/tracing": ^6.11.0
     "@storybook/addon-actions": ^6.3.6
-    "@storybook/addon-essentials": ^6.3.5
-    "@storybook/addon-links": ^6.3.6
+    "@storybook/addon-essentials": ^6.3.7
+    "@storybook/addon-links": ^6.3.7
     "@storybook/addon-queryparams": ^6.2.9
-    "@storybook/node-logger": ^6.3.6
+    "@storybook/node-logger": ^6.3.7
     "@storybook/preset-create-react-app": ^3.1.7
-    "@storybook/react": ^6.3.6
+    "@storybook/react": ^6.3.7
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^12.0.0
     "@testing-library/user-event": ^13.2.1
     "@types/d3": ^7.0.0
     "@types/faker": ^5.5.6
-    "@types/jest": ^26.0.23
-    "@types/node": ^16.4.13
-    "@types/react": ^17.0.16
+    "@types/jest": ^27.0.1
+    "@types/node": ^16.6.1
+    "@types/react": ^17.0.17
     "@types/react-dom": ^17.0.8
     "@types/react-router-dom": ^5.1.7
     "@types/react-select": ^4.0.16
@@ -16946,7 +16947,7 @@ fsevents@^1.2.7:
     query-string: ^7.0.1
     react: ^17.0.1
     react-dom: ^17.0.2
-    react-query: ^3.19.2
+    react-query: ^3.19.6
     react-router-dom: ^5.2.0
     react-scripts: ^4.0.3
     react-select: ^4.3.1
@@ -17354,7 +17355,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-query@npm:^3.19.2":
+"react-query@npm:^3.19.6":
   version: 3.19.6
   resolution: "react-query@npm:3.19.6"
   dependencies:
