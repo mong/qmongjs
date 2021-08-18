@@ -6,7 +6,7 @@
 [![GitHub open issues](https://img.shields.io/github/issues/mong/qmongjs.svg)](https://github.com/mong/qmongjs/issues)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-`qmongjs` is the code behind https://skde.org/
+`qmongjs` is the code behind [www.skde.no/kvalitetsregistre](https://www.skde.no/kvalitetsregistre/alle/sykehus).
 
 ## Installation
 
@@ -16,26 +16,26 @@ You can install the latest version of qmongjs from [github](https://github.com/m
 
 In the project directory, you can run:
 
-### `npm install`
+### `yarn install`
 
 Installs all the modules listed as dependencies in package.json.
 
-### `npm start`
+### `yarn start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000/kvalitetsregistre](http://localhost:3000/kvalitetsregistre) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm run build`
+### `yarn run build`
 
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br />
 
-### `npm test`
+### `yarn test`
 
 Launches the test runner in the interactive watch mode.
 

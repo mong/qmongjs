@@ -55,6 +55,8 @@ function TF_FIGURE(props: Props) {
               update_zoom={update_zoom}
               update_selected_row={update_selected_row}
               description={description[0]}
+              chartType={chart_type}
+              treatmentYear={treatmentYear}
             />
             <TF_BUTTON
               chart_type={valid_chart_type}
