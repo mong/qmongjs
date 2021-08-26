@@ -2,7 +2,7 @@
   "name": "qmongjs",
   "homepage": "https://www.skde.no/kvalitetsregistre",
   "version": "3.3.0",
-  "description": "The skde.org (to be skde.no) web page",
+  "description": "The kvalitetsregistre page of www.skde.no",
   "private": true,
   "scripts": {
     "postinstall": "husky install",
