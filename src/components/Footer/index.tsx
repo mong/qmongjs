@@ -41,14 +41,14 @@ const Footer: React.FC<FooterProps> = () => {
         <div className={style.skdePrivacy}>
           <a
             title="Link til kontakt SKDE"
-            href="https://helse-nord.no/skde/kontakt-skde"
+            href={`${window.location.origin}/kontakt`}
           >
             Kontakt
           </a>
           <br />
           <a
             title="Link til personvern"
-            href="https://helse-nord.no/om-nettstedet/personvern"
+            href={`${window.location.origin}/personvern`}
           >
             Personvern
           </a>
