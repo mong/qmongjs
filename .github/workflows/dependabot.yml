@@ -1,0 +1,43 @@
+# Automatically save updated `yarn.lock` file for dependabot PRs.
+# This is necessary because dependabot doesn't support yarn 2 yet:
+#
+# Based on https://github.com/styled-icons/styled-icons/blob/main/.github/workflows/dependabot.yml
+
+name: Dependabot
+on:
+  - pull_request_target
+
+jobs:
+  fix-lockfile:
+    runs-on: ubuntu-latest
+    if: |
+      github.actor == 'dependabot[bot]' &&
+      contains(github.event.pull_request.head.ref, 'dependabot/npm_and_yarn/')
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v2.4.0
+        with:
+          node-version: '14'
+
+      - run: git checkout HEAD^ -- yarn.lock
+      - run: yarn install
+
+      - name: Configure git
+        run: |
+          # use personal access token to allow triggering new workflow
+          BASIC_AUTH=$(echo -n "x-access-token:${{ secrets.GH_TOKEN }}" | base64)
+          echo "::add-mask::$BASIC_AUTH"
+          git config --global user.name 'dependabot[bot]'
+          git config --global user.email '49699333+dependabot[bot]@users.noreply.github.com'
+          git config --local http.$GITHUB_SERVER_URL/.extraheader "AUTHORIZATION: basic $BASIC_AUTH"
+      - name: Commit changes
+        run: |
+          git add yarn.lock
+          git commit -m "[dependabot skip] Fix yarn.lock"
+          git push
