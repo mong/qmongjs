@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = () => {
           </a>
         </div>
         <div>
-          <a href="https://helse-nord.no/om-oss/kontakt-oss">Kontakt</a>
+          <a href={`${window.location.origin}/kontakt`}>Kontakt</a>
         </div>
       </header>
     </div>
