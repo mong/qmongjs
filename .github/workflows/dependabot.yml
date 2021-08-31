@@ -28,6 +28,8 @@ jobs:
 
       - run: git checkout HEAD^ -- yarn.lock
       - run: yarn install
+        env:
+          YARN_ENABLE_SCRIPTS: 0 # disable postinstall scripts
 
       - name: Configure git
         run: |
