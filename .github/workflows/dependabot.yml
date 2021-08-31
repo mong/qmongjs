@@ -13,7 +13,8 @@ jobs:
     if: |
       github.actor == 'dependabot[bot]' &&
       contains(github.event.pull_request.head.ref, 'dependabot/npm_and_yarn/')
-
+    env:
+      YARN_ENABLE_SCRIPTS: false
     steps:
       - uses: actions/checkout@v1
         with:
@@ -27,11 +28,12 @@ jobs:
           node-version: '14'
 
       - run: git checkout HEAD^ -- yarn.lock
-      - run: |
-          yarn install --ignore-scripts
-          yarn dedupe
-#        env:
-#          YARN_ENABLE_SCRIPTS: 0 # disable postinstall scripts
+      - run: yarn install --skip-builds
+        env:
+          # yarn runs in immutable mode "by default" in CI -- turning this off requires an
+          # undocumented env var
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
+      - run: yarn dedupe
 
       - name: Configure git
         run: |
