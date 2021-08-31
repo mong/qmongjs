@@ -27,9 +27,11 @@ jobs:
           node-version: '14'
 
       - run: git checkout HEAD^ -- yarn.lock
-      - run: yarn install
-        env:
-          YARN_ENABLE_SCRIPTS: 0 # disable postinstall scripts
+      - run: |
+          yarn install --ignore-scripts
+          yarn dedupe
+#        env:
+#          YARN_ENABLE_SCRIPTS: 0 # disable postinstall scripts
 
       - name: Configure git
         run: |
