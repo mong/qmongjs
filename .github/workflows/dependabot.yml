@@ -28,7 +28,7 @@ jobs:
           node-version: '14'
 
       - run: git checkout HEAD^ -- yarn.lock
-      - run: yarn install --skip-builds
+      - run: yarn install
         env:
           # yarn runs in immutable mode "by default" in CI -- turning this off requires an
           # undocumented env var
