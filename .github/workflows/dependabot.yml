@@ -28,7 +28,7 @@ jobs:
           node-version: '14'
 
       - run: git checkout HEAD^ -- yarn.lock
-      - run: yarn install
+      - run: yarn install --mode update-lockfile
         env:
           # yarn runs in immutable mode "by default" in CI -- turning this off requires an
           # undocumented env var
@@ -40,11 +40,11 @@ jobs:
           # use personal access token to allow triggering new workflow
           BASIC_AUTH=$(echo -n "x-access-token:${{ secrets.GH_TOKEN }}" | base64)
           echo "::add-mask::$BASIC_AUTH"
-          git config --global user.name 'dependabot[bot]'
-          git config --global user.email '49699333+dependabot[bot]@users.noreply.github.com'
           git config --local http.$GITHUB_SERVER_URL/.extraheader "AUTHORIZATION: basic $BASIC_AUTH"
       - name: Commit changes
         run: |
+          git config user.name 'dependabot[bot]'
+          git config user.email '49699333+dependabot[bot]@users.noreply.github.com'
           git add yarn.lock
           git commit -m "[dependabot skip] Fix yarn.lock"
           git push
