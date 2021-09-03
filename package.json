@@ -97,7 +97,7 @@
   },
   "optionalDependencies": {
     "babel-loader": "8.1.0",
-    "webpack": "4.44.2"
+    "webpack": "5.51.2"
   },
   "jest": {
     "coverageThreshold": {
