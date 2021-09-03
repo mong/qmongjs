@@ -35,6 +35,12 @@ jobs:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
       - run: yarn dedupe
 
+      - name: Configure git
+        run: |
+          # use personal access token to allow triggering new workflow
+          BASIC_AUTH=$(echo -n "x-access-token:${{ secrets.GH_TOKEN }}" | base64)
+          echo "::add-mask::$BASIC_AUTH"
+          git config --local http.$GITHUB_SERVER_URL/.extraheader "AUTHORIZATION: basic $BASIC_AUTH"
       - name: Commit changes
         run: |
           git config user.name 'dependabot[bot]'
