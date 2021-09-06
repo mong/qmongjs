@@ -59,16 +59,11 @@ exports[`registry table renders correctly for a single registry 1`] = `
             class="level"
           >
             <h4>
-              65% 
+              0.5126 
               <i
                 class="fa fa-circle-o"
               />
             </h4>
-          </div>
-          <div
-            class="summary"
-          >
-            1500 av 2000
           </div>
         </td>
       </tr>
@@ -111,16 +106,11 @@ exports[`registry table renders correctly for a single registry 1`] = `
             class="level"
           >
             <h4>
-              65% 
+              0.9326 
               <i
                 class="fa fa-fas fa-circle"
               />
             </h4>
-          </div>
-          <div
-            class="summary"
-          >
-            1500 av 2000
           </div>
         </td>
       </tr>
@@ -163,16 +153,11 @@ exports[`registry table renders correctly for a single registry 1`] = `
             class="level"
           >
             <h4>
-              65% 
+              0.8537 
               <i
                 class="fa fa-fas fa-adjust"
               />
             </h4>
-          </div>
-          <div
-            class="summary"
-          >
-            1500 av 2000
           </div>
         </td>
       </tr>
@@ -215,16 +200,11 @@ exports[`registry table renders correctly for a single registry 1`] = `
             class="level"
           >
             <h4>
-              65% 
+              0.9683 
               <i
                 class="fa fa-fas fa-circle"
               />
             </h4>
-          </div>
-          <div
-            class="summary"
-          >
-            1500 av 2000
           </div>
         </td>
       </tr>
@@ -267,16 +247,11 @@ exports[`registry table renders correctly for a single registry 1`] = `
             class="level"
           >
             <h4>
-              65% 
+              0.9246 
               <i
                 class="fa fa-fas fa-circle"
               />
             </h4>
-          </div>
-          <div
-            class="summary"
-          >
-            1500 av 2000
           </div>
         </td>
       </tr>
