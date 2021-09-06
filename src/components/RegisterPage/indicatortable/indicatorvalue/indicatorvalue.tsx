@@ -23,7 +23,6 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
       : "undeined";
   if (
     indicatorData.type === "dg_andel" ||
-    indicatorData.type === "dg" ||
     indicatorData.type === "beregnet_andel" ||
     indicatorData.type === "andel"
   ) {
