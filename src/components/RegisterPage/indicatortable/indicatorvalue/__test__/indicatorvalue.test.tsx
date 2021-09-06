@@ -45,7 +45,7 @@ it("renders", () => {
   );
 });
 
-it("renders", () => {
+it("renders beregnet_andel", () => {
   const data = { ...national_data[1], type: "beregnet_andel" };
   const indicator_value_share =
     data.var < 0.1
