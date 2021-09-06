@@ -56,14 +56,14 @@ exports[`Footer renders 1`] = `
         class="skdePrivacy"
       >
         <a
-          href="https://helse-nord.no/skde/kontakt-skde"
+          href="http://localhost/kontakt"
           title="Link til kontakt SKDE"
         >
           Kontakt
         </a>
         <br />
         <a
-          href="https://helse-nord.no/om-nettstedet/personvern"
+          href="http://localhost/personvern"
           title="Link til personvern"
         >
           Personvern

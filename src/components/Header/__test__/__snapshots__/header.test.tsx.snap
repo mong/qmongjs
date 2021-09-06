@@ -21,7 +21,7 @@ exports[`main page header renders 1`] = `
       </div>
       <div>
         <a
-          href="https://helse-nord.no/om-oss/kontakt-oss"
+          href="http://localhost/kontakt"
         >
           Kontakt
         </a>
