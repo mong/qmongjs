@@ -44,3 +44,27 @@ it("renders", () => {
     `${numerator} av ${data.denominator}`
   );
 });
+
+it("renders beregnet_andel", () => {
+  const data = { ...national_data[1], type: "beregnet_andel" };
+  const indicator_value_share =
+    data.var < 0.1
+      ? `${Math.round(data.var * 1000) / 10}\u202f%`
+      : `${Math.round(data.var * 100)}\u202f%`;
+  act(() => {
+    render(
+      <table>
+        <tbody>
+          <tr>
+            <IndicatorValue indicatorData={data} />
+          </tr>
+        </tbody>
+      </table>,
+      container
+    );
+  });
+  expect(container.querySelector("td h4").textContent).toContain(
+    `${indicator_value_share}`
+  );
+  expect(container).toMatchSnapshot();
+});
