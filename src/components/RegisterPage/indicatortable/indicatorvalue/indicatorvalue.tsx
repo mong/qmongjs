@@ -5,21 +5,11 @@ import style from "./indicatorvalue.module.css";
 export interface IndicatorValueProps {
   td_class?: string;
   indicatorData: StatisticData;
-  indicator_value?: "65%";
-  share_of_total?: number;
-  total?: number;
   level_class?: "filtered_level" | "";
 }
 
 export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
-  const {
-    td_class = "selected_unit",
-    indicatorData,
-    indicator_value = "65%",
-    share_of_total = 1500,
-    total = 2000,
-    level_class = "",
-  } = props;
+  const { td_class = "selected_unit", indicatorData, level_class = "" } = props;
 
   const filter_level = level_class === "" ? "" : style.filtered_level;
 
@@ -66,7 +56,9 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
           </h4>
         </div>
         {indicatorData.type === "andel" && (
-          <div className="summary">{`${share_of_total} av ${total}`}</div>
+          <div
+            className={style.summary}
+          >{`${numerator} av ${denominator}`}</div>
         )}
       </td>
     );
@@ -79,11 +71,10 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
         aria-label={`Achieved level ${indicatorData.level}`}
       >
         <h4>
-          {`${indicator_value} `}
+          {`${indicatorData.var} `}
           <i className={icon_class} />
         </h4>
       </div>
-      <div className="summary">{`${share_of_total} av ${total}`}</div>
     </td>
   );
 };
