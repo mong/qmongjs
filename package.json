@@ -10,6 +10,7 @@
     "test": "is-ci test:coverage test:base",
     "test:base": "react-scripts test",
     "test:once": "yarn run test:base --watchAll=false",
+    "test:once:watch": "yarn run test:base --watchAll=true",
     "test:coverage": "yarn run test:once --coverage",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "test:staged": "yarn run test:once --findRelatedTests",
