@@ -16,12 +16,10 @@ jobs:
     env:
       YARN_ENABLE_SCRIPTS: false
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v1 # version 2 did not work
         with:
-#          token: ${{ secrets.GH_TOKEN }}
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 2
-#          persist-credentials: false
 
       - uses: actions/setup-node@v2.4.0
         with:
@@ -30,8 +28,6 @@ jobs:
       - run: git checkout HEAD^ -- yarn.lock
       - run: yarn install --mode update-lockfile
         env:
-          # yarn runs in immutable mode "by default" in CI -- turning this off requires an
-          # undocumented env var
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
       - run: yarn dedupe
 
