@@ -99,10 +99,10 @@ const GetBarChart: React.FC<Props> = (props) => {
     return filtered ?? [];
   };
 
-  const nasjonaltIndData = [...indicatorData].filter(
-    (d) => d.unit_name === "Nasjonalt"
+  const selectedIndData = [...indicatorData].filter(
+    (d) => d.unit_level !== "hospital"
   );
-  const barChartData = [...(indQryData ?? []), ...nasjonaltIndData];
+  const barChartData = [...(indQryData ?? []), ...selectedIndData];
   const unitNames = props.selectedTreatmentUnits;
 
   return <BarChart {...props} data={filterData(barChartData)} />;
