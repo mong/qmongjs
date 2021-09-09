@@ -70,7 +70,7 @@ const Footer: React.FC<FooterProps> = () => {
             title="Link til kvalitetsregistre"
             href="https://www.kvalitetsregistre.no"
           >
-            <img src={NSMLogo} alt="NSM logo" width="359px" height="40px" />
+            <img src={NSMLogo} alt="NSM logo" width="287px" height="32px" />
           </a>
         </div>
         <div>
