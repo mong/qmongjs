@@ -27,7 +27,7 @@ export const NoDataAvailible: React.FC<NoDataAvailibleProps> = ({
       ).length;
       setIsTableEmpty(indicatorData === 0);
     }
-  }, [tbodyHeight, isFetching, setIsTableEmpty]);
+  }, [tableBodyRef, tbodyHeight, isFetching, setIsTableEmpty, filteredClass]);
 
   if (isFetching === 0 && isTableEmpty) {
     return (
