@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import { OptsTu } from "../../../select_multi";
 import { RegisterNames } from "../../.";
 
 import TableBlock from "../tableblock/tableblock";
+import { NoDataAvailible } from "../ContenForEmptyTable";
 
 export interface IndicatorTableBodyProps {
   context: string;
@@ -33,6 +34,7 @@ export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (
     blockTitle,
   } = props;
 
+  const tableBodyRef = useRef(null);
   const done: string[] = [];
   let register_block = registerNames.map((register, i) => {
     if (!done.includes(register.rname)) {
@@ -58,5 +60,10 @@ export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (
     }
   });
 
-  return <tbody>{register_block}</tbody>;
+  return (
+    <tbody ref={tableBodyRef}>
+      <NoDataAvailible colspan={colspan} tableBodyRef={tableBodyRef} />
+      {register_block}
+    </tbody>
+  );
 };
