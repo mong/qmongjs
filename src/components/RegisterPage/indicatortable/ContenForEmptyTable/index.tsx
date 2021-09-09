@@ -1,5 +1,6 @@
-import React, { MutableRefObject } from "react";
+import React, { MutableRefObject, useEffect, useState } from "react";
 import { useIsFetching } from "react-query";
+import style from "../tableblock/tableblock.module.css";
 
 import { useResizeObserver } from "../../../../helpers/hooks";
 
@@ -15,11 +16,28 @@ export const NoDataAvailible: React.FC<NoDataAvailibleProps> = ({
   const isFetching = useIsFetching();
   const dims = useResizeObserver(tableBodyRef);
   const tbodyHeight = dims ? dims.contentRect.height : 0;
+  const [isTableEmpty, setIsTableEmpty] = useState(false);
+  const filteredClass = style["filterMedField"];
+  console.log(filteredClass);
+  useEffect(() => {
+    if (tableBodyRef.current) {
+      const tBody = tableBodyRef.current;
+      const indicatorData = tBody.querySelectorAll(
+        `.indicator:not(.${filteredClass})`
+      ).length;
+      setIsTableEmpty(indicatorData === 0);
+      console.log(indicatorData);
+    }
+  }, [tbodyHeight, isFetching, setIsTableEmpty]);
 
-  if (isFetching === 0 && tbodyHeight < 50) {
+  if (isFetching === 0 && isTableEmpty) {
     return (
       <tr>
-        <td colSpan={colspan} style={{ height: "45px", textAlign: "center" }}>
+        <td
+          className={"noData"}
+          colSpan={colspan}
+          style={{ height: "40vh", textAlign: "center" }}
+        >
           Databasen inneholder ingen data for dette utvalget.{" "}
         </td>
       </tr>
