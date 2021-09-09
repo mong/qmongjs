@@ -93,9 +93,9 @@ exports[`Footer renders 1`] = `
         >
           <img
             alt="NSM logo"
-            height="40px"
+            height="32px"
             src="NSM_logo_hvit.png"
-            width="359px"
+            width="287px"
           />
         </a>
       </div>
