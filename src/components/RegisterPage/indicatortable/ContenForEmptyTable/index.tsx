@@ -19,10 +19,11 @@ export const NoDataAvailible: React.FC<NoDataAvailibleProps> = ({
   if (isFetching === 0 && tbodyHeight < 50) {
     return (
       <tr>
-        <td colSpan={colspan}>Ingen data</td>
+        <td colSpan={colspan} style={{ height: "45px", textAlign: "center" }}>
+          Databasen inneholder ingen data for dette utvalget.{" "}
+        </td>
       </tr>
     );
   }
-  //else return null
   return null;
 };
