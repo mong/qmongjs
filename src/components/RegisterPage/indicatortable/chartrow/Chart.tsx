@@ -1,13 +1,16 @@
 import React, { useCallback, useEffect } from "react";
 import { UseQueryResult, useQueryClient } from "react-query";
-import { Description, StatisticData } from "../../components/RegisterPage";
+import {
+  Description,
+  StatisticData,
+} from "../../../../components/RegisterPage";
 
-import BarChart, { Bar, BarStyle } from "../Charts/BarChart";
-import LineChart, { DataPoint } from "../Charts/LineChart";
-import { Level } from "../Charts/types";
-import { useIndicatorQuery } from "../../helpers/hooks";
+import BarChart, { Bar, BarStyle } from "../../../Charts/BarChart";
+import LineChart, { DataPoint } from "../../../Charts/LineChart";
+import { Level } from "../../../Charts/types";
+import { useIndicatorQuery } from "../../../../helpers/hooks";
 
-export interface Props {
+interface Props {
   context: { context: string; type: string };
   svgContainerRef: React.RefObject<HTMLDivElement>;
   chartType: "bar" | "line";

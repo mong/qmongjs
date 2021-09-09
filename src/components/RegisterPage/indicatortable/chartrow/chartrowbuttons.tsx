@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
+import style from "./chartrowbuttons.module.css";
+import { FiDownload } from "react-icons/fi";
+import { UrlUpdateType } from "use-query-params";
+import { VscChromeClose, VscZoomOut, VscZoomIn } from "react-icons/vsc";
+import { BiBarChart, BiLineChart } from "react-icons/bi";
 import { select, selectAll } from "d3";
 
-import { Description } from "../components/RegisterPage";
+import { Description } from "../../../RegisterPage";
 
 interface Props {
   svgContainer: React.RefObject<HTMLDivElement>;
@@ -13,9 +18,13 @@ interface Props {
   description: Description;
   chartType: string;
   treatmentYear: number;
+  updateChartType: (
+    newValue: "line" | "bar",
+    updateType?: UrlUpdateType | undefined
+  ) => void;
 }
 
-const DD_MENU = (props: Props) => {
+const FigureButtons = (props: Props) => {
   const {
     show_level,
     update_show_level,
@@ -26,9 +35,8 @@ const DD_MENU = (props: Props) => {
     description,
     chartType,
     treatmentYear,
+    updateChartType,
   } = props;
-
-  const [dd_menu_status, set_dd_menu_status] = useState("inactive");
 
   function getDownloadURL(svgContainer: React.RefObject<HTMLDivElement>) {
     if (!svgContainer.current) return;
@@ -98,67 +106,72 @@ const DD_MENU = (props: Props) => {
     };
   }
 
-  const dropdown_entries = [
+  const buttonValues = [
+    {
+      label:
+        chartType === "line" ? (
+          <>
+            <BiBarChart style={{ transform: "rotate(90deg)" }} />{" "}
+            <span>Søyle</span>
+          </>
+        ) : (
+          <>
+            <BiLineChart /> Linje
+          </>
+        ),
+      click: () => updateChartType(chartType === "line" ? "bar" : "line"),
+      class: "btn-charttype",
+      //style: { border: "2px solid rgba(0, 0, 0, 0.1)" },
+      title: chartType === "line" ? "Søyle" : "Linje",
+    },
     {
       label: show_level ? "Skjul målnivå" : "Vis målnivå",
       click: () => update_show_level((showLevel) => !showLevel),
-      class: "dd-level",
+      class: "btn-level",
+      //style: { border: "2px solid rgba(0, 0, 0, 0.1)" },
+      title: show_level ? "Skjul målnivå" : "Vis målnivå",
     },
     {
-      label: zoom ? "Zoom ut" : "Zoom inn",
+      label: zoom ? <VscZoomOut /> : <VscZoomIn />,
       click: () => update_zoom((zoom) => !zoom),
-      class: "dd-zoom",
+      class: "btn-zoom",
+      style: {},
+      title: zoom ? "zoom ut" : "zoom in",
     },
     {
-      label: "Last ned figur",
+      label: <FiDownload />,
       click: () => getDownloadURL(svgContainer),
-      class: "dd-download",
+      class: "btn-download",
+      style: {},
+      title: "Last ned figur",
     },
     {
-      label: "Lukk",
+      label: <VscChromeClose />,
       click: () => update_selected_row(undefined),
-      class: "dd-close",
+      class: "btn-close",
+      style: {},
+      title: "Lukk",
     },
   ];
 
-  let mouse_leave_dd_cont_timeout: number;
-  const menu_container_mouse_leave = () => {
-    mouse_leave_dd_cont_timeout = window.setTimeout(function () {
-      set_dd_menu_status("inactive");
-    }, 1000);
-  };
-
-  const dd_list = dropdown_entries.map((dd) => {
+  const buttons = buttonValues.map((btn) => {
     return (
-      <li key={dd.class}>
-        <div className={dd.class} onClick={dd.click}>
-          {" "}
-          {dd.label}{" "}
-        </div>
-      </li>
+      <button
+        key={btn.class}
+        aria-pressed={false}
+        aria-label={btn.title}
+        className={style[btn.class]}
+        onClick={btn.click}
+        title={btn.title ?? undefined}
+        style={{ ...btn.style }}
+      >
+        {" "}
+        {btn.label}{" "}
+      </button>
     );
   });
 
-  return (
-    <div
-      className="table_dd_menu_container"
-      onMouseLeave={() => menu_container_mouse_leave()}
-      onMouseOver={() => clearTimeout(mouse_leave_dd_cont_timeout)}
-    >
-      <button
-        className="table_dd_button"
-        onClick={() => set_dd_menu_status("")}
-      >
-        <i className="fas fa-bars" aria-hidden="true" />
-      </button>
-      <div
-        id="table_dd_container"
-        className={`dropdown_container ${dd_menu_status}`}
-      >
-        <ul className="dropdown_ul">{dd_list}</ul>
-      </div>
-    </div>
-  );
+  return <div className={style["btn-container"]}>{buttons}</div>;
 };
 
-export default DD_MENU;
+export default FigureButtons;

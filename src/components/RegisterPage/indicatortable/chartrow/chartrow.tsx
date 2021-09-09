@@ -1,13 +1,12 @@
 import React, { useRef, useState } from "react";
 
-import TF_BUTTON from "../tf_button";
-import TF_DDMENU from "../tf_ddmenu";
-import TF_LONG_DESCRIPTION from "../tf_description";
+import ChartButtons from "./chartrowbuttons";
+import TF_LONG_DESCRIPTION from "./chartrowdescription";
 import Chart from "./Chart";
 import { level_boundary } from "./tr_utils";
 import { useQueryParam } from "use-query-params";
-import { mainQueryParamsConfig } from "../../app_config";
-import { Description, StatisticData } from "../RegisterPage";
+import { mainQueryParamsConfig } from "../../../../app_config";
+import { Description, StatisticData } from "../../../RegisterPage";
 
 export interface Props {
   context: { context: string; type: string };
@@ -20,7 +19,7 @@ export interface Props {
   update_selected_row(row: string): void;
 }
 
-function TF_FIGURE(props: Props) {
+export function ChartRow(props: Props) {
   const {
     context,
     treatmentYear,
@@ -47,7 +46,7 @@ function TF_FIGURE(props: Props) {
       <td colSpan={colspan}>
         <div className="tr_figure">
           <div className="tr_buttons_container">
-            <TF_DDMENU
+            <ChartButtons
               svgContainer={svgContainerRef}
               show_level={show_level}
               update_show_level={update_show_level}
@@ -57,10 +56,7 @@ function TF_FIGURE(props: Props) {
               description={description[0]}
               chartType={chart_type}
               treatmentYear={treatmentYear}
-            />
-            <TF_BUTTON
-              chart_type={valid_chart_type}
-              update_chart_type={update_chart_type}
+              updateChartType={update_chart_type}
             />
           </div>
           <Chart
@@ -83,5 +79,3 @@ function TF_FIGURE(props: Props) {
     </tr>
   );
 }
-
-export default TF_FIGURE;
