@@ -18,7 +18,7 @@ export const NoDataAvailible: React.FC<NoDataAvailibleProps> = ({
   const tbodyHeight = dims ? dims.contentRect.height : 0;
   const [isTableEmpty, setIsTableEmpty] = useState(false);
   const filteredClass = style["filterMedField"];
-  console.log(filteredClass);
+
   useEffect(() => {
     if (tableBodyRef.current) {
       const tBody = tableBodyRef.current;
@@ -26,7 +26,6 @@ export const NoDataAvailible: React.FC<NoDataAvailibleProps> = ({
         `.indicator:not(.${filteredClass})`
       ).length;
       setIsTableEmpty(indicatorData === 0);
-      console.log(indicatorData);
     }
   }, [tbodyHeight, isFetching, setIsTableEmpty]);
 
