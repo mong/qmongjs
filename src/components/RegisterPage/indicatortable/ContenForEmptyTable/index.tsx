@@ -37,7 +37,7 @@ export const NoDataAvailible: React.FC<NoDataAvailibleProps> = ({
           colSpan={colspan}
           style={{ height: "40vh", textAlign: "center" }}
         >
-          Databasen inneholder ingen data for dette utvalget.{" "}
+          <h2>Databasen inneholder ingen data for dette utvalget.</h2>{" "}
         </td>
       </tr>
     );
