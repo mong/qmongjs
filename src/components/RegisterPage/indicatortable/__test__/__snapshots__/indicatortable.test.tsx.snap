@@ -20,15 +20,6 @@ exports[`registry table renders correctly for a single registry 1`] = `
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td
-          colspan="2"
-          style="height: 45px; text-align: center;"
-        >
-          Databasen inneholder ingen data for dette utvalget.
-           
-        </td>
-      </tr>
       <tr
         class="hoftebrudd_24t  hoftebrudd   indicator"
         id="hoftebrudd_24t  hoftebrudd"
