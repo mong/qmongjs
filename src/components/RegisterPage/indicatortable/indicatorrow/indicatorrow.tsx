@@ -4,7 +4,7 @@ import { useQueryParam } from "use-query-params";
 import { IndicatorValue } from "../indicatorvalue";
 import { IndicatorDescription } from "../indicatordescription";
 import { MaskedIndicator } from "../maskedindicator";
-import TF_FIGURE from "../../../TF_FIGURE";
+import { ChartRow } from "../chartrow";
 import style from "./indicatorrow.module.css";
 
 import { Description, StatisticData } from "../../";
@@ -140,7 +140,7 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
 
   const tr_fig =
     selected_row === ind_id ? (
-      <TF_FIGURE
+      <ChartRow
         context={context}
         treatmentYear={treatmantYear}
         colspan={colspan}
