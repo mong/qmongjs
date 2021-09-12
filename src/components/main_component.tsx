@@ -58,7 +58,6 @@ interface MediacalFieldObject {
 const Main = (props: Props) => {
   const {
     context,
-    optstu,
     registerNames,
     app_text,
     treatment_units,
@@ -128,7 +127,6 @@ const Main = (props: Props) => {
           <IndicatorTable
             context={context}
             tableType="allRegistries"
-            optstu={optstu}
             registerNames={orderedRegisterList}
             unitNames={[...treatment_units, "Nasjonalt"]}
             treatmentYear={selected_year}
