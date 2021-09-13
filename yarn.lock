@@ -11096,24 +11096,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"handlebars@npm:^4.7.7":
-  version: 4.7.7
-  resolution: "handlebars@npm:4.7.7"
-  dependencies:
-    minimist: ^1.2.5
-    neo-async: ^2.6.0
-    source-map: ^0.6.1
-    uglify-js: ^3.1.4
-    wordwrap: ^1.0.0
-  dependenciesMeta:
-    uglify-js:
-      optional: true
-  bin:
-    handlebars: bin/handlebars
-  checksum: 1e79a43f5e18d15742977cb987923eab3e2a8f44f2d9d340982bcb69e1735ed049226e534d7c1074eaddaf37e4fb4f471a8adb71cddd5bc8cf3f894241df5cee
-  languageName: node
-  linkType: hard
-
 "harmony-reflect@npm:^1.4.6":
   version: 1.6.2
   resolution: "harmony-reflect@npm:1.6.2"
@@ -14049,7 +14031,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"marked@npm:^3.0.2":
+"marked@npm:^3.0.3":
   version: 3.0.3
   resolution: "marked@npm:3.0.3"
   bin:
@@ -14376,7 +14358,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"minimatch@npm:3.0.4, minimatch@npm:^3.0.0, minimatch@npm:^3.0.2, minimatch@npm:^3.0.4":
+"minimatch@npm:3.0.4, minimatch@npm:^3.0.2, minimatch@npm:^3.0.4":
   version: 3.0.4
   resolution: "minimatch@npm:3.0.4"
   dependencies:
@@ -14677,7 +14659,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"neo-async@npm:^2.5.0, neo-async@npm:^2.6.0, neo-async@npm:^2.6.1, neo-async@npm:^2.6.2":
+"neo-async@npm:^2.5.0, neo-async@npm:^2.6.1, neo-async@npm:^2.6.2":
   version: 2.6.2
   resolution: "neo-async@npm:2.6.2"
   checksum: deac9f8d00eda7b2e5cd1b2549e26e10a0faa70adaa6fdadca701cc55f49ee9018e427f424bac0c790b7c7e2d3068db97f3093f1093975f2acb8f8818b936ed9
@@ -16747,7 +16729,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"progress@npm:^2.0.0, progress@npm:^2.0.3":
+"progress@npm:^2.0.0":
   version: 2.0.3
   resolution: "progress@npm:2.0.3"
   checksum: f67403fe7b34912148d9252cb7481266a354bd99ce82c835f79070643bb3c6583d10dbcfda4d41e04bbc1d8437e9af0fb1e1f2135727878f5308682a579429b7
@@ -16986,7 +16968,7 @@ fsevents@^1.2.7:
     react-select: ^4.3.1
     resize-observer-polyfill: ^1.5.1
     source-map-explorer: ^2.5.2
-    typedoc: ^0.21.9
+    typedoc: ^0.22.3
     typescript: ^4.4.3
     use-query-params: ^1.2.3
     webpack: 4.44.2
@@ -18791,7 +18773,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"shiki@npm:^0.9.8":
+"shiki@npm:^0.9.10":
   version: 0.9.10
   resolution: "shiki@npm:0.9.10"
   dependencies:
@@ -20282,30 +20264,20 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"typedoc-default-themes@npm:^0.12.10":
-  version: 0.12.10
-  resolution: "typedoc-default-themes@npm:0.12.10"
-  checksum: 4c19a0fecdf24777bd153c6ae4a4f2b23c95521a83483cdbee89aaeef985d7e37f2665b37d55f809ef36d0eb4433a921209dc45a1055791d81464bffeea77dfd
-  languageName: node
-  linkType: hard
-
-"typedoc@npm:^0.21.9":
-  version: 0.21.9
-  resolution: "typedoc@npm:0.21.9"
+"typedoc@npm:^0.22.3":
+  version: 0.22.3
+  resolution: "typedoc@npm:0.22.3"
   dependencies:
     glob: ^7.1.7
-    handlebars: ^4.7.7
     lunr: ^2.3.9
-    marked: ^3.0.2
-    minimatch: ^3.0.0
-    progress: ^2.0.3
-    shiki: ^0.9.8
-    typedoc-default-themes: ^0.12.10
+    marked: ^3.0.3
+    minimatch: ^3.0.4
+    shiki: ^0.9.10
   peerDependencies:
     typescript: 4.0.x || 4.1.x || 4.2.x || 4.3.x || 4.4.x
   bin:
     typedoc: bin/typedoc
-  checksum: 5079e55f7d233874aedd5be4acc9ad9deab4b1cacee9a5c950baa19a6990003945e0eccc792f288cbac9d0e900d1f7b7856fc40318bdfef413ed94b7e7690406
+  checksum: 65a930a02f9ce6339ab44163efe90d6bb6bcae7054da9c698fa421b4c1d0d199b84a10ff13b0899366c17939a55c65821fc7506149aa7cf1bff0ac4a3b04bc26
   languageName: node
   linkType: hard
 
@@ -20326,15 +20298,6 @@ typescript@^4.4.3:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 215a59742afb7e0c3668e2c50ca19813deb24b3cc0d16ac3591990e033728050aaa99e159a72b54cb43653f16c778a5cf9dfeed1f51c3b105710ae082c064af7
-  languageName: node
-  linkType: hard
-
-"uglify-js@npm:^3.1.4":
-  version: 3.14.2
-  resolution: "uglify-js@npm:3.14.2"
-  bin:
-    uglifyjs: bin/uglifyjs
-  checksum: 4d8e5c63b2c0455b598cc09ade538cd4fe6d68cb46a9bc563464d749650047592d96aff5a283c1c29a0c27a6ce8f9eb0b3a33525b3e7555b841a53b2b32d6219
   languageName: node
   linkType: hard
 
@@ -21334,13 +21297,6 @@ typescript@^4.4.3:
   version: 1.2.3
   resolution: "word-wrap@npm:1.2.3"
   checksum: 30b48f91fcf12106ed3186ae4fa86a6a1842416df425be7b60485de14bec665a54a68e4b5156647dec3a70f25e84d270ca8bc8cd23182ed095f5c7206a938c1f
-  languageName: node
-  linkType: hard
-
-"wordwrap@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "wordwrap@npm:1.0.0"
-  checksum: 2a44b2788165d0a3de71fd517d4880a8e20ea3a82c080ce46e294f0b68b69a2e49cff5f99c600e275c698a90d12c5ea32aff06c311f0db2eb3f1201f3e7b2a04
   languageName: node
   linkType: hard
 
