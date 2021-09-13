@@ -1,27 +1,19 @@
 import React, { useEffect, useMemo, useCallback } from "react";
-
 import { UseQueryResult, useQueryClient } from "react-query";
-import { useQueryParam } from "use-query-params";
-import { mainQueryParamsConfig } from "../../../../app_config";
 
 import style from "./tableblock.module.css";
 import {
   useDescriptionQuery,
   useIndicatorQuery,
 } from "../../../../helpers/hooks";
-import {
-  filterOrderIndID,
-  validateTreatmentUnits,
-} from "../../../../helpers/functions";
+import { filterOrderIndID } from "../../../../helpers/functions";
 import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
 import { Description, StatisticData, RegisterNames } from "../../";
-import { OptsTu } from "../../../select_multi";
 
 export interface TableBlockProps {
   context: string;
   tableType: "allRegistries" | "singleRegister";
-  optstu: OptsTu[] | [];
   registerName: RegisterNames;
   blockTitle?: string;
   treatmentYear: number;
@@ -36,7 +28,6 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
   const {
     context,
     tableType,
-    optstu,
     registerName,
     colspan,
     trRegisterNameClass = "register-row",
@@ -44,22 +35,13 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     medicalFieldFilter,
     showLevelFilter,
     blockTitle,
+    unitNames,
   } = props;
   const queryContext =
     context === "coverage"
       ? { context: "caregiver", type: "dg" }
       : { context, type: "ind" };
-
-  const [treatment_units] = useQueryParam(
-    "selected_treatment_units",
-    mainQueryParamsConfig.selected_treatment_units
-  );
-  const unitNames = React.useMemo(() => {
-    return [
-      ...validateTreatmentUnits(treatment_units as string[], optstu),
-      "Nasjonalt",
-    ];
-  }, [treatment_units, optstu]);
+  const unitNamesYearString = `${unitNames.toString()}${treatmentYear.toString()}`;
   const queryClient = useQueryClient();
 
   const indicatorDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
@@ -94,14 +76,30 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     queryContext.type,
   ]);
 
+  const cancel = useCallback(() => {
+    return queryClient.cancelQueries([
+      "indicatorData",
+      registerName.rname,
+      queryContext.context,
+      queryContext.type,
+    ]);
+  }, [
+    queryClient,
+    registerName.rname,
+    queryContext.context,
+    queryContext.type,
+  ]);
+
   useEffect(() => {
+    cancel();
     refetch();
   }, [
-    unitNames,
     refetch,
+    cancel,
     treatmentYear,
     queryContext.context,
     queryContext.type,
+    unitNamesYearString,
   ]);
 
   const uniqueOrderedInd: string[] = useMemo(

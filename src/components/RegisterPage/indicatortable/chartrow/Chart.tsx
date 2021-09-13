@@ -65,9 +65,30 @@ const GetBarChart: React.FC<Props> = (props) => {
     props.context.type,
   ]);
 
+  const cancel = useCallback(() => {
+    return queryClient.cancelQueries([
+      "indicatorDataBarChart",
+      registerShortName,
+      props.context.context,
+      props.context.type,
+    ]);
+  }, [
+    queryClient,
+    registerShortName,
+    props.context.context,
+    props.context.type,
+  ]);
+
   useEffect(() => {
+    cancel();
     refetch();
-  }, [refetch, treatmentYear, props.context.context, props.context.type]);
+  }, [
+    refetch,
+    cancel,
+    treatmentYear,
+    props.context.context,
+    props.context.type,
+  ]);
 
   if (isLoading) return <>Loading...</>;
   if (error) return <>An error has occured: {error.message}</>;
@@ -140,9 +161,30 @@ const GetLineChart: React.FC<Props> = (props) => {
     props.context.type,
   ]);
 
+  const cancel = useCallback(() => {
+    return queryClient.cancelQueries([
+      "indicatorDatalineChart",
+      registerShortName,
+      props.context.context,
+      props.context.type,
+    ]);
+  }, [
+    queryClient,
+    registerShortName,
+    props.context.context,
+    props.context.type,
+  ]);
+
   useEffect(() => {
+    cancel();
     refetch();
-  }, [unitNameString, refetch, props.context.context, props.context.type]);
+  }, [
+    unitNameString,
+    cancel,
+    refetch,
+    props.context.context,
+    props.context.type,
+  ]);
 
   const data: DataPoint[] = (lineChartQuery.data ?? [])
     .filter((data: StatisticData) => {

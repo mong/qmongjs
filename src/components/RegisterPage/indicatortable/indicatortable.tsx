@@ -1,5 +1,4 @@
 import React from "react";
-import { OptsTu } from "../../select_multi";
 
 import { IndicatorTableHeader } from "./indicatortableheader";
 import { IndicatorTableBody } from "./indicatortablebody";
@@ -8,7 +7,6 @@ import { RegisterNames } from "../.";
 export interface IndicatorTableProps {
   context: string;
   tableType: "allRegistries" | "singleRegister";
-  optstu: OptsTu[] | [];
   colspan: number;
   descriptionHeader?: string;
   unitNames: string[];
@@ -26,7 +24,6 @@ export const IndicatorTable: React.FC<IndicatorTableProps> = (props) => {
   const {
     context,
     tableType,
-    optstu,
     unitNames = ["Nasjonalt"],
     treatmentYear = 2019,
     colspan,
@@ -51,7 +48,6 @@ export const IndicatorTable: React.FC<IndicatorTableProps> = (props) => {
       <IndicatorTableBody
         context={context}
         tableType={tableType}
-        optstu={optstu}
         colspan={colspan}
         registerNames={registerNames}
         unitNames={unitNames}

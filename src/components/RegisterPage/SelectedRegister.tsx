@@ -198,7 +198,6 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
             <IndicatorTable
               context={context}
               tableType={"singleRegister"}
-              optstu={optstu}
               registerNames={registerInfo}
               unitNames={[...validated_treatment_units, "Nasjonalt"]}
               treatmentYear={validated_selected_year}

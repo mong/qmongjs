@@ -1,14 +1,12 @@
 import React, { useRef } from "react";
-import { OptsTu } from "../../../select_multi";
-import { RegisterNames } from "../../.";
 
+import { RegisterNames } from "../../.";
 import TableBlock from "../tableblock/tableblock";
 import { NoDataAvailible } from "../ContenForEmptyTable";
 
 export interface IndicatorTableBodyProps {
   context: string;
   tableType: "allRegistries" | "singleRegister";
-  optstu: OptsTu[] | [];
   colspan: number;
   registerNames: RegisterNames[];
   unitNames: string[];
@@ -24,7 +22,6 @@ export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (
   const {
     context,
     tableType,
-    optstu,
     colspan,
     registerNames,
     unitNames,
@@ -45,7 +42,6 @@ export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (
           context={context}
           tableType={tableType}
           key={`${register.rname}`}
-          optstu={optstu}
           registerName={register}
           colspan={colspan}
           unitNames={unitNames}
