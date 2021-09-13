@@ -10,7 +10,6 @@ import { TableBlock, TableBlockProps } from "..";
 const props: TableBlockProps = {
   context: "sykehus",
   tableType: "allRegistries",
-  optstu: [],
   registerName: {
     id: 1,
     rname: "hoftebrudd",
