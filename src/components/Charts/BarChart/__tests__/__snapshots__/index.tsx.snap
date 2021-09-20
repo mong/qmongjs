@@ -279,10 +279,11 @@ exports[`Render with levels @250px 1`] = `
           <text
             class="label"
             data-testid="bar-label-a"
+            fill="white"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="232"
             y="25.674418604651155"
           >
             100%
@@ -290,10 +291,11 @@ exports[`Render with levels @250px 1`] = `
           <text
             class="label"
             data-testid="bar-label-b"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="53.5"
             y="60.55813953488371"
           >
             15%
@@ -301,10 +303,11 @@ exports[`Render with levels @250px 1`] = `
           <text
             class="label"
             data-testid="bar-label-c"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="91"
             y="95.44186046511626"
           >
             30%
@@ -312,10 +315,11 @@ exports[`Render with levels @250px 1`] = `
           <text
             class="label"
             data-testid="bar-label-d"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="41"
             y="130.32558139534882"
           >
             10%
@@ -606,10 +610,11 @@ exports[`Render with levels @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-a"
+            fill="white"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="482"
             y="25.674418604651155"
           >
             100%
@@ -617,10 +622,11 @@ exports[`Render with levels @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-b"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="91"
             y="60.55813953488371"
           >
             15%
@@ -628,10 +634,11 @@ exports[`Render with levels @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-c"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="166"
             y="95.44186046511626"
           >
             30%
@@ -639,10 +646,11 @@ exports[`Render with levels @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-d"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="66"
             y="130.32558139534882"
           >
             10%
@@ -933,10 +941,11 @@ exports[`Render with levels reversed @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-a"
+            fill="white"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="482"
             y="25.674418604651155"
           >
             100%
@@ -944,10 +953,11 @@ exports[`Render with levels reversed @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-b"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="91"
             y="60.55813953488371"
           >
             15%
@@ -955,10 +965,11 @@ exports[`Render with levels reversed @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-c"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="166"
             y="95.44186046511626"
           >
             30%
@@ -966,10 +977,11 @@ exports[`Render with levels reversed @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-d"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="66"
             y="130.32558139534882"
           >
             10%
@@ -1229,10 +1241,11 @@ exports[`Render without levels @250px 1`] = `
           <text
             class="label"
             data-testid="bar-label-a"
+            fill="white"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="232"
             y="25.674418604651155"
           >
             100%
@@ -1240,10 +1253,11 @@ exports[`Render without levels @250px 1`] = `
           <text
             class="label"
             data-testid="bar-label-b"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="53.5"
             y="60.55813953488371"
           >
             15%
@@ -1251,10 +1265,11 @@ exports[`Render without levels @250px 1`] = `
           <text
             class="label"
             data-testid="bar-label-c"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="91"
             y="95.44186046511626"
           >
             30%
@@ -1262,10 +1277,11 @@ exports[`Render without levels @250px 1`] = `
           <text
             class="label"
             data-testid="bar-label-d"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="41"
             y="130.32558139534882"
           >
             10%
@@ -1525,10 +1541,11 @@ exports[`Render without levels @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-a"
+            fill="white"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="482"
             y="25.674418604651155"
           >
             100%
@@ -1536,10 +1553,11 @@ exports[`Render without levels @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-b"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="91"
             y="60.55813953488371"
           >
             15%
@@ -1547,10 +1565,11 @@ exports[`Render without levels @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-c"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="166"
             y="95.44186046511626"
           >
             30%
@@ -1558,10 +1577,11 @@ exports[`Render without levels @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-d"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="66"
             y="130.32558139534882"
           >
             10%
@@ -1870,10 +1890,11 @@ exports[`Render zoomed with levels @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-a"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="425.8360655737705"
             y="25.674418604651155"
           >
             50%
@@ -1881,10 +1902,11 @@ exports[`Render zoomed with levels @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-b"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="138.95081967213116"
             y="60.55813953488371"
           >
             15%
@@ -1892,10 +1914,11 @@ exports[`Render zoomed with levels @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-c"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="261.9016393442623"
             y="95.44186046511626"
           >
             30%
@@ -1903,10 +1926,11 @@ exports[`Render zoomed with levels @500px 1`] = `
           <text
             class="label"
             data-testid="bar-label-d"
+            fill="rgb(0, 0, 0)"
             font-size="0.7em"
-            opacity="0.3"
+            opacity="0.9"
             text-anchor="middle"
-            x="0"
+            x="97.9672131147541"
             y="130.32558139534882"
           >
             10%
