@@ -198,7 +198,8 @@ const GetLineChart: React.FC<Props> = (props) => {
       label: d.unit_name,
       year: d.year,
       value: d.var,
-    }));
+    }))
+    .sort((a: DataPoint, b: DataPoint) => b.year - a.year);
 
   return <LineChart {...props} data={data} />;
 };
