@@ -5492,12 +5492,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-transition-group@npm:*":
-  version: 4.4.2
-  resolution: "@types/react-transition-group@npm:4.4.2"
+"@types/react-transition-group@npm:*, @types/react-transition-group@npm:^4.4.0":
+  version: 4.4.3
+  resolution: "@types/react-transition-group@npm:4.4.3"
   dependencies:
     "@types/react": "*"
-  checksum: 35523ef25ae5bbf68793a52e9b996f8c7c337e0d10650bc964c26929547b062509c955f55e76651bcf604560594783f60c4bfcee290a263845f9e43eb0ab0d1e
+  checksum: 7e45c6bf50cdfdc482d9ce4c302cda65134b3a44306c749d46d2f3256ca8c95cbbc1cbe28c32010b9273f5db78c8d434a8cea3688ac6e5327443b8a8d1c1caac
   languageName: node
   linkType: hard
 
@@ -17474,7 +17474,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.0.0, prop-types@npm:^15.5.8, prop-types@npm:^15.6.0, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2":
+"prop-types@npm:^15.0.0, prop-types@npm:^15.6.0, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2":
   version: 15.7.2
   resolution: "prop-types@npm:15.7.2"
   dependencies:
@@ -17632,7 +17632,7 @@ fsevents@^1.2.7:
     react-query: ^3.26.0
     react-router-dom: ^5.3.0
     react-scripts: ^4.0.3
-    react-select: ^4.3.1
+    react-select: ^5.1.0
     resize-observer-polyfill: ^1.5.1
     source-map-explorer: ^2.5.2
     typedoc: ^0.22.5
@@ -17949,17 +17949,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-input-autosize@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "react-input-autosize@npm:3.0.0"
-  dependencies:
-    prop-types: ^15.5.8
-  peerDependencies:
-    react: ^16.3.0 || ^17.0.0
-  checksum: cc3309ddc87446ade742c7d0e88ef089dd8b6981f21506a2bb27daf01a8803ac697f64157c4ffc7e81dfcf3892b54a4072dbc3652fd9addcf6d22dd0b87ab723
-  languageName: node
-  linkType: hard
-
 "react-inspector@npm:^5.1.0":
   version: 5.1.1
   resolution: "react-inspector@npm:5.1.1"
@@ -18161,21 +18150,21 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-select@npm:^4.3.1":
-  version: 4.3.1
-  resolution: "react-select@npm:4.3.1"
+"react-select@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "react-select@npm:5.1.0"
   dependencies:
     "@babel/runtime": ^7.12.0
     "@emotion/cache": ^11.4.0
     "@emotion/react": ^11.1.1
+    "@types/react-transition-group": ^4.4.0
     memoize-one: ^5.0.0
     prop-types: ^15.6.0
-    react-input-autosize: ^3.0.0
     react-transition-group: ^4.3.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: e87e0b42a662ddce7957a69a3029ea769b22264c197cbd1d8bde1ce631e49c5c5f42414773364674a7a6a8431340e1ede49220583bf1dcd966b63e9bd25cfc12
+  checksum: b811ec246dc68b2615ed623170ed52c035e239a2c90fdf742c18bed1d1bb1cb4098af1fde0d18ac8d73abaf9126f4030cb0a0f3e96c1c6f998820af5e681b3b5
   languageName: node
   linkType: hard
 
