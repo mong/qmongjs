@@ -17754,7 +17754,7 @@ fsevents@^1.2.7:
     react: ^17.0.1
     react-dom: ^17.0.2
     react-icons: ^4.3.1
-    react-query: ^3.24.5
+    react-query: ^3.26.0
     react-router-dom: ^5.3.0
     react-scripts: ^4.0.3
     react-select: ^4.3.1
@@ -18146,9 +18146,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-query@npm:^3.24.5":
-  version: 3.24.5
-  resolution: "react-query@npm:3.24.5"
+"react-query@npm:^3.26.0":
+  version: 3.26.0
+  resolution: "react-query@npm:3.26.0"
   dependencies:
     "@babel/runtime": ^7.5.5
     broadcast-channel: ^3.4.1
@@ -18160,7 +18160,7 @@ fsevents@^1.2.7:
       optional: true
     react-native:
       optional: true
-  checksum: 28476a383e7227c50e0052229fe13ef65d1776c2f25c6be06a30b25d63176bb99e632fa58a4d89615d377b3de22f560e9fbe209c02c91ab61709c02107af8456
+  checksum: 601d10b0a32abe300e2e33df8882efdf5380e4793a2891ca88ed803152d7086f5f90eca04bf4c27bd16a42a25a704988ccd6c5dc99044464858c4f16ce42f782
   languageName: node
   linkType: hard
 
