@@ -57,11 +57,11 @@ function BarChart(props: Props) {
   };
   const innerHeight = height - marginOffsets.top - marginOffsets.bottom;
   const innerWidth = width - marginOffsets.left - marginOffsets.right;
-
   useEffect(() => {
     if (!svgRef.current) {
       return;
     }
+
     const svg = select(svgRef.current).selectChild<SVGGElement>();
     // Scales
     const yScale = scaleBand()
@@ -149,31 +149,22 @@ function BarChart(props: Props) {
       .select(".labels")
       .selectAll(".label")
       .data(data)
-      .join(
-        (enter) =>
-          enter
-            .append("text")
-            .attr("class", "label")
-            .attr("data-testid", (d) => `bar-label-${d.label}`)
-            .attr("opacity", 0.3)
-            .attr("x", 0)
-            .attr("y", (d) => yScale(d.label)! + yScale.bandwidth() / 2 + 3)
-            .text((d) => Math.round((d.value * 100 * 100) / 100) + "%")
-            .attr("text-anchor", "middle")
-            .attr("font-size", "0.7em"),
-
-        (update) =>
-          update.call((update) =>
-            update
-              .transition()
-              .duration(1000)
-              .attr("opacity", 0.9)
-              .attr("fill", (d) => (d.value > 0.95 ? "white" : "black"))
-              .attr("x", (d) =>
-                d.value > 0.95 ? xScale(d.value) - 18 : xScale(d.value) + 16
-              )
-          ),
-        (exit) => exit.remove()
+      .join("text")
+      .attr("class", "label")
+      .attr("data-testid", (d) => `bar-label-${d.label}`)
+      .attr("opacity", 0.3)
+      .attr("x", 0)
+      .attr("y", (d) => yScale(d.label)! + yScale.bandwidth() / 2 + 3)
+      .text((d) => Math.round((d.value * 100 * 100) / 100) + "%")
+      .attr("text-anchor", "middle")
+      .attr("font-size", "0.7em")
+      .attr("fill", "white")
+      .transition()
+      .duration(1000)
+      .attr("opacity", 0.9)
+      .attr("fill", (d) => (d.value > 0.95 ? "white" : "black"))
+      .attr("x", (d) =>
+        d.value > 0.95 ? xScale(d.value) - 18 : xScale(d.value) + 16
       );
   }, [data, displayLevels, levels, delayedZoom, innerHeight, innerWidth]);
 
