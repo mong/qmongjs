@@ -3807,7 +3807,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/node-logger@npm:6.3.11, @storybook/node-logger@npm:^6.3.7":
+"@storybook/node-logger@npm:6.3.11":
   version: 6.3.11
   resolution: "@storybook/node-logger@npm:6.3.11"
   dependencies:
@@ -3817,6 +3817,19 @@ __metadata:
     npmlog: ^4.1.2
     pretty-hrtime: ^1.0.3
   checksum: d5f3a82a9618b5755af3ae5a5c6b42b6b7499698aebb7a2deeb48ca39ce7ba039cb487a487d5d1d5b358dd918621e70bb5d9282566274f98b1a7680a7de2746c
+  languageName: node
+  linkType: hard
+
+"@storybook/node-logger@npm:^6.3.12":
+  version: 6.3.12
+  resolution: "@storybook/node-logger@npm:6.3.12"
+  dependencies:
+    "@types/npmlog": ^4.1.2
+    chalk: ^4.1.0
+    core-js: ^3.8.2
+    npmlog: ^4.1.2
+    pretty-hrtime: ^1.0.3
+  checksum: 1cac2cef9450e87c46fd7da0240f43c3d00ca5543db4a97834a07837c289d20f0defb8819ea58deff0c7ba534ab70cec73e95e9729a346d0754c333754f73477
   languageName: node
   linkType: hard
 
@@ -17168,7 +17181,7 @@ fsevents@^1.2.7:
     "@storybook/addon-essentials": ^6.3.10
     "@storybook/addon-links": ^6.3.12
     "@storybook/addon-queryparams": ^6.2.9
-    "@storybook/node-logger": ^6.3.7
+    "@storybook/node-logger": ^6.3.12
     "@storybook/preset-create-react-app": ^4.0.0
     "@storybook/react": ^6.3.10
     "@testing-library/jest-dom": ^5.14.1
