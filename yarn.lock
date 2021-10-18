@@ -4837,10 +4837,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/faker@npm:^5.5.6":
-  version: 5.5.8
-  resolution: "@types/faker@npm:5.5.8"
-  checksum: eb642cac279cbaca46001d301284d51f4b9ca90f48b4b8edb9bbf4335edf70e0216ad921690edb2feec6502eb1bc9ed1fe3e3a27efc49f168ece88acfe2e68ac
+"@types/faker@npm:^5.5.9":
+  version: 5.5.9
+  resolution: "@types/faker@npm:5.5.9"
+  checksum: c2cbd082abe29047c89cf29b86257e582d2a177a9d1ed3abf99aa1cc025d5e8a3d201dfaddf8441bfcc57ed43e4da80e666951e1c23a5b759ac441a5855b5c36
   languageName: node
   linkType: hard
 
@@ -17300,7 +17300,7 @@ fsevents@^1.2.7:
     "@testing-library/react": ^12.1.2
     "@testing-library/user-event": ^13.4.1
     "@types/d3": ^7.0.0
-    "@types/faker": ^5.5.6
+    "@types/faker": ^5.5.9
     "@types/jest": ^27.0.2
     "@types/node": ^16.6.1
     "@types/react": ^17.0.30
