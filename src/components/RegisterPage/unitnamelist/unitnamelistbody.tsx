@@ -18,7 +18,6 @@ interface Props {
 
 export const UnitNameListBody: React.FC<Props> = (props) => {
   const { tu_names, treatment_units, update_treatment_units } = props;
-
   const handle_tu_list_click = (
     selected_unit: string,
     treatment_units: string[],
@@ -66,6 +65,7 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
           color: "#08418e",
         }
       : {};
+
     return (
       <div key={`hf_hospital_${element.hf}`} className={`tu_list_hf`}>
         <div className="tu_list_hf_btn_constainer">
@@ -87,11 +87,35 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
       </div>
     );
   });
-
+  const style_rhf = treatment_units.includes(tu_names.rhf)
+    ? {
+        color: "#08418e",
+        fontWeight: 600,
+        textDecoration: "underline",
+      }
+    : {};
   return (
     <>
       <div className={`tu_list_rhf`}>
-        <h3 className="tu_list_rhf_header">{tu_names.rhf}</h3>
+        <h3
+          className="tu_list_rhf_header"
+          onClick={() =>
+            handle_tu_list_click(
+              tu_names.rhf,
+              treatment_units,
+              update_treatment_units
+            )
+          }
+        >
+          <div className="tooltip" style={style_rhf}>
+            {tu_names.rhf}
+            <span className="tooltiptext" style={{ fontSize: "0.5em" }}>
+              Velg alle under:
+              <br />
+              {tu_names.rhf}
+            </span>
+          </div>
+        </h3>
         <div className={`tu_list_rhf_content`}>
           <div className={`tu_list_hfs_in_rhf`}>{hf_hospital}</div>
         </div>
