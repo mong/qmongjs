@@ -1,183 +1,51 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>qmongjs</title>
-	<meta name="description" content="Documentation for qmongjs">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">qmongjs</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>qmongjs</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<p><a href="https://github.com/mong/qmongjs/releases"><img src="https://img.shields.io/github/v/release/mong/qmongjs?sort=semver" alt="Version"></a>
-					<a href="https://github.com/mong/qmongjs/actions/workflows/codeql-analysis.yml"><img src="https://github.com/mong/qmongjs/actions/workflows/codeql-analysis.yml/badge.svg" alt="CodeQL"></a>
-					<a href="https://github.com/mong/qmongjs/actions/workflows/aws_deploy.yml"><img src="https://github.com/mong/qmongjs/actions/workflows/aws_deploy.yml/badge.svg" alt="Deploy app to AWS"></a>
-					<a href="https://github.com/mong/qmongjs/actions/workflows/node.js.yml"><img src="https://github.com/mong/qmongjs/actions/workflows/node.js.yml/badge.svg" alt="Node.js CI"></a>
-					<a href="https://codecov.io/gh/mong/qmongjs?branch=master"><img src="https://codecov.io/gh/mong/qmongjs/branch/master/graph/badge.svg" alt="Codecov test coverage"></a>
-					<a href="https://github.com/mong/qmongjs/issues"><img src="https://img.shields.io/github/issues/mong/qmongjs.svg" alt="GitHub open issues"></a>
-				<a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a></p>
-				<p><code>qmongjs</code> is the code behind <a href="https://www.skde.no/kvalitetsregistre/alle/sykehus">www.skde.no/kvalitetsregistre</a>.</p>
-				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
-					<h2>Installation</h2>
-				</a>
-				<p>You can install the latest version of qmongjs from <a href="https://github.com/mong/qmongjs">github</a>.</p>
-				<a href="#available-scripts" id="available-scripts" style="color: inherit; text-decoration: none;">
-					<h2>Available Scripts</h2>
-				</a>
-				<p>In the project directory, you can run:</p>
-				<a href="#yarn-install" id="yarn-install" style="color: inherit; text-decoration: none;">
-					<h3><code>yarn install</code></h3>
-				</a>
-				<p>Installs all the modules listed as dependencies in package.json.</p>
-				<a href="#yarn-start" id="yarn-start" style="color: inherit; text-decoration: none;">
-					<h3><code>yarn start</code></h3>
-				</a>
-				<p>Runs the app in the development mode.<br />
-				Open <a href="http://localhost:3000/kvalitetsregistre">http://localhost:3000/kvalitetsregistre</a> to view it in the browser.</p>
-				<p>The page will reload if you make edits.<br />
-				You will also see any lint errors in the console.</p>
-				<a href="#yarn-run-build" id="yarn-run-build" style="color: inherit; text-decoration: none;">
-					<h3><code>yarn run build</code></h3>
-				</a>
-				<p>Builds the app for production to the <code>build</code> folder.<br />
-				It correctly bundles React in production mode and optimizes the build for the best performance.</p>
-				<p>The build is minified and the filenames include the hashes.<br /></p>
-				<a href="#yarn-test" id="yarn-test" style="color: inherit; text-decoration: none;">
-					<h3><code>yarn test</code></h3>
-				</a>
-				<p>Launches the test runner in the interactive watch mode.</p>
-				<a href="#ethics" id="ethics" style="color: inherit; text-decoration: none;">
-					<h2>Ethics</h2>
-				</a>
-				<p>Please note that the &#39;qmongjs&#39; project is released with a
-					<a href="CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>.
-				By contributing to this project, you agree to abide by its terms.</p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Modules</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/components_Charts_BarChart.html">components/<wbr>Charts/<wbr>Bar<wbr>Chart</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/components_Charts_LineChart.html">components/<wbr>Charts/<wbr>Line<wbr>Chart</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/components_Footer.html">components/<wbr>Footer</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/components_Header.html">components/<wbr>Header</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/components_Loading_tsx.html">components/<wbr>Loading.tsx</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/components_RegisterPage.html">components/<wbr>Register<wbr>Page</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/components_RegisterPage_header.html">components/<wbr>Register<wbr>Page/header</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/components_RegisterPage_indicatortable.html">components/<wbr>Register<wbr>Page/indicatortable</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/components_RegisterPage_medicalfields.html">components/<wbr>Register<wbr>Page/medicalfields</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/components_RegisterPage_unitnamelist.html">components/<wbr>Register<wbr>Page/unitnamelist</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/components_SelectRegister.html">components/<wbr>Select<wbr>Register</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/components_test_testserver.html">components/test/testserver</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/helpers_functions.html">helpers/functions</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/helpers_hooks.html">helpers/hooks</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>qmongjs</title><meta name="description" content="Documentation for qmongjs"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">qmongjs</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1> qmongjs</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography"><p><a href="https://github.com/mong/qmongjs/releases"><img src="https://img.shields.io/github/v/release/mong/qmongjs?sort=semver" alt="Version"></a>
+<a href="https://github.com/mong/qmongjs/actions/workflows/codeql-analysis.yml"><img src="https://github.com/mong/qmongjs/actions/workflows/codeql-analysis.yml/badge.svg" alt="CodeQL"></a>
+<a href="https://github.com/mong/qmongjs/actions/workflows/aws_deploy.yml"><img src="https://github.com/mong/qmongjs/actions/workflows/aws_deploy.yml/badge.svg" alt="Deploy app to AWS"></a>
+<a href="https://github.com/mong/qmongjs/actions/workflows/node.js.yml"><img src="https://github.com/mong/qmongjs/actions/workflows/node.js.yml/badge.svg" alt="Node.js CI"></a>
+<a href="https://codecov.io/gh/mong/qmongjs?branch=master"><img src="https://codecov.io/gh/mong/qmongjs/branch/master/graph/badge.svg" alt="Codecov test coverage"></a>
+<a href="https://github.com/mong/qmongjs/issues"><img src="https://img.shields.io/github/issues/mong/qmongjs.svg" alt="GitHub open issues"></a>
+<a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a></p>
+<p><code>qmongjs</code> is the code behind <a href="https://www.skde.no/kvalitetsregistre/alle/sykehus">www.skde.no/kvalitetsregistre</a>.</p>
+
+<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+  <h2>Installation</h2>
+</a>
+<p>You can install the latest version of qmongjs from <a href="https://github.com/mong/qmongjs">github</a>.</p>
+
+<a href="#available-scripts" id="available-scripts" style="color: inherit; text-decoration: none;">
+  <h2>Available Scripts</h2>
+</a>
+<p>In the project directory, you can run:</p>
+
+<a href="#yarn-install" id="yarn-install" style="color: inherit; text-decoration: none;">
+  <h3><code>yarn install</code></h3>
+</a>
+<p>Installs all the modules listed as dependencies in package.json.</p>
+
+<a href="#yarn-start" id="yarn-start" style="color: inherit; text-decoration: none;">
+  <h3><code>yarn start</code></h3>
+</a>
+<p>Runs the app in the development mode.<br />
+Open <a href="http://localhost:3000/kvalitetsregistre">http://localhost:3000/kvalitetsregistre</a> to view it in the browser.</p>
+<p>The page will reload if you make edits.<br />
+You will also see any lint errors in the console.</p>
+
+<a href="#yarn-run-build" id="yarn-run-build" style="color: inherit; text-decoration: none;">
+  <h3><code>yarn run build</code></h3>
+</a>
+<p>Builds the app for production to the <code>build</code> folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.</p>
+<p>The build is minified and the filenames include the hashes.<br /></p>
+
+<a href="#yarn-test" id="yarn-test" style="color: inherit; text-decoration: none;">
+  <h3><code>yarn test</code></h3>
+</a>
+<p>Launches the test runner in the interactive watch mode.</p>
+
+<a href="#ethics" id="ethics" style="color: inherit; text-decoration: none;">
+  <h2>Ethics</h2>
+</a>
+<p>Please note that the &#39;qmongjs&#39; project is released with a
+<a href="CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>.
+By contributing to this project, you agree to abide by its terms.</p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Modules</a></li><li class=" tsd-kind-module"><a href="modules/components_Charts_BarChart.html">components/<wbr/>Charts/<wbr/>Bar<wbr/>Chart</a></li><li class=" tsd-kind-module"><a href="modules/components_Charts_LineChart.html">components/<wbr/>Charts/<wbr/>Line<wbr/>Chart</a></li><li class=" tsd-kind-module"><a href="modules/components_Footer.html">components/<wbr/>Footer</a></li><li class=" tsd-kind-module"><a href="modules/components_Header.html">components/<wbr/>Header</a></li><li class=" tsd-kind-module"><a href="modules/components_Loading_tsx.html">components/<wbr/>Loading.tsx</a></li><li class=" tsd-kind-module"><a href="modules/components_RegisterPage.html">components/<wbr/>Register<wbr/>Page</a></li><li class=" tsd-kind-module"><a href="modules/components_RegisterPage_header.html">components/<wbr/>Register<wbr/>Page/header</a></li><li class=" tsd-kind-module"><a href="modules/components_RegisterPage_indicatortable.html">components/<wbr/>Register<wbr/>Page/indicatortable</a></li><li class=" tsd-kind-module"><a href="modules/components_RegisterPage_medicalfields.html">components/<wbr/>Register<wbr/>Page/medicalfields</a></li><li class=" tsd-kind-module"><a href="modules/components_RegisterPage_unitnamelist.html">components/<wbr/>Register<wbr/>Page/unitnamelist</a></li><li class=" tsd-kind-module"><a href="modules/components_SelectRegister.html">components/<wbr/>Select<wbr/>Register</a></li><li class=" tsd-kind-module"><a href="modules/components_test_testserver.html">components/test/testserver</a></li><li class=" tsd-kind-module"><a href="modules/helpers_functions.html">helpers/functions</a></li><li class=" tsd-kind-module"><a href="modules/helpers_hooks.html">helpers/hooks</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li><li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
