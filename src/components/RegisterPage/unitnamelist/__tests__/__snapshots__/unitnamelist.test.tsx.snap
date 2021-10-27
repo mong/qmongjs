@@ -38,8 +38,7 @@ exports[`unit name selection renders 1`] = `
               class="tooltiptext"
               style="font-size: 0.5em;"
             >
-              Velg alle under:
-              <br />
+              Velg 
               Helse Midt-Norge RHF
             </span>
           </div>
@@ -163,8 +162,7 @@ exports[`unit name selection renders 1`] = `
               class="tooltiptext"
               style="font-size: 0.5em;"
             >
-              Velg alle under:
-              <br />
+              Velg 
               Helse Nord RHF
             </span>
           </div>
@@ -315,8 +313,7 @@ exports[`unit name selection renders 1`] = `
               class="tooltiptext"
               style="font-size: 0.5em;"
             >
-              Velg alle under:
-              <br />
+              Velg 
               Helse Sør-Øst RHF
             </span>
           </div>
@@ -669,8 +666,7 @@ exports[`unit name selection renders 1`] = `
               class="tooltiptext"
               style="font-size: 0.5em;"
             >
-              Velg alle under:
-              <br />
+              Velg 
               Helse Vest RHF
             </span>
           </div>
@@ -848,8 +844,7 @@ exports[`unit name selection renders 1`] = `
               class="tooltiptext"
               style="font-size: 0.5em;"
             >
-              Velg alle under:
-              <br />
+              Velg 
               Private
             </span>
           </div>

@@ -110,9 +110,7 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
           <div className="tooltip" style={style_rhf}>
             {tu_names.rhf}
             <span className="tooltiptext" style={{ fontSize: "0.5em" }}>
-              Velg alle under:
-              <br />
-              {tu_names.rhf}
+              Velg {tu_names.rhf}
             </span>
           </div>
         </h3>
