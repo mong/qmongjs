@@ -30,7 +30,18 @@ exports[`unit name selection renders 1`] = `
         <h3
           class="tu_list_rhf_header"
         >
-          Helse Midt-Norge RHF
+          <div
+            class="tooltip"
+          >
+            Helse Midt-Norge RHF
+            <span
+              class="tooltiptext"
+              style="font-size: 0.5em;"
+            >
+              Velg 
+              Helse Midt-Norge RHF
+            </span>
+          </div>
         </h3>
         <div
           class="tu_list_rhf_content"
@@ -143,7 +154,18 @@ exports[`unit name selection renders 1`] = `
         <h3
           class="tu_list_rhf_header"
         >
-          Helse Nord RHF
+          <div
+            class="tooltip"
+          >
+            Helse Nord RHF
+            <span
+              class="tooltiptext"
+              style="font-size: 0.5em;"
+            >
+              Velg 
+              Helse Nord RHF
+            </span>
+          </div>
         </h3>
         <div
           class="tu_list_rhf_content"
@@ -283,7 +305,18 @@ exports[`unit name selection renders 1`] = `
         <h3
           class="tu_list_rhf_header"
         >
-          Helse Sør-Øst RHF
+          <div
+            class="tooltip"
+          >
+            Helse Sør-Øst RHF
+            <span
+              class="tooltiptext"
+              style="font-size: 0.5em;"
+            >
+              Velg 
+              Helse Sør-Øst RHF
+            </span>
+          </div>
         </h3>
         <div
           class="tu_list_rhf_content"
@@ -625,7 +658,18 @@ exports[`unit name selection renders 1`] = `
         <h3
           class="tu_list_rhf_header"
         >
-          Helse Vest RHF
+          <div
+            class="tooltip"
+          >
+            Helse Vest RHF
+            <span
+              class="tooltiptext"
+              style="font-size: 0.5em;"
+            >
+              Velg 
+              Helse Vest RHF
+            </span>
+          </div>
         </h3>
         <div
           class="tu_list_rhf_content"
@@ -792,7 +836,18 @@ exports[`unit name selection renders 1`] = `
         <h3
           class="tu_list_rhf_header"
         >
-          Private
+          <div
+            class="tooltip"
+          >
+            Private
+            <span
+              class="tooltiptext"
+              style="font-size: 0.5em;"
+            >
+              Velg 
+              Private
+            </span>
+          </div>
         </h3>
         <div
           class="tu_list_rhf_content"
