@@ -1,4 +1,3 @@
-import React from "react";
 import { QueryParamProvider } from "use-query-params";
 import { BrowserRouter, Route } from "react-router-dom";
 

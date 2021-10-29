@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import ChartButtons from "./chartrowbuttons";
 import TF_LONG_DESCRIPTION from "./chartrowdescription";

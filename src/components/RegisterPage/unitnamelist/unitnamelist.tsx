@@ -1,4 +1,4 @@
-import React, { Dispatch, useState } from "react";
+import { Dispatch, useState } from "react";
 
 import { UnitNameListHeader } from "./unitnamelistheader";
 import { UnitNameListBody } from "./unitnamelistbody";
