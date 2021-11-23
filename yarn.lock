@@ -17110,7 +17110,7 @@ fsevents@^1.2.7:
     react-query: ^3.33.1
     react-router-dom: ^5.3.0
     react-scripts: ^4.0.3
-    react-select: ^5.2.0
+    react-select: ^5.2.1
     resize-observer-polyfill: ^1.5.1
     source-map-explorer: ^2.5.2
     typedoc: ^0.22.9
@@ -17628,9 +17628,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-select@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "react-select@npm:5.2.0"
+"react-select@npm:^5.2.1":
+  version: 5.2.1
+  resolution: "react-select@npm:5.2.1"
   dependencies:
     "@babel/runtime": ^7.12.0
     "@emotion/cache": ^11.4.0
@@ -17642,7 +17642,7 @@ fsevents@^1.2.7:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 49666e8b73f721813bfef49d2ccd7fbf8d32d9b7c9d6723b53d5567d28dccb7374aa2ea209dda321bcac57c63184f3bb679ad91bb23ca7912358eb1c7fb29fe2
+  checksum: 014cde5d23ca466795bd7f02455769efda74522c41f11109ec2d6f0e3c77f401ea91ae23cdccce997efb653aa6ea88688a16f40e59bfdef2a2414d0cfd10f374
   languageName: node
   linkType: hard
 
