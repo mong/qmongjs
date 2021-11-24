@@ -21,7 +21,7 @@ const LONG_DESCRIPTION = (props: Props) => {
     set_content_status(cur_status);
   };
 
-  let new_descr_date = new Date(description_date);
+  let description_date_as_date = new Date(description_date);
 
   return (
     <div className="description-container">
@@ -40,8 +40,8 @@ const LONG_DESCRIPTION = (props: Props) => {
         {description_text}
       </p>
       <p className={`description_content ${content_status}`}>
-        Indikatoren ble sist oppdatert{" "}
-        {new_descr_date.toLocaleString("no-NO", {
+        Data ble sist oppdatert{" "}
+        {description_date_as_date.toLocaleString("no-NO", {
           day: "numeric",
           month: "long",
           year: "numeric",
