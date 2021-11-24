@@ -72,7 +72,7 @@ export function buildStatisticData(
     dg: 0.8677,
     include: 1,
     type: "andel",
-    delivery_time: null,
+    delivery_time: new Date("October 13, 2014 11:13:00"),
     ...overrides,
   };
 }

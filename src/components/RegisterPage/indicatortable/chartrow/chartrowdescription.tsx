@@ -3,14 +3,14 @@ import React, { useState } from "react";
 interface Props {
   description_title?: string;
   description_text: string;
-  description_date: Date | undefined;
+  delivery_time: Date;
 }
 
 const LONG_DESCRIPTION = (props: Props) => {
   const {
     description_title = "Om kvalitetsindikatoren",
     description_text = "Denne kvalitetsindikatoren er definert som andel pasienter med...",
-    description_date = new Date("1999-12-31T23:59:59.999Z"),
+    delivery_time = new Date("1999-12-31T23:59:59.999Z"),
   } = props;
   const [content_status, set_content_status] = useState<string>("inactive");
   const desc_click_handler = (
@@ -20,8 +20,6 @@ const LONG_DESCRIPTION = (props: Props) => {
     const cur_status = content_status === "" ? "inactive" : "";
     set_content_status(cur_status);
   };
-
-  let description_date_as_date = new Date(description_date);
 
   return (
     <div className="description-container">
@@ -41,7 +39,7 @@ const LONG_DESCRIPTION = (props: Props) => {
       </p>
       <p className={`description_content ${content_status}`}>
         Data ble sist oppdatert{" "}
-        {description_date_as_date.toLocaleString("no-NO", {
+        {delivery_time.toLocaleString("no-NO", {
           day: "numeric",
           month: "long",
           year: "numeric",

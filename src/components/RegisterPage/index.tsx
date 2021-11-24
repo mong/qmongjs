@@ -32,7 +32,7 @@ export interface StatisticData {
   dg: number | null;
   include: number | null;
   type: "andel" | string;
-  delivery_time: Date | null;
+  delivery_time: Date;
 }
 
 export interface Description {
