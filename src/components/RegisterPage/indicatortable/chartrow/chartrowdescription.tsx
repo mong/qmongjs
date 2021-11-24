@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import style from "./chartrowdescription.module.css";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 interface Props {
   description_title?: string;
@@ -10,31 +14,15 @@ const LONG_DESCRIPTION = (props: Props) => {
     description_title = "Om kvalitetsindikatoren",
     description_text = "Denne kvalitetsindikatoren er definert som andel pasienter med...",
   } = props;
-  const [content_status, set_content_status] = useState<string>("inactive");
-  const desc_click_handler = (
-    content_status: string,
-    set_content_status: (e: string) => void
-  ) => {
-    const cur_status = content_status === "" ? "inactive" : "";
-    set_content_status(cur_status);
-  };
 
   return (
-    <div className="description-container">
-      <div
-        className={`description_title_container`}
-        onClick={() => desc_click_handler(content_status, set_content_status)}
-      >
-        <h4>{description_title}</h4>
-        <i
-          className={`fa ${
-            content_status === "" ? "fa-angle-up" : "fa-angle-down"
-          }`}
-        />
-      </div>
-      <p className={`description_content ${content_status}`}>
-        {description_text}
-      </p>
+    <div className={style.description_container}>
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <div className={style.description_title}>{description_title}</div>
+        </AccordionSummary>
+        <AccordionDetails>{description_text}</AccordionDetails>
+      </Accordion>
     </div>
   );
 };

@@ -394,34 +394,6 @@ table {
   position: relative;
 }
 
-/*------ tr indicator desctiption ----*/
-
-.description_title_container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-left: 10%;
-  width: 80%;
-  cursor: pointer;
-}
-.description_title_container h4 {
-  margin: 10px;
-}
-.description_content {
-  max-height: 1000px;
-  margin-left: 13%;
-  margin-top: 0;
-  width: 70%;
-  text-align: justify;
-  overflow: hidden;
-  line-height: 1.5;
-  transition: max-height 0.1s ease-out;
-}
-.description_content.inactive {
-  max-height: 0px;
-  transition: max-height 0.1s ease-out;
-}
-
 /************ list of treatment units ***************/
 
 .hospital_list_btn {
