@@ -65,6 +65,7 @@ Nation.args = {
       dg: 1,
       type: "andel",
       include: 1,
+      delivery_time: null,
     },
   ],
 };
@@ -105,6 +106,7 @@ WithUnits.args = {
       dg: 1,
       type: "andel",
       include: 1,
+      delivery_time: null,
     },
     {
       id: 935463,
@@ -120,6 +122,7 @@ WithUnits.args = {
       dg: 1,
       type: "andel",
       include: 1,
+      delivery_time: null,
     },
     {
       id: 935463,
@@ -135,6 +138,7 @@ WithUnits.args = {
       dg: 1,
       type: "andel",
       include: 1,
+      delivery_time: null,
     },
   ],
   unitNames: ["UNN Tromsø", "UNN HF", "Nasjonalt"],
@@ -176,6 +180,7 @@ WithMaskedValues.args = {
       dg: 1,
       type: "andel",
       include: 1,
+      delivery_time: null,
     },
     {
       id: 935463,
@@ -191,6 +196,7 @@ WithMaskedValues.args = {
       dg: 0.4,
       type: "andel",
       include: 1,
+      delivery_time: null,
     },
     {
       id: 935463,
@@ -206,6 +212,7 @@ WithMaskedValues.args = {
       dg: 1,
       type: "andel",
       include: 1,
+      delivery_time: null,
     },
   ],
   unitNames: ["UNN Tromsø", "UIO", "UNN HF", "Nasjonalt"],

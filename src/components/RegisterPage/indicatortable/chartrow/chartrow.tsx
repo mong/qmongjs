@@ -40,6 +40,7 @@ export function ChartRow(props: Props) {
   const [show_level, update_show_level] = useState(false);
 
   let levels = level_boundary(description[0]);
+  console.log(indicatorData);
 
   return (
     <tr className={figure_class}>
@@ -73,6 +74,7 @@ export function ChartRow(props: Props) {
           />
           <TF_LONG_DESCRIPTION
             description_text={description[0].long_description ?? ""}
+            description_date={indicatorData[0].delivery_time ?? undefined}
           />
         </div>
       </td>

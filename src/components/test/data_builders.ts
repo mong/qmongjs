@@ -72,6 +72,7 @@ export function buildStatisticData(
     dg: 0.8677,
     include: 1,
     type: "andel",
+    delivery_time: null,
     ...overrides,
   };
 }
