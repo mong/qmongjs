@@ -34,17 +34,17 @@ const LONG_DESCRIPTION = (props: Props) => {
           }`}
         />
       </div>
-      <p className={`description_content ${content_status}`}>
-        {description_text}
-      </p>
-      <p className={`description_content ${content_status}`}>
-        Data ble sist oppdatert{" "}
-        {delivery_time.toLocaleString("no-NO", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        })}{" "}
-      </p>
+      <div className={`description_content ${content_status}`}>
+        <p>{description_text}</p>
+        <p>
+          Data ble sist oppdatert{" "}
+          {delivery_time.toLocaleString("no-NO", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })}{" "}
+        </p>
+      </div>
     </div>
   );
 };
