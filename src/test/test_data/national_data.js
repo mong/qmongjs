@@ -13,6 +13,7 @@ const national_data = [
     dg: null,
     include: 1,
     type: "andel",
+    delivery_time: null,
   },
   {
     id: 1006,
@@ -28,6 +29,7 @@ const national_data = [
     dg: null,
     include: 1,
     type: "andel",
+    delivery_time: null,
   },
   {
     id: 1002,
@@ -43,6 +45,7 @@ const national_data = [
     dg: null,
     include: 1,
     type: "andel",
+    delivery_time: null,
   },
   {
     id: 1003,
@@ -58,6 +61,7 @@ const national_data = [
     dg: null,
     include: 1,
     type: "andel",
+    delivery_time: null,
   },
   {
     id: 1004,
@@ -73,6 +77,7 @@ const national_data = [
     dg: null,
     include: 1,
     type: "andel",
+    delivery_time: null,
   },
   {
     id: 1005,
@@ -88,6 +93,7 @@ const national_data = [
     dg: null,
     include: 1,
     type: "andel",
+    delivery_time: null,
   },
 ];
 
