@@ -40,7 +40,6 @@ export function ChartRow(props: Props) {
   const [show_level, update_show_level] = useState(false);
 
   let levels = level_boundary(description[0]);
-  console.log(indicatorData);
 
   return (
     <tr className={figure_class}>
