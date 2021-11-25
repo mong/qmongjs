@@ -31,6 +31,7 @@ GreenLevel.args = {
     dg: 0.9297,
     include: 1,
     type: "andel",
+    delivery_time: new Date("October 13, 2014 11:13:00"),
   },
 };
 
@@ -50,6 +51,7 @@ YellowLevel.args = {
     dg: 0.9111,
     include: 1,
     type: "andel",
+    delivery_time: new Date("October 13, 2014 11:13:00"),
   },
 };
 
@@ -69,6 +71,7 @@ RedLevel.args = {
     dg: 0.8387,
     include: 1,
     type: "andel",
+    delivery_time: new Date("October 13, 2014 11:13:00"),
   },
 };
 
@@ -89,5 +92,6 @@ National.args = {
     dg: 0.8387,
     include: 1,
     type: "andel",
+    delivery_time: new Date("October 13, 2014 11:13:00"),
   },
 };

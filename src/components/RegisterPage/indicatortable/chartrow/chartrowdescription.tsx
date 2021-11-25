@@ -7,24 +7,35 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 interface Props {
   description_title?: string;
   description_text: string;
+  delivery_time: Date;
 }
 
-const LONG_DESCRIPTION = (props: Props) => {
-  const {
-    description_title = "Om kvalitetsindikatoren",
-    description_text = "Denne kvalitetsindikatoren er definert som andel pasienter med...",
-  } = props;
-
+const ChartRowDescription = ({
+  description_text,
+  description_title = "Om kvalitetsindikatoren",
+  delivery_time,
+}: Props) => {
   return (
     <div className={style.description_container}>
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <div className={style.description_title}>{description_title}</div>
         </AccordionSummary>
-        <AccordionDetails>{description_text}</AccordionDetails>
+        <AccordionDetails>
+          {description_text}
+          <p>
+            Data ble sist oppdatert{" "}
+            {delivery_time.toLocaleString("no-NO", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+              timeZone: "CET",
+            })}{" "}
+          </p>
+        </AccordionDetails>
       </Accordion>
     </div>
   );
 };
 
-export default LONG_DESCRIPTION;
+export default ChartRowDescription;
