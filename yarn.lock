@@ -1981,7 +1981,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/react@npm:^11.1.1":
+"@emotion/react@npm:^11.1.1, @emotion/react@npm:^11.6.0":
   version: 11.6.0
   resolution: "@emotion/react@npm:11.6.0"
   dependencies:
@@ -17406,6 +17406,7 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "qmongjs@workspace:."
   dependencies:
+    "@emotion/react": ^11.6.0
     "@emotion/styled": ^11.6.0
     "@mui/icons-material": ^5.2.0
     "@mui/material": ^5.2.0
