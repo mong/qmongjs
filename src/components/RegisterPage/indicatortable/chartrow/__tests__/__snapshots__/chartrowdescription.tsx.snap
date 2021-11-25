@@ -3,30 +3,74 @@
 exports[`ChartRowDescription with date 1`] = `
 <div>
   <div
-    class="description-container"
+    class="description_container"
   >
     <div
-      class="description_title_container"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded MuiAccordion-gutters css-1elwnq4-MuiPaper-root-MuiAccordion-root"
     >
-      <h4>
-        Om kvalitetsindikatoren
-      </h4>
-      <i
-        class="fa fa-angle-down"
-      />
-    </div>
-    <div
-      class="description_content inactive"
-    >
-      <p>
-        Denne kvalitetsindikatoren er definert som andel pasienter med...
-      </p>
-      <p>
-        Data ble sist oppdatert
-         
-        1. januar 2000
-         
-      </p>
+      <div
+        aria-expanded="false"
+        class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-o4b71y-MuiAccordionSummary-content"
+        >
+          <div
+            class="description_title"
+          >
+            Om kvalitetsindikatoren
+          </div>
+        </div>
+        <div
+          class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="ExpandMoreIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+        style="min-height: 0px;"
+      >
+        <div
+          class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+        >
+          <div
+            class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+          >
+            <div
+              class="MuiAccordion-region"
+              role="region"
+            >
+              <div
+                class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
+              >
+                 
+                <p>
+                  Denne kvalitetsindikatoren er definert som andel pasienter med...
+                </p>
+                <p>
+                  Data ble sist oppdatert
+                   
+                  1. januar 2000
+                   
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -35,30 +79,74 @@ exports[`ChartRowDescription with date 1`] = `
 exports[`ChartRowDescription with date equals zero 1`] = `
 <div>
   <div
-    class="description-container"
+    class="description_container"
   >
     <div
-      class="description_title_container"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded MuiAccordion-gutters css-1elwnq4-MuiPaper-root-MuiAccordion-root"
     >
-      <h4>
-        Om kvalitetsindikatoren
-      </h4>
-      <i
-        class="fa fa-angle-down"
-      />
-    </div>
-    <div
-      class="description_content inactive"
-    >
-      <p>
-        Vi prøver ågså særnårske bokstaver
-      </p>
-      <p>
-        Data ble sist oppdatert
-         
-        1. januar 1970
-         
-      </p>
+      <div
+        aria-expanded="false"
+        class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-o4b71y-MuiAccordionSummary-content"
+        >
+          <div
+            class="description_title"
+          >
+            Om kvalitetsindikatoren
+          </div>
+        </div>
+        <div
+          class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="ExpandMoreIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+        style="min-height: 0px;"
+      >
+        <div
+          class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+        >
+          <div
+            class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+          >
+            <div
+              class="MuiAccordion-region"
+              role="region"
+            >
+              <div
+                class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
+              >
+                 
+                <p>
+                  Vi prøver ågså særnårske bokstaver
+                </p>
+                <p>
+                  Data ble sist oppdatert
+                   
+                  1. januar 1970
+                   
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
