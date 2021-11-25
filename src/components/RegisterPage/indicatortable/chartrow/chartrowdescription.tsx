@@ -6,7 +6,7 @@ interface Props {
   delivery_time: Date;
 }
 
-const LONG_DESCRIPTION = (props: Props) => {
+const ChartRowDescription = (props: Props) => {
   const {
     description_title = "Om kvalitetsindikatoren",
     description_text = "Denne kvalitetsindikatoren er definert som andel pasienter med...",
@@ -49,4 +49,4 @@ const LONG_DESCRIPTION = (props: Props) => {
   );
 };
 
-export default LONG_DESCRIPTION;
+export default ChartRowDescription;

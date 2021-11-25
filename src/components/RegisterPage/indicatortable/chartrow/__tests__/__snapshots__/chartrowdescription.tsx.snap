@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChartRowDescription with date 1`] = `
+<div>
+  <div
+    class="description-container"
+  >
+    <div
+      class="description_title_container"
+    >
+      <h4>
+        Om kvalitetsindikatoren
+      </h4>
+      <i
+        class="fa fa-angle-down"
+      />
+    </div>
+    <div
+      class="description_content inactive"
+    >
+      <p>
+        Denne kvalitetsindikatoren er definert som andel pasienter med...
+      </p>
+      <p>
+        Data ble sist oppdatert
+         
+        1. januar 2000
+         
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ChartRowDescription with date equals "null" 1`] = `
+<div>
+  <div
+    class="description-container"
+  >
+    <div
+      class="description_title_container"
+    >
+      <h4>
+        Om kvalitetsindikatoren
+      </h4>
+      <i
+        class="fa fa-angle-down"
+      />
+    </div>
+    <div
+      class="description_content inactive"
+    >
+      <p>
+        Vi prøver ågså særnårske bokstaver
+      </p>
+      <p>
+        Data ble sist oppdatert
+         
+        1. januar 1970
+         
+      </p>
+    </div>
+  </div>
+</div>
+`;

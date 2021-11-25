@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 
 import ChartButtons from "./chartrowbuttons";
-import TF_LONG_DESCRIPTION from "./chartrowdescription";
+import ChartRowDescription from "./chartrowdescription";
 import Chart from "./Chart";
 import { level_boundary } from "./tr_utils";
 import { useQueryParam } from "use-query-params";
@@ -72,7 +72,7 @@ export function ChartRow(props: Props) {
             selectedTreatmentUnits={selectedTreatmentUnits}
             indicatorData={indicatorData}
           />
-          <TF_LONG_DESCRIPTION
+          <ChartRowDescription
             description_text={description[0].long_description ?? ""}
             delivery_time={delivery_time}
           />
