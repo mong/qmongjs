@@ -24,8 +24,7 @@ const ChartRowDescription = (props: Props) => {
           <div className={style.description_title}>{description_title}</div>
         </AccordionSummary>
         <AccordionDetails>
-          {" "}
-          <p>{description_text}</p>
+          {description_text}
           <p>
             Data ble sist oppdatert{" "}
             {delivery_time.toLocaleString("no-NO", {

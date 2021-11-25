@@ -56,10 +56,7 @@ exports[`ChartRowDescription with date 1`] = `
               <div
                 class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
               >
-                 
-                <p>
-                  Denne kvalitetsindikatoren er definert som andel pasienter med...
-                </p>
+                Denne kvalitetsindikatoren er definert som andel pasienter med...
                 <p>
                   Data ble sist oppdatert
                    
@@ -132,10 +129,7 @@ exports[`ChartRowDescription with date equals zero 1`] = `
               <div
                 class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
               >
-                 
-                <p>
-                  Vi prøver ågså særnårske bokstaver
-                </p>
+                Vi prøver ågså særnårske bokstaver
                 <p>
                   Data ble sist oppdatert
                    
