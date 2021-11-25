@@ -31,6 +31,7 @@ const ChartRowDescription = (props: Props) => {
               day: "numeric",
               month: "long",
               year: "numeric",
+              timeZone: "CET",
             })}{" "}
           </p>
         </AccordionDetails>
