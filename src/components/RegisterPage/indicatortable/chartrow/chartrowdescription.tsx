@@ -10,13 +10,11 @@ interface Props {
   delivery_time: Date;
 }
 
-const ChartRowDescription = (props: Props) => {
-  const {
-    description_title = "Om kvalitetsindikatoren",
-    description_text = "Denne kvalitetsindikatoren er definert som andel pasienter med...",
-    delivery_time = new Date("1999-12-31T23:59:59.999Z"),
-  } = props;
-
+const ChartRowDescription = ({
+  description_text,
+  description_title = "Om kvalitetsindikatoren",
+  delivery_time,
+}: Props) => {
   return (
     <div className={style.description_container}>
       <Accordion>
