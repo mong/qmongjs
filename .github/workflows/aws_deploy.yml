@@ -3,9 +3,9 @@ on:
   release:
     types: [published]
   push:
-    branches: [master, date_of_delivery]
-  pull_request:
     branches: [master]
+  pull_request:
+    branches: [master, dependabot_updates]
 
 jobs:
   deploy_to_S3:
