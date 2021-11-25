@@ -34,6 +34,9 @@
     "url": "https://github.com/mong/qmongjs/issues"
   },
   "dependencies": {
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.2.0",
+    "@mui/material": "^5.2.0",
     "@sentry/react": "^6.15.0",
     "@sentry/tracing": "^6.15.0",
     "d3": "^6.7.0",
