@@ -13,8 +13,8 @@ test("ChartRowDescription with date", () => {
   expect(container).toMatchSnapshot();
 });
 
-test('ChartRowDescription with date equals "null"', () => {
-  let delivery_time = new Date(null);
+test("ChartRowDescription with date equals zero", () => {
+  let delivery_time = new Date(0);
   const { container } = render(
     <ChartRowDescription
       description_text="Vi prøver ågså særnårske bokstaver"
