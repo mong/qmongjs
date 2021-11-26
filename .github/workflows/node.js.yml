@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [14.x, 16.x, 17.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -32,15 +32,15 @@ jobs:
       - run: yarn run test:once
       - run: yarn run build
       - name: Code coverage
-        if: matrix.node-version == '14.x'
+        if: matrix.node-version == '16.x'
         run: |
           yarn run test:coverage
           ./node_modules/.bin/codecov --disable=gcov
       - name: Generate documentation
-        if: matrix.node-version == '14.x'
+        if: matrix.node-version == '16.x'
         run: yarn run build-doc
       - name: Deploy documentation to github pages
-        if: ${{ matrix.node-version == '14.x' && github.event_name == 'release' }}
+        if: ${{ matrix.node-version == '16.x' && github.event_name == 'release' }}
         uses: JamesIves/github-pages-deploy-action@4.1.6
         with:
           branch: gh-pages # The branch the action should deploy to.
