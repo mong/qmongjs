@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 
 import ChartButtons from "./chartrowbuttons";
-import TF_LONG_DESCRIPTION from "./chartrowdescription";
+import ChartRowDescription from "./chartrowdescription";
 import Chart from "./Chart";
 import { level_boundary } from "./tr_utils";
 import { useQueryParam } from "use-query-params";
@@ -40,6 +40,7 @@ export function ChartRow(props: Props) {
   const [show_level, update_show_level] = useState(false);
 
   let levels = level_boundary(description[0]);
+  let delivery_time = new Date(indicatorData[0].delivery_time);
 
   return (
     <tr className={figure_class}>
@@ -71,8 +72,9 @@ export function ChartRow(props: Props) {
             selectedTreatmentUnits={selectedTreatmentUnits}
             indicatorData={indicatorData}
           />
-          <TF_LONG_DESCRIPTION
+          <ChartRowDescription
             description_text={description[0].long_description ?? ""}
+            delivery_time={delivery_time}
           />
         </div>
       </td>
