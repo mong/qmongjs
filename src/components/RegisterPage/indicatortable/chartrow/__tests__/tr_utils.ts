@@ -59,3 +59,15 @@ test("level_direction 0", () => {
     ]
   `);
 });
+
+test("level_direction error", () => {
+  const config: Config = {
+    level_direction: 100,
+    level_green: 0.75,
+    level_yellow: 0.5,
+  };
+
+  expect(() => {
+    level_boundary(config);
+  }).toThrowError("100 is not a valid direction");
+});
