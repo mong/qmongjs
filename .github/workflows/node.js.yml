@@ -25,9 +25,6 @@ jobs:
         uses: actions/setup-node@v2.4.1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Use latest yarn version with node 17
-        if: matrix.node-version == '17.x'
-        run: yarn set version latest
       - run: yarn install --immutable
       - run: yarn run check-types
       - run: yarn run check-format
