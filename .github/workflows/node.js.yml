@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 17.x]
+        node-version: [14.x, 16.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -30,9 +30,6 @@ jobs:
       - run: yarn run check-format
       - run: yarn run lint
       - run: yarn run test:once
-      - name: webpack fix
-        if: matrix.node-version == '17.x'
-        run: export NODE_OPTIONS=--openssl-legacy-provider
       - run: yarn run build
       - name: Code coverage
         if: matrix.node-version == '16.x'
