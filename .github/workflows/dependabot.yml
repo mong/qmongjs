@@ -23,7 +23,7 @@ jobs:
 
       - uses: actions/setup-node@v2.4.1
         with:
-          node-version: '14'
+          node-version: '16'
 
       - run: git checkout HEAD^ -- yarn.lock
       - run: yarn install --mode update-lockfile
