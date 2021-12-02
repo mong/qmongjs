@@ -75,6 +75,7 @@ export function ChartRow(props: Props) {
           <ChartRowDescription
             description_text={description[0].long_description ?? ""}
             delivery_time={delivery_time}
+            levels={levels}
           />
         </div>
       </td>
