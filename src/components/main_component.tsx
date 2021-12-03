@@ -1,4 +1,3 @@
-import React from "react";
 import { UseQueryResult } from "react-query";
 import { useQueryParam } from "use-query-params";
 import {
