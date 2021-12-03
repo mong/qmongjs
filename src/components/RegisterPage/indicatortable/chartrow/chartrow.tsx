@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import ChartButtons from "./chartrowbuttons";
 import ChartRowDescription from "./chartrowdescription";
