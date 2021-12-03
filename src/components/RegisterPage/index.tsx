@@ -68,16 +68,16 @@ export const RegisterPage: React.FC = () => {
     <>
       <Header />
       <Switch>
-        <Route exact path="/alle/:tab">
+        <Route path="/alle/:tab">
           <MainRegister registerNames={registerNames ?? []} />
         </Route>
         <Route path="/:register/:tab">
           <SelectedRegister registerNames={registerNames ?? []} />
         </Route>
-        <Route exact path="/">
+        <Route path="/">
           <Redirect to="/alle/sykehus" />
         </Route>
-        <Route exact path="/alle">
+        <Route path="/alle">
           <Redirect to="/alle/sykehus" />
         </Route>
 

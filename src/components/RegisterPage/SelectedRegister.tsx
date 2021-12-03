@@ -33,8 +33,8 @@ interface SelectedRegisterProps {
 export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   registerNames,
 }) => {
-  const { register }: { register: string } = useParams();
-  const { tab }: { tab: string } = useParams();
+  const { register } = useParams();
+  const { tab } = useParams();
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },
     { value: "opptaksomraade", label: "Opptaksområde" },
@@ -56,7 +56,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
       : { context, type: "ind" };
 
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
-    register,
+    register as string,
     queryContext.context,
     queryContext.type
   );
@@ -65,7 +65,11 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   const optstu: OptsTu[] | [] = unitNamesQuery.data?.opts_tu ?? [];
 
   const selectionYearQuery: UseQueryResult<any, unknown> =
-    useSelectionYearsQuery(register, queryContext.context, queryContext.type);
+    useSelectionYearsQuery(
+      register as string,
+      queryContext.context,
+      queryContext.type
+    );
 
   const valid_years =
     selectionYearQuery.data ??
@@ -117,7 +121,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   const validReg = registerNames.map((d) => d.rname);
   // returns page not found if the register param or tab param is not valid
   if (
-    !validReg.includes(register) ||
+    !validReg.includes(register as string) ||
     !tabNames.some((tabName) => tabName.value === tab) ||
     (!registerInfo[0].caregiver_data && tab === "sykehus") ||
     (!registerInfo[0].resident_data && tab === "opptaksomraade") ||
@@ -158,7 +162,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
         registerNames={registerNames}
         dataFrom={registerFullName}
         tabNames={registerTabs}
-        activeTab={tab}
+        activeTab={tab as string}
       />
       <div className="app-body">
         <div className="selection-container" ref={selection_bar_ref}>
@@ -202,7 +206,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
               unitNames={[...validated_treatment_units, "Nasjonalt"]}
               treatmentYear={validated_selected_year}
               colspan={colspan}
-              medicalFieldFilter={[register]}
+              medicalFieldFilter={[register as string]}
               showLevelFilter={show_level_filter ?? ""}
               selection_bar_height={selection_bar_height ?? 0}
               legend_height={legend_height ?? 0}
