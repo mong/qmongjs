@@ -43,7 +43,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
       : tab === "datakvalitet"
       ? "coverage"
       : "caregiver";
-  const activeTab = tab as string;
+  const activeTab = tab;
   const queryContext =
     context === "coverage"
       ? { context: "caregiver", type: "dg" }
