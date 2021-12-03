@@ -29,7 +29,7 @@ interface MainRegisterProps {
 }
 
 const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
-  const { tab }: { tab: string | undefined } = useParams();
+  const { tab } = useParams();
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },
     { value: "opptaksomraade", label: "Opptaksområde" },
@@ -43,7 +43,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
       : tab === "datakvalitet"
       ? "coverage"
       : "caregiver";
-  const activeTab: string = tab!;
+  const activeTab = tab as string;
   const queryContext =
     context === "coverage"
       ? { context: "caregiver", type: "dg" }
