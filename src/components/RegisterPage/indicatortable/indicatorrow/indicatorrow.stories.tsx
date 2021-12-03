@@ -64,6 +64,7 @@ Nation.args = {
       dg: 1,
       type: "andel",
       include: 1,
+      delivery_time: new Date("October 13, 2014 11:13:00"),
     },
   ],
 };
@@ -104,6 +105,7 @@ WithUnits.args = {
       dg: 1,
       type: "andel",
       include: 1,
+      delivery_time: new Date("October 13, 2014 11:13:00"),
     },
     {
       id: 935463,
@@ -119,6 +121,7 @@ WithUnits.args = {
       dg: 1,
       type: "andel",
       include: 1,
+      delivery_time: new Date("October 13, 2014 11:13:00"),
     },
     {
       id: 935463,
@@ -134,6 +137,7 @@ WithUnits.args = {
       dg: 1,
       type: "andel",
       include: 1,
+      delivery_time: new Date("October 13, 2014 11:13:00"),
     },
   ],
   unitNames: ["UNN Tromsø", "UNN HF", "Nasjonalt"],
@@ -175,6 +179,7 @@ WithMaskedValues.args = {
       dg: 1,
       type: "andel",
       include: 1,
+      delivery_time: new Date("October 13, 2014 11:13:00"),
     },
     {
       id: 935463,
@@ -190,6 +195,7 @@ WithMaskedValues.args = {
       dg: 0.4,
       type: "andel",
       include: 1,
+      delivery_time: new Date("October 13, 2014 11:13:00"),
     },
     {
       id: 935463,
@@ -205,6 +211,7 @@ WithMaskedValues.args = {
       dg: 1,
       type: "andel",
       include: 1,
+      delivery_time: new Date("October 13, 2014 11:13:00"),
     },
   ],
   unitNames: ["UNN Tromsø", "UIO", "UNN HF", "Nasjonalt"],
