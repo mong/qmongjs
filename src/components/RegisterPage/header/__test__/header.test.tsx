@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 import { render, screen } from "@testing-library/react";

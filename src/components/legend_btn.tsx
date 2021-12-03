@@ -1,4 +1,3 @@
-import React from "react";
 interface Props {
   level: string;
   icon_class: string;

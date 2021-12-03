@@ -6,7 +6,7 @@
  * Replace the contents with what you copied
  */
 import { render, screen } from "@testing-library/react";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import faker from "faker";
 import BarChart, { Props, Bar } from "..";
 import { useResizeObserver } from "../../../../helpers/hooks";
