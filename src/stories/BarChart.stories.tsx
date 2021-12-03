@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import BarChart, { Props } from "../components/Charts/BarChart";
 
