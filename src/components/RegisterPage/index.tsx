@@ -67,24 +67,25 @@ export const RegisterPage: React.FC = () => {
     <>
       <Header />
       <Routes>
-        <Route path="/alle/:tab" element={
-          <MainRegister registerNames={registerNames ?? []} />
-        } />
-        <Route path="/:register/:tab" element={
-          <SelectedRegister registerNames={registerNames ?? []} />
-        }/>
-        <Route path="/" element={
-          <Navigate to="/alle/sykehus" />
-        }/>
-        <Route path="/alle" element={
-          <Navigate to="/alle/sykehus" />
-        }/>
+        <Route
+          path="/alle/:tab"
+          element={<MainRegister registerNames={registerNames ?? []} />}
+        />
+        <Route
+          path="/:register/:tab"
+          element={<SelectedRegister registerNames={registerNames ?? []} />}
+        />
+        <Route path="/" element={<Navigate to="/alle/sykehus" />} />
+        <Route path="/alle" element={<Navigate to="/alle/sykehus" />} />
 
-        <Route path="*" element={
-          <div style={{ minHeight: "100vh" }}>
-            <h1 style={{ margin: "10%" }}>Page Not Found</h1>
-          </div>
-        }/>
+        <Route
+          path="*"
+          element={
+            <div style={{ minHeight: "100vh" }}>
+              <h1 style={{ margin: "10%" }}>Page Not Found</h1>
+            </div>
+          }
+        />
       </Routes>
       <Footer />
     </>
