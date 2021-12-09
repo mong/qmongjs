@@ -3040,7 +3040,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-actions@npm:6.4.8, @storybook/addon-actions@npm:^6.4.8":
+"@storybook/addon-actions@npm:6.4.8":
   version: 6.4.8
   resolution: "@storybook/addon-actions@npm:6.4.8"
   dependencies:
@@ -3071,6 +3071,40 @@ __metadata:
     react-dom:
       optional: true
   checksum: 595f15579cf59f16534c2368d1d9578a5dfd6b5e841f317db4e9ceb289929715d8bd3743ec62b8181e1d4f15064296714babe9b155330af98ea15ec456c7ffa7
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-actions@npm:^6.4.9":
+  version: 6.4.9
+  resolution: "@storybook/addon-actions@npm:6.4.9"
+  dependencies:
+    "@storybook/addons": 6.4.9
+    "@storybook/api": 6.4.9
+    "@storybook/components": 6.4.9
+    "@storybook/core-events": 6.4.9
+    "@storybook/csf": 0.0.2--canary.87bc651.0
+    "@storybook/theming": 6.4.9
+    core-js: ^3.8.2
+    fast-deep-equal: ^3.1.3
+    global: ^4.4.0
+    lodash: ^4.17.21
+    polished: ^4.0.5
+    prop-types: ^15.7.2
+    react-inspector: ^5.1.0
+    regenerator-runtime: ^0.13.7
+    telejson: ^5.3.2
+    ts-dedent: ^2.0.0
+    util-deprecate: ^1.0.2
+    uuid-browser: ^3.1.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: c86e34bfc6c6a17985fdb02f5ed2f32efe3b0c2ac2946815383b8e8a1b5cfd8893e762aae005f0c9b1e4a1781ebd1d35993e983a6e29eacecfdf828ebdd3926b
   languageName: node
   linkType: hard
 
@@ -3851,6 +3885,41 @@ __metadata:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
   checksum: 5ad79fe6e4fc494071c49d7809c31aeef911db4909a1fcf2c05579767baf8e54ea670c3fc370487a2f95c3fd41dee066123f3927f8d031509218abc8ec3ed69b
+  languageName: node
+  linkType: hard
+
+"@storybook/components@npm:6.4.9":
+  version: 6.4.9
+  resolution: "@storybook/components@npm:6.4.9"
+  dependencies:
+    "@popperjs/core": ^2.6.0
+    "@storybook/client-logger": 6.4.9
+    "@storybook/csf": 0.0.2--canary.87bc651.0
+    "@storybook/theming": 6.4.9
+    "@types/color-convert": ^2.0.0
+    "@types/overlayscrollbars": ^1.12.0
+    "@types/react-syntax-highlighter": 11.0.5
+    color-convert: ^2.0.1
+    core-js: ^3.8.2
+    fast-deep-equal: ^3.1.3
+    global: ^4.4.0
+    lodash: ^4.17.21
+    markdown-to-jsx: ^7.1.3
+    memoizerific: ^1.11.3
+    overlayscrollbars: ^1.13.1
+    polished: ^4.0.5
+    prop-types: ^15.7.2
+    react-colorful: ^5.1.2
+    react-popper-tooltip: ^3.1.1
+    react-syntax-highlighter: ^13.5.3
+    react-textarea-autosize: ^8.3.0
+    regenerator-runtime: ^0.13.7
+    ts-dedent: ^2.0.0
+    util-deprecate: ^1.0.2
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: 4f8204bd5d242d3f948ee8f2ff3e0863cf8ea212708487f6c905bd174dd987bcbd8ff5bf592bae109c346a77ff72f6d77a2db05e05506e977dd103fa5aaeb2f3
   languageName: node
   linkType: hard
 
@@ -17621,7 +17690,7 @@ fsevents@^1.2.7:
     "@mui/material": ^5.2.3
     "@sentry/react": ^6.15.0
     "@sentry/tracing": ^6.16.0
-    "@storybook/addon-actions": ^6.4.8
+    "@storybook/addon-actions": ^6.4.9
     "@storybook/addon-essentials": ^6.4.8
     "@storybook/addon-links": ^6.4.9
     "@storybook/addon-queryparams": ^6.2.9
