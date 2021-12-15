@@ -29,7 +29,7 @@ interface MainRegisterProps {
 }
 
 const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
-  const { tab }: { tab: string } = useParams();
+  const { tab } = useParams();
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },
     { value: "opptaksomraade", label: "Opptaksområde" },
@@ -127,7 +127,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
       <Header
         tabNames={tabNames}
         registerNames={registerNames}
-        activeTab={activeTab}
+        activeTab={activeTab as string}
       />
       <div className="app-body">
         <div className="selection-container" ref={selection_bar_ref}>
