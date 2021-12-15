@@ -37,7 +37,7 @@
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.2.4",
-    "@mui/material": "^5.2.3",
+    "@mui/material": "^5.2.4",
     "@sentry/react": "^6.15.0",
     "@sentry/tracing": "^6.16.0",
     "d3": "^6.7.0",
