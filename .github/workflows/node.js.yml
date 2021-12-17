@@ -29,13 +29,11 @@ jobs:
       - run: yarn run check-types
       - run: yarn run check-format
       - run: yarn run lint
-      - run: yarn run test:once
+      - run: yarn run test:coverage
       - run: yarn run build
       - name: Code coverage
         if: matrix.node-version == '16.x'
-        run: |
-          yarn run test:coverage
-          ./node_modules/.bin/codecov --disable=gcov
+        uses: codecov/codecov-action@v2.1.0
       - name: Generate documentation
         if: matrix.node-version == '16.x'
         run: yarn run build-doc
