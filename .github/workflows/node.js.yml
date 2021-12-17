@@ -34,7 +34,6 @@ jobs:
       - name: Code coverage
         if: matrix.node-version == '16.x'
         uses: codecov/codecov-action@v2.1.0
-        run: yarn run test:coverage
       - name: Generate documentation
         if: matrix.node-version == '16.x'
         run: yarn run build-doc
