@@ -29,7 +29,7 @@ jobs:
       - run: yarn run check-types
       - run: yarn run check-format
       - run: yarn run lint
-      - run: yarn run test:once
+      - run: yarn run test:coverage
       - run: yarn run build
       - name: Code coverage
         if: matrix.node-version == '16.x'
