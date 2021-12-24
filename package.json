@@ -94,7 +94,7 @@
     "faker": "^5.5.3",
     "husky": "^7.0.4",
     "is-ci-cli": "^2.2.0",
-    "lint-staged": "^12.1.2",
+    "lint-staged": "^12.1.4",
     "msw": "^0.35.0",
     "prettier": "^2.5.1",
     "typedoc": "^0.22.10",
