@@ -41,7 +41,7 @@ jobs:
         run: yarn run build-doc
       - name: Deploy documentation to github pages
         if: ${{ matrix.node-version == '16.x' && github.event_name == 'release' }}
-        uses: JamesIves/github-pages-deploy-action@4.1.7
+        uses: JamesIves/github-pages-deploy-action@4.1.8
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: docs # The folder the action should deploy.
