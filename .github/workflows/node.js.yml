@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2.5.0
+        uses: actions/setup-node@v2.5.1
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn install --immutable
@@ -39,7 +39,7 @@ jobs:
         run: yarn run build-doc
       - name: Deploy documentation to github pages
         if: ${{ matrix.node-version == '16.x' && github.event_name == 'release' }}
-        uses: JamesIves/github-pages-deploy-action@4.1.7
+        uses: JamesIves/github-pages-deploy-action@v4.2.2
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: docs # The folder the action should deploy.
