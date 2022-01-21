@@ -74,7 +74,7 @@
   "devDependencies": {
     "@storybook/addon-actions": "^6.4.13",
     "@storybook/addon-essentials": "^6.4.13",
-    "@storybook/addon-links": "^6.4.13",
+    "@storybook/addon-links": "^6.4.14",
     "@storybook/addon-queryparams": "^6.2.9",
     "@storybook/node-logger": "^6.4.13",
     "@storybook/preset-create-react-app": "^4.0.0",
