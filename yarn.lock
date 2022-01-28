@@ -3001,7 +3001,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-actions@npm:6.4.14, @storybook/addon-actions@npm:^6.4.14":
+"@storybook/addon-actions@npm:6.4.14":
   version: 6.4.14
   resolution: "@storybook/addon-actions@npm:6.4.14"
   dependencies:
@@ -3032,6 +3032,40 @@ __metadata:
     react-dom:
       optional: true
   checksum: f5d563eef0133fa47005184117af00af89514183a34672d15695105a864aac87fa10adafe6e559fab5783c39d28375a68ad019587249ff5c2f1bad4a56e6a1e9
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-actions@npm:^6.4.15":
+  version: 6.4.15
+  resolution: "@storybook/addon-actions@npm:6.4.15"
+  dependencies:
+    "@storybook/addons": 6.4.15
+    "@storybook/api": 6.4.15
+    "@storybook/components": 6.4.15
+    "@storybook/core-events": 6.4.15
+    "@storybook/csf": 0.0.2--canary.87bc651.0
+    "@storybook/theming": 6.4.15
+    core-js: ^3.8.2
+    fast-deep-equal: ^3.1.3
+    global: ^4.4.0
+    lodash: ^4.17.21
+    polished: ^4.0.5
+    prop-types: ^15.7.2
+    react-inspector: ^5.1.0
+    regenerator-runtime: ^0.13.7
+    telejson: ^5.3.2
+    ts-dedent: ^2.0.0
+    util-deprecate: ^1.0.2
+    uuid-browser: ^3.1.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 311e082bebc9a93372c90feb03ccf3ab0fb591acb69e580e1845d0f76f8d007de12b5667ea35dc83e6ed891ac3f5cf40871cc4902980e4079ba2cd11015dc99f
   languageName: node
   linkType: hard
 
@@ -18071,7 +18105,7 @@ fsevents@^1.2.7:
     "@mui/material": ^5.3.1
     "@sentry/react": ^6.17.2
     "@sentry/tracing": ^6.17.2
-    "@storybook/addon-actions": ^6.4.14
+    "@storybook/addon-actions": ^6.4.15
     "@storybook/addon-essentials": ^6.4.14
     "@storybook/addon-links": ^6.4.14
     "@storybook/addon-queryparams": ^6.2.9
