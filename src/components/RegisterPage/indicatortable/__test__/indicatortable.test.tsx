@@ -44,6 +44,6 @@ it("registry table renders correctly for a single registry", async () => {
     </QueryClientProvider>
   );
 
-  await waitFor(() => screen.getAllByRole("heading"));
+  await waitFor(() => screen.findAllByRole("heading"));
   expect(container).toMatchSnapshot();
 });
