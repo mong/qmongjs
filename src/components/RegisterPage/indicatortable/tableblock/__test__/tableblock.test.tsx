@@ -37,22 +37,22 @@ afterEach(() => {
 });
 
 it("renders with national data", async () => {
-    const queryClient = new QueryClient();
-    render(
-      <Router>
-        <QueryClientProvider client={queryClient}>
-          <QueryParamProvider ReactRouterRoute={Route}>
-            <table>
-              <tbody>
-                <TableBlock {...props} />
-              </tbody>
-            </table>
-          </QueryParamProvider>
-        </QueryClientProvider>
-      </Router>,
-      container
-    );
+  const queryClient = new QueryClient();
+  render(
+    <Router>
+      <QueryClientProvider client={queryClient}>
+        <QueryParamProvider ReactRouterRoute={Route}>
+          <table>
+            <tbody>
+              <TableBlock {...props} />
+            </tbody>
+          </table>
+        </QueryParamProvider>
+      </QueryClientProvider>
+    </Router>,
+    container
+  );
 
-  await waitFor(() => screen.getAllByRole("heading", { level: 4 }));
+  await waitFor(() => screen.findAllByRole("heading", { level: 4 }));
   expect(container).toMatchSnapshot();
 });
