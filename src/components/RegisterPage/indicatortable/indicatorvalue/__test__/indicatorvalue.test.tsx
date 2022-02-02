@@ -1,5 +1,4 @@
 import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
 
 import { IndicatorValue } from "../";
 import national_data from "../../../../../test/test_data/national_data";
@@ -24,18 +23,16 @@ it("renders", () => {
       : `${Math.round(data.var * 100)}\u202f%`;
   const numerator = Math.round(data.var * data.denominator);
 
-  act(() => {
-    render(
-      <table>
-        <tbody>
-          <tr>
-            <IndicatorValue indicatorData={data} />
-          </tr>
-        </tbody>
-      </table>,
-      container
-    );
-  });
+  render(
+    <table>
+      <tbody>
+        <tr>
+          <IndicatorValue indicatorData={data} />
+        </tr>
+      </tbody>
+    </table>,
+    container
+  );
   expect(container.querySelector("td h4").textContent).toContain(
     `${indicator_value_share}`
   );
@@ -50,18 +47,16 @@ it("renders beregnet_andel", () => {
     data.var < 0.1
       ? `${Math.round(data.var * 1000) / 10}\u202f%`
       : `${Math.round(data.var * 100)}\u202f%`;
-  act(() => {
-    render(
-      <table>
-        <tbody>
-          <tr>
-            <IndicatorValue indicatorData={data} />
-          </tr>
-        </tbody>
-      </table>,
-      container
-    );
-  });
+  render(
+    <table>
+      <tbody>
+        <tr>
+          <IndicatorValue indicatorData={data} />
+        </tr>
+      </tbody>
+    </table>,
+    container
+  );
   expect(container.querySelector("td h4").textContent).toContain(
     `${indicator_value_share}`
   );
