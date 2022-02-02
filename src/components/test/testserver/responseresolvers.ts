@@ -13,7 +13,7 @@ export const mockDescription: ResponseResolver<RestRequest, RestContext> = (
   ctx
 ) => {
   const type: string = req.url.searchParams.get("type") ?? "";
-  const { register } = req.params;
+  const { register } = req.params as any;
 
   if (type === "ind" || type === "dg") {
     return res(
@@ -38,7 +38,7 @@ export const mockIndicators: ResponseResolver<RestRequest, RestContext> = (
   res,
   ctx
 ) => {
-  const { register } = req.params;
+  const { register } = req.params as any;
   const type: "ind" | "dg" =
     req.url.searchParams.get("type") === "dg" ? "dg" : "ind";
   const year: number = Number(req.url.searchParams.get("year"));
