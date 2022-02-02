@@ -1,6 +1,5 @@
 import { screen, waitFor } from "@testing-library/react";
 import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
@@ -38,7 +37,6 @@ afterEach(() => {
 });
 
 it("renders with national data", async () => {
-  act(() => {
     const queryClient = new QueryClient();
     render(
       <Router>
@@ -54,7 +52,6 @@ it("renders with national data", async () => {
       </Router>,
       container
     );
-  });
 
   await waitFor(() => screen.getAllByRole("heading", { level: 4 }));
   expect(container).toMatchSnapshot();

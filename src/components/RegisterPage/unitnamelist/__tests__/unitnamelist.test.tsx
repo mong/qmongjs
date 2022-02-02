@@ -25,9 +25,7 @@ it("unit name selection renders", async () => {
   );
   expect(container).toMatchSnapshot();
 
-  act(() => {
-    userEvent.click(screen.getByText(/Vis alle/i));
-  });
+  userEvent.click(screen.getByText(/Vis alle/i));
   expect(container.getElementsByClassName("tu_list")[0]).not.toHaveStyle(
     "display: none"
   );
@@ -45,9 +43,7 @@ it("should close the list of TUs when ESC/ESCAPE is clicked", () => {
       </QueryParamProvider>
     </BrowserRouter>
   );
-  act(() => {
-    userEvent.click(screen.getByText(/Vis alle/i));
-  });
+  userEvent.click(screen.getByText(/Vis alle/i));
   expect(container.getElementsByClassName("tu_list")[0]).not.toHaveStyle(
     "display: none"
   );

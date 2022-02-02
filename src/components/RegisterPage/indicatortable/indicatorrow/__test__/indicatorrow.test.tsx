@@ -1,5 +1,4 @@
 import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 
@@ -27,25 +26,23 @@ it("renders", () => {
       : `${Math.round(data.var * 100)}\u202f%`;
   const numerator = Math.round(data.var * data.denominator);
 
-  act(() => {
-    render(
-      <Router>
-        <QueryParamProvider ReactRouterRoute={Route}>
-          <table>
-            <tbody>
-              <IndicatorRow
-                context={{ context: "caregiver", type: "ind" }}
-                description={description[0]}
-                indicatorData={[data]}
-                treatmantYear={2019}
-              />
-            </tbody>
-          </table>
-        </QueryParamProvider>
-      </Router>,
-      container
-    );
-  });
+  render(
+    <Router>
+      <QueryParamProvider ReactRouterRoute={Route}>
+        <table>
+          <tbody>
+            <IndicatorRow
+              context={{ context: "caregiver", type: "ind" }}
+              description={description[0]}
+              indicatorData={[data]}
+              treatmantYear={2019}
+            />
+          </tbody>
+        </table>
+      </QueryParamProvider>
+    </Router>,
+    container
+  );
   expect(container.querySelector("td h1").textContent).toBe(
     description[0].title
   );
