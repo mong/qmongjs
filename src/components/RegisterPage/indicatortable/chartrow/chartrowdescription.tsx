@@ -23,7 +23,15 @@ const ChartRowDescription = ({
           <div className={style.description_title}>{description_title}</div>
         </AccordionSummary>
         <AccordionDetails>
-          <ReactMarkdown>{description_text}</ReactMarkdown>
+          <ReactMarkdown
+            components={{
+              p({ children }) {
+                return <p style={{ margin: 0 }}>{children}</p>;
+              },
+            }}
+          >
+            {description_text}
+          </ReactMarkdown>
           <p>
             Data ble sist oppdatert{" "}
             {delivery_time.toLocaleString("no-NO", {
