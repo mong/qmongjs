@@ -37,8 +37,8 @@ interface TabProps {
 }
 
 const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
-  const { tab }: { tab: string } = useParams();
-  const { register }: { register: string | undefined } = useParams();
+  const { tab } = useParams();
+  const { register } = useParams();
 
   const clickedStyle =
     activeTab === tabName.value
@@ -55,10 +55,7 @@ const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
   return (
     <li className={style.tabsLI}>
       <Link
-        to={(location) => ({
-          ...location,
-          pathname: `${path}/${tabName.value}`,
-        })}
+        to={`${path}/${tabName.value}`}
         role="tab"
         aria-selected={tabName.value === tab}
         style={clickedStyle}
