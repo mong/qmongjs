@@ -1,5 +1,4 @@
-import { BrowserRouter, Route } from "react-router-dom";
-import { QueryParamProvider } from "use-query-params";
+import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { render, screen, waitFor } from "@testing-library/react";
 
@@ -33,13 +32,11 @@ it("registry table renders correctly for a single registry", async () => {
   const { container } = render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <QueryParamProvider ReactRouterRoute={Route}>
-          <IndicatorTable
-            context={"sykehus"}
-            tableType="singleRegister"
-            {...props}
-          />
-        </QueryParamProvider>
+        <IndicatorTable
+          context={"sykehus"}
+          tableType="singleRegister"
+          {...props}
+        />
       </BrowserRouter>
     </QueryClientProvider>
   );

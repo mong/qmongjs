@@ -1,5 +1,4 @@
-import { BrowserRouter, Route } from "react-router-dom";
-import { QueryParamProvider } from "use-query-params";
+import { BrowserRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
@@ -43,14 +42,12 @@ it("register page header renders correctly", () => {
 
   const { container } = render(
     <BrowserRouter>
-      <QueryParamProvider ReactRouterRoute={Route}>
-        <Header
-          activeTab={"sykehus"}
-          registerNames={registerNames}
-          tabNames={tabNames}
-          dataFrom={dataFrom}
-        />
-      </QueryParamProvider>
+      <Header
+        activeTab={"sykehus"}
+        registerNames={registerNames}
+        tabNames={tabNames}
+        dataFrom={dataFrom}
+      />
     </BrowserRouter>
   );
 

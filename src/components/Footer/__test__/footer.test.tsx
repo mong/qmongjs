@@ -1,5 +1,4 @@
-import { BrowserRouter, Route } from "react-router-dom";
-import { QueryParamProvider } from "use-query-params";
+import { BrowserRouter } from "react-router-dom";
 import { render } from "@testing-library/react";
 
 import Footer from "../";
@@ -7,9 +6,7 @@ import Footer from "../";
 it("Footer renders", async () => {
   const { container } = render(
     <BrowserRouter>
-      <QueryParamProvider ReactRouterRoute={Route}>
-        <Footer />
-      </QueryParamProvider>
+      <Footer />
     </BrowserRouter>
   );
 

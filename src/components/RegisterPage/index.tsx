@@ -3,7 +3,7 @@ import { UseQueryResult } from "react-query";
 
 import Header from "../Header";
 import Footer from "../Footer";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import MainRegister from "./MainRegister";
 import SelectedRegister from "./SelectedRegister";
 import { useRegisterNamesQuery } from "../../helpers/hooks";
@@ -67,7 +67,7 @@ export const RegisterPage: React.FC = () => {
   return (
     <>
       <Header />
-      <Switch>
+      <Routes>
         <Route path="/alle/:tab">
           <MainRegister registerNames={registerNames ?? []} />
         </Route>
@@ -75,10 +75,10 @@ export const RegisterPage: React.FC = () => {
           <SelectedRegister registerNames={registerNames ?? []} />
         </Route>
         <Route path="/">
-          <Redirect to="/alle/sykehus" />
+          <Navigate to="/alle/sykehus" />
         </Route>
         <Route path="/alle">
-          <Redirect to="/alle/sykehus" />
+          <Navigate to="/alle/sykehus" />
         </Route>
 
         <Route path="*">
@@ -86,7 +86,7 @@ export const RegisterPage: React.FC = () => {
             <h1 style={{ margin: "10%" }}>Page Not Found</h1>
           </div>
         </Route>
-      </Switch>
+      </Routes>
       <Footer />
     </>
   );
