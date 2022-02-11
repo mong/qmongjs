@@ -7,7 +7,6 @@
  */
 import { render, screen } from "@testing-library/react";
 import { useRef } from "react";
-import faker from "faker";
 import BarChart, { Props, Bar } from "..";
 import { useResizeObserver } from "../../../../helpers/hooks";
 import { buildLevels } from "../../../../test/builders";
@@ -375,7 +374,9 @@ function BarChartWithRef(props: Omit<Props, "svgContainerRef">) {
 // Builders
 function buildBar(overrides?: Partial<Bar>): Bar {
   return {
-    label: faker.datatype.uuid(),
+    label: (Math.random() + 1)
+      .toString(36)
+      .substring(2) /* Convert random number to base 36 string */,
     value: Math.random(),
     ...overrides,
   };

@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import faker from "faker";
 import { createRef } from "react";
 import LineChart, { DataPoint, Props } from "..";
 import { buildLevels } from "../../../../test/builders";
@@ -66,7 +65,7 @@ function LineChartWithRef(props: Omit<Props, "svgContainerRef">) {
 // Builders
 function buildDataPoint(overrides: Partial<DataPoint>): DataPoint {
   return {
-    label: faker.datatype.uuid(),
+    label: (Math.random() + 1).toString(36).substring(7),
     year: Math.floor(
       Math.random() * 6 + 2015
     ) /* Random year between 2015 and 2020 */,
