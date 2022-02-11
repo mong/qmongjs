@@ -3888,9 +3888,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/preset-create-react-app@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@storybook/preset-create-react-app@npm:4.0.0"
+"@storybook/preset-create-react-app@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@storybook/preset-create-react-app@npm:4.0.1"
   dependencies:
     "@pmmmwh/react-refresh-webpack-plugin": ^0.5.1
     "@storybook/react-docgen-typescript-plugin": canary
@@ -3903,7 +3903,7 @@ __metadata:
     "@storybook/node-logger": "*"
     "@storybook/react": ">=5.2"
     react-scripts: ">=3.0.0"
-  checksum: 1e0e204d5772cda2ad3392f6bd5989fc2512c17b542b6460e819f22684245d8ad0002a5cf63f35ce3682097005eda90b80efacce43ffead22e990ea77e32f2cc
+  checksum: ff3973a9c396ff6a0f656f5ff539e28cc8e450d0772d907f88f366a698c3351afa58a6bb27a55248a232123bbb93d1dbdb5183afbbb2fb0026f90ee34a2e7299
   languageName: node
   linkType: hard
 
@@ -16983,7 +16983,7 @@ __metadata:
     "@storybook/addon-links": ^6.4.18
     "@storybook/addon-queryparams": ^6.2.9
     "@storybook/node-logger": ^6.4.18
-    "@storybook/preset-create-react-app": ^4.0.0
+    "@storybook/preset-create-react-app": ^4.0.1
     "@storybook/react": ^6.4.18
     "@testing-library/jest-dom": ^5.16.2
     "@testing-library/react": ^12.1.2
