@@ -4876,13 +4876,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/faker@npm:^5.5.9":
-  version: 5.5.9
-  resolution: "@types/faker@npm:5.5.9"
-  checksum: c2cbd082abe29047c89cf29b86257e582d2a177a9d1ed3abf99aa1cc025d5e8a3d201dfaddf8441bfcc57ed43e4da80e666951e1c23a5b759ac441a5855b5c36
-  languageName: node
-  linkType: hard
-
 "@types/geojson@npm:*":
   version: 7946.0.8
   resolution: "@types/geojson@npm:7946.0.8"
@@ -10539,13 +10532,6 @@ __metadata:
     snapdragon: ^0.8.1
     to-regex: ^3.0.1
   checksum: a41531b8934735b684cef5e8c5a01d0f298d7d384500ceca38793a9ce098125aab04ee73e2d75d5b2901bc5dddd2b64e1b5e3bf19139ea48bac52af4a92f1d00
-  languageName: node
-  linkType: hard
-
-"faker@npm:^5.5.3":
-  version: 5.5.3
-  resolution: "faker@npm:5.5.3"
-  checksum: 684fd64c8d3897e54248f95b4f6319f75d97691b8500cd13adf4af2c28f9204f766c1d1aaa6b41338f0beaaa87256c3132f8708a1a8f189d122b92f6b98081c3
   languageName: node
   linkType: hard
 
@@ -17416,7 +17402,6 @@ __metadata:
     "@testing-library/react": ^12.1.2
     "@testing-library/user-event": ^13.5.0
     "@types/d3": ^7.1.0
-    "@types/faker": ^5.5.9
     "@types/jest": ^27.4.0
     "@types/node": ^17.0.0
     "@types/react": ^17.0.39
@@ -17425,7 +17410,6 @@ __metadata:
     babel-loader: 8.1.0
     d3: ^7.3.0
     eslint: ^8.8.0
-    faker: ^5.5.3
     husky: ^7.0.4
     is-ci-cli: ^2.2.0
     lint-staged: ^12.3.2
