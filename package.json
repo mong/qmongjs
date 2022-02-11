@@ -111,6 +111,9 @@
         "functions": 1,
         "lines": 3
       }
+    },
+    "moduleNameMapper": {
+      "d3": "<rootDir>/node_modules/d3/dist/d3.min.js"
     }
   },
   "packageManager": "yarn@3.1.1"
