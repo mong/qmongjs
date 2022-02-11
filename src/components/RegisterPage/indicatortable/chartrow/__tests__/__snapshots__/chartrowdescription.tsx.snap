@@ -56,7 +56,11 @@ exports[`ChartRowDescription where date will change with time zone 1`] = `
               <div
                 class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
               >
-                Denne kvalitetsindikatoren er definert som andel pasienter med...
+                <p
+                  style="margin: 0px;"
+                >
+                  Denne kvalitetsindikatoren er definert som andel pasienter med...
+                </p>
                 <p>
                   Data ble sist oppdatert
                    
@@ -129,7 +133,11 @@ exports[`ChartRowDescription with date equals zero and Norwegian characters 1`] 
               <div
                 class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
               >
-                Vi prøver ågså særnårske bokstaver
+                <p
+                  style="margin: 0px;"
+                >
+                  Vi prøver ågså særnårske bokstaver
+                </p>
                 <p>
                   Data ble sist oppdatert
                    
@@ -202,7 +210,11 @@ exports[`ChartRowDescription with non-default title and +02:00 time zone 1`] = `
               <div
                 class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
               >
-                Denne kvalitetsindikatoren er definert som andel pasienter med...
+                <p
+                  style="margin: 0px;"
+                >
+                  Denne kvalitetsindikatoren er definert som andel pasienter med...
+                </p>
                 <p>
                   Data ble sist oppdatert
                    

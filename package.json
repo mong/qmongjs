@@ -114,7 +114,8 @@
       }
     },
     "moduleNameMapper": {
-      "d3": "<rootDir>/node_modules/d3/dist/d3.min.js"
+      "d3": "<rootDir>/node_modules/d3/dist/d3.min.js",
+      "react-markdown": "<rootDir>/node_modules/react-markdown/react-markdown.min.js"
     }
   },
   "packageManager": "yarn@3.1.1"
