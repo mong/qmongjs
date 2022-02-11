@@ -3,6 +3,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ReactMarkdown from "react-markdown";
 
 interface Props {
   description_title?: string;
@@ -22,7 +23,15 @@ const ChartRowDescription = ({
           <div className={style.description_title}>{description_title}</div>
         </AccordionSummary>
         <AccordionDetails>
-          {description_text}
+          <ReactMarkdown
+            components={{
+              p({ children }) {
+                return <p style={{ margin: 0 }}>{children}</p>;
+              },
+            }}
+          >
+            {description_text}
+          </ReactMarkdown>
           <p>
             Data ble sist oppdatert{" "}
             {delivery_time.toLocaleString("no-NO", {
