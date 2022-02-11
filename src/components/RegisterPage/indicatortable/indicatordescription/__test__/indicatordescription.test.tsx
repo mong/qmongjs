@@ -1,5 +1,4 @@
 import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
 
 import { IndicatorDescription } from "../";
 import description from "../../../../../test/test_data/description";
@@ -18,18 +17,16 @@ afterEach(() => {
 
 it("renders without defined green level", () => {
   const desc = description[0];
-  act(() => {
-    render(
-      <table>
-        <tbody>
-          <tr>
-            <IndicatorDescription description={desc} />
-          </tr>
-        </tbody>
-      </table>,
-      container
-    );
-  });
+  render(
+    <table>
+      <tbody>
+        <tr>
+          <IndicatorDescription description={desc} />
+        </tr>
+      </tbody>
+    </table>,
+    container
+  );
   expect(container.querySelector("td").className).toBe("quality_indicator");
   expect(container.querySelector("td h1").textContent).toBe(desc.title);
   expect(container.querySelector("td div").className).toBe(
@@ -43,18 +40,16 @@ it("renders without defined green level", () => {
 
 it("renders with defined green level", () => {
   const desc = description[1];
-  act(() => {
-    render(
-      <table>
-        <tbody>
-          <tr>
-            <IndicatorDescription description={desc} />
-          </tr>
-        </tbody>
-      </table>,
-      container
-    );
-  });
+  render(
+    <table>
+      <tbody>
+        <tr>
+          <IndicatorDescription description={desc} />
+        </tr>
+      </tbody>
+    </table>,
+    container
+  );
   expect(container.querySelector("td").className).toBe("quality_indicator");
   expect(container.querySelector("td h1").textContent).toBe(desc.title);
   expect(container.querySelector("td div").className).toBe(
