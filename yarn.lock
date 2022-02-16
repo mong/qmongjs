@@ -3135,15 +3135,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-links@npm:^6.4.18":
-  version: 6.4.18
-  resolution: "@storybook/addon-links@npm:6.4.18"
+"@storybook/addon-links@npm:^6.4.19":
+  version: 6.4.19
+  resolution: "@storybook/addon-links@npm:6.4.19"
   dependencies:
-    "@storybook/addons": 6.4.18
-    "@storybook/client-logger": 6.4.18
-    "@storybook/core-events": 6.4.18
+    "@storybook/addons": 6.4.19
+    "@storybook/client-logger": 6.4.19
+    "@storybook/core-events": 6.4.19
     "@storybook/csf": 0.0.2--canary.87bc651.0
-    "@storybook/router": 6.4.18
+    "@storybook/router": 6.4.19
     "@types/qs": ^6.9.5
     core-js: ^3.8.2
     global: ^4.4.0
@@ -3159,7 +3159,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 2529fb68a172cd6b1e248ff1e50a471888f5715fe2064bd70d3a46c87e2719195708cb5f603740bd6f4e7284ec2828b3acfa845177db8c9f564d03517af52e46
+  checksum: 1327c8722c0b5f67ab8a8d6dac532134adf94d5ab9e227bd7262483d37d5eb3953cdcbc287d251615536700c9e60d0ce71475de772467f27fe37d42af5a8c024
   languageName: node
   linkType: hard
 
@@ -18144,7 +18144,7 @@ __metadata:
     "@sentry/tracing": ^6.17.6
     "@storybook/addon-actions": ^6.4.19
     "@storybook/addon-essentials": ^6.4.18
-    "@storybook/addon-links": ^6.4.18
+    "@storybook/addon-links": ^6.4.19
     "@storybook/addon-queryparams": ^6.2.9
     "@storybook/node-logger": ^6.4.18
     "@storybook/preset-create-react-app": ^4.0.1
