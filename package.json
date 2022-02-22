@@ -98,10 +98,6 @@
     "typedoc": "^0.22.11",
     "typescript": "^4.5.5"
   },
-  "optionalDependencies": {
-    "babel-loader": "8.1.0",
-    "webpack": "4.44.2"
-  },
   "jest": {
     "coverageThreshold": {
       "global": {
