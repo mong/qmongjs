@@ -7,7 +7,6 @@
  */
 import { render, screen } from "@testing-library/react";
 import { useRef } from "react";
-import faker from "faker";
 import BarChart, { Props, Bar } from "..";
 import { useResizeObserver } from "../../../../helpers/hooks";
 import { buildLevels } from "../../../../test/builders";
@@ -375,8 +374,10 @@ function BarChartWithRef(props: Omit<Props, "svgContainerRef">) {
 // Builders
 function buildBar(overrides?: Partial<Bar>): Bar {
   return {
-    label: faker.datatype.uuid(),
-    value: faker.datatype.number(100) / 100,
+    label: (Math.random() + 1)
+      .toString(36)
+      .substring(2) /* Convert random number to base 36 string */,
+    value: Math.random(),
     ...overrides,
   };
 }
@@ -385,13 +386,10 @@ function buildProps(
   overrides?: Partial<Props>
 ): Omit<Props, "svgContainerRef"> {
   return {
-    showLevel: faker.datatype.boolean(),
-    data: Array.from(
-      { length: faker.datatype.number({ min: 1, max: 10 }) },
-      buildBar
-    ),
+    showLevel: Math.random() < 0.5 /* Random true or false */,
+    data: Array.from({ length: Math.floor(Math.random() * 10 + 1) }, buildBar),
     levels: buildLevels(),
-    zoom: faker.datatype.boolean(),
+    zoom: Math.random() < 0.5 /* Random true or false */,
     ...overrides,
   };
 }
