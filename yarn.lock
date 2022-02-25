@@ -2877,7 +2877,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-actions@npm:6.4.19, @storybook/addon-actions@npm:^6.4.19":
+"@storybook/addon-actions@npm:6.4.19":
   version: 6.4.19
   resolution: "@storybook/addon-actions@npm:6.4.19"
   dependencies:
@@ -3910,7 +3910,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/node-logger@npm:6.4.19, @storybook/node-logger@npm:^6.4.18":
+"@storybook/node-logger@npm:6.4.19":
   version: 6.4.19
   resolution: "@storybook/node-logger@npm:6.4.19"
   dependencies:
@@ -17404,11 +17404,9 @@ __metadata:
     "@mui/material": ^5.4.3
     "@sentry/react": ^6.17.9
     "@sentry/tracing": ^6.17.9
-    "@storybook/addon-actions": ^6.4.19
     "@storybook/addon-essentials": ^6.4.19
     "@storybook/addon-links": ^6.4.19
     "@storybook/addon-queryparams": ^6.2.9
-    "@storybook/node-logger": ^6.4.18
     "@storybook/preset-create-react-app": ^4.0.1
     "@storybook/react": ^6.4.19
     "@testing-library/jest-dom": ^5.16.2
