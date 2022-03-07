@@ -17413,7 +17413,7 @@ __metadata:
     react-icons: ^4.3.1
     react-markdown: ^8.0.0
     react-query: ^3.34.16
-    react-router-dom: ^6.2.1
+    react-router-dom: ^6.2.2
     react-scripts: ^5.0.0
     react-select: ^5.2.2
     resize-observer-polyfill: ^1.5.1
@@ -17828,7 +17828,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^6.0.0, react-router-dom@npm:^6.2.1":
+"react-router-dom@npm:^6.0.0, react-router-dom@npm:^6.2.2":
   version: 6.2.2
   resolution: "react-router-dom@npm:6.2.2"
   dependencies:
