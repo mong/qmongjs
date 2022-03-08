@@ -27,7 +27,7 @@ jobs:
           echo "api=https://qa-mong-api.skde.org" >> $GITHUB_ENV
           echo "s3_bucket=s3://qa.skde.org/kvalitetsregistre" >> $GITHUB_ENV
       - name: Check out the repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Build package
         env:
           REACT_APP_API_HOST: ${{ env.api }}
