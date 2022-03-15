@@ -5156,7 +5156,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prop-types@npm:*, @types/prop-types@npm:^15.7.4":
+"@types/prop-types@npm:*, @types/prop-types@npm:^15.0.0, @types/prop-types@npm:^15.7.4":
   version: 15.7.4
   resolution: "@types/prop-types@npm:15.7.4"
   checksum: ef6e1899e59b876c273811b1bd845022fc66d5a3d11cb38a25b6c566b30514ae38fe20a40f67622f362a4f4f7f9224e22d8da101cff3d6e97e11d7b4c307cfc1
@@ -17440,7 +17440,7 @@ __metadata:
     react: ^17.0.1
     react-dom: ^17.0.2
     react-icons: ^4.3.1
-    react-markdown: ^8.0.0
+    react-markdown: ^8.0.1
     react-query: ^3.34.16
     react-router-dom: ^5.3.0
     react-scripts: ^5.0.0
@@ -17780,11 +17780,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-markdown@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "react-markdown@npm:8.0.0"
+"react-markdown@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "react-markdown@npm:8.0.1"
   dependencies:
     "@types/hast": ^2.0.0
+    "@types/prop-types": ^15.0.0
     "@types/unist": ^2.0.0
     comma-separated-tokens: ^2.0.0
     hast-util-whitespace: ^2.0.0
@@ -17801,7 +17802,7 @@ __metadata:
   peerDependencies:
     "@types/react": ">=16"
     react: ">=16"
-  checksum: 61412ecd18443e6f074932d7f2b142d20fc27d1c2042793fce65c28d2d18968419e85700b8f4a3c5f1819d8ac95cca1ee2959b8ca3c18dd8544130fdc1f28bdb
+  checksum: 22a4bce581d43e3b5556166b1d00b646591955c7c1da0e0ec3d7acc5024d7c31256fd20d1ef814da0c1cdde4caf75023b8dddbe151b7b3405d7069b0fe5e9cbc
   languageName: node
   linkType: hard
 
