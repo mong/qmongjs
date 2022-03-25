@@ -39,7 +39,7 @@
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.2",
     "@sentry/react": "^6.18.1",
-    "@sentry/tracing": "^6.18.1",
+    "@sentry/tracing": "^6.19.2",
     "d3": "^7.3.0",
     "query-string": "^7.1.1",
     "react": "^17.0.1",
