@@ -28,7 +28,7 @@ it("renders", () => {
 
   render(
     <Router>
-      <QueryParamProvider ReactRouterRoute={Route}>
+      <QueryParamProvider>
         <table>
           <tbody>
             <IndicatorRow

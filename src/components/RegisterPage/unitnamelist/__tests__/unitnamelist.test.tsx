@@ -1,5 +1,4 @@
-import { BrowserRouter, Route } from "react-router-dom";
-import { QueryParamProvider } from "use-query-params";
+import { BrowserRouter } from "react-router-dom";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
@@ -11,13 +10,11 @@ import namesData from "../../../../dev-tools/data/unitnames.json";
 it("unit name selection renders", async () => {
   const { container } = render(
     <BrowserRouter>
-      <QueryParamProvider ReactRouterRoute={Route}>
-        <UnitNameList
-          nestedUnitNames={namesData.nestedUnitNames}
-          treatment_units={[""]}
-          update_treatment_units={() => {}}
-        />
-      </QueryParamProvider>
+      <UnitNameList
+        nestedUnitNames={namesData.nestedUnitNames}
+        treatment_units={[""]}
+        update_treatment_units={() => {}}
+      />
     </BrowserRouter>
   );
   // eslint-disable-next-line
@@ -36,13 +33,11 @@ it("unit name selection renders", async () => {
 it("should close the list of TUs when ESC/ESCAPE is clicked", () => {
   const { container } = render(
     <BrowserRouter>
-      <QueryParamProvider ReactRouterRoute={Route}>
-        <UnitNameList
-          nestedUnitNames={namesData.nestedUnitNames}
-          treatment_units={[""]}
-          update_treatment_units={() => {}}
-        />
-      </QueryParamProvider>
+      <UnitNameList
+        nestedUnitNames={namesData.nestedUnitNames}
+        treatment_units={[""]}
+        update_treatment_units={() => {}}
+      />
     </BrowserRouter>
   );
   userEvent.click(screen.getByText(/Vis alle/i));
