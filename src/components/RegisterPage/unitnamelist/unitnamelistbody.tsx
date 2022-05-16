@@ -36,7 +36,16 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
       alert(`maks ${app_text.tu_list.max_nr_tu} behandlingsenheter!`);
     }
   };
-  const hf_hospital = tu_names.hf.map((element) => {
+  /* Put Avtalespesialister to the end of HF array */
+  const new_order_hf = tu_names.hf.sort((a, b) =>
+    a.hf_full === "Avtalespesialister"
+      ? 1
+      : b.hf_full === "Avtalespesialister"
+      ? -1
+      : 0
+  );
+
+  const hf_hospital = new_order_hf.map((element) => {
     const hospital = element.hospital.map((hospital) => {
       const style_hospital = treatment_units.includes(hospital)
         ? { transform: "scale(1.05,1.1)", color: "#08418e" }
