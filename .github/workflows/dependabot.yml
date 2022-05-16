@@ -16,12 +16,12 @@ jobs:
     env:
       YARN_ENABLE_SCRIPTS: false
     steps:
-      - uses: actions/checkout@v1 # version 2 did not work
+      - uses: actions/checkout@v1 # version 2 and 3 did not work
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 2
 
-      - uses: actions/setup-node@v2.5.1
+      - uses: actions/setup-node@v3
         with:
           node-version: '16'
 

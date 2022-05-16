@@ -12,6 +12,42 @@
 
 You can install the latest version of qmongjs from [github](https://github.com/mong/qmongjs).
 
+## Run it locally
+
+This is done in three different terminal windows.
+
+### Terminal 1
+
+Start a `mysql` server, so `mong-api` will get data
+
+```sh
+sudo systemctl start mysqld
+```
+
+If this is the first time or if you want to update data, follow [these instructions](https://mong.github.io/#/utvikling?id=kj%c3%b8re-database-lokalt).
+
+### Terminal 2
+
+Run `mong-api`
+
+```sh
+git clone git@github.com:mong/mong-api
+cd mong-api
+npm install
+npm start # starts at http://localhost:4000
+```
+
+### Terminal 3
+
+Run `qmongjs`
+
+```sh
+git clone git@github.com:mong/qmongjs
+cd qmongjs
+npm install
+npm start # starts at http://localhost:3000
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
