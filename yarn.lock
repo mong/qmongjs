@@ -2553,7 +2553,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/icons-material@npm:^5.6.2":
+"@mui/icons-material@npm:^5.8.0":
   version: 5.8.0
   resolution: "@mui/icons-material@npm:5.8.0"
   dependencies:
@@ -2569,7 +2569,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/material@npm:^5.7.0":
+"@mui/material@npm:^5.8.0":
   version: 5.8.0
   resolution: "@mui/material@npm:5.8.0"
   dependencies:
@@ -17638,8 +17638,8 @@ __metadata:
   dependencies:
     "@emotion/react": ^11.9.0
     "@emotion/styled": ^11.8.1
-    "@mui/icons-material": ^5.6.2
-    "@mui/material": ^5.7.0
+    "@mui/icons-material": ^5.8.0
+    "@mui/material": ^5.8.0
     "@sentry/react": ^6.19.7
     "@sentry/tracing": ^6.19.7
     "@storybook/addon-essentials": ^6.4.22
