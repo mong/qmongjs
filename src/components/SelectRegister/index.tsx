@@ -84,6 +84,14 @@ const SelectRegister = (props: selectedRegisterProps) => {
           />
         </div>
         <ul>
+          <li>
+            <Link
+              onClick={() => updateBtnToggle(!btnToggle)}
+              to={`/alle/${activeTab}`}
+            >
+              <b>Alle registre</b>
+            </Link>
+          </li>
           {filteredReg.map((reg: RegisterNames) => {
             const tabName =
               activeTab === "sykehus" && reg.caregiver_data
