@@ -33,8 +33,8 @@ Run `mong-api`
 ```sh
 git clone git@github.com:mong/mong-api
 cd mong-api
-npm install
-npm start # starts at http://localhost:4000
+yarn install
+yarn start # starts at http://localhost:4000
 ```
 
 ### Terminal 3
@@ -44,8 +44,8 @@ Run `qmongjs`
 ```sh
 git clone git@github.com:mong/qmongjs
 cd qmongjs
-npm install
-npm start # starts at http://localhost:3000
+yarn install
+yarn start # starts at http://localhost:3000
 ```
 
 ## Available Scripts

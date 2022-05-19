@@ -65,6 +65,15 @@ exports[`register page header renders correctly 1`] = `
             <ul>
               <li>
                 <a
+                  href="/alle/sykehus"
+                >
+                  <b>
+                    Alle registre
+                  </b>
+                </a>
+              </li>
+              <li>
+                <a
                   href="/hjerneslag/sykehus"
                 >
                   Norsk hjerneslagregister
@@ -212,6 +221,15 @@ exports[`register page header renders correctly 2`] = `
               />
             </div>
             <ul>
+              <li>
+                <a
+                  href="/alle/sykehus"
+                >
+                  <b>
+                    Alle registre
+                  </b>
+                </a>
+              </li>
               <li>
                 <a
                   href="/hjerneslag/sykehus"
