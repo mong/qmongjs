@@ -3200,15 +3200,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-links@npm:^6.4.22":
-  version: 6.4.22
-  resolution: "@storybook/addon-links@npm:6.4.22"
+"@storybook/addon-links@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "@storybook/addon-links@npm:6.5.0"
   dependencies:
-    "@storybook/addons": 6.4.22
-    "@storybook/client-logger": 6.4.22
-    "@storybook/core-events": 6.4.22
-    "@storybook/csf": 0.0.2--canary.87bc651.0
-    "@storybook/router": 6.4.22
+    "@storybook/addons": 6.5.0
+    "@storybook/client-logger": 6.5.0
+    "@storybook/core-events": 6.5.0
+    "@storybook/csf": 0.0.2--canary.4566f4d.1
+    "@storybook/router": 6.5.0
     "@types/qs": ^6.9.5
     core-js: ^3.8.2
     global: ^4.4.0
@@ -3217,14 +3217,14 @@ __metadata:
     regenerator-runtime: ^0.13.7
     ts-dedent: ^2.0.0
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
     react:
       optional: true
     react-dom:
       optional: true
-  checksum: 893b2fe7c179e4a63c687b2deea8db1a7c4f93bb159bb47760f66f7e7e6f5a0d92e1013e0846f1c2ca0fed95ccf4591b6e9c119fda413b0710e54b251cfc58b4
+  checksum: 479b8704bc8b62b5636cf1a4c32d55750da8abc0011f8011eb01c05aaf7f6b1a1179482e5d5cbf22740e30a1220683fb7aabe534edb1d8930e7f96c1bb2a05c2
   languageName: node
   linkType: hard
 
@@ -17900,7 +17900,7 @@ __metadata:
     "@sentry/react": ^6.19.7
     "@sentry/tracing": ^6.19.7
     "@storybook/addon-essentials": ^6.5.0
-    "@storybook/addon-links": ^6.4.22
+    "@storybook/addon-links": ^6.5.0
     "@storybook/addon-queryparams": ^6.2.9
     "@storybook/preset-create-react-app": ^4.1.0
     "@storybook/react": ^6.4.22
