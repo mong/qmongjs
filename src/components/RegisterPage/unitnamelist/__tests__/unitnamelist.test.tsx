@@ -20,20 +20,23 @@ it("unit name selection renders", async () => {
       </QueryParamProvider>
     </BrowserRouter>
   );
+  // Avoid using container to query for elements!
   // eslint-disable-next-line
   expect(container.getElementsByClassName("tu_list")[0]).toHaveStyle(
     "display: none"
   );
   expect(container).toMatchSnapshot();
 
-  userEvent.click(screen.getByText(/Vis alle/i));
+  const user = userEvent.setup();
+  await user.click(screen.getByText(/Vis alle/i));
+  // Avoid using container to query for elements!
   // eslint-disable-next-line
   expect(container.getElementsByClassName("tu_list")[0]).not.toHaveStyle(
     "display: none"
   );
 });
 
-it("should close the list of TUs when ESC/ESCAPE is clicked", () => {
+it("should close the list of TUs when ESC/ESCAPE is clicked", async () => {
   const { container } = render(
     <BrowserRouter>
       <QueryParamProvider ReactRouterRoute={Route}>
@@ -45,7 +48,10 @@ it("should close the list of TUs when ESC/ESCAPE is clicked", () => {
       </QueryParamProvider>
     </BrowserRouter>
   );
-  userEvent.click(screen.getByText(/Vis alle/i));
+
+  const user = userEvent.setup();
+  await user.click(screen.getByText(/Vis alle/i));
+  // Avoid using container to query for elements!
   // eslint-disable-next-line
   expect(container.getElementsByClassName("tu_list")[0]).not.toHaveStyle(
     "display: none"
@@ -54,6 +60,7 @@ it("should close the list of TUs when ESC/ESCAPE is clicked", () => {
     var event = new KeyboardEvent("keydown", { key: "Esc" });
     global.dispatchEvent(event);
   });
+  // Avoid using container to query for elements!
   // eslint-disable-next-line
   expect(container.getElementsByClassName("tu_list")[0]).toHaveStyle(
     "display: none"
