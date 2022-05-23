@@ -15675,9 +15675,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:^0.40.0":
-  version: 0.40.0
-  resolution: "msw@npm:0.40.0"
+"msw@npm:^0.41.0":
+  version: 0.41.0
+  resolution: "msw@npm:0.41.0"
   dependencies:
     "@mswjs/cookies": ^0.2.0
     "@mswjs/interceptors": ^0.15.1
@@ -15699,13 +15699,13 @@ __metadata:
     type-fest: ^1.2.2
     yargs: ^17.3.1
   peerDependencies:
-    typescript: 4.2.x
+    typescript: ">= 4.2.x <= 4.6.x"
   peerDependenciesMeta:
     typescript:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: e0b228bb01e7e9ddc72b689f5a0ee1e8ef8868ab2ed1fa13ffb24722ffe79a953c15e6972681ccb84d6487eeb24690c6f8bb3744e84333b649f3ebb1f679edff
+  checksum: 36d675da1e9a9bacd1ebe7446d1c403a72ce4208c07eebb5149d9baf3a49189793ed024f45c9c89838817980c931c8064b2034b99a64ecfc6a17222b6e10f5e3
   languageName: node
   linkType: hard
 
@@ -18026,7 +18026,7 @@ __metadata:
     husky: ^8.0.1
     is-ci-cli: ^2.2.0
     lint-staged: ^12.4.1
-    msw: ^0.40.0
+    msw: ^0.41.0
     prettier: ^2.5.1
     query-string: ^7.1.1
     react: ^17.0.1
