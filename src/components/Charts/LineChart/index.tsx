@@ -241,7 +241,7 @@ const LineChart = (props: Props) => {
               .transition()
               .duration(1000)
               .attr("cx", (d) => xScale(d.year))
-              .attr("cy", (d) => yScale(d.value))          
+              .attr("cy", (d) => yScale(d.value))
               .attr("stroke", (d) => lineColorScale(d.label))
               .attr("fill", (d) => lineColorScale(d.label))
           ),
