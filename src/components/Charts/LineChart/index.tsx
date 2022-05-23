@@ -180,6 +180,7 @@ const LineChart = (props: Props) => {
     const lines = line<DataPoint>()
       .x((d) => xScale(d.year))
       .y((d) => yScale(d.value));
+
     container
       .select(".lines")
       .selectAll(".line")
@@ -208,6 +209,41 @@ const LineChart = (props: Props) => {
               .transition()
               .duration(1000)
               .attr("d", ([, d]) => lines(d))
+          ),
+        (exit) => exit.remove()
+      );
+
+    container
+      .select(".dots")
+      .selectAll(".dot")
+      .data(data)
+      .join(
+        (enter) =>
+          enter
+            .append("circle")
+            .attr("class", "dot")
+            .attr("stroke", (d) => lineColorScale(d.label))
+            .attr("fill", (d) => lineColorScale(d.label))
+            .attr("r", 4)
+            .style("mix-blend-mode", "multiply")
+            .attr("cx", (d) => xScale(d.year))
+            .attr("cy", (d) => yScale(d.value)),
+        (update) =>
+          update.call((update) =>
+            update
+              .attr("opacity", (d) => {
+                if (highlightedLegends.length === 0) {
+                  return 1;
+                }
+                return highlightedLegends.includes(d.label) ? 1 : 0.4;
+              })
+
+              .transition()
+              .duration(1000)
+              .attr("cx", (d) => xScale(d.year))
+              .attr("cy", (d) => yScale(d.value))          
+              .attr("stroke", (d) => lineColorScale(d.label))
+              .attr("fill", (d) => lineColorScale(d.label))
           ),
         (exit) => exit.remove()
       );
@@ -270,6 +306,7 @@ const LineChart = (props: Props) => {
             </g>
             <g className="levels" />
             <g className="lines" />
+            <g className="dots" />
           </g>
         </svg>
       </div>
