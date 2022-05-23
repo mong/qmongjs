@@ -76,7 +76,7 @@
     "@storybook/addon-essentials": "^6.5.0",
     "@storybook/addon-links": "^6.5.4",
     "@storybook/addon-queryparams": "^6.2.9",
-    "@storybook/preset-create-react-app": "^4.1.0",
+    "@storybook/preset-create-react-app": "^4.1.1",
     "@storybook/react": "^6.4.22",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.5",
