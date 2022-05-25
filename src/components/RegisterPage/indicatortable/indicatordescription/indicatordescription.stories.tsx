@@ -35,6 +35,7 @@ fullDescription.args = {
     registry_id: 11,
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
+    sformat: ",.0%",
   },
 };
 
@@ -58,6 +59,7 @@ missingLevelGreen.args = {
     registry_id: 11,
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
+    sformat: ",.0%",
   },
 };
 
@@ -81,5 +83,6 @@ levelDirection0.args = {
     registry_id: 11,
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
+    sformat: ",.0%",
   },
 };

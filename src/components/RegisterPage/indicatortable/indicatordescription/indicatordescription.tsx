@@ -8,6 +8,7 @@ export interface DescriptionProps {
 
 export const IndicatorDescription: React.FC<DescriptionProps> = (props) => {
   const { description } = props;
+  console.log(description.sformat);
 
   const title = description.title;
   const short_description = description.short_description;
