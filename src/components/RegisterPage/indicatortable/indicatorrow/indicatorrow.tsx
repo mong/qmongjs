@@ -36,7 +36,7 @@ const formatIndicatorValues = (
       <IndicatorValue
         key={`${indicator[0].ind_id}_${indicator[0].unit_name}_${indicator[0].id}_su`}
         indicatorData={indicator[0]}
-        format={description.sformat}
+        format={description.sformat !== null ? description.sformat : ",.0%"}
         td_class={`${
           indicator[0].unit_level !== "nation" ? "selected_unit" : "nationally"
         }`}
@@ -81,7 +81,7 @@ const formatIndicatorValues = (
       <IndicatorValue
         key={`${indicator[0].ind_id}_${indicator[0].unit_name}_${indicator[0].id}_su`}
         indicatorData={indicator[0]}
-        format={description.sformat}
+        format={description.sformat !== null ? description.sformat : ",.0%"}
         td_class={`${
           indicator[0].unit_level !== "nation" ? "selected_unit" : "nationally"
         }`}

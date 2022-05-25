@@ -1,6 +1,7 @@
 import React from "react";
 import { Description } from "../../";
 import style from "./indicatordescription.module.css";
+import { customFormat } from "../../../../helpers/functions/localFormater";
 
 export interface DescriptionProps {
   description: Description;
@@ -8,23 +9,25 @@ export interface DescriptionProps {
 
 export const IndicatorDescription: React.FC<DescriptionProps> = (props) => {
   const { description } = props;
-  console.log(description.sformat);
+  const numberFormat: string =
+    description.sformat === null ? ",.0%" : description.sformat;
 
   const title = description.title;
   const short_description = description.short_description;
   const level_direction = description.level_direction;
-  const level_green =
-    description.level_green === null
-      ? null
-      : `${description.level_green * 100}%`;
+  const level_green = description.level_green;
 
   const LEVEL_TEXT =
     level_green === null ? (
       ""
     ) : level_direction === 1 ? (
-      <h4>ØNSKET MÅLNIVÅ: &#8805; {level_green} </h4>
+      <h4>
+        ØNSKET MÅLNIVÅ: &#8805; {customFormat(numberFormat)(level_green)}{" "}
+      </h4>
     ) : (
-      <h4>ØNSKET MÅLNIVÅ: &#8804; {level_green} </h4>
+      <h4>
+        ØNSKET MÅLNIVÅ: &#8804; {customFormat(numberFormat)(level_green)}{" "}
+      </h4>
     );
 
   return (

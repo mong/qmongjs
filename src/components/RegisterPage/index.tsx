@@ -51,7 +51,7 @@ export interface Description {
   registry_id: number;
   rname: string | null;
   full_name: string;
-  sformat: string;
+  sformat: string | null;
 }
 
 export const API_HOST =
