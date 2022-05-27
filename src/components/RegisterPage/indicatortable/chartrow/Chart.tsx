@@ -20,6 +20,7 @@ interface Props {
   zoom: boolean;
   showLevel: boolean;
   levels: Level[];
+  format: string | null;
   selectedTreatmentUnits: string[];
 }
 

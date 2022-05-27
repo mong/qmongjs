@@ -40,6 +40,9 @@ export function ChartRow(props: Props) {
   const [show_level, update_show_level] = useState(false);
 
   let levels = level_boundary(description[0]);
+  let format = description[0].sformat;
+  console.log(format);
+
   let delivery_time = new Date(indicatorData[0].delivery_time);
 
   return (
@@ -68,6 +71,7 @@ export function ChartRow(props: Props) {
             zoom={zoom}
             showLevel={show_level}
             levels={levels}
+            format={format}
             treatmentYear={treatmentYear}
             selectedTreatmentUnits={selectedTreatmentUnits}
             indicatorData={indicatorData}
