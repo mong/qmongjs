@@ -10,7 +10,9 @@ export interface DescriptionProps {
 export const IndicatorDescription: React.FC<DescriptionProps> = (props) => {
   const { description } = props;
   const numberFormat: string =
-    description.sformat === null ? ",.0%" : description.sformat;
+    description.sformat === undefined || description.sformat === null
+      ? ",.0%"
+      : description.sformat;
 
   const title = description.title;
   const short_description = description.short_description;
