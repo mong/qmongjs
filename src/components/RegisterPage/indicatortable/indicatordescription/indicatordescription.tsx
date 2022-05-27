@@ -34,7 +34,7 @@ export const IndicatorDescription: React.FC<DescriptionProps> = (props) => {
         <div className={style.desired_target_level}>
           <h4>
             ØNSKET MÅLNIVÅ: {level_sign}{" "}
-            {customFormat(numberFormat)(level_green)}
+            {customFormat(numberFormat, level_green)}
           </h4>
         </div>
       )}

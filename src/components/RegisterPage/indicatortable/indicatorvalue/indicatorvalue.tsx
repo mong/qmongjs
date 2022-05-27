@@ -54,7 +54,7 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
           aria-label={`Achieved level ${indicatorData.level}`}
         >
           <h4>
-            {`${customFormat(numberFormat)(indicatorData.var)} `}
+            {`${customFormat(numberFormat, indicatorData.var)} `}
             <i className={icon_class} />
           </h4>
         </div>

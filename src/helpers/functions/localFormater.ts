@@ -8,4 +8,10 @@ const formatDefinition: FormatLocaleDefinition = {
   percent: "\u202f%",
 };
 
-export const customFormat = formatLocale(formatDefinition).format;
+export function customFormat(numberFormat: string, num: number) {
+  try {
+    return formatLocale(formatDefinition).format(numberFormat)(num);
+  } catch (error) {
+    return num;
+  }
+}
