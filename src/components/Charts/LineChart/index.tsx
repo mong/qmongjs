@@ -104,7 +104,12 @@ const LineChart = (props: Props) => {
     }
 
     // Y-Axis
-    const yAxisFormat = typeof tickformat === "string" ? tickformat : ",.0f";
+    const yAxisFormat =
+      typeof tickformat === "string"
+        ? tickformat.substring(tickformat.length - 1) === "%"
+          ? "~%" // if percentage format -> delete trailing zero
+          : tickformat
+        : ",.0f";
     const yAxis = axisRight(yScale)
       .ticks(theme.y_axis_tick_number)
       .tickSize(innerWidth)
