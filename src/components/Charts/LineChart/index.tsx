@@ -30,7 +30,7 @@ export interface Props {
   showLevel: boolean;
   data: DataPoint[];
   levels: Level[];
-  format: string | null;
+  tickformat: string | null;
   zoom?: boolean;
   margin?: Margin;
 }
@@ -43,7 +43,7 @@ const LineChart = (props: Props) => {
     data,
     showLevel: displayLevels,
     levels,
-    format,
+    tickformat,
     zoom = false,
     margin = {},
   } = props;
@@ -104,7 +104,7 @@ const LineChart = (props: Props) => {
     }
 
     // Y-Axis
-    const yAxisFormat = typeof format === "string" ? format : ",.0f";
+    const yAxisFormat = typeof tickformat === "string" ? tickformat : ",.0f";
     const yAxis = axisRight(yScale)
       .ticks(theme.y_axis_tick_number)
       .tickSize(innerWidth)
@@ -258,7 +258,7 @@ const LineChart = (props: Props) => {
     innerHeight,
     innerWidth,
     levels,
-    format,
+    tickformat,
     selectedLegends,
     svgContainerRef,
     lineColorScale,

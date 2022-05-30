@@ -79,6 +79,7 @@ function buildProps(overrides: Partial<Props>): Omit<Props, "svgContainerRef"> {
     data: [],
     levels: buildLevels(),
     showLevel: Math.random() < 0.5 /* Random true or false */,
+    tickformat: null,
     ...overrides,
   };
 }

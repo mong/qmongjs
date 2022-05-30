@@ -71,7 +71,7 @@ export function ChartRow(props: Props) {
             zoom={zoom}
             showLevel={show_level}
             levels={levels}
-            format={format}
+            tickformat={format}
             treatmentYear={treatmentYear}
             selectedTreatmentUnits={selectedTreatmentUnits}
             indicatorData={indicatorData}
