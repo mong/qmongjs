@@ -41,7 +41,6 @@ export function ChartRow(props: Props) {
 
   let levels = level_boundary(description[0]);
   let format = description[0].sformat;
-  console.log(format);
 
   let delivery_time = new Date(indicatorData[0].delivery_time);
 

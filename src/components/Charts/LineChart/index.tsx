@@ -48,8 +48,6 @@ const LineChart = (props: Props) => {
     margin = {},
   } = props;
 
-  console.log(levels);
-
   const [hoveredLegend, setHoveredLegend] = useState<string | null>(null);
   const [selectedLegends, setSelectedLegends] = useState<string[]>([]);
   const [legendHeight, setLegendHeight] = useState<number>(0);
