@@ -295,7 +295,7 @@ test("Render with levels @500px", async () => {
         { level: "mid", start: 0.9, end: 0.5 },
         { level: "low", start: 0.5, end: 0 },
       ]}
-      tickformat={null}
+      tickformat={null} // test with default format
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />
@@ -374,8 +374,6 @@ test("Render zoomed with levels @500px", async () => {
 
 // Helpers
 function BarChartWithRef(props: Omit<Props, "svgContainerRef">) {
-  //  console.log(props);
-
   const ref = useRef<HTMLDivElement>(null);
   return <BarChart {...props} svgContainerRef={ref} />;
 }

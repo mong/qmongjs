@@ -48,6 +48,66 @@ test("shows only one legend item per label", async () => {
   expect(screen.getAllByText("Nasjonalt").length).toBe(1);
 });
 
+test("Render without levels @250px", async () => {
+  const WIDTH = 250;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const { container } = render(
+    <LineChartWithRef
+      showLevel={false}
+      levels={[
+        { level: "high", start: 1, end: 0.9 },
+        { level: "mid", start: 0.9, end: 0.5 },
+        { level: "low", start: 0.5, end: 0 },
+      ]}
+      tickformat={null}
+      data={[
+        { label: "a", value: 0.5, year: 2020 },
+        { label: "a", value: 0.15, year: 2019 },
+        { label: "a", value: 0.3, year: 2018 },
+        { label: "a", value: 0.1, year: 2017 },
+      ]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Render levels @500px", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const { container } = render(
+    <LineChartWithRef
+      showLevel={true}
+      levels={[
+        { level: "high", start: 1, end: 0.9 },
+        { level: "mid", start: 0.9, end: 0.5 },
+        { level: "low", start: 0.5, end: 0 },
+      ]}
+      tickformat=",.0%"
+      data={[
+        { label: "test", value: 0.513343, year: 2020 },
+        { label: "test", value: 0.15, year: 2019 },
+        { label: "test", value: 0.3532, year: 2018 },
+        { label: "test", value: 0.124, year: 2017 },
+      ]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
 // Helpers
 function LineChartWithRef(props: Omit<Props, "svgContainerRef">) {
   const ref = createRef<HTMLDivElement>();
