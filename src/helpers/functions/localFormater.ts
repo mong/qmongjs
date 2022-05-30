@@ -10,8 +10,16 @@ const formatDefinition: FormatLocaleDefinition = {
 
 export function customFormat(numberFormat: string, num: number) {
   try {
-    return formatLocale(formatDefinition).format(numberFormat)(num);
+    return onlyCustomFormat(numberFormat)(num);
   } catch (error) {
     return num;
+  }
+}
+
+export function onlyCustomFormat(numberFormat: string) {
+  try {
+    return formatLocale(formatDefinition).format(numberFormat);
+  } catch (error) {
+    return formatLocale(formatDefinition).format(".0f");
   }
 }

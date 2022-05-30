@@ -37,7 +37,7 @@ exports[`Render with levels @250px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0%
+              0 %
             </text>
           </g>
           <g
@@ -55,7 +55,7 @@ exports[`Render with levels @250px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              20%
+              20 %
             </text>
           </g>
           <g
@@ -73,7 +73,7 @@ exports[`Render with levels @250px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              40%
+              40 %
             </text>
           </g>
           <g
@@ -91,7 +91,7 @@ exports[`Render with levels @250px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              60%
+              60 %
             </text>
           </g>
           <g
@@ -109,7 +109,7 @@ exports[`Render with levels @250px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              80%
+              80 %
             </text>
           </g>
           <g
@@ -127,7 +127,7 @@ exports[`Render with levels @250px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              100%
+              100 %
             </text>
           </g>
         </g>
@@ -286,7 +286,7 @@ exports[`Render with levels @250px 1`] = `
             x="232"
             y="25.674418604651155"
           >
-            100%
+            1
           </text>
           <text
             class="label"
@@ -298,7 +298,7 @@ exports[`Render with levels @250px 1`] = `
             x="53.5"
             y="60.55813953488371"
           >
-            15%
+            0
           </text>
           <text
             class="label"
@@ -310,7 +310,7 @@ exports[`Render with levels @250px 1`] = `
             x="91"
             y="95.44186046511626"
           >
-            30%
+            0
           </text>
           <text
             class="label"
@@ -322,7 +322,7 @@ exports[`Render with levels @250px 1`] = `
             x="41"
             y="130.32558139534882"
           >
-            10%
+            0
           </text>
         </g>
       </g>
@@ -368,7 +368,7 @@ exports[`Render with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0%
+              0 %
             </text>
           </g>
           <g
@@ -386,7 +386,7 @@ exports[`Render with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              20%
+              20 %
             </text>
           </g>
           <g
@@ -404,7 +404,7 @@ exports[`Render with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              40%
+              40 %
             </text>
           </g>
           <g
@@ -422,7 +422,7 @@ exports[`Render with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              60%
+              60 %
             </text>
           </g>
           <g
@@ -440,7 +440,7 @@ exports[`Render with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              80%
+              80 %
             </text>
           </g>
           <g
@@ -458,7 +458,7 @@ exports[`Render with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              100%
+              100 %
             </text>
           </g>
         </g>
@@ -617,7 +617,7 @@ exports[`Render with levels @500px 1`] = `
             x="482"
             y="25.674418604651155"
           >
-            100%
+            1
           </text>
           <text
             class="label"
@@ -629,7 +629,7 @@ exports[`Render with levels @500px 1`] = `
             x="91"
             y="60.55813953488371"
           >
-            15%
+            0
           </text>
           <text
             class="label"
@@ -641,7 +641,7 @@ exports[`Render with levels @500px 1`] = `
             x="166"
             y="95.44186046511626"
           >
-            30%
+            0
           </text>
           <text
             class="label"
@@ -653,7 +653,7 @@ exports[`Render with levels @500px 1`] = `
             x="66"
             y="130.32558139534882"
           >
-            10%
+            0
           </text>
         </g>
       </g>
@@ -699,7 +699,7 @@ exports[`Render with levels reversed @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0%
+              0 %
             </text>
           </g>
           <g
@@ -717,7 +717,7 @@ exports[`Render with levels reversed @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              20%
+              20 %
             </text>
           </g>
           <g
@@ -735,7 +735,7 @@ exports[`Render with levels reversed @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              40%
+              40 %
             </text>
           </g>
           <g
@@ -753,7 +753,7 @@ exports[`Render with levels reversed @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              60%
+              60 %
             </text>
           </g>
           <g
@@ -771,7 +771,7 @@ exports[`Render with levels reversed @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              80%
+              80 %
             </text>
           </g>
           <g
@@ -789,7 +789,7 @@ exports[`Render with levels reversed @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              100%
+              100 %
             </text>
           </g>
         </g>
@@ -948,7 +948,7 @@ exports[`Render with levels reversed @500px 1`] = `
             x="482"
             y="25.674418604651155"
           >
-            100%
+            1
           </text>
           <text
             class="label"
@@ -960,7 +960,7 @@ exports[`Render with levels reversed @500px 1`] = `
             x="91"
             y="60.55813953488371"
           >
-            15%
+            0
           </text>
           <text
             class="label"
@@ -972,7 +972,7 @@ exports[`Render with levels reversed @500px 1`] = `
             x="166"
             y="95.44186046511626"
           >
-            30%
+            0
           </text>
           <text
             class="label"
@@ -984,7 +984,7 @@ exports[`Render with levels reversed @500px 1`] = `
             x="66"
             y="130.32558139534882"
           >
-            10%
+            0
           </text>
         </g>
       </g>
@@ -1030,7 +1030,7 @@ exports[`Render without levels @250px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0%
+              0 %
             </text>
           </g>
           <g
@@ -1048,7 +1048,7 @@ exports[`Render without levels @250px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              20%
+              20 %
             </text>
           </g>
           <g
@@ -1066,7 +1066,7 @@ exports[`Render without levels @250px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              40%
+              40 %
             </text>
           </g>
           <g
@@ -1084,7 +1084,7 @@ exports[`Render without levels @250px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              60%
+              60 %
             </text>
           </g>
           <g
@@ -1102,7 +1102,7 @@ exports[`Render without levels @250px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              80%
+              80 %
             </text>
           </g>
           <g
@@ -1120,7 +1120,7 @@ exports[`Render without levels @250px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              100%
+              100 %
             </text>
           </g>
         </g>
@@ -1248,7 +1248,7 @@ exports[`Render without levels @250px 1`] = `
             x="232"
             y="25.674418604651155"
           >
-            100%
+            1
           </text>
           <text
             class="label"
@@ -1260,7 +1260,7 @@ exports[`Render without levels @250px 1`] = `
             x="53.5"
             y="60.55813953488371"
           >
-            15%
+            0
           </text>
           <text
             class="label"
@@ -1272,7 +1272,7 @@ exports[`Render without levels @250px 1`] = `
             x="91"
             y="95.44186046511626"
           >
-            30%
+            0
           </text>
           <text
             class="label"
@@ -1284,7 +1284,7 @@ exports[`Render without levels @250px 1`] = `
             x="41"
             y="130.32558139534882"
           >
-            10%
+            0
           </text>
         </g>
       </g>
@@ -1330,7 +1330,7 @@ exports[`Render without levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0%
+              0 %
             </text>
           </g>
           <g
@@ -1348,7 +1348,7 @@ exports[`Render without levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              20%
+              20 %
             </text>
           </g>
           <g
@@ -1366,7 +1366,7 @@ exports[`Render without levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              40%
+              40 %
             </text>
           </g>
           <g
@@ -1384,7 +1384,7 @@ exports[`Render without levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              60%
+              60 %
             </text>
           </g>
           <g
@@ -1402,7 +1402,7 @@ exports[`Render without levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              80%
+              80 %
             </text>
           </g>
           <g
@@ -1420,7 +1420,7 @@ exports[`Render without levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              100%
+              100 %
             </text>
           </g>
         </g>
@@ -1548,7 +1548,7 @@ exports[`Render without levels @500px 1`] = `
             x="482"
             y="25.674418604651155"
           >
-            100%
+            1
           </text>
           <text
             class="label"
@@ -1560,7 +1560,7 @@ exports[`Render without levels @500px 1`] = `
             x="91"
             y="60.55813953488371"
           >
-            15%
+            0
           </text>
           <text
             class="label"
@@ -1572,7 +1572,7 @@ exports[`Render without levels @500px 1`] = `
             x="166"
             y="95.44186046511626"
           >
-            30%
+            0
           </text>
           <text
             class="label"
@@ -1584,7 +1584,7 @@ exports[`Render without levels @500px 1`] = `
             x="66"
             y="130.32558139534882"
           >
-            10%
+            0
           </text>
         </g>
       </g>
@@ -1630,7 +1630,7 @@ exports[`Render zoomed with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0%
+              0 %
             </text>
           </g>
           <g
@@ -1648,7 +1648,7 @@ exports[`Render zoomed with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              10%
+              10 %
             </text>
           </g>
           <g
@@ -1666,7 +1666,7 @@ exports[`Render zoomed with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              20%
+              20 %
             </text>
           </g>
           <g
@@ -1684,7 +1684,7 @@ exports[`Render zoomed with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              30%
+              30 %
             </text>
           </g>
           <g
@@ -1702,7 +1702,7 @@ exports[`Render zoomed with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              40%
+              40 %
             </text>
           </g>
           <g
@@ -1720,7 +1720,7 @@ exports[`Render zoomed with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              50%
+              50 %
             </text>
           </g>
           <g
@@ -1738,7 +1738,7 @@ exports[`Render zoomed with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              60%
+              60 %
             </text>
           </g>
         </g>
@@ -1897,7 +1897,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             x="425.8360655737705"
             y="25.674418604651155"
           >
-            50%
+            1
           </text>
           <text
             class="label"
@@ -1909,7 +1909,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             x="138.95081967213116"
             y="60.55813953488371"
           >
-            15%
+            0
           </text>
           <text
             class="label"
@@ -1921,7 +1921,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             x="261.9016393442623"
             y="95.44186046511626"
           >
-            30%
+            0
           </text>
           <text
             class="label"
@@ -1933,7 +1933,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             x="97.9672131147541"
             y="130.32558139534882"
           >
-            10%
+            0
           </text>
         </g>
       </g>
