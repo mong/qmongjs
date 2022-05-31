@@ -38,6 +38,7 @@ const props: MainProps = {
     { level: "mid", start: 0.9, end: 0.5 },
     { level: "low", start: 0.5, end: 0 },
   ],
+  tickformat: null,
 };
 Primary.args = props;
 

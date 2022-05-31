@@ -48,6 +48,7 @@ Nation.args = {
     registry_id: 11,
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
+    sformat: ",.0%",
   },
   indicatorData: [
     {
@@ -89,6 +90,7 @@ WithUnits.args = {
     registry_id: 11,
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
+    sformat: ",.0%",
   },
   indicatorData: [
     {
@@ -163,6 +165,7 @@ WithMaskedValues.args = {
     registry_id: 11,
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
+    sformat: ",.0%",
   },
   indicatorData: [
     {
