@@ -17,7 +17,7 @@ import { useResizeObserver } from "../../../helpers/hooks";
 import styles from "./LineChart.module.css";
 import { levelColor } from "../utils";
 import { Legend } from "./legend";
-import { onlyCustomFormat } from "../../../helpers/functions/localFormater";
+import { customFormat } from "../../../helpers/functions/localFormater";
 
 export interface DataPoint {
   label: string;
@@ -111,7 +111,7 @@ const LineChart = (props: Props) => {
     const yAxis = axisRight(yScale)
       .ticks(theme.y_axis_tick_number)
       .tickSize(innerWidth)
-      .tickFormat(onlyCustomFormat(yAxisFormat));
+      .tickFormat(customFormat(yAxisFormat));
     const yAxisElement = container.select<SVGGElement>(".y-axis");
     yAxisElement.transition().duration(1000).call(yAxis);
     yAxisElement.select(".domain").remove();

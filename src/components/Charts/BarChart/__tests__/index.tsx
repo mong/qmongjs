@@ -351,17 +351,17 @@ test("Render zoomed with levels @500px", async () => {
     <BarChartWithRef
       showLevel={true}
       data={[
-        { label: "a", value: 0.5 },
-        { label: "b", value: 0.15 },
-        { label: "c", value: 0.3 },
-        { label: "d", value: 0.1 },
+        { label: "a", value: 168 },
+        { label: "b", value: 155 },
+        { label: "c", value: 389 },
+        { label: "d", value: 561 },
       ]}
       levels={[
-        { level: "high", start: 1, end: 0.9 },
-        { level: "mid", start: 0.9, end: 0.5 },
-        { level: "low", start: 0.5, end: 0 },
+        { level: "high", start: 1000, end: 400 },
+        { level: "mid", start: 400, end: 200 },
+        { level: "low", start: 200, end: 0 },
       ]}
-      tickformat=".0%"
+      tickformat="qwerty" // test with unsupported format
       zoom
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />

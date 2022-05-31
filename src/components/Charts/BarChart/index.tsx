@@ -5,10 +5,7 @@ import { useResizeObserver } from "../../../helpers/hooks";
 import styles from "./BarChart.module.css";
 import { levelColor } from "../utils";
 import { Level, Margin } from "../types";
-import {
-  customFormat,
-  onlyCustomFormat,
-} from "../../../helpers/functions/localFormater";
+import { customFormat } from "../../../helpers/functions/localFormater";
 
 export interface BarStyle {
   opacity?: number;
@@ -93,7 +90,7 @@ function BarChart(props: Props) {
     const xAxis = axisBottom(xScale)
       .tickSize(-innerHeight)
       .ticks(6)
-      .tickFormat(onlyCustomFormat(xAxisFormat));
+      .tickFormat(customFormat(xAxisFormat));
     const xAxisElement = svg.select<SVGGElement>(".x-axis");
     xAxisElement
       .style("transform", `translateY(${innerHeight}px)`)
@@ -161,7 +158,7 @@ function BarChart(props: Props) {
       .attr("opacity", 0.3)
       .attr("x", 0)
       .attr("y", (d) => yScale(d.label)! + yScale.bandwidth() / 2 + 3)
-      .text((d) => customFormat(barLabelFormat, d.value))
+      .text((d) => customFormat(barLabelFormat)(d.value))
       .attr("text-anchor", "middle")
       .attr("font-size", "0.7em")
       .attr("fill", "white")
