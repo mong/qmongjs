@@ -78,7 +78,7 @@ test("Render without levels @250px", async () => {
   expect(container).toMatchSnapshot();
 });
 
-test("Render levels @500px", async () => {
+test("Render with levels @500px", async () => {
   const WIDTH = 500;
   (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
@@ -99,6 +99,40 @@ test("Render levels @500px", async () => {
         { label: "test", value: 0.15, year: 2019 },
         { label: "test", value: 0.3532, year: 2018 },
         { label: "test", value: 0.124, year: 2017 },
+      ]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Render with levels reversed @500px", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const { container } = render(
+    <LineChartWithRef
+      showLevel={true}
+      levels={[
+        { level: "high", start: 0.2, end: 0 },
+        { level: "mid", start: 0.4, end: 0.2 },
+        { level: "low", start: 1, end: 0.4 },
+      ]}
+      tickformat=",.3f"
+      data={[
+        { label: "test", value: 0.513343, year: 2020 },
+        { label: "test", value: 0.15, year: 2019 },
+        { label: "test", value: 0.3532, year: 2018 },
+        { label: "test", value: 0.124, year: 2017 },
+        { label: "test2", value: 0.13343, year: 2020 },
+        { label: "test2", value: 0.5, year: 2019 },
+        { label: "test2", value: 0.532, year: 2018 },
+        { label: "test2", value: 0.24, year: 2017 },
       ]}
     />
   );
