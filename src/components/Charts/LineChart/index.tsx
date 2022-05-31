@@ -1,7 +1,6 @@
 import {
   axisBottom,
   axisRight,
-  format,
   group,
   line,
   scaleLinear,
@@ -18,6 +17,7 @@ import { useResizeObserver } from "../../../helpers/hooks";
 import styles from "./LineChart.module.css";
 import { levelColor } from "../utils";
 import { Legend } from "./legend";
+import { customFormat } from "../../../helpers/functions/localFormater";
 
 export interface DataPoint {
   label: string;
@@ -30,6 +30,7 @@ export interface Props {
   showLevel: boolean;
   data: DataPoint[];
   levels: Level[];
+  tickformat: string | null;
   zoom?: boolean;
   margin?: Margin;
 }
@@ -42,6 +43,7 @@ const LineChart = (props: Props) => {
     data,
     showLevel: displayLevels,
     levels,
+    tickformat,
     zoom = false,
     margin = {},
   } = props;
@@ -101,11 +103,15 @@ const LineChart = (props: Props) => {
 
     // Y-Axis
     const yAxisFormat =
-      yScaleDomain[1] - yScaleDomain[0] < 0.06 ? ",.1%" : ",.0%";
+      typeof tickformat === "string"
+        ? tickformat.substring(tickformat.length - 1) === "%"
+          ? "~%" // if percentage format -> delete trailing zero
+          : tickformat
+        : ",.0f";
     const yAxis = axisRight(yScale)
       .ticks(theme.y_axis_tick_number)
       .tickSize(innerWidth)
-      .tickFormat(format(yAxisFormat));
+      .tickFormat(customFormat(yAxisFormat));
     const yAxisElement = container.select<SVGGElement>(".y-axis");
     yAxisElement.transition().duration(1000).call(yAxis);
     yAxisElement.select(".domain").remove();
@@ -255,6 +261,7 @@ const LineChart = (props: Props) => {
     innerHeight,
     innerWidth,
     levels,
+    tickformat,
     selectedLegends,
     svgContainerRef,
     lineColorScale,

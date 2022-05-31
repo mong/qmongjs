@@ -35,7 +35,7 @@ it("renders without defined green level", () => {
   expect(container.querySelector(".qi_long_description p").textContent).toBe(
     desc.short_description
   );
-  expect(container.querySelector(".desired_target_level").textContent).toBe("");
+  expect(container.querySelector(".desired_target_level")).toBe(null);
 });
 
 it("renders with defined green level", () => {

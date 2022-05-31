@@ -96,6 +96,7 @@ export function buildDescriptionData(
     rname: "barnediabetes",
     full_name:
       "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes",
+    sformat: ",.0%",
     ...overrides,
   };
 }
@@ -107,7 +108,6 @@ interface MockDescriptionParams {
 
 export const buildDescriptions = ({
   register,
-  type,
 }: MockDescriptionParams): Description[] => {
   return desc.filter((d) => d.rname === register && d.include === 1);
 };

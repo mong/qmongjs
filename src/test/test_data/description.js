@@ -16,6 +16,7 @@ const description = [
     rname: "barnediabetes",
     full_name:
       "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes",
+    sformat: ",.0%",
   },
   {
     id: "barnediabetes_hba1c_lt_7",
@@ -34,6 +35,7 @@ const description = [
     rname: "barnediabetes",
     full_name:
       "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes",
+    sformat: ",.0%",
   },
 ];
 
@@ -59,6 +61,7 @@ export const descriptionData = [
     registry_id: 11,
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
+    sformat: ",.0%",
   },
   {
     id: "noric_blodfortynn_med",
@@ -81,6 +84,7 @@ export const descriptionData = [
     registry_id: 11,
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
+    sformat: ",.0%",
   },
   {
     id: "noric_kolesterolsenk_med",
@@ -103,6 +107,7 @@ export const descriptionData = [
     registry_id: 11,
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
+    sformat: ",.0%",
   },
   {
     id: "noric_nstemi_24t",
@@ -125,6 +130,7 @@ export const descriptionData = [
     registry_id: 11,
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
+    sformat: ",.0%",
   },
   {
     id: "noric_nstemi_72t",
@@ -147,6 +153,7 @@ export const descriptionData = [
     registry_id: 11,
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
+    sformat: ",.0%",
   },
   {
     id: "noric_pacemaker",
@@ -169,6 +176,7 @@ export const descriptionData = [
     registry_id: 11,
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
+    sformat: ",.0%",
   },
 ];
 
