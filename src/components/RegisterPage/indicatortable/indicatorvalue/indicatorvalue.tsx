@@ -1,17 +1,25 @@
 import React from "react";
 import { StatisticData } from "../../";
 import style from "./indicatorvalue.module.css";
+import { customFormat } from "../../../../helpers/functions/localFormater";
 
 export interface IndicatorValueProps {
   td_class?: string;
   indicatorData: StatisticData;
   level_class?: "filtered_level" | "";
+  format?: string;
 }
 
 export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
-  const { td_class = "selected_unit", indicatorData, level_class = "" } = props;
+  const {
+    td_class = "selected_unit",
+    indicatorData,
+    level_class = "",
+    format,
+  } = props;
 
   const filter_level = level_class === "" ? "" : style.filtered_level;
+  const numberFormat = format === undefined ? ",.0%" : format;
 
   const icon_class =
     indicatorData.level === "H"
@@ -32,10 +40,6 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
       indicatorData.type === "andel"
         ? Math.round(indicatorData.var * denominator)
         : 0;
-    const indicator_value_share =
-      indicatorData.var < 0.1
-        ? `${Math.round(indicatorData.var * 1000) / 10}\u202f% `
-        : `${Math.round(indicatorData.var * 100)}\u202f% `;
 
     return (
       <td
@@ -50,7 +54,7 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
           aria-label={`Achieved level ${indicatorData.level}`}
         >
           <h4>
-            {`${indicator_value_share}`}
+            {`${customFormat(numberFormat)(indicatorData.var)} `}
             <i className={icon_class} />
           </h4>
         </div>

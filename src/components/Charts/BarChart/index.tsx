@@ -1,17 +1,11 @@
-import {
-  axisBottom,
-  axisLeft,
-  format,
-  scaleBand,
-  scaleLinear,
-  select,
-} from "d3";
+import { axisBottom, axisLeft, scaleBand, scaleLinear, select } from "d3";
 import { useEffect, useRef } from "react";
 import useDelayInitial from "../../../utils/useDelayInitial";
 import { useResizeObserver } from "../../../helpers/hooks";
 import styles from "./BarChart.module.css";
 import { levelColor } from "../utils";
 import { Level, Margin } from "../types";
+import { customFormat } from "../../../helpers/functions/localFormater";
 
 export interface BarStyle {
   opacity?: number;
@@ -28,6 +22,7 @@ export interface Props {
   showLevel: boolean;
   data: Bar[];
   levels: Level[];
+  tickformat: string | null;
   zoom?: boolean;
   margin?: Margin;
 }
@@ -40,6 +35,7 @@ function BarChart(props: Props) {
     data,
     showLevel: displayLevels,
     levels,
+    tickformat,
     zoom = false,
     margin = {},
   } = props;
@@ -83,11 +79,18 @@ function BarChart(props: Props) {
 
     // X-Axis
     const xAxisFormat =
-      xScaleDomain[1] - xScaleDomain[0] < 0.06 ? ",.1%" : ",.0%";
+      typeof tickformat === "string"
+        ? tickformat.substring(tickformat.length - 1) === "%"
+          ? "~%" // if percentage format -> delete trailing zero
+          : tickformat
+        : ",.0f";
+
+    const barLabelFormat = typeof tickformat === "string" ? tickformat : ",.0f";
+
     const xAxis = axisBottom(xScale)
       .tickSize(-innerHeight)
       .ticks(6)
-      .tickFormat(format(xAxisFormat));
+      .tickFormat(customFormat(xAxisFormat));
     const xAxisElement = svg.select<SVGGElement>(".x-axis");
     xAxisElement
       .style("transform", `translateY(${innerHeight}px)`)
@@ -155,7 +158,7 @@ function BarChart(props: Props) {
       .attr("opacity", 0.3)
       .attr("x", 0)
       .attr("y", (d) => yScale(d.label)! + yScale.bandwidth() / 2 + 3)
-      .text((d) => Math.round((d.value * 100 * 100) / 100) + "%")
+      .text((d) => customFormat(barLabelFormat)(d.value))
       .attr("text-anchor", "middle")
       .attr("font-size", "0.7em")
       .attr("fill", "white")
@@ -166,7 +169,15 @@ function BarChart(props: Props) {
       .attr("x", (d) =>
         d.value > 0.95 ? xScale(d.value) - 18 : xScale(d.value) + 16
       );
-  }, [data, displayLevels, levels, delayedZoom, innerHeight, innerWidth]);
+  }, [
+    data,
+    displayLevels,
+    levels,
+    tickformat,
+    delayedZoom,
+    innerHeight,
+    innerWidth,
+  ]);
 
   return (
     <div ref={wrapperRef} style={{ width: "90%", margin: "auto" }}>
