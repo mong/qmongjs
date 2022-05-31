@@ -7,9 +7,9 @@ on:
   release:
     types: [published]
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master, dependabot_updates]
+    branches: [main, dependabot_updates]
 
 jobs:
   build:
