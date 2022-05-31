@@ -14,7 +14,7 @@ You can install the latest version of qmongjs from [github](https://github.com/m
 
 ## Run it locally
 
-This is done in three different terminal windows.
+This is done in two different terminal windows.
 
 ### Terminal 1
 
@@ -26,8 +26,6 @@ sudo systemctl start mysqld
 
 If this is the first time or if you want to update data, follow [these instructions](https://mong.github.io/#/utvikling?id=kj%c3%b8re-database-lokalt).
 
-### Terminal 2
-
 Run `mong-api`
 
 ```sh
@@ -37,7 +35,9 @@ yarn install
 yarn start # starts at http://localhost:4000
 ```
 
-### Terminal 3
+The data in database can be manipulated by using for instance `mysql-workbench`.
+
+### Terminal 2
 
 Run `qmongjs`
 
