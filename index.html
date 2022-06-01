@@ -2,7 +2,7 @@
 <a href="https://github.com/mong/qmongjs/actions/workflows/codeql-analysis.yml"><img src="https://github.com/mong/qmongjs/actions/workflows/codeql-analysis.yml/badge.svg" alt="CodeQL"></a>
 <a href="https://github.com/mong/qmongjs/actions/workflows/aws_deploy.yml"><img src="https://github.com/mong/qmongjs/actions/workflows/aws_deploy.yml/badge.svg" alt="Deploy app to AWS"></a>
 <a href="https://github.com/mong/qmongjs/actions/workflows/node.js.yml"><img src="https://github.com/mong/qmongjs/actions/workflows/node.js.yml/badge.svg" alt="Node.js CI"></a>
-<a href="https://codecov.io/gh/mong/qmongjs?branch=master"><img src="https://codecov.io/gh/mong/qmongjs/branch/master/graph/badge.svg" alt="Codecov test coverage"></a>
+<a href="https://codecov.io/gh/mong/qmongjs?branch=main"><img src="https://codecov.io/gh/mong/qmongjs/branch/main/graph/badge.svg" alt="Codecov test coverage"></a>
 <a href="https://github.com/mong/qmongjs/issues"><img src="https://img.shields.io/github/issues/mong/qmongjs.svg" alt="GitHub open issues"></a>
 <a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a></p>
 <p><code>qmongjs</code> is the code behind <a href="https://www.skde.no/kvalitetsregistre/alle/sykehus">www.skde.no/kvalitetsregistre</a>.</p>
@@ -15,7 +15,7 @@
 <a href="#run-it-locally" id="run-it-locally" style="color: inherit; text-decoration: none;">
   <h2>Run it locally</h2>
 </a>
-<p>This is done in three different terminal windows.</p>
+<p>This is done in two different terminal windows.</p>
 
 <a href="#terminal-1" id="terminal-1" style="color: inherit; text-decoration: none;">
   <h3>Terminal 1</h3>
@@ -24,16 +24,13 @@
 <pre><code class="language-sh"><span class="hl-0">sudo systemctl start mysqld</span>
 </code></pre>
 <p>If this is the first time or if you want to update data, follow <a href="https://mong.github.io/#/utvikling?id=kj%c3%b8re-database-lokalt">these instructions</a>.</p>
-
-<a href="#terminal-2" id="terminal-2" style="color: inherit; text-decoration: none;">
-  <h3>Terminal 2</h3>
-</a>
 <p>Run <code>mong-api</code></p>
 <pre><code class="language-sh"><span class="hl-0">git clone git@github.com:mong/mong-api</span><br/><span class="hl-1">cd</span><span class="hl-0"> mong-api</span><br/><span class="hl-0">yarn install</span><br/><span class="hl-0">yarn start </span><span class="hl-2"># starts at http://localhost:4000</span>
 </code></pre>
+<p>The data in database can be manipulated by using for instance <code>mysql-workbench</code>.</p>
 
-<a href="#terminal-3" id="terminal-3" style="color: inherit; text-decoration: none;">
-  <h3>Terminal 3</h3>
+<a href="#terminal-2" id="terminal-2" style="color: inherit; text-decoration: none;">
+  <h3>Terminal 2</h3>
 </a>
 <p>Run <code>qmongjs</code></p>
 <pre><code class="language-sh"><span class="hl-0">git clone git@github.com:mong/qmongjs</span><br/><span class="hl-1">cd</span><span class="hl-0"> qmongjs</span><br/><span class="hl-0">yarn install</span><br/><span class="hl-0">yarn start </span><span class="hl-2"># starts at http://localhost:3000</span>
