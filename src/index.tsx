@@ -14,6 +14,10 @@ Sentry.init({
   integrations: [new BrowserTracing()],
   // https://docs.sentry.io/platforms/javascript/performance/sampling/
   tracesSampleRate: 1.0,
+  ignoreErrors: [
+    "ResizeObserver loop limit exceeded",
+    "ResizeObserver loop completed with undelivered notifications.",
+  ],
 });
 
 const queryClient = new QueryClient();
