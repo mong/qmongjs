@@ -58,13 +58,23 @@ function BarChart(props: Props) {
       return;
     }
 
+    const barLabelFormat = typeof tickformat === "string" ? tickformat : ",.0f";
+    const xAxisFormat =
+      barLabelFormat.substring(barLabelFormat.length - 1) === "%"
+        ? "~%" // if percentage format -> delete trailing zero
+        : barLabelFormat;
+
     const svg = select(svgRef.current).selectChild<SVGGElement>();
     // Scales
     const yScale = scaleBand()
       .domain(data.map((d) => d.label))
       .range([0, innerHeight])
       .padding(0.3);
-    const xScaleDomain = getXScaleDomain(data, delayedZoom);
+    const xScaleDomain = getXScaleDomain(
+      data,
+      delayedZoom,
+      barLabelFormat.substring(barLabelFormat.length - 1) === "%"
+    );
     const xScale = scaleLinear()
       .domain(xScaleDomain)
       .range([0, innerWidth])
@@ -78,15 +88,6 @@ function BarChart(props: Props) {
     yAxisElement.selectAll(".tick text").attr("font-size", "1.2rem");
 
     // X-Axis
-    const xAxisFormat =
-      typeof tickformat === "string"
-        ? tickformat.substring(tickformat.length - 1) === "%"
-          ? "~%" // if percentage format -> delete trailing zero
-          : tickformat
-        : ",.0f";
-
-    const barLabelFormat = typeof tickformat === "string" ? tickformat : ",.0f";
-
     const xAxis = axisBottom(xScale)
       .tickSize(-innerHeight)
       .ticks(6)
@@ -201,14 +202,24 @@ function BarChart(props: Props) {
 }
 export default BarChart;
 
-function getXScaleDomain(data: Bar[], zoom: boolean): [number, number] {
+function getXScaleDomain(
+  data: Bar[],
+  zoom: boolean,
+  percent: boolean
+): [number, number] {
   if (!zoom) {
     return [0, 1];
   }
 
   const maxVal = Math.max(...data.map((d) => d.value));
   const additionalMargin = (0.01 + maxVal) * 0.2;
-  const xMax = Math.ceil((maxVal + additionalMargin) * 100) / 100;
+  var xMax;
+  if (percent) {
+    xMax = Math.ceil((maxVal + additionalMargin) * 100) / 100;
+  } else {
+    xMax = Math.ceil(maxVal + additionalMargin);
+  }
+  console.log(xMax);
 
   return [0, Math.min(xMax, 1)];
 }

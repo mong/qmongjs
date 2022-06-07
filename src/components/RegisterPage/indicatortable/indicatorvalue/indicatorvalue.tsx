@@ -32,7 +32,8 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
   if (
     indicatorData.type === "dg_andel" ||
     indicatorData.type === "beregnet_andel" ||
-    indicatorData.type === "andel"
+    indicatorData.type === "andel" ||
+    indicatorData.type === "gjennomsnitt"
   ) {
     const denominator =
       indicatorData.type === "andel" ? indicatorData.denominator : 0;
