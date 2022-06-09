@@ -8,7 +8,6 @@ import SELECT_SINGLE from "../select_single";
 import LEGEND from "../legend";
 //import Loading from "../Loading.tsx";
 import { IndicatorTable } from "./indicatortable";
-import { RegisterNames } from ".";
 import { OptsTu } from "../select_multi";
 import config, {
   mainQueryParamsConfig,
@@ -25,6 +24,16 @@ import {
 import { Header } from "./header";
 import { UnitNameList } from "./unitnamelist";
 import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
+
+interface RegisterNames {
+  id: number;
+  rname: string;
+  full_name: string;
+  registerField?: string;
+  caregiver_data: 1 | 0 | null;
+  resident_data: 1 | 0 | null;
+  dg_data: 1 | 0 | null;
+}
 
 interface SelectedRegisterProps {
   registerNames: RegisterNames[];

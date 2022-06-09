@@ -2,7 +2,7 @@ import { axisBottom, axisLeft, scaleBand, scaleLinear, select } from "d3";
 import { useEffect, useRef } from "react";
 import useDelayInitial from "../../../utils/useDelayInitial";
 import { useResizeObserver } from "../../../helpers/hooks";
-import styles from "./BarChart.module.css";
+import styles from "./classic.module.css";
 import { levelColor } from "../utils";
 import { Level, Margin } from "../types";
 import { customFormat } from "../../../helpers/functions/localFormater";

@@ -1,7 +1,7 @@
 import { QueryParamProvider } from "use-query-params";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import RegisterPage from "./components/RegisterPage";
+import RegisterPage from "../src/components/RegisterPage";
 
 function APP() {
   return (

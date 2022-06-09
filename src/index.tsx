@@ -6,7 +6,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import "./index.css";
 import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
-import App from "./App";
+import App from "../pages";
 
 Sentry.init({
   dsn: "https://40163899a6bc4f71a29e2a4e3e35e9ce@o489056.ingest.sentry.io/5568249",

@@ -3,7 +3,6 @@ import { UseQueryResult } from "react-query";
 
 import Header from "../Header";
 import Footer from "../Footer";
-import { Redirect, Route, Switch } from "react-router-dom";
 import MainRegister from "./MainRegister";
 import SelectedRegister from "./SelectedRegister";
 import { useRegisterNamesQuery } from "../../helpers/hooks";
