@@ -8,13 +8,18 @@ import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 import App from "./App";
 
-Sentry.init({
-  dsn: "https://40163899a6bc4f71a29e2a4e3e35e9ce@o489056.ingest.sentry.io/5568249",
-  autoSessionTracking: true,
-  integrations: [new BrowserTracing()],
-  // https://docs.sentry.io/platforms/javascript/performance/sampling/
-  tracesSampleRate: 1.0,
-});
+if (process.env.NEXT_PUBLIC_SENTRY) {
+  Sentry.init({
+    dsn: process.env.NEXT_PUBLIC_SENTRY,
+    autoSessionTracking: true,
+    integrations: [new BrowserTracing()],
+    tracesSampleRate: 1.0,
+    ignoreErrors: [
+      "ResizeObserver loop limit exceeded",
+      "ResizeObserver loop completed with undelivered notifications.",
+    ],
+  });
+}
 
 const queryClient = new QueryClient();
 
