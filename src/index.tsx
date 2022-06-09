@@ -8,9 +8,9 @@ import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 import App from "./App";
 
-if (process.env.NEXT_PUBLIC_SENTRY) {
+if (process.env.REACT_APP_SENTRY) {
   Sentry.init({
-    dsn: process.env.NEXT_PUBLIC_SENTRY,
+    dsn: process.env.REACT_APP_SENTRY,
     autoSessionTracking: true,
     integrations: [new BrowserTracing()],
     tracesSampleRate: 1.0,
