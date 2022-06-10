@@ -2918,6 +2918,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/hub@npm:7.1.1":
+  version: 7.1.1
+  resolution: "@sentry/hub@npm:7.1.1"
+  dependencies:
+    "@sentry/types": 7.1.1
+    "@sentry/utils": 7.1.1
+    tslib: ^1.9.3
+  checksum: ddc61b31aa0f45ee9ea3f32173d6e49fa93fa8b83eb7d5ab0c53758f31731e1ae70a0730212ed3a0889ea47372e5919f511ad7c056dae2c18d31049caeb0c38c
+  languageName: node
+  linkType: hard
+
 "@sentry/react@npm:^7.0.0":
   version: 7.0.0
   resolution: "@sentry/react@npm:7.0.0"
@@ -2933,15 +2944,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/tracing@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "@sentry/tracing@npm:7.0.0"
+"@sentry/tracing@npm:^7.1.1":
+  version: 7.1.1
+  resolution: "@sentry/tracing@npm:7.1.1"
   dependencies:
-    "@sentry/hub": 7.0.0
-    "@sentry/types": 7.0.0
-    "@sentry/utils": 7.0.0
+    "@sentry/hub": 7.1.1
+    "@sentry/types": 7.1.1
+    "@sentry/utils": 7.1.1
     tslib: ^1.9.3
-  checksum: e44c1f04fa4b24d4a05154674db7b4b55603dcf4b48559d6404e198798e1b6fe86c30926e38085d73ca6a5bdc4d6d8405fea205c0895fc827aaba4ea1755e354
+  checksum: 3b11cc36eaf99c716185ccd80a0ec2e5b042a38cf4419ce5a0eeda7f81c7d097134e94c4aa6dfa45b23c83d8563b20ac6ad9cd47bbd164f363039672b971b87d
   languageName: node
   linkType: hard
 
@@ -2952,6 +2963,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/types@npm:7.1.1":
+  version: 7.1.1
+  resolution: "@sentry/types@npm:7.1.1"
+  checksum: 3f1b43782ca93c6520589b3739d4833cd00afb0f3ff72f5afaa42d4224c63163b1ef6bd167143b7d72667d0711f09fc4a42d36418ee242898a9cbd979dbac65d
+  languageName: node
+  linkType: hard
+
 "@sentry/utils@npm:7.0.0":
   version: 7.0.0
   resolution: "@sentry/utils@npm:7.0.0"
@@ -2959,6 +2977,16 @@ __metadata:
     "@sentry/types": 7.0.0
     tslib: ^1.9.3
   checksum: f4505244145ee5bcb2411e30f0bcf7ddf501c2edfc96e1a37967d3e06168b40471700624b6b55ac0f5bd7fffac21c1c7d33429f0ead0f5ae87e27abefea6dc3d
+  languageName: node
+  linkType: hard
+
+"@sentry/utils@npm:7.1.1":
+  version: 7.1.1
+  resolution: "@sentry/utils@npm:7.1.1"
+  dependencies:
+    "@sentry/types": 7.1.1
+    tslib: ^1.9.3
+  checksum: b36d0e03b007229cad81dc8db517c4bf58c8e7636aa80a575dc91fb605028c1a0b61e5f090704e04b5e9021fd8ec95b1a6f1465449f2a1a6c657b283295add71
   languageName: node
   linkType: hard
 
@@ -17947,7 +17975,7 @@ __metadata:
     "@mui/icons-material": ^5.8.2
     "@mui/material": ^5.8.2
     "@sentry/react": ^7.0.0
-    "@sentry/tracing": ^7.0.0
+    "@sentry/tracing": ^7.1.1
     "@storybook/addon-essentials": ^6.5.8
     "@storybook/addon-links": ^6.5.8
     "@storybook/addon-queryparams": ^6.2.9
