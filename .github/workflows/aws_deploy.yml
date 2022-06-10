@@ -32,6 +32,7 @@ jobs:
       - name: Build package
         env:
           REACT_APP_API_HOST: ${{ env.api }}
+          REACT_APP_SENTRY: ${{ env.SENTRY }}
         run: yarn install && yarn run build
       - name: Sync to S3 bucket
         if: github.event_name != 'pull_request'
