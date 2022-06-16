@@ -3,8 +3,6 @@ import { page_colors as colors } from "./page_colors.js";
 export const theme_table_chart_line = {
   x_axis_label_fill: colors.primary_text_color,
   y_axis_label_fill: colors.primary_text_color,
-  x_axis_label: "",
-  y_axis_label: "Andel",
   x_axis_label_font_family: "arial, Helvetica Neue",
   y_axis_label_font_family: "arial, Helvetica Neue",
   x_axis_tick_font_fill: colors.secondary_text_color,
