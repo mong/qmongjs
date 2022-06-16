@@ -187,6 +187,14 @@ const GetLineChart: React.FC<Props> = (props) => {
     props.context.type,
   ]);
 
+  // get the last year with complete data
+  const lastCompleteYear: number | undefined = lineChartQuery.data
+    ? lineChartQuery.data[0].delivery_latest_affirm
+      ? new Date(lineChartQuery.data[0].delivery_latest_affirm).getFullYear() -
+        1
+      : undefined
+    : undefined;
+
   const data: DataPoint[] = (lineChartQuery.data ?? [])
     .filter((data: StatisticData) => {
       return !(
@@ -202,5 +210,7 @@ const GetLineChart: React.FC<Props> = (props) => {
     }))
     .sort((a: DataPoint, b: DataPoint) => b.year - a.year);
 
-  return <LineChart {...props} data={data} lastCompleteYear={2019} />;
+  return (
+    <LineChart {...props} data={data} lastCompleteYear={lastCompleteYear} />
+  );
 };
