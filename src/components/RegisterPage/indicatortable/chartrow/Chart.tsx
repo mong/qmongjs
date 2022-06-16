@@ -202,5 +202,5 @@ const GetLineChart: React.FC<Props> = (props) => {
     }))
     .sort((a: DataPoint, b: DataPoint) => b.year - a.year);
 
-  return <LineChart {...props} data={data} />;
+  return <LineChart {...props} data={data} lastCompleteYear={2019} />;
 };
