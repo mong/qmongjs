@@ -2,7 +2,7 @@
  * To view a rendered version of all the snapshots:
  *
  * Copy the contents of ./__snapshots__/index.tsx.snap
- * Got to https://codesandbox.io/s/snapshot-viewer-nnmk3?file=/src/snapshots.js
+ * Got to https://codesandbox.io/s/snapshot-viewer-lqjjsm?file=/src/snapshots.js
  * Replace the contents with what you copied
  */
 import { render, screen } from "@testing-library/react";
