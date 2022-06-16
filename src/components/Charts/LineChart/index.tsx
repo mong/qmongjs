@@ -270,6 +270,8 @@ const LineChart = (props: Props) => {
     svgContainerRef,
     lineColorScale,
     pathLabels,
+    percentage,
+    yAxisFormat,
   ]);
 
   return (
