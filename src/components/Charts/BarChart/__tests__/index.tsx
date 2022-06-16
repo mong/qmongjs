@@ -52,6 +52,43 @@ test("Bar have labels with value in %", async () => {
   }
 });
 
+test("Bar have labels with value as number", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const data = [
+    { label: "a", value: 100 },
+    { label: "b", value: 150 },
+    { label: "c", value: 300 },
+    { label: "d", value: 100 },
+  ];
+  render(
+    <BarChartWithRef
+      showLevel={true}
+      data={data}
+      levels={[
+        { level: "high", start: 500, end: 0 },
+        { level: "mid", start: 900, end: 500 },
+        { level: "low", start: 1000, end: 900 },
+      ]}
+      tickformat=".0f"
+      zoom={false}
+      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+    />
+  );
+
+  await clockTick(1500);
+
+  for (const dataPoint of data) {
+    const bar = screen.getByTestId(`bar-label-${dataPoint.label}`);
+    const valueInNum = dataPoint.value.toString();
+    expect(bar.textContent).toBe(valueInNum);
+  }
+});
+
 test("Bar widths are correct", async () => {
   const WIDTH = 500;
   (useResizeObserver as jest.Mock).mockReturnValue({
