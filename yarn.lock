@@ -2535,9 +2535,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/icons-material@npm:^5.8.3":
-  version: 5.8.3
-  resolution: "@mui/icons-material@npm:5.8.3"
+"@mui/icons-material@npm:^5.8.4":
+  version: 5.8.4
+  resolution: "@mui/icons-material@npm:5.8.4"
   dependencies:
     "@babel/runtime": ^7.17.2
   peerDependencies:
@@ -2547,7 +2547,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 6c09ab20194904ed755cb595382df8b74ffbf914feaad89d603fd624148944be5e728286eb7b05534c9fc104bf0f765f4d50548e370ee5b3b0f64bfaaec0969a
+  checksum: 1df0ffb08670628968b803c7048fc645df5e2870860759626d80a355fdef62498e60e4ebed2d47ca8b3600e6ecb6db1829bec5acf3a766ff41e518007c7e2f5b
   languageName: node
   linkType: hard
 
@@ -17947,7 +17947,7 @@ __metadata:
   dependencies:
     "@emotion/react": ^11.9.3
     "@emotion/styled": ^11.8.1
-    "@mui/icons-material": ^5.8.3
+    "@mui/icons-material": ^5.8.4
     "@mui/material": ^5.8.4
     "@sentry/react": ^7.1.1
     "@sentry/tracing": ^7.1.1

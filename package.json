@@ -36,7 +36,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.8.3",
+    "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.8.4",
     "@sentry/react": "^7.1.1",
     "@sentry/tracing": "^7.1.1",
