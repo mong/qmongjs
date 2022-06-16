@@ -366,7 +366,7 @@ test("Render with levels reversed @500px", async () => {
         { level: "low", start: 1, end: 0.9 },
       ]}
       tickformat=".0%"
-      zoom={false}
+      zoom={true}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />
   );
