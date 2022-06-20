@@ -26,9 +26,9 @@ export const app_text = {
   },
 };
 
-export const minYear = 2016;
-export const maxYear = 2020;
-export const defaultYear = 2020;
+export const minYear = 2017;
+export const maxYear = 2021;
+export const defaultYear = 2021;
 export const mainQueryParamsConfig = {
   selected_row: withDefault(StringParam, undefined),
   indicator: withDefault(StringParam, undefined),
