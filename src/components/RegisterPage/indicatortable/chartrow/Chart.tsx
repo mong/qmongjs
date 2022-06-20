@@ -98,26 +98,23 @@ const GetBarChart: React.FC<Props> = (props) => {
     (data: StatisticData) => !(data.ind_id !== props.description.id)
   );
 
-  const showHF = () => {
+  const showUnits = () => {
     // Show HF if there is less hospitals than HF
-    const hospitalData = allIndicatorData.filter(
-      (data: StatisticData) => data.unit_level == "hospital"
-    );
-    const hfData = allIndicatorData.filter(
-      (data: StatisticData) => data.unit_level == "hf"
-    );
-    return hospitalData.length < hfData.length;
-  };
-
-  const showRHF = () => {
     // Show RHF if there is less HF than RHF
+    const hospitalData = allIndicatorData.filter(
+      (data: StatisticData) => data.unit_level === "hospital"
+    );
     const hfData = allIndicatorData.filter(
-      (data: StatisticData) => data.unit_level == "hf"
+      (data: StatisticData) => data.unit_level === "hf"
     );
     const rhfData = allIndicatorData.filter(
-      (data: StatisticData) => data.unit_level == "rhf"
+      (data: StatisticData) => data.unit_level === "rhf"
     );
-    return hfData.length < rhfData.length;
+
+    return {
+      hf: hospitalData.length < hfData.length,
+      rhf: hfData.length < rhfData.length,
+    };
   };
 
   // Units selected by user
@@ -164,9 +161,9 @@ const GetBarChart: React.FC<Props> = (props) => {
         (
           unitNames.includes(data.unit_name) ||
           // filter out HF if showHF() is false
-          (data.unit_level == "hf" && !showHF()) ||
+          (data.unit_level === "hf" && !showUnits().hf) ||
           // filter out RHF if showRHF() is false
-          (data.unit_level == "rhf" && !showRHF())
+          (data.unit_level === "rhf" && !showUnits().rhf)
         )
       )
   );
