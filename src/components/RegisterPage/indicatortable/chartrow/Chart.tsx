@@ -126,7 +126,7 @@ const GetBarChart: React.FC<Props> = (props) => {
         (data: StatisticData) =>
           data.ind_id === props.description.id &&
           ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
-          data.denominator > (description.min_denominator ?? 5)
+          data.denominator >= (description.min_denominator ?? 5)
       )
       .map((data: StatisticData) => {
         const style: BarStyle = {};
@@ -238,7 +238,7 @@ const GetLineChart: React.FC<Props> = (props) => {
       (data: StatisticData) =>
         data.ind_id === props.description.id &&
         ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
-        data.denominator > (description.min_denominator ?? 5)
+        data.denominator >= (description.min_denominator ?? 5)
     )
     .map((d: StatisticData) => ({
       label: d.unit_name,
