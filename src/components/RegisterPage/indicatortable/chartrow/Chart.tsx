@@ -226,13 +226,12 @@ const GetLineChart: React.FC<Props> = (props) => {
   ]);
 
   const data: DataPoint[] = (lineChartQuery.data ?? [])
-    .filter((data: StatisticData) => {
-      return !(
-        data.ind_id !== props.description.id ||
-        ((data.dg ?? 1) < 0.6 && data.unit_name !== "Nasjonalt") ||
-        data.denominator < (description.min_denominator ?? 5)
-      );
-    })
+    .filter(
+      (data: StatisticData) =>
+        data.ind_id === props.description.id &&
+        ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
+        data.denominator > (description.min_denominator ?? 5)
+    )
     .map((d: StatisticData) => ({
       label: d.unit_name,
       year: d.year,
