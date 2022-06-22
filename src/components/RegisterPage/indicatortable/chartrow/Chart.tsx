@@ -95,7 +95,7 @@ const GetBarChart: React.FC<Props> = (props) => {
 
   // only keep data for given indicator
   const allIndicatorData = [...(indQryData ?? [])].filter(
-    (data: StatisticData) => !(data.ind_id !== props.description.id)
+    (data: StatisticData) => data.ind_id === props.description.id
   );
 
   const showUnits = () => {
@@ -124,11 +124,9 @@ const GetBarChart: React.FC<Props> = (props) => {
     const filtered = data
       .filter(
         (data: StatisticData) =>
-          !(
-            data.ind_id !== props.description.id ||
-            ((data.dg ?? 1) < 0.6 && data.unit_name !== "Nasjonalt") ||
-            data.denominator < (description.min_denominator ?? 5)
-          )
+          data.ind_id === props.description.id &&
+          ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
+          data.denominator > (description.min_denominator ?? 5)
       )
       .map((data: StatisticData) => {
         const style: BarStyle = {};
