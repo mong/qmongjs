@@ -46,7 +46,6 @@ const GetBarChart: React.FC<Props> = (props) => {
   } = useIndicatorQuery({
     queryKey: `indicatorDataBarChart`,
     registerShortName: registerShortName,
-    unitLevel: "hospital",
     treatmentYear: treatmentYear,
     context: props.context.context,
     type: props.context.type,
@@ -94,15 +93,40 @@ const GetBarChart: React.FC<Props> = (props) => {
   if (isLoading) return <>Loading...</>;
   if (error) return <>An error has occured: {error.message}</>;
 
+  // only keep data for given indicator
+  const allIndicatorData = [...(indQryData ?? [])].filter(
+    (data: StatisticData) => data.ind_id === props.description.id
+  );
+
+  const showUnits = () => {
+    // Show HF if there is less hospitals than HF
+    // Show RHF if there is less HF than RHF
+    const hospitalData = allIndicatorData.filter(
+      (data: StatisticData) => data.unit_level === "hospital"
+    );
+    const hfData = allIndicatorData.filter(
+      (data: StatisticData) => data.unit_level === "hf"
+    );
+    const rhfData = allIndicatorData.filter(
+      (data: StatisticData) => data.unit_level === "rhf"
+    );
+
+    return {
+      hf: hospitalData.length < hfData.length,
+      rhf: hfData.length < rhfData.length,
+    };
+  };
+
+  // Units selected by user
+  const unitNames = props.selectedTreatmentUnits;
+
   const filterData = (data: StatisticData[]) => {
     const filtered = data
       .filter(
         (data: StatisticData) =>
-          !(
-            data.ind_id !== props.description.id ||
-            ((data.dg ?? 1) < 0.6 && data.unit_name !== "Nasjonalt") ||
-            data.denominator < (description.min_denominator ?? 5)
-          )
+          data.ind_id === props.description.id &&
+          ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
+          data.denominator > (description.min_denominator ?? 5)
       )
       .map((data: StatisticData) => {
         const style: BarStyle = {};
@@ -127,8 +151,22 @@ const GetBarChart: React.FC<Props> = (props) => {
   const selectedIndData = [...indicatorData].filter(
     (d) => d.unit_level !== "hospital"
   );
-  const barChartData = [...(indQryData ?? []), ...selectedIndData];
-  const unitNames = props.selectedTreatmentUnits;
+
+  const filterAllData = allIndicatorData.filter(
+    (data: StatisticData) =>
+      !(
+        // filter out data already selected by user
+        (
+          unitNames.includes(data.unit_name) ||
+          // filter out HF if showHF() is false
+          (data.unit_level === "hf" && !showUnits().hf) ||
+          // filter out RHF if showRHF() is false
+          (data.unit_level === "rhf" && !showUnits().rhf)
+        )
+      )
+  );
+
+  const barChartData = [...filterAllData, ...selectedIndData];
 
   return <BarChart {...props} data={filterData(barChartData)} />;
 };
@@ -188,13 +226,12 @@ const GetLineChart: React.FC<Props> = (props) => {
   ]);
 
   const data: DataPoint[] = (lineChartQuery.data ?? [])
-    .filter((data: StatisticData) => {
-      return !(
-        data.ind_id !== props.description.id ||
-        ((data.dg ?? 1) < 0.6 && data.unit_name !== "Nasjonalt") ||
-        data.denominator < (description.min_denominator ?? 5)
-      );
-    })
+    .filter(
+      (data: StatisticData) =>
+        data.ind_id === props.description.id &&
+        ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
+        data.denominator > (description.min_denominator ?? 5)
+    )
     .map((d: StatisticData) => ({
       label: d.unit_name,
       year: d.year,
