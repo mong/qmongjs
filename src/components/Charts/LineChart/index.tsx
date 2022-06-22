@@ -74,6 +74,17 @@ const LineChart = (props: Props) => {
     .domain(pathLabels)
     .range(page_colors.chart_colors);
 
+  const percentage: boolean =
+    typeof tickformat === "string"
+      ? tickformat.substring(tickformat.length - 1) === "%"
+        ? true
+        : false
+      : false;
+
+  // Y-Axis format, delete trailing zero
+  const yAxisFormat = percentage ? "~%" : "~";
+  const yaxisLabel = percentage ? "Andel" : "Antall";
+
   useEffect(() => {
     if (innerWidth === 0) {
       return;
@@ -88,7 +99,7 @@ const LineChart = (props: Props) => {
       .domain([minYear, maxYear])
       .range([0, innerWidth]);
 
-    const yScaleDomain = getYScaleDomain(data, delayedZoom);
+    const yScaleDomain = getYScaleDomain(data, delayedZoom, percentage);
     const yScale = scaleLinear()
       .domain(yScaleDomain)
       .range([innerHeight, 0])
@@ -103,13 +114,6 @@ const LineChart = (props: Props) => {
       );
     }
 
-    // Y-Axis
-    const yAxisFormat =
-      typeof tickformat === "string"
-        ? tickformat.substring(tickformat.length - 1) === "%"
-          ? "~%" // if percentage format -> delete trailing zero
-          : tickformat
-        : ",.0f";
     const yAxis = axisRight(yScale)
       .ticks(theme.y_axis_tick_number)
       .tickSize(innerWidth)
@@ -313,6 +317,8 @@ const LineChart = (props: Props) => {
     svgContainerRef,
     lineColorScale,
     pathLabels,
+    percentage,
+    yAxisFormat,
     lastCompleteYear,
   ]);
 
@@ -356,7 +362,7 @@ const LineChart = (props: Props) => {
                   fontFamily: theme.y_axis_label_font_family,
                 }}
               >
-                {theme.y_axis_label}
+                {yaxisLabel}
               </text>
             </g>
             <g className="levels" />
@@ -372,8 +378,12 @@ const LineChart = (props: Props) => {
 
 export default LineChart;
 
-function getYScaleDomain(data: DataPoint[], zoom: boolean): [number, number] {
-  if (!zoom) {
+function getYScaleDomain(
+  data: DataPoint[],
+  zoom: boolean,
+  percentage: boolean
+): [number, number] {
+  if (!zoom && percentage) {
     return [0, 1];
   }
 
@@ -384,5 +394,6 @@ function getYScaleDomain(data: DataPoint[], zoom: boolean): [number, number] {
   const yMin = Math.floor((minValue - additionalMargin) * 100) / 100;
   const yMax = Math.ceil((maxValue + additionalMargin) * 100) / 100;
 
-  return [Math.max(yMin, 0), Math.min(yMax, 1)];
+  // yaxis max is maximum 1 (100 %) if percentage
+  return [Math.max(yMin, 0), percentage ? Math.min(yMax, 1) : yMax];
 }

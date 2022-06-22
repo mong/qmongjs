@@ -374,7 +374,7 @@ exports[`Render with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(100.5,0)"
+            transform="translate(83.14462809917356,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -386,13 +386,13 @@ exports[`Render with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0
+              0,2
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(200.5,0)"
+            transform="translate(165.78925619834712,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -404,13 +404,49 @@ exports[`Render with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0
+              0,4
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(300.5,0)"
+            transform="translate(248.43388429752068,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              0,6
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(331.07851239669424,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              0,8
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(413.72314049586777,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -428,7 +464,7 @@ exports[`Render with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(400.5,0)"
+            transform="translate(496.36776859504135,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -440,25 +476,7 @@ exports[`Render with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              1
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(500.5,0)"
-          >
-            <line
-              stroke="#D2D3D4"
-              y2="-150"
-            />
-            <text
-              dy="0.71em"
-              fill="#828586"
-              font-size="18.57px"
-              y="3"
-            >
-              1
+              1,2
             </text>
           </g>
         </g>
@@ -535,8 +553,8 @@ exports[`Render with levels @500px 1`] = `
             fill="#3baa34"
             height="150"
             opacity="0.2"
-            width="50"
-            x="450"
+            width="41.32231404958674"
+            x="371.90082644628103"
             y="0"
           />
           <rect
@@ -545,8 +563,8 @@ exports[`Render with levels @500px 1`] = `
             fill="#fd9c00"
             height="150"
             opacity="0.2"
-            width="200"
-            x="250"
+            width="165.28925619834715"
+            x="206.61157024793388"
             y="0"
           />
           <rect
@@ -555,7 +573,7 @@ exports[`Render with levels @500px 1`] = `
             fill="#e30713"
             height="150"
             opacity="0.2"
-            width="250"
+            width="206.61157024793388"
             x="0"
             y="0"
           />
@@ -569,7 +587,7 @@ exports[`Render with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="500"
+            width="413.22314049586777"
             x="0"
             y="10.465116279069761"
           />
@@ -579,7 +597,7 @@ exports[`Render with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="75"
+            width="61.98347107438017"
             x="0"
             y="45.34883720930232"
           />
@@ -589,7 +607,7 @@ exports[`Render with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="150"
+            width="123.96694214876034"
             x="0"
             y="80.23255813953487"
           />
@@ -599,7 +617,7 @@ exports[`Render with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="50"
+            width="41.32231404958678"
             x="0"
             y="115.11627906976743"
           />
@@ -614,7 +632,7 @@ exports[`Render with levels @500px 1`] = `
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="482"
+            x="395.22314049586777"
             y="25.674418604651155"
           >
             1
@@ -626,7 +644,7 @@ exports[`Render with levels @500px 1`] = `
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="91"
+            x="77.98347107438016"
             y="60.55813953488371"
           >
             0
@@ -638,7 +656,7 @@ exports[`Render with levels @500px 1`] = `
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="166"
+            x="139.96694214876032"
             y="95.44186046511626"
           >
             0
@@ -650,7 +668,7 @@ exports[`Render with levels @500px 1`] = `
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="66"
+            x="57.32231404958678"
             y="130.32558139534882"
           >
             0
@@ -1330,13 +1348,13 @@ exports[`Render without levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0,00
+              0
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(100.5,0)"
+            transform="translate(83.14462809917356,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1348,13 +1366,13 @@ exports[`Render without levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0,20
+              0,2
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(200.5,0)"
+            transform="translate(165.78925619834712,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1366,13 +1384,13 @@ exports[`Render without levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0,40
+              0,4
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(300.5,0)"
+            transform="translate(248.43388429752068,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1384,13 +1402,13 @@ exports[`Render without levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0,60
+              0,6
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(400.5,0)"
+            transform="translate(331.07851239669424,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1402,13 +1420,13 @@ exports[`Render without levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0,80
+              0,8
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(500.5,0)"
+            transform="translate(413.72314049586777,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1420,7 +1438,25 @@ exports[`Render without levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              1,00
+              1
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(496.36776859504135,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              1,2
             </text>
           </g>
         </g>
@@ -1500,7 +1536,7 @@ exports[`Render without levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="500"
+            width="413.22314049586777"
             x="0"
             y="10.465116279069761"
           />
@@ -1510,7 +1546,7 @@ exports[`Render without levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="75"
+            width="61.98347107438017"
             x="0"
             y="45.34883720930232"
           />
@@ -1520,7 +1556,7 @@ exports[`Render without levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="150"
+            width="123.96694214876034"
             x="0"
             y="80.23255813953487"
           />
@@ -1530,7 +1566,7 @@ exports[`Render without levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="50"
+            width="41.32231404958678"
             x="0"
             y="115.11627906976743"
           />
@@ -1545,7 +1581,7 @@ exports[`Render without levels @500px 1`] = `
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="482"
+            x="395.22314049586777"
             y="25.674418604651155"
           >
             1,00
@@ -1557,7 +1593,7 @@ exports[`Render without levels @500px 1`] = `
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="91"
+            x="77.98347107438016"
             y="60.55813953488371"
           >
             0,15
@@ -1569,7 +1605,7 @@ exports[`Render without levels @500px 1`] = `
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="166"
+            x="139.96694214876032"
             y="95.44186046511626"
           >
             0,30
@@ -1581,7 +1617,7 @@ exports[`Render without levels @500px 1`] = `
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="66"
+            x="57.32231404958678"
             y="130.32558139534882"
           >
             0,10
@@ -1636,7 +1672,7 @@ exports[`Render zoomed with levels @500px 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(100.5,0)"
+            transform="translate(74.77102984209978,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1648,13 +1684,13 @@ exports[`Render zoomed with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0
+              100
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(200.5,0)"
+            transform="translate(149.04205968419956,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1666,13 +1702,13 @@ exports[`Render zoomed with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              0
+              200
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(300.5,0)"
+            transform="translate(223.31308952629936,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1684,13 +1720,13 @@ exports[`Render zoomed with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              1
+              300
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(400.5,0)"
+            transform="translate(297.5841193683991,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1702,13 +1738,13 @@ exports[`Render zoomed with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              1
+              400
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(500.5,0)"
+            transform="translate(371.85514921049895,0)"
           >
             <line
               stroke="#D2D3D4"
@@ -1720,7 +1756,25 @@ exports[`Render zoomed with levels @500px 1`] = `
               font-size="18.57px"
               y="3"
             >
-              1
+              500
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(446.12617905259873,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              600
             </text>
           </g>
         </g>
@@ -1797,8 +1851,8 @@ exports[`Render zoomed with levels @500px 1`] = `
             fill="#3baa34"
             height="150"
             opacity="0.2"
-            width="0"
-            x="500"
+            width="202.91588063160088"
+            x="297.0841193683991"
             y="0"
           />
           <rect
@@ -1807,8 +1861,8 @@ exports[`Render zoomed with levels @500px 1`] = `
             fill="#fd9c00"
             height="150"
             opacity="0.2"
-            width="0"
-            x="500"
+            width="148.54205968419956"
+            x="148.54205968419956"
             y="0"
           />
           <rect
@@ -1817,7 +1871,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             fill="#e30713"
             height="150"
             opacity="0.2"
-            width="500"
+            width="148.54205968419956"
             x="0"
             y="0"
           />
@@ -1831,7 +1885,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="500"
+            width="124.77533013472764"
             x="0"
             y="10.465116279069761"
           />
@@ -1841,7 +1895,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="500"
+            width="115.12009625525467"
             x="0"
             y="45.34883720930232"
           />
@@ -1851,7 +1905,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="500"
+            width="288.9143060857682"
             x="0"
             y="80.23255813953487"
           />
@@ -1861,7 +1915,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             fill="#7EBEC7"
             height="24.418604651162788"
             opacity="1"
-            width="500"
+            width="416.66047741417975"
             x="0"
             y="115.11627906976743"
           />
@@ -1876,7 +1930,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="482"
+            x="106.77533013472764"
             y="25.674418604651155"
           >
             168
@@ -1888,7 +1942,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="482"
+            x="97.12009625525467"
             y="60.55813953488371"
           >
             155
@@ -1900,7 +1954,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="482"
+            x="270.9143060857682"
             y="95.44186046511626"
           >
             389
@@ -1912,7 +1966,7 @@ exports[`Render zoomed with levels @500px 1`] = `
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="482"
+            x="398.66047741417975"
             y="130.32558139534882"
           >
             561

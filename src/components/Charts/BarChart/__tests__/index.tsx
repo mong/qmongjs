@@ -2,7 +2,7 @@
  * To view a rendered version of all the snapshots:
  *
  * Copy the contents of ./__snapshots__/index.tsx.snap
- * Got to https://codesandbox.io/s/snapshot-viewer-nnmk3?file=/src/snapshots.js
+ * Got to https://codesandbox.io/s/snapshot-viewer-lqjjsm?file=/src/snapshots.js
  * Replace the contents with what you copied
  */
 import { render, screen } from "@testing-library/react";
@@ -49,6 +49,43 @@ test("Bar have labels with value in %", async () => {
     const bar = screen.getByTestId(`bar-label-${dataPoint.label}`);
     const valueInPct = Math.round((dataPoint.value * 100 * 100) / 100) + " %";
     expect(bar.textContent).toBe(valueInPct);
+  }
+});
+
+test("Bar have labels with value as number", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const data = [
+    { label: "a", value: 100 },
+    { label: "b", value: 150 },
+    { label: "c", value: 300 },
+    { label: "d", value: 100 },
+  ];
+  render(
+    <BarChartWithRef
+      showLevel={true}
+      data={data}
+      levels={[
+        { level: "high", start: 500, end: 0 },
+        { level: "mid", start: 900, end: 500 },
+        { level: "low", start: 1000, end: 900 },
+      ]}
+      tickformat=".0f"
+      zoom={false}
+      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+    />
+  );
+
+  await clockTick(1500);
+
+  for (const dataPoint of data) {
+    const bar = screen.getByTestId(`bar-label-${dataPoint.label}`);
+    const valueInNum = dataPoint.value.toString();
+    expect(bar.textContent).toBe(valueInNum);
   }
 });
 
@@ -329,7 +366,7 @@ test("Render with levels reversed @500px", async () => {
         { level: "low", start: 1, end: 0.9 },
       ]}
       tickformat=".0%"
-      zoom={false}
+      zoom={true}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />
   );
