@@ -131,6 +131,7 @@ test("Render with levels reversed @500px", async () => {
         { level: "low", start: 1, end: 0.4 },
       ]}
       tickformat=",.3f"
+      lastCompleteYear={2019}
       data={[
         { label: "test", value: 0.513343, year: 2020 },
         { label: "test", value: 0.15, year: 2019 },

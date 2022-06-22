@@ -33,6 +33,7 @@ export interface Props {
   tickformat: string | null;
   zoom?: boolean;
   margin?: Margin;
+  lastCompleteYear?: number;
 }
 
 const MARGIN = { top: 8, bottom: 34, right: 0.14, left: 0.05 };
@@ -46,6 +47,7 @@ const LineChart = (props: Props) => {
     tickformat,
     zoom = false,
     margin = {},
+    lastCompleteYear,
   } = props;
 
   const [hoveredLegend, setHoveredLegend] = useState<string | null>(null);
@@ -191,10 +193,22 @@ const LineChart = (props: Props) => {
       .x((d) => xScale(d.year))
       .y((d) => yScale(d.value));
 
+    const dataComplete = lastCompleteYear
+      ? data.filter(function (datapoint) {
+          return datapoint.year <= lastCompleteYear;
+        })
+      : data;
+
+    const dataIncomplete = lastCompleteYear
+      ? data.filter(function (datapoint) {
+          return datapoint.year >= lastCompleteYear;
+        })
+      : [];
+
     container
-      .select(".lines")
+      .select(".linesComplete")
       .selectAll(".line")
-      .data(group(data, (d) => d.label))
+      .data(group(dataComplete, (d) => d.label))
       .join(
         (enter) =>
           enter
@@ -202,6 +216,39 @@ const LineChart = (props: Props) => {
             .attr("class", "line")
             .attr("stroke", ([label]) => lineColorScale(label))
             .style("stroke-width", 3)
+            .style("stroke-linejoin", "round")
+            .style("stroke-linecap", "round")
+            .attr("fill", "none")
+            .style("mix-blend-mode", "multiply")
+            .attr("d", ([, d]) => lines(d)),
+        (update) =>
+          update.call((update) =>
+            update
+              .attr("opacity", ([label]) => {
+                if (highlightedLegends.length === 0) {
+                  return 1;
+                }
+                return highlightedLegends.includes(label) ? 1 : 0.4;
+              })
+              .transition()
+              .duration(1000)
+              .attr("d", ([, d]) => lines(d))
+          ),
+        (exit) => exit.remove()
+      );
+
+    container
+      .select(".linesIncomplete")
+      .selectAll(".line")
+      .data(group(dataIncomplete, (d) => d.label))
+      .join(
+        (enter) =>
+          enter
+            .append("path")
+            .attr("class", "line")
+            .attr("stroke", ([label]) => lineColorScale(label))
+            .style("stroke-width", 3)
+            .style("stroke-dasharray", "10, 10")
             .style("stroke-linejoin", "round")
             .style("stroke-linecap", "round")
             .attr("fill", "none")
@@ -272,6 +319,7 @@ const LineChart = (props: Props) => {
     pathLabels,
     percentage,
     yAxisFormat,
+    lastCompleteYear,
   ]);
 
   return (
@@ -318,7 +366,8 @@ const LineChart = (props: Props) => {
               </text>
             </g>
             <g className="levels" />
-            <g className="lines" />
+            <g className="linesComplete" />
+            <g className="linesIncomplete" />
             <g className="dots" />
           </g>
         </svg>

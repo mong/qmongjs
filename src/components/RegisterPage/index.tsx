@@ -33,6 +33,7 @@ export interface StatisticData {
   include: number | null;
   type: "andel" | string;
   delivery_time: Date;
+  delivery_latest_affirm: Date;
 }
 
 export interface Description {

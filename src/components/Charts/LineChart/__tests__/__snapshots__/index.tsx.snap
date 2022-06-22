@@ -271,7 +271,7 @@ exports[`Render with levels @500px 1`] = `
             />
           </g>
           <g
-            class="lines"
+            class="linesComplete"
           >
             <path
               class="line"
@@ -282,6 +282,9 @@ exports[`Render with levels @500px 1`] = `
               style="stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
             />
           </g>
+          <g
+            class="linesIncomplete"
+          />
           <g
             class="dots"
           >
@@ -631,11 +634,11 @@ exports[`Render with levels reversed @500px 1`] = `
             />
           </g>
           <g
-            class="lines"
+            class="linesComplete"
           >
             <path
               class="line"
-              d="M405,38.249406896551704L270,168.55172413793102L135,95.67999999999996L0,177.87586206896552"
+              d="M270,168.55172413793102L135,95.67999999999996L0,177.87586206896552"
               fill="none"
               opacity="1"
               stroke="#4F9A94"
@@ -643,11 +646,31 @@ exports[`Render with levels reversed @500px 1`] = `
             />
             <path
               class="line"
-              d="M405,174.49406896551724L270,43.03448275862066L135,31.558620689655143L0,136.27586206896552"
+              d="M270,43.03448275862066L135,31.558620689655143L0,136.27586206896552"
               fill="none"
               opacity="1"
               stroke="#90CAF9"
               style="stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
+            />
+          </g>
+          <g
+            class="linesIncomplete"
+          >
+            <path
+              class="line"
+              d="M405,38.249406896551704L270,168.55172413793102"
+              fill="none"
+              opacity="1"
+              stroke="#4F9A94"
+              style="stroke-width: 3; stroke-dasharray: 10, 10; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
+            />
+            <path
+              class="line"
+              d="M405,174.49406896551724L270,43.03448275862066"
+              fill="none"
+              opacity="1"
+              stroke="#90CAF9"
+              style="stroke-width: 3; stroke-dasharray: 10, 10; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
             />
           </g>
           <g
@@ -963,7 +986,7 @@ exports[`Render without levels @250px 1`] = `
             class="levels"
           />
           <g
-            class="lines"
+            class="linesComplete"
           >
             <path
               class="line"
@@ -974,6 +997,9 @@ exports[`Render without levels @250px 1`] = `
               style="stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
             />
           </g>
+          <g
+            class="linesIncomplete"
+          />
           <g
             class="dots"
           >
