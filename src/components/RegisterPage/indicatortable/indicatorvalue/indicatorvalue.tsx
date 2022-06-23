@@ -29,49 +29,23 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
       : indicatorData.level === "L"
       ? "fa fa-circle-o"
       : "undeined";
-  if (
-    indicatorData.type === "dg_andel" ||
-    indicatorData.type === "beregnet_andel" ||
-    indicatorData.type === "andel" ||
-    indicatorData.type === "antall"
-  ) {
-    const denominator =
-      indicatorData.type === "andel" ? indicatorData.denominator : 0;
-    const numerator =
-      indicatorData.type === "andel"
-        ? Math.round(indicatorData.var * denominator)
-        : 0;
-
-    return (
-      <td
-        className={
-          td_class === "selected_unit"
-            ? `${style.selected_unit} ${filter_level}`
-            : `${style.nationally} ${filter_level}`
-        }
-      >
-        <div
-          className={style.level}
-          aria-label={`Achieved level ${indicatorData.level}`}
-        >
-          <h4>
-            {customFormat(numberFormat)(indicatorData.var)}
-            <i className={icon_class} />
-          </h4>
-        </div>
-        {indicatorData.type === "andel" && (
-          <div
-            className={style.summary}
-          >{`${numerator} av ${denominator}`}</div>
-        )}
-      </td>
-    );
-  }
+  const denominator =
+    indicatorData.type === "andel" ? indicatorData.denominator : 0;
+  const numerator =
+    indicatorData.type === "andel"
+      ? Math.round(indicatorData.var * denominator)
+      : 0;
 
   return (
-    <td className={td_class}>
+    <td
+      className={
+        td_class === "selected_unit"
+          ? `${style.selected_unit} ${filter_level}`
+          : `${style.nationally} ${filter_level}`
+      }
+    >
       <div
-        className="level"
+        className={style.level}
         aria-label={`Achieved level ${indicatorData.level}`}
       >
         <h4>
@@ -79,6 +53,9 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
           <i className={icon_class} />
         </h4>
       </div>
+      {indicatorData.type === "andel" && (
+        <div className={style.summary}>{`${numerator} av ${denominator}`}</div>
+      )}
     </td>
   );
 };
