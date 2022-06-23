@@ -53,6 +53,8 @@ export interface Description {
   rname: string | null;
   full_name: string;
   sformat: string | null;
+  max_value: number | null;
+  min_value: number | null;
 }
 
 export const API_HOST =
