@@ -36,6 +36,8 @@ fullDescription.args = {
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
 };
 
@@ -60,6 +62,8 @@ missingLevelGreen.args = {
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
 };
 
@@ -84,5 +88,7 @@ levelDirection0.args = {
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
 };

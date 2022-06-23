@@ -49,6 +49,8 @@ Nation.args = {
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
   indicatorData: [
     {
@@ -92,6 +94,8 @@ WithUnits.args = {
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
   indicatorData: [
     {
@@ -170,6 +174,8 @@ WithMaskedValues.args = {
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
   indicatorData: [
     {
