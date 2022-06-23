@@ -106,8 +106,6 @@ const FigureButtons = (props: Props) => {
     };
   }
 
-  console.log(description.level_green);
-
   const buttonValues = [
     {
       label:
