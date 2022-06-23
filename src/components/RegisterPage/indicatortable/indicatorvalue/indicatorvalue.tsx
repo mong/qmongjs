@@ -32,7 +32,8 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
   if (
     indicatorData.type === "dg_andel" ||
     indicatorData.type === "beregnet_andel" ||
-    indicatorData.type === "andel"
+    indicatorData.type === "andel" ||
+    indicatorData.type === "antall"
   ) {
     const denominator =
       indicatorData.type === "andel" ? indicatorData.denominator : 0;
@@ -54,7 +55,7 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
           aria-label={`Achieved level ${indicatorData.level}`}
         >
           <h4>
-            {`${customFormat(numberFormat)(indicatorData.var)} `}
+            {customFormat(numberFormat)(indicatorData.var)}
             <i className={icon_class} />
           </h4>
         </div>
@@ -74,7 +75,7 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
         aria-label={`Achieved level ${indicatorData.level}`}
       >
         <h4>
-          {`${indicatorData.var} `}
+          {customFormat(numberFormat)(indicatorData.var)}
           <i className={icon_class} />
         </h4>
       </div>
