@@ -2,6 +2,8 @@ export interface Config {
   level_direction: number | null;
   level_green: number | null;
   level_yellow: number | null;
+  max_value: number | null;
+  min_value: number | null;
 }
 
 export function level_boundary(config: Config) {
@@ -19,15 +21,31 @@ export function level_boundary(config: Config) {
   switch (level_direction) {
     case 0:
       return [
-        { level: "high", start: level_green, end: 0 },
+        {
+          level: "high",
+          start: level_green,
+          end: Math.min(0, config.min_value ?? level_green),
+        },
         { level: "mid", start: level_yellow, end: level_green },
-        { level: "low", start: 1, end: level_yellow },
+        {
+          level: "low",
+          start: Math.max(1, config.max_value ?? level_yellow),
+          end: level_yellow,
+        },
       ];
     case 1:
       return [
-        { level: "high", start: 1, end: level_green },
+        {
+          level: "high",
+          start: Math.max(1, config.max_value ?? level_green),
+          end: level_green,
+        },
         { level: "mid", start: level_green, end: level_yellow },
-        { level: "low", start: level_yellow, end: 0 },
+        {
+          level: "low",
+          start: level_yellow,
+          end: Math.min(0, config.min_value ?? level_yellow),
+        },
       ];
     default:
       throw new Error(`${level_direction} is not a valid direction`);

@@ -98,6 +98,8 @@ export function buildDescriptionData(
     full_name:
       "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
     ...overrides,
   };
 }
