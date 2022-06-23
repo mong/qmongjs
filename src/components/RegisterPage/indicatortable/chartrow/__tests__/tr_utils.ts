@@ -5,6 +5,8 @@ test("level_direction 1", () => {
     level_direction: 1,
     level_green: 0.9,
     level_yellow: 0.8,
+    max_value: null,
+    min_value: null,
   };
 
   const levels = level_boundary(config);
@@ -35,6 +37,8 @@ test("level_direction 0", () => {
     level_direction: 0,
     level_green: 0.75,
     level_yellow: 0.5,
+    max_value: null,
+    min_value: null,
   };
 
   const levels = level_boundary(config);
@@ -65,6 +69,8 @@ test("level_direction error", () => {
     level_direction: 100,
     level_green: 0.75,
     level_yellow: 0.5,
+    max_value: null,
+    min_value: null,
   };
 
   expect(() => {
