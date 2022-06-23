@@ -64,7 +64,16 @@ function BarChart(props: Props) {
       .domain(data.map((d) => d.label))
       .range([0, innerHeight])
       .padding(0.3);
-    const xScaleDomain = getXScaleDomain(data, delayedZoom);
+
+    // Check if format is percentage
+    const percentage: boolean =
+      typeof tickformat === "string"
+        ? tickformat.substring(tickformat.length - 1) === "%"
+          ? true
+          : false
+        : false;
+
+    const xScaleDomain = getXScaleDomain(data, delayedZoom, percentage);
     const xScale = scaleLinear()
       .domain(xScaleDomain)
       .range([0, innerWidth])
@@ -77,13 +86,10 @@ function BarChart(props: Props) {
     yAxisElement.selectAll(".tick line").remove();
     yAxisElement.selectAll(".tick text").attr("font-size", "1.2rem");
 
-    // X-Axis
-    const xAxisFormat =
-      typeof tickformat === "string"
-        ? tickformat.substring(tickformat.length - 1) === "%"
-          ? "~%" // if percentage format -> delete trailing zero
-          : tickformat
-        : ",.0f";
+    // X-Axis format, delete trailing zero
+    const xAxisFormat = percentage
+      ? "~%" // if percentage format -> delete trailing zero
+      : "~";
 
     const barLabelFormat = typeof tickformat === "string" ? tickformat : ",.0f";
 
@@ -201,8 +207,12 @@ function BarChart(props: Props) {
 }
 export default BarChart;
 
-function getXScaleDomain(data: Bar[], zoom: boolean): [number, number] {
-  if (!zoom) {
+function getXScaleDomain(
+  data: Bar[],
+  zoom: boolean,
+  percentage: boolean
+): [number, number] {
+  if (!zoom && percentage) {
     return [0, 1];
   }
 
@@ -210,5 +220,10 @@ function getXScaleDomain(data: Bar[], zoom: boolean): [number, number] {
   const additionalMargin = (0.01 + maxVal) * 0.2;
   const xMax = Math.ceil((maxVal + additionalMargin) * 100) / 100;
 
-  return [0, Math.min(xMax, 1)];
+  // xaxis max is maximum 1 (100 %) if percentage
+  if (percentage) {
+    return [0, Math.min(xMax, 1)];
+  } else {
+    return [0, xMax];
+  }
 }
