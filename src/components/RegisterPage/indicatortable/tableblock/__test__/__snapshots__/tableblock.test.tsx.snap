@@ -54,14 +54,14 @@ exports[`renders with national data 1`] = `
           </div>
         </td>
         <td
-          class="nationally"
+          class="nationally "
         >
           <div
             aria-label="Achieved level L"
             class="level"
           >
             <h4>
-              0.5126 
+              51 %
               <i
                 class="fa fa-circle-o"
               />
@@ -102,14 +102,14 @@ exports[`renders with national data 1`] = `
           </div>
         </td>
         <td
-          class="nationally"
+          class="nationally "
         >
           <div
             aria-label="Achieved level H"
             class="level"
           >
             <h4>
-              0.9326 
+              93 %
               <i
                 class="fa fa-fas fa-circle"
               />
@@ -150,14 +150,14 @@ exports[`renders with national data 1`] = `
           </div>
         </td>
         <td
-          class="nationally"
+          class="nationally "
         >
           <div
             aria-label="Achieved level M"
             class="level"
           >
             <h4>
-              0.8537 
+              85 %
               <i
                 class="fa fa-fas fa-adjust"
               />
@@ -198,14 +198,14 @@ exports[`renders with national data 1`] = `
           </div>
         </td>
         <td
-          class="nationally"
+          class="nationally "
         >
           <div
             aria-label="Achieved level H"
             class="level"
           >
             <h4>
-              0.9683 
+              97 %
               <i
                 class="fa fa-fas fa-circle"
               />
@@ -246,14 +246,14 @@ exports[`renders with national data 1`] = `
           </div>
         </td>
         <td
-          class="nationally"
+          class="nationally "
         >
           <div
             aria-label="Achieved level H"
             class="level"
           >
             <h4>
-              0.9246 
+              92 %
               <i
                 class="fa fa-fas fa-circle"
               />
