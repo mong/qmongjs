@@ -383,10 +383,6 @@ function getYScaleDomain(
   zoom: boolean,
   percentage: boolean
 ): [number, number] {
-  if (!zoom && percentage) {
-    return [0, 1];
-  }
-
   const maxValue = Math.max(...data.map((d) => d.value));
   const minValue = Math.min(...data.map((d) => d.value));
 
@@ -395,5 +391,8 @@ function getYScaleDomain(
   const yMax = Math.ceil((maxValue + additionalMargin) * 100) / 100;
 
   // yaxis max is maximum 1 (100 %) if percentage
-  return [Math.max(yMin, 0), percentage ? Math.min(yMax, 1) : yMax];
+  return [
+    zoom ? Math.max(yMin, 0) : 0,
+    percentage ? (zoom ? Math.min(yMax, 1) : 1) : yMax,
+  ];
 }

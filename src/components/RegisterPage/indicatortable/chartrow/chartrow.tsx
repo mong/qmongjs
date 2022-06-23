@@ -41,6 +41,7 @@ export function ChartRow(props: Props) {
 
   let levels = level_boundary(description[0]);
   let format = description[0].sformat;
+  let max_value = description[0].max_value ?? undefined;
 
   let delivery_time = new Date(indicatorData[0].delivery_time);
 
@@ -74,6 +75,7 @@ export function ChartRow(props: Props) {
             treatmentYear={treatmentYear}
             selectedTreatmentUnits={selectedTreatmentUnits}
             indicatorData={indicatorData}
+            max_value={max_value}
           />
           <ChartRowDescription
             description_text={description[0].long_description ?? ""}
