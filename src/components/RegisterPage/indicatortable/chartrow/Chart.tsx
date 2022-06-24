@@ -22,6 +22,7 @@ interface Props {
   levels: Level[];
   tickformat: string | null;
   selectedTreatmentUnits: string[];
+  max_value?: number;
 }
 
 function Chart(props: Props) {
