@@ -154,23 +154,24 @@ const FigureButtons = (props: Props) => {
     },
   ];
 
-  const buttons = buttonValues.map((btn) => {
-    return (
-      <button
-        key={btn.class}
-        aria-pressed={false}
-        aria-label={btn.title}
-        className={style[btn.class]}
-        onClick={btn.click}
-        title={btn.title ?? undefined}
-        style={{ ...btn.style }}
-      >
-        {" "}
-        {btn.label}{" "}
-      </button>
-    );
-  });
-
+  const buttons = buttonValues
+    .filter((btn) => description.level_green || btn.class !== "btn-level")
+    .map((btn) => {
+      return (
+        <button
+          key={btn.class}
+          aria-pressed={false}
+          aria-label={btn.title}
+          className={style[btn.class]}
+          onClick={btn.click}
+          title={btn.title ?? undefined}
+          style={{ ...btn.style }}
+        >
+          {" "}
+          {btn.label}{" "}
+        </button>
+      );
+    });
   return <div className={style["btn-container"]}>{buttons}</div>;
 };
 
