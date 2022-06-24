@@ -14,6 +14,7 @@ const registerInfo: RegisterNames[] = [
     caregiver_data: 1,
     resident_data: 1,
     dg_data: 1,
+    description: null,
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ const registerInfo: RegisterNames[] = [
     caregiver_data: 1,
     resident_data: 1,
     dg_data: 1,
+    description: null,
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ const registerInfo: RegisterNames[] = [
     caregiver_data: 1,
     resident_data: 1,
     dg_data: 1,
+    description: null,
   },
 ];
 it("register page header renders correctly", () => {
@@ -40,6 +43,8 @@ it("register page header renders correctly", () => {
     { value: "datakvalitet", label: "Datakvalitit" },
   ];
   const dataFrom = "Norsk hjerneslagregister";
+  const registerText =
+    "[Det norske hjerneslagregister](https://vg.no) er blablabla og **blablabla**";
 
   const { container } = render(
     <BrowserRouter>
@@ -49,6 +54,7 @@ it("register page header renders correctly", () => {
           registerNames={registerNames}
           tabNames={tabNames}
           dataFrom={dataFrom}
+          registerText={registerText}
         />
       </QueryParamProvider>
     </BrowserRouter>

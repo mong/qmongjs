@@ -1,4 +1,5 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
 import { NSMLogo } from "./nsmlogo";
 import { HeaderTabs } from "./headertabs";
 import SelectRegister from "../../SelectRegister";
@@ -10,6 +11,7 @@ export interface HeaderProps {
   tabNames?: { label: string; value: string }[];
   dataFrom?: string;
   activeTab: string;
+  registerText?: string;
 }
 
 export const Header: React.FC<HeaderProps> = (props) => {
@@ -18,6 +20,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
     tabNames = [],
     dataFrom = "medisinske kvalitetsregistre",
     activeTab,
+    registerText = undefined,
   } = props;
 
   return (
@@ -29,6 +32,20 @@ export const Header: React.FC<HeaderProps> = (props) => {
             <div className={style.headerText}>
               <h3>Resultater fra {dataFrom}</h3>
             </div>
+            {registerText && (
+              <div className={style.headerText}>
+                <ReactMarkdown
+                  components={{
+                    p({ children }) {
+                      return <p style={{ margin: 0 }}>{children}</p>;
+                    },
+                  }}
+                >
+                  {registerText}
+                </ReactMarkdown>
+                <br />
+              </div>
+            )}
           </div>
           <div className={style.topHeaderRight}>
             <SelectRegister

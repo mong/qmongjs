@@ -16,6 +16,7 @@ export interface RegisterNames {
   caregiver_data: 1 | 0 | null;
   resident_data: 1 | 0 | null;
   dg_data: 1 | 0 | null;
+  description: string | null;
 }
 
 export interface StatisticData {

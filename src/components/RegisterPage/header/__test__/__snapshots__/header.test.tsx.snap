@@ -35,6 +35,24 @@ exports[`register page header renders correctly 1`] = `
               Norsk hjerneslagregister
             </h3>
           </div>
+          <div
+            class="headerText"
+          >
+            <p
+              style="margin: 0px;"
+            >
+              <a
+                href="https://vg.no"
+              >
+                Det norske hjerneslagregister
+              </a>
+               er blablabla og 
+              <strong>
+                blablabla
+              </strong>
+            </p>
+            <br />
+          </div>
         </div>
         <div
           class="topHeaderRight"
@@ -192,6 +210,24 @@ exports[`register page header renders correctly 2`] = `
               Resultater fra 
               Norsk hjerneslagregister
             </h3>
+          </div>
+          <div
+            class="headerText"
+          >
+            <p
+              style="margin: 0px;"
+            >
+              <a
+                href="https://vg.no"
+              >
+                Det norske hjerneslagregister
+              </a>
+               er blablabla og 
+              <strong>
+                blablabla
+              </strong>
+            </p>
+            <br />
           </div>
         </div>
         <div

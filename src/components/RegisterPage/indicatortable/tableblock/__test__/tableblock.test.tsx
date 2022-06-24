@@ -15,6 +15,7 @@ const props: TableBlockProps = {
     caregiver_data: 1,
     resident_data: 1,
     dg_data: 1,
+    description: "Dette er litt tekst",
   },
   blockTitle: "Nasjonalt hoftebruddregister",
   treatmentYear: 2019,
