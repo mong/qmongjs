@@ -33,6 +33,7 @@ export interface StatisticData {
   include: number | null;
   type: "andel" | string;
   delivery_time: Date;
+  delivery_latest_affirm: Date;
 }
 
 export interface Description {
@@ -52,6 +53,8 @@ export interface Description {
   rname: string | null;
   full_name: string;
   sformat: string | null;
+  max_value: number | null;
+  min_value: number | null;
 }
 
 export const API_HOST =

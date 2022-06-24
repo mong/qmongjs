@@ -49,6 +49,8 @@ Nation.args = {
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
   indicatorData: [
     {
@@ -66,6 +68,7 @@ Nation.args = {
       type: "andel",
       include: 1,
       delivery_time: new Date("October 13, 2014 11:13:00"),
+      delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
     },
   ],
 };
@@ -91,6 +94,8 @@ WithUnits.args = {
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
   indicatorData: [
     {
@@ -108,6 +113,7 @@ WithUnits.args = {
       type: "andel",
       include: 1,
       delivery_time: new Date("October 13, 2014 11:13:00"),
+      delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
     },
     {
       id: 935463,
@@ -124,6 +130,7 @@ WithUnits.args = {
       type: "andel",
       include: 1,
       delivery_time: new Date("October 13, 2014 11:13:00"),
+      delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
     },
     {
       id: 935463,
@@ -140,6 +147,7 @@ WithUnits.args = {
       type: "andel",
       include: 1,
       delivery_time: new Date("October 13, 2014 11:13:00"),
+      delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
     },
   ],
   unitNames: ["UNN Tromsø", "UNN HF", "Nasjonalt"],
@@ -166,6 +174,8 @@ WithMaskedValues.args = {
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
   indicatorData: [
     {
@@ -183,6 +193,7 @@ WithMaskedValues.args = {
       type: "andel",
       include: 1,
       delivery_time: new Date("October 13, 2014 11:13:00"),
+      delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
     },
     {
       id: 935463,
@@ -199,6 +210,7 @@ WithMaskedValues.args = {
       type: "andel",
       include: 1,
       delivery_time: new Date("October 13, 2014 11:13:00"),
+      delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
     },
     {
       id: 935463,
@@ -215,6 +227,7 @@ WithMaskedValues.args = {
       type: "andel",
       include: 1,
       delivery_time: new Date("October 13, 2014 11:13:00"),
+      delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
     },
   ],
   unitNames: ["UNN Tromsø", "UIO", "UNN HF", "Nasjonalt"],

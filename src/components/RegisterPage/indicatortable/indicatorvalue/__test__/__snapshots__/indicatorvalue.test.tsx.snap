@@ -13,7 +13,7 @@ exports[`renders beregnet_andel 1`] = `
             class="level"
           >
             <h4>
-              11 % 
+              11 %
               <i
                 class="fa fa-circle-o"
               />

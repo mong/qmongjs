@@ -33,6 +33,7 @@ export interface Props {
   tickformat: string | null;
   zoom?: boolean;
   margin?: Margin;
+  lastCompleteYear?: number;
 }
 
 const MARGIN = { top: 8, bottom: 34, right: 0.14, left: 0.05 };
@@ -46,6 +47,7 @@ const LineChart = (props: Props) => {
     tickformat,
     zoom = false,
     margin = {},
+    lastCompleteYear,
   } = props;
 
   const [hoveredLegend, setHoveredLegend] = useState<string | null>(null);
@@ -72,6 +74,17 @@ const LineChart = (props: Props) => {
     .domain(pathLabels)
     .range(page_colors.chart_colors);
 
+  const percentage: boolean =
+    typeof tickformat === "string"
+      ? tickformat.substring(tickformat.length - 1) === "%"
+        ? true
+        : false
+      : false;
+
+  // Y-Axis format, delete trailing zero
+  const yAxisFormat = percentage ? "~%" : "~";
+  const yaxisLabel = percentage ? "Andel" : "Antall";
+
   useEffect(() => {
     if (innerWidth === 0) {
       return;
@@ -86,7 +99,7 @@ const LineChart = (props: Props) => {
       .domain([minYear, maxYear])
       .range([0, innerWidth]);
 
-    const yScaleDomain = getYScaleDomain(data, delayedZoom);
+    const yScaleDomain = getYScaleDomain(data, delayedZoom, percentage);
     const yScale = scaleLinear()
       .domain(yScaleDomain)
       .range([innerHeight, 0])
@@ -101,13 +114,6 @@ const LineChart = (props: Props) => {
       );
     }
 
-    // Y-Axis
-    const yAxisFormat =
-      typeof tickformat === "string"
-        ? tickformat.substring(tickformat.length - 1) === "%"
-          ? "~%" // if percentage format -> delete trailing zero
-          : tickformat
-        : ",.0f";
     const yAxis = axisRight(yScale)
       .ticks(theme.y_axis_tick_number)
       .tickSize(innerWidth)
@@ -187,10 +193,22 @@ const LineChart = (props: Props) => {
       .x((d) => xScale(d.year))
       .y((d) => yScale(d.value));
 
+    const dataComplete = lastCompleteYear
+      ? data.filter(function (datapoint) {
+          return datapoint.year <= lastCompleteYear;
+        })
+      : data;
+
+    const dataIncomplete = lastCompleteYear
+      ? data.filter(function (datapoint) {
+          return datapoint.year >= lastCompleteYear;
+        })
+      : [];
+
     container
-      .select(".lines")
+      .select(".linesComplete")
       .selectAll(".line")
-      .data(group(data, (d) => d.label))
+      .data(group(dataComplete, (d) => d.label))
       .join(
         (enter) =>
           enter
@@ -198,6 +216,39 @@ const LineChart = (props: Props) => {
             .attr("class", "line")
             .attr("stroke", ([label]) => lineColorScale(label))
             .style("stroke-width", 3)
+            .style("stroke-linejoin", "round")
+            .style("stroke-linecap", "round")
+            .attr("fill", "none")
+            .style("mix-blend-mode", "multiply")
+            .attr("d", ([, d]) => lines(d)),
+        (update) =>
+          update.call((update) =>
+            update
+              .attr("opacity", ([label]) => {
+                if (highlightedLegends.length === 0) {
+                  return 1;
+                }
+                return highlightedLegends.includes(label) ? 1 : 0.4;
+              })
+              .transition()
+              .duration(1000)
+              .attr("d", ([, d]) => lines(d))
+          ),
+        (exit) => exit.remove()
+      );
+
+    container
+      .select(".linesIncomplete")
+      .selectAll(".line")
+      .data(group(dataIncomplete, (d) => d.label))
+      .join(
+        (enter) =>
+          enter
+            .append("path")
+            .attr("class", "line")
+            .attr("stroke", ([label]) => lineColorScale(label))
+            .style("stroke-width", 3)
+            .style("stroke-dasharray", "10, 10")
             .style("stroke-linejoin", "round")
             .style("stroke-linecap", "round")
             .attr("fill", "none")
@@ -266,6 +317,9 @@ const LineChart = (props: Props) => {
     svgContainerRef,
     lineColorScale,
     pathLabels,
+    percentage,
+    yAxisFormat,
+    lastCompleteYear,
   ]);
 
   return (
@@ -308,11 +362,12 @@ const LineChart = (props: Props) => {
                   fontFamily: theme.y_axis_label_font_family,
                 }}
               >
-                {theme.y_axis_label}
+                {yaxisLabel}
               </text>
             </g>
             <g className="levels" />
-            <g className="lines" />
+            <g className="linesComplete" />
+            <g className="linesIncomplete" />
             <g className="dots" />
           </g>
         </svg>
@@ -323,8 +378,12 @@ const LineChart = (props: Props) => {
 
 export default LineChart;
 
-function getYScaleDomain(data: DataPoint[], zoom: boolean): [number, number] {
-  if (!zoom) {
+function getYScaleDomain(
+  data: DataPoint[],
+  zoom: boolean,
+  percentage: boolean
+): [number, number] {
+  if (!zoom && percentage) {
     return [0, 1];
   }
 
@@ -335,5 +394,6 @@ function getYScaleDomain(data: DataPoint[], zoom: boolean): [number, number] {
   const yMin = Math.floor((minValue - additionalMargin) * 100) / 100;
   const yMax = Math.ceil((maxValue + additionalMargin) * 100) / 100;
 
-  return [Math.max(yMin, 0), Math.min(yMax, 1)];
+  // yaxis max is maximum 1 (100 %) if percentage
+  return [Math.max(yMin, 0), percentage ? Math.min(yMax, 1) : yMax];
 }
