@@ -9477,9 +9477,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3@npm:^7.4.4":
-  version: 7.4.4
-  resolution: "d3@npm:7.4.4"
+"d3@npm:^7.5.0":
+  version: 7.5.0
+  resolution: "d3@npm:7.5.0"
   dependencies:
     d3-array: 3
     d3-axis: 3
@@ -9511,7 +9511,7 @@ __metadata:
     d3-timer: 3
     d3-transition: 3
     d3-zoom: 3
-  checksum: 7ac001138e03546ff59633f2b48ab795e009e19018586c90a948d614ffc255aac585937f2bfe4265fb1e51799cc16cffbbc8a7030275036d5c4ea13c432c0dfc
+  checksum: fcb83acb1988141466a062175290f37c9db3fd6fbe9605b8cb5af2eedcf1b3aa1ca664ac87f6452aea97a5c3dfa0d5389ea922c4ec4ea7612fe04e28af48957b
   languageName: node
   linkType: hard
 
@@ -18003,7 +18003,7 @@ __metadata:
     "@types/react": ^18.0.8
     "@types/react-dom": ^18.0.3
     "@types/react-router-dom": ^5.3.3
-    d3: ^7.4.4
+    d3: ^7.5.0
     d3-format: ^3.1.0
     eslint: ^8.18.0
     husky: ^8.0.1
