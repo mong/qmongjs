@@ -9,8 +9,7 @@ import {
   select,
 } from "d3";
 import { useEffect, useState } from "react";
-import { page_colors } from "../../../charts/page_colors";
-import { theme_table_chart_line as theme } from "../../../charts/theme_table_chart_line";
+import { themeTableChartLine as theme } from "./themeTableChartLine";
 import useDelayInitial from "../../../utils/useDelayInitial";
 import { Level, Margin } from "../types";
 import { useResizeObserver } from "../../../helpers/hooks";
@@ -18,6 +17,24 @@ import styles from "./LineChart.module.css";
 import { levelColor } from "../utils";
 import { Legend } from "./legend";
 import { customFormat } from "../../../helpers/functions/localFormater";
+
+const chart_colors = [
+  "#4F9A94",
+  "#90CAF9",
+  "#B0BEC5",
+  "#FFE082",
+  "#2962FF",
+  "#CE93D8",
+  "#9C786C",
+  "#BCAAA4",
+  "#F8BBD0",
+  "#9FA8DA",
+  "#80DEEA",
+  "#A5D6A7",
+  "#E6EE9C",
+  "#FFAB91",
+  "#78909C",
+];
 
 export interface DataPoint {
   label: string;
@@ -72,7 +89,7 @@ const LineChart = (props: Props) => {
   const pathLabels = Array.from(new Set(data.map((d) => d.label)));
   const lineColorScale = scaleOrdinal<string>()
     .domain(pathLabels)
-    .range(page_colors.chart_colors);
+    .range(chart_colors);
 
   const percentage: boolean =
     typeof tickformat === "string"
