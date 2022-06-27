@@ -8,8 +8,8 @@ import {
 import { mainQueryParamsConfig } from "../app_config";
 
 import LEGEND from "./TargetLevels";
-import { MedicalFiedls } from "./RegisterPage/medicalfields";
-import { IndicatorTable } from "./RegisterPage/indicatortable";
+import { MedicalFiedls } from "./MedicalFields";
+import { IndicatorTable } from "./IndicatorTable";
 import { useMedicalFieldsQuery } from "../helpers/hooks";
 import { OptsTu } from "./select_multi";
 

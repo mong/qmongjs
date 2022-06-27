@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-import { RegisterNames } from "../../.";
+import { RegisterNames } from "../../RegisterPage";
 import TableBlock from "../tableblock/tableblock";
 import { NoDataAvailible } from "../ContenForEmptyTable";
 

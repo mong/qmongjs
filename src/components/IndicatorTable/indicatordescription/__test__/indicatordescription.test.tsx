@@ -1,7 +1,7 @@
 import { render, unmountComponentAtNode } from "react-dom";
 
 import { IndicatorDescription } from "../";
-import description from "../../../../../test/test_data/description";
+import description from "../../../../test/test_data/description";
 
 let container: any = null;
 beforeEach(() => {

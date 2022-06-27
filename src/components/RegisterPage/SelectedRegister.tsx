@@ -6,7 +6,7 @@ import { UseQueryResult } from "react-query";
 import SELECT_MULTI from "../select_multi";
 import SELECT_SINGLE from "../select_single";
 import LEGEND from "../TargetLevels";
-import { IndicatorTable } from "./indicatortable";
+import { IndicatorTable } from "../IndicatorTable";
 import { RegisterNames } from ".";
 import { OptsTu } from "../select_multi";
 import config, {
