@@ -2,7 +2,7 @@ import React, { MutableRefObject, useEffect, useState } from "react";
 import { useIsFetching } from "react-query";
 import style from "../tableblock/tableblock.module.css";
 
-import { useResizeObserver } from "../../../../helpers/hooks";
+import { useResizeObserver } from "../../../helpers/hooks";
 
 interface NoDataAvailibleProps {
   colspan: number;

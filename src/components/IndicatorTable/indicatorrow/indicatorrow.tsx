@@ -7,8 +7,8 @@ import { MaskedIndicator } from "../maskedindicator";
 import { ChartRow } from "../chartrow";
 import style from "./indicatorrow.module.css";
 
-import { Description, StatisticData } from "../../";
-import { mainQueryParamsConfig } from "../../../../app_config";
+import { Description, StatisticData } from "../../RegisterPage";
+import { mainQueryParamsConfig } from "../../../app_config";
 
 const formatIndicatorValues = (
   description: Description,

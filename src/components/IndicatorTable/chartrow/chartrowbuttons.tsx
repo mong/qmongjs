@@ -6,7 +6,7 @@ import { VscChromeClose, VscZoomOut, VscZoomIn } from "react-icons/vsc";
 import { BiBarChart, BiLineChart } from "react-icons/bi";
 import { select, selectAll } from "d3";
 
-import { Description } from "../../../RegisterPage";
+import { Description } from "../../RegisterPage";
 
 interface Props {
   svgContainer: React.RefObject<HTMLDivElement>;

@@ -5,8 +5,8 @@ import ChartRowDescription from "./chartrowdescription";
 import Chart from "./Chart";
 import { level_boundary } from "./tr_utils";
 import { useQueryParam } from "use-query-params";
-import { mainQueryParamsConfig } from "../../../../app_config";
-import { Description, StatisticData } from "../../../RegisterPage";
+import { mainQueryParamsConfig } from "../../../app_config";
+import { Description, StatisticData } from "../../RegisterPage";
 
 export interface Props {
   context: { context: string; type: string };

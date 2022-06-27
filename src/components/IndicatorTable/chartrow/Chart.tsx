@@ -1,14 +1,11 @@
 import React, { useCallback, useEffect } from "react";
 import { UseQueryResult, useQueryClient } from "react-query";
-import {
-  Description,
-  StatisticData,
-} from "../../../../components/RegisterPage";
+import { Description, StatisticData } from "../../RegisterPage";
 
-import BarChart, { Bar, BarStyle } from "../../../Charts/BarChart";
-import LineChart, { DataPoint } from "../../../Charts/LineChart";
-import { Level } from "../../../Charts/types";
-import { useIndicatorQuery } from "../../../../helpers/hooks";
+import BarChart, { Bar, BarStyle } from "../../Charts/BarChart";
+import LineChart, { DataPoint } from "../../Charts/LineChart";
+import { Level } from "../../Charts/types";
+import { useIndicatorQuery } from "../../../helpers/hooks";
 
 interface Props {
   context: { context: string; type: string };

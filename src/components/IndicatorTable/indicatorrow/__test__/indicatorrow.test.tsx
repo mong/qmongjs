@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 
 import { IndicatorRow } from "../";
-import national_data from "../../../../../test/test_data/national_data";
-import description from "../../../../../test/test_data/description";
+import national_data from "../../../../test/test_data/national_data";
+import description from "../../../../test/test_data/description";
 
 let container: any = null;
 beforeEach(() => {

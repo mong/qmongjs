@@ -2,7 +2,7 @@ import React from "react";
 
 import { IndicatorTableHeader } from "./indicatortableheader";
 import { IndicatorTableBody } from "./indicatortablebody";
-import { RegisterNames } from "../.";
+import { RegisterNames } from "../RegisterPage";
 
 export interface IndicatorTableProps {
   context: string;

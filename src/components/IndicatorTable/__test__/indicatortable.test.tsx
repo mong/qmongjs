@@ -3,9 +3,9 @@ import { QueryParamProvider } from "use-query-params";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { render, screen, waitFor } from "@testing-library/react";
 
-import opts from "../../../../dev-tools/data/unitnames.json";
+import opts from "../../../dev-tools/data/unitnames.json";
 import { IndicatorTable } from "../";
-import { RegisterNames } from "../../.";
+import { RegisterNames } from "../../RegisterPage";
 
 const registerInfo: RegisterNames[] = [
   {

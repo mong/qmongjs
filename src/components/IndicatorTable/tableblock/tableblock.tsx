@@ -2,14 +2,11 @@ import React, { useEffect, useMemo, useCallback } from "react";
 import { UseQueryResult, useQueryClient } from "react-query";
 
 import style from "./tableblock.module.css";
-import {
-  useDescriptionQuery,
-  useIndicatorQuery,
-} from "../../../../helpers/hooks";
-import { filterOrderIndID } from "../../../../helpers/functions";
+import { useDescriptionQuery, useIndicatorQuery } from "../../../helpers/hooks";
+import { filterOrderIndID } from "../../../helpers/functions";
 import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
-import { Description, StatisticData, RegisterNames } from "../../";
+import { Description, StatisticData, RegisterNames } from "../../RegisterPage";
 
 export interface TableBlockProps {
   context: string;

@@ -1,7 +1,7 @@
 import React from "react";
-import { Description } from "../../";
+import { Description } from "../../RegisterPage";
 import style from "./indicatordescription.module.css";
-import { customFormat } from "../../../../helpers/functions/localFormater";
+import { customFormat } from "../../../helpers/functions/localFormater";
 
 export interface DescriptionProps {
   description: Description;

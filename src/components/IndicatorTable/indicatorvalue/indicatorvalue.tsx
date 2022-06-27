@@ -1,7 +1,7 @@
 import React from "react";
-import { StatisticData } from "../../";
+import { StatisticData } from "../../RegisterPage";
 import style from "./indicatorvalue.module.css";
-import { customFormat } from "../../../../helpers/functions/localFormater";
+import { customFormat } from "../../../helpers/functions/localFormater";
 
 export interface IndicatorValueProps {
   td_class?: string;
