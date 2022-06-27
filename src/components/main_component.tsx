@@ -7,8 +7,7 @@ import {
 } from "../components/RegisterPage";
 import { mainQueryParamsConfig } from "../app_config";
 
-import LEGEND from "./legend";
-//import Loading from "./Loading.tsx";
+import LEGEND from "./TargetLevels";
 import { MedicalFiedls } from "./RegisterPage/medicalfields";
 import { IndicatorTable } from "./RegisterPage/indicatortable";
 import { useMedicalFieldsQuery } from "../helpers/hooks";
