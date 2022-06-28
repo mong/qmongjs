@@ -2971,7 +2971,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/react@npm:^7.2.0":
+"@sentry/react@npm:^7.3.0":
   version: 7.3.0
   resolution: "@sentry/react@npm:7.3.0"
   dependencies:
@@ -2986,7 +2986,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/tracing@npm:^7.2.0":
+"@sentry/tracing@npm:^7.3.0":
   version: 7.3.0
   resolution: "@sentry/tracing@npm:7.3.0"
   dependencies:
@@ -9221,7 +9221,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3@npm:^7.4.4":
+"d3@npm:^7.5.0":
   version: 7.5.0
   resolution: "d3@npm:7.5.0"
   dependencies:
@@ -11530,7 +11530,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^8.0.1, glob@npm:^8.0.3":
+"glob@npm:^8.0.1":
   version: 8.0.3
   resolution: "glob@npm:8.0.3"
   dependencies:
@@ -14260,7 +14260,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:^13.0.2":
+"lint-staged@npm:^13.0.3":
   version: 13.0.3
   resolution: "lint-staged@npm:13.0.3"
   dependencies:
@@ -15493,7 +15493,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:^0.42.1":
+"msw@npm:^0.42.3":
   version: 0.42.3
   resolution: "msw@npm:0.42.3"
   dependencies:
@@ -17926,8 +17926,8 @@ __metadata:
     "@emotion/styled": ^11.8.1
     "@mui/icons-material": ^5.8.4
     "@mui/material": ^5.8.5
-    "@sentry/react": ^7.2.0
-    "@sentry/tracing": ^7.2.0
+    "@sentry/react": ^7.3.0
+    "@sentry/tracing": ^7.3.0
     "@storybook/addon-essentials": ^6.5.9
     "@storybook/addon-links": ^6.5.9
     "@storybook/addon-queryparams": ^6.2.9
@@ -17942,13 +17942,13 @@ __metadata:
     "@types/react": ^18.0.8
     "@types/react-dom": ^18.0.3
     "@types/react-router-dom": ^5.3.3
-    d3: ^7.4.4
+    d3: ^7.5.0
     d3-format: ^3.1.0
     eslint: ^8.18.0
     husky: ^8.0.1
     is-ci-cli: ^2.2.0
-    lint-staged: ^13.0.2
-    msw: ^0.42.1
+    lint-staged: ^13.0.3
+    msw: ^0.42.3
     prettier: ^2.5.1
     query-string: ^7.1.1
     react: ^17.0.1
@@ -17961,7 +17961,7 @@ __metadata:
     react-select: ^5.3.2
     resize-observer-polyfill: ^1.5.1
     source-map-explorer: ^2.5.2
-    typedoc: ^0.22.17
+    typedoc: ^0.23.1
     typescript: ^4.7.4
     use-query-params: ^1.2.3
   languageName: unknown
@@ -21258,20 +21258,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc@npm:^0.22.17":
-  version: 0.22.18
-  resolution: "typedoc@npm:0.22.18"
+"typedoc@npm:^0.23.1":
+  version: 0.23.2
+  resolution: "typedoc@npm:0.23.2"
   dependencies:
-    glob: ^8.0.3
     lunr: ^2.3.9
     marked: ^4.0.16
     minimatch: ^5.1.0
     shiki: ^0.10.1
   peerDependencies:
-    typescript: 4.0.x || 4.1.x || 4.2.x || 4.3.x || 4.4.x || 4.5.x || 4.6.x || 4.7.x
+    typescript: 4.6.x || 4.7.x
   bin:
     typedoc: bin/typedoc
-  checksum: b813d8129682f6ed5a4e96bacaf019e4da1d2744ca89fef850d6bb4c034616567ce67e6a7f5cfc5f00aac573f0b45d44b1427aafa262ab88dce6b460cb9e744c
+  checksum: 2c93349b5f1987d32171130a428d36ecbe31e215d87e06707d837f9465eced70b19eec669939c67e8ef0e02852faf4ee1f4ba113dab7fee980171af082e27583
   languageName: node
   linkType: hard
 
