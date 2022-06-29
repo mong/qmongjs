@@ -47,7 +47,7 @@ export interface Props {
   update_legend_height(height: any): void;
 }
 
-interface MediacalFieldObject {
+interface MedicalFieldObject {
   shortName: string;
   name: string;
   registers: string[];
@@ -80,20 +80,19 @@ const Main = (props: Props) => {
   if (medicalFieldsQuery.isLoading) {
     return null;
   }
-  const medicalFields: MediacalFieldObject[] = medicalFieldsQuery.data;
+  const medicalFields: MedicalFieldObject[] = medicalFieldsQuery.data;
   const selectedMedicalField: string[] =
     (clicked_med_field ?? "all") === "all"
       ? registerList
       : medicalFields
           .filter(
-            (field: MediacalFieldObject) =>
-              field.shortName === clicked_med_field
+            (field: MedicalFieldObject) => field.shortName === clicked_med_field
           )
-          .flatMap((field: MediacalFieldObject) => field.registers);
+          .flatMap((field: MedicalFieldObject) => field.registers);
 
   const orderedRegisterList: RegisterNames[] = Array.from(
     new Set(
-      medicalFields.flatMap((field: MediacalFieldObject) => field.registers)
+      medicalFields.flatMap((field: MedicalFieldObject) => field.registers)
     )
   )
     .map((reg) => {
