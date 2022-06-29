@@ -2,20 +2,20 @@ import React, { Dispatch } from "react";
 
 import { MedicalFieldEntry } from "./medicalfieldentry";
 
-interface MediacalFieldProps {
-  medicalFields: MediacalFieldObject[];
+interface MedicalFieldProps {
+  medicalFields: MedicalFieldObject[];
   clicked_med_field: string;
   update_clicked_med_field: Dispatch<string>;
   selection_bar_height: number;
   legend_height: string;
 }
-interface MediacalFieldObject {
+interface MedicalFieldObject {
   shortName: string;
   name: string;
   registers: string[];
 }
 
-export const MedicalFiedls: React.FC<MediacalFieldProps> = (props) => {
+export const MedicalFields: React.FC<MedicalFieldProps> = (props) => {
   const {
     medicalFields,
     clicked_med_field,
@@ -24,7 +24,7 @@ export const MedicalFiedls: React.FC<MediacalFieldProps> = (props) => {
     legend_height,
   } = props;
 
-  const med_field_row = medicalFields.map((med_field: MediacalFieldObject) => {
+  const med_field_row = medicalFields.map((med_field: MedicalFieldObject) => {
     return (
       <MedicalFieldEntry
         key={med_field.shortName}
@@ -54,4 +54,4 @@ export const MedicalFiedls: React.FC<MediacalFieldProps> = (props) => {
   );
 };
 
-export default MedicalFiedls;
+export default MedicalFields;

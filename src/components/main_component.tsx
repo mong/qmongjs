@@ -8,7 +8,7 @@ import {
 import { mainQueryParamsConfig } from "../app_config";
 
 import LEGEND from "./TargetLevels";
-import { MedicalFiedls } from "./MedicalFields";
+import { MedicalFields } from "./MedicalFields";
 import { IndicatorTable } from "./IndicatorTable";
 import { useMedicalFieldsQuery } from "../helpers/hooks";
 import { OptsTu } from "./select_multi";
@@ -113,7 +113,7 @@ const Main = (props: Props) => {
       />
       <div className="content_container">
         <div className="med_field_container">
-          <MedicalFiedls
+          <MedicalFields
             medicalFields={medicalFields}
             clicked_med_field={clicked_med_field ?? "all"}
             update_clicked_med_field={update_clicked_med_field}
