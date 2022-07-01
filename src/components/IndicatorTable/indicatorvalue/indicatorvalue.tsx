@@ -8,6 +8,7 @@ export interface IndicatorValueProps {
   indicatorData: StatisticData;
   level_class?: "filtered_level" | "";
   format?: string;
+  headerStyle?: React.CSSProperties;
 }
 
 export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
@@ -32,9 +33,11 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
     </td>
   );
 };
+
 export const IndicatorData: React.FC<IndicatorValueProps> = ({
   indicatorData,
   format,
+  headerStyle,
 }) => {
   const numberFormat = format === undefined ? ",.0%" : format;
   const icon_class =
@@ -58,7 +61,7 @@ export const IndicatorData: React.FC<IndicatorValueProps> = ({
         className={style.level}
         aria-label={`Achieved level ${indicatorData.level}`}
       >
-        <h4>
+        <h4 style={headerStyle}>
           {customFormat(numberFormat)(indicatorData.var)}
           <i className={icon_class} />
         </h4>

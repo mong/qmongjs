@@ -1,7 +1,5 @@
-import { flexbox } from "@mui/system";
 import { defaultStyles, Tooltip } from "@visx/tooltip";
 
-import { TooltipInPortalProps } from "@visx/tooltip/lib/hooks/useTooltipInPortal";
 import React from "react";
 import { DataPoint } from ".";
 import { IndicatorData } from "../../IndicatorTable/indicatorvalue";
@@ -41,14 +39,18 @@ export const LineChartTooltip: React.FC<ChartTooltipProps> = ({
           <div
             style={{
               marginBottom: "10px",
-              fontSize: "1.3rem",
+              fontSize: "1rem",
               fontWeight: 500,
             }}
           >
             {tooltipData.label}
           </div>
           <div>{tooltipData.year}</div>
-          <IndicatorData indicatorData={tooltipData} format={format} />
+          <IndicatorData
+            headerStyle={{ fontSize: "1rem" }}
+            indicatorData={tooltipData}
+            format={format}
+          />
         </Tooltip>
       )}
     </>

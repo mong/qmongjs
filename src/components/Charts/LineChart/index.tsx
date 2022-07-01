@@ -98,7 +98,6 @@ const LineChart = (props: Props) => {
   const [selectedLegends, setSelectedLegends] = useState<string[]>([]);
   const [legendHeight, setLegendHeight] = useState<number>(0);
   const delayedZoom = useDelayInitial(zoom, false);
-  const [crosshairOpen, setCrosshairOpen] = useState<boolean>(false);
 
   const entry = useResizeObserver(svgContainerRef);
 
@@ -368,6 +367,8 @@ const LineChart = (props: Props) => {
     percentage,
     yAxisFormat,
     lastCompleteYear,
+    handleTooltip,
+    hideTooltip,
   ]);
 
   return (
