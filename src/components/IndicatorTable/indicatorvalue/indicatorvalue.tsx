@@ -19,8 +19,24 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
   } = props;
 
   const filter_level = level_class === "" ? "" : style.filtered_level;
-  const numberFormat = format === undefined ? ",.0%" : format;
 
+  return (
+    <td
+      className={
+        td_class === "selected_unit"
+          ? `${style.selected_unit} ${filter_level}`
+          : `${style.nationally} ${filter_level}`
+      }
+    >
+      <IndicatorData indicatorData={indicatorData} format={format} />
+    </td>
+  );
+};
+export const IndicatorData: React.FC<IndicatorValueProps> = ({
+  indicatorData,
+  format,
+}) => {
+  const numberFormat = format === undefined ? ",.0%" : format;
   const icon_class =
     indicatorData.level === "H"
       ? "fa fa-fas fa-circle"
@@ -37,13 +53,7 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
       : 0;
 
   return (
-    <td
-      className={
-        td_class === "selected_unit"
-          ? `${style.selected_unit} ${filter_level}`
-          : `${style.nationally} ${filter_level}`
-      }
-    >
+    <>
       <div
         className={style.level}
         aria-label={`Achieved level ${indicatorData.level}`}
@@ -56,7 +66,7 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
       {indicatorData.type === "andel" && (
         <div className={style.summary}>{`${numerator} av ${denominator}`}</div>
       )}
-    </td>
+    </>
   );
 };
 

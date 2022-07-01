@@ -8,7 +8,10 @@ import {
   scaleTime,
   select,
 } from "d3";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { localPoint } from "@visx/event";
+import { useTooltip } from "@visx/tooltip";
+
 import { themeTableChartLine as theme } from "./themeTableChartLine";
 import useDelayInitial from "../../../utils/useDelayInitial";
 import { Level, Margin } from "../types";
@@ -17,6 +20,8 @@ import styles from "./LineChart.module.css";
 import { levelColor } from "../utils";
 import { Legend } from "./legend";
 import { customFormat } from "../../../helpers/functions/localFormater";
+import { LineChartTooltip } from "./tooltip";
+import { StatisticData } from "../../RegisterPage";
 
 const chart_colors = [
   "#4F9A94",
@@ -36,18 +41,17 @@ const chart_colors = [
   "#78909C",
 ];
 
-export interface DataPoint {
+export type DataPoint = {
   label: string;
-  year: number;
   value: number;
-}
+} & StatisticData;
 
 export interface Props {
   svgContainerRef: React.RefObject<HTMLDivElement>;
   showLevel: boolean;
   data: DataPoint[];
   levels: Level[];
-  tickformat: string | null;
+  tickformat?: string;
   zoom?: boolean;
   margin?: Margin;
   lastCompleteYear?: number;
@@ -66,11 +70,35 @@ const LineChart = (props: Props) => {
     margin = {},
     lastCompleteYear,
   } = props;
+  //tooltip boundary detector
+
+  const {
+    tooltipOpen,
+    tooltipLeft,
+    tooltipTop,
+    tooltipData,
+    hideTooltip,
+    showTooltip,
+  } = useTooltip<DataPoint>();
+
+  const handleTooltip = React.useCallback(
+    (event: React.PointerEvent<SVGSVGElement>, data?: DataPoint) => {
+      // coordinates should be relative to the container in which Tooltip is rendered
+      const eventSvgCoords = localPoint(event) ?? { x: 0, y: 0 };
+      showTooltip({
+        tooltipLeft: eventSvgCoords.x,
+        tooltipTop: eventSvgCoords.y,
+        tooltipData: data,
+      });
+    },
+    [showTooltip]
+  );
 
   const [hoveredLegend, setHoveredLegend] = useState<string | null>(null);
   const [selectedLegends, setSelectedLegends] = useState<string[]>([]);
   const [legendHeight, setLegendHeight] = useState<number>(0);
   const delayedZoom = useDelayInitial(zoom, false);
+  const [crosshairOpen, setCrosshairOpen] = useState<boolean>(false);
 
   const entry = useResizeObserver(svgContainerRef);
 
@@ -320,7 +348,10 @@ const LineChart = (props: Props) => {
               .attr("fill", (d) => lineColorScale(d.label))
           ),
         (exit) => exit.remove()
-      );
+      )
+      .on("pointerenter", (e, d) => handleTooltip(e, d))
+      .on("pointermove", (e, d) => handleTooltip(e, d))
+      .on("pointerleave", () => hideTooltip());
   }, [
     data,
     delayedZoom,
@@ -341,7 +372,10 @@ const LineChart = (props: Props) => {
 
   return (
     <div>
-      <div ref={svgContainerRef} style={{ width: "90%", margin: "auto" }}>
+      <div
+        ref={svgContainerRef}
+        style={{ width: "90%", margin: "auto", position: "relative" }}
+      >
         <svg
           className={styles.lineChart}
           height={
@@ -388,6 +422,13 @@ const LineChart = (props: Props) => {
             <g className="dots" />
           </g>
         </svg>
+        <LineChartTooltip
+          tooltipData={tooltipData}
+          tooltipLeft={tooltipLeft}
+          tooltipOpen={tooltipOpen}
+          tooltipTop={tooltipTop}
+          format={tickformat}
+        />
       </div>
     </div>
   );
