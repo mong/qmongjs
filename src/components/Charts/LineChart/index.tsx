@@ -325,7 +325,6 @@ const LineChart = (props: Props) => {
             .attr("class", "dot")
             .attr("stroke", (d) => lineColorScale(d.label))
             .attr("fill", (d) => lineColorScale(d.label))
-            .attr("r", 4)
             .style("mix-blend-mode", "multiply")
             .attr("cx", (d) => xScale(d.year))
             .attr("cy", (d) => yScale(d.value)),
@@ -338,15 +337,18 @@ const LineChart = (props: Props) => {
                 }
                 return highlightedLegends.includes(d.label) ? 1 : 0.4;
               })
-
               .transition()
               .duration(1000)
               .attr("cx", (d) => xScale(d.year))
               .attr("cy", (d) => yScale(d.value))
+
               .attr("stroke", (d) => lineColorScale(d.label))
               .attr("fill", (d) => lineColorScale(d.label))
           ),
         (exit) => exit.remove()
+      )
+      .attr("r", (d) =>
+        tooltipData?.year === d.year && tooltipData?.label === d.label ? 6 : 4
       )
       .on("pointerenter", (e, d) => handleTooltip(e, d))
       .on("pointermove", (e, d) => handleTooltip(e, d))
@@ -369,6 +371,7 @@ const LineChart = (props: Props) => {
     lastCompleteYear,
     handleTooltip,
     hideTooltip,
+    tooltipData,
   ]);
 
   return (
