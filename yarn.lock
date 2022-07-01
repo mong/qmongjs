@@ -5608,6 +5608,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-dom@npm:*":
+  version: 18.0.5
+  resolution: "@types/react-dom@npm:18.0.5"
+  dependencies:
+    "@types/react": "*"
+  checksum: cd48b81950f499b52a3f0c08261f00046f9b7c96699fa249c9664e257e820daf6ecac815cd1028cebc9d105094adc39d047d1efd79214394b8b2d515574c0787
+  languageName: node
+  linkType: hard
+
 "@types/react-dom@npm:<18.0.0":
   version: 17.0.17
   resolution: "@types/react-dom@npm:17.0.17"
@@ -6009,6 +6018,53 @@ __metadata:
     "@typescript-eslint/types": 5.25.0
     eslint-visitor-keys: ^3.3.0
   checksum: ec4d0558cf53305703c18dfd7e1cd53fc0736303a51d93a875227896a230fd049951cc0600c539719cc351d2c96cb4abc6aa9dd9b3a8401f27bb8033093f35b7
+  languageName: node
+  linkType: hard
+
+"@visx/bounds@npm:2.10.0":
+  version: 2.10.0
+  resolution: "@visx/bounds@npm:2.10.0"
+  dependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    prop-types: ^15.5.10
+  peerDependencies:
+    react: ^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0
+    react-dom: ^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0
+  checksum: 804eb348095771df9273068c6cbd35dccdef25c3722cc6b30f8f5a39bd06624cdec852af0904cf9cf000cb6648ac9c9f15403834050e36ba9a39a62f6986c3f8
+  languageName: node
+  linkType: hard
+
+"@visx/event@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "@visx/event@npm:2.6.0"
+  dependencies:
+    "@types/react": "*"
+    "@visx/point": 2.6.0
+  checksum: a3155bab7d964f592702981a2a6cae3742d9f23732ec64c2c3717c8b17350e22006fb13a96201cbe78bdd35170c8363ab645bf0c4c8f8dee41be64618fd38c47
+  languageName: node
+  linkType: hard
+
+"@visx/point@npm:2.6.0":
+  version: 2.6.0
+  resolution: "@visx/point@npm:2.6.0"
+  checksum: 56be8e31abaf10a182d328141a0929ea28d2956d4c06469fc51cde3f30f64ae035aaa0771f44010c3484ae63c7cd1bc9b782cde6cfcf9713190c20b301ab181e
+  languageName: node
+  linkType: hard
+
+"@visx/tooltip@npm:^2.10.0":
+  version: 2.10.0
+  resolution: "@visx/tooltip@npm:2.10.0"
+  dependencies:
+    "@types/react": "*"
+    "@visx/bounds": 2.10.0
+    classnames: ^2.3.1
+    prop-types: ^15.5.10
+    react-use-measure: ^2.0.4
+  peerDependencies:
+    react: ^16.8.0-0 || ^17.0.0-0 || ^18.0.0-0
+    react-dom: ^16.8.0-0 || ^17.0.0-0 || ^18.0.0-0
+  checksum: 06ca4b6a7c95a11234c30dbf962c39c2270336f53cc83b4fcadc79c42d3658b6b53c2c94c5faf69cdf6f2edfc1cbfb070b2f3a03900888a81530dcb30c2b5c41
   languageName: node
   linkType: hard
 
@@ -8210,6 +8266,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"classnames@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "classnames@npm:2.3.1"
+  checksum: 14db8889d56c267a591f08b0834989fe542d47fac659af5a539e110cc4266694e8de86e4e3bbd271157dbd831361310a8293e0167141e80b0f03a0f175c80960
+  languageName: node
+  linkType: hard
+
 "clean-css@npm:^4.2.3":
   version: 4.2.4
   resolution: "clean-css@npm:4.2.4"
@@ -9530,6 +9593,13 @@ __metadata:
     whatwg-mimetype: ^2.3.0
     whatwg-url: ^8.0.0
   checksum: 97caf828aac25e25e04ba6869db0f99c75e6859bb5b424ada28d3e7841941ebf08ddff3c1b1bb4585986bd507a5d54c2a716853ea6cb98af877400e637393e71
+  languageName: node
+  linkType: hard
+
+"debounce@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "debounce@npm:1.2.1"
+  checksum: 682a89506d9e54fb109526f4da255c5546102fbb8e3ae75eef3b04effaf5d4853756aee97475cd4650641869794e44f410eeb20ace2b18ea592287ab2038519e
   languageName: node
   linkType: hard
 
@@ -17855,7 +17925,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.0.0, prop-types@npm:^15.6.0, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.0.0, prop-types@npm:^15.5.10, prop-types@npm:^15.6.0, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -18003,6 +18073,8 @@ __metadata:
     "@types/react": ^18.0.8
     "@types/react-dom": ^18.0.3
     "@types/react-router-dom": ^5.3.3
+    "@visx/event": ^2.6.0
+    "@visx/tooltip": ^2.10.0
     d3: ^7.4.4
     d3-format: ^3.1.0
     eslint: ^8.18.0
@@ -18633,6 +18705,18 @@ __metadata:
     react: ">=16.6.0"
     react-dom: ">=16.6.0"
   checksum: b67bf5b3e86dbab72d658b9a52a3589e5960583ab28c7c66272427d8fe30d4c7de422d5046ae96bd2683cdf80cc3264b2516f5ce80cae1dbe6cf3ca6dda392c5
+  languageName: node
+  linkType: hard
+
+"react-use-measure@npm:^2.0.4":
+  version: 2.1.1
+  resolution: "react-use-measure@npm:2.1.1"
+  dependencies:
+    debounce: ^1.2.1
+  peerDependencies:
+    react: ">=16.13"
+    react-dom: ">=16.13"
+  checksum: b8e8939229d463c3c505f7b617925c0228efae0cd6f651371f463846417b06c9170be57df51293a61027c41770f8a090fdb8a08717c4e36290ccb496e0318f1f
   languageName: node
   linkType: hard
 
