@@ -4,12 +4,16 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { PluggableList } from "react-markdown/lib/react-markdown";
 
 interface Props {
   description_title?: string;
   description_text: string;
   delivery_time: Date;
 }
+
+const remarkPlugins: PluggableList = [remarkGfm];
 
 const ChartRowDescription = ({
   description_text,
@@ -24,6 +28,7 @@ const ChartRowDescription = ({
         </AccordionSummary>
         <AccordionDetails>
           <ReactMarkdown
+            remarkPlugins={remarkPlugins}
             components={{
               p({ children }) {
                 return <p style={{ margin: 0 }}>{children}</p>;
