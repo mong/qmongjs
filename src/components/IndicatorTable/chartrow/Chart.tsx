@@ -146,10 +146,6 @@ const GetBarChart: React.FC<Props> = (props) => {
     return filtered ?? [];
   };
 
-  const selectedIndData = [...indicatorData].filter(
-    (d) => d.unit_level !== "hospital"
-  );
-
   const filterAllData = allIndicatorData.filter(
     (data: StatisticData) =>
       !(
@@ -164,7 +160,7 @@ const GetBarChart: React.FC<Props> = (props) => {
       )
   );
 
-  const barChartData = [...filterAllData, ...selectedIndData];
+  const barChartData = [...filterAllData, ...indicatorData];
 
   return <BarChart {...props} data={filterData(barChartData)} />;
 };
