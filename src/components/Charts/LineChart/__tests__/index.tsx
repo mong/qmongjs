@@ -1,3 +1,10 @@
+/**
+ * To view a rendered version of all the snapshots:
+ *
+ * Copy the contents of ./__snapshots__/index.tsx.snap
+ * Got to https://codesandbox.io/s/snapshot-viewer-lqjjsm?file=/src/snapshots.js
+ * Replace the contents with what you copied
+ */
 import { render, screen } from "@testing-library/react";
 import { createRef } from "react";
 import LineChart, { DataPoint, Props } from "..";
@@ -124,6 +131,7 @@ test("Render with levels reversed @500px", async () => {
         { level: "low", start: 1, end: 0.4 },
       ]}
       tickformat=",.3f"
+      lastCompleteYear={2019}
       data={[
         { label: "test", value: 0.513343, year: 2020 },
         { label: "test", value: 0.15, year: 2019 },

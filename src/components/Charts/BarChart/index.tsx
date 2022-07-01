@@ -25,6 +25,7 @@ export interface Props {
   tickformat: string | null;
   zoom?: boolean;
   margin?: Margin;
+  max_value?: number;
 }
 
 const MARGIN = { top: 0.05, bottom: 10, right: 0.05, left: 0.25 };
@@ -38,6 +39,7 @@ function BarChart(props: Props) {
     tickformat,
     zoom = false,
     margin = {},
+    max_value,
   } = props;
   const delayedZoom = useDelayInitial(zoom, false);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -64,7 +66,21 @@ function BarChart(props: Props) {
       .domain(data.map((d) => d.label))
       .range([0, innerHeight])
       .padding(0.3);
-    const xScaleDomain = getXScaleDomain(data, delayedZoom);
+
+    // Check if format is percentage
+    const percentage: boolean =
+      typeof tickformat === "string"
+        ? tickformat.substring(tickformat.length - 1) === "%"
+          ? true
+          : false
+        : false;
+
+    const xScaleDomain = getXScaleDomain(
+      data,
+      delayedZoom,
+      percentage,
+      max_value
+    );
     const xScale = scaleLinear()
       .domain(xScaleDomain)
       .range([0, innerWidth])
@@ -77,13 +93,10 @@ function BarChart(props: Props) {
     yAxisElement.selectAll(".tick line").remove();
     yAxisElement.selectAll(".tick text").attr("font-size", "1.2rem");
 
-    // X-Axis
-    const xAxisFormat =
-      typeof tickformat === "string"
-        ? tickformat.substring(tickformat.length - 1) === "%"
-          ? "~%" // if percentage format -> delete trailing zero
-          : tickformat
-        : ",.0f";
+    // X-Axis format, delete trailing zero
+    const xAxisFormat = percentage
+      ? "~%" // if percentage format -> delete trailing zero
+      : "~";
 
     const barLabelFormat = typeof tickformat === "string" ? tickformat : ",.0f";
 
@@ -177,6 +190,7 @@ function BarChart(props: Props) {
     delayedZoom,
     innerHeight,
     innerWidth,
+    max_value,
   ]);
 
   return (
@@ -201,14 +215,27 @@ function BarChart(props: Props) {
 }
 export default BarChart;
 
-function getXScaleDomain(data: Bar[], zoom: boolean): [number, number] {
-  if (!zoom) {
-    return [0, 1];
-  }
-
+function getXScaleDomain(
+  data: Bar[],
+  zoom: boolean,
+  percentage: boolean,
+  max_value?: number
+): [number, number] {
   const maxVal = Math.max(...data.map((d) => d.value));
   const additionalMargin = (0.01 + maxVal) * 0.2;
   const xMax = Math.ceil((maxVal + additionalMargin) * 100) / 100;
 
-  return [0, Math.min(xMax, 1)];
+  // min is always 0 for barchart
+  // If percentage and not zoom: max is 1
+  // If not percentage and not zoom: max is max_value if defined
+  return [
+    0,
+    percentage
+      ? zoom
+        ? Math.min(xMax, 1)
+        : 1
+      : zoom
+      ? xMax
+      : Math.max(max_value ?? xMax, xMax),
+  ];
 }

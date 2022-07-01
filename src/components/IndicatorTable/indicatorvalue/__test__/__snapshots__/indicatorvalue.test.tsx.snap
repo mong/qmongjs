@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders beregnet_andel 1`] = `
+<div>
+  <table>
+    <tbody>
+      <tr>
+        <td
+          class="selected_unit "
+        >
+          <div
+            aria-label="Achieved level L"
+            class="level"
+          >
+            <h4>
+              11 %
+              <i
+                class="fa fa-circle-o"
+              />
+            </h4>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

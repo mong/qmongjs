@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with national data 1`] = `
+<div>
+  <table>
+    <tbody>
+      <tr
+        class="titleRow register-row hoftebrudd "
+      >
+        <td
+          colspan="3"
+        >
+          <a
+            href="/hoftebrudd/sykehus"
+          >
+            <h3
+              class="title"
+            >
+              Nasjonalt hoftebruddregister
+            </h3>
+          </a>
+        </td>
+      </tr>
+      <tr
+        class="hoftebrudd_24t  hoftebrudd   indicator"
+        id="hoftebrudd_24t  hoftebrudd"
+      >
+        <td
+          class="quality_indicator"
+        >
+          <div
+            class="quality_indicator_name"
+          >
+            <h1>
+              Operasjon innen 24 timer (tilstrebes)
+            </h1>
+          </div>
+          <div
+            class="qi_long_description"
+          >
+            <p>
+              Det er gode holdepunkter for at hoftebrudd bør opereres innen 24 timer etter bruddtidspunktet
+            </p>
+          </div>
+          <div
+            class="desired_target_level"
+          >
+            <h4>
+              ØNSKET MÅLNIVÅ: 
+              ≥
+               
+              80 %
+            </h4>
+          </div>
+        </td>
+        <td
+          class="nationally "
+        >
+          <div
+            aria-label="Achieved level L"
+            class="level"
+          >
+            <h4>
+              51 %
+              <i
+                class="fa fa-circle-o"
+              />
+            </h4>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class="hoftebrudd_30d_doed  hoftebrudd   indicator"
+        id="hoftebrudd_30d_doed  hoftebrudd"
+      >
+        <td
+          class="quality_indicator"
+        >
+          <div
+            class="quality_indicator_name"
+          >
+            <h1>
+              30 dagers overlevelse
+            </h1>
+          </div>
+          <div
+            class="qi_long_description"
+          >
+            <p>
+              30 dagers overlevelse er en hyppig brukt resultatindikator for behandling av hoftebrudd
+            </p>
+          </div>
+          <div
+            class="desired_target_level"
+          >
+            <h4>
+              ØNSKET MÅLNIVÅ: 
+              ≥
+               
+              90 %
+            </h4>
+          </div>
+        </td>
+        <td
+          class="nationally "
+        >
+          <div
+            aria-label="Achieved level H"
+            class="level"
+          >
+            <h4>
+              93 %
+              <i
+                class="fa fa-fas fa-circle"
+              />
+            </h4>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class="hoftebrudd_48t  hoftebrudd   indicator"
+        id="hoftebrudd_48t  hoftebrudd"
+      >
+        <td
+          class="quality_indicator"
+        >
+          <div
+            class="quality_indicator_name"
+          >
+            <h1>
+              Operasjon innen 48 timer
+            </h1>
+          </div>
+          <div
+            class="qi_long_description"
+          >
+            <p>
+              Alle hoftebrudd bør senest opereres innen 48 timer etter bruddtidspunktet for å redusere dødelighet og fare for medisinske komplikasjoner
+            </p>
+          </div>
+          <div
+            class="desired_target_level"
+          >
+            <h4>
+              ØNSKET MÅLNIVÅ: 
+              ≥
+               
+              90 %
+            </h4>
+          </div>
+        </td>
+        <td
+          class="nationally "
+        >
+          <div
+            aria-label="Achieved level M"
+            class="level"
+          >
+            <h4>
+              85 %
+              <i
+                class="fa fa-fas fa-adjust"
+              />
+            </h4>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class="hoftebrudd_protese  hoftebrudd   indicator"
+        id="hoftebrudd_protese  hoftebrudd"
+      >
+        <td
+          class="quality_indicator"
+        >
+          <div
+            class="quality_indicator_name"
+          >
+            <h1>
+              Protese ved dislokerte lårhalsbrudd
+            </h1>
+          </div>
+          <div
+            class="qi_long_description"
+          >
+            <p>
+              Lårhalsbrudd hos pasienter over 70 år som er dislokerte (ute av stilling) bør opereres med en protese for å redusere risiko for reoperasjon og for å bedre funksjon
+            </p>
+          </div>
+          <div
+            class="desired_target_level"
+          >
+            <h4>
+              ØNSKET MÅLNIVÅ: 
+              ≥
+               
+              90 %
+            </h4>
+          </div>
+        </td>
+        <td
+          class="nationally "
+        >
+          <div
+            aria-label="Achieved level H"
+            class="level"
+          >
+            <h4>
+              97 %
+              <i
+                class="fa fa-fas fa-circle"
+              />
+            </h4>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class="hoftebrudd_sement  hoftebrudd   indicator"
+        id="hoftebrudd_sement  hoftebrudd"
+      >
+        <td
+          class="quality_indicator"
+        >
+          <div
+            class="quality_indicator_name"
+          >
+            <h1>
+              Sementert stamme ved bruk av protese
+            </h1>
+          </div>
+          <div
+            class="qi_long_description"
+          >
+            <p>
+              Alle hoftebruddpasienter over 70 år som skal opereres med en protese bør få lårbensprotesen sementert for å redusere risiko for reoperasjon
+            </p>
+          </div>
+          <div
+            class="desired_target_level"
+          >
+            <h4>
+              ØNSKET MÅLNIVÅ: 
+              ≥
+               
+              90 %
+            </h4>
+          </div>
+        </td>
+        <td
+          class="nationally "
+        >
+          <div
+            aria-label="Achieved level H"
+            class="level"
+          >
+            <h4>
+              92 %
+              <i
+                class="fa fa-fas fa-circle"
+              />
+            </h4>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

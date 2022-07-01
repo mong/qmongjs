@@ -73,6 +73,7 @@ export function buildStatisticData(
     include: 1,
     type: "andel",
     delivery_time: new Date("October 13, 2014 11:13:00"),
+    delivery_latest_affirm: new Date("October 13, 2014 11:13:00"),
     ...overrides,
   };
 }
@@ -97,6 +98,8 @@ export function buildDescriptionData(
     full_name:
       "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
     ...overrides,
   };
 }

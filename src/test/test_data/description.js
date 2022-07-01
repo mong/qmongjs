@@ -17,6 +17,8 @@ const description = [
     full_name:
       "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
   {
     id: "barnediabetes_hba1c_lt_7",
@@ -36,6 +38,8 @@ const description = [
     full_name:
       "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
 ];
 
@@ -49,8 +53,6 @@ export const descriptionData = [
     type: "andel",
     measure_unit: null,
     min_denominator: 5,
-    min_value: null,
-    max_value: null,
     level_green: 0.4,
     level_yellow: 0,
     level_direction: 1,
@@ -62,6 +64,8 @@ export const descriptionData = [
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
   {
     id: "noric_blodfortynn_med",
@@ -72,8 +76,6 @@ export const descriptionData = [
     type: "andel",
     measure_unit: null,
     min_denominator: 5,
-    min_value: null,
-    max_value: null,
     level_green: 0.95,
     level_yellow: 0,
     level_direction: 1,
@@ -85,6 +87,8 @@ export const descriptionData = [
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
   {
     id: "noric_kolesterolsenk_med",
@@ -95,8 +99,6 @@ export const descriptionData = [
     type: "andel",
     measure_unit: null,
     min_denominator: 5,
-    min_value: null,
-    max_value: null,
     level_green: 0.9,
     level_yellow: 0,
     level_direction: 1,
@@ -108,6 +110,8 @@ export const descriptionData = [
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
   {
     id: "noric_nstemi_24t",
@@ -118,8 +122,6 @@ export const descriptionData = [
     type: "andel",
     measure_unit: null,
     min_denominator: 5,
-    min_value: null,
-    max_value: null,
     level_green: 0.5,
     level_yellow: 0,
     level_direction: 1,
@@ -131,6 +133,8 @@ export const descriptionData = [
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
   {
     id: "noric_nstemi_72t",
@@ -141,8 +145,6 @@ export const descriptionData = [
     type: "andel",
     measure_unit: null,
     min_denominator: 5,
-    min_value: null,
-    max_value: null,
     level_green: 0.8,
     level_yellow: 0,
     level_direction: 1,
@@ -154,6 +156,8 @@ export const descriptionData = [
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
   {
     id: "noric_pacemaker",
@@ -164,8 +168,6 @@ export const descriptionData = [
     type: "andel",
     measure_unit: null,
     min_denominator: 5,
-    min_value: null,
-    max_value: null,
     level_green: null,
     level_yellow: null,
     level_direction: 0,
@@ -177,6 +179,8 @@ export const descriptionData = [
     rname: "noric",
     full_name: "Norsk register for invasiv kardiologi",
     sformat: ",.0%",
+    max_value: null,
+    min_value: null,
   },
 ];
 

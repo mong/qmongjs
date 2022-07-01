@@ -271,7 +271,7 @@ exports[`Render with levels @500px 1`] = `
             />
           </g>
           <g
-            class="lines"
+            class="linesComplete"
           >
             <path
               class="line"
@@ -282,6 +282,9 @@ exports[`Render with levels @500px 1`] = `
               style="stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
             />
           </g>
+          <g
+            class="linesIncomplete"
+          />
           <g
             class="dots"
           >
@@ -485,7 +488,7 @@ exports[`Render with levels reversed @500px 1`] = `
               x="-138.66666666666666"
               y="465.74999999999994"
             >
-              Andel
+              Antall
             </text>
             <g
               class="tick"
@@ -502,13 +505,13 @@ exports[`Render with levels reversed @500px 1`] = `
                 style="font-size: 12.16px;"
                 x="408"
               >
-                0,000
+                0
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,166.9)"
+              transform="translate(0,174.9516129032258)"
             >
               <line
                 stroke="#D2D3D4"
@@ -520,13 +523,13 @@ exports[`Render with levels reversed @500px 1`] = `
                 style="font-size: 12.16px;"
                 x="408"
               >
-                0,200
+                0,1
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,125.3)"
+              transform="translate(0,141.40322580645162)"
             >
               <line
                 stroke="#D2D3D4"
@@ -538,13 +541,13 @@ exports[`Render with levels reversed @500px 1`] = `
                 style="font-size: 12.16px;"
                 x="408"
               >
-                0,400
+                0,2
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,83.7)"
+              transform="translate(0,107.85483870967741)"
             >
               <line
                 stroke="#D2D3D4"
@@ -556,13 +559,13 @@ exports[`Render with levels reversed @500px 1`] = `
                 style="font-size: 12.16px;"
                 x="408"
               >
-                0,600
+                0,3
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,42.099999999999994)"
+              transform="translate(0,74.3064516129032)"
             >
               <line
                 stroke="#D2D3D4"
@@ -574,13 +577,13 @@ exports[`Render with levels reversed @500px 1`] = `
                 style="font-size: 12.16px;"
                 x="408"
               >
-                0,800
+                0,4
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,0.5)"
+              transform="translate(0,40.75806451612902)"
             >
               <line
                 stroke="#D2D3D4"
@@ -592,7 +595,25 @@ exports[`Render with levels reversed @500px 1`] = `
                 style="font-size: 12.16px;"
                 x="408"
               >
-                1,000
+                0,5
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,7.209677419354856)"
+            >
+              <line
+                stroke="#D2D3D4"
+                x2="405"
+              />
+              <text
+                dy="0.32em"
+                fill="#828586"
+                style="font-size: 12.16px;"
+                x="408"
+              >
+                0,6
               </text>
             </g>
           </g>
@@ -603,27 +624,27 @@ exports[`Render with levels reversed @500px 1`] = `
               class="level"
               data-testid="level-high"
               fill="#3baa34"
-              height="41.599999999999994"
+              height="67.09677419354838"
               opacity="0.2"
               width="405"
               x="0"
-              y="166.4"
+              y="140.90322580645162"
             />
             <rect
               class="level"
               data-testid="level-mid"
               fill="#fd9c00"
-              height="41.60000000000001"
+              height="67.09677419354841"
               opacity="0.2"
               width="405"
               x="0"
-              y="124.8"
+              y="73.8064516129032"
             />
             <rect
               class="level"
               data-testid="level-low"
               fill="#e30713"
-              height="124.8"
+              height="73.8064516129032"
               opacity="0.2"
               width="405"
               x="0"
@@ -631,11 +652,11 @@ exports[`Render with levels reversed @500px 1`] = `
             />
           </g>
           <g
-            class="lines"
+            class="linesComplete"
           >
             <path
               class="line"
-              d="M405,101.224656L270,176.79999999999998L135,134.5344L0,182.208"
+              d="M270,157.67741935483872L135,89.50709677419354L0,166.4"
               fill="none"
               opacity="1"
               stroke="#4F9A94"
@@ -643,11 +664,31 @@ exports[`Render with levels reversed @500px 1`] = `
             />
             <path
               class="line"
-              d="M405,180.24656000000002L270,104L135,97.344L0,158.08"
+              d="M270,40.25806451612902L135,29.522580645161273L0,127.48387096774194"
               fill="none"
               opacity="1"
               stroke="#90CAF9"
               style="stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
+            />
+          </g>
+          <g
+            class="linesIncomplete"
+          >
+            <path
+              class="line"
+              d="M405,35.781703225806446L270,157.67741935483872"
+              fill="none"
+              opacity="1"
+              stroke="#4F9A94"
+              style="stroke-width: 3; stroke-dasharray: 10, 10; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
+            />
+            <path
+              class="line"
+              d="M405,163.2363870967742L270,40.25806451612902"
+              fill="none"
+              opacity="1"
+              stroke="#90CAF9"
+              style="stroke-width: 3; stroke-dasharray: 10, 10; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
             />
           </g>
           <g
@@ -656,7 +697,7 @@ exports[`Render with levels reversed @500px 1`] = `
             <circle
               class="dot"
               cx="405"
-              cy="101.224656"
+              cy="35.781703225806446"
               fill="#4F9A94"
               opacity="1"
               r="4"
@@ -666,7 +707,7 @@ exports[`Render with levels reversed @500px 1`] = `
             <circle
               class="dot"
               cx="270"
-              cy="176.79999999999998"
+              cy="157.67741935483872"
               fill="#4F9A94"
               opacity="1"
               r="4"
@@ -676,7 +717,7 @@ exports[`Render with levels reversed @500px 1`] = `
             <circle
               class="dot"
               cx="135"
-              cy="134.5344"
+              cy="89.50709677419354"
               fill="#4F9A94"
               opacity="1"
               r="4"
@@ -686,7 +727,7 @@ exports[`Render with levels reversed @500px 1`] = `
             <circle
               class="dot"
               cx="0"
-              cy="182.208"
+              cy="166.4"
               fill="#4F9A94"
               opacity="1"
               r="4"
@@ -696,7 +737,7 @@ exports[`Render with levels reversed @500px 1`] = `
             <circle
               class="dot"
               cx="405"
-              cy="180.24656000000002"
+              cy="163.2363870967742"
               fill="#90CAF9"
               opacity="1"
               r="4"
@@ -706,7 +747,7 @@ exports[`Render with levels reversed @500px 1`] = `
             <circle
               class="dot"
               cx="270"
-              cy="104"
+              cy="40.25806451612902"
               fill="#90CAF9"
               opacity="1"
               r="4"
@@ -716,7 +757,7 @@ exports[`Render with levels reversed @500px 1`] = `
             <circle
               class="dot"
               cx="135"
-              cy="97.344"
+              cy="29.522580645161273"
               fill="#90CAF9"
               opacity="1"
               r="4"
@@ -726,7 +767,7 @@ exports[`Render with levels reversed @500px 1`] = `
             <circle
               class="dot"
               cx="0"
-              cy="158.08"
+              cy="127.48387096774194"
               fill="#90CAF9"
               opacity="1"
               r="4"
@@ -866,7 +907,7 @@ exports[`Render without levels @250px 1`] = `
               x="-138.66666666666666"
               y="465.74999999999994"
             >
-              Andel
+              Antall
             </text>
             <g
               class="tick"
@@ -889,7 +930,7 @@ exports[`Render without levels @250px 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,166.9)"
+              transform="translate(0,173.24576271186442)"
             >
               <line
                 stroke="#D2D3D4"
@@ -901,13 +942,13 @@ exports[`Render without levels @250px 1`] = `
                 style="font-size: 12.16px;"
                 x="408"
               >
-                0
+                0,1
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,125.3)"
+              transform="translate(0,137.99152542372883)"
             >
               <line
                 stroke="#D2D3D4"
@@ -919,13 +960,13 @@ exports[`Render without levels @250px 1`] = `
                 style="font-size: 12.16px;"
                 x="408"
               >
-                0
+                0,2
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,83.7)"
+              transform="translate(0,102.73728813559322)"
             >
               <line
                 stroke="#D2D3D4"
@@ -937,13 +978,13 @@ exports[`Render without levels @250px 1`] = `
                 style="font-size: 12.16px;"
                 x="408"
               >
-                1
+                0,3
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,42.099999999999994)"
+              transform="translate(0,67.4830508474576)"
             >
               <line
                 stroke="#D2D3D4"
@@ -955,13 +996,13 @@ exports[`Render without levels @250px 1`] = `
                 style="font-size: 12.16px;"
                 x="408"
               >
-                1
+                0,4
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,0.5)"
+              transform="translate(0,32.22881355932202)"
             >
               <line
                 stroke="#D2D3D4"
@@ -973,7 +1014,7 @@ exports[`Render without levels @250px 1`] = `
                 style="font-size: 12.16px;"
                 x="408"
               >
-                1
+                0,5
               </text>
             </g>
           </g>
@@ -981,11 +1022,11 @@ exports[`Render without levels @250px 1`] = `
             class="levels"
           />
           <g
-            class="lines"
+            class="linesComplete"
           >
             <path
               class="line"
-              d="M405,104L270,176.79999999999998L135,145.6L0,187.20000000000002"
+              d="M405,31.72881355932202L270,155.11864406779662L135,102.23728813559322L0,172.74576271186442"
               fill="none"
               opacity="1"
               stroke="#4F9A94"
@@ -993,12 +1034,15 @@ exports[`Render without levels @250px 1`] = `
             />
           </g>
           <g
+            class="linesIncomplete"
+          />
+          <g
             class="dots"
           >
             <circle
               class="dot"
               cx="405"
-              cy="104"
+              cy="31.72881355932202"
               fill="#4F9A94"
               opacity="1"
               r="4"
@@ -1008,7 +1052,7 @@ exports[`Render without levels @250px 1`] = `
             <circle
               class="dot"
               cx="270"
-              cy="176.79999999999998"
+              cy="155.11864406779662"
               fill="#4F9A94"
               opacity="1"
               r="4"
@@ -1018,7 +1062,7 @@ exports[`Render without levels @250px 1`] = `
             <circle
               class="dot"
               cx="135"
-              cy="145.6"
+              cy="102.23728813559322"
               fill="#4F9A94"
               opacity="1"
               r="4"
@@ -1028,7 +1072,7 @@ exports[`Render without levels @250px 1`] = `
             <circle
               class="dot"
               cx="0"
-              cy="187.20000000000002"
+              cy="172.74576271186442"
               fill="#4F9A94"
               opacity="1"
               r="4"
