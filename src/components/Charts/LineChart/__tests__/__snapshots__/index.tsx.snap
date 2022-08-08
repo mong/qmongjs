@@ -4,7 +4,7 @@ exports[`Render with levels @500px 1`] = `
 <div>
   <div>
     <div
-      style="width: 90%; margin: auto;"
+      style="width: 90%; margin: auto; position: relative;"
     >
       <svg
         class="lineChart"
@@ -340,7 +340,7 @@ exports[`Render with levels reversed @500px 1`] = `
 <div>
   <div>
     <div
-      style="width: 90%; margin: auto;"
+      style="width: 90%; margin: auto; position: relative;"
     >
       <svg
         class="lineChart"
@@ -786,7 +786,7 @@ exports[`Render without levels @250px 1`] = `
 <div>
   <div>
     <div
-      style="width: 90%; margin: auto;"
+      style="width: 90%; margin: auto; position: relative;"
     >
       <svg
         class="lineChart"
