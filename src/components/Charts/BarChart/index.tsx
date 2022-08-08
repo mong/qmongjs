@@ -22,7 +22,7 @@ export interface Props {
   showLevel: boolean;
   data: Bar[];
   levels: Level[];
-  tickformat: string | null;
+  tickformat?: string;
   zoom?: boolean;
   margin?: Margin;
   max_value?: number;

@@ -17,7 +17,7 @@ interface Props {
   zoom: boolean;
   showLevel: boolean;
   levels: Level[];
-  tickformat: string | null;
+  tickformat?: string;
   selectedTreatmentUnits: string[];
   max_value?: number;
 }
@@ -146,10 +146,6 @@ const GetBarChart: React.FC<Props> = (props) => {
     return filtered ?? [];
   };
 
-  const selectedIndData = [...indicatorData].filter(
-    (d) => d.unit_level !== "hospital"
-  );
-
   const filterAllData = allIndicatorData.filter(
     (data: StatisticData) =>
       !(
@@ -164,7 +160,7 @@ const GetBarChart: React.FC<Props> = (props) => {
       )
   );
 
-  const barChartData = [...filterAllData, ...selectedIndData];
+  const barChartData = [...filterAllData, ...indicatorData];
 
   return <BarChart {...props} data={filterData(barChartData)} />;
 };
@@ -239,11 +235,11 @@ const GetLineChart: React.FC<Props> = (props) => {
         data.denominator >= (description.min_denominator ?? 5)
     )
     .map((d: StatisticData) => ({
+      ...d,
       label: d.unit_name,
-      year: d.year,
       value: d.var,
     }))
-    .sort((a: DataPoint, b: DataPoint) => b.year - a.year);
+    .sort((a: StatisticData, b: StatisticData) => b.year - a.year);
 
   return (
     <LineChart {...props} data={data} lastCompleteYear={lastCompleteYear} />

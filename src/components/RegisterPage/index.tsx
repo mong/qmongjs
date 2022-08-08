@@ -42,7 +42,7 @@ export interface Description {
   registry_id: number;
   rname: string | null;
   full_name: string;
-  sformat: string | null;
+  sformat?: string;
   max_value: number | null;
   min_value: number | null;
 }
