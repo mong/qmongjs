@@ -38,7 +38,7 @@
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.10.0",
-    "@sentry/react": "^7.9.0",
+    "@sentry/react": "^7.10.0",
     "@sentry/tracing": "^7.9.0",
     "@visx/event": "^2.6.0",
     "@visx/tooltip": "^2.10.0",
