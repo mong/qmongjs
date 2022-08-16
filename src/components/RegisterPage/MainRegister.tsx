@@ -29,7 +29,7 @@ interface MainRegisterProps {
 }
 
 const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
-  const { tab } = useParams();
+  const tab = useParams();
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },
     { value: "opptaksomraade", label: "Opptaksområde" },

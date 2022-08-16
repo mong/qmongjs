@@ -37,8 +37,8 @@ interface TabProps {
 }
 
 const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
-  const { tab } = useParams();
-  const { register } = useParams();
+  const tab = useParams();
+  const register = useParams();
 
   const clickedStyle =
     activeTab === tabName.value
