@@ -270,27 +270,11 @@ test("level_direction 0 with wrong order of level_green and level_yellow", () =>
     min_value: null,
   };
 
-  const levels = level_boundary(config);
-
-  expect(levels).toMatchInlineSnapshot(`
-    Array [
-      Object {
-        "end": 0,
-        "level": "high",
-        "start": 0.75,
-      },
-      Object {
-        "end": 0.75,
-        "level": "mid",
-        "start": 0.5,
-      },
-      Object {
-        "end": 0.5,
-        "level": "low",
-        "start": 1,
-      },
-    ]
-  `);
+  expect(() => {
+    level_boundary(config);
+  }).toThrowError(
+    "level_green is not between level_direction and level_yellow"
+  );
 });
 
 test("level_direction error", () => {
