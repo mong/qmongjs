@@ -8,15 +8,18 @@ export interface Config {
 
 export function level_boundary(config: Config) {
   // Set level_direction to 1 if NULL
-  const level_direction = config.level_direction ?? 1;
-  // If level_green is NULL: set to 0 if level_direction is 1, and vice versa
-  const level_green = config.level_green
-    ? config.level_green
-    : level_direction === 1
-    ? 0
-    : 1;
+  const level_direction =
+    config.level_direction === null ? 1 : config.level_direction;
+  // If level_green is NULL: set level_green to 0 if level_direction is 1, and vice versa
+  const level_green =
+    config.level_green !== null
+      ? config.level_green
+      : level_direction === 1
+      ? 0
+      : 1;
   // If level_yellow is NULL: set to level_green
-  const level_yellow = config.level_yellow ? config.level_yellow : level_green;
+  const level_yellow =
+    config.level_yellow !== null ? config.level_yellow : level_green;
 
   switch (level_direction) {
     case 0:

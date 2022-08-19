@@ -155,7 +155,9 @@ const FigureButtons = (props: Props) => {
   ];
 
   const buttons = buttonValues
-    .filter((btn) => description.level_green || btn.class !== "btn-level")
+    .filter(
+      (btn) => description.level_green !== null || btn.class !== "btn-level"
+    )
     .map((btn) => {
       return (
         <button
