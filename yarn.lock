@@ -1887,7 +1887,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/react@npm:^11.8.1, @emotion/react@npm:^11.9.3":
+"@emotion/react@npm:11.9.3, @emotion/react@npm:^11.8.1":
   version: 11.9.3
   resolution: "@emotion/react@npm:11.9.3"
   dependencies:
@@ -1965,20 +1965,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/styled@npm:^10.0.27":
-  version: 10.3.0
-  resolution: "@emotion/styled@npm:10.3.0"
-  dependencies:
-    "@emotion/styled-base": ^10.3.0
-    babel-plugin-emotion: ^10.0.27
-  peerDependencies:
-    "@emotion/core": ^10.0.27
-    react: ">=16.3.0"
-  checksum: 9d9609c008c009d8b9249fdbb2017a404b1fc6c9118c84ec9a916e86670d4c61f03fee24297ad10b460dab628ff8260066338617ee99ede3ae7969ce5995e9bc
-  languageName: node
-  linkType: hard
-
-"@emotion/styled@npm:^11.8.1":
+"@emotion/styled@npm:11.8.1":
   version: 11.8.1
   resolution: "@emotion/styled@npm:11.8.1"
   dependencies:
@@ -1997,6 +1984,19 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 67150fa788785c34e285b90acecc91fe7a63babceaefbeffd053bed0fa31f72a05bfeeb9d15620766e543e007b9ccac2e836812eec2e791f962ec4e52731ae4c
+  languageName: node
+  linkType: hard
+
+"@emotion/styled@npm:^10.0.27":
+  version: 10.3.0
+  resolution: "@emotion/styled@npm:10.3.0"
+  dependencies:
+    "@emotion/styled-base": ^10.3.0
+    babel-plugin-emotion: ^10.0.27
+  peerDependencies:
+    "@emotion/core": ^10.0.27
+    react: ">=16.3.0"
+  checksum: 9d9609c008c009d8b9249fdbb2017a404b1fc6c9118c84ec9a916e86670d4c61f03fee24297ad10b460dab628ff8260066338617ee99ede3ae7969ce5995e9bc
   languageName: node
   linkType: hard
 
@@ -2581,7 +2581,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/icons-material@npm:^5.10.2":
+"@mui/icons-material@npm:5.10.2":
   version: 5.10.2
   resolution: "@mui/icons-material@npm:5.10.2"
   dependencies:
@@ -2597,7 +2597,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/material@npm:^5.10.2":
+"@mui/material@npm:5.10.2":
   version: 5.10.2
   resolution: "@mui/material@npm:5.10.2"
   dependencies:
@@ -2965,7 +2965,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/react@npm:^7.11.1":
+"@sentry/react@npm:7.11.1":
   version: 7.11.1
   resolution: "@sentry/react@npm:7.11.1"
   dependencies:
@@ -2980,7 +2980,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/tracing@npm:^7.11.1":
+"@sentry/tracing@npm:7.11.1":
   version: 7.11.1
   resolution: "@sentry/tracing@npm:7.11.1"
   dependencies:
@@ -3173,7 +3173,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-essentials@npm:^6.5.9":
+"@storybook/addon-essentials@npm:6.5.9":
   version: 6.5.9
   resolution: "@storybook/addon-essentials@npm:6.5.9"
   dependencies:
@@ -3233,7 +3233,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-links@npm:^6.5.9":
+"@storybook/addon-links@npm:6.5.9":
   version: 6.5.9
   resolution: "@storybook/addon-links@npm:6.5.9"
   dependencies:
@@ -3311,7 +3311,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-queryparams@npm:^6.2.9":
+"@storybook/addon-queryparams@npm:6.2.9":
   version: 6.2.9
   resolution: "@storybook/addon-queryparams@npm:6.2.9"
   dependencies:
@@ -4292,7 +4292,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/preset-create-react-app@npm:^4.1.2":
+"@storybook/preset-create-react-app@npm:4.1.2":
   version: 4.1.2
   resolution: "@storybook/preset-create-react-app@npm:4.1.2"
   dependencies:
@@ -4401,7 +4401,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react@npm:^6.4.22":
+"@storybook/react@npm:6.4.22":
   version: 6.4.22
   resolution: "@storybook/react@npm:6.4.22"
   dependencies:
@@ -4849,7 +4849,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/jest-dom@npm:^5.16.4":
+"@testing-library/jest-dom@npm:5.16.4":
   version: 5.16.4
   resolution: "@testing-library/jest-dom@npm:5.16.4"
   dependencies:
@@ -4866,7 +4866,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:^12.1.5":
+"@testing-library/react@npm:12.1.5":
   version: 12.1.5
   resolution: "@testing-library/react@npm:12.1.5"
   dependencies:
@@ -4880,7 +4880,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/user-event@npm:^14.4.3":
+"@testing-library/user-event@npm:14.4.3":
   version: 14.4.3
   resolution: "@testing-library/user-event@npm:14.4.3"
   peerDependencies:
@@ -5253,7 +5253,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/d3@npm:^7.4.0":
+"@types/d3@npm:7.4.0":
   version: 7.4.0
   resolution: "@types/d3@npm:7.4.0"
   dependencies:
@@ -5464,7 +5464,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:*, @types/jest@npm:^28.1.8":
+"@types/jest@npm:*, @types/jest@npm:28.1.8":
   version: 28.1.8
   resolution: "@types/jest@npm:28.1.8"
   dependencies:
@@ -5549,7 +5549,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^18.0.0":
+"@types/node@npm:*, @types/node@npm:18.0.0":
   version: 18.0.0
   resolution: "@types/node@npm:18.0.0"
   checksum: aab2b325727a2599f6d25ebe0dedf58c40fb66a51ce4ca9c0226ceb70fcda2d3afccdca29db5942eb48b158ee8585a274a1e3750c718bbd5399d7f41d62dfdcc
@@ -5656,7 +5656,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:*, @types/react-dom@npm:^18.0.3":
+"@types/react-dom@npm:*, @types/react-dom@npm:18.0.6":
   version: 18.0.6
   resolution: "@types/react-dom@npm:18.0.6"
   dependencies:
@@ -5683,7 +5683,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-router-dom@npm:^5.3.3":
+"@types/react-router-dom@npm:5.3.3":
   version: 5.3.3
   resolution: "@types/react-router-dom@npm:5.3.3"
   dependencies:
@@ -5722,7 +5722,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.0.8":
+"@types/react@npm:*, @types/react@npm:18.0.9":
   version: 18.0.9
   resolution: "@types/react@npm:18.0.9"
   dependencies:
@@ -6074,7 +6074,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/event@npm:^2.6.0":
+"@visx/event@npm:2.6.0":
   version: 2.6.0
   resolution: "@visx/event@npm:2.6.0"
   dependencies:
@@ -6091,7 +6091,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/tooltip@npm:^2.10.0":
+"@visx/tooltip@npm:2.10.0":
   version: 2.10.0
   resolution: "@visx/tooltip@npm:2.10.0"
   dependencies:
@@ -9448,7 +9448,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-format@npm:1 - 3, d3-format@npm:3, d3-format@npm:^3.1.0":
+"d3-format@npm:1 - 3, d3-format@npm:3, d3-format@npm:3.1.0":
   version: 3.1.0
   resolution: "d3-format@npm:3.1.0"
   checksum: f345ec3b8ad3cab19bff5dead395bd9f5590628eb97a389b1dd89f0b204c7c4fc1d9520f13231c2c7cf14b7c9a8cf10f8ef15bde2befbab41454a569bd706ca2
@@ -9600,7 +9600,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3@npm:^7.5.0":
+"d3@npm:7.5.0":
   version: 7.5.0
   resolution: "d3@npm:7.5.0"
   dependencies:
@@ -10817,7 +10817,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.23.0, eslint@npm:^8.3.0":
+"eslint@npm:8.23.0, eslint@npm:^8.3.0":
   version: 8.23.0
   resolution: "eslint@npm:8.23.0"
   dependencies:
@@ -12652,7 +12652,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:^8.0.1":
+"husky@npm:8.0.1":
   version: 8.0.1
   resolution: "husky@npm:8.0.1"
   bin:
@@ -13031,7 +13031,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-ci-cli@npm:^2.2.0":
+"is-ci-cli@npm:2.2.0":
   version: 2.2.0
   resolution: "is-ci-cli@npm:2.2.0"
   dependencies:
@@ -14631,7 +14631,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:^13.0.3":
+"lint-staged@npm:13.0.3":
   version: 13.0.3
   resolution: "lint-staged@npm:13.0.3"
   dependencies:
@@ -16019,7 +16019,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:^0.45.0":
+"msw@npm:0.45.0":
   version: 0.45.0
   resolution: "msw@npm:0.45.0"
   dependencies:
@@ -18081,21 +18081,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier@npm:2.6.2":
+  version: 2.6.2
+  resolution: "prettier@npm:2.6.2"
+  bin:
+    prettier: bin-prettier.js
+  checksum: 48d08dde8e9fb1f5bccdd205baa7f192e9fc8bc98f86e1b97d919de804e28c806b0e6cc685e4a88211aa7987fa9668f30baae19580d87ced3ed0f2ec6572106f
+  languageName: node
+  linkType: hard
+
 "prettier@npm:>=2.2.1 <=2.3.0":
   version: 2.3.0
   resolution: "prettier@npm:2.3.0"
   bin:
     prettier: bin-prettier.js
   checksum: e8851a45f60f2994775f96e07964646c299b8a8f9c64da4fbd8efafc20db3458bdcedac79aed34e1d5477540b3aa04f6499adc4979cb7937f8ebd058a767d8ff
-  languageName: node
-  linkType: hard
-
-"prettier@npm:^2.5.1":
-  version: 2.6.2
-  resolution: "prettier@npm:2.6.2"
-  bin:
-    prettier: bin-prettier.js
-  checksum: 48d08dde8e9fb1f5bccdd205baa7f192e9fc8bc98f86e1b97d919de804e28c806b0e6cc685e4a88211aa7987fa9668f30baae19580d87ced3ed0f2ec6572106f
   languageName: node
   linkType: hard
 
@@ -18373,51 +18373,51 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "qmongjs@workspace:."
   dependencies:
-    "@emotion/react": ^11.9.3
-    "@emotion/styled": ^11.8.1
-    "@mui/icons-material": ^5.10.2
-    "@mui/material": ^5.10.2
-    "@sentry/react": ^7.11.1
-    "@sentry/tracing": ^7.11.1
-    "@storybook/addon-essentials": ^6.5.9
-    "@storybook/addon-links": ^6.5.9
-    "@storybook/addon-queryparams": ^6.2.9
-    "@storybook/preset-create-react-app": ^4.1.2
-    "@storybook/react": ^6.4.22
-    "@testing-library/jest-dom": ^5.16.4
-    "@testing-library/react": ^12.1.5
-    "@testing-library/user-event": ^14.4.3
-    "@types/d3": ^7.4.0
-    "@types/jest": ^28.1.8
-    "@types/node": ^18.0.0
-    "@types/react": ^18.0.8
-    "@types/react-dom": ^18.0.3
-    "@types/react-router-dom": ^5.3.3
-    "@visx/event": ^2.6.0
-    "@visx/tooltip": ^2.10.0
-    d3: ^7.5.0
-    d3-format: ^3.1.0
-    eslint: ^8.23.0
-    husky: ^8.0.1
-    is-ci-cli: ^2.2.0
-    lint-staged: ^13.0.3
-    msw: ^0.45.0
-    prettier: ^2.5.1
-    query-string: ^7.1.1
-    react: ^17.0.1
-    react-dom: ^17.0.2
-    react-icons: ^4.4.0
-    react-markdown: ^8.0.3
-    react-query: ^3.39.1
-    react-router-dom: ^5.3.0
-    react-scripts: ^5.0.1
-    react-select: ^5.4.0
-    remark-gfm: ^3.0.1
-    resize-observer-polyfill: ^1.5.1
-    source-map-explorer: ^2.5.2
-    typedoc: ^0.23.11
-    typescript: ^4.8.2
-    use-query-params: ^1.2.3
+    "@emotion/react": 11.9.3
+    "@emotion/styled": 11.8.1
+    "@mui/icons-material": 5.10.2
+    "@mui/material": 5.10.2
+    "@sentry/react": 7.11.1
+    "@sentry/tracing": 7.11.1
+    "@storybook/addon-essentials": 6.5.9
+    "@storybook/addon-links": 6.5.9
+    "@storybook/addon-queryparams": 6.2.9
+    "@storybook/preset-create-react-app": 4.1.2
+    "@storybook/react": 6.4.22
+    "@testing-library/jest-dom": 5.16.4
+    "@testing-library/react": 12.1.5
+    "@testing-library/user-event": 14.4.3
+    "@types/d3": 7.4.0
+    "@types/jest": 28.1.8
+    "@types/node": 18.0.0
+    "@types/react": 18.0.9
+    "@types/react-dom": 18.0.6
+    "@types/react-router-dom": 5.3.3
+    "@visx/event": 2.6.0
+    "@visx/tooltip": 2.10.0
+    d3: 7.5.0
+    d3-format: 3.1.0
+    eslint: 8.23.0
+    husky: 8.0.1
+    is-ci-cli: 2.2.0
+    lint-staged: 13.0.3
+    msw: 0.45.0
+    prettier: 2.6.2
+    query-string: 7.1.1
+    react: 17.0.2
+    react-dom: 17.0.2
+    react-icons: 4.4.0
+    react-markdown: 8.0.3
+    react-query: 3.39.1
+    react-router-dom: 5.3.2
+    react-scripts: 5.0.1
+    react-select: 5.4.0
+    remark-gfm: 3.0.1
+    resize-observer-polyfill: 1.5.1
+    source-map-explorer: 2.5.2
+    typedoc: 0.23.11
+    typescript: 4.8.2
+    use-query-params: 1.2.3
   languageName: unknown
   linkType: soft
 
@@ -18430,7 +18430,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"query-string@npm:^7.1.1":
+"query-string@npm:7.1.1":
   version: 7.1.1
   resolution: "query-string@npm:7.1.1"
   dependencies:
@@ -18628,7 +18628,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^17.0.2":
+"react-dom@npm:17.0.2":
   version: 17.0.2
   resolution: "react-dom@npm:17.0.2"
   dependencies:
@@ -18684,7 +18684,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-icons@npm:^4.4.0":
+"react-icons@npm:4.4.0":
   version: 4.4.0
   resolution: "react-icons@npm:4.4.0"
   peerDependencies:
@@ -18734,7 +18734,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-markdown@npm:^8.0.3":
+"react-markdown@npm:8.0.3":
   version: 8.0.3
   resolution: "react-markdown@npm:8.0.3"
   dependencies:
@@ -18788,7 +18788,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-query@npm:^3.39.1":
+"react-query@npm:3.39.1":
   version: 3.39.1
   resolution: "react-query@npm:3.39.1"
   dependencies:
@@ -18813,7 +18813,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^5.3.0":
+"react-router-dom@npm:5.3.2":
   version: 5.3.2
   resolution: "react-router-dom@npm:5.3.2"
   dependencies:
@@ -18874,7 +18874,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-scripts@npm:^5.0.1":
+"react-scripts@npm:5.0.1":
   version: 5.0.1
   resolution: "react-scripts@npm:5.0.1"
   dependencies:
@@ -18941,7 +18941,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-select@npm:^5.4.0":
+"react-select@npm:5.4.0":
   version: 5.4.0
   resolution: "react-select@npm:5.4.0"
   dependencies:
@@ -19041,7 +19041,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.1":
+"react@npm:17.0.2":
   version: 17.0.2
   resolution: "react@npm:17.0.2"
   dependencies:
@@ -19276,7 +19276,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-gfm@npm:^3.0.1":
+"remark-gfm@npm:3.0.1":
   version: 3.0.1
   resolution: "remark-gfm@npm:3.0.1"
   dependencies:
@@ -19446,7 +19446,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resize-observer-polyfill@npm:^1.5.1":
+"resize-observer-polyfill@npm:1.5.1":
   version: 1.5.1
   resolution: "resize-observer-polyfill@npm:1.5.1"
   checksum: 57e7f79489867b00ba43c9c051524a5c8f162a61d5547e99333549afc23e15c44fd43f2f318ea0261ea98c0eb3158cca261e6f48d66e1ed1cd1f340a43977094
@@ -20350,7 +20350,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source-map-explorer@npm:^2.5.2":
+"source-map-explorer@npm:2.5.2":
   version: 2.5.2
   resolution: "source-map-explorer@npm:2.5.2"
   dependencies:
@@ -21716,7 +21716,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc@npm:^0.23.11":
+"typedoc@npm:0.23.11":
   version: 0.23.11
   resolution: "typedoc@npm:0.23.11"
   dependencies:
@@ -21732,7 +21732,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.8.2":
+"typescript@npm:4.8.2":
   version: 4.8.2
   resolution: "typescript@npm:4.8.2"
   bin:
@@ -21742,7 +21742,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.8.2#~builtin<compat/typescript>":
+"typescript@patch:typescript@4.8.2#~builtin<compat/typescript>":
   version: 4.8.2
   resolution: "typescript@patch:typescript@npm%3A4.8.2#~builtin<compat/typescript>::version=4.8.2&hash=bda367"
   bin:
@@ -22181,7 +22181,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-query-params@npm:^1.2.3":
+"use-query-params@npm:1.2.3":
   version: 1.2.3
   resolution: "use-query-params@npm:1.2.3"
   dependencies:
