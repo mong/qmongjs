@@ -5,7 +5,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main, dependabot_updates]
+    branches: [main, dependency_updates]
 
 jobs:
   deploy_to_S3:
