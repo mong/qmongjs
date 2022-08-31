@@ -27,7 +27,11 @@ const formatIndicatorValues = (
         <MaskedIndicator text="Ingen Data" />
       </td>
     );
-  } else if (description.type === "dg_andel" || description.type === "dg") {
+  } else if (
+    description.type === "dg_andel" ||
+    description.type === "dg" ||
+    description.type === "dg_beregnet_andel"
+  ) {
     const level_class =
       indicator[0].level !== showLevelFilter && !!showLevelFilter
         ? "filtered_level"
