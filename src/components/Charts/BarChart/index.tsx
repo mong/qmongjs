@@ -22,9 +22,10 @@ export interface Props {
   showLevel: boolean;
   data: Bar[];
   levels: Level[];
-  tickformat: string | null;
+  tickformat?: string;
   zoom?: boolean;
   margin?: Margin;
+  max_value?: number;
 }
 
 const MARGIN = { top: 0.05, bottom: 10, right: 0.05, left: 0.25 };
@@ -38,6 +39,7 @@ function BarChart(props: Props) {
     tickformat,
     zoom = false,
     margin = {},
+    max_value,
   } = props;
   const delayedZoom = useDelayInitial(zoom, false);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -73,7 +75,12 @@ function BarChart(props: Props) {
           : false
         : false;
 
-    const xScaleDomain = getXScaleDomain(data, delayedZoom, percentage);
+    const xScaleDomain = getXScaleDomain(
+      data,
+      delayedZoom,
+      percentage,
+      max_value
+    );
     const xScale = scaleLinear()
       .domain(xScaleDomain)
       .range([0, innerWidth])
@@ -183,6 +190,7 @@ function BarChart(props: Props) {
     delayedZoom,
     innerHeight,
     innerWidth,
+    max_value,
   ]);
 
   return (
@@ -210,20 +218,24 @@ export default BarChart;
 function getXScaleDomain(
   data: Bar[],
   zoom: boolean,
-  percentage: boolean
+  percentage: boolean,
+  max_value?: number
 ): [number, number] {
-  if (!zoom && percentage) {
-    return [0, 1];
-  }
-
   const maxVal = Math.max(...data.map((d) => d.value));
   const additionalMargin = (0.01 + maxVal) * 0.2;
   const xMax = Math.ceil((maxVal + additionalMargin) * 100) / 100;
 
-  // xaxis max is maximum 1 (100 %) if percentage
-  if (percentage) {
-    return [0, Math.min(xMax, 1)];
-  } else {
-    return [0, xMax];
-  }
+  // min is always 0 for barchart
+  // If percentage and not zoom: max is 1
+  // If not percentage and not zoom: max is max_value if defined
+  return [
+    0,
+    percentage
+      ? zoom
+        ? Math.min(xMax, 1)
+        : 1
+      : zoom
+      ? xMax
+      : Math.max(max_value ?? xMax, xMax),
+  ];
 }

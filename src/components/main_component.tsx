@@ -7,10 +7,9 @@ import {
 } from "../components/RegisterPage";
 import { mainQueryParamsConfig } from "../app_config";
 
-import LEGEND from "./legend";
-//import Loading from "./Loading.tsx";
-import { MedicalFiedls } from "./RegisterPage/medicalfields";
-import { IndicatorTable } from "./RegisterPage/indicatortable";
+import LEGEND from "./TargetLevels";
+import { MedicalFields } from "./MedicalFields";
+import { IndicatorTable } from "./IndicatorTable";
 import { useMedicalFieldsQuery } from "../helpers/hooks";
 import { OptsTu } from "./select_multi";
 
@@ -48,7 +47,7 @@ export interface Props {
   update_legend_height(height: any): void;
 }
 
-interface MediacalFieldObject {
+interface MedicalFieldObject {
   shortName: string;
   name: string;
   registers: string[];
@@ -81,20 +80,19 @@ const Main = (props: Props) => {
   if (medicalFieldsQuery.isLoading) {
     return null;
   }
-  const medicalFields: MediacalFieldObject[] = medicalFieldsQuery.data;
+  const medicalFields: MedicalFieldObject[] = medicalFieldsQuery.data;
   const selectedMedicalField: string[] =
     (clicked_med_field ?? "all") === "all"
       ? registerList
       : medicalFields
           .filter(
-            (field: MediacalFieldObject) =>
-              field.shortName === clicked_med_field
+            (field: MedicalFieldObject) => field.shortName === clicked_med_field
           )
-          .flatMap((field: MediacalFieldObject) => field.registers);
+          .flatMap((field: MedicalFieldObject) => field.registers);
 
   const orderedRegisterList: RegisterNames[] = Array.from(
     new Set(
-      medicalFields.flatMap((field: MediacalFieldObject) => field.registers)
+      medicalFields.flatMap((field: MedicalFieldObject) => field.registers)
     )
   )
     .map((reg) => {
@@ -114,7 +112,7 @@ const Main = (props: Props) => {
       />
       <div className="content_container">
         <div className="med_field_container">
-          <MedicalFiedls
+          <MedicalFields
             medicalFields={medicalFields}
             clicked_med_field={clicked_med_field ?? "all"}
             update_clicked_med_field={update_clicked_med_field}

@@ -8,9 +8,11 @@ import {
   scaleTime,
   select,
 } from "d3";
-import { useEffect, useState } from "react";
-import { page_colors } from "../../../charts/page_colors";
-import { theme_table_chart_line as theme } from "../../../charts/theme_table_chart_line";
+import React, { useEffect, useState } from "react";
+import { localPoint } from "@visx/event";
+import { useTooltip } from "@visx/tooltip";
+
+import { themeTableChartLine as theme } from "./themeTableChartLine";
 import useDelayInitial from "../../../utils/useDelayInitial";
 import { Level, Margin } from "../types";
 import { useResizeObserver } from "../../../helpers/hooks";
@@ -18,19 +20,38 @@ import styles from "./LineChart.module.css";
 import { levelColor } from "../utils";
 import { Legend } from "./legend";
 import { customFormat } from "../../../helpers/functions/localFormater";
+import { LineChartTooltip } from "./tooltip";
+import { StatisticData } from "../../RegisterPage";
 
-export interface DataPoint {
+const chart_colors = [
+  "#4F9A94",
+  "#90CAF9",
+  "#B0BEC5",
+  "#FFE082",
+  "#2962FF",
+  "#CE93D8",
+  "#9C786C",
+  "#BCAAA4",
+  "#F8BBD0",
+  "#9FA8DA",
+  "#80DEEA",
+  "#A5D6A7",
+  "#E6EE9C",
+  "#FFAB91",
+  "#78909C",
+];
+
+export type DataPoint = {
   label: string;
-  year: number;
   value: number;
-}
+} & StatisticData;
 
 export interface Props {
   svgContainerRef: React.RefObject<HTMLDivElement>;
   showLevel: boolean;
   data: DataPoint[];
   levels: Level[];
-  tickformat: string | null;
+  tickformat?: string;
   zoom?: boolean;
   margin?: Margin;
   lastCompleteYear?: number;
@@ -49,6 +70,29 @@ const LineChart = (props: Props) => {
     margin = {},
     lastCompleteYear,
   } = props;
+  //tooltip boundary detector
+
+  const {
+    tooltipOpen,
+    tooltipLeft,
+    tooltipTop,
+    tooltipData,
+    hideTooltip,
+    showTooltip,
+  } = useTooltip<DataPoint>();
+
+  const handleTooltip = React.useCallback(
+    (event: React.PointerEvent<SVGSVGElement>, data?: DataPoint) => {
+      // coordinates should be relative to the container in which Tooltip is rendered
+      const eventSvgCoords = localPoint(event) ?? { x: 0, y: 0 };
+      showTooltip({
+        tooltipLeft: eventSvgCoords.x,
+        tooltipTop: eventSvgCoords.y,
+        tooltipData: data,
+      });
+    },
+    [showTooltip]
+  );
 
   const [hoveredLegend, setHoveredLegend] = useState<string | null>(null);
   const [selectedLegends, setSelectedLegends] = useState<string[]>([]);
@@ -72,7 +116,7 @@ const LineChart = (props: Props) => {
   const pathLabels = Array.from(new Set(data.map((d) => d.label)));
   const lineColorScale = scaleOrdinal<string>()
     .domain(pathLabels)
-    .range(page_colors.chart_colors);
+    .range(chart_colors);
 
   const percentage: boolean =
     typeof tickformat === "string"
@@ -281,7 +325,6 @@ const LineChart = (props: Props) => {
             .attr("class", "dot")
             .attr("stroke", (d) => lineColorScale(d.label))
             .attr("fill", (d) => lineColorScale(d.label))
-            .attr("r", 4)
             .style("mix-blend-mode", "multiply")
             .attr("cx", (d) => xScale(d.year))
             .attr("cy", (d) => yScale(d.value)),
@@ -294,16 +337,22 @@ const LineChart = (props: Props) => {
                 }
                 return highlightedLegends.includes(d.label) ? 1 : 0.4;
               })
-
               .transition()
               .duration(1000)
               .attr("cx", (d) => xScale(d.year))
               .attr("cy", (d) => yScale(d.value))
+
               .attr("stroke", (d) => lineColorScale(d.label))
               .attr("fill", (d) => lineColorScale(d.label))
           ),
         (exit) => exit.remove()
-      );
+      )
+      .attr("r", (d) =>
+        tooltipData?.year === d.year && tooltipData?.label === d.label ? 6 : 4
+      )
+      .on("pointerenter", (e, d) => handleTooltip(e, d))
+      .on("pointermove", (e, d) => handleTooltip(e, d))
+      .on("pointerleave", () => hideTooltip());
   }, [
     data,
     delayedZoom,
@@ -320,11 +369,17 @@ const LineChart = (props: Props) => {
     percentage,
     yAxisFormat,
     lastCompleteYear,
+    handleTooltip,
+    hideTooltip,
+    tooltipData,
   ]);
 
   return (
     <div>
-      <div ref={svgContainerRef} style={{ width: "90%", margin: "auto" }}>
+      <div
+        ref={svgContainerRef}
+        style={{ width: "90%", margin: "auto", position: "relative" }}
+      >
         <svg
           className={styles.lineChart}
           height={
@@ -371,6 +426,13 @@ const LineChart = (props: Props) => {
             <g className="dots" />
           </g>
         </svg>
+        <LineChartTooltip
+          tooltipData={tooltipData}
+          tooltipLeft={tooltipLeft}
+          tooltipOpen={tooltipOpen}
+          tooltipTop={tooltipTop}
+          format={tickformat}
+        />
       </div>
     </div>
   );
@@ -383,10 +445,6 @@ function getYScaleDomain(
   zoom: boolean,
   percentage: boolean
 ): [number, number] {
-  if (!zoom && percentage) {
-    return [0, 1];
-  }
-
   const maxValue = Math.max(...data.map((d) => d.value));
   const minValue = Math.min(...data.map((d) => d.value));
 
@@ -395,5 +453,8 @@ function getYScaleDomain(
   const yMax = Math.ceil((maxValue + additionalMargin) * 100) / 100;
 
   // yaxis max is maximum 1 (100 %) if percentage
-  return [Math.max(yMin, 0), percentage ? Math.min(yMax, 1) : yMax];
+  return [
+    zoom ? Math.max(yMin, 0) : 0,
+    percentage ? (zoom ? Math.min(yMax, 1) : 1) : yMax,
+  ];
 }

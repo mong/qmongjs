@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main, dependabot_updates]
+    branches: [main, dependency_updates]
   schedule:
     - cron: '38 3 * * 4'
 
