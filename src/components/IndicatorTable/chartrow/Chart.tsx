@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect } from "react";
-import { UseQueryResult, useQueryClient } from "react-query";
+import { UseQueryResult } from "react-query";
 import { Description, StatisticData } from "../../RegisterPage";
 
 import BarChart, { Bar, BarStyle } from "../../Charts/BarChart";
@@ -35,58 +34,17 @@ export default Chart;
 
 const GetBarChart: React.FC<Props> = (props) => {
   const { description, indicatorData, treatmentYear } = props;
-  const queryClient = useQueryClient();
   const registerShortName = description.rname ?? "";
   const {
     isLoading,
     error,
     data: indQryData,
   } = useIndicatorQuery({
-    queryKey: `indicatorDataBarChart`,
     registerShortName: registerShortName,
     treatmentYear: treatmentYear,
     context: props.context.context,
     type: props.context.type,
   });
-
-  const refetch = useCallback(() => {
-    return queryClient.fetchQuery([
-      "indicatorDataBarChart",
-      registerShortName,
-      props.context.context,
-      props.context.type,
-    ]);
-  }, [
-    queryClient,
-    registerShortName,
-    props.context.context,
-    props.context.type,
-  ]);
-
-  const cancel = useCallback(() => {
-    return queryClient.cancelQueries([
-      "indicatorDataBarChart",
-      registerShortName,
-      props.context.context,
-      props.context.type,
-    ]);
-  }, [
-    queryClient,
-    registerShortName,
-    props.context.context,
-    props.context.type,
-  ]);
-
-  useEffect(() => {
-    cancel();
-    refetch();
-  }, [
-    refetch,
-    cancel,
-    treatmentYear,
-    props.context.context,
-    props.context.type,
-  ]);
 
   if (isLoading) return <>Loading...</>;
   if (error) return <>An error has occured: {error.message}</>;
@@ -168,56 +126,12 @@ const GetBarChart: React.FC<Props> = (props) => {
 const GetLineChart: React.FC<Props> = (props) => {
   const { description, selectedTreatmentUnits } = props;
 
-  const queryClient = useQueryClient();
-  const unitNameString = selectedTreatmentUnits.join();
-
-  const registerShortName = description.rname ?? "";
-
   const lineChartQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
-    queryKey: `indicatorDatalineChart`,
     registerShortName: description.rname ?? "",
     unitNames: selectedTreatmentUnits,
     context: props.context.context,
     type: props.context.type,
   });
-  const refetch = useCallback(() => {
-    return queryClient.fetchQuery([
-      "indicatorDatalineChart",
-      registerShortName,
-      props.context.context,
-      props.context.type,
-    ]);
-  }, [
-    queryClient,
-    registerShortName,
-    props.context.context,
-    props.context.type,
-  ]);
-
-  const cancel = useCallback(() => {
-    return queryClient.cancelQueries([
-      "indicatorDatalineChart",
-      registerShortName,
-      props.context.context,
-      props.context.type,
-    ]);
-  }, [
-    queryClient,
-    registerShortName,
-    props.context.context,
-    props.context.type,
-  ]);
-
-  useEffect(() => {
-    cancel();
-    refetch();
-  }, [
-    unitNameString,
-    cancel,
-    refetch,
-    props.context.context,
-    props.context.type,
-  ]);
 
   // get the last year with complete data
   const lastCompleteYear: number | undefined = lineChartQuery.data

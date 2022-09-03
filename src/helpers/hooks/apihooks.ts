@@ -31,7 +31,6 @@ export const useDescriptionQuery = (params: FetchDescriptionParams) => {
 };
 
 export interface FetchIndicatorParams {
-  queryKey: string;
   registerShortName: string;
   treatmentYear?: number;
   unitNames?: string[];
@@ -70,7 +69,7 @@ const fetchIndicators = async (params: FetchIndicatorParams) => {
 
 export const useIndicatorQuery = (params: FetchIndicatorParams) => {
   return useQuery<StatisticData[], Error>(
-    [params.queryKey, params.registerShortName, params.context, params.type],
+    ["indicatorQuery", params],
     () => fetchIndicators(params),
     {
       staleTime: 1000 * 60 * 60,
