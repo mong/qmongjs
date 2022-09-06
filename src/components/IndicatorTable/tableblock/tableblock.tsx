@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useCallback } from "react";
-import { UseQueryResult, useQueryClient } from "react-query";
+import React, { useMemo } from "react";
+import { UseQueryResult } from "react-query";
 
 import style from "./tableblock.module.css";
 import { useDescriptionQuery, useIndicatorQuery } from "../../../helpers/hooks";
@@ -38,66 +38,19 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     context === "coverage"
       ? { context: "caregiver", type: "dg" }
       : { context, type: "ind" };
-  const unitNamesYearString = `${unitNames.toString()}${treatmentYear.toString()}`;
-  const queryClient = useQueryClient();
 
   const indicatorDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
-    queryKey: "indicatorData",
     registerShortName: registerName.rname,
     unitNames,
     treatmentYear,
     type: queryContext.type,
     context: queryContext.context,
   });
+  const { isFetching } = indicatorDataQuery;
 
   const descriptionQuery: UseQueryResult<any, unknown> = useDescriptionQuery({
     registerShortName: registerName.rname,
   });
-
-  const isFetching = queryClient.getQueryState([
-    "indicatorData",
-    registerName.rname,
-  ])?.isFetching;
-
-  const refetch = useCallback(() => {
-    return queryClient.fetchQuery([
-      "indicatorData",
-      registerName.rname,
-      queryContext.context,
-      queryContext.type,
-    ]);
-  }, [
-    queryClient,
-    registerName.rname,
-    queryContext.context,
-    queryContext.type,
-  ]);
-
-  const cancel = useCallback(() => {
-    return queryClient.cancelQueries([
-      "indicatorData",
-      registerName.rname,
-      queryContext.context,
-      queryContext.type,
-    ]);
-  }, [
-    queryClient,
-    registerName.rname,
-    queryContext.context,
-    queryContext.type,
-  ]);
-
-  useEffect(() => {
-    cancel();
-    refetch();
-  }, [
-    refetch,
-    cancel,
-    treatmentYear,
-    queryContext.context,
-    queryContext.type,
-    unitNamesYearString,
-  ]);
 
   const uniqueOrderedInd: string[] = useMemo(
     () =>
