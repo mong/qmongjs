@@ -81,7 +81,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     register as string,
     queryContext.context,
     queryContext.type,
-    selected_year ?? defaultYear
+    validated_selected_year
   );
   const nestedUnitNames: NestedTreatmentUnitName[] | [] =
     unitNamesQuery.data?.nestedUnitNames ?? [];

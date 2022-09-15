@@ -63,7 +63,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
     "all",
     queryContext.context,
     queryContext.type,
-    selected_year ?? defaultYear
+    validated_selected_year
   );
 
   const nestedUnitNames: NestedTreatmentUnitName[] | [] =
