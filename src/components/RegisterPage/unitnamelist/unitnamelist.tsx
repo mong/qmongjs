@@ -21,6 +21,8 @@ export interface Props {
 
 export const UnitNameList = (props: Props) => {
   const { nestedUnitNames, treatment_units, update_treatment_units } = props;
+  console.log(nestedUnitNames);
+
   const [tu_list_display, update_tu_list_display] = useState("none");
   const style_tu_list = { display: tu_list_display };
   const tu_str_elm = nestedUnitNames.map((element) => {

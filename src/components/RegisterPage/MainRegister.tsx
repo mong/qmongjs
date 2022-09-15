@@ -49,10 +49,21 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
       ? { context: "caregiver", type: "dg" }
       : { context, type: "ind" };
 
+  const [selected_year, update_selected_year] = useQueryParam(
+    "year",
+    mainQueryParamsConfig.year
+  );
+  const validated_selected_year = mathClamp(
+    selected_year || defaultYear,
+    minYear,
+    maxYear
+  );
+
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     "all",
     queryContext.context,
-    queryContext.type
+    queryContext.type,
+    selected_year ?? defaultYear
   );
 
   const nestedUnitNames: NestedTreatmentUnitName[] | [] =
@@ -78,16 +89,6 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
   const [treatment_units, update_treatment_units] = useQueryParam(
     "selected_treatment_units",
     mainQueryParamsConfig.selected_treatment_units
-  );
-
-  const [selected_year, update_selected_year] = useQueryParam(
-    "year",
-    mainQueryParamsConfig.year
-  );
-  const validated_selected_year = mathClamp(
-    selected_year || defaultYear,
-    minYear,
-    maxYear
   );
 
   const validated_treatment_units = validateTreatmentUnits(

@@ -54,15 +54,6 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
       ? { context: "caregiver", type: "dg" }
       : { context, type: "ind" };
 
-  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
-    register as string,
-    queryContext.context,
-    queryContext.type
-  );
-  const nestedUnitNames: NestedTreatmentUnitName[] | [] =
-    unitNamesQuery.data?.nestedUnitNames ?? [];
-  const optstu: OptsTu[] | [] = unitNamesQuery.data?.opts_tu ?? [];
-
   const selectionYearQuery: UseQueryResult<any, unknown> =
     useSelectionYearsQuery(
       register as string,
@@ -73,6 +64,28 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   const valid_years =
     selectionYearQuery.data ??
     Array.from(Array(maxYear - minYear + 1).keys()).map((v) => minYear + v);
+
+  const [selected_year, update_selected_year] = useQueryParam(
+    "year",
+    mainQueryParamsConfig.year
+  );
+  const min = valid_years.length === 0 ? minYear : Math.min(...valid_years);
+  const max = valid_years.length === 0 ? maxYear : Math.max(...valid_years);
+  const validated_selected_year = mathClamp(
+    selected_year || defaultYear,
+    min,
+    max
+  );
+
+  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
+    register as string,
+    queryContext.context,
+    queryContext.type,
+    selected_year ?? defaultYear
+  );
+  const nestedUnitNames: NestedTreatmentUnitName[] | [] =
+    unitNamesQuery.data?.nestedUnitNames ?? [];
+  const optstu: OptsTu[] | [] = unitNamesQuery.data?.opts_tu ?? [];
 
   const [selection_bar_height, update_selection_bar_height] = useState<
     number | null
@@ -92,18 +105,6 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   const [treatment_units, update_treatment_units] = useQueryParam(
     "selected_treatment_units",
     mainQueryParamsConfig.selected_treatment_units
-  );
-
-  const [selected_year, update_selected_year] = useQueryParam(
-    "year",
-    mainQueryParamsConfig.year
-  );
-  const min = valid_years.length === 0 ? minYear : Math.min(...valid_years);
-  const max = valid_years.length === 0 ? maxYear : Math.max(...valid_years);
-  const validated_selected_year = mathClamp(
-    selected_year || defaultYear,
-    min,
-    max
   );
 
   const validated_treatment_units = validateTreatmentUnits(

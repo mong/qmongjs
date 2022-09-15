@@ -121,17 +121,21 @@ export const useSelectionYearsQuery = (
 const unitNamesUrl = (
   registerShortName: string,
   context: string,
-  type: string
+  type: string,
+  year: number
 ): string => {
-  return `${API_HOST}/data/${registerShortName}/unitnames?context=${context}&type=${type}`;
+  return `${API_HOST}/data/${registerShortName}/unitnames?context=${context}&type=${type}&year=${year}`;
 };
 
 const fetchUnitNames = async (
   registerShortName: string,
   context: string,
-  type: string
+  type: string,
+  year: number
 ) => {
-  const response = await fetch(unitNamesUrl(registerShortName, context, type));
+  const response = await fetch(
+    unitNamesUrl(registerShortName, context, type, year)
+  );
   if (!response.ok) {
     throw new Error(response.statusText);
   }
@@ -142,11 +146,12 @@ const fetchUnitNames = async (
 export const useUnitNamesQuery = (
   registerShortName: string,
   context: string,
-  type: string
+  type: string,
+  year: number
 ) => {
   return useQuery(
-    ["unitNames", registerShortName, context, type],
-    () => fetchUnitNames(registerShortName, context, type),
+    ["unitNames", registerShortName, context, type, year],
+    () => fetchUnitNames(registerShortName, context, type, year),
     {
       staleTime: 1000 * 60 * 60,
       refetchOnWindowFocus: false,
