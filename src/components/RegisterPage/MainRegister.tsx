@@ -4,7 +4,7 @@ import { useQueryParam } from "use-query-params";
 
 import { useParams } from "react-router-dom";
 
-import MAIN from "../main_component";
+import MAIN from "./main_component";
 import { Header } from "./header";
 import SELECT_MULTI, { OptsTu } from "../select_multi";
 import SELECT_SINGLE from "../select_single";
