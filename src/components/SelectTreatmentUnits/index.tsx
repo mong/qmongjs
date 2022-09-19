@@ -1,6 +1,6 @@
 import Select from "react-select";
 
-import { app_text } from "../app_config";
+import { app_text } from "../../app_config";
 
 export interface OptsTu {
   label: string;
@@ -18,7 +18,7 @@ interface Props {
   treatment_unit: string[];
 }
 
-function SELECT_MULTI(props: Props) {
+function SelectTreatmentUnits(props: Props) {
   const {
     opts = [],
     select_className = "pick_treatment_unit",
@@ -111,4 +111,4 @@ function SELECT_MULTI(props: Props) {
   );
 }
 
-export default SELECT_MULTI;
+export default SelectTreatmentUnits;
