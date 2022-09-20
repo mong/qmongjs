@@ -3,27 +3,30 @@ import { useQueryParam } from "use-query-params";
 import { useParams } from "react-router-dom";
 import { UseQueryResult } from "react-query";
 
-import SELECT_MULTI from "../select_multi";
-import SELECT_SINGLE from "../select_single";
-import LEGEND from "../TargetLevels";
-import { IndicatorTable } from "../IndicatorTable";
-import { RegisterNames } from ".";
-import { OptsTu } from "../select_multi";
+import SelectTreatmentUnits, { OptsTu } from "../SelectTreatmentUnits";
+import SelectYear from "../SelectYear";
+
+import { Header } from "./header";
+
 import config, {
   mainQueryParamsConfig,
   maxYear,
   minYear,
   defaultYear,
 } from "../../app_config";
-import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
+
 import {
   useResizeObserver,
   useUnitNamesQuery,
   useSelectionYearsQuery,
 } from "../../helpers/hooks";
-import { Header } from "./header";
+import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { UnitNameList } from "./unitnamelist";
 import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
+import { RegisterNames } from ".";
+
+import LEGEND from "../TargetLevels";
+import { IndicatorTable } from "../IndicatorTable";
 
 interface SelectedRegisterProps {
   registerNames: RegisterNames[];
@@ -166,7 +169,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
       <div className="app-body">
         <div className="selection-container" ref={selection_bar_ref}>
           <div className="treatment-unit-selection">
-            <SELECT_MULTI
+            <SelectTreatmentUnits
               opts={optstu}
               update_tu={update_treatment_units}
               treatment_unit={validated_treatment_units}
@@ -179,7 +182,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
             />
           </div>
           <div className="year-selection">
-            <SELECT_SINGLE
+            <SelectYear
               opts={valid_years.sort()}
               update_year={update_selected_year}
               selected_year={validated_selected_year}

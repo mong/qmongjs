@@ -5,7 +5,7 @@ interface Props {
   update_year(int: number): void;
   selected_year: number;
 }
-function SELECT_SINGLE(props: Props) {
+function SelectYear(props: Props) {
   const {
     opts = [],
     select_className = "pick_year",
@@ -69,4 +69,4 @@ function SELECT_SINGLE(props: Props) {
   );
 }
 
-export default SELECT_SINGLE;
+export default SelectYear;
