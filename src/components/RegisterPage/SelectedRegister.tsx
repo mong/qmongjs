@@ -35,8 +35,8 @@ interface SelectedRegisterProps {
 export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   registerNames,
 }) => {
-  const { register } = useParams();
-  const { tab } = useParams();
+  const { register } = useParams<{ register: string }>();
+  const { tab } = useParams<{ tab: string }>();
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },
     { value: "opptaksomraade", label: "Opptaksområde" },
