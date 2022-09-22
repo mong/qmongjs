@@ -1,13 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { UseQueryResult } from "react-query";
+import { useParams } from "react-router-dom";
 import { useQueryParam } from "use-query-params";
 
-import { useParams } from "react-router-dom";
+import SelectTreatmentUnits, { OptsTu } from "../SelectTreatmentUnits";
+import SelectYear from "../SelectYear";
 
-import MAIN from "../main_component";
 import { Header } from "./header";
-import SELECT_MULTI, { OptsTu } from "../select_multi";
-import SELECT_SINGLE from "../select_single";
 
 import config, {
   mainQueryParamsConfig,
@@ -18,9 +17,11 @@ import config, {
 
 import { useResizeObserver, useUnitNamesQuery } from "../../helpers/hooks";
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
-import { RegisterNames } from ".";
 import { UnitNameList } from "./unitnamelist";
 import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
+import { RegisterNames } from ".";
+
+import MAIN from "./main_component";
 
 const { app_text } = config;
 
@@ -132,7 +133,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
       <div className="app-body">
         <div className="selection-container" ref={selection_bar_ref}>
           <div className="treatment-unit-selection">
-            <SELECT_MULTI
+            <SelectTreatmentUnits
               opts={optstu}
               update_tu={update_treatment_units}
               treatment_unit={validated_treatment_units}
@@ -145,7 +146,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
             />
           </div>
           <div className="year-selection">
-            <SELECT_SINGLE
+            <SelectYear
               opts={valid_years}
               update_year={update_selected_year}
               selected_year={validated_selected_year}

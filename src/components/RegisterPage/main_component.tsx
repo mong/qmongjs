@@ -1,17 +1,13 @@
 import { UseQueryResult } from "react-query";
 import { useQueryParam } from "use-query-params";
-import {
-  Description,
-  RegisterNames,
-  StatisticData,
-} from "../components/RegisterPage";
-import { mainQueryParamsConfig } from "../app_config";
+import { Description, RegisterNames, StatisticData } from ".";
+import { mainQueryParamsConfig } from "../../app_config";
 
-import LEGEND from "./TargetLevels";
-import { MedicalFields } from "./MedicalFields";
-import { IndicatorTable } from "./IndicatorTable";
-import { useMedicalFieldsQuery } from "../helpers/hooks";
-import { OptsTu } from "./select_multi";
+import LEGEND from "../TargetLevels";
+import { MedicalFields } from "../MedicalFields";
+import { IndicatorTable } from "../IndicatorTable";
+import { useMedicalFieldsQuery } from "../../helpers/hooks";
+import { OptsTu } from "../SelectTreatmentUnits";
 
 interface AggData {
   nation: {
