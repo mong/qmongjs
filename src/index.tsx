@@ -1,6 +1,6 @@
 import loadDevTools from "./dev-tools/load";
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import "./index.css";
@@ -27,14 +27,16 @@ if (process.env.REACT_APP_SENTRY) {
 
 const queryClient = new QueryClient();
 
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
 loadDevTools(() =>
-  ReactDOM.render(
+  root.render(
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
         <App />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
-    </React.StrictMode>,
-    document.getElementById("root")
+    </React.StrictMode>
   )
 );
