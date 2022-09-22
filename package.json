@@ -77,11 +77,6 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "6.5.9",
-    "@storybook/addon-links": "6.5.9",
-    "@storybook/addon-queryparams": "6.2.9",
-    "@storybook/preset-create-react-app": "4.1.2",
-    "@storybook/react": "6.4.22",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "12.1.5",
     "@testing-library/user-event": "14.4.3",
