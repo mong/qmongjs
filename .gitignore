@@ -26,8 +26,6 @@ npm-debug.log
 
 .eslintcache
 
-/storybook-static
-
 # yarn
 .yarn/*
 !.yarn/patches
