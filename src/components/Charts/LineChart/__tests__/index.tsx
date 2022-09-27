@@ -6,6 +6,7 @@
  * Replace the contents with what you copied
  */
 import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import { createRef } from "react";
 import LineChart, { DataPoint, Props } from "..";
 import { buildLevels } from "../../../../test/builders";

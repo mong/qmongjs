@@ -1,11 +1,9 @@
 import { useState } from "react";
-
-import { Link } from "react-router-dom";
-
 import { useEventListener } from "../../helpers/hooks";
 
 import style from "./index.module.css";
 import { RegisterNames } from "../RegisterPage";
+import Link from "next/link";
 
 interface selectedRegisterProps {
   regNames: RegisterNames[];
@@ -85,11 +83,8 @@ const SelectRegister = (props: selectedRegisterProps) => {
         </div>
         <ul>
           <li>
-            <Link
-              onClick={() => updateBtnToggle(!btnToggle)}
-              to={`/alle/${activeTab}`}
-            >
-              <b>Alle registre</b>
+            <Link href={`/alle/${activeTab}`}>
+              <b onClick={() => updateBtnToggle(!btnToggle)}>Alle registre</b>
             </Link>
           </li>
           {filteredReg.map((reg: RegisterNames) => {
@@ -104,11 +99,10 @@ const SelectRegister = (props: selectedRegisterProps) => {
 
             return (
               <li key={reg.rname}>
-                <Link
-                  onClick={() => updateBtnToggle(!btnToggle)}
-                  to={`/${reg.rname}/${tabName}`}
-                >
-                  {reg.full_name}
+                <Link href={`/${reg.rname}/${tabName}`}>
+                  <span onClick={() => updateBtnToggle(!btnToggle)}>
+                    {reg.full_name}
+                  </span>
                 </Link>
               </li>
             );

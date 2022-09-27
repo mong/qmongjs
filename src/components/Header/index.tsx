@@ -1,6 +1,8 @@
 import React from "react";
 import style from "./index.module.css";
-import skdeLogo from "../../img/SKDE_sort.png";
+import skdeLogo from "../../../public/img/SKDE_sort.png";
+import Link from "next/link";
+import Image from "next/image";
 
 type HeaderProps = {};
 
@@ -9,12 +11,12 @@ const Header: React.FC<HeaderProps> = () => {
     <div style={{}}>
       <header className={style.header}>
         <div className={style.logo}>
-          <a href={window.location.origin}>
-            <img className={style.logo_img} src={skdeLogo} alt="SKDE logo" />
-          </a>
+          <Link href="/">
+            <Image className={style.logo_img} src={skdeLogo} alt="SKDE logo" />
+          </Link>
         </div>
         <div>
-          <a href={`${window.location.origin}/kontakt`}>Kontakt</a>
+          <Link href={`/kontakt`}>Kontakt</Link>
         </div>
       </header>
     </div>

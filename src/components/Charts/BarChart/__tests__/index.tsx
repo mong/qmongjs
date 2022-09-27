@@ -6,6 +6,7 @@
  * Replace the contents with what you copied
  */
 import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import { useRef } from "react";
 import BarChart, { Props, Bar } from "..";
 import { useResizeObserver } from "../../../../helpers/hooks";

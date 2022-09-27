@@ -1,5 +1,5 @@
+import Link from "next/link";
 import React from "react";
-import { Link } from "react-router-dom";
 import style from "./tableblocktitle.module.css";
 
 interface BlockTitleProps {
@@ -21,7 +21,7 @@ export const TableBlockTitle: React.FC<BlockTitleProps> = (props) => {
   return (
     <tr className={`${style.titleRow} ${tr_register_name_class}`}>
       <td colSpan={colspan}>
-        <Link to={`/${link}/${tabName}`}>
+        <Link href={`/${link}/${tabName}`}>
           <h3 className={style.title}>{title}</h3>
         </Link>
       </td>

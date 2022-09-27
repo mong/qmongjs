@@ -1,10 +1,27 @@
 import { render, unmountComponentAtNode } from "react-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 
 import { IndicatorRow } from "../";
 import national_data from "../../../../test/test_data/national_data";
 import description from "../../../../test/test_data/description";
+import { NextAdapter } from "next-query-params";
+import mockRouter from "next-router-mock";
+import { createDynamicRouteParser } from "next-router-mock/dynamic-routes";
+
+jest.mock("next/router", () => require("next-router-mock"));
+// This is needed for mocking 'next/link':
+jest.mock("next/dist/client/router", () => require("next-router-mock"));
+
+mockRouter.useParser(
+  createDynamicRouteParser([
+    // These paths should match those found in the `/pages` folder:
+    "/alle/[tab].js",
+    "/[register]/[tab].js",
+  ])
+);
+beforeEach(() => {
+  mockRouter.setCurrentUrl("/alle/sykehus");
+});
 
 let container: any = null;
 beforeEach(() => {
@@ -27,20 +44,18 @@ it("renders", () => {
   const numerator = Math.round(data.var * data.denominator);
 
   render(
-    <Router>
-      <QueryParamProvider ReactRouterRoute={Route}>
-        <table>
-          <tbody>
-            <IndicatorRow
-              context={{ context: "caregiver", type: "ind" }}
-              description={description[0]}
-              indicatorData={[data]}
-              treatmantYear={2019}
-            />
-          </tbody>
-        </table>
-      </QueryParamProvider>
-    </Router>,
+    <QueryParamProvider adapter={NextAdapter}>
+      <table>
+        <tbody>
+          <IndicatorRow
+            context={{ context: "caregiver", type: "ind" }}
+            description={description[0]}
+            indicatorData={[data]}
+            treatmantYear={2019}
+          />
+        </tbody>
+      </table>
+    </QueryParamProvider>,
     container
   );
   expect(container.querySelector("td h1").textContent).toBe(

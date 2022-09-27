@@ -1,12 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
-import skdeLogo from "../../img/SKDE_hvit_lys.png";
-import helseNordLogo from "../../img/hf_nord-white.svg";
-import NSMLogo from "../../img/NSM_logo_hvit.png";
-import helseatlasLogo from "../../img/Logo_atlas_hvit.png";
+import skdeLogo from "../../../public/img/SKDE_hvit_lys.png";
+import helseNordLogo from "../../../public/img/hf_nord-white.svg";
+import NSMLogo from "../../../public/img/NSM_logo_hvit.png";
+import helseatlasLogo from "../../../public/img/Logo_atlas_hvit.png";
 
 import style from "./footer.module.css";
+import Image from "next/image";
 
 type FooterProps = {};
 
@@ -15,14 +14,9 @@ const Footer: React.FC<FooterProps> = () => {
     <footer className={style.footer}>
       <div className={style.footerTop}>
         <div>
-          <Link to="/">
-            <img
-              src={skdeLogo}
-              alt="skde logo"
-              width="99px"
-              height="40px"
-            ></img>
-          </Link>
+          <a href="/">
+            <Image src={skdeLogo} alt="skde logo" width="99px" height="40px" />
+          </a>
         </div>
         <div className={style.skdeContact}>
           <strong>Telefon:</strong>
@@ -39,17 +33,11 @@ const Footer: React.FC<FooterProps> = () => {
           <br />
         </div>
         <div className={style.skdePrivacy}>
-          <a
-            title="Link til kontakt SKDE"
-            href={`${window.location.origin}/kontakt`}
-          >
+          <a title="Link til kontakt SKDE" href={`/kontakt`}>
             Kontakt
           </a>
           <br />
-          <a
-            title="Link til personvern"
-            href={`${window.location.origin}/personvern`}
-          >
+          <a title="Link til personvern" href={`/personvern`}>
             Personvern
           </a>
         </div>
@@ -57,7 +45,7 @@ const Footer: React.FC<FooterProps> = () => {
       <div className={style.footerBottom}>
         <div>
           <a title="Link til Helse Nord RHF" href="https://www.helse-nord.no">
-            <img
+            <Image
               src={helseNordLogo}
               alt="Helse Nord logo"
               width="180px"
@@ -70,12 +58,12 @@ const Footer: React.FC<FooterProps> = () => {
             title="Link til kvalitetsregistre"
             href="https://www.kvalitetsregistre.no"
           >
-            <img src={NSMLogo} alt="NSM logo" width="287px" height="32px" />
+            <Image src={NSMLogo} alt="NSM logo" width="287px" height="32px" />
           </a>
         </div>
         <div>
           <a title="Link til helseatlas" href="https://www.helesatlas.no">
-            <img
+            <Image
               src={helseatlasLogo}
               alt="Helseatlas logo"
               width="146px"

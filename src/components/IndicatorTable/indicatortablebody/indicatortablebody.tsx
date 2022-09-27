@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import { RegisterNames } from "../../RegisterPage";
 import TableBlock from "../tableblock/tableblock";
@@ -31,7 +31,6 @@ export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (
     blockTitle,
   } = props;
 
-  const tableBodyRef = useRef(null);
   const done: string[] = [];
   let register_block = registerNames.map((register, i) => {
     if (!done.includes(register.rname)) {
@@ -55,10 +54,11 @@ export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (
       return null;
     }
   });
+  const isEmpty = !done.length;
 
   return (
-    <tbody ref={tableBodyRef}>
-      <NoDataAvailible colspan={colspan} tableBodyRef={tableBodyRef} />
+    <tbody>
+      {isEmpty && <NoDataAvailible colspan={colspan} />}
       {register_block}
     </tbody>
   );

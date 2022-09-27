@@ -12,7 +12,16 @@
 
 You can install the latest version of qmongjs from [github](https://github.com/mong/qmongjs).
 
-## Run it locally
+## Run only qmongjs locally - using production api server
+
+### Run using production API
+
+```sh
+export NEXT_PUBLIC_API_HOST="https://qa-mong-api.skde.org"
+yarn start
+```
+
+## Run with api running locally
 
 This is done in two different terminal windows.
 

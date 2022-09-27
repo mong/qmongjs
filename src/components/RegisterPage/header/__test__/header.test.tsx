@@ -1,10 +1,28 @@
-import { BrowserRouter, Route } from "react-router-dom";
-import { QueryParamProvider } from "use-query-params";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import "@testing-library/jest-dom";
 
 import { Header } from "../";
 import { RegisterNames } from "../../.";
+import { NextAdapter } from "next-query-params";
+import mockRouter from "next-router-mock";
+import { createDynamicRouteParser } from "next-router-mock/dynamic-routes";
+import { QueryParamProvider } from "use-query-params";
+
+jest.mock("next/router", () => require("next-router-mock"));
+// This is needed for mocking 'next/link':
+jest.mock("next/dist/client/router", () => require("next-router-mock"));
+
+mockRouter.useParser(
+  createDynamicRouteParser([
+    // These paths should match those found in the `/pages` folder:
+    "/alle/[tab].js",
+    "/[register]/[tab].js",
+  ])
+);
+beforeEach(() => {
+  mockRouter.setCurrentUrl("/alle/sykehus");
+});
 
 const registerInfo: RegisterNames[] = [
   {
@@ -42,16 +60,14 @@ it("register page header renders correctly", () => {
   const dataFrom = "Norsk hjerneslagregister";
 
   const { container } = render(
-    <BrowserRouter>
-      <QueryParamProvider ReactRouterRoute={Route}>
-        <Header
-          activeTab={"sykehus"}
-          registerNames={registerNames}
-          tabNames={tabNames}
-          dataFrom={dataFrom}
-        />
-      </QueryParamProvider>
-    </BrowserRouter>
+    <QueryParamProvider adapter={NextAdapter}>
+      <Header
+        activeTab={"sykehus"}
+        registerNames={registerNames}
+        tabNames={tabNames}
+        dataFrom={dataFrom}
+      />
+    </QueryParamProvider>
   );
 
   expect(screen.getByText(tabNames[0].label)).toBeInTheDocument();
