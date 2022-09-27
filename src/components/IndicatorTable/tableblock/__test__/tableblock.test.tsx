@@ -1,12 +1,11 @@
-import { screen, waitFor } from "@testing-library/react";
+import { screen, waitFor, render } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import { NextAdapter } from "next-query-params";
-import { render } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { QueryParamProvider } from "use-query-params";
 import { TableBlock, TableBlockProps } from "..";
 import mockRouter from "next-router-mock";
 import { createDynamicRouteParser } from "next-router-mock/dynamic-routes";
-import { API_HOST } from "../../../RegisterPage";
 
 jest.mock("next/router", () => require("next-router-mock"));
 // This is needed for mocking 'next/link':
