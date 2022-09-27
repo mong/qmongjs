@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { QueryParamProvider } from "use-query-params";
 import { NextAdapter } from "next-query-params";
 import "../src/index.css";
-//import { ReactQueryDevtools } from "react-query/types/devtools";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -34,7 +34,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     <QueryParamProvider adapter={NextAdapter}>
       <QueryClientProvider client={queryClient}>
         {getLayout(<Component {...pageProps} />)}
-        {/*<ReactQueryDevtools initialIsOpen={false} /> */}
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </QueryParamProvider>
   );
