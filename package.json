@@ -39,7 +39,7 @@
     "@emotion/styled": "11.10.4",
     "@mui/icons-material": "5.10.6",
     "@mui/material": "5.10.6",
-    "@sentry/react": "7.13.0",
+    "@sentry/nextjs": "^7.13.0",
     "@sentry/tracing": "7.13.0",
     "@visx/event": "2.6.0",
     "@visx/tooltip": "2.10.0",

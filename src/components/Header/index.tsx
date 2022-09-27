@@ -12,7 +12,13 @@ const Header: React.FC<HeaderProps> = () => {
       <header className={style.header}>
         <div className={style.logo}>
           <Link href="/">
-            <Image className={style.logo_img} src={skdeLogo} alt="SKDE logo" />
+            <a>
+              <Image
+                className={style.logo_img}
+                src={skdeLogo}
+                alt="SKDE logo"
+              />
+            </a>
           </Link>
         </div>
         <div>
