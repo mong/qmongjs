@@ -57,14 +57,15 @@ const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
 
   return (
     <li className={style.tabsLI}>
-      <Link
-        href={`${path}/${tabName.value}`}
-        role="tab"
-        aria-selected={tabName.value === tab}
-        style={clickedStyle}
-        className={style.tabsLink}
-      >
-        {tabName.label}
+      <Link href={`${path}/${tabName.value}`} passHref>
+        <a
+          role="tab"
+          aria-selected={tabName.value === tab}
+          style={clickedStyle}
+          className={style.tabsLink}
+        >
+          {tabName.label}
+        </a>
       </Link>
     </li>
   );
