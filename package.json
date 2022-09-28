@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "husky install",
     "start": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "serve": "next start",
     "test": "is-ci test:coverage test:base",
     "test:base": "jest test",
