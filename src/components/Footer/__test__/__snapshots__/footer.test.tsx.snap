@@ -15,7 +15,7 @@ exports[`Footer renders 1`] = `
           <img
             alt="skde logo"
             height="40px"
-            src="SKDE_hvit_lys.png"
+            src="/img/SKDE_hvit_lys.png"
             width="99px"
           />
         </a>
@@ -56,14 +56,14 @@ exports[`Footer renders 1`] = `
         class="skdePrivacy"
       >
         <a
-          href="http://localhost/kontakt"
+          href="/kontakt"
           title="Link til kontakt SKDE"
         >
           Kontakt
         </a>
         <br />
         <a
-          href="http://localhost/personvern"
+          href="/personvern"
           title="Link til personvern"
         >
           Personvern
@@ -81,7 +81,7 @@ exports[`Footer renders 1`] = `
           <img
             alt="Helse Nord logo"
             height="40px"
-            src="hf_nord-white.svg"
+            src="/img/hf_nord-white.svg"
             width="180px"
           />
         </a>
@@ -94,7 +94,7 @@ exports[`Footer renders 1`] = `
           <img
             alt="NSM logo"
             height="32px"
-            src="NSM_logo_hvit.png"
+            src="/img/NSM_logo_hvit.png"
             width="287px"
           />
         </a>
@@ -107,7 +107,7 @@ exports[`Footer renders 1`] = `
           <img
             alt="Helseatlas logo"
             height="40px"
-            src="Logo_atlas_hvit.png"
+            src="/img/Logo_atlas_hvit.png"
             width="146px"
           />
         </a>

@@ -23,7 +23,7 @@ exports[`register page header renders correctly 1`] = `
               <img
                 alt="kvalitetsregistre.no"
                 class="nsmlogo"
-                src="nsmlogo.svg"
+                src="/img/nsmlogo.svg"
               />
             </a>
           </div>
@@ -181,7 +181,7 @@ exports[`register page header renders correctly 2`] = `
               <img
                 alt="kvalitetsregistre.no"
                 class="nsmlogo"
-                src="nsmlogo.svg"
+                src="/img/nsmlogo.svg"
               />
             </a>
           </div>

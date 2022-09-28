@@ -1,28 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
-import skdeLogo from "../../img/SKDE_hvit_lys.png";
-import helseNordLogo from "../../img/hf_nord-white.svg";
-import NSMLogo from "../../img/NSM_logo_hvit.png";
-import helseatlasLogo from "../../img/Logo_atlas_hvit.png";
-
 import style from "./footer.module.css";
 
 type FooterProps = {};
 
 const Footer: React.FC<FooterProps> = () => {
+  const skdeLogo = "/img/SKDE_hvit_lys.png";
+  const helseNordLogo = "/img/hf_nord-white.svg";
+  const NSMLogo = "/img/NSM_logo_hvit.png";
+  const helseatlasLogo = "/img/Logo_atlas_hvit.png";
   return (
     <footer className={style.footer}>
       <div className={style.footerTop}>
         <div>
-          <Link to="/">
-            <img
-              src={skdeLogo}
-              alt="skde logo"
-              width="99px"
-              height="40px"
-            ></img>
-          </Link>
+          <a href="/">
+            <img src={skdeLogo} alt="skde logo" width="99px" height="40px" />
+          </a>
         </div>
         <div className={style.skdeContact}>
           <strong>Telefon:</strong>
@@ -39,17 +31,11 @@ const Footer: React.FC<FooterProps> = () => {
           <br />
         </div>
         <div className={style.skdePrivacy}>
-          <a
-            title="Link til kontakt SKDE"
-            href={`${window.location.origin}/kontakt`}
-          >
+          <a title="Link til kontakt SKDE" href={`/kontakt`}>
             Kontakt
           </a>
           <br />
-          <a
-            title="Link til personvern"
-            href={`${window.location.origin}/personvern`}
-          >
+          <a title="Link til personvern" href={`/personvern`}>
             Personvern
           </a>
         </div>

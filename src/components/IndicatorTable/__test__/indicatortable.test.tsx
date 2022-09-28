@@ -1,4 +1,3 @@
-import { BrowserRouter, Route } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { render, screen, waitFor } from "@testing-library/react";
@@ -6,6 +5,25 @@ import { render, screen, waitFor } from "@testing-library/react";
 import opts from "../../../dev-tools/data/unitnames.json";
 import { IndicatorTable } from "../";
 import { RegisterNames } from "../../RegisterPage";
+
+import mockRouter from "next-router-mock";
+import { NextAdapter } from "next-query-params";
+import { createDynamicRouteParser } from "next-router-mock/dynamic-routes";
+
+jest.mock("next/router", () => require("next-router-mock"));
+// This is needed for mocking 'next/link':
+jest.mock("next/dist/client/router", () => require("next-router-mock"));
+
+mockRouter.useParser(
+  createDynamicRouteParser([
+    // These paths should match those found in the `/pages` folder:
+    "/alle/[tab].js",
+    "/[register]/[tab].js",
+  ])
+);
+beforeEach(() => {
+  mockRouter.setCurrentUrl("/alle/sykehus");
+});
 
 const registerInfo: RegisterNames[] = [
   {
@@ -32,18 +50,16 @@ it("registry table renders correctly for a single registry", async () => {
 
   const { container } = render(
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <QueryParamProvider ReactRouterRoute={Route}>
-          <IndicatorTable
-            context={"sykehus"}
-            tableType="singleRegister"
-            {...props}
-          />
-        </QueryParamProvider>
-      </BrowserRouter>
+      <QueryParamProvider adapter={NextAdapter}>
+        <IndicatorTable
+          context={"sykehus"}
+          tableType="singleRegister"
+          {...props}
+        />
+      </QueryParamProvider>
     </QueryClientProvider>
   );
 
-  await waitFor(() => screen.findAllByRole("heading"));
+  await waitFor(() => screen.findAllByText(props.unitNames[0]));
   expect(container).toMatchSnapshot();
 });

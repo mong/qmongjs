@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import { UseQueryResult } from "react-query";
-import { useParams } from "react-router-dom";
 import { useQueryParam } from "use-query-params";
 
 import SelectTreatmentUnits, { OptsTu } from "../SelectTreatmentUnits";
@@ -22,6 +21,7 @@ import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
 import { RegisterNames } from ".";
 
 import MAIN from "./main_component";
+import { useRouter } from "next/router";
 
 const { app_text } = config;
 
@@ -30,7 +30,7 @@ interface MainRegisterProps {
 }
 
 const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
-  const { tab } = useParams<{ tab: string }>();
+  const { tab } = useRouter().query as { tab: string };
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },
     { value: "opptaksomraade", label: "Opptaksområde" },

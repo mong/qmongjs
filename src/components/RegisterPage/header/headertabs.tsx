@@ -1,5 +1,6 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
-import { Link, useParams } from "react-router-dom";
 
 import style from "./headertabs.module.css";
 
@@ -37,8 +38,10 @@ interface TabProps {
 }
 
 const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
-  const { tab } = useParams<{ tab: string }>();
-  const { register } = useParams<{ register: string }>();
+  const { tab, register } = useRouter().query as {
+    tab: string;
+    register: string;
+  };
 
   const clickedStyle =
     activeTab === tabName.value
@@ -54,14 +57,15 @@ const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
 
   return (
     <li className={style.tabsLI}>
-      <Link
-        to={`${path}/${tabName.value}`}
-        role="tab"
-        aria-selected={tabName.value === tab}
-        style={clickedStyle}
-        className={style.tabsLink}
-      >
-        {tabName.label}
+      <Link href={`${path}/${tabName.value}`} passHref>
+        <a
+          role="tab"
+          aria-selected={tabName.value === tab}
+          style={clickedStyle}
+          className={style.tabsLink}
+        >
+          {tabName.label}
+        </a>
       </Link>
     </li>
   );

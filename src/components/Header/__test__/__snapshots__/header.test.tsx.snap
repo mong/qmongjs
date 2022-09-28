@@ -10,18 +10,18 @@ exports[`main page header renders 1`] = `
         class="logo"
       >
         <a
-          href="http://localhost"
+          href="/"
         >
           <img
             alt="SKDE logo"
             class="logo_img"
-            src="SKDE_sort.png"
+            src="/img/SKDE_sort.png"
           />
         </a>
       </div>
       <div>
         <a
-          href="http://localhost/kontakt"
+          href="/kontakt"
         >
           Kontakt
         </a>

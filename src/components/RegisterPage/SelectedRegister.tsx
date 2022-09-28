@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useQueryParam } from "use-query-params";
-import { useParams } from "react-router-dom";
 import { UseQueryResult } from "react-query";
 
 import SelectTreatmentUnits, { OptsTu } from "../SelectTreatmentUnits";
@@ -27,6 +26,7 @@ import { RegisterNames } from ".";
 
 import LEGEND from "../TargetLevels";
 import { IndicatorTable } from "../IndicatorTable";
+import { useRouter } from "next/router";
 
 interface SelectedRegisterProps {
   registerNames: RegisterNames[];
@@ -35,8 +35,10 @@ interface SelectedRegisterProps {
 export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   registerNames,
 }) => {
-  const { register } = useParams<{ register: string }>();
-  const { tab } = useParams<{ tab: string }>();
+  const { register, tab } = useRouter().query as {
+    register: string;
+    tab: string;
+  };
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },
     { value: "opptaksomraade", label: "Opptaksområde" },

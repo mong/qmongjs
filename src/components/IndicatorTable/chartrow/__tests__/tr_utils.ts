@@ -12,18 +12,18 @@ test("level_direction 1", () => {
   const levels = level_boundary(config);
 
   expect(levels).toMatchInlineSnapshot(`
-    Array [
-      Object {
+    [
+      {
         "end": 0.9,
         "level": "high",
         "start": 1,
       },
-      Object {
+      {
         "end": 0.8,
         "level": "mid",
         "start": 0.9,
       },
-      Object {
+      {
         "end": 0,
         "level": "low",
         "start": 0.8,
@@ -44,18 +44,18 @@ test("level_direction null will set it to 1", () => {
   const levels = level_boundary(config);
 
   expect(levels).toMatchInlineSnapshot(`
-    Array [
-      Object {
+    [
+      {
         "end": 0.9,
         "level": "high",
         "start": 1,
       },
-      Object {
+      {
         "end": 0.8,
         "level": "mid",
         "start": 0.9,
       },
-      Object {
+      {
         "end": 0,
         "level": "low",
         "start": 0.8,
@@ -76,18 +76,18 @@ test("level_green 0", () => {
   const levels = level_boundary(config);
 
   expect(levels).toMatchInlineSnapshot(`
-    Array [
-      Object {
+    [
+      {
         "end": 0,
         "level": "high",
         "start": 0,
       },
-      Object {
+      {
         "end": 0,
         "level": "mid",
         "start": 0.1,
       },
-      Object {
+      {
         "end": 0.1,
         "level": "low",
         "start": 1,
@@ -110,18 +110,18 @@ test("level_green null, level_direction 0", () => {
   const levels = level_boundary(config);
 
   expect(levels).toMatchInlineSnapshot(`
-    Array [
-      Object {
+    [
+      {
         "end": 0,
         "level": "high",
         "start": 1,
       },
-      Object {
+      {
         "end": 1,
         "level": "mid",
         "start": 0.1,
       },
-      Object {
+      {
         "end": 0.1,
         "level": "low",
         "start": 1,
@@ -144,18 +144,18 @@ test("level_green null, level_direction 1", () => {
   const levels = level_boundary(config);
 
   expect(levels).toMatchInlineSnapshot(`
-    Array [
-      Object {
+    [
+      {
         "end": 0,
         "level": "high",
         "start": 1,
       },
-      Object {
+      {
         "end": 0.1,
         "level": "mid",
         "start": 0,
       },
-      Object {
+      {
         "end": 0,
         "level": "low",
         "start": 0.1,
@@ -176,18 +176,18 @@ test("level_green null, level_yellow null, level_direction 1", () => {
   const levels = level_boundary(config);
 
   expect(levels).toMatchInlineSnapshot(`
-    Array [
-      Object {
+    [
+      {
         "end": 0,
         "level": "high",
         "start": 1,
       },
-      Object {
+      {
         "end": 0,
         "level": "mid",
         "start": 0,
       },
-      Object {
+      {
         "end": 0,
         "level": "low",
         "start": 0,
@@ -208,18 +208,18 @@ test("level_yellow null", () => {
   const levels = level_boundary(config);
 
   expect(levels).toMatchInlineSnapshot(`
-    Array [
-      Object {
+    [
+      {
         "end": 0.5,
         "level": "high",
         "start": 1,
       },
-      Object {
+      {
         "end": 0.5,
         "level": "mid",
         "start": 0.5,
       },
-      Object {
+      {
         "end": 0,
         "level": "low",
         "start": 0.5,
@@ -240,18 +240,18 @@ test("level_direction 0", () => {
   const levels = level_boundary(config);
 
   expect(levels).toMatchInlineSnapshot(`
-    Array [
-      Object {
+    [
+      {
         "end": 0,
         "level": "high",
         "start": 0.75,
       },
-      Object {
+      {
         "end": 0.75,
         "level": "mid",
         "start": 0.5,
       },
-      Object {
+      {
         "end": 0.5,
         "level": "low",
         "start": 1,
