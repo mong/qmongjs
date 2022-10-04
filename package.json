@@ -41,7 +41,7 @@
     "@sentry/react": "7.14.1",
     "@sentry/tracing": "7.14.1",
     "@visx/event": "2.6.0",
-    "@visx/tooltip": "2.10.0",
+    "@visx/tooltip": "2.15.0",
     "d3": "7.6.1",
     "d3-format": "3.1.0",
     "query-string": "7.1.1",
