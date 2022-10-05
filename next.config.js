@@ -14,6 +14,7 @@ const moduleExports = {
       },
     ];
   },
+  basePath: "/kvalitetsregistre",
   trailingSlash: true,
 };
 
