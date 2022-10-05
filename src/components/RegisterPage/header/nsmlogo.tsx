@@ -12,6 +12,8 @@ export const NSMLogo: React.FC = () => {
           className={style.nsmlogo}
           src={logo}
           alt="kvalitetsregistre.no"
+          width="250px"
+          height="28px"
         />
       </a>
     </div>

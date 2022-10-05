@@ -19,6 +19,8 @@ const Header: React.FC<HeaderProps> = () => {
                 className={style.logo_img}
                 src={skdeLogo}
                 alt="SKDE logo"
+                height="39px"
+                width="96px"
               />
             </a>
           </Link>
