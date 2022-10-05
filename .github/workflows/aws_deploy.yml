@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Build package
         env:
-          REACT_APP_API_HOST: ${{ env.api }}
+          NEXT_PUBLIC_API_HOST: ${{ env.api }}
           REACT_APP_SENTRY: ${{ env.SENTRY }}
         run: yarn install && yarn run build
       - name: Sync to S3 bucket
@@ -43,7 +43,7 @@ jobs:
       - name: Build and sync to verify page
         if: github.event_name == 'release'
         env:
-          REACT_APP_API_HOST: https://verify-mong-api.skde.org
+          NEXT_PUBLIC_API_HOST: https://verify-mong-api.skde.org
         run: |
           yarn install && yarn run build
           aws s3 sync build s3://verify.skde.org/kvalitetsregistre --delete --cache-control "public, max-age=31536000"
