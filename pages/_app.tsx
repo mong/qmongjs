@@ -42,28 +42,21 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             name="description"
             content="Web site created using create-react-app"
           />
-          <link href="/fontawesome/v5.13.0/css/all.min.css" rel="stylesheet" />
           <link
-            href="/fontawesome/v5.13.0/css/v4-shims.min.css"
+            href="/kvalitetsregistre/fontawesome/v5.13.0/css/all.min.css"
             rel="stylesheet"
           />
-          <link rel="icon" type="image/png" href="/icons/hn.png" />
+          <link
+            href="/kvalitetsregistre/fontawesome/v5.13.0/css/v4-shims.min.css"
+            rel="stylesheet"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            href="/kvalitetsregistre/icons/hn.png"
+          />
 
           <title>SKDE - Kvalitetsregistre</title>
-          <script
-            type="text/javascript"
-            dangerouslySetInnerHTML={{
-              __html: `//<![CDATA[
-      // prettier-ignore
-      const isIE = /*@cc_on!@*/false || !!document.documentMode;
-      if (isIE) {
-        alert(
-          "Internett Explorer støtter dessverre ikke dette nettstedet.\nPrøv med en tryggere og mer moderne nettleser som f.eks:\n Chrome, Firefox, Safari, Opera, eller Edge"
-        );
-      }
-      //]]>`,
-            }}
-          />
         </Head>
         {getLayout(<Component {...pageProps} />)}
         <ReactQueryDevtools initialIsOpen={false} />

@@ -155,7 +155,7 @@ export const useUnitNamesQuery = (
   );
 };
 
-const fetchRegisterNames = async () => {
+export const fetchRegisterNames = async () => {
   const response = await fetch(`${API_HOST}/info/names`);
   if (!response.ok) {
     throw new Error(response.statusText);
