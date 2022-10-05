@@ -4007,9 +4007,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/tooltip@npm:2.10.0":
-  version: 2.10.0
-  resolution: "@visx/tooltip@npm:2.10.0"
+"@visx/tooltip@npm:2.15.0":
+  version: 2.15.0
+  resolution: "@visx/tooltip@npm:2.15.0"
   dependencies:
     "@types/react": "*"
     "@visx/bounds": 2.10.0
@@ -4019,7 +4019,7 @@ __metadata:
   peerDependencies:
     react: ^16.8.0-0 || ^17.0.0-0 || ^18.0.0-0
     react-dom: ^16.8.0-0 || ^17.0.0-0 || ^18.0.0-0
-  checksum: 06ca4b6a7c95a11234c30dbf962c39c2270336f53cc83b4fcadc79c42d3658b6b53c2c94c5faf69cdf6f2edfc1cbfb070b2f3a03900888a81530dcb30c2b5c41
+  checksum: 77df9b9e2c37f00ce9d31f682a8608a379f7a921192a5bc5bcc9c39702da2b601bcade90848a410d24360dbdc366cef1d4fac64590b17f8c05fdd2a9b3762d8b
   languageName: node
   linkType: hard
 
@@ -12953,7 +12953,7 @@ __metadata:
     "@types/react-dom": 18.0.6
     "@types/react-router-dom": 5.3.3
     "@visx/event": 2.6.0
-    "@visx/tooltip": 2.10.0
+    "@visx/tooltip": 2.15.0
     d3: 7.6.1
     d3-format: 3.1.0
     eslint: 8.24.0
