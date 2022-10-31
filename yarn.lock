@@ -2766,70 +2766,70 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:7.17.2":
-  version: 7.17.2
-  resolution: "@sentry/browser@npm:7.17.2"
+"@sentry/browser@npm:7.17.3":
+  version: 7.17.3
+  resolution: "@sentry/browser@npm:7.17.3"
   dependencies:
-    "@sentry/core": 7.17.2
-    "@sentry/types": 7.17.2
-    "@sentry/utils": 7.17.2
+    "@sentry/core": 7.17.3
+    "@sentry/types": 7.17.3
+    "@sentry/utils": 7.17.3
     tslib: ^1.9.3
-  checksum: 12152226ff56706a02793d78aed76c96d512461125123d71961c9879e2ba7c15899cfbea44e9b944fd266d544aff91a70a47d8198fbbc051e761b27d710ac2d3
+  checksum: e0c8268b2376dbed90c38aba47518c2841d25b3c418f3e8812e4ab5f114da36c9d942b9fb17cf58dff1c7e7cc481b6267352603e450deb6a0d82de1851e9520a
   languageName: node
   linkType: hard
 
-"@sentry/core@npm:7.17.2":
-  version: 7.17.2
-  resolution: "@sentry/core@npm:7.17.2"
+"@sentry/core@npm:7.17.3":
+  version: 7.17.3
+  resolution: "@sentry/core@npm:7.17.3"
   dependencies:
-    "@sentry/types": 7.17.2
-    "@sentry/utils": 7.17.2
+    "@sentry/types": 7.17.3
+    "@sentry/utils": 7.17.3
     tslib: ^1.9.3
-  checksum: 1553cff1e67ea584184cac560f06b5a30ebd37628738a42ed7859bc2145aec853150d444570999a44d2c572bb3c078d957560ef6b2578bcc7950f636e71502a6
+  checksum: 6895e4893587749df9a916aeff676472027dc5e24614824eb9730b3819649166f465f46d1efb6dc9b1e25e8eccac56e490e38f099a5e28245b86dfbc971df210
   languageName: node
   linkType: hard
 
-"@sentry/react@npm:7.17.2":
-  version: 7.17.2
-  resolution: "@sentry/react@npm:7.17.2"
+"@sentry/react@npm:7.17.3":
+  version: 7.17.3
+  resolution: "@sentry/react@npm:7.17.3"
   dependencies:
-    "@sentry/browser": 7.17.2
-    "@sentry/types": 7.17.2
-    "@sentry/utils": 7.17.2
+    "@sentry/browser": 7.17.3
+    "@sentry/types": 7.17.3
+    "@sentry/utils": 7.17.3
     hoist-non-react-statics: ^3.3.2
     tslib: ^1.9.3
   peerDependencies:
     react: 15.x || 16.x || 17.x || 18.x
-  checksum: d1e209190695b0a12be75fd5e2b73d67416fde65044eb1c8ff6922069f81b4284a2156f125fecb752ad0f2d7eedef6dee1524bc05398b565700ec8496c82d7f6
+  checksum: 7f6bfcec3406c24f0bfcc819e7826ec58fad67a92d2ae653fa90155183625a01e9f6d9bc7a3fe10889f77ee3cb239b7543f9bb5dafd7904e63d6e78402156a4e
   languageName: node
   linkType: hard
 
-"@sentry/tracing@npm:7.17.2":
-  version: 7.17.2
-  resolution: "@sentry/tracing@npm:7.17.2"
+"@sentry/tracing@npm:7.17.3":
+  version: 7.17.3
+  resolution: "@sentry/tracing@npm:7.17.3"
   dependencies:
-    "@sentry/core": 7.17.2
-    "@sentry/types": 7.17.2
-    "@sentry/utils": 7.17.2
+    "@sentry/core": 7.17.3
+    "@sentry/types": 7.17.3
+    "@sentry/utils": 7.17.3
     tslib: ^1.9.3
-  checksum: 220f2cbd69804f1d40678fccb5a46185790362fd26188fe9aab70c4e14df998994c11c06bc999d98bb2cfded70cc3442e5966ca26f7b0da935e00b4cb7e08fa0
+  checksum: 4df6f9340a4b037bea0d75c9c1c1548f860a08cebf45c3277030d76bb59a465618e1ef767f2390734ae7a66f3ec634853665d9b6975b65fa7ef502e623e1641c
   languageName: node
   linkType: hard
 
-"@sentry/types@npm:7.17.2":
-  version: 7.17.2
-  resolution: "@sentry/types@npm:7.17.2"
-  checksum: 1faebab3093cdae9dc0bb361f534b4eec1fb2f90c1ad3253f27263bb32d7275c0485e6dcfbe8f23f5258e346a72b33bd979fe294c6eb6f91352dd7abc8541599
+"@sentry/types@npm:7.17.3":
+  version: 7.17.3
+  resolution: "@sentry/types@npm:7.17.3"
+  checksum: 92e6debe96e324df54c2bd2601c7db5bf47ffb261812bde5ff2a116aca2cbf4cc850bf16d7c58f15612bb920ffefa5a31f4309a5b8e6bb82bc02ad15b697600a
   languageName: node
   linkType: hard
 
-"@sentry/utils@npm:7.17.2":
-  version: 7.17.2
-  resolution: "@sentry/utils@npm:7.17.2"
+"@sentry/utils@npm:7.17.3":
+  version: 7.17.3
+  resolution: "@sentry/utils@npm:7.17.3"
   dependencies:
-    "@sentry/types": 7.17.2
+    "@sentry/types": 7.17.3
     tslib: ^1.9.3
-  checksum: a570d896dbc07fe1b7bbe03c643a453a73ed727ea7f57b30a759d869ab996bf143e682f155e3c8c8295cda7d7d562d8f52ab0639a9b5147f2b20b3385daedd4b
+  checksum: 82a2c1ab89635a96ca4e3bfac599235434f601d10033ebb9f08608b41e49d96b725935cfc4d350111968c7b66b97a69bd303f92bb9e64664b0e8f5b8d9c99845
   languageName: node
   linkType: hard
 
@@ -13040,8 +13040,8 @@ __metadata:
     "@emotion/styled": 11.10.5
     "@mui/icons-material": 5.10.9
     "@mui/material": 5.10.11
-    "@sentry/react": 7.17.2
-    "@sentry/tracing": 7.17.2
+    "@sentry/react": 7.17.3
+    "@sentry/tracing": 7.17.3
     "@testing-library/jest-dom": 5.16.5
     "@testing-library/react": 12.1.5
     "@testing-library/user-event": 14.4.3
