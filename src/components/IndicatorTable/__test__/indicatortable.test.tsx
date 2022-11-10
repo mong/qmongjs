@@ -15,6 +15,7 @@ const registerInfo: RegisterNames[] = [
     caregiver_data: 1,
     resident_data: 0,
     dg_data: 1,
+    description: null,
   },
 ];
 it("registry table renders correctly for a single registry", async () => {
