@@ -151,6 +151,8 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     return false;
   });
 
+  const registerDescription = registerInfo[0].description;
+
   const placeholder =
     tab === "opptaksomraade" ? (
       <div>
@@ -165,6 +167,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
         dataFrom={registerFullName}
         tabNames={registerTabs}
         activeTab={tab as string}
+        registerText={registerDescription ?? undefined}
       />
       <div className="app-body">
         <div className="selection-container" ref={selection_bar_ref}>
